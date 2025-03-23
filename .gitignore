@@ -1,0 +1,45 @@
+# System files
+desktop.ini
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+
+# Temporary and cache files
+*.tmp
+*.temp
+*.log
+*.cache
+*.swp
+.directory
+
+# Text editors and IDEs
+*.bak
+*.sublime-*
+.vscode/
+*.code-workspace
+.idea/
+
+# Virtual environments and dependencies
+venv/
+.venv/
+node_modules/
+__pycache__/
+.pytest_cache/
+
+# Compiled and executable files
+*.class
+*.exe
+*.dll
+*.o
+*.so
+
+# Sensitive files (API keys, credentials)
+.env
+*.pem
+*.key
+*.crt
+
+# Auto-generated archives
+*.zip
+*.tar.gz
