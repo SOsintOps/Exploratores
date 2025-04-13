@@ -43,3 +43,25 @@ __pycache__/
 # Auto-generated archives
 *.zip
 *.tar.gz
+
+# Common backup and temp files
+*~
+*.orig
+
+# Test and coverage
+coverage/
+.nyc_output/
+
+# Design files
+*.psd
+*.ai
+*.xcf
+
+# Local server logs
+access.log
+error.log
+
+# GitHub Pages (Jekyll) generated folders
+_site/
+.sass-cache/
+.jekyll-cache/

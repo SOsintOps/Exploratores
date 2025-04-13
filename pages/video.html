@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exploratores Live Video Streams Tool</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="Files/style.css">
+    <style>
+      /* Layout generale: sidebar a sinistra e contenuto principale a destra */
+      .container {
+        display: flex;
+      }
+      aside {
+        flex: 0 0 200px;
+      }
+      main {
+        flex: 1;
+        padding: 20px;
+      }
+      /* Suddivisione del contenuto principale in due colonne */
+      .columns {
+        display: flex;
+        gap: 20px;
+      }
+      .column {
+        flex: 1;
+      }
+      .column h2 {
+        margin-top: 0;
+      }
+      .form-section {
+        margin-bottom: 10px;
+      }
+      /* Sezioni di intestazione per ogni area */
+      .section-title {
+        font-weight: bold;
+        margin-top: 30px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar di navigazione -->
+      <aside>
+        <nav>
+          <ul>
+            <li><a href="../index.html" class="blue"><strong>INDEX</strong></a></li>
+            <li><a href="Search.html"><strong>Search Engines</strong></a></li>
+            <li><a href="API.html">APIs</a></li>
+            <li><a href="Address.html">Addresses</a></li>
+            <li><a href="Breaches.html">Data Breaches & Leaks</a></li>
+            <li><a href="Business.html">Business & Government</a></li>
+            <li><a href="Communities.html">Communities</a></li>
+            <li><a href="Documents.html">Documents</a></li>
+            <li><a href="Domain.html">Domains</a></li>
+            <li><a href="Email.html">Email Addresses</a></li>
+            <li><a href="Facebook.html">Facebook</a></li>
+            <li><a href="Images.html">Images</a></li>
+            <li><a href="Instagram.html">Instagram</a></li>
+            <li><a href="IP.html">IP Addresses</a></li>
+            <li><a href="LinkedIn.html">LinkedIn</a></li>
+            <li><a href="Radio.html">Live Audio Streams</a></li>
+            <li><a href="Video.html" class="active">Live Video Streams</a></li>
+            <li><a href="Location.html">Maps</a></li>
+            <li><a href="Name.html">Names</a></li>
+            <li><a href="Pastes.html">Pastes</a></li>
+            <li><a href="Telephone.html">Telephone Numbers</a></li>
+            <li><a href="Twitter.html">X (Twitter)</a></li>
+            <li><a href="Username.html">Usernames</a></li>
+            <li><a href="Vehicle.html">Vehicles</a></li>
+            <li><a href="Videos.html">Videos</a></li>
+            <li><a href="Currencies.html">Virtual Currencies</a></li>
+            <li><a href="License.html" class="grey">License</a></li>
+          </ul>
+        </nav>
+      </aside>
+      
+      <!-- Contenuto principale -->
+      <main>
+        <h1>Exploratores Live Video Streams Tool</h1>
+<br><strong>These feeds change often. If your desired feed is broken, please modify your custom tool included with the latest edition of OSINT Techniques to update your own feeds.</strong><br><br>
+<script type="text/javascript">
+function dosearch(menu)
+{window.open(menu, 'inner');}
+</script>
+<form onsubmit="dosearch(this.menu.value); return false;">
+<select name="menu" id="menu">
+<option value="" selected>Select</option>
+<option disabled="">US:</option>
+<option value="video/ABC.html">ABC National</option>
+<option value="video/CBS.html">CBS National</option>
+<option value="video/FOX.html">FOX National</option>
+<option value="video/NBC.html">NBC National</option>
+<option value="video/Newsy.html">Newsy National</option>
+<option value="video/PBS.html">PBS National</option>
+<option value="video/Atlanta2.html">Atlanta (ABC)</option>
+<option value="video/Atlanta.html">Atlanta (FOX)</option>
+<option value="video/Austin.html">Austin (FOX)</option>
+<option value="video/Baltimore.html">Baltimore (CBS)</option>
+<option value="video/Boston2.html">Boston (ABC)</option>
+<option value="video/Boston.html">Boston (CBS)</option>
+<option value="video/Charlotte.html">Charlotte (CBS)</option>
+<option value="video/Chicago.html">Chicago (CBS)</option>
+<option value="video/Chicago2.html">Chicago (FOX)</option>
+<option value="video/Cleveland.html">Cleveland (ABC)</option>
+<option value="video/Columbus.html">Columbus (CBS)</option>
+<option value="video/Dallas3.html">Dallas (ABC)</option>
+<option value="video/Dallas.html">Dallas (CBS)</option>
+<option value="video/Dallas2.html">Dallas (FOX)</option>
+<option value="video/Dayton.html">Dayton (CBS)</option>
+<option value="video/Colorado.html">Denver (CBS)</option>
+<option value="video/Denver.html">Denver (NBC)</option>
+<option value="video/Detroit.html">Detroit (ABC)</option>
+<option value="video/Detroit2.html">Detroit (FOX)</option>
+<option value="video/Greensboro.html">Greensboro (CBS)</option>
+<option value="video/Hartford.html">Hartford (FOX)</option>
+<option value="video/Houston3.html">Houston (ABC)</option>
+<option value="video/Houston.html">Houston (CBS)</option>
+<option value="video/Houston2.html">Houston (Fox)</option>
+<option value="video/Indianapolis.html">Indianapolis (NBC)</option>
+<option value="video/Jacksonville.html">Jacksonville (FOX)</option>
+<option value="video/LosAngeles.html">Los Angeles (CBS)</option>
+<option value="video/LosAngeles2.html">Los Angeles (FOX)</option>
+<option value="video/Memphis.html">Memphis (FOX)</option>
+<option value="video/Miami.html">Miami (CBS)</option>
+<option value="video/Milwaukee.html">Milwaukee (FOX)</option>
+<option value="video/Minnesota.html">Minneapolis (CBS)</option>
+<option value="video/Minnesota2.html">Minneapolis (FOX)</option>
+<option value="video/Minnesota3.html">Minneapolis (NBC)</option>
+<option value="video/NewYork.html">New York (CBS)</option>
+<option value="video/NewYork2.html">New York (FOX)</option>
+<option value="video/NewYork3.html">New York (ABC)</option>
+<option value="video/Orlando.html">Orlando (ABC)</option>
+<option value="video/Orlando2.html">Orlando (FOX)</option>
+<option value="video/Philadelphia.html">Philadelphia (CBS)</option>
+<option value="video/Philadelphia2.html">Philadelphia (Fox)</option>
+<option value="video/Phoenix2.html">Phoenix (ABC)</option>
+<option value="video/Phoenix.html">Phoenix (FOX)</option>
+<option value="video/Phoenix3.html">Phoenix (NBC)</option>
+<option value="video/Pittsburgh2.html">Pittsburgh (ABC)</option>
+<option value="video/Pittsburgh.html">Pittsburgh (CBS)</option>
+<option value="video/Portland.html">Portland (NBC)</option>
+<option value="video/Sacremento2.html">Sacramento (ABC)</option>
+<option value="video/Sacremento.html">Sacramento (CBS)</option>
+<option value="video/SanDiego.html">San Diego (ABC)</option>
+<option value="video/SanFrancisco.html">San Francisco (CBS)</option>
+<option value="video/SanFrancisco2.html">San Francisco (FOX)</option>
+<option value="video/Seattle2.html">Seattle (FOX)</option>
+<option value="video/Seattle.html">Seattle (NBC)</option>
+<option value="video/STLKSDK.html">St. Louis (NBC)</option>
+<option value="video/Tampa.html">Tampa (ABC)</option>
+<option value="video/Tampa2.html">Tampa (FOX)</option>
+<option value="video/Tulsa.html">Tulsa (FOX)</option>
+<option value="video/DC2.html">Washington DC (CBS)</option>
+<option value="video/DC.html">Washington DC (FOX)</option>
+<option disabled="">Africa:</option>
+<option value="video/Africanews.html">Africanews</option>
+<option disabled="">Australia:</option>
+<option value="video/AU-ABC.html">ABC</option>
+<option disabled="">Canada:</option>
+<option value="video/CA-Global.html">Global News</option>
+<option value="video/CBC.html">CBC</option>
+<option disabled="">France:</option>
+<option value="video/France24.html">France 24</option>
+<option disabled="">Germany:</option>
+<option value="video/GermanyDW.html">Germany DW</option>
+<option disabled="">UK:</option>
+<option value="video/GB.html">GB News</option>
+<option value="video/Sky.html">Sky News</option>
+<option disabled="">International:</option>
+<option value="video/AlJazeera.html">Al Jazeera</option>
+</select>
+<input type="submit" style="width:80px" value="Launch" /></form>
+<iframe name="inner" class="inner" width="640px" height="480px" overflow="hidden" frameborder=0 scrolling="no"></iframe>
+
+</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

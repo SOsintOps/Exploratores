@@ -1,0 +1,76 @@
+/* Definizione delle variabili CSS */
+:root {
+  --font-family: 'Roboto', sans-serif;
+  --font-size: 14px;
+  --sidebar-width: 200px;
+  --bg-sidebar: #f1f1f1;
+  --link-color: #000;
+  --link-padding: 8px 16px;
+  --link-hover-bg: #555;
+  --link-hover-color: #fff;
+  --active-bg: #303942;
+  --active-color: #fff;
+  --grey-bg: #cdcdcd;
+  --grey-color: #000;
+  --blue-bg: #b4c8da;
+  --blue-color: #000;
+}
+
+/* Stili base */
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  margin: 0;
+  padding: 0;
+}
+
+/* Selettori specifici per input e div, se necessari */
+input,
+div {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+}
+
+/* Stile per la navigazione laterale */
+aside nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: var(--sidebar-width);
+  background-color: var(--bg-sidebar);
+}
+
+/* Stili per i link della sidebar */
+aside nav ul li a {
+  display: block;
+  color: var(--link-color);
+  padding: var(--link-padding);
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+aside nav ul li a:hover {
+  background-color: var(--link-hover-bg);
+  color: var(--link-hover-color);
+}
+
+aside nav ul li a.active {
+  background-color: var(--active-bg);
+  color: var(--active-color);
+}
+
+aside nav ul li a.grey {
+  background-color: var(--grey-bg);
+  color: var(--grey-color);
+}
+
+aside nav ul li a.blue {
+  background-color: var(--blue-bg);
+  color: var(--blue-color);
+}
+
+/* Stile per garantire l'allineamento verticale in eventuali tabelle */
+table td,
+table td * {
+  vertical-align: top;
+}
