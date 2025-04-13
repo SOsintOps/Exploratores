@@ -89,5 +89,5 @@ exploratores/
 
 ## 🛠️ Credits
 
-Project developed and maintained by Alessandro Rossetti.  
+Project developed and maintained by Ramingo.  
 For contributions, suggestions, or bug reports: please open an issue or contact directly.
