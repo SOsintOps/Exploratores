@@ -1,312 +1,543 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exploratores Names Tool</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="Files/style.css">
-    <style>
-      /* Layout generale: sidebar a sinistra e contenuto principale a destra */
-      .container {
-        display: flex;
-      }
-      aside {
-        flex: 0 0 200px;
-      }
-      main {
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Names • Exploratores</title>
+  <!-- Font usata in documents.html -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0066ff;
+      --secondary-color: #333;
+      --neutral-color: #888;
+      --bg-color: #f9f9f9;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background-color: var(--bg-color);
+      margin: 0;
+    }
+
+    /* NAVBAR FISSA IN ALTO (stile ripreso da documents.html) */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #ffffff;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      max-width: 1200px;
+      width: 100%;
+      justify-content: space-around;
+      border: 1px solid #ccc;
+    }
+    .menu > li {
+      position: relative;
+      height: 60px;
+      width: 120px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.85rem;
+      border-right: 1px solid #ccc;
+      transition: background-color 0.2s ease-in;
+    }
+    .menu > li:last-child {
+      border-right: none;
+    }
+    .menu > li:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+    .menu > li span {
+      display: block;
+      line-height: 1.2;
+    }
+
+    /* SUBMENU */
+    .submenu {
+      display: none;
+      position: absolute;
+      background-color: #ffffff;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      border: 1px solid #ddd;
+      min-width: 200px;
+      z-index: 999;
+    }
+    .submenu li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    .submenu li:last-child {
+      border-bottom: none;
+    }
+    .submenu li a {
+      text-decoration: none;
+      color: var(--secondary-color);
+    }
+    .submenu li:hover {
+      background-color: var(--primary-color);
+    }
+    .submenu li:hover a {
+      color: #ffffff;
+    }
+
+    /* MOSTRA/NASCONDI SUBMENU AL PASSAGGIO DEL MOUSE */
+    .menu > li:hover .submenu {
+      display: block;
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 70px 20px 40px; /* spazio per non sovrapporsi alla navbar fissa */
+      background-color: #fff;
+    }
+
+    h1.page-title {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .search-instructions {
+      margin-bottom: 1.5rem;
+    }
+    .search-instructions label {
+      display: inline-block;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+    .search-instructions p {
+      margin: 0.5rem 0 1rem;
+    }
+
+    .input-container {
+      margin-bottom: 1rem;
+    }
+    .input-field {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+    }
+
+    /* CONTENITORE COLONNE (se vuoi due colonne tipo documents.html, altrimenti una) */
+    .columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .column {
+      flex: 1;
+      min-width: 300px;
+      background-color: #fafafa;
+      padding: 1rem;
+      border: 1px solid #eee;
+      border-radius: 4px;
+    }
+    .column h2 {
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.3rem;
+    }
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .button {
+      padding: 0.5rem;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in;
+      border-radius: 3px;
+      text-align: center;
+    }
+    .button:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+
+    /* FOOTER FISSO */
+    footer {
+      background-color: #ffffff;
+      border-top: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #555;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      margin-left: 10px;
+    }
+
+    /* RESPONSIVE MENU */
+    @media (max-width: 768px) {
+      .menu > li {
+        width: auto;
         flex: 1;
-        padding: 20px;
       }
-      /* Stili per i campi di input e i pulsanti */
-      .input-field {
-        margin-right: 10px;
-      }
-      .button {
-        width: 140px;
-        margin-right: 10px;
-        margin-bottom: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <!-- Sidebar di navigazione -->
-      <aside>
-        <nav>
-          <ul>
-            <li><a href="../index.html" class="blue"><strong>INDEX</strong></a></li>
-            <li><a href="Search.html"><strong>Search Engines</strong></a></li>
-            <li><a href="API.html">APIs</a></li>
-            <li><a href="Address.html">Addresses</a></li>
-            <li><a href="Breaches.html">Data Breaches & Leaks</a></li>
-            <li><a href="Business.html">Business & Government</a></li>
-            <li><a href="Communities.html">Communities</a></li>
-            <li><a href="Documents.html">Documents</a></li>
-            <li><a href="Domain.html">Domains</a></li>
-            <li><a href="Email.html">Email Addresses</a></li>
-            <li><a href="Facebook.html">Facebook</a></li>
-            <li><a href="Images.html">Images</a></li>
-            <li><a href="Instagram.html">Instagram</a></li>
-            <li><a href="IP.html">IP Addresses</a></li>
-            <li><a href="LinkedIn.html">LinkedIn</a></li>
-            <li><a href="Radio.html">Live Audio Streams</a></li>
-            <li><a href="Video.html">Live Video Streams</a></li>
-            <li><a href="Location.html">Maps</a></li>
-            <li><a href="Name.html" class="active">Names</a></li>
-            <li><a href="Pastes.html">Pastes</a></li>
-            <li><a href="Telephone.html">Telephone Numbers</a></li>
-            <li><a href="Twitter.html">X (Twitter)</a></li>
-            <li><a href="Username.html">Usernames</a></li>
-            <li><a href="Vehicle.html">Vehicles</a></li>
-            <li><a href="Videos.html">Videos</a></li>
-            <li><a href="Currencies.html">Virtual Currencies</a></li>
-            <li><a href="License.html" class="grey">License</a></li>
-          </ul>
-        </nav>
-      </aside>
-      
-      <!-- Contenuto principale -->
-      <main>
-        <h1>Exploratores Names Tool</h1>
-		<br>
-		       
-        <!-- Campi di inserimento globali -->
-        Please insert first name and last name in the search box and then press the buttons corresponding to the type of search you wish to perform. <br><br>
-		<div>
-          <input type="text" id="firstName" class="input-field" size="12" placeholder="First Name">
-          <input type="text" id="lastName" class="input-field" size="12" placeholder="Last Name">
-        </div>
-        <br>
-    
-        <!-- Pulsanti per i vari motori di ricerca -->
-		
-		
-        <div>
-		  <h2>International</h2>
-		  <button class="button" onclick="searchWebMii()">WebMii</button>
-		  <h3>Italy</h3>		  
-		  <button class="button" onclick="searchPagineBianche()">Pagine Bianche</button>
-		  <button class="button" onclick="searchPagineGialle()">Pagine Gialle</button> <br>
-		<br>
-		<br>
-		  <h2>United States</h2>
-          <button class="button" onclick="searchTruePeople()">TruePeople</button>
-          <button class="button" onclick="searchFastPeople()">FastPeople</button>
-          <button class="button" onclick="searchNuwber()">Nuwber</button> <br>
-          <button class="button" onclick="searchUSAOfficial()">USA-Official</button>
-          <button class="button" onclick="searchFamilyTreeNow()">FamilyTreeNow</button>
-          <button class="button" onclick="searchIntelius()">Intelius</button> <br>
-          <button class="button" onclick="searchRadaris()">Radaris</button>
-          <button class="button" onclick="searchCyberBackground()">CyberBackground</button>
-          <button class="button" onclick="searchSpytox()">Spytox</button> <br>
-          <button class="button" onclick="searchSearchPeople()">SearchPeople</button>
-          <button class="button" onclick="searchSpokeo()">Spokeo</button>
-          <button class="button" onclick="searchAdvBackground()">AdvBackground</button> <br>
-          <button class="button" onclick="searchYasni()">Yasni</button>
-          <button class="button" onclick="searchZabasearch()">Zabasearch</button> 
-          <button class="button" onclick="searchPeopleSearchNow()">PeopleSearchNow</button><br>
-          <button class="button" onclick="searchSocialSearcher()">SocialSearcher</button>
-          <button class="button" onclick="searchTruthFinder()">TruthFinder</button>
-          <button class="button" onclick="searchPeopleByName()">PeopleByName</button><br>
-          <button class="button" onclick="searchWhitePages()">White Pages</button>
-          <button class="button" onclick="searchThatsThem()">Thats Them</button> 
-          <button class="button" onclick="searchClustrMaps()">ClustrMaps</button><br>
-          <button class="button" onclick="searchRocketReach()">RocketReach</button>
-        <!--  <button class="button" onclick="searchOfficialUSA()">OfficialUSA</button> -->
-          <button class="button" onclick="searchAddresses()">Addresses</button>
-          <button class="button" onclick="searchClassmates()">Classmates</button> <br>
-          <button class="button" onclick="searchIDCrawl()">ID Crawl</button>
-        </div>
-        
-        <script>
-          function getNames() {
-            return {
-              firstName: document.getElementById('firstName').value,
-              lastName: document.getElementById('lastName').value
-            };
-          }
-          
-          function searchTruePeople() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.truepeoplesearch.com/results?name=' + firstName + '%20' + lastName;
-            window.open(url, 'TruePeopleWindow');
-          }
-          
-          function searchFastPeople() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.fastpeoplesearch.com/name/' + firstName + '-' + lastName;
-            window.open(url, 'FastPeopleWindow');
-          }
-          
-          function searchNuwber() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://nuwber.com/search?name=' + firstName + '%20' + lastName;
-            window.open(url, 'NuwberWindow');
-          }
-          
-          function searchUSAOfficial() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://usa-official.com/' + firstName + '-' + lastName;
-            window.open(url, 'USAOfficialWindow');
-          }
-          
-          function searchFamilyTreeNow() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.familytreenow.com/search/genealogy/results?first=' + firstName + '&last=' + lastName;
-            window.open(url, 'FamilyTreeNowWindow');
-          }
-          
-          function searchIntelius() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.intelius.com/people-search/' + firstName + '-' + lastName;
-            window.open(url, 'InteliusWindow');
-          }
-          
-          function searchRadaris() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://radaris.com/p/' + firstName + '/' + lastName;
-            window.open(url, 'RadarisWindow');
-          }
-          
-          function searchCyberBackground() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.cyberbackgroundchecks.com/people/' + firstName + '-' + lastName;
-            window.open(url, 'CyberBackgroundWindow');
-          }
-          
-          function searchSpytox() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.spytox.com/people/search?name=' + firstName + '+' + lastName;
-            window.open(url, 'SpytoxWindow');
-          }
-          
-          function searchSearchPeople() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.searchpeoplefree.com/find/' + firstName + '-' + lastName;
-            window.open(url, 'SearchPeopleWindow');
-          }
-          
-          function searchSpokeo() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.spokeo.com/' + firstName + '-' + lastName + '?loaded=1';
-            window.open(url, 'SpokeoWindow');
-          }
-          
-          function searchAdvBackground() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.advancedbackgroundchecks.com/names/' + firstName + '-' + lastName;
-            window.open(url, 'AdvBackgroundWindow');
-          }
-          
-          function searchYasni() {
-            const { firstName, lastName } = getNames();
-            var url = 'http://www.yasni.com/' + firstName + '+' + lastName + '/check+people?sh';
-            window.open(url, 'YasniWindow');
-          }
-          
-          function searchZabasearch() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.zabasearch.com/people/' + firstName + '+' + lastName;
-            window.open(url, 'ZabasearchWindow');
-          }
-          
-          function searchPeopleSearchNow() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.peoplesearchnow.com/person/' + firstName + '-' + lastName;
-            window.open(url, 'PeopleSearchNowWindow');
-          }
-          
-          function searchWebMii() {
-            const { firstName, lastName } = getNames();
-            var url = 'http://webmii.com/people?n=%22' + firstName + '%20' + lastName + '%22';
-            window.open(url, 'WebMiiWindow');
-          }
-          
-          function searchSocialSearcher() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.social-searcher.com/search-users/?q6=' + firstName + '+' + lastName;
-            window.open(url, 'SocialSearcherWindow');
-          }
-          
-          function searchTruthFinder() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.truthfinder.com/results/?firstName=' + firstName + '&lastName=' + lastName + '&state=ALL';
-            window.open(url, 'TruthFinderWindow');
-          }
-          
-          function searchPeopleByName() {
-            const { firstName, lastName } = getNames();
-            var url = 'http://www.peoplebyname.com/people/' + lastName + '/' + firstName;
-            window.open(url, 'PeopleByNameWindow');
-          }
-          
-          function searchWhitePages() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.whitepages.com/name/' + firstName + '-' + lastName;
-            window.open(url, 'WhitePagesWindow');
-          }
-          
-          function searchThatsThem() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://thatsthem.com/name/' + firstName + '-' + lastName;
-            window.open(url, 'ThatsThemWindow');
-          }
-          
-          function searchClustrMaps() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://clustrmaps.com/persons/' + firstName + '-' + lastName;
-            window.open(url, 'ClustrMapsWindow');
-          }
-          
-          function searchRocketReach() {
-            const { firstName, lastName } = getNames();
-            var query = encodeURIComponent(firstName + ' ' + lastName);
-            var url = 'https://google.com/search?q=site:rocketreach.co"' + query + '"';
-            window.open(url, 'RocketReachWindow');
-          }
-          
-          function searchOfficialUSA() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.officialusa.com/names/' + firstName + '-' + lastName;
-            window.open(url, 'OfficialUSAWindow');
-          }
-          
-          function searchAddresses() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.addresses.com/people/' + firstName + '-' + lastName;
-            window.open(url, 'AddressesWindow');
-          }
-          
-          function searchClassmates() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.classmates.com/siteui/ybsearch/results?q=' + firstName + ' ' + lastName;
-            window.open(url, 'ClassmatesWindow');
-          }
-          
-          function searchIDCrawl() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.idcrawl.com/' + firstName + '-' + lastName;
-            window.open(url, 'IDCrawlWindow');
-          }
-		  
-          function searchPagineBianche() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.paginebianche.it/persone?qs=' + firstName + '-' + lastName;
-            window.open(url, 'PagineBianche');	
-          }
-		  
-		  function searchPagineGialle() {
-            const { firstName, lastName } = getNames();
-            var url = 'https://www.paginegialle.it/ricerca/' + firstName + '-' + lastName;
-            window.open(url, 'PagineGialle');	
-          }
-		    
-		  
-		  
-		  
-        </script>
-      </main>
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <ul class="menu">
+    <li><span>HOME</span>
+      <ul class="submenu">
+        <li><a href="../index.html">Index</a></li>
+      </ul>
+    </li>
+    <li><span>Search<br>Engines</span>
+      <ul class="submenu">
+        <li><a href="Search.html">Search Engines</a></li>
+      </ul>
+    </li>
+    <li><span>People &<br>Identities</span>
+      <ul class="submenu">
+        <li><a href="Name.html" class="active">Names</a></li>
+        <li><a href="Telephone.html">Telephone Numbers</a></li>
+        <li><a href="Address.html">Addresses</a></li>
+        <li><a href="Vehicle.html">Vehicles</a></li>
+        <li><a href="Username.html">Usernames</a></li>
+        <li><a href="Email.html">Email Addresses</a></li>
+        <li><a href="Communities.html">Communities</a></li>
+      </ul>
+    </li>
+    <li><span>Social<br>Media</span>
+      <ul class="submenu">
+        <li><a href="Twitter.html">X (Twitter)</a></li>
+        <li><a href="Facebook.html">Facebook</a></li>
+        <li><a href="Instagram.html">Instagram</a></li>
+        <li><a href="LinkedIn.html">LinkedIn</a></li>
+      </ul>
+    </li>
+    <li><span>Websites</span>
+      <ul class="submenu">
+        <li><a href="Domain.html">Domains</a></li>
+        <li><a href="IP.html">IP Addresses</a></li>
+      </ul>
+    </li>
+    <li><span>GeoInt</span>
+      <ul class="submenu">
+        <li><a href="Location.html">Location</a></li>
+        <li><a href="Maps.html">Maps</a></li>
+      </ul>
+    </li>
+    <li><span>Media<br>Analysis</span>
+      <ul class="submenu">
+        <li><a href="Images.html">Images</a></li>
+        <li><a href="Videos.html">Videos</a></li>
+        <li><a href="Documents.html">Documents</a></li>
+      </ul>
+    </li>
+    <li><span>Live<br>Monitoring</span>
+      <ul class="submenu">
+        <li><a href="Radio.html">Live Audio Streams (Radio)</a></li>
+        <li><a href="Video.html">Live Video Streams</a></li>
+      </ul>
+    </li>
+    <li><span>Business<br>Intelligence</span>
+      <ul class="submenu">
+        <li><a href="Business.html">Business &amp; Government</a></li>
+        <li><a href="Currencies.html">Virtual Currencies</a></li>
+      </ul>
+    </li>
+    <li><span>Security</span>
+      <ul class="submenu">
+        <li><a href="Breaches.html">Data Breaches &amp; Leaks</a></li>
+        <li><a href="Pastes.html">Pastes</a></li>
+      </ul>
+    </li>
+    <li><span>Tools</span>
+      <ul class="submenu">
+        <li><a href="API.html">Setting API</a></li>
+        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main>
+  <h1 class="page-title">Names Tool</h1>
+
+  <!-- Input Globale -->
+  <section class="search-instructions">
+    <label for="firstName">Insert first name and last name here:</label>
+    <div class="input-container">
+	First name
+      <input type="text" id="firstName" class="input-field" placeholder="Mario">
+	Last name	  
+      <input type="text" id="lastName" class="input-field" placeholder="Rossi">
     </div>
-  </body>
+    <p>
+      Please enter the subject's first name and last name above, then press the buttons for the 
+      type of search you wish to perform.
+    </p>
+  </section>
+
+  <!-- Colonne parallele (in stile documents.html) -->
+  <div class="columns">
+    <!-- Colonna 1 -->
+    <div class="column">
+      <h2>International</h2>
+      <div class="button-grid">
+        <button class="button" onclick="searchWebMii()">WebMii</button>
+      </div>
+      <h3>Italy</h3>
+      <div class="button-grid">
+        <button class="button" onclick="searchPagineBianche()">Pagine Bianche</button>
+        <button class="button" onclick="searchPagineGialle()">Pagine Gialle</button>
+      </div>
+    </div>
+
+    <!-- Colonna 2 -->
+    <div class="column">
+      <h2>United States</h2>
+      <div class="button-grid">
+        <button class="button" onclick="searchTruePeople()">TruePeople</button>
+        <button class="button" onclick="searchFastPeople()">FastPeople</button>
+        <button class="button" onclick="searchNuwber()">Nuwber</button>
+        <button class="button" onclick="searchUSAOfficial()">USA-Official</button>
+        <button class="button" onclick="searchFamilyTreeNow()">FamilyTreeNow</button>
+        <button class="button" onclick="searchIntelius()">Intelius</button>
+        <button class="button" onclick="searchRadaris()">Radaris</button>
+        <button class="button" onclick="searchCyberBackground()">CyberBackground</button>
+        <button class="button" onclick="searchSpytox()">Spytox</button>
+        <button class="button" onclick="searchSearchPeople()">SearchPeople</button>
+        <button class="button" onclick="searchSpokeo()">Spokeo</button>
+        <button class="button" onclick="searchAdvBackground()">AdvBackground</button>
+        <button class="button" onclick="searchYasni()">Yasni</button>
+        <button class="button" onclick="searchZabasearch()">Zabasearch</button>
+        <button class="button" onclick="searchPeopleSearchNow()">PeopleSearchNow</button>
+        <button class="button" onclick="searchSocialSearcher()">SocialSearcher</button>
+        <button class="button" onclick="searchTruthFinder()">TruthFinder</button>
+        <button class="button" onclick="searchPeopleByName()">PeopleByName</button>
+        <button class="button" onclick="searchWhitePages()">WhitePages</button>
+        <button class="button" onclick="searchThatsThem()">ThatsThem</button>
+        <button class="button" onclick="searchClustrMaps()">ClustrMaps</button>
+        <button class="button" onclick="searchRocketReach()">RocketReach</button>
+        <button class="button" onclick="searchAddresses()">Addresses</button>
+        <button class="button" onclick="searchClassmates()">Classmates</button>
+        <button class="button" onclick="searchIDCrawl()">ID Crawl</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script di ricerca (uguali al tuo Name.html originale) -->
+  <script>
+    function getNames() {
+      return {
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value
+      };
+    }
+
+    function searchWebMii() {
+      const { firstName, lastName } = getNames();
+      const url = 'http://webmii.com/people?n=%22' + firstName + '%20' + lastName + '%22';
+      window.open(url, 'WebMiiWindow');
+    }
+    function searchPagineBianche() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://www.paginebianche.it/persone?qs=' + firstName + '-' + lastName;
+      window.open(url, 'PagineBianche');
+    }
+    function searchPagineGialle() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://www.paginegialle.it/ricerca/' + firstName + '-' + lastName;
+      window.open(url, 'PagineGialle');
+    }
+
+    /* ESEMPI: sezione USA */
+    function searchTruePeople() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://www.truepeoplesearch.com/results?name=' + firstName + '%20' + lastName;
+      window.open(url, 'TruePeopleWindow');
+    }
+    function searchFastPeople() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://www.fastpeoplesearch.com/name/' + firstName + '-' + lastName;
+      window.open(url, 'FastPeopleWindow');
+    }
+    function searchNuwber() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://nuwber.com/search?name=' + firstName + '%20' + lastName;
+      window.open(url, 'NuwberWindow');
+    }
+    function searchUSAOfficial() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://usa-official.com/' + firstName + '-' + lastName;
+      window.open(url, 'USAOfficialWindow');
+    }
+    function searchFamilyTreeNow() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://www.familytreenow.com/search/genealogy/results?first=' + firstName + '&last=' + lastName;
+      window.open(url, 'FamilyTreeNowWindow');
+    }
+    function searchIntelius() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://www.intelius.com/people-search/' + firstName + '-' + lastName;
+      window.open(url, 'InteliusWindow');
+    }
+    function searchRadaris() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://radaris.com/p/' + firstName + '/' + lastName;
+      window.open(url, 'RadarisWindow');
+    }
+    function searchCyberBackground() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://www.cyberbackgroundchecks.com/people/' + firstName + '-' + lastName;
+      window.open(url, 'CyberBackgroundWindow');
+    }
+    function searchSpytox() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://www.spytox.com/people/search?name=' + firstName + '+' + lastName;
+      window.open(url, 'SpytoxWindow');
+    }
+    function searchSearchPeople() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://www.searchpeoplefree.com/find/' + firstName + '-' + lastName;
+      window.open(url, 'SearchPeopleWindow');
+    }
+    function searchSpokeo() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://www.spokeo.com/' + firstName + '-' + lastName + '?loaded=1';
+      window.open(url, 'SpokeoWindow');
+    }
+    function searchAdvBackground() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://www.advancedbackgroundchecks.com/names/' + firstName + '-' + lastName;
+      window.open(url, 'AdvBackgroundWindow');
+    }
+    function searchYasni() {
+      const { firstName, lastName } = getNames();
+      const url = 'http://www.yasni.com/' + firstName + '+' + lastName + '/check+people?sh';
+      window.open(url, 'YasniWindow');
+    }
+    function searchZabasearch() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://www.zabasearch.com/people/' + firstName + '+' + lastName;
+      window.open(url, 'ZabasearchWindow');
+    }
+    function searchPeopleSearchNow() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://www.peoplesearchnow.com/person/' + firstName + '-' + lastName;
+      window.open(url, 'PeopleSearchNowWindow');
+    }
+    function searchSocialSearcher() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://www.social-searcher.com/search-users/?q6=' + firstName + '+' + lastName;
+      window.open(url, 'SocialSearcherWindow');
+    }
+    function searchTruthFinder() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://www.truthfinder.com/results/?firstName=' + firstName + '&lastName=' + lastName + '&state=ALL';
+      window.open(url, 'TruthFinderWindow');
+    }
+    function searchPeopleByName() {
+      const { firstName, lastName } = getNames();
+      const url = 'http://www.peoplebyname.com/people/' + lastName + '/' + firstName;
+      window.open(url, 'PeopleByNameWindow');
+    }
+    function searchWhitePages() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://www.whitepages.com/name/' + firstName + '-' + lastName;
+      window.open(url, 'WhitePagesWindow');
+    }
+    function searchThatsThem() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://thatsthem.com/name/' + firstName + '-' + lastName;
+      window.open(url, 'ThatsThemWindow');
+    }
+    function searchClustrMaps() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://clustrmaps.com/persons/' + firstName + '-' + lastName;
+      window.open(url, 'ClustrMapsWindow');
+    }
+    function searchRocketReach() {
+      const { firstName, lastName } = getNames();
+      const query = encodeURIComponent(firstName + ' ' + lastName);
+      const url = 'https://google.com/search?q=site:rocketreach.co+"'+ query + '"';
+      window.open(url, 'RocketReachWindow');
+    }
+    function searchAddresses() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://www.addresses.com/people/' + firstName + '-' + lastName;
+      window.open(url, 'AddressesWindow');
+    }
+    function searchClassmates() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://www.classmates.com/siteui/ybsearch/results?q=' + firstName + '%20' + lastName;
+      window.open(url, 'ClassmatesWindow');
+    }
+    function searchIDCrawl() {
+      const { firstName, lastName } = getNames();
+      const url = 'https://www.idcrawl.com/' + firstName + '-' + lastName;
+      window.open(url, 'IDCrawlWindow');
+    }
+  </script>
+</main>
+
+<footer>
+  Global Security Italy • Rome (IT)
+  <a href="License.html">License</a>
+</footer>
+
+<script>
+  // Mostra/Nascondi submenu al passaggio del mouse
+  document.querySelectorAll('.menu > li').forEach(item => {
+    item.addEventListener('mouseover', function() {
+      const submenu = this.querySelector('.submenu');
+      if(submenu) submenu.style.display = 'block';
+    });
+    item.addEventListener('mouseout', function() {
+      const submenu = this.querySelector('.submenu');
+      if(submenu) submenu.style.display = 'none';
+    });
+  });
+</script>
+
+</body>
 </html>
