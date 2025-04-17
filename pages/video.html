@@ -1,85 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exploratores Live Video Streams Tool</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="Files/style.css">
-    <style>
-      /* Layout generale: sidebar a sinistra e contenuto principale a destra */
-      .container {
-        display: flex;
-      }
-      aside {
-        flex: 0 0 200px;
-      }
-      main {
+<head>
+  <meta charset="UTF-8">
+  <title>Exploratores Live Video Streams Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Example font usage (like documents.html) -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="styleshee
+  <!-- Stili minimi specifici per questa pagina (coerenti con twitter.html) -->
+  <style>
+    .container{display:flex;min-height:100vh}
+    aside{flex:0 0 200px}
+    main{flex:1;padding:24px;display:flex;flex-direction:column}
+    .columns{display:flex;flex-wrap:wrap;gap:24px;margin-top:16px}
+    .column{flex:1 1 360px}
+    h1{margin:0 0 16px 0;font-size:1.6rem}
+    h2{margin:24px 0 8px;font-size:1.2rem}
+    form{margin-bottom:16px}
+    input[type="text"]{margin:4px 0;padding:4px;width:180px}
+    input[type="submit"],button{margin-top:6px;padding:6px 12px;cursor:pointer}
+    .timestamp-tool{margin-top:8px}
+    .output{margin-top:4px;font-weight:600}
+  </style>
+</head>
+<style>
+    :root {
+      --primary-color: #0066ff;
+      --secondary-color: #333;
+      --bg-color: #f9f9f9;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background-color: var(--bg-color);
+    }
+
+    /* FIXED NAVBAR */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background-color: #ffffff;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      max-width: 1200px;
+      width: 100%;
+      justify-content: space-around;
+      border: 1px solid #ccc;
+    }
+    .menu > li {
+      position: relative;
+      height: 60px;
+      width: 120px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.85rem;
+      border-right: 1px solid #ccc;
+      transition: background-color 0.2s ease-in;
+    }
+    .menu > li:last-child {
+      border-right: none;
+    }
+    .menu > li:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+    .menu > li span {
+      display: block;
+      line-height: 1.2;
+    }
+
+    /* SUBMENU */
+    .submenu {
+      display: none;
+      position: absolute;
+      background-color: #ffffff;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      border: 1px solid #ddd;
+      min-width: 200px;
+      z-index: 999;
+    }
+    .submenu li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    .submenu li:last-child {
+      border-bottom: none;
+    }
+    .submenu li a {
+      text-decoration: none;
+      color: var(--secondary-color);
+    }
+    .submenu li:hover {
+      background-color: var(--primary-color);
+    }
+    .submenu li:hover a {
+      color: #fff;
+    }
+
+    /* SHOW/HIDE SUBMENU ON HOVER */
+    .menu > li:hover .submenu {
+      display: block;
+    }
+
+    /* MAIN CONTENT */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 70px 20px 40px; /* so the navbar won't overlap */
+      background-color: #fff;
+    }
+    h1.page-title {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    /* TWO-COLUMN LAYOUT */
+    .two-columns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .column {
+      flex: 1;
+      min-width: 300px;
+      background-color: #fafafa;
+      padding: 1rem;
+      border: 1px solid #eee;
+      border-radius: 4px;
+    }
+    .column h2 {
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.3rem;
+    }
+
+    /* GENERIC FORM STYLING */
+    .form-section {
+      margin-bottom: 1rem;
+    }
+    .form-section form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .form-section input[type="text"] {
+      flex: 1;
+      padding: 0.4rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 0.9rem;
+    }
+    .form-section input[type="submit"],
+    .form-section button {
+      width: 140px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      background-color: #fff;
+      transition: background-color 0.2s ease-in;
+      padding: 0.4rem 0.6rem;
+    }
+    .form-section input[type="submit"]:hover,
+    .form-section button:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+
+    /* ARRANGING BUTTONS, MAX 3 PER ROW */
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    /* NOTE BOXES */
+    .note {
+      font-size: 0.85rem;
+      background-color: #fff9d6; /* light highlight */
+      border-left: 3px solid #ffc107;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-radius: 3px;
+    }
+
+    /* FIXED FOOTER */
+    footer {
+      background-color: #ffffff;
+      border-top: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #555;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+    }
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      margin-left: 10px;
+    }
+
+    /* RESPONSIVE MENU */
+    @media (max-width: 768px) {
+      .menu > li {
+        width: auto;
         flex: 1;
-        padding: 20px;
       }
-      /* Suddivisione del contenuto principale in due colonne */
-      .columns {
-        display: flex;
-        gap: 20px;
+      .two-columns {
+        flex-direction: column;
       }
-      .column {
-        flex: 1;
-      }
-      .column h2 {
-        margin-top: 0;
-      }
-      .form-section {
-        margin-bottom: 10px;
-      }
-      /* Sezioni di intestazione per ogni area */
-      .section-title {
-        font-weight: bold;
-        margin-top: 30px;
-        margin-bottom: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <!-- Sidebar di navigazione -->
-      <aside>
-        <nav>
-          <ul>
-            <li><a href="../index.html" class="blue"><strong>INDEX</strong></a></li>
-            <li><a href="Search.html"><strong>Search Engines</strong></a></li>
-            <li><a href="API.html">APIs</a></li>
-            <li><a href="Address.html">Addresses</a></li>
-            <li><a href="Breaches.html">Data Breaches & Leaks</a></li>
-            <li><a href="Business.html">Business & Government</a></li>
-            <li><a href="Communities.html">Communities</a></li>
-            <li><a href="Documents.html">Documents</a></li>
-            <li><a href="Domain.html">Domains</a></li>
-            <li><a href="Email.html">Email Addresses</a></li>
-            <li><a href="Facebook.html">Facebook</a></li>
-            <li><a href="Images.html">Images</a></li>
-            <li><a href="Instagram.html">Instagram</a></li>
-            <li><a href="IP.html">IP Addresses</a></li>
-            <li><a href="LinkedIn.html">LinkedIn</a></li>
-            <li><a href="Radio.html">Live Audio Streams</a></li>
-            <li><a href="Video.html" class="active">Live Video Streams</a></li>
-            <li><a href="Location.html">Maps</a></li>
-            <li><a href="Name.html">Names</a></li>
-            <li><a href="Pastes.html">Pastes</a></li>
-            <li><a href="Telephone.html">Telephone Numbers</a></li>
-            <li><a href="Twitter.html">X (Twitter)</a></li>
-            <li><a href="Username.html">Usernames</a></li>
-            <li><a href="Vehicle.html">Vehicles</a></li>
-            <li><a href="Videos.html">Videos</a></li>
-            <li><a href="Currencies.html">Virtual Currencies</a></li>
-            <li><a href="License.html" class="grey">License</a></li>
-          </ul>
-        </nav>
-      </aside>
+    }
+  </style>
+</head>
+<body>
+
+<!-- 
+  NOTE: Many of these searches require a valid X (Twitter) account,
+  otherwise you might not see all the relevant results.
+-->
+
+<!-- NAVBAR -->
+<nav>
+  <ul class="menu">
+    <li><span>HOME</span>
+      <ul class="submenu">
+        <li><a href="../index.html">Index</a></li>
+      </ul>
+    </li>
+    <li><span>Search<br>Engines</span>
+      <ul class="submenu">
+        <li><a href="Search.html">Search Engines</a></li>
+      </ul>
+    </li>
+    <li><span>People &<br>Identities</span>
+      <ul class="submenu">
+        <li><a href="Name.html">Names</a></li>
+        <li><a href="Telephone.html">Telephone Numbers</a></li>
+        <li><a href="Address.html">Addresses</a></li>
+        <li><a href="Vehicle.html">Vehicles</a></li>
+        <li><a href="Username.html">Usernames</a></li>
+        <li><a href="Email.html">Email Addresses</a></li>
+        <li><a href="Communities.html">Communities</a></li>
+      </ul>
+    </li>
+    <li><span>Social<br>Media</span>
+      <ul class="submenu">
+        <li><a href="Twitter.html" class="active">X (Twitter)</a></li>
+        <li><a href="Facebook.html">Facebook</a></li>
+        <li><a href="Instagram.html">Instagram</a></li>
+        <li><a href="LinkedIn.html">LinkedIn</a></li>
+      </ul>
+    </li>
+    <li><span>Websites</span>
+      <ul class="submenu">
+        <li><a href="Domain.html">Domains</a></li>
+        <li><a href="IP.html">IP Addresses</a></li>
+      </ul>
+    </li>
+    <li><span>GeoInt</span>
+      <ul class="submenu">
+        <li><a href="Location.html">Location</a></li>
+        <li><a href="Maps.html">Maps</a></li>
+      </ul>
+    </li>
+    <li><span>Media<br>Analysis</span>
+      <ul class="submenu">
+        <li><a href="Images.html">Images</a></li>
+        <li><a href="Videos.html">Videos</a></li>
+        <li><a href="Documents.html">Documents</a></li>
+      </ul>
+    </li>
+    <li><span>Live<br>Monitoring</span>
+      <ul class="submenu">
+        <li><a href="Radio.html">Live Audio Streams</a></li>
+        <li><a href="Video.html">Live Video Streams</a></li>
+      </ul>
+    </li>
+    <li><span>Business<br>Intelligence</span>
+      <ul class="submenu">
+        <li><a href="Business.html">Business &amp; Government</a></li>
+        <li><a href="Currencies.html">Virtual Currencies</a></li>
+      </ul>
+    </li>
+    <li><span>Security</span>
+      <ul class="submenu">
+        <li><a href="Breaches.html">Data Breaches &amp; Leaks</a></li>
+        <li><a href="Pastes.html">Pastes</a></li>
+      </ul>
+    </li>
+    <li><span>Tools</span>
+      <ul class="submenu">
+        <li><a href="API.html">Setting API</a></li>
+        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
       
       <!-- Contenuto principale -->
       <main>
-        <h1>Exploratores Live Video Streams Tool</h1>
+        <h1>Live Video Streams Tool</h1>
 <br><strong>These feeds change often. If your desired feed is broken, please modify your custom tool included with the latest edition of OSINT Techniques to update your own feeds.</strong><br><br>
 <script type="text/javascript">
 function dosearch(menu)
@@ -180,4 +425,7 @@ function dosearch(menu)
 </tbody>
 </table>
 </body>
+  <footer>
+    Global Security Italy • Rome (IT) <a href="License.html">License</a>
+  </footer>
 </html>
