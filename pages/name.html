@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Names • Exploratores</title>
-  <!-- Font usata in documents.html -->
+
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -189,6 +189,16 @@
       background-color: var(--primary-color);
       color: #fff;
     }
+	
+    /* NOTE BOXES */
+    .note {
+      font-size: 0.85rem;
+      background-color: #fff9d6; /* light highlight */
+      border-left: 3px solid #ffc107;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-radius: 3px;
+    }
 
     /* FOOTER FISSO */
     footer {
@@ -311,17 +321,17 @@
 	Last name	  
       <input type="text" id="lastName" class="input-field" placeholder="Rossi">
     </div>
-    <p>
-      Please enter the subject's first name and last name above, then press the buttons for the 
-      type of search you wish to perform.
-    </p>
+	      <div class="note">
+        <strong>NOTE:</strong> Please enter the subject's first name and last name above, then press the buttons for the type of search you wish to perform.
+      </div>
+
   </section>
 
   <!-- Colonne parallele (in stile documents.html) -->
   <div class="columns">
     <!-- Colonna 1 -->
     <div class="column">
-      <h2>International</h2>
+      <h2>INTERNATIONAL</h2>
       <div class="button-grid">
         <button class="button" onclick="searchWebMii()">WebMii</button>
       </div>
@@ -334,7 +344,7 @@
 
     <!-- Colonna 2 -->
     <div class="column">
-      <h2>United States</h2>
+      <h2>UNITED STATES</h2>
       <div class="button-grid">
         <button class="button" onclick="searchTruePeople()">TruePeople</button>
         <button class="button" onclick="searchFastPeople()">FastPeople</button>
@@ -365,7 +375,7 @@
     </div>
   </div>
 
-  <!-- Script di ricerca (uguali al tuo Name.html originale) -->
+  <!-- Script di ricerca -->
   <script>
     function getNames() {
       return {
