@@ -4,201 +4,189 @@
   <meta charset="UTF-8">
   <title>Exploratores Live Video Streams Tool</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Example font usage (like documents.html) -->
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="styleshee
-  <!-- Stili minimi specifici per questa pagina (coerenti con twitter.html) -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
   <style>
-    .container{display:flex;min-height:100vh}
-    aside{flex:0 0 200px}
-    main{flex:1;padding:24px;display:flex;flex-direction:column}
-    .columns{display:flex;flex-wrap:wrap;gap:24px;margin-top:16px}
-    .column{flex:1 1 360px}
-    h1{margin:0 0 16px 0;font-size:1.6rem}
-    h2{margin:24px 0 8px;font-size:1.2rem}
-    form{margin-bottom:16px}
-    input[type="text"]{margin:4px 0;padding:4px;width:180px}
-    input[type="submit"],button{margin-top:6px;padding:6px 12px;cursor:pointer}
-    .timestamp-tool{margin-top:8px}
-    .output{margin-top:4px;font-weight:600}
-  </style>
-</head>
-<style>
     :root {
       --primary-color: #0066ff;
       --secondary-color: #333;
       --bg-color: #f9f9f9;
     }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: 'IBM Plex Sans', sans-serif;
       background-color: var(--bg-color);
+      color: var(--secondary-color);
     }
 
-    /* FIXED NAVBAR */
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
-      background-color: #ffffff;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
       border-bottom: 1px solid #ddd;
       display: flex;
       justify-content: center;
       z-index: 1000;
     }
+
     .menu {
       list-style: none;
-      padding: 0;
-      margin: 0;
       display: flex;
-      max-width: 1200px;
       width: 100%;
+      max-width: 1200px;
       justify-content: space-around;
-      border: 1px solid #ccc;
     }
+
     .menu > li {
       position: relative;
       height: 60px;
-      width: 120px;
-      cursor: pointer;
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
       font-size: 0.85rem;
-      border-right: 1px solid #ccc;
-      transition: background-color 0.2s ease-in;
-    }
-    .menu > li:last-child {
-      border-right: none;
-    }
-    .menu > li:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-    }
-    .menu > li span {
-      display: block;
-      line-height: 1.2;
+      cursor: pointer;
+      transition: background-color 0.2s;
     }
 
-    /* SUBMENU */
+    .menu > li:hover {
+      background: var(--primary-color);
+      color: #fff;
+    }
+
     .submenu {
       display: none;
       position: absolute;
-      background-color: #ffffff;
       top: 100%;
       left: 50%;
       transform: translateX(-50%);
-      padding: 0;
-      margin: 0;
-      list-style: none;
+      background: #fff;
       border: 1px solid #ddd;
+      list-style: none;
       min-width: 200px;
       z-index: 999;
     }
+
     .submenu li {
-      padding: 10px;
+      padding: 0.5rem 1rem;
       border-bottom: 1px solid #eee;
     }
+
     .submenu li:last-child {
       border-bottom: none;
     }
-    .submenu li a {
+
+    .submenu a {
       text-decoration: none;
       color: var(--secondary-color);
+      display: block;
     }
+
     .submenu li:hover {
-      background-color: var(--primary-color);
+      background: var(--primary-color);
     }
+
     .submenu li:hover a {
       color: #fff;
     }
 
-    /* SHOW/HIDE SUBMENU ON HOVER */
     .menu > li:hover .submenu {
       display: block;
     }
 
-    /* MAIN CONTENT */
     main {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 70px 20px 40px; /* so the navbar won't overlap */
-      background-color: #fff;
+      padding: 70px 20px 40px;
+      background: #fff;
     }
-    h1.page-title {
+
+    .page-title {
       text-align: center;
       margin-bottom: 1rem;
     }
 
-    /* TWO-COLUMN LAYOUT */
     .two-columns {
       display: flex;
       gap: 1rem;
-      flex-wrap: wrap;
     }
+
     .column {
       flex: 1;
       min-width: 300px;
-      background-color: #fafafa;
+      background: #fafafa;
       padding: 1rem;
       border: 1px solid #eee;
       border-radius: 4px;
     }
+
     .column h2 {
-      margin-top: 0;
       margin-bottom: 0.8rem;
       font-size: 1.1rem;
-      font-weight: bold;
       border-bottom: 1px solid #ccc;
       padding-bottom: 0.3rem;
     }
 
-    /* GENERIC FORM STYLING */
     .form-section {
       margin-bottom: 1rem;
     }
+
     .form-section form {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
     }
-    .form-section input[type="text"] {
+
+    input[type="text"], select, input[type="date"] {
       flex: 1;
       padding: 0.4rem;
       border: 1px solid #ccc;
       border-radius: 3px;
       font-size: 0.9rem;
     }
-    .form-section input[type="submit"],
-    .form-section button {
+
+    input[type="submit"] {
       width: 140px;
-      font-size: 0.9rem;
-      cursor: pointer;
+      padding: 0.4rem;
       border: 1px solid #ccc;
       border-radius: 3px;
-      background-color: #fff;
-      transition: background-color 0.2s ease-in;
-      padding: 0.4rem 0.6rem;
+      background: #fff;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
     }
-    .form-section input[type="submit"]:hover,
-    .form-section button:hover {
-      background-color: var(--primary-color);
+
+    input[type="submit"]:hover {
+      background: var(--primary-color);
       color: #fff;
     }
 
-    /* ARRANGING BUTTONS, MAX 3 PER ROW */
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      padding: 0.5rem;
+      font-size: 0.9rem;
+      color: #555;
     }
 
-    /* NOTE BOXES */
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      margin-left: 0.5rem;
+    }
     .note {
       font-size: 0.85rem;
       background-color: #fff9d6; /* light highlight */
@@ -207,30 +195,7 @@
       margin-bottom: 0.5rem;
       border-radius: 3px;
     }
-
-    /* FIXED FOOTER */
-    footer {
-      background-color: #ffffff;
-      border-top: 1px solid #ddd;
-      padding: 10px;
-      text-align: center;
-      font-size: 0.9em;
-      color: #555;
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-    }
-    footer a {
-      color: var(--primary-color);
-      text-decoration: none;
-      margin-left: 10px;
-    }
-
-    /* RESPONSIVE MENU */
     @media (max-width: 768px) {
-      .menu > li {
-        width: auto;
-        flex: 1;
-      }
       .two-columns {
         flex-direction: column;
       }
@@ -239,12 +204,7 @@
 </head>
 <body>
 
-<!-- 
-  NOTE: Many of these searches require a valid X (Twitter) account,
-  otherwise you might not see all the relevant results.
--->
-
-<!-- NAVBAR -->
+<!-- Top Navigation Bar -->
 <nav>
   <ul class="menu">
     <li><span>HOME</span>
@@ -270,8 +230,8 @@
     </li>
     <li><span>Social<br>Media</span>
       <ul class="submenu">
-        <li><a href="Twitter.html" class="active">X (Twitter)</a></li>
-        <li><a href="Facebook.html">Facebook</a></li>
+        <li><a href="Twitter.html">X (Twitter)</a></li>
+        <li><a href="Facebook.html" class="active">Facebook</a></li>
         <li><a href="Instagram.html">Instagram</a></li>
         <li><a href="LinkedIn.html">LinkedIn</a></li>
       </ul>
@@ -325,7 +285,12 @@
       <!-- Contenuto principale -->
       <main>
         <h1>Live Video Streams Tool</h1>
-<br><strong>These feeds change often. If your desired feed is broken, please modify your custom tool included with the latest edition of OSINT Techniques to update your own feeds.</strong><br><br>
+		
+		<div class="note">
+        <strong>NOTE:</strong> These feeds change often. If your desired feed is broken, please modify your custom tool included with the latest edition of OSINT Techniques to update your own feeds.
+      </div><br><br>
+
+
 <script type="text/javascript">
 function dosearch(menu)
 {window.open(menu, 'inner');}
