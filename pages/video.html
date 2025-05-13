@@ -22,6 +22,7 @@
       font-family: 'IBM Plex Sans', sans-serif;
       background-color: var(--bg-color);
       color: var(--secondary-color);
+      padding-bottom: 60px; /* Space for fixed footer */
     }
 
     nav {
@@ -55,11 +56,20 @@
       font-size: 0.85rem;
       cursor: pointer;
       transition: background-color 0.2s;
+      text-align: center;
+      border-right: 1px solid #eee;
+    }
+     .menu > li:last-child {
+      border-right: none;
     }
 
     .menu > li:hover {
       background: var(--primary-color);
       color: #fff;
+    }
+     .menu > li span {
+      display: block;
+      line-height: 1.2;
     }
 
     .submenu {
@@ -105,68 +115,102 @@
     main {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 70px 20px 40px;
+      padding: 80px 20px 20px; /* Adjusted top for nav */
       background: #fff;
     }
 
     .page-title {
       text-align: center;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+    
+    .note {
+      font-size: 0.85rem;
+      background-color: #fff9d6;
+      border-left: 3px solid #ffc107;
+      padding: 0.75rem;
+      margin-bottom: 1.5rem;
+      border-radius: 3px;
+    }
+    .note strong {
+        font-weight: bold;
     }
 
-    .two-columns {
+    .columns-container {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
+      flex-wrap: wrap; 
     }
 
     .column {
       flex: 1;
-      min-width: 300px;
+      min-width: 300px; 
       background: #fafafa;
       padding: 1rem;
       border: 1px solid #eee;
       border-radius: 4px;
+      margin-bottom: 1rem; 
     }
-
-    .column h2 {
-      margin-bottom: 0.8rem;
-      font-size: 1.1rem;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 0.3rem;
-    }
-
-    .form-section {
+    
+    .column h2 { 
+      margin-top: 0; 
       margin-bottom: 1rem;
+      font-size: 1.2rem; 
+      color: var(--primary-color);
+      border-bottom: 1px solid var(--primary-color);
+      padding-bottom: 0.5rem;
+    }
+    
+    .form-section { /* Used to wrap each select+button form */
+        margin-bottom: 0; /* No extra margin if only one form per section */
     }
 
     .form-section form {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
+      flex-direction: column; /* Stack select and button vertically */
+      gap: 0.75rem;
     }
-
-    input[type="text"], select, input[type="date"] {
-      flex: 1;
-      padding: 0.4rem;
+    
+    .form-section select {
+      width: 100%; 
+      padding: 0.5rem;
       border: 1px solid #ccc;
       border-radius: 3px;
       font-size: 0.9rem;
+      background-color: #fff;
     }
-
-    input[type="submit"] {
-      width: 140px;
-      padding: 0.4rem;
+    
+    .form-section input[type="submit"].search-button {
+      width: 100%; /* Button takes full width of its container */
+      padding: 0.6rem;
+      font-size: 0.95rem;
+    }
+    
+    input[type="submit"].search-button {
       border: 1px solid #ccc;
       border-radius: 3px;
       background: #fff;
-      font-size: 0.9rem;
       cursor: pointer;
-      transition: background-color 0.2s;
+      transition: background-color 0.2s, color 0.2s;
+      text-align: center;
+      line-height: 1.2;
     }
-
-    input[type="submit"]:hover {
+    input[type="submit"].search-button:hover {
       background: var(--primary-color);
       color: #fff;
+    }
+    
+    .video-iframe-container {
+        margin-top: 1.5rem;
+        border: 1px solid #ddd;
+        background-color: #000; 
+    }
+    .video-iframe-container iframe {
+        display: block; 
+        width: 100%;
+        height: 480px; 
+        border: none;
     }
 
     footer {
@@ -180,6 +224,7 @@
       padding: 0.5rem;
       font-size: 0.9rem;
       color: #555;
+      z-index: 1000;
     }
 
     footer a {
@@ -187,205 +232,183 @@
       text-decoration: none;
       margin-left: 0.5rem;
     }
-    .note {
-      font-size: 0.85rem;
-      background-color: #fff9d6; /* light highlight */
-      border-left: 3px solid #ffc107;
-      padding: 0.5rem;
-      margin-bottom: 0.5rem;
-      border-radius: 3px;
+        
+    @media (max-width: 992px) { 
+        .columns-container {
+            flex-direction: column;
+        }
     }
     @media (max-width: 768px) {
-      .two-columns {
-        flex-direction: column;
+      .menu > li {
+        font-size: 0.75rem;
+        padding: 0 0.2rem;
+      }
+      .video-iframe-container iframe {
+        height: 360px; 
       }
     }
   </style>
 </head>
 <body>
 
-<!-- Top Navigation Bar -->
 <nav>
   <ul class="menu">
-    <li><span>HOME</span>
-      <ul class="submenu">
-        <li><a href="../index.html">Index</a></li>
-      </ul>
-    </li>
-    <li><span>Search<br>Engines</span>
-      <ul class="submenu">
-        <li><a href="Search.html">Search Engines</a></li>
-      </ul>
-    </li>
-    <li><span>People &<br>Identities</span>
-      <ul class="submenu">
-        <li><a href="Name.html">Names</a></li>
-        <li><a href="Telephone.html">Telephone Numbers</a></li>
-        <li><a href="Address.html">Addresses</a></li>
-        <li><a href="Vehicle.html">Vehicles</a></li>
-        <li><a href="Username.html">Usernames</a></li>
-        <li><a href="Email.html">Email Addresses</a></li>
-        <li><a href="Communities.html">Communities</a></li>
-      </ul>
-    </li>
-    <li><span>Social<br>Media</span>
-      <ul class="submenu">
-        <li><a href="Twitter.html">X (Twitter)</a></li>
-        <li><a href="Facebook.html" class="active">Facebook</a></li>
-        <li><a href="Instagram.html">Instagram</a></li>
-        <li><a href="LinkedIn.html">LinkedIn</a></li>
-      </ul>
-    </li>
-    <li><span>Websites</span>
-      <ul class="submenu">
-        <li><a href="Domain.html">Domains</a></li>
-        <li><a href="IP.html">IP Addresses</a></li>
-      </ul>
-    </li>
-    <li><span>GeoInt</span>
-      <ul class="submenu">
-
-        <li><a href="Maps.html">Maps</a></li>
-      </ul>
-    </li>
-    <li><span>Media<br>Analysis</span>
-      <ul class="submenu">
-        <li><a href="Images.html">Images</a></li>
-        <li><a href="Videos.html">Videos</a></li>
-        <li><a href="Documents.html">Documents</a></li>
-      </ul>
-    </li>
-    <li><span>Live<br>Monitoring</span>
-      <ul class="submenu">
-        <li><a href="Radio.html">Live Audio Streams</a></li>
-        <li><a href="Video.html">Live Video Streams</a></li>
-      </ul>
-    </li>
-    <li><span>Business<br>Intelligence</span>
-      <ul class="submenu">
-        <li><a href="Business.html">Business &amp; Government</a></li>
-        <li><a href="Currencies.html">Virtual Currencies</a></li>
-      </ul>
-    </li>
-
-    <li><span>Tools</span>
-      <ul class="submenu">
-        <li><a href="API.html">Setting API</a></li>
-        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
-      </ul>
-    </li>
+    <li><span>HOME</span><ul class="submenu"><li><a href="../index.html">Index</a></li></ul></li>
+    <li><span>Search<br>Engines</span><ul class="submenu"><li><a href="Search.html">Search Engines</a></li></ul></li>
+    <li><span>People &<br>Identities</span><ul class="submenu"><li><a href="Name.html">Names</a></li><li><a href="Telephone.html">Telephone Numbers</a></li><li><a href="Address.html">Addresses</a></li><li><a href="Vehicle.html">Vehicles</a></li><li><a href="Username.html">Usernames</a></li><li><a href="Email.html">Email Addresses</a></li><li><a href="Communities.html">Communities</a></li></ul></li>
+    <li><span>Social<br>Media</span><ul class="submenu"><li><a href="Twitter.html">X (Twitter)</a></li><li><a href="Facebook.html">Facebook</a></li><li><a href="Instagram.html">Instagram</a></li><li><a href="LinkedIn.html">LinkedIn</a></li></ul></li>
+    <li><span>Websites</span><ul class="submenu"><li><a href="Domain.html">Domains</a></li><li><a href="IP.html">IP Addresses</a></li></ul></li>
+    <li><span>GeoInt</span><ul class="submenu"><li><a href="Location.html">Location</a></li><li><a href="Maps.html">Maps</a></li></ul></li>
+    <li><span>Media<br>Analysis</span><ul class="submenu"><li><a href="Images.html">Images</a></li><li><a href="Videos.html">Videos</a></li><li><a href="Documents.html">Documents</a></li></ul></li>
+    <li><span>Live<br>Monitoring</span><ul class="submenu"><li><a href="Radio.html">Live Audio Streams</a></li><li><a href="Video.html"  class="active">Live Video Streams</a></li></ul></li>
+    <li><span>Business<br>Intelligence</span><ul class="submenu"><li><a href="Business.html">Business &amp; Government</a></li><li><a href="Currencies.html">Virtual Currencies</a></li></ul></li>
+    <li><span>Security</span><ul class="submenu"><li><a href="Breaches.html">Data Breaches &amp; Leaks</a></li><li><a href="Pastes.html">Pastes</a></li></ul></li>
+    <li><span>Tools</span><ul class="submenu"><li><a href="API.html">Setting API</a></li><li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li></ul></li>
   </ul>
 </nav>
       
-      <!-- Contenuto principale -->
-      <main>
-        <h1>Live Video Streams Tool</h1>
-		
-		<div class="note">
-        <strong>NOTE:</strong> These feeds change often. If your desired feed is broken, please modify your custom tool included with the latest edition of OSINT Techniques to update your own feeds.
-      </div><br><br>
+<main>
+  <h1 class="page-title">Live Video Streams Tool</h1>
+  <div class="note">
+    <strong>NOTE:</strong> These feeds change often. If your desired feed is broken, please modify your custom tool included with the latest edition of OSINT Techniques to update your own feeds.
+  </div>
 
+  <div class="columns-container">
+    <div class="column" id="usa-feeds-column">
+      <h2>USA Feeds</h2>
+      <div class="form-section">
+        <form onsubmit="launchSelectedFeed('usa-feeds-select'); return false;">
+          <select name="usa_feed" id="usa-feeds-select">
+            <option value="">Select USA Feed...</option>
+            <option value="video/ABC.html">ABC National</option>
+            <option value="video/CBS.html">CBS National</option>
+            <option value="video/FOX.html">FOX National</option>
+            <option value="video/NBC.html">NBC National</option>
+            <option value="video/Newsy.html">Newsy National</option>
+            <option value="video/PBS.html">PBS National</option>
+            <option value="video/Atlanta2.html">Atlanta (ABC)</option>
+            <option value="video/Atlanta.html">Atlanta (FOX)</option>
+            <option value="video/Austin.html">Austin (FOX)</option>
+            <option value="video/Baltimore.html">Baltimore (CBS)</option>
+            <option value="video/Boston2.html">Boston (ABC)</option>
+            <option value="video/Boston.html">Boston (CBS)</option>
+            <option value="video/Charlotte.html">Charlotte (CBS)</option>
+            <option value="video/Chicago.html">Chicago (CBS)</option>
+            <option value="video/Chicago2.html">Chicago (FOX)</option>
+            <option value="video/Cleveland.html">Cleveland (ABC)</option>
+            <option value="video/Columbus.html">Columbus (CBS)</option>
+            <option value="video/Dallas3.html">Dallas (ABC)</option>
+            <option value="video/Dallas.html">Dallas (CBS)</option>
+            <option value="video/Dallas2.html">Dallas (FOX)</option>
+            <option value="video/Dayton.html">Dayton (CBS)</option>
+            <option value="video/Colorado.html">Denver (CBS)</option>
+            <option value="video/Denver.html">Denver (NBC)</option>
+            <option value="video/Detroit.html">Detroit (ABC)</option>
+            <option value="video/Detroit2.html">Detroit (FOX)</option>
+            <option value="video/Greensboro.html">Greensboro (CBS)</option>
+            <option value="video/Hartford.html">Hartford (FOX)</option>
+            <option value="video/Houston3.html">Houston (ABC)</option>
+            <option value="video/Houston.html">Houston (CBS)</option>
+            <option value="video/Houston2.html">Houston (Fox)</option>
+            <option value="video/Indianapolis.html">Indianapolis (NBC)</option>
+            <option value="video/Jacksonville.html">Jacksonville (FOX)</option>
+            <option value="video/LosAngeles.html">Los Angeles (CBS)</option>
+            <option value="video/LosAngeles2.html">Los Angeles (FOX)</option>
+            <option value="video/Memphis.html">Memphis (FOX)</option>
+            <option value="video/Miami.html">Miami (CBS)</option>
+            <option value="video/Milwaukee.html">Milwaukee (FOX)</option>
+            <option value="video/Minnesota.html">Minneapolis (CBS)</option>
+            <option value="video/Minnesota2.html">Minneapolis (FOX)</option>
+            <option value="video/Minnesota3.html">Minneapolis (NBC)</option>
+            <option value="video/NewYork.html">New York (CBS)</option>
+            <option value="video/NewYork2.html">New York (FOX)</option>
+            <option value="video/NewYork3.html">New York (ABC)</option>
+            <option value="video/Orlando.html">Orlando (ABC)</option>
+            <option value="video/Orlando2.html">Orlando (FOX)</option>
+            <option value="video/Philadelphia.html">Philadelphia (CBS)</option>
+            <option value="video/Philadelphia2.html">Philadelphia (Fox)</option>
+            <option value="video/Phoenix2.html">Phoenix (ABC)</option>
+            <option value="video/Phoenix.html">Phoenix (FOX)</option>
+            <option value="video/Phoenix3.html">Phoenix (NBC)</option>
+            <option value="video/Pittsburgh2.html">Pittsburgh (ABC)</option>
+            <option value="video/Pittsburgh.html">Pittsburgh (CBS)</option>
+            <option value="video/Portland.html">Portland (NBC)</option>
+            <option value="video/Sacremento2.html">Sacramento (ABC)</option>
+            <option value="video/Sacremento.html">Sacramento (CBS)</option>
+            <option value="video/SanDiego.html">San Diego (ABC)</option>
+            <option value="video/SanFrancisco.html">San Francisco (CBS)</option>
+            <option value="video/SanFrancisco2.html">San Francisco (FOX)</option>
+            <option value="video/Seattle2.html">Seattle (FOX)</option>
+            <option value="video/Seattle.html">Seattle (NBC)</option>
+            <option value="video/STLKSDK.html">St. Louis (NBC)</option>
+            <option value="video/Tampa.html">Tampa (ABC)</option>
+            <option value="video/Tampa2.html">Tampa (FOX)</option>
+            <option value="video/Tulsa.html">Tulsa (FOX)</option>
+            <option value="video/DC2.html">Washington DC (CBS)</option>
+            <option value="video/DC.html">Washington DC (FOX)</option>
+          </select>
+          <input type="submit" class="search-button" value="Launch USA Feed">
+        </form>
+      </div>
+    </div>
+    <div class="column" id="international-feeds-column">
+      <h2>International Feeds</h2>
+      <div class="form-section">
+        <form onsubmit="launchSelectedFeed('international-feeds-select'); return false;">
+          <select name="international_feed" id="international-feeds-select">
+            <option value="">Select International Feed...</option>
+            <optgroup label="Africa">
+              <option value="video/Africanews.html">Africanews</option>
+            </optgroup>
+            <optgroup label="Australia">
+              <option value="video/AU-ABC.html">ABC</option>
+            </optgroup>
+            <optgroup label="Canada">
+              <option value="video/CA-Global.html">Global News</option>
+              <option value="video/CBC.html">CBC</option>
+            </optgroup>
+            <optgroup label="France">
+              <option value="video/France24.html">France 24</option>
+            </optgroup>
+            <optgroup label="Germany">
+              <option value="video/GermanyDW.html">Germany DW</option>
+            </optgroup>
+            <optgroup label="UK">
+              <option value="video/GB.html">GB News</option>
+              <option value="video/Sky.html">Sky News</option>
+            </optgroup>
+            <optgroup label="International">
+              <option value="video/AlJazeera.html">Al Jazeera</option>
+            </optgroup>
+          </select>
+          <input type="submit" class="search-button" value="Launch Int'l Feed">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="video-iframe-container">
+    <iframe name="inner" title="Live Video Stream Player"></iframe>
+  </div>
+</main>
 
 <script type="text/javascript">
-function dosearch(menu)
-{window.open(menu, 'inner');}
+  function launchSelectedFeed(selectElementId) {
+    const selectElement = document.getElementById(selectElementId);
+    const streamUrl = selectElement.value;
+    if (streamUrl && streamUrl !== "") {
+      const iframe = document.getElementsByName('inner')[0];
+      if (iframe) {
+        iframe.src = streamUrl;
+      }
+    }
+    return false; // Prevent form submission
+  }
 </script>
-<form onsubmit="dosearch(this.menu.value); return false;">
-<select name="menu" id="menu">
-<option value="" selected>Select</option>
-<option disabled="">US:</option>
-<option value="video/ABC.html">ABC National</option>
-<option value="video/CBS.html">CBS National</option>
-<option value="video/FOX.html">FOX National</option>
-<option value="video/NBC.html">NBC National</option>
-<option value="video/Newsy.html">Newsy National</option>
-<option value="video/PBS.html">PBS National</option>
-<option value="video/Atlanta2.html">Atlanta (ABC)</option>
-<option value="video/Atlanta.html">Atlanta (FOX)</option>
-<option value="video/Austin.html">Austin (FOX)</option>
-<option value="video/Baltimore.html">Baltimore (CBS)</option>
-<option value="video/Boston2.html">Boston (ABC)</option>
-<option value="video/Boston.html">Boston (CBS)</option>
-<option value="video/Charlotte.html">Charlotte (CBS)</option>
-<option value="video/Chicago.html">Chicago (CBS)</option>
-<option value="video/Chicago2.html">Chicago (FOX)</option>
-<option value="video/Cleveland.html">Cleveland (ABC)</option>
-<option value="video/Columbus.html">Columbus (CBS)</option>
-<option value="video/Dallas3.html">Dallas (ABC)</option>
-<option value="video/Dallas.html">Dallas (CBS)</option>
-<option value="video/Dallas2.html">Dallas (FOX)</option>
-<option value="video/Dayton.html">Dayton (CBS)</option>
-<option value="video/Colorado.html">Denver (CBS)</option>
-<option value="video/Denver.html">Denver (NBC)</option>
-<option value="video/Detroit.html">Detroit (ABC)</option>
-<option value="video/Detroit2.html">Detroit (FOX)</option>
-<option value="video/Greensboro.html">Greensboro (CBS)</option>
-<option value="video/Hartford.html">Hartford (FOX)</option>
-<option value="video/Houston3.html">Houston (ABC)</option>
-<option value="video/Houston.html">Houston (CBS)</option>
-<option value="video/Houston2.html">Houston (Fox)</option>
-<option value="video/Indianapolis.html">Indianapolis (NBC)</option>
-<option value="video/Jacksonville.html">Jacksonville (FOX)</option>
-<option value="video/LosAngeles.html">Los Angeles (CBS)</option>
-<option value="video/LosAngeles2.html">Los Angeles (FOX)</option>
-<option value="video/Memphis.html">Memphis (FOX)</option>
-<option value="video/Miami.html">Miami (CBS)</option>
-<option value="video/Milwaukee.html">Milwaukee (FOX)</option>
-<option value="video/Minnesota.html">Minneapolis (CBS)</option>
-<option value="video/Minnesota2.html">Minneapolis (FOX)</option>
-<option value="video/Minnesota3.html">Minneapolis (NBC)</option>
-<option value="video/NewYork.html">New York (CBS)</option>
-<option value="video/NewYork2.html">New York (FOX)</option>
-<option value="video/NewYork3.html">New York (ABC)</option>
-<option value="video/Orlando.html">Orlando (ABC)</option>
-<option value="video/Orlando2.html">Orlando (FOX)</option>
-<option value="video/Philadelphia.html">Philadelphia (CBS)</option>
-<option value="video/Philadelphia2.html">Philadelphia (Fox)</option>
-<option value="video/Phoenix2.html">Phoenix (ABC)</option>
-<option value="video/Phoenix.html">Phoenix (FOX)</option>
-<option value="video/Phoenix3.html">Phoenix (NBC)</option>
-<option value="video/Pittsburgh2.html">Pittsburgh (ABC)</option>
-<option value="video/Pittsburgh.html">Pittsburgh (CBS)</option>
-<option value="video/Portland.html">Portland (NBC)</option>
-<option value="video/Sacremento2.html">Sacramento (ABC)</option>
-<option value="video/Sacremento.html">Sacramento (CBS)</option>
-<option value="video/SanDiego.html">San Diego (ABC)</option>
-<option value="video/SanFrancisco.html">San Francisco (CBS)</option>
-<option value="video/SanFrancisco2.html">San Francisco (FOX)</option>
-<option value="video/Seattle2.html">Seattle (FOX)</option>
-<option value="video/Seattle.html">Seattle (NBC)</option>
-<option value="video/STLKSDK.html">St. Louis (NBC)</option>
-<option value="video/Tampa.html">Tampa (ABC)</option>
-<option value="video/Tampa2.html">Tampa (FOX)</option>
-<option value="video/Tulsa.html">Tulsa (FOX)</option>
-<option value="video/DC2.html">Washington DC (CBS)</option>
-<option value="video/DC.html">Washington DC (FOX)</option>
-<option disabled="">Africa:</option>
-<option value="video/Africanews.html">Africanews</option>
-<option disabled="">Australia:</option>
-<option value="video/AU-ABC.html">ABC</option>
-<option disabled="">Canada:</option>
-<option value="video/CA-Global.html">Global News</option>
-<option value="video/CBC.html">CBC</option>
-<option disabled="">France:</option>
-<option value="video/France24.html">France 24</option>
-<option disabled="">Germany:</option>
-<option value="video/GermanyDW.html">Germany DW</option>
-<option disabled="">UK:</option>
-<option value="video/GB.html">GB News</option>
-<option value="video/Sky.html">Sky News</option>
-<option disabled="">International:</option>
-<option value="video/AlJazeera.html">Al Jazeera</option>
-</select>
-<input type="submit" style="width:80px" value="Launch" /></form>
-<iframe name="inner" class="inner" width="640px" height="480px" overflow="hidden" frameborder=0 scrolling="no"></iframe>
 
-</td>
-</tr>
-</tbody>
-</table>
+<footer>
+  Global Security Italy • Rome (IT) <a href="License.html">License</a>
+</footer>
+
 </body>
-  <footer>
-    Global Security Italy • Rome (IT) <a href="License.html">License</a>
-  </footer>
 </html>
