@@ -1,1 +1,317 @@
-<!-- removed: legacy third-party derived content -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exploratores IP Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0066ff;
+      --secondary-color: #333;
+      --bg-color: #f9f9f9;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--secondary-color);
+      padding-top: 60px; /* Space for fixed navbar */
+      padding-bottom: 60px; /* Space for fixed footer */
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background-color: #ffffff;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .menu {
+      list-style: none;
+      display: flex;
+      max-width: 1200px;
+      width: 100%;
+      justify-content: space-around;
+    }
+    .menu > li {
+      position: relative;
+      height: 60px;
+      flex: 1;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 1rem;
+      border-right: 1px solid #eee;
+      transition: background-color 0.2s ease-in;
+    }
+    .menu > li:last-child { border-right: none; }
+    .menu > li:hover { background-color: var(--primary-color); color: #fff; }
+    .menu > li span { display: block; line-height: 1.2; }
+    .submenu {
+      display: none; position: absolute; background-color: #ffffff;
+      top: 100%; left: 50%; transform: translateX(-50%);
+      list-style: none; border: 1px solid #ddd; min-width: 200px; z-index: 999;
+    }
+    .submenu li { padding: 0.5rem 1rem; border-bottom: 1px solid #eee; }
+    .submenu li:last-child { border-bottom: none; }
+    .submenu li a { text-decoration: none; color: var(--secondary-color); display: block; }
+    .submenu li:hover { background-color: var(--primary-color); }
+    .submenu li:hover a { color: #fff; }
+    .menu > li:hover .submenu { display: block; }
+
+    /* MAIN CONTENT */
+    main {
+      max-width: 1200px; margin: 0 auto;
+      padding: 20px; background-color: #fff; 
+    }
+    h1.page-title { text-align: center; margin-bottom: 1.5rem; font-size: 1.5rem; }
+    
+    .global-input-container {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background: #f0f0f0; 
+        border-radius: 4px;
+    }
+    .global-input-container input[type="text"] {
+        width: 100%;
+        padding: 0.6rem; 
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 1rem; 
+    }
+
+    .columns-container { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .column { flex: 1; min-width: 300px; border-radius: 4px; }
+    
+    .form-section {
+      margin-bottom: 1.5rem; padding: 1rem;
+      background: #fafafa; border: 1px solid #eee; border-radius: 4px;
+    }
+    .form-section h2 { 
+      margin-top: 0; margin-bottom: 1rem; font-size: 1.2rem; 
+      color: var(--primary-color); border-bottom: 1px solid var(--primary-color); padding-bottom: 0.5rem;
+    }
+     .column > .form-section:first-child > h2 {
+        margin-top:0;
+    }
+
+    .form-section form { 
+      display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+    }
+    .form-section form input[type="text"] { 
+        flex: 1 1 180px; 
+        width: 100%; padding: 0.5rem; border: 1px solid #ccc;
+        border-radius: 3px; font-size: 0.9rem;
+    }
+    /* Specific for forms that are NOT single input + button grid */
+     .form-section form:not(.single-input-section) input[type="text"] {
+        flex-grow: 1;
+    }
+
+
+    input[type="submit"].search-button,
+    input[type="button"].search-button {
+      width: 140px; padding: 0.5rem 0.5rem; height: auto;
+      border: 1px solid #ccc; border-radius: 3px; background: #fff;
+      font-size: 0.9rem; cursor: pointer; transition: background-color 0.2s, color 0.2s;
+      text-align: center; line-height: 1.2; flex-shrink: 0;
+      display: inline-block; vertical-align: middle;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    input[type="submit"].search-button:hover,
+    input[type="button"].search-button:hover {
+      background: var(--primary-color); color: #fff;
+    }
+
+    .button-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+    .button-grid .search-button {
+      flex-grow: 1; /* Allow buttons to grow if space allows */
+      flex-basis: 140px; /* Ensure they try for this width */
+    }
+    .form-section form input[type="submit"].search-button { /* For submit buttons in simple forms */
+        width: 140px; 
+        flex-grow: 0; 
+    }
+
+
+    footer {
+      background-color: #ffffff; border-top: 1px solid #ddd; padding: 10px;
+      text-align: center; font-size: 0.9em; color: #555;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+    }
+    footer a { color: var(--primary-color); text-decoration: none; margin-left: 10px; }
+
+    @media (max-width: 992px) { .columns-container { flex-direction: column; } }
+    @media (max-width: 768px) {
+      .menu > li { width: auto; flex: 1; font-size: 0.75rem; padding: 0 0.2rem; }
+      .form-section form { flex-direction: column; align-items: stretch; }
+      .form-section form input[type="text"],
+      .form-section form input[type="submit"].search-button,
+      .form-section form input[type="button"].search-button { width: 100%; margin-bottom: 0.5rem; }
+      .button-grid { flex-direction: column; }
+      .button-grid .search-button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <ul class="menu">
+    <li><span>HOME</span><ul class="submenu"><li><a href="../index.html">Index</a></li></ul></li>
+    <li><span>Search<br>Engines</span><ul class="submenu"><li><a href="Search.html">Search Engines</a></li></ul></li>
+    <li><span>People &<br>Identities</span><ul class="submenu"><li><a href="Names.html">Names</a></li><li><a href="phonenumbers.html">Telephone Numbers</a></li><li><a href="Address.html">Addresses</a></li><li><a href="Vehicle.html">Vehicles</a></li><li><a href="UserNames.html">Usernames</a></li><li><a href="Email.html">Email Addresses</a></li><li><a href="Communities.html">Communities</a></li></ul></li>
+    <li><span>Social<br>Media</span><ul class="submenu"><li><a href="Twitter.html">X (Twitter)</a></li><li><a href="Facebook.html">Facebook</a></li><li><a href="Instagram.html">Instagram</a></li><li><a href="LinkedIn.html">LinkedIn</a></li></ul></li>
+    <li><span>Websites</span><ul class="submenu"><li><a href="Domain.html">Domains</a></li><li><a href="IP.html" class="active">IP Addresses</a></li></ul></li>
+    <li><span>GeoInt</span><ul class="submenu"><li><a href="Location.html">Location</a></li><li><a href="Maps.html">Maps</a></li></ul></li>
+    <li><span>Media<br>Analysis</span><ul class="submenu"><li><a href="Images.html">Images</a></li><li><a href="Videos.html">Videos</a></li><li><a href="Documents.html">Documents</a></li></ul></li>
+    <li><span>Live<br>Monitoring</span><ul class="submenu"><li><a href="Radio.html">Live Audio Streams</a></li><li><a href="Video.html">Live Video Streams</a></li></ul></li>
+    <li><span>Business<br>Intelligence</span><ul class="submenu"><li><a href="Business.html">Business & Government</a></li><li><a href="Currencies.html">Virtual Currencies</a></li></ul></li>
+    <li><span>Security</span><ul class="submenu"><li><a href="Breaches.html">Data Breaches & Leaks</a></li><li><a href="Pastes.html">Pastes</a></li></ul></li>
+    <li><span>Tools</span><ul class="submenu"><li><a href="API.html">Setting API</a></li><li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li></ul></li>
+  </ul>
+</nav>
+      
+<main>
+  <h1 class="page-title">Exploratores IP Address Tool</h1>
+  
+  <div class="global-input-container">
+    <input type="text" id="ipAddressInput" placeholder="Enter IP Address">
+  </div>
+
+  <div class="columns-container">
+    <div class="column" id="left-column">
+      <div class="form-section">
+        <h2>General IP Information & DNS</h2>
+        <div class="button-grid">
+          <input type="button" class="search-button" value="VD ReverseIP" onclick="makeOsint01()">
+          <input type="button" class="search-button" value="VD LocateIP" onclick="makeOsint02()">
+          <input type="button" class="search-button" value="VD Whois" onclick="makeOsint04()">
+          <input type="button" class="search-button" value="VD ReverseDNS" onclick="makeOsint06()">
+          <input type="button" class="search-button" value="IPAddress.com" onclick="makeOsint07()">
+          <input type="button" class="search-button" value="DNSChecker" onclick="makeOsint08()">
+          <input type="button" class="search-button" value="IPLookup" onclick="makeOsint09()">
+          <input type="button" class="search-button" value="Bing IP" onclick="makeOsint10()">
+          <input type="button" class="search-button" value="IPLocation" onclick="makeOsint11()">
+          <input type="button" class="search-button" value="That's Them" onclick="makeOsint12()">
+          <input type="button" class="search-button" value="MXTool (ARIN)" onclick="makeOsint20()">
+        </div>
+      </div>
+      <div class="form-section">
+        <h2>Network & Port Analysis</h2>
+        <div class="button-grid">
+          <input type="button" class="search-button" value="VD PortScan" onclick="makeOsint03()">
+          <input type="button" class="search-button" value="VD TraceRoute" onclick="makeOsint05()">
+        </div>
+      </div>
+    </div>
+
+    <div class="column" id="right-column">
+      <div class="form-section">
+        <h2>Security & Reputation</h2>
+        <div class="button-grid">
+          <input type="button" class="search-button" value="IKWYD Torrents" onclick="makeOsint13()">
+          <input type="button" class="search-button" value="Shodan Search" onclick="makeOsint16()">
+          <input type="button" class="search-button" value="Shodan Host" onclick="makeOsint17()">
+          <input type="button" class="search-button" value="Shodan Raw" onclick="makeOsint18()">
+          <input type="button" class="search-button" value="Shodan History" onclick="makeOsint19()">
+          <input type="button" class="search-button" value="ThreatCrowd" onclick="makeOsint21()">
+          <input type="button" class="search-button" value="Censys" onclick="makeOsint22()">
+          <input type="button" class="search-button" value="MXBlacklist" onclick="makeOsint23()">
+          <input type="button" class="search-button" value="MXBlocklist" onclick="makeOsint24()">
+          <input type="button" class="search-button" value="Dehashed (IP)" onclick="makeOsint25()">
+          <input type="button" class="search-button" value="LeakIX Host" onclick="makeOsint30()">
+        </div>
+      </div>
+      <div class="form-section">
+        <h2>Contextual & Specific Lookups</h2>
+        <form onsubmit="event.preventDefault(); makeOsint14(this.wigleSsid.value);">
+          <input type="text" name="wigleSsid" placeholder="SSID (for Wigle)">
+          <input type="submit" class="search-button" value="Wigle SSID">
+        </form>
+        <form onsubmit="event.preventDefault(); makeOsint15(this.wiglePostal.value);">
+          <input type="text" name="wiglePostal" placeholder="Postal Code (for Wigle)">
+          <input type="submit" class="search-button" value="Wigle Postal">
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script type="text/javascript">
+  function getIpAddress() {
+    const ip = document.getElementById('ipAddressInput').value.trim();
+    if (ip === "") {
+      alert("Please enter an IP Address.");
+      return null;
+    }
+    // Basic IP validation (optional, can be more robust)
+    // const ipPattern = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
+    // if (!ipPattern.test(ip)) {
+    //   alert("Please enter a valid IP Address format.");
+    //   return null;
+    // }
+    return ip;
+  }
+
+  function makeOsint01() { const ip = getIpAddress(); if(!ip) return; window.open('http://viewdns.info/reverseip/?host=' + encodeURIComponent(ip) + '&t=1', '_blank');}
+  function makeOsint02() { const ip = getIpAddress(); if(!ip) return; window.open('http://viewdns.info/iplocation/?ip=' + encodeURIComponent(ip), '_blank');}
+  function makeOsint03() { const ip = getIpAddress(); if(!ip) return; window.open('http://viewdns.info/portscan/?host=' + encodeURIComponent(ip), '_blank');}
+  function makeOsint04() { const ip = getIpAddress(); if(!ip) return; window.open('http://viewdns.info/whois/?domain=' + encodeURIComponent(ip), '_blank');}
+  function makeOsint05() { const ip = getIpAddress(); if(!ip) return; window.open('http://viewdns.info/traceroute/?domain=' + encodeURIComponent(ip), '_blank');}
+  function makeOsint06() { const ip = getIpAddress(); if(!ip) return; window.open('http://viewdns.info/reversedns/?ip=' + encodeURIComponent(ip), '_blank');}
+  function makeOsint07() { const ip = getIpAddress(); if(!ip) return; window.open('https://www.ipaddress.com/ipv4/' + ip, '_blank');} // Path, IP usually not encoded
+  function makeOsint08() { const ip = getIpAddress(); if(!ip) return; window.open('https://dnschecker.org/ip-whois-lookup.php?query=' + encodeURIComponent(ip), '_blank');}
+  function makeOsint09() { const ip = getIpAddress(); if(!ip) return; window.open('https://www.ip-lookup.org/location/' + ip, '_blank');} // Path
+  function makeOsint10() { const ip = getIpAddress(); if(!ip) return; window.open('http://www.bing.com/search?q=ip%3A' + encodeURIComponent(ip), '_blank');}
+  function makeOsint11() { const ip = getIpAddress(); if(!ip) return; window.open('https://www.iplocation.net/ip-lookup?query=' + encodeURIComponent(ip) + '&submit=IP+Lookup', '_blank');}
+  function makeOsint12() { const ip = getIpAddress(); if(!ip) return; window.open('https://thatsthem.com/ip/' + ip, '_blank');} // Path
+  function makeOsint13() { const ip = getIpAddress(); if(!ip) return; window.open('http://iknowwhatyoudownload.com/en/peer/?ip=' + encodeURIComponent(ip), '_blank');}
+  
+  function makeOsint14(ssidValue) { // Wigle SSID - takes SSID, not IP from global input
+    const term = ssidValue.trim(); if(term==="") { alert("Please enter an SSID for Wigle search."); return; }
+    window.open('https://wigle.net/search?ssid=' + encodeURIComponent(term), '_blank');
+  }
+  function makeOsint15(postalValue) { // Wigle Postal - takes Postal Code, not IP
+    const term = postalValue.trim(); if(term==="") { alert("Please enter a Postal Code for Wigle search."); return; }
+    window.open('https://wigle.net/search#fullSearch?postalCode=' + encodeURIComponent(term), '_blank');
+  }
+
+  function makeOsint16() { const ip = getIpAddress(); if(!ip) return; window.open('https://www.shodan.io/search?query=' + encodeURIComponent(ip), '_blank');}
+  function makeOsint17() { const ip = getIpAddress(); if(!ip) return; window.open('https://beta.shodan.io/host/' + ip, '_blank');} // Path
+  function makeOsint18() { const ip = getIpAddress(); if(!ip) return; window.open('https://beta.shodan.io/host/' + ip + '/raw', '_blank');} // Path
+  function makeOsint19() { const ip = getIpAddress(); if(!ip) return; window.open('https://beta.shodan.io/host/' + ip + '/history', '_blank');} // Path
+  function makeOsint20() { const ip = getIpAddress(); if(!ip) return; window.open('https://mxtoolbox.com/SuperTool.aspx?action=arin%3a' + encodeURIComponent(ip) + '&run=toolpage', '_blank');}
+  function makeOsint21() { const ip = getIpAddress(); if(!ip) return; window.open('https://ci-www.threatcrowd.org/ip.php?ip=' + encodeURIComponent(ip), '_blank');}
+  function makeOsint22() { const ip = getIpAddress(); if(!ip) return; window.open('https://search.censys.io/hosts/' + ip, '_blank');} // Path
+  function makeOsint23() { const ip = getIpAddress(); if(!ip) return; window.open('https://mxtoolbox.com/SuperTool.aspx?action=blacklist%3a' + encodeURIComponent(ip) + '&run=toolpage', '_blank');}
+  function makeOsint24() { const ip = getIpAddress(); if(!ip) return; window.open('https://mxtoolbox.com/SuperTool.aspx?action=blocklist%3a' + encodeURIComponent(ip) + '&run=networktools', '_blank');}
+  function makeOsint25() { const ip = getIpAddress(); if(!ip) return; window.open('https://dehashed.com/search?query=%22' + encodeURIComponent(ip) + '%22', '_blank');}
+  function makeOsint30() { const ip = getIpAddress(); if(!ip) return; window.open('https://leakix.net/host/' + ip, '_blank');} // Path
+
+  // General form handler
+  document.querySelectorAll('form').forEach(form => {
+    if (!form.hasAttribute('onsubmit') || !form.getAttribute('onsubmit').includes('return false;')) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+        });
+    }
+  });
+</script>
+    
+<footer>
+  FOR INTERNAL USE ONLY • CC ATLAS (PROTOTIPE) <a href="License.html">License</a>
+</footer>
+
+</body>
+</html>

@@ -1,1 +1,452 @@
-<!-- removed: legacy third-party derived content -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search • Exploratores</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0066ff;
+      --secondary-color: #333;
+      --neutral-color: #888;
+      --bg-color: #f9f9f9;
+    }
+
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background-color: var(--bg-color);
+      margin: 0;
+      padding-top: 60px; /* Space for fixed navbar */
+      padding-bottom: 60px; /* Space for fixed footer */
+    }
+
+    /* NAVBAR */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #ffffff;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      max-width: 1200px;
+      width: 100%;
+      justify-content: space-around;
+    }
+    .menu > li {
+      position: relative;
+      height: 60px;
+      flex: 1;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.85rem; 
+      border-right: 1px solid #eee; 
+      transition: background-color 0.2s ease-in;
+    }
+    .menu > li:last-child {
+      border-right: none;
+    }
+    .menu > li:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+    .menu > li span {
+      display: block;
+      line-height: 1.2;
+    }
+
+    /* SUBMENU */
+    .submenu {
+      display: none;
+      position: absolute;
+      background-color: #ffffff;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      border: 1px solid #ddd;
+      min-width: 200px;
+      z-index: 999;
+    }
+    .submenu li {
+      padding: 0.5rem 1rem; 
+      border-bottom: 1px solid #eee;
+    }
+    .submenu li:last-child {
+      border-bottom: none;
+    }
+    .submenu li a {
+      text-decoration: none;
+      color: var(--secondary-color);
+      display:block;
+    }
+    .submenu li:hover {
+      background-color: var(--primary-color);
+    }
+    .submenu li:hover a {
+      color: #ffffff;
+    }
+
+    .menu > li:hover .submenu {
+      display: block;
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px; 
+      background-color: #fff;
+    }
+
+    h1.page-title {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    /* BOX DI TESTO + ISTRUZIONI */
+    .search-instructions {
+      margin-bottom: 1.5rem;
+    }
+    .search-instructions label {
+      display: block; 
+      margin-bottom: 0.5rem; 
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .input-container {
+      margin-bottom: 1rem;
+    }
+    .input-field { 
+      width: 100%;
+      padding: 0.6rem; 
+      font-size: 1rem;
+      border: 1px solid #ccc; 
+      border-radius: 3px;
+    }
+
+    /* COLONNE PRINCIPALI */
+    .columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem; 
+      margin-bottom: 2rem;
+    }
+    .column {
+      flex: 1;
+      min-width: 300px;
+      background-color: #fafafa;
+      padding: 1rem;
+      border: 1px solid #eee;
+      border-radius: 4px;
+    }
+    .column h2 {
+      margin-top:0; 
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+      border-bottom: 1px solid var(--primary-color); 
+      padding-bottom: 0.5rem; 
+      color: var(--primary-color);
+    }
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
+      gap: 0.75rem; 
+      margin-bottom: 1rem;
+    }
+    .button { 
+      width: 140px; 
+      padding: 0.5rem 0.5rem; 
+      height: auto; 
+      background-color: #fff;
+      border: 1px solid #ccc;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in, color 0.2s ease-in;
+      border-radius: 3px;
+      text-align: center; 
+      line-height: 1.2; 
+      display: inline-block; 
+      vertical-align: middle;
+      overflow: hidden;         
+      text-overflow: ellipsis;  
+      white-space: nowrap;   
+    }
+    .button:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+    /* NOTE BOXES */
+    .note {
+      font-size: 0.9rem; 
+      background-color: #fff9d6; 
+      border-left: 3px solid #ffc107;
+      padding: 0.75rem; 
+      margin-bottom: 1rem; 
+      border-radius: 3px;
+    }
+     .note strong {
+        font-weight: bold;
+    }
+
+    /* FOOTER FISSO */
+    footer {
+      background-color: #ffffff;
+      border-top: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #555;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      margin-left: 10px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+        .columns {
+            flex-direction: column;
+        }
+    }
+    @media (max-width: 768px) {
+      .menu > li {
+        width: auto;
+        flex: 1;
+        font-size: 0.75rem; 
+        padding: 0 0.2rem;
+      }
+      .button-grid { 
+        grid-template-columns: 1fr; 
+      }
+      .button {
+          width: 100%; 
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <ul class="menu">
+    <li><span>HOME</span><ul class="submenu"><li><a href="../index.html">Index</a></li></ul></li>
+    <li><span>Search<br>Engines</span><ul class="submenu"><li><a href="Search.html" class="active">Search Engines</a></li></ul></li>
+    <li><span>People &<br>Identities</span><ul class="submenu"><li><a href="Names.html">Names</a></li><li><a href="phonenumbers.html">Telephone Numbers</a></li><li><a href="Address.html">Addresses</a></li><li><a href="Vehicle.html">Vehicles</a></li><li><a href="UserNames.html">Usernames</a></li><li><a href="Email.html">Email Addresses</a></li><li><a href="Communities.html">Communities</a></li></ul></li>
+    <li><span>Social<br>Media</span><ul class="submenu"><li><a href="Twitter.html">X (Twitter)</a></li><li><a href="Facebook.html">Facebook</a></li><li><a href="Instagram.html">Instagram</a></li><li><a href="LinkedIn.html">LinkedIn</a></li></ul></li>
+    <li><span>Websites</span><ul class="submenu"><li><a href="Domain.html">Domains</a></li><li><a href="IP.html">IP Addresses</a></li></ul></li>
+    <li><span>GeoInt</span><ul class="submenu"><li><a href="Location.html">Location</a></li><li><a href="Maps.html">Maps</a></li></ul></li>
+    <li><span>Media<br>Analysis</span><ul class="submenu"><li><a href="Images.html">Images</a></li><li><a href="Videos.html">Videos</a></li><li><a href="Documents.html">Documents</a></li></ul></li>
+    <li><span>Business<br>Intelligence</span><ul class="submenu"><li><a href="Business.html">Business &amp; Government</a></li><li><a href="Currencies.html">Virtual Currencies</a></li></ul></li>
+    <li><span>Security</span><ul class="submenu"><li><a href="Breaches.html">Data Breaches & Leaks</a></li><li><a href="Pastes.html">Pastes</a></li></ul></li>
+    <li><span>Tools</span><ul class="submenu"><li><a href="API.html">Setting API</a></li><li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li></ul></li>
+  </ul>
+</nav>
+
+<main>
+  <h1 class="page-title">Search Engine Tool</h1>
+
+  <section class="search-instructions">
+    <label for="searchInput">Insert search terms here:</label>
+    <div class="input-container">
+      <input type="text" id="searchInput" class="input-field" placeholder="Search Terms">
+    </div>
+    <div class="note"> <strong>NOTE:</strong> Please enter the search terms in the box above and then press the buttons corresponding to the type of search (Clear Web / Tor Network) you wish to perform. </div>
+  </section>
+
+  <div class="columns">
+    <div class="column">
+      <h2>Clear Web</h2>
+      <div class="button-grid">
+        <button class="button" onclick="makeOsint01()">Google</button>
+        <button class="button" onclick="makeOsint02()">Google Date</button>
+        <button class="button" onclick="makeOsint03()">Google News</button>
+        <button class="button" onclick="makeOsint05()">Google FTP</button>
+        <button class="button" onclick="makeOsint06()">Google Index</button>
+        <button class="button" onclick="makeOsint07()">Google Scholar</button>
+        <button class="button" onclick="makeOsint08()">Google Patents</button>
+        <button class="button" onclick="makeOsint09()">Bing</button>
+        <button class="button" onclick="makeOsint10()">Bing News</button>
+        <button class="button" onclick="makeOsint11()">Yahoo</button>
+        <button class="button" onclick="makeOsint12()">Yandex</button>
+        <button class="button" onclick="makeOsint13()">Baidu</button>
+        <button class="button" onclick="makeOsint14()">Searx</button>
+        <button class="button" onclick="makeOsint16()">DuckDuckGo</button>
+        <button class="button" onclick="makeOsint17()">StartPage</button>
+        <button class="button" onclick="makeOsint18()">Qwant</button>
+        <button class="button" onclick="makeOsint19()">Brave</button>
+        <button class="button" onclick="makeOsint20()">Wayback</button>
+        <button class="button" onclick="makeOsint21()">Ahmia</button>
+      </div>
+    </div>
+
+    <div class="column">
+      <h2>Tor Network</h2>
+      <div class="button-grid">
+        <button class="button" onclick="makeOsint37()">Tor.link</button>
+        <button class="button" onclick="makeOsint23()">Torch</button>
+        <button class="button" onclick="makeOsint24()">Tor66</button>
+        <button class="button" onclick="makeOsint25()">Haystack</button>
+        <button class="button" onclick="makeOsint26()">Ahmia (Onion)</button>
+        <button class="button" onclick="makeOsint27()">SearchDemon</button>
+        <button class="button" onclick="makeOsint28()">Excavator</button>
+        <button class="button" onclick="makeOsint29()">GDark</button>
+        <button class="button" onclick="makeOsint30()">Hidden Reviews</button>
+        <button class="button" onclick="makeOsint31()">OnionLand</button>
+        <button class="button" onclick="makeOsint32()">Phobos</button>
+        <button class="button" onclick="makeOsint33()">Submarine</button>
+        <button class="button" onclick="makeOsint34()">DeepSearch</button>
+        <button class="button" onclick="makeOsint35()">OnionCenter</button>
+        <button class="button" onclick="makeOsint36()">FreshOnion</button>
+      </div>
+      <div class="note">
+        <strong>NOTE:</strong> To use these functionalities, you need to have access to the Tor network.
+      </div>
+    </div>
+  </div>
+  </main>
+
+<footer>
+  Global Security Italy • Rome (IT)
+  <a href="license.html">License</a>
+</footer>
+
+<script>
+  /* Funzione per recuperare i termini dalla casella di testo */
+  function getOsintValue() {
+    const inputElement = document.getElementById('searchInput');
+    if (inputElement) {
+      return inputElement.value.trim(); // Aggiunto .trim()
+    }
+    return ""; // Restituisce stringa vuota se l'elemento non è trovato
+  }
+
+  // Helper generico per aprire le finestre di ricerca
+  function openSearchWindow(baseUrl, queryParameter, isPath = false) {
+    var val = getOsintValue();
+    if (val === "") {
+      // alert("Please enter search terms."); // Feedback opzionale all'utente
+      return; 
+    }
+    let finalUrl;
+    if (isPath) { // Se il termine va nel percorso e non deve essere completamente encodato
+      finalUrl = baseUrl + val; // Il browser gestirà l'encoding base per i percorsi
+    } else { // Per i parametri di query, encodare sempre
+      finalUrl = baseUrl + encodeURIComponent(val);
+    }
+    // Usa il nome della funzione chiamante (o un nome generico) per la finestra
+    // Per semplicità, usiamo un nome generico incrementale o basato sull'URL
+    let windowName = queryParameter + 'window'; 
+    // Per alcuni URL specifici, potresti voler mantenere i nomi originali (Search01window, etc.)
+    // ma per una funzione helper generica questo approccio è più semplice.
+    // Se i nomi specifici sono cruciali, la funzione helper dovrebbe accettare anche newWindowName
+    window.open(finalUrl, windowName);
+  }
+  
+  function openSearchWindowWithSuffix(baseUrl, queryParameter, suffix, newWindowName) {
+    var val = getOsintValue();
+    if (val === "") return;
+    let url = baseUrl + encodeURIComponent(val) + suffix;
+    window.open(url, newWindowName);
+  }
+
+
+  // CLEAR WEB
+  function makeOsint01() { openSearchWindow('http://google.com/search?q=', 'GoogleSearch', false); }
+  function makeOsint02() { openSearchWindowWithSuffix('http://google.com/search?q=', 'GoogleDateSearch', '&tbs=cdr:1,cd_min:1/1/0,sbd:1', 'Search02window'); }
+  function makeOsint03() { openSearchWindowWithSuffix('http://www.google.com/search?tbm=nws&q=', 'GoogleNewsSearch', '', 'Search03window'); }
+  function makeOsint05() { 
+    var val = getOsintValue(); if (val === "") return;
+    window.open('https://www.google.com/search?q=inurl%3Aftp%20-inurl%3A(http|https)%20' + encodeURIComponent(val), 'Search05window');
+  }
+  function makeOsint06() { 
+    var val = getOsintValue(); if (val === "") return;
+    window.open('https://www.google.com/search?q=intitle%3Aindex.of+' + encodeURIComponent(val), 'Search06window');
+  }
+  function makeOsint07() { openSearchWindowWithSuffix('http://scholar.google.com/scholar?&q=', 'GoogleScholarSearch', '', 'Search07window'); }
+  function makeOsint08() { openSearchWindow('https://patents.google.com/?q=', 'GooglePatentsSearch', 'Search08window'); }
+  function makeOsint09() { 
+    var val = getOsintValue(); if (val === "") return;
+    window.open('http://bing.com/search?q="' + encodeURIComponent(val) + '"', 'Search09window');
+  }
+  function makeOsint10() { 
+    var val = getOsintValue(); if (val === "") return;
+    window.open('http://bing.com/news/search?q="' + encodeURIComponent(val) + '"', 'Search10window');
+  }
+  function makeOsint11() { openSearchWindow('http://search.yahoo.com/search?p=', 'YahooSearch', 'Search11window'); }
+  function makeOsint12() { openSearchWindow('http://www.yandex.com/yandsearch?text=', 'YandexSearch', 'Search12window'); }
+  function makeOsint13() { openSearchWindow('http://baidu.com/s?wd=', 'BaiduSearch', 'Search13window'); }
+  function makeOsint14() { openSearchWindow('https://baresearch.org/?q=', 'SearxSearch', 'Search14window'); }
+  function makeOsint16() { openSearchWindow('https://duckduckgo.com/?q=', 'DuckDuckGoSearch', 'Search16window'); }
+  function makeOsint17() { openSearchWindow('https://startpage.com/do/search?q=', 'StartPageSearch', 'Search17window'); }
+  function makeOsint18() { openSearchWindow('https://www.qwant.com/?q=', 'QwantSearch', 'Search18window'); }
+  function makeOsint19() { openSearchWindow('https://search.brave.com/search?q=', 'BraveSearch', 'Search19window'); }
+  function makeOsint20() { 
+    var val = getOsintValue(); if (val === "") return;
+    // Per Wayback, val è parte del percorso e potrebbe essere un URL, quindi non si encoda aggressivamente.
+    window.open('https://web.archive.org/web/*/' + val, 'Search20window'); 
+  }
+  function makeOsint21() { openSearchWindow('https://ahmia.fi/search/?q=', 'AhmiaSearch', 'Search21window'); }
+
+  // TOR NETWORK
+  function makeOsint37() { openSearchWindow('https://tor.link/?q=', 'TorLinkSearch', 'Search37window'); }
+  function makeOsint23() { openSearchWindowWithSuffix('http://torch4st4l57l2u2vr5wqwvwyueucvnrao4xajqr2klmcmicrv7ccaad.onion/search?query=', 'TorchSearch', '&action=search', 'Search23window');}
+  function makeOsint24() { openSearchWindow('http://www.tor66sewebgixwhcqfnp5inzp5x5uohhdy3kvtnyfxc2e5mxiuh34iid.onion/search?q=', 'Tor66Search', 'Search24window');}
+  function makeOsint25() { openSearchWindow('http://haystak5njsmn2hqkewecpaxetahtwhsbsa64jom2k22z5afxhnpxfid.onion/?q=', 'HaystackSearch', 'Search25window');}
+  function makeOsint26() { openSearchWindowWithSuffix('http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/search/?q=', 'AhmiaOnionSearch', '&action=search', 'Search26window');}
+  function makeOsint27() { openSearchWindow('http://srcdemonm74icqjvejew6fprssuolyoc2usjdwflevbdpqoetw4x3ead.onion/search?q=', 'SearchDemon', 'Search27window');}
+  function makeOsint28() { // Path based for Excavator
+    var val = getOsintValue(); if (val === "") return;
+    window.open('http://2fd6cemt4gmccflhm6imvdfvli3nf7zn6rfrwpsy7uhxrgbypvwf5fad.onion/search/' + encodeURIComponent(val), 'Search28window');
+  }
+  function makeOsint29() { openSearchWindowWithSuffix('http://zb2jtkhnbvhkya3d46twv3g7lkobi4s62tjffqmafjibixk6pmq75did.onion/gdark/search.php?query=', 'GDarkSearch', '&search=1', 'Search29window');}
+  function makeOsint30() { openSearchWindow('http://u5lyidiw4lpkonoctpqzxgyk6xop7w7w3oho4dzzsi272rwnjhyx7ayd.onion/?s=', 'HiddenReviewsSearch', 'Search30window');}
+  function makeOsint31() { openSearchWindow('http://3bbad7fauom4d6sgppalyqddsqbf5u5p56b5k5uk2zxsy3d6ey2jobad.onion/search?q=', 'OnionLandSearch', 'Search31window');}
+  function makeOsint32() { openSearchWindow('http://phobosxilamwcg75xt22id7aywkzol6q6rfl2flipcqoc4e4ahima5id.onion/search?query=', 'PhobosSearch', 'Search32window');}
+  function makeOsint33() { openSearchWindow('http://no6m4wzdexe3auiupv2zwif7rm6qwxcyhslkcnzisxgeiw6pvjsgafad.onion/search.php?term=', 'SubmarineSearch', 'Search33window');}
+  function makeOsint34() { openSearchWindow('http://searchgf7gdtauh7bhnbyed4ivxqmuoat3nm6zfrg3ymkq6mtnpye3ad.onion/search?q=', 'DeepSearch', 'Search34window');}
+  function makeOsint35() { openSearchWindowWithSuffix('http://5qqrlc7hw3tsgokkqifb33p3mrlpnleka2bjg7n46vih2synghb6ycid.onion/index.php?a=search&q=', 'OnionCenterSearch', '', 'Search35window'); }
+  function makeOsint36() { openSearchWindow('http://freshonifyfe4rmuh6qwpsexfhdrww7wnt5qmkoertwxmcuvm4woo4ad.onion/?query=', 'FreshOnionSearch', 'Search36window');}
+
+  // Script per mostra/nascondi submenu al passaggio del mouse (navbar script)
+  document.querySelectorAll('.menu > li').forEach(item => {
+    item.addEventListener('mouseover', function() {
+      const submenu = this.querySelector('.submenu');
+      if(submenu) submenu.style.display = 'block';
+    });
+    item.addEventListener('mouseout', function() {
+      const submenu = this.querySelector('.submenu');
+      if(submenu) submenu.style.display = 'none';
+    });
+  });
+</script>
+
+</body>
+</html>

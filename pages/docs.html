@@ -1,1 +1,288 @@
-<!-- removed: legacy third-party derived content -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploratores Documents Tool</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="Files/style.css">
+  <style>
+      /* Layout generale: sidebar a sinistra e contenuto principale a destra */
+      .container {
+        display: flex;
+      }
+      aside {
+        flex: 0 0 200px;
+      }
+      main {
+        flex: 1;
+        padding: 20px;
+      }
+      /* Stili per i campi di input e i pulsanti */
+      .input-field {
+        margin-right: 10px;
+      }
+      .button {
+        width: 140px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside>
+<nav>
+  <ul class="menu">
+    <li><span>HOME</span>
+      <ul class="submenu">
+        <li><a href="../index.html">Index</a></li>
+      </ul>
+    </li>
+    <li><span>Search<br>Engines</span>
+      <ul class="submenu">
+        <li><a href="Search.html">Search Engines</a></li>
+      </ul>
+    </li>
+    <li><span>People &<br>Identities</span>
+      <ul class="submenu">
+        <li><a href="Names.html">Names</a></li>
+        <li><a href="phonenumbers.html">Telephone Numbers</a></li>
+        <li><a href="Address.html">Addresses</a></li>
+        <li><a href="Vehicle.html">Vehicles</a></li>
+        <li><a href="UserNames.html">Usernames</a></li>
+        <li><a href="Email.html">Email Addresses</a></li>
+        <li><a href="Communities.html">Communities</a></li>
+      </ul>
+    </li>
+    <li><span>Social<br>Media</span>
+      <ul class="submenu">
+        <li><a href="Twitter.html">X (Twitter)</a></li>
+        <li><a href="Facebook.html">Facebook</a></li>
+        <li><a href="Instagram.html">Instagram</a></li>
+        <li><a href="LinkedIn.html">LinkedIn</a></li>
+      </ul>
+    </li>
+    <li><span>Websites</span>
+      <ul class="submenu">
+        <li><a href="Domain.html">Domains</a></li>
+        <li><a href="IP.html">IP Addresses</a></li>
+      </ul>
+    </li>
+    <li><span>GeoInt</span>
+      <ul class="submenu">
+        <li><a href="Maps.html">Maps</a></li>
+      </ul>
+    </li>
+    <li><span>Media<br>Analysis</span>
+      <ul class="submenu">
+        <li><a href="Images.html">Images</a></li>
+        <li><a href="Videos.html">Videos</a></li>
+        <li><a href="Documents.html">Documents</a></li>
+      </ul>
+    </li>
+    <li><span>Business<br>Intelligence</span>
+      <ul class="submenu">
+        <li><a href="Business.html">Business &amp; Government</a></li>
+        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
+      </ul>
+    </li>
+    <li><span>Tools</span>
+      <ul class="submenu">
+        <li><a href="API.html">Setting API</a></li>
+        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </aside>
+    <!-- Main Content -->
+    <main>
+      <h1 class="page-title">Exploratores Documents Tool</h1>
+      
+      <!-- Input globale -->
+	  
+	  Insert search terms here:<br>
+      <div class="input-container">
+        <input type="text" id="OsintInput" class="input-field" placeholder="Search Terms">
+      </div>
+      <BR>Please enter the search terms in the search box and then press the buttons corresponding to the type of search you wish to perform.
+      
+      <div class="columns">
+        <!-- Colonna Services -->
+        <div class="column" id="servicesColumn">
+          <h2>Services</h2>
+          <div class="button-grid">
+		            <h3>Google</h3>
+            <button class="button" onclick="makeOsint11()">Google Docs</button>
+            <button class="button" onclick="makeOsint12()">Google Drive</button>
+            <button class="button" onclick="makeOsint13()">Google API</button><BR>
+            <button class="button" onclick="makeOsint28()">Google Books</button>
+					<h3>Others</h3>
+            <button class="button" onclick="makeOsint14()">MS Docs</button>
+            <button class="button" onclick="makeOsint15()">Amazon AWS</button>
+            <button class="button" onclick="makeOsint16()">Cloudfront</button><BR>
+            <button class="button" onclick="makeOsint29()">Refseek</button>
+            <button class="button" onclick="makeOsint31()">Core</button>
+            <button class="button" onclick="makeOsint17()">GrayHatWarfare</button><BR>
+            <button class="button" onclick="makeOsint18()">SlideShare</button>
+            <button class="button" onclick="makeOsint19()">Prezi</button>
+            <button class="button" onclick="makeOsint20()">ISSUU</button><BR>
+            <button class="button" onclick="makeOsint21()">Powershow</button>
+            <button class="button" onclick="makeOsint22()">Slide Bean</button>
+            <button class="button" onclick="makeOsint24()">Scribd</button><BR>
+            <button class="button" onclick="makeOsint25()">PDF Drive</button>
+            <button class="button" onclick="makeOsint26()">Wikileaks</button>
+            <button class="button" onclick="makeOsint27()">Archive.org</button>
+
+          </div>
+        </div>
+        <!-- Colonna Search Engines -->
+        <div class="column" id="searchEnginesColumn">
+          <h2>Search Engines</h2>
+          <div class="button-grid">
+					<h3>Documents</h3>
+            <button class="button" onclick="makeOsint01()">PDF</button>
+            <button class="button" onclick="makeOsint03()">XLS/XLSX/CSV</button>
+            <button class="button" onclick="makeOsint04()">PPT/PPTX/KEY</button><BR>
+            <button class="button" onclick="makeOsint02()">DOC/DOCX</button>
+            <button class="button" onclick="makeOsint05()">TXT/RTF/XML</button>
+            <button class="button" onclick="makeOsint06()">ODT/ODS/ODP</button>
+					<h3>Multimedia documents</h3>
+            <button class="button" onclick="makeOsint08()">JPG/JPEG/PNG</button>
+            <button class="button" onclick="makeOsint09()">MPG/MP4</button>
+            <button class="button" onclick="makeOsint10()">MP3/WAV</button>
+					<h3>Archives</h3>
+            <button class="button" onclick="makeOsint07()">ZIP/RAR/7Z</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Script per le funzioni -->
+      <script type="text/javascript">
+        // Recupera il valore inserito nella casella globale
+        function getOsintValue() {
+          return document.getElementById('OsintInput').value;
+        }
+        function makeOsint01() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=ext%3Apdf+' + encodeURIComponent(val), 'Search01window'); 
+        }
+        function makeOsint02() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=ext%3Adoc+OR+ext%3Adocx+' + encodeURIComponent(val), 'Search02window'); 
+        }
+        function makeOsint03() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=ext%3Axls+OR+ext%3Axlsx+OR+ext%3Acsv+' + encodeURIComponent(val), 'Search03window'); 
+        }
+        function makeOsint04() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=ext%3Appt+OR+ext%3Apptx+OR+ext%3Akey+' + encodeURIComponent(val), 'Search04window'); 
+        }
+        function makeOsint05() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=ext%3Atxt+OR+ext%3Artf+OR+ext%3Axml+' + encodeURIComponent(val), 'Search05window'); 
+        }
+        function makeOsint06() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=ext%3Aodt+OR+ext%3Aods+OR+ext%3Aodp+' + encodeURIComponent(val), 'Search06window'); 
+        }
+        function makeOsint07() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=ext%3Azip+OR+ext%3Arar+OR+ext%3A7z+' + encodeURIComponent(val), 'Search07window'); 
+        }
+        function makeOsint08() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=ext%3Ajpg+OR+ext%3Ajpeg+OR+ext%3Apng+' + encodeURIComponent(val) + '&tbm=isch', 'Search08window'); 
+        }
+        function makeOsint09() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=ext%3Ampg+OR+ext%3Ampeg+OR+ext%3Amp4+' + encodeURIComponent(val), 'Search09window'); 
+        }
+        function makeOsint10() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=ext%3Amp3+OR+ext%3Awav+OR+ext%3Aflac+' + encodeURIComponent(val), 'Search10window'); 
+        }
+        function makeOsint11() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=site%3Adocs.google.com+' + encodeURIComponent(val), 'Search11window'); 
+        }
+        function makeOsint12() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=site%3Adrive.google.com+' + encodeURIComponent(val), 'Search12window'); 
+        }
+        function makeOsint13() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=site%3Astorage.googleapis.com+' + encodeURIComponent(val), 'Search13window'); 
+        }
+        function makeOsint14() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=site%3Adocs.microsoft.com+' + encodeURIComponent(val), 'Search14window'); 
+        }
+        function makeOsint15() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=site%3Aamazonaws.com+' + encodeURIComponent(val), 'Search15window'); 
+        }
+        function makeOsint16() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=site%3Acloudfront.net+' + encodeURIComponent(val), 'Search16window'); 
+        }
+        function makeOsint29() { 
+          var val = getOsintValue(); 
+          window.open('https://www.refseek.com/documents?q=' + encodeURIComponent(val), 'Search29window'); 
+        }
+        function makeOsint31() { 
+          var val = getOsintValue(); 
+          window.open('https://core.ac.uk/search/?q=' + encodeURIComponent(val), 'Search31window'); 
+        }
+        function makeOsint17() { 
+          var val = getOsintValue(); 
+          window.open('https://buckets.grayhatwarfare.com/results/' + encodeURIComponent(val), 'Search17window'); 
+        }
+        function makeOsint18() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=site%3Aslideshare.net+' + encodeURIComponent(val), 'Search18window'); 
+        }
+        function makeOsint19() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=site%3Aprezi.com+' + encodeURIComponent(val), 'Search19window'); 
+        }
+        function makeOsint20() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=site%3Aissuu.com+' + encodeURIComponent(val), 'Search20window'); 
+        }
+        function makeOsint21() { 
+          var val = getOsintValue(); 
+          window.open('https://www.powershow.com/search/presentations/ppt/' + encodeURIComponent(val), 'Search21window'); 
+        }
+        function makeOsint22() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=site%3Aslidebean.com+' + encodeURIComponent(val), 'Search22window'); 
+        }
+        function makeOsint24() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?q=site%3Ascribd.com+' + encodeURIComponent(val), 'Search24window'); 
+        }
+        function makeOsint25() { 
+          var val = getOsintValue(); 
+          window.open('https://www.pdfdrive.net/search?q=' + encodeURIComponent(val), 'Search25window'); 
+        }
+        function makeOsint26() { 
+          var val = getOsintValue(); 
+          window.open('https://search.wikileaks.org/?query=' + encodeURIComponent(val) + '&exact_phrase=&any_of=&exclude_words=&document_date_start=&document_date_end=&released_date_start=&released_date_end=&new_search=True&order_by=most_relevant#results', 'Search26window'); 
+        }
+        function makeOsint27() { 
+          var val = getOsintValue(); 
+          window.open('https://archive.org/search.php?query=' + encodeURIComponent(val) + '&sin=TXT', 'Search27window'); 
+        }
+        function makeOsint28() { 
+          var val = getOsintValue(); 
+          window.open('https://www.google.com/search?tbm=bks&q=' + encodeURIComponent(val), 'Search28window'); 
+        }
+      </script>
+    </main>
+  </div>
+</body>
+</html>

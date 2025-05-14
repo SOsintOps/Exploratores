@@ -1,1 +1,401 @@
-<!-- removed: legacy third-party derived content -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exploratores – LinkedIn Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0066ff;
+      --secondary-color: #333;
+      --bg-color: #f9f9f9;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background-color: var(--bg-color);
+    }
+    /* FIXED NAVBAR */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background-color: #ffffff;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      max-width: 1200px;
+      width: 100%;
+      justify-content: space-around;
+      border: 1px solid #ccc;
+    }
+    .menu > li {
+      position: relative;
+      height: 60px;
+      width: 120px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 1rem;
+      border-right: 1px solid #ccc;
+      transition: background-color 0.2s ease-in;
+    }
+    .menu > li:last-child {
+      border-right: none;
+    }
+    .menu > li:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+    .menu > li span {
+      display: block;
+      line-height: 1.2;
+    }
+    .submenu {
+      display: none;
+      position: absolute;
+      background-color: #ffffff;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      border: 1px solid #ddd;
+      min-width: 200px;
+      z-index: 999;
+    }
+    .submenu li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    .submenu li:last-child {
+      border-bottom: none;
+    }
+    .submenu li a {
+      text-decoration: none;
+      color: var(--secondary-color);
+    }
+    .submenu li:hover {
+      background-color: var(--primary-color);
+    }
+    .submenu li:hover a {
+      color: #fff;
+    }
+    /* SHOW/HIDE SUBMENU ON HOVER */
+    .menu > li:hover .submenu {
+      display: block;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px 60px;
+      background: #fff;
+    }
+    .note {
+      font-size: .9rem;
+      background-color: #fff9d6;
+      border-left: 3px solid #ffc107;
+      padding: .5rem;
+      margin-bottom: 1rem;
+      border-radius: 3px;
+    }
+    h1.page-title {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .two-columns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .column {
+      flex: 1;
+      min-width: 300px;
+      background: #fafafa;
+      padding: 1rem;
+      border: 1px solid #eee;
+      border-radius: 4px;
+    }
+    .column h2 {
+      margin-bottom: .8rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: .3rem;
+    }
+    .input-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 1rem;
+    }
+    .input-container input[type="text"] {
+      flex: 1 1 140px;
+      padding: .5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: .5rem;
+      margin-bottom: 1.5rem;
+    }
+    .button-grid button {
+      padding: .5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: #fff;
+      transition: background-color .2s ease-in;
+    }
+    .button-grid button:hover {
+      background: var(--primary-color);
+      color: #fff;
+    }
+    footer {
+      background: #fff;
+      border-top: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      font-size: .9em;
+      color: #555;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+    }
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      margin-left: 10px;
+    }
+    @media(max-width:768px) {
+      .two-columns { flex-direction: column; }
+      .menu > li { width: auto; flex: 1; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <ul class="menu">
+    <li><span>HOME</span>
+      <ul class="submenu">
+        <li><a href="../index.html">Index</a></li>
+      </ul>
+    </li>
+    <li><span>Search<br>Engines</span>
+      <ul class="submenu">
+        <li><a href="Search.html">Search Engines</a></li>
+      </ul>
+    </li>
+    <li><span>People &<br>Identities</span>
+      <ul class="submenu">
+        <li><a href="Names.html">Names</a></li>
+        <li><a href="phonenumbers.html">Telephone Numbers</a></li>
+        <li><a href="Address.html">Addresses</a></li>
+        <li><a href="Vehicle.html">Vehicles</a></li>
+        <li><a href="UserNames.html">Usernames</a></li>
+        <li><a href="Email.html">Email Addresses</a></li>
+        <li><a href="Communities.html">Communities</a></li>
+      </ul>
+    </li>
+    <li><span>Social<br>Media</span>
+      <ul class="submenu">
+        <li><a href="Twitter.html">X (Twitter)</a></li>
+        <li><a href="Facebook.html">Facebook</a></li>
+        <li><a href="Instagram.html">Instagram</a></li>
+        <li><a href="LinkedIn.html">LinkedIn</a></li>
+      </ul>
+    </li>
+    <li><span>Websites</span>
+      <ul class="submenu">
+        <li><a href="Domain.html">Domains</a></li>
+        <li><a href="IP.html">IP Addresses</a></li>
+      </ul>
+    </li>
+    <li><span>GeoInt</span>
+      <ul class="submenu">
+        <li><a href="Maps.html">Maps</a></li>
+      </ul>
+    </li>
+    <li><span>Media<br>Analysis</span>
+      <ul class="submenu">
+        <li><a href="Images.html">Images</a></li>
+        <li><a href="Videos.html">Videos</a></li>
+        <li><a href="Documents.html">Documents</a></li>
+      </ul>
+    </li>
+    <li><span>Business<br>Intelligence</span>
+      <ul class="submenu">
+        <li><a href="Business.html">Business &amp; Government</a></li>
+        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
+      </ul>
+    </li>
+    <li><span>Tools</span>
+      <ul class="submenu">
+        <li><a href="API.html">Setting API</a></li>
+        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+  <main>
+    <h1 class="page-title">Exploratores – LinkedIn Tool</h1>
+    <div class="note">
+      For proper function of these features, an active investigative profile is required.
+    </div>
+
+    <div class="two-columns">
+      <!-- Left column -->
+      <div class="column">
+        <h2>Company, Group & More</h2>
+        <div class="input-container">
+          <input type="text" id="cgKeyword" placeholder="Keyword">
+        </div>
+        <div class="button-grid">
+          <button onclick="makeOsint06(document.getElementById('cgKeyword').value)">Companies</button>
+          <button onclick="makeOsint07(document.getElementById('cgKeyword').value)">Groups</button>
+          <button onclick="makeOsint08(document.getElementById('cgKeyword').value)">Schools</button>
+          <button onclick="makeOsint09(document.getElementById('cgKeyword').value)">Events</button>
+        </div>
+
+        <h2>External Engine Searches</h2>
+        <div class="input-container">
+          <input type="text" id="eeKeyword" placeholder="Keyword">
+          <input type="text" id="eeFName"   placeholder="First Name">
+          <input type="text" id="eeLName"   placeholder="Last Name">
+          <input type="text" id="eeTitle"   placeholder="Title">
+          <input type="text" id="eeCompany" placeholder="Company">
+          <input type="text" id="eeSchool"  placeholder="School">
+        </div>
+        <div class="button-grid" style="grid-template-columns:repeat(3,1fr);">
+          <button onclick="makeOsint03(
+            document.getElementById('eeKeyword').value,
+            document.getElementById('eeFName').value,
+            document.getElementById('eeLName').value,
+            document.getElementById('eeTitle').value,
+            document.getElementById('eeCompany').value,
+            document.getElementById('eeSchool').value
+          )">Google People</button>
+          <button onclick="makeOsint04(
+            document.getElementById('eeKeyword').value,
+            document.getElementById('eeFName').value,
+            document.getElementById('eeLName').value,
+            document.getElementById('eeTitle').value,
+            document.getElementById('eeCompany').value,
+            document.getElementById('eeSchool').value
+          )">Bing People</button>
+          <button onclick="makeOsint05(
+            document.getElementById('eeKeyword').value,
+            document.getElementById('eeFName').value,
+            document.getElementById('eeLName').value,
+            document.getElementById('eeTitle').value,
+            document.getElementById('eeCompany').value,
+            document.getElementById('eeSchool').value
+          )">Yandex People</button>
+        </div>
+      </div>
+
+      <!-- Right column -->
+      <div class="column">
+        <h2>Profile & Media</h2>
+
+        <div class="input-container">
+          <input type="text" id="pfUser" placeholder="Username">
+        </div>
+        <div class="button-grid">
+          <button onclick="makeOsint11(document.getElementById('pfUser').value)">Profile</button>
+        </div>
+
+        <div class="input-container">
+          <input type="text" id="imgUser" placeholder="Username or real name">
+        </div>
+        <div class="button-grid">
+          <button onclick="makeOsint13(document.getElementById('imgUser').value)">Google Images</button>
+          <button onclick="makeOsint14(document.getElementById('imgUser').value)">Bing Images</button>
+        </div>
+
+        <div class="input-container">
+          <input type="text" id="vidKey" placeholder="Search term">
+        </div>
+        <div class="button-grid">
+          <button onclick="makeOsint15(document.getElementById('vidKey').value)">Video Search</button>
+        </div>
+
+        <h2>Timestamp Decoder</h2>
+        <div class="input-container">
+          <input type="text" id="url" placeholder="Post URL">
+        </div>
+        <div class="button-grid">
+          <button onclick="getDate()">Decode Timestamp</button>
+        </div>
+        <div>
+          <span id="date" style="margin-left:.5rem;"></span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Global Security Italy • Rome (IT)
+    <a href="License.html">License</a>
+  </footer>
+
+  <script>
+    function makeOsint06(v){ window.open('https://www.linkedin.com/search/results/companies/?keywords='+v); }
+    function makeOsint07(v){ window.open('https://www.linkedin.com/search/results/groups/?keywords='+v); }
+    function makeOsint08(v){ window.open('https://www.linkedin.com/search/results/schools/?keywords='+v); }
+    function makeOsint09(v){ window.open('https://www.linkedin.com/search/results/events/?keywords='+v); }
+
+    function makeOsint03(k,f,l,t,c,s){
+      window.open('https://www.google.com/search?q=site:linkedin.com+'+k+'+'+f+'+'+l+'+'+t+'+'+c+'+'+s);
+    }
+    function makeOsint04(k,f,l,t,c,s){
+      window.open('https://www.bing.com/search?q=site:linkedin.com+'+k+'+'+f+'+'+l+'+'+t+'+'+c+'+'+s);
+    }
+    function makeOsint05(k,f,l,t,c,s){
+      window.open('https://www.yandex.com/search/?text=site:linkedin.com+'+k+'+'+f+'+'+l+'+'+t+'+'+c+'+'+s);
+    }
+
+    function makeOsint11(u){ window.open('https://www.linkedin.com/in/'+u); }
+    function makeOsint13(t){ window.open('https://www.google.com/search?q=site:linkedin.com+'+t+'&tbm=isch'); }
+    function makeOsint14(t){ window.open('https://www.bing.com/images/search?q=site:linkedin.com+'+t); }
+    function makeOsint15(t){ window.open('https://www.google.com/search?q=site:linkedin.com+'+t+'&tbm=vid'); }
+
+    function getPostId(){
+      const m=/([0-9]{19})/.exec(document.getElementById('url').value);
+      return m?m.pop():null;
+    }
+    function extractUnixTimestamp(id){
+      if(!id) return null;
+      const bin=BigInt(id).toString(2);
+      return parseInt(bin.slice(0,41),2);
+    }
+    function unixTimestampToHumanDate(ts){
+      return ts? new Date(ts).toUTCString()+' (UTC)' : '';
+    }
+    function getDate(){
+      const ts=extractUnixTimestamp(getPostId());
+      document.getElementById('date').textContent=unixTimestampToHumanDate(ts);
+    }
+  </script>
+</body>
+</html>

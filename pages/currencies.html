@@ -1,1 +1,509 @@
-<!-- removed: legacy third-party derived content -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exploratores Virtual Currencies Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0066ff;
+      --secondary-color: #333;
+      --bg-color: #f9f9f9;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--secondary-color);
+      padding-bottom: 60px; /* Footer height */
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .menu {
+      list-style: none;
+      display: flex;
+      width: 100%;
+      max-width: 1200px;
+      justify-content: space-around;
+    }
+
+    .menu > li {
+      position: relative;
+      height: 60px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .menu > li:hover {
+      background: var(--primary-color);
+      color: #fff;
+    }
+
+    .submenu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      border: 1px solid #ddd;
+      list-style: none;
+      min-width: 200px;
+      z-index: 999;
+    }
+
+    .submenu li {
+      padding: 0.5rem 1rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .submenu li:last-child {
+      border-bottom: none;
+    }
+
+    .submenu a {
+      text-decoration: none;
+      color: var(--secondary-color);
+      display: block;
+    }
+
+    .submenu li:hover {
+      background: var(--primary-color);
+    }
+
+    .submenu li:hover a {
+      color: #fff;
+    }
+
+    .menu > li:hover .submenu {
+      display: block;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px 20px; 
+      background: #fff;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+    
+    h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.3rem;
+    }
+    
+    /* Ensure first h2 in each column has no top margin */
+    .column-left > .form-section:first-child > h2,
+    .column-right > .form-section:first-child > h2 {
+        margin-top: 0;
+    }
+
+    .form-section {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 4px;
+    }
+
+    .form-section form { 
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem; 
+      align-items: center;
+    }
+    
+    .single-input-container {
+        margin-bottom: 0.75rem;
+    }
+    .single-input-container input[type="text"] {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 0.9rem;
+        box-sizing: border-box;
+    }
+
+    input[type="text"], select, input[type="date"] {
+      flex: 1 1 200px; 
+      padding: 0.5rem; 
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 0.9rem;
+    }
+
+    input[type="submit"], input[type="button"] {
+      width: auto; 
+      min-width: 140px; 
+      padding: 0.5rem 0.8rem; 
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      background: #fff;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s;
+      text-align: center;
+      line-height: 1.2; 
+    }
+
+    input[type="submit"]:hover, input[type="button"]:hover {
+      background: var(--primary-color);
+      color: #fff;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem; 
+    }
+    .button-row input[type="button"]{
+        flex-grow: 1; 
+        flex-basis: 140px; 
+    }
+
+    /* Two-column layout styles */
+    .two-column-container {
+      display: flex;
+      gap: 1.5rem; /* Space between columns */
+    }
+    .column-left, .column-right {
+      flex: 1; /* Each column takes equal width */
+      min-width: 0; /* Prevent flexbox overflow issues */
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      padding: 0.5rem;
+      font-size: 0.9rem;
+      color: #555;
+      z-index: 1000;
+    }
+
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      margin-left: 0.5rem;
+    }
+    
+    .note {
+      font-size: 1rem;
+      background-color: #fff9d6;
+      border-left: 3px solid #ffc107;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border-radius: 3px;
+    }
+
+    @media (max-width: 992px) { /* Breakpoint for stacking columns */
+        .two-column-container {
+            flex-direction: column;
+        }
+    }
+
+    @media (max-width: 768px) {
+      .form-section form, .single-input-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .single-input-container input[type="text"] {
+          width: 100%;
+      }
+      input[type="text"], select, input[type="date"], input[type="submit"], input[type="button"] {
+        width: 100%;
+        flex-basis: auto; 
+      }
+      .button-row {
+        flex-direction: column;
+      }
+      .button-row input[type="button"] {
+        width: 100%;
+      }
+      .menu > li {
+        font-size: 0.7rem; 
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <ul class="menu">
+    <li><span>HOME</span>
+      <ul class="submenu">
+        <li><a href="../index.html">Index</a></li>
+      </ul>
+    </li>
+    <li><span>Search<br>Engines</span>
+      <ul class="submenu">
+        <li><a href="Search.html">Search Engines</a></li>
+      </ul>
+    </li>
+    <li><span>People &<br>Identities</span>
+      <ul class="submenu">
+        <li><a href="Names.html">Names</a></li>
+        <li><a href="phonenumbers.html">Telephone Numbers</a></li>
+        <li><a href="Address.html">Addresses</a></li>
+        <li><a href="Vehicle.html">Vehicles</a></li>
+        <li><a href="UserNames.html">Usernames</a></li>
+        <li><a href="Email.html">Email Addresses</a></li>
+        <li><a href="Communities.html">Communities</a></li>
+      </ul>
+    </li>
+    <li><span>Social<br>Media</span>
+      <ul class="submenu">
+        <li><a href="Twitter.html">X (Twitter)</a></li>
+        <li><a href="Facebook.html">Facebook</a></li>
+        <li><a href="Instagram.html">Instagram</a></li>
+        <li><a href="LinkedIn.html">LinkedIn</a></li>
+      </ul>
+    </li>
+    <li><span>Websites</span>
+      <ul class="submenu">
+        <li><a href="Domain.html">Domains</a></li>
+        <li><a href="IP.html">IP Addresses</a></li>
+      </ul>
+    </li>
+    <li><span>GeoInt</span>
+      <ul class="submenu">
+        <li><a href="Maps.html">Maps</a></li>
+      </ul>
+    </li>
+    <li><span>Media<br>Analysis</span>
+      <ul class="submenu">
+        <li><a href="Images.html">Images</a></li>
+        <li><a href="Videos.html">Videos</a></li>
+        <li><a href="Documents.html">Documents</a></li>
+      </ul>
+    </li>
+    <li><span>Business<br>Intelligence</span>
+      <ul class="submenu">
+        <li><a href="Business.html">Business &amp; Government</a></li>
+        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
+      </ul>
+    </li>
+    <li><span>Tools</span>
+      <ul class="submenu">
+        <li><a href="API.html">Setting API</a></li>
+        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<main>
+  <h1 class="page-title">Virtual Currencies Tool</h1>
+
+  <div class="two-column-container">
+    <div class="column-left">
+      <div class="form-section">
+        <h2>Bitcoin Address Tools</h2>
+        <div class="single-input-container">
+          <input type="text" id="bitcoinAddressInput" name="bitcoinAddressInput" placeholder="Bitcoin Address"/>
+        </div>
+        <div class="button-row">
+          <input type="button" value="BTC Validation" onclick="makeOsint01(document.getElementById('bitcoinAddressInput').value)">
+          <input type="button" value="Satoshi Received" onclick="makeOsint03(document.getElementById('bitcoinAddressInput').value)">
+          <input type="button" value="Satoshi Sent" onclick="makeOsint04(document.getElementById('bitcoinAddressInput').value)">
+          <input type="button" value="Satoshi Balance" onclick="makeOsint05(document.getElementById('bitcoinAddressInput').value)">
+        </div>
+        <div class="button-row">
+          <input type="button" value="Summary" onclick="makeOsint06(document.getElementById('bitcoinAddressInput').value)">
+          <input type="button" value="Creation Date" onclick="makeOsint07(document.getElementById('bitcoinAddressInput').value)">
+          <input type="button" value="Blockchain" onclick="makeOsint08(document.getElementById('bitcoinAddressInput').value)">
+          <input type="button" value="BitcoinAbuse" onclick="makeOsint09(document.getElementById('bitcoinAddressInput').value)">
+        </div>
+        <div class="button-row">
+          <input type="button" value="WhosWho" onclick="makeOsint10(document.getElementById('bitcoinAddressInput').value)">
+          <input type="button" value="OXT" onclick="makeOsint11(document.getElementById('bitcoinAddressInput').value)">
+          <input type="button" value="WalletExplorer (Addr)" onclick="makeOsint12(document.getElementById('bitcoinAddressInput').value)">
+          <input type="button" value="BC BTC" onclick="makeOsint14(document.getElementById('bitcoinAddressInput').value)">
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h2>General Bitcoin Information</h2>
+        <form onsubmit="event.preventDefault(); makeOsint02();"> 
+          <input type="submit" value="1 BTC Price"/>
+        </form>
+      </div>
+    </div>
+
+    <div class="column-right">
+      <div class="form-section">
+        <h2>Other Cryptocurrency Lookups</h2>
+        <form onsubmit="event.preventDefault(); makeOsint15(this.Search15.value);">
+          <input type="text" id="Search15" name="Search15" placeholder="Wallet ID"/>
+          <input type="submit" value="WalletExplorer (ID)"/>
+        </form>
+        <form onsubmit="event.preventDefault(); makeOsint16(this.Search16.value);">
+          <input type="text" id="Search16" name="Search16" placeholder="Ethereum Address"/>
+          <input type="submit" value="BC Ethereum"/>
+        </form>
+        <form onsubmit="event.preventDefault(); makeOsint17(this.Search17.value);">
+          <input type="text" id="Search17" name="Search17" placeholder="Bitcoin-Cash Hash"/>
+          <input type="submit" value="BC Cash"/>
+        </form>
+        <form onsubmit="event.preventDefault(); makeOsint18(this.Search18.value);">
+          <input type="text" id="Search18" name="Search18" placeholder="Litecoin Address"/>
+          <input type="submit" value="BC Litecoin"/>
+        </form>
+        <form onsubmit="event.preventDefault(); makeOsint19(this.Search19.value);">
+          <input type="text" id="Search19" name="Search19" placeholder="Bitcoin-SV Address"/>
+          <input type="submit" value="BC Bitcoin-SV"/>
+        </form>
+        <form onsubmit="event.preventDefault(); makeOsint20(this.Search20.value);">
+          <input type="text" id="Search20" name="Search20" placeholder="Dogecoin Address"/>
+          <input type="submit" value="BC Dogecoin"/>
+        </form>
+        <form onsubmit="event.preventDefault(); makeOsint21(this.Search21.value);">
+          <input type="text" id="Search21" name="Search21" placeholder="Dash Address"/>
+          <input type="submit" value="BC Dash"/>
+        </form>
+      </div>
+
+      <div class="form-section">
+        <h2>Currency Converters</h2>
+        <form onsubmit="event.preventDefault(); makeOsint22(this.Search22.value);">
+          <input type="text" id="Search22" name="Search22" placeholder="Bitcoin Amount"/>
+          <input type="submit" value="BTC > USD"/>
+        </form>
+        <form onsubmit="event.preventDefault(); makeOsint23(this.Search23.value);">
+          <input type="text" id="Search23" name="Search23" placeholder="Dollar Amount"/>
+          <input type="submit" value="USD > BTC"/>
+        </form>
+        <form onsubmit="event.preventDefault(); makeOsint24(this.Search24.value);">
+          <input type="text" id="Search24" name="Search24" placeholder="Satoshi Amount"/>
+          <input type="submit" value="Satoshi > USD"/>
+        </form>
+        <form onsubmit="event.preventDefault(); makeOsint25(this.Search25.value);">
+          <input type="text" id="Search25" name="Search25" placeholder="Dollar Amount"/>
+          <input type="submit" value="USD > Satoshi"/>
+        </form>
+      </div>
+
+      <div class="form-section">
+        <h2>Security Tools</h2>
+        <form onsubmit="event.preventDefault(); makeOsint26(this.Search26.value);">
+          <input type="text" id="Search26" name="Search26" placeholder="Virtual Currency Address"/>
+          <input type="submit" value="ScamSearch"/>
+        </form>
+      </div>
+      
+      <div class="form-section">
+        <h2>Unix Time Converter</h2>
+        <form onsubmit="event.preventDefault(); convert();">
+            <input type='text' placeholder='Unix Timestamp' id='timestamp'>
+            <input type='submit' value='Convert Timestamp'>
+        </form>
+        <span id='datetime' style="display: block; margin-top: 0.5rem;"></span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script type="text/javascript">
+// Bitcoin Address Specific Searches (use value from 'bitcoinAddressInput' input)
+function makeOsint01(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockexplorer.com/api/addr/' + OsintValue, 'Search01window'); }
+function makeOsint03(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchain.info/q/getreceivedbyaddress/' + OsintValue, 'Search03window'); }
+function makeOsint04(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchain.info/q/getsentbyaddress/' + OsintValue, 'Search04window'); }
+function makeOsint05(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchain.info/q/addressbalance/' + OsintValue, 'Search05window'); }
+function makeOsint06(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://explorer.cloverpool.com/btc/address/' + OsintValue, 'Search06window'); }
+function makeOsint07(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchain.info/q/addressfirstseen/' + OsintValue, 'Search07window'); }
+function makeOsint08(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://www.blockchain.com/btc/address/' + OsintValue, 'Search08window'); }
+function makeOsint09(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://www.chainabuse.com/address/' + OsintValue, 'Search09window'); }
+function makeOsint10(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://bitcoinwhoswho.com/address/' + OsintValue, 'Search10window'); }
+function makeOsint11(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://oxt.me/address/' + OsintValue, 'Search11window'); }
+function makeOsint12(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://www.walletexplorer.com/address/' + OsintValue, 'Search12window'); }
+function makeOsint14(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/bitcoin/address/' + OsintValue, 'Search14window'); }
+
+// General Bitcoin Info (no input value needed from a field for its core function)
+function makeOsint02() { window.open('https://blockchain.info/q/24hrprice', 'Search02window'); }
+
+// Unix Time Converter
+function convert() {
+  var unixtimestamp = document.getElementById('timestamp').value;
+  if (!unixtimestamp || isNaN(unixtimestamp)) {
+    document.getElementById('datetime').innerHTML = "Please enter a valid Unix timestamp.";
+    return;
+  }
+  var months_arr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var date = new Date(unixtimestamp * 1000);
+  var hours = date.getHours();
+  var minutes = "0" + date.getMinutes();
+  var seconds = "0" + date.getSeconds();
+  var year = date.getFullYear();
+  var month = months_arr[date.getMonth()];
+  var day = date.getDate();
+  var convdataTime = month + '-' + day + '-' + year + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+  document.getElementById('datetime').innerHTML = convdataTime;
+}
+
+// Other Crypto and Converters (added basic empty string check and isNaN for amounts)
+function makeOsint15(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://www.walletexplorer.com/address/' + OsintValue, 'Search15window'); }
+function makeOsint16(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/ethereum/address/' + OsintValue, 'Search16window'); }
+function makeOsint17(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/bitcoin-cash/address/' + OsintValue, 'Search17window'); }
+function makeOsint18(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/litecoin/address/' + OsintValue, 'Search18window'); }
+function makeOsint19(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/bitcoin/address/' + OsintValue, 'Search19window'); } 
+function makeOsint20(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/dogecoin/address/' + OsintValue, 'Search20window'); }
+function makeOsint21(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/dash/address/' + OsintValue, 'Search21window'); }
+function makeOsint22(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://api.coinconvert.net/convert/btc/usd?amount=' + OsintValue, 'Search22window'); }
+function makeOsint23(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://blockchain.info/tobtc?currency=USD&value=' + OsintValue, 'Search23window'); }
+function makeOsint24(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://api.exchangerate.host/convert?from=SAT&to=USD&amount=' + OsintValue, 'Search24window'); }
+function makeOsint25(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://api.exchangerate.host/convert?from=USD&to=SAT&amount=' + OsintValue, 'Search25window'); }
+function makeOsint26(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://scamsearch.io/search_report?searchoption=all&search=' + OsintValue, 'Search26window'); }
+
+// Ensure all form submissions are handled by JS to prevent page reload
+document.querySelectorAll('form').forEach(form => {
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+  });
+});
+</script>
+
+<footer>
+  Global Security Italy • Rome (IT) <a href="License.html">License</a>
+</footer>
+
+</body>
+</html>

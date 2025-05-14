@@ -1,1 +1,510 @@
-<!-- removed: legacy third-party derived content -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exploratores Facebook Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0066ff;
+      --secondary-color: #333;
+      --bg-color: #f9f9f9;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--secondary-color);
+      padding-bottom: 60px; /* Space for fixed footer */
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #ffffff;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .menu {
+      list-style: none;
+      display: flex;
+      width: 100%;
+      max-width: 1200px;
+      justify-content: space-around;
+    }
+
+    .menu > li {
+      position: relative;
+      height: 60px;
+      flex: 1; 
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 1rem;
+      border-right: 1px solid #eee; 
+      transition: background-color 0.2s ease-in;
+    }
+
+    .menu > li:last-child {
+      border-right: none;
+    }
+
+    .menu > li:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+
+    .menu > li span {
+      display: block;
+      line-height: 1.2;
+    }
+
+    .submenu {
+      display: none;
+      position: absolute;
+      background-color: #ffffff;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      list-style: none;
+      border: 1px solid #ddd;
+      min-width: 200px;
+      z-index: 999;
+    }
+
+    .submenu li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .submenu li:last-child {
+      border-bottom: none;
+    }
+
+    .submenu li a {
+      text-decoration: none;
+      color: var(--secondary-color);
+      display: block;
+    }
+
+    .submenu li:hover {
+      background-color: var(--primary-color);
+    }
+
+    .submenu li:hover a {
+      color: #ffffff;
+    }
+
+    .menu > li:hover .submenu {
+      display: block;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px 20px; 
+      background-color: #fff;
+    }
+
+    h1.page-title {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+    
+    .note {
+      font-size: 1rem;
+      background-color: #fff9d6;
+      border-left: 3px solid #ffc107;
+      padding: 0.75rem;
+      margin-bottom: 1.5rem;
+      border-radius: 3px;
+    }
+    .note strong {
+        font-weight: bold;
+    }
+
+    .columns-container {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .column {
+      flex: 1;
+      min-width: 0;
+      border-radius: 4px;
+    }
+    
+    /* Titles for sections like "Username Lookup", "Search Terms" */
+    .form-section h3 { 
+      margin-top: 0; 
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.3rem;
+    }
+    /* Ensure first h3 in each column has no top margin if .form-section is the first child */
+     .column > .form-section:first-child > h3 {
+        margin-top: 0;
+    }
+
+
+    .form-section {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 4px;
+    }
+    
+    .form-section form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    
+    .single-input-container {
+        margin-bottom: 0.75rem;
+    }
+    .single-input-container input[type="text"],
+    .form-section input[type="text"] { /* Removed select, date as they are not in remaining forms */
+      flex: 1 1 150px; 
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 0.9rem;
+    }
+    .single-input-container input[type="text"]{
+        width:100%; 
+    }
+    
+    input[type="submit"], input[type="button"].search-button {
+      padding: 0.5rem 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      background: #fff;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s;
+      text-align: center;
+      line-height: 1.2;
+      flex-shrink: 0;
+      min-width: 120px; 
+    }
+
+    input[type="submit"]:hover, input[type="button"].search-button:hover {
+      background: var(--primary-color);
+      color: #fff;
+    }
+
+    .button-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .button-grid .search-button {
+      flex-grow: 1;
+      flex-basis: 130px; 
+    }
+
+    footer {
+      background-color: #ffffff;
+      border-top: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #555;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      margin-left: 10px;
+    }
+    
+    @media (max-width: 992px) {
+        .columns-container {
+            flex-direction: column;
+        }
+    }
+    @media (max-width: 768px) {
+      .menu > li {
+        width: auto; 
+        flex: 1;
+        font-size: 0.75rem;
+        padding: 0 0.2rem;
+      }
+      .form-section form {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .form-section input[type="text"],
+      .form-section input[type="submit"],
+      .form-section input[type="button"].search-button {
+        width: 100%;
+      }
+      .button-grid {
+        flex-direction: column;
+      }
+      .button-grid .search-button {
+          width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <ul class="menu">
+    <li><span>HOME</span>
+      <ul class="submenu">
+        <li><a href="../index.html">Index</a></li>
+      </ul>
+    </li>
+    <li><span>Search<br>Engines</span>
+      <ul class="submenu">
+        <li><a href="Search.html">Search Engines</a></li>
+      </ul>
+    </li>
+    <li><span>People &<br>Identities</span>
+      <ul class="submenu">
+        <li><a href="Names.html">Names</a></li>
+        <li><a href="phonenumbers.html">Telephone Numbers</a></li>
+        <li><a href="Address.html">Addresses</a></li>
+        <li><a href="Vehicle.html">Vehicles</a></li>
+        <li><a href="UserNames.html">Usernames</a></li>
+        <li><a href="Email.html">Email Addresses</a></li>
+        <li><a href="Communities.html">Communities</a></li>
+      </ul>
+    </li>
+    <li><span>Social<br>Media</span>
+      <ul class="submenu">
+        <li><a href="Twitter.html">X (Twitter)</a></li>
+        <li><a href="Facebook.html">Facebook</a></li>
+        <li><a href="Instagram.html">Instagram</a></li>
+        <li><a href="LinkedIn.html">LinkedIn</a></li>
+      </ul>
+    </li>
+    <li><span>Websites</span>
+      <ul class="submenu">
+        <li><a href="Domain.html">Domains</a></li>
+        <li><a href="IP.html">IP Addresses</a></li>
+      </ul>
+    </li>
+    <li><span>GeoInt</span>
+      <ul class="submenu">
+        <li><a href="Maps.html">Maps</a></li>
+      </ul>
+    </li>
+    <li><span>Media<br>Analysis</span>
+      <ul class="submenu">
+        <li><a href="Images.html">Images</a></li>
+        <li><a href="Videos.html">Videos</a></li>
+        <li><a href="Documents.html">Documents</a></li>
+      </ul>
+    </li>
+    <li><span>Business<br>Intelligence</span>
+      <ul class="submenu">
+        <li><a href="Business.html">Business &amp; Government</a></li>
+        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
+      </ul>
+    </li>
+    <li><span>Tools</span>
+      <ul class="submenu">
+        <li><a href="API.html">Setting API</a></li>
+        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<main>
+  <h1 class="page-title">Exploratores Facebook Tool</h1>
+  <div class="note"> <strong>NOTE:</strong> For proper function of these features, an active investigative profile is required. </div>
+
+  <div class="columns-container">
+    <div class="column">
+      <div class="form-section">
+        <h3>Username Lookup</h3>
+        <div class="single-input-container">
+            <input type="text" id="PopAll" name="PopAll" placeholder="FB Username"/>
+        </div>
+        <div class="button-grid">
+          <input type="button" class="search-button" value="Timeline" onclick="makeOsint01(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="About" onclick="makeOsint02(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Employment" onclick="makeOsint03(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Education" onclick="makeOsint04(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Locations" onclick="makeOsint05(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Contact Info" onclick="makeOsint06(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Basic Info" onclick="makeOsint07(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Relationships" onclick="makeOsint08(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Family" onclick="makeOsint09(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Biography" onclick="makeOsint10(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Life Events" onclick="makeOsint11(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Friends" onclick="makeOsint12(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Following" onclick="makeOsint41(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Photos" onclick="makeOsint13(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Photo Albums" onclick="makeOsint14(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Videos" onclick="makeOsint15(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Reels" onclick="makeOsint42(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Check-ins" onclick="makeOsint16(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Visits" onclick="makeOsint43(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Recent Check-ins" onclick="makeOsint17(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Sports" onclick="makeOsint18(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Music" onclick="makeOsint19(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Movies" onclick="makeOsint20(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="TV" onclick="makeOsint21(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Books" onclick="makeOsint22(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Apps & Games" onclick="makeOsint23(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Likes" onclick="makeOsint24(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Events" onclick="makeOsint25(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Facts" onclick="makeOsint26(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Reviews" onclick="makeOsint27(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Reviews Given" onclick="makeOsint44(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Reviews Written" onclick="makeOsint45(document.getElementById('PopAll').value)">
+          <input type="button" class="search-button" value="Notes" onclick="makeOsint28(document.getElementById('PopAll').value)">
+        </div>
+      </div>
+    </div>
+
+    <div class="column" id="right-column-content"> <div class="form-section">
+        <h3>FB User Number Lookup</h3>
+        <form onsubmit="event.preventDefault(); makeOsint28a(this.Search28a.value);">
+          <input type="text" id="Search28a" name="Search28a" placeholder="FB User Number"/>
+          <input type="submit" class="search-button" value="Profile"/>
+        </form>
+      </div>
+
+      <div class="form-section">
+        <h3>Search Terms</h3>
+        <div class="single-input-container">
+            <input type="text" id="generalSearchTermsInput" placeholder="Enter Search Terms"/>
+        </div>
+        <div class="button-grid">
+            <input type="button" class="search-button" value="Posts" onclick="makeOsint30(document.getElementById('generalSearchTermsInput').value)">
+            <input type="button" class="search-button" value="People" onclick="makeOsint31(document.getElementById('generalSearchTermsInput').value)">
+            <input type="button" class="search-button" value="Photos" onclick="makeOsint32(document.getElementById('generalSearchTermsInput').value)">
+            <input type="button" class="search-button" value="Videos" onclick="makeOsint33(document.getElementById('generalSearchTermsInput').value)">
+            <input type="button" class="search-button" value="Marketplace" onclick="makeOsint34(document.getElementById('generalSearchTermsInput').value)">
+            <input type="button" class="search-button" value="Pages" onclick="makeOsint35(document.getElementById('generalSearchTermsInput').value)">
+            <input type="button" class="search-button" value="Places" onclick="makeOsint36(document.getElementById('generalSearchTermsInput').value)">
+            <input type="button" class="search-button" value="Groups" onclick="makeOsint37(document.getElementById('generalSearchTermsInput').value)">
+            <input type="button" class="search-button" value="Apps" onclick="makeOsint38(document.getElementById('generalSearchTermsInput').value)">
+            <input type="button" class="search-button" value="Events" onclick="makeOsint39(document.getElementById('generalSearchTermsInput').value)">
+            <input type="button" class="search-button" value="Links" onclick="makeOsint40(document.getElementById('generalSearchTermsInput').value)">
+            <input type="button" class="search-button" value="Watch" onclick="makeOsint46(document.getElementById('generalSearchTermsInput').value)">
+        </div>
+      </div>
+      </div></div></main>
+
+<footer>
+  Global Security Italy • Rome (IT)
+  <a href="License.html">License</a>
+</footer>
+
+<script type="text/javascript">
+// Funzione doPopAll rimossa
+
+// Helper for search functions
+function executeSearch(baseUrl, term, suffix = '', queryParam = '', noEncoding = false) {
+    const trimmedTerm = term.trim();
+    if (trimmedTerm === "") return;
+    let url;
+    if (queryParam) { 
+        url = baseUrl + queryParam + (noEncoding ? trimmedTerm : encodeURIComponent(trimmedTerm)) + suffix;
+    } else { 
+        url = baseUrl + (noEncoding ? trimmedTerm : encodeURIComponent(trimmedTerm)) + suffix;
+    }
+    window.open(url, '_blank');
+}
+
+// Username Lookup functions (using PopAll input)
+function makeOsint01(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '', '', true); }
+function makeOsint02(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/about', '', true); }
+function makeOsint03(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/about?section=work', '', true); }
+function makeOsint04(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/about?section=education', '', true); }
+function makeOsint05(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/about?section=living', '', true); }
+function makeOsint06(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/about?section=contact-info', '', true); }
+function makeOsint07(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/about?section=basic-info', '', true); }
+function makeOsint08(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/about?section=relationship', '', true); }
+function makeOsint09(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/about?section=family', '', true); }
+function makeOsint10(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/about?section=bio', '', true); }
+function makeOsint11(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/about?section=year-overviews', '', true); }
+function makeOsint12(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/friends', '', true); }
+function makeOsint13(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/photos', '', true); }
+function makeOsint14(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/photos_albums', '', true); }
+function makeOsint15(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/videos', '', true); }
+function makeOsint16(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/places_visited', '', true); }
+function makeOsint17(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/places_recent', '', true); }
+function makeOsint18(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/sports', '', true); }
+function makeOsint19(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/music', '', true); }
+function makeOsint20(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/movies', '', true); }
+function makeOsint21(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/tv', '', true); }
+function makeOsint22(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/books', '', true); }
+function makeOsint23(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/games', '', true); }
+function makeOsint24(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/likes', '', true); }
+function makeOsint25(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/events', '', true); }
+function makeOsint26(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/did_you_know', '', true); }
+function makeOsint27(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/reviews', '', true); }
+function makeOsint28(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/notes', '', true); }
+function makeOsint41(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/following', '', true); }
+function makeOsint42(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/reels_tab', '', true); }
+function makeOsint43(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/map', '', true); }
+function makeOsint44(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/reviews_given', '', true); }
+function makeOsint45(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '/reviews_written', '', true); }
+
+// FB User Number Lookup
+function makeOsint28a(OsintValue){ executeSearch('https://www.facebook.com/', OsintValue, '', '', true); }
+
+// Search Terms functions
+// makeOsint29 rimossa
+function makeOsint30(OsintValue){ executeSearch('https://www.facebook.com/search/posts/?q=', OsintValue); }
+function makeOsint31(OsintValue){ executeSearch('https://www.facebook.com/search/people/?q=', OsintValue); }
+function makeOsint32(OsintValue){ executeSearch('https://www.facebook.com/search/photos/?q=', OsintValue); }
+function makeOsint33(OsintValue){ executeSearch('https://www.facebook.com/search/videos/?q=', OsintValue); }
+function makeOsint34(OsintValue){ executeSearch('https://www.facebook.com/search/marketplace/?q=', OsintValue); }
+function makeOsint35(OsintValue){ executeSearch('https://www.facebook.com/search/pages/?q=', OsintValue); }
+function makeOsint36(OsintValue){ executeSearch('https://www.facebook.com/search/places/?q=', OsintValue); }
+function makeOsint37(OsintValue){ executeSearch('https://www.facebook.com/search/groups/?q=', OsintValue); }
+function makeOsint38(OsintValue){ executeSearch('https://www.facebook.com/search/apps/?q=', OsintValue); }
+function makeOsint39(OsintValue){ executeSearch('https://www.facebook.com/search/events/?q=', OsintValue); }
+function makeOsint40(OsintValue){ executeSearch('https://www.facebook.com/search/links/?q=', OsintValue); }
+function makeOsint46(OsintValue){ executeSearch('https://www.facebook.com/watch/search/?q=', OsintValue); }
+
+// Funzioni per User ID Filters (submitFormPosts, etc.) sono state rimosse.
+// Anche b64EncodeUnicode e buildFacebookSearchURL sono state rimosse se non usate altrove.
+
+// General form handler to prevent default for all forms
+document.querySelectorAll('form').forEach(form => {
+    if (!form.hasAttribute('onsubmit') || !form.getAttribute('onsubmit').includes('return false;')) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+        });
+    }
+});
+</script>
+
+</body>
+</html>

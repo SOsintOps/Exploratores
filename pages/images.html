@@ -1,1 +1,445 @@
-<!-- removed: legacy third-party derived content -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exploratores Images Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0066ff;
+      --secondary-color: #333;
+      --bg-color: #f9f9f9;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--secondary-color);
+      padding-bottom: 60px; /* Space for fixed footer */
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .menu {
+      list-style: none;
+      display: flex;
+      width: 100%;
+      max-width: 1200px;
+      justify-content: space-around;
+    }
+
+    .menu > li {
+      position: relative;
+      height: 60px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      text-align: center;
+      border-right: 1px solid #eee;
+    }
+     .menu > li:last-child {
+      border-right: none;
+    }
+
+    .menu > li:hover {
+      background: var(--primary-color);
+      color: #fff;
+    }
+     .menu > li span {
+      display: block;
+      line-height: 1.2;
+    }
+
+    .submenu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      border: 1px solid #ddd;
+      list-style: none;
+      min-width: 200px;
+      z-index: 999;
+    }
+
+    .submenu li {
+      padding: 0.5rem 1rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .submenu li:last-child {
+      border-bottom: none;
+    }
+
+    .submenu a {
+      text-decoration: none;
+      color: var(--secondary-color);
+      display: block;
+    }
+
+    .submenu li:hover {
+      background: var(--primary-color);
+    }
+
+    .submenu li:hover a {
+      color: #fff;
+    }
+
+    .menu > li:hover .submenu {
+      display: block;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px 20px; /* Adjusted top for nav */
+      background: #fff;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+
+    .columns-container {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .column {
+      flex: 1;
+      min-width: 0; 
+      border-radius: 4px;
+    }
+    
+    .form-section {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 4px;
+    }
+    
+    .form-section h2 {
+      margin-top: 0; 
+      margin-bottom: 0.8rem;
+      font-size: 1.2rem; 
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.3rem;
+    }
+     .column > .form-section:first-child > h2 {
+        margin-top: 0;
+    }
+    
+    .single-input-container {
+        margin-bottom: 0.75rem;
+    }
+    .single-input-container input[type="text"],
+    .form-section form input[type="text"] {
+      width: 100%; 
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 0.9rem;
+    }
+    
+    .form-section form { 
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+    }
+    .form-section form input[type="text"] { 
+        flex: 1 1 200px; 
+    }
+
+    /* Stile per bottoni con dimensione fissa */
+    input[type="submit"].search-button, /* Specifico per submit che sono search buttons */
+    input[type="button"].search-button {
+      width: 140px; 
+      padding: 0.5rem 0.5rem; 
+      height: auto; /* L'altezza sarà determinata dal padding e dal line-height */
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      background: #fff;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s;
+      text-align: center;
+      line-height: 1.2; 
+      flex-shrink: 0;
+      display: inline-block;
+      vertical-align: middle;
+      overflow: hidden;        
+      text-overflow: ellipsis; 
+      white-space: nowrap;     
+    }
+    /* Stile generico per input[type="submit"] se non hanno la classe search-button e devono comunque apparire come pulsanti */
+    input[type="submit"] {
+      padding: 0.5rem 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      background: #fff;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s;
+      text-align: center;
+      line-height: 1.2;
+      min-width: 130px; 
+      flex-shrink: 0;
+    }
+
+
+    input[type="submit"].search-button:hover, 
+    input[type="button"].search-button:hover,
+    input[type="submit"]:hover { /* Hover per tutti i submit */
+      background: var(--primary-color);
+      color: #fff;
+    }
+
+    .button-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    /* .button-grid .search-button non necessita di flex-grow o flex-basis se la larghezza è fissa globalmente */
+
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      padding: 0.5rem;
+      font-size: 0.9rem;
+      color: #555;
+      z-index: 1000;
+    }
+
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      margin-left: 0.5rem;
+    }
+        
+    @media (max-width: 992px) { 
+        .columns-container {
+            flex-direction: column;
+        }
+    }
+    @media (max-width: 768px) {
+      .menu > li {
+        font-size: 0.75rem;
+        padding: 0 0.2rem;
+      }
+      .form-section form {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .form-section form input[type="text"],
+      .form-section form input[type="submit"], /* Inclusi i submit generici */
+      .form-section form input[type="button"].search-button {
+        width: 100%;
+      }
+      .button-grid {
+        flex-direction: column;
+      }
+      .button-grid .search-button { /* I pulsanti nel grid prendono tutta la larghezza */
+          width: 100%; 
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <ul class="menu">
+    <li><span>HOME</span>
+      <ul class="submenu">
+        <li><a href="../index.html">Index</a></li>
+      </ul>
+    </li>
+    <li><span>Search<br>Engines</span>
+      <ul class="submenu">
+        <li><a href="Search.html">Search Engines</a></li>
+      </ul>
+    </li>
+    <li><span>People &<br>Identities</span>
+      <ul class="submenu">
+        <li><a href="Names.html">Names</a></li>
+        <li><a href="phonenumbers.html">Telephone Numbers</a></li>
+        <li><a href="Address.html">Addresses</a></li>
+        <li><a href="Vehicle.html">Vehicles</a></li>
+        <li><a href="UserNames.html">Usernames</a></li>
+        <li><a href="Email.html">Email Addresses</a></li>
+        <li><a href="Communities.html">Communities</a></li>
+      </ul>
+    </li>
+    <li><span>Social<br>Media</span>
+      <ul class="submenu">
+        <li><a href="Twitter.html">X (Twitter)</a></li>
+        <li><a href="Facebook.html">Facebook</a></li>
+        <li><a href="Instagram.html">Instagram</a></li>
+        <li><a href="LinkedIn.html">LinkedIn</a></li>
+      </ul>
+    </li>
+    <li><span>Websites</span>
+      <ul class="submenu">
+        <li><a href="Domain.html">Domains</a></li>
+        <li><a href="IP.html">IP Addresses</a></li>
+      </ul>
+    </li>
+    <li><span>GeoInt</span>
+      <ul class="submenu">
+        <li><a href="Maps.html">Maps</a></li>
+      </ul>
+    </li>
+    <li><span>Media<br>Analysis</span>
+      <ul class="submenu">
+        <li><a href="Images.html">Images</a></li>
+        <li><a href="Videos.html">Videos</a></li>
+        <li><a href="Documents.html">Documents</a></li>
+      </ul>
+    </li>
+    <li><span>Business<br>Intelligence</span>
+      <ul class="submenu">
+        <li><a href="Business.html">Business &amp; Government</a></li>
+        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
+      </ul>
+    </li>
+    <li><span>Tools</span>
+      <ul class="submenu">
+        <li><a href="API.html">Setting API</a></li>
+        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      
+<main>
+  <h1 class="page-title">Images Tool</h1>
+
+  <div class="columns-container">
+    <div class="column" id="left-column">
+      <div class="form-section">
+        <h2>Images Search by Terms</h2>
+        <div class="single-input-container">
+          <input type="text" id="imageSearchTermsInput" placeholder="Search Terms"/>
+        </div>
+        <div class="button-grid">
+          <input type="button" class="search-button" value="Google Images" onclick="makeOsint07(document.getElementById('imageSearchTermsInput').value)">
+          <input type="button" class="search-button" value="Bing Images" onclick="makeOsint08(document.getElementById('imageSearchTermsInput').value)">
+          <input type="button" class="search-button" value="Yandex Images" onclick="makeOsint09(document.getElementById('imageSearchTermsInput').value)">
+          <input type="button" class="search-button" value="Twitter Images" onclick="makeOsint10(document.getElementById('imageSearchTermsInput').value)">
+          <input type="button" class="search-button" value="Facebook Images" onclick="makeOsint11(document.getElementById('imageSearchTermsInput').value)">
+          <input type="button" class="search-button" value="Instagram Images" onclick="makeOsint12(document.getElementById('imageSearchTermsInput').value)">
+          <input type="button" class="search-button" value="LinkedIn Images" onclick="makeOsint13(document.getElementById('imageSearchTermsInput').value)">
+          <input type="button" class="search-button" value="Flickr Images" onclick="makeOsint14(document.getElementById('imageSearchTermsInput').value)">
+          <input type="button" class="search-button" value="Tumblr Images" onclick="makeOsint15(document.getElementById('imageSearchTermsInput').value)">
+        </div>
+      </div>
+    </div>
+
+    <div class="column" id="right-column">
+      <div class="form-section">
+        <h2>Reverse Image Search by URL</h2>
+        <div class="single-input-container">
+          <input type="text" id="reverseImageUrlInput" placeholder="Entire Image URL" />
+        </div>
+        <div class="button-grid">
+          <input type="button" class="search-button" value="Google Images" onclick="doReverseSearch01(document.getElementById('reverseImageUrlInput').value)">
+          <input type="button" class="search-button" value="Google Lens" onclick="doReverseSearch01a(document.getElementById('reverseImageUrlInput').value)">
+          <input type="button" class="search-button" value="Bing" onclick="doReverseSearch02(document.getElementById('reverseImageUrlInput').value)">
+          <input type="button" class="search-button" value="TinEye" onclick="doReverseSearch03(document.getElementById('reverseImageUrlInput').value)">
+          <input type="button" class="search-button" value="Yandex" onclick="doReverseSearch04(document.getElementById('reverseImageUrlInput').value)">
+          <input type="button" class="search-button" value="FaceCheck" onclick="doReverseSearch05(document.getElementById('reverseImageUrlInput').value)">
+          <input type="button" class="search-button" value="Repost Sleuth" onclick="doReverseSearch06(document.getElementById('reverseImageUrlInput').value)">
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h2>Flickr API</h2>
+        <form onsubmit="event.preventDefault(); doflemail(this.flemail.value);">
+          <input name="flemail" placeholder="Email Address" type="text" />
+          <input type="submit" class="search-button" value="Email Search"/>
+        </form>
+        <form onsubmit="event.preventDefault(); dofluser(this.fluser.value);">
+          <input name="fluser" placeholder="Username" type="text" />
+          <input type="submit" class="search-button" value="Username Search"/>
+        </form>
+        <form onsubmit="event.preventDefault(); doflnumber(this.flnumber.value);">
+          <input name="flnumber" placeholder="User Number" type="text" />
+          <input type="submit" class="search-button" value="User # Search"/>
+        </form>
+      </div>
+    </div> </div> </main>
+
+<script type="text/javascript">
+  // Images Search by Terms
+  function makeOsint07(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.google.com/search?q=' + encodeURIComponent(term) + '&tbm=isch', 'Search07window');}
+  function makeOsint08(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.bing.com/images/search?q=' + encodeURIComponent(term), 'Search08window');}
+  function makeOsint09(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://yandex.com/images/search?text=' + encodeURIComponent(term), 'Search09window');}
+  function makeOsint10(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://twitter.com/search?q=' + encodeURIComponent(term) + '&f=media', 'Search10window');}
+  function makeOsint11(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.facebook.com/search/photos/?q=' + encodeURIComponent(term), 'Search11window');}
+  function makeOsint12(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.google.com/search?tbm=isch&q=site%3Ainstagram.com+' + encodeURIComponent(term), 'Search12window');}
+  function makeOsint13(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.google.com/search?tbm=isch&q=site%3Alinkedin.com+' + encodeURIComponent(term), 'Search13window');}
+  function makeOsint14(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.flickr.com/search/?text=' + encodeURIComponent(term), 'Search14window');}
+  function makeOsint15(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.tumblr.com/search/' + encodeURIComponent(term), 'Search15window');}
+
+  // Reverse Image Search by URL
+  function doReverseSearch01(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.google.com/searchbyimage?image_url=' + encodeURIComponent(term) + '&client=app', 'Search01window');}
+  function doReverseSearch01a(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://lens.google.com/uploadbyurl?url=' + encodeURIComponent(term), 'Search01awindow');}
+  function doReverseSearch02(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.bing.com/images/search?view=detailv2&iss=sbi&q=imgurl:' + encodeURIComponent(term), 'Search02window');}
+  function doReverseSearch03(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('http://www.tineye.com/search/?url=' + encodeURIComponent(term), 'Search03window');}
+  function doReverseSearch04(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://yandex.com/images/search?rpt=imageview&url=' + encodeURIComponent(term), 'Search04window');}
+  function doReverseSearch05(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://facecheck.id/#url=' + encodeURIComponent(term), 'Search05window');}
+  function doReverseSearch06(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.repostsleuth.com/search?url=' + encodeURIComponent(term), 'Search06window');}
+
+  // Flickr API
+  function doflemail(flemailValue) { const term = flemailValue.trim(); if (term === "") return; window.open('https://api.flickr.com/services/rest/?method=flickr.people.findByEmail&api_key=***REMOVED***&find_email=' + encodeURIComponent(term), 'flickremailwindow');}
+  function dofluser(fluserValue) { const term = fluserValue.trim(); if (term === "") return; window.open('https://api.flickr.com/services/rest/?method=flickr.people.findByUsername&api_key=***REMOVED***&username=' + encodeURIComponent(term), 'flickruserwindow');}
+  function doflnumber(flnumberValue) { const term = flnumberValue.trim(); if (term === "") return; window.open('https://api.flickr.com/services/rest/?method=flickr.people.getInfo&api_key=***REMOVED***&user_id=' + encodeURIComponent(term) + '&format=rest', 'flickrnumberwindow');}
+
+  document.querySelectorAll('form').forEach(form => {
+    if (!form.hasAttribute('onsubmit') || !form.getAttribute('onsubmit').includes('return false;')) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+        });
+    }
+  });
+</script>
+
+<footer>
+  Global Security Italy • Rome (IT) <a href="License.html">License</a>
+</footer>
+
+</body>
+</html>

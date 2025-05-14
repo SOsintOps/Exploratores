@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telephone Numbers • Exploratores</title>
+  <!-- Font simile a documents.html -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0066ff;
+      --secondary-color: #333;
+      --neutral-color: #888;
+      --bg-color: #f9f9f9;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background-color: var(--bg-color);
+    }
+
+    /* NAVBAR FISSA IN ALTO */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #ffffff;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      max-width: 1200px;
+      width: 100%;
+      justify-content: space-around;
+      border: 1px solid #ccc;
+    }
+    .menu > li {
+      position: relative;
+      height: 60px;
+      width: 120px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 1rem;
+      border-right: 1px solid #ccc;
+      transition: background-color 0.2s ease-in;
+    }
+    .menu > li:last-child {
+      border-right: none;
+    }
+    .menu > li:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+    .menu > li span {
+      display: block;
+      line-height: 1.2;
+    }
+
+    /* SUBMENU */
+    .submenu {
+      display: none;
+      position: absolute;
+      background-color: #ffffff;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      border: 1px solid #ddd;
+      min-width: 200px;
+      z-index: 999;
+    }
+    .submenu li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    .submenu li:last-child {
+      border-bottom: none;
+    }
+    .submenu li a {
+      text-decoration: none;
+      color: var(--secondary-color);
+    }
+    .submenu li:hover {
+      background-color: var(--primary-color);
+    }
+    .submenu li:hover a {
+      color: #ffffff;
+    }
+
+    /* MOSTRA/NASCONDI SUBMENU AL PASSAGGIO DEL MOUSE */
+    .menu > li:hover .submenu {
+      display: block;
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 70px 20px 40px; /* spazio per non sovrapporsi con la navbar fissa */
+      background-color: #fff;
+    }
+    h1.page-title {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .description {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Sezione iniziale con 3 input + pulsanti */
+    .phone-inputs {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .phone-inputs input {
+      width: 100px;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 0.9rem;
+    }
+
+    .buttons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .buttons-grid button {
+      padding: 6px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      font-size: 0.9rem;
+      border-radius: 3px;
+      transition: background-color 0.2s ease-in;
+    }
+    .buttons-grid button:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+
+    /* Form "speciali" in fondo */
+    .form-section {
+      background-color: #fafafa;
+      border: 1px solid #eee;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+    }
+    .form-section p {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    .form-section input[type="text"] {
+      margin-bottom: 0.5rem;
+      margin-right: 5px;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 0.9rem;
+    }
+    .form-section input[type="submit"] {
+      padding: 6px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: background-color 0.2s ease-in;
+      font-size: 0.9rem;
+    }
+    .form-section input[type="submit"]:hover {
+      background-color: var(--primary-color);
+      color: #fff;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #ffffff;
+      border-top: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #555;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      margin-left: 10px;
+    }
+
+    /* RESPONSIVE MENU */
+    @media (max-width: 768px) {
+      .menu > li {
+        width: auto;
+        flex: 1;
+      }
+    }
+
+    /* DUE COLONNE PER LE ANNUALITA' DI HISTORICAL */
+    .historical-container {
+      display: flex;
+      gap: 2rem; /* spaziatura fra le due colonne */
+      margin-top: 1rem;
+    }
+    .historical-container .column-left,
+    .historical-container .column-right {
+      flex: 1;
+    }
+    .historical-container iframe {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <ul class="menu">
+    <li><span>HOME</span>
+      <ul class="submenu">
+        <li><a href="../index.html">Index</a></li>
+      </ul>
+    </li>
+    <li><span>Search<br>Engines</span>
+      <ul class="submenu">
+        <li><a href="Search.html">Search Engines</a></li>
+      </ul>
+    </li>
+    <li><span>People &<br>Identities</span>
+      <ul class="submenu">
+        <li><a href="Names.html">Names</a></li>
+        <li><a href="phonenumbers.html">Telephone Numbers</a></li>
+        <li><a href="Address.html">Addresses</a></li>
+        <li><a href="Vehicle.html">Vehicles</a></li>
+        <li><a href="UserNames.html">Usernames</a></li>
+        <li><a href="Email.html">Email Addresses</a></li>
+        <li><a href="Communities.html">Communities</a></li>
+      </ul>
+    </li>
+    <li><span>Social<br>Media</span>
+      <ul class="submenu">
+        <li><a href="Twitter.html">X (Twitter)</a></li>
+        <li><a href="Facebook.html">Facebook</a></li>
+        <li><a href="Instagram.html">Instagram</a></li>
+        <li><a href="LinkedIn.html">LinkedIn</a></li>
+      </ul>
+    </li>
+    <li><span>Websites</span>
+      <ul class="submenu">
+        <li><a href="Domain.html">Domains</a></li>
+        <li><a href="IP.html">IP Addresses</a></li>
+      </ul>
+    </li>
+    <li><span>GeoInt</span>
+      <ul class="submenu">
+        <li><a href="Maps.html">Maps</a></li>
+      </ul>
+    </li>
+    <li><span>Media<br>Analysis</span>
+      <ul class="submenu">
+        <li><a href="Images.html">Images</a></li>
+        <li><a href="Videos.html">Videos</a></li>
+        <li><a href="Documents.html">Documents</a></li>
+      </ul>
+    </li>
+    <li><span>Business<br>Intelligence</span>
+      <ul class="submenu">
+        <li><a href="Business.html">Business &amp; Government</a></li>
+        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
+      </ul>
+    </li>
+    <li><span>Tools</span>
+      <ul class="submenu">
+        <li><a href="API.html">Setting API</a></li>
+        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<!-- MAIN -->
+<main>
+  <h1 class="page-title">Phone Numbers Tool</h1>
+  <div class="description">
+    <p>Insert the phone number's three parts (area code, prefix, line) and then choose a service below.</p>
+  </div>
+
+  <!-- Tre campi di testo + pulsanti -->
+  <div class="phone-inputs">
+    <input type="text" id="phoneA" placeholder="Area" />
+    <input type="text" id="phoneB" placeholder="Prefix" />
+    <input type="text" id="phoneC" placeholder="Line" />
+  </div>
+
+  <!-- Pulsanti in ordine alfabetico, con "Populate All" fuori dall'ordinamento -->
+  <div class="buttons-grid">
+    <!-- Populate All (fuori dall'ordine) -->
+    <button onclick="doPopAll()">Populate All</button>
+
+    <!-- Ordine alfabetico dei servizi: -->
+    <button onclick="makeOsint01()">411</button>
+    <button onclick="makeOsint02()">800 Notes</button>
+    <button onclick="makeOsint03()">AdvBackground</button>
+    <button onclick="makeOsint04()">AmericaPhone</button>
+    <button onclick="makeOsint28()">Bing</button>
+    <button onclick="makeOsint05()">CallerSmart</button>
+    <button onclick="makeOsint06()">CyberBackground</button>
+    <button onclick="makeOsint07()">Dehashed</button>
+    <button onclick="makeOsint30()">Facebook</button>
+    <button onclick="makeOsint08()">FastPeople</button>
+    <button onclick="makeOsint27()">Google</button>
+    <button onclick="makeOsint09()">InfoTracer</button>
+    <button onclick="makeOsint10()">Numpi</button>
+    <button onclick="makeOsint11()">Nuwber</button>
+    <button onclick="makeOsint12()">OKCaller</button>
+    <button onclick="makeOsint13()">PeopleSearch</button>
+    <button onclick="makeOsint14()">PhoneOwner</button>
+    <button onclick="makeOsint17()">SearchPeople</button>
+    <button onclick="makeOsint18()">Spytox</button>
+    <button onclick="makeOsint19()">Sync.me</button>
+    <button onclick="makeOsint20()">ThatsThem</button>
+    <button onclick="makeOsint21()">TruePeople</button>
+    <button onclick="makeOsint22()">USPhonebook</button>
+    <button onclick="makeOsint15()">WhatsApp</button>
+    <button onclick="makeOsint23()">WhitePages</button>
+    <button onclick="makeOsint24()">WhoseNo</button>
+    <button onclick="makeOsint29()">Yandex</button>
+    <button onclick="makeOsint25()">YellowPages</button>
+    <button onclick="makeOsint26()">ZabaSearch</button>
+  </div>
+
+  <script>
+    // Raccoglie i 3 valori (area, prefisso, linea)
+    function getPhoneParts(){
+      const a = document.getElementById('phoneA').value.trim();
+      const b = document.getElementById('phoneB').value.trim();
+      const c = document.getElementById('phoneC').value.trim();
+      return {a, b, c};
+    }
+
+    // Esempio "Populate All" - se vuoi popolare altri campi
+    function doPopAll(){
+      const {a, b, c} = getPhoneParts();
+      alert("Populating others with: " + a + "-" + b + "-" + c);
+    }
+
+    // 411
+    function makeOsint01(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://www.411.com/phone/1-' + a + '-' + b + '-' + c, '_blank');
+    }
+    // 800 Notes
+    function makeOsint02(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://800notes.com/Phone.aspx/1-' + a + '-' + b + '-' + c, '_blank');
+    }
+    // AdvBackground
+    function makeOsint03(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://www.advancedbackgroundchecks.com/' + a + '-' + b + '-' + c, '_blank');
+    }
+    // AmericaPhone
+    function makeOsint04(){
+      const {a, b, c} = getPhoneParts();
+      window.open('http://www.americaphonebook.com/reverse.php?number=' + a + b + c, '_blank');
+    }
+    // Bing
+    function makeOsint28(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://www.bing.com/search?q=' + a + '-' + b + '-' + c, '_blank');
+    }
+    // CallerSmart
+    function makeOsint05(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://www.callersmart.com/phone-number/' + a + '-' + b + '-' + c + '?phone-number=' + a + b + c, '_blank');
+    }
+    // CyberBackground
+    function makeOsint06(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://www.cyberbackgroundchecks.com/phone/' + a + '-' + b + '-' + c, '_blank');
+    }
+    // Dehashed
+    function makeOsint07(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://dehashed.com/search?query=' + a + b + c, '_blank');
+    }
+    // Facebook
+    function makeOsint30(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://mbasic.facebook.com/login/device-based/ar/login/?multiple_results=0&scp=1&pls=' + a + b + c, '_blank');
+    }
+    // FastPeople
+    function makeOsint08(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://www.fastpeoplesearch.com/' + a + '-' + b + '-' + c, '_blank');
+    }
+    // Google
+    function makeOsint27(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://www.google.com/search?q=' + a + '-' + b + '-' + c, '_blank');
+    }
+    // InfoTracer
+    function makeOsint09(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://infotracer.com/phone-lookup/results/?phone=' + a + b + c, '_blank');
+    }
+    // Numpi
+    function makeOsint10(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://numpi.com/phone-info/' + a + b + c, '_blank');
+    }
+    // Nuwber
+    function makeOsint11(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://nuwber.com/search/phone?phone=' + a + b + c, '_blank');
+    }
+    // OKCaller
+    function makeOsint12(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://www.okcaller.com/' + a + b + c, '_blank');
+    }
+    // PeopleSearch
+    function makeOsint13(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://www.peoplesearchnow.com/phone/' + a + '-' + b + '-' + c, '_blank');
+    }
+    // PhoneOwner
+    function makeOsint14(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://phoneowner.com/phone/' + a + b + c, '_blank');
+    }
+    // SearchPeople
+    function makeOsint17(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://www.searchpeoplefree.com/phone-lookup/' + a + '-' + b + '-' + c, '_blank');
+    }
+    // Spytox
+    function makeOsint18(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://www.spytox.com/people/search?phone=' + a + '-' + b + '-' + c, '_blank');
+    }
+    // Sync.me
+    function makeOsint19(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://sync.me/search/?number=1' + a + b + c, '_blank');
+    }
+    // ThatsThem
+    function makeOsint20(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://thatsthem.com/phone/' + a + '-' + b + '-' + c, '_blank');
+    }
+    // TruePeople
+    function makeOsint21(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://www.truepeoplesearch.com/results?phoneno=(' + a + ')' + b + '-' + c, '_blank');
+    }
+    // USPhonebook
+    function makeOsint22(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://www.usphonebook.com/' + a + '-' + b + '-' + c, '_blank');
+    }
+    // WhatsApp
+    function makeOsint15(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://whatsapp.checkleaked.cc/1' + a + b + c, '_blank');
+    }
+    // WhitePages
+    function makeOsint23(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://www.whitepages.com/phone/1-' + a + '-' + b + '-' + c, '_blank');
+    }
+    // WhoseNo
+    function makeOsint24(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://www.whoseno.com/US/' + a + b + c, '_blank');
+    }
+    // Yandex
+    function makeOsint29(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://yandex.com/search/?text=' + a + '-' + b + '-' + c, '_blank');
+    }
+    // YellowPages
+    function makeOsint25(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://people.yellowpages.com/whitepages/phone-lookup?phone=' + a + b + c, '_blank');
+    }
+    // ZabaSearch
+    function makeOsint26(){
+      const {a, b, c} = getPhoneParts();
+      window.open('https://www.zabasearch.com/phone/' + a + b + c, '_blank');
+    }
+  </script>
+
+  <!-- Form e funzioni "speciali" (Google/Bing multi, Craigslist, Historical) -->
+  <div class="form-section">
+    <p>Google/Bing (multiformat):</p>
+    <form onsubmit="doall02(this.all1.value, this.all2.value, this.all3.value, this.all4.value, this.all5.value, this.all6.value); return false;">
+      <input type="text" name="all1" size="4" placeholder="Area"/>
+      <input type="text" name="all2" size="4" placeholder="Prefix"/>
+      <input type="text" name="all3" size="5" placeholder="Line"/><br><br>
+      <input type="text" name="all4" size="4" placeholder="e.g. 'six one two'"/>
+      <input type="text" name="all5" size="4" placeholder="e.g. 'five five five'"/>
+      <input type="text" name="all6" size="5" placeholder="e.g. 'one two one two'"/><br><br>
+      <input type="submit" value="Google/Bing" />
+    </form>
+  </div>
+
+  <div class="form-section">
+    <p>Search on Craigslist:</p>
+    <form onsubmit="doall03(this.all1.value, this.all2.value, this.all3.value, this.all4.value, this.all5.value, this.all6.value); return false;">
+      <input type="text" name="all1" size="4" placeholder="Area"/>
+      <input type="text" name="all2" size="4" placeholder="Prefix"/>
+      <input type="text" name="all3" size="5" placeholder="Line"/><br><br>
+      <input type="text" name="all4" size="4" placeholder="six one two"/>
+      <input type="text" name="all5" size="4" placeholder="five five five"/>
+      <input type="text" name="all6" size="5" placeholder="one two one two"/><br><br>
+      <input type="submit" value="Craigslist"/>
+    </form>
+  </div>
+
+  <div class="form-section">
+    <p>Historical (oldphonebook.com):</p>
+    <form onsubmit="doall04(this.all04.value); return false;">
+      <input type="text" name="all04" size="20" placeholder="6185551212" />
+      <input type="submit" value="Historical" /><br><br>
+
+      <div class="historical-container">
+        <!-- COLONNA SINISTRA: anni 1900 -->
+        <div class="column-left">
+          <strong>1994:</strong><br>
+          <iframe allowScriptAccess="always" name="frame1" width="400px" height="50" frameborder="1"></iframe><br><br>
+
+          <strong>1995:</strong><br>
+          <iframe allowScriptAccess="always" name="frame2" width="400px" height="50" frameborder="1"></iframe><br><br>
+
+          <strong>1996:</strong><br>
+          <iframe allowScriptAccess="always" name="frame3" width="400px" height="50" frameborder="1"></iframe><br><br>
+
+          <strong>1997:</strong><br>
+          <iframe allowScriptAccess="always" name="frame4" width="400px" height="50" frameborder="1"></iframe><br><br>
+
+          <strong>1998:</strong><br>
+          <iframe allowScriptAccess="always" name="frame5" width="400px" height="50" frameborder="1"></iframe>
+        </div>
+
+        <!-- COLONNA DESTRA: anni 2000 -->
+        <div class="column-right">
+          <strong>2001:</strong><br>
+          <iframe allowScriptAccess="always" name="frame6" width="400px" height="50" frameborder="1"></iframe><br><br>
+
+          <strong>2002:</strong><br>
+          <iframe allowScriptAccess="always" name="frame7" width="400px" height="50" frameborder="1"></iframe><br><br>
+
+          <strong>2003:</strong><br>
+          <iframe allowScriptAccess="always" name="frame8" width="400px" height="50" frameborder="1"></iframe><br><br>
+
+          <strong>2007:</strong><br>
+          <iframe allowScriptAccess="always" name="frame9" width="400px" height="50" frameborder="1"></iframe><br><br>
+
+          <strong>2008:</strong><br>
+          <iframe allowScriptAccess="always" name="frame10" width="400px" height="50" frameborder="1"></iframe><br><br>
+
+          <strong>2013:</strong><br>
+          <iframe allowScriptAccess="always" name="frame11" width="400px" height="50" frameborder="1"></iframe><br><br>
+
+          <strong>2014:</strong><br>
+          <iframe allowScriptAccess="always" name="frame12" width="400px" height="50" frameborder="1"></iframe>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script type="text/javascript">
+    // Esempio funzioni aggiuntive:
+    function doall02(all1, all2, all3, all4, all5, all6) {
+      // Google, Bing, ecc...
+      window.open('https://www.google.com/search?q=%22' + all1 + all2 + all3 + '%22', 'g1');
+      setTimeout(function(){
+        window.open('https://www.bing.com/search?q=%22' + all1 + '-' + all2 + '-' + all3 + '%22', 'b1');
+      },1000);
+      // ... e così via
+    }
+
+    function doall03(all1, all2, all3, all4, all5, all6) {
+      window.open('https://www.google.com/search?q=site%3Acraigslist.org+%22' + all1 + all2 + all3 + '%22', 'c1');
+      // Aggiungi eventuali ricerche aggiuntive...
+    }
+
+    function doall04(all04) {
+      // le stesse setTimeout del sorgente originale
+      window.open('http://www.oldphonebook.com/searchphone2.php?syear=1994&sphone=' + all04, 'frame1');
+      setTimeout(function(){
+        window.open('http://www.oldphonebook.com/searchphone2.php?syear=1995&sphone=' + all04, 'frame2');
+      },1000);
+      setTimeout(function(){
+        window.open('http://www.oldphonebook.com/searchphone2.php?syear=1996&sphone=' + all04, 'frame3');
+      },2000);
+      setTimeout(function(){
+        window.open('http://www.oldphonebook.com/searchphone2.php?syear=1997&sphone=' + all04, 'frame4');
+      },3000);
+      setTimeout(function(){
+        window.open('http://www.oldphonebook.com/searchphone2.php?syear=1998&sphone=' + all04, 'frame5');
+      },4000);
+      setTimeout(function(){
+        window.open('http://www.oldphonebook.com/searchphone2.php?syear=2001&sphone=' + all04, 'frame6');
+      },5000);
+      setTimeout(function(){
+        window.open('http://www.oldphonebook.com/searchphone2.php?syear=2002&sphone=' + all04, 'frame7');
+      },6000);
+      setTimeout(function(){
+        window.open('http://www.oldphonebook.com/searchphone2.php?syear=2003&sphone=' + all04, 'frame8');
+      },7000);
+      setTimeout(function(){
+        window.open('http://www.oldphonebook.com/searchphone2.php?syear=2007&sphone=' + all04, 'frame9');
+      },8000);
+      setTimeout(function(){
+        window.open('http://www.oldphonebook.com/searchphone2.php?syear=2008&sphone=' + all04, 'frame10');
+      },9000);
+      setTimeout(function(){
+        window.open('http://www.oldphonebook.com/searchphone2.php?syear=2013&sphone=' + all04, 'frame11');
+      },10000);
+      setTimeout(function(){
+        window.open('http://www.oldphonebook.com/searchphone2.php?syear=2014&sphone=' + all04, 'frame12');
+      },11000);
+    }
+  </script>
+
+</main>
+
+<footer>
+  Global Security Italy • Rome (IT)
+  <a href="License.html">License</a>
+</footer>
+
+<script>
+  // Navbar: mostra/nascondi i submenu
+  document.querySelectorAll('.menu > li').forEach(item => {
+    item.addEventListener('mouseover', function() {
+      const submenu = this.querySelector('.submenu');
+      if(submenu) submenu.style.display = 'block';
+    });
+    item.addEventListener('mouseout', function() {
+      const submenu = this.querySelector('.submenu');
+      if(submenu) submenu.style.display = 'none';
+    });
+  });
+</script>
+
+</body>
+</html>

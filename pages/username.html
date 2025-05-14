@@ -56,7 +56,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      font-size: 0.85rem;
+      font-size: 1rem;
       border-right: 1px solid #ccc;
       transition: background-color 0.2s ease-in;
     }
@@ -219,11 +219,11 @@
     </li>
     <li><span>People &<br>Identities</span>
       <ul class="submenu">
-        <li><a href="Name.html">Names</a></li>
-        <li><a href="Telephone.html">Telephone Numbers</a></li>
+        <li><a href="Names.html">Names</a></li>
+        <li><a href="phonenumbers.html">Telephone Numbers</a></li>
         <li><a href="Address.html">Addresses</a></li>
         <li><a href="Vehicle.html">Vehicles</a></li>
-        <li><a href="Username.html">Usernames</a></li>
+        <li><a href="UserNames.html">Usernames</a></li>
         <li><a href="Email.html">Email Addresses</a></li>
         <li><a href="Communities.html">Communities</a></li>
       </ul>
@@ -274,9 +274,9 @@
 
   <!-- Istruzioni e input allineati a sinistra -->
   <section class="search-instructions">
-    <label for="searchInput">Insert username here:</label>
+    <label for="OsintInput">Insert username here:</label>
     <div class="input-container">
-      <input type="text" id="searchInput" class="input-field" placeholder="Username">
+      <input type="text" id="OsintInput" class="input-field" placeholder="Username">
     </div>
     <p>
       Please enter the username in the box above and then press the buttons corresponding 
@@ -325,24 +325,24 @@
   </div>
 
   <script>
-    function getSearchInput(){
-      return document.getElementById('searchInput').value.trim();
+    function getOsintInput(){
+      return document.getElementById('OsintInput').value.trim();
     }
 
     function searchBing(){
-      const term = getSearchInput();
+      const term = getOsintInput();
       window.open('https://www.bing.com/search?q=%22' + term + '%22','_blank');
     }
     function searchCheckistan(){
-      const term = getSearchInput();
+      const term = getOsintInput();
       window.open('https://usernamechecker.checkistan.com/#' + term,'_blank');
     }
     function searchDehashed(){
-      const term = getSearchInput();
+      const term = getOsintInput();
       window.open('https://dehashed.com/search?query="' + term + '"','_blank');
     }
     function searchDehashedEmails(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       setTimeout(()=>{window.open('https://dehashed.com/search?query=%22' + user + '@gmail.com%22','_blank');},1000);
       setTimeout(()=>{window.open('https://dehashed.com/search?query=%22' + user + '@yahoo.com%22','_blank');},3000);
       setTimeout(()=>{window.open('https://dehashed.com/search?query=%22' + user + '@hotmail.com%22','_blank');},6000);
@@ -357,7 +357,7 @@
       setTimeout(()=>{window.open('https://dehashed.com/search?query=%22' + user + '@me.com%22','_blank');},32000);
     }
     function searchEmailSearch(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://www.google.com/search?q=%22' 
         + user + '@gmail.com%22OR%22' + user + '@yahoo.com%22OR%22' + user + '@hotmail.com%22OR%22'
         + user + '@protonmail.com%22OR%22' + user + '@live.com%22OR%22' + user + '@icloud.com%22OR%22'
@@ -365,87 +365,87 @@
         + user + '@mac.com%22OR%22' + user + '@me.com%22', '_blank');
     }
     function searchFacebook(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://facebook.com/' + user, '_blank');
     }
     function searchGhunt(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://gmail-osint.activetk.jp/' + user, '_blank');
     }
     function searchGoogle(){
-      const term = getSearchInput();
+      const term = getOsintInput();
       window.open('https://www.google.com/search?q="%22' + term + '%22','_blank');
     }
     function searchGravatar(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://en.gravatar.com/' + user, '_blank');
     }
     function searchIDCrawl(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://www.idcrawl.com/u/' + user, '_blank');
     }
     function searchInstantUsername(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://instantusername.com/?q=' + user, '_blank');
     }
     function searchInstagram(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('http://instagram.com/' + user, '_blank');
     }
     function searchLinkTree(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://linktr.ee/' + user, '_blank');
     }
     function searchMedium(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://medium.com/@' + user, '_blank');
     }
     function searchNameChecker(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://www.namechecker.org/#' + user, '_blank');
     }
     function searchNameChck(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://namechk.com/namechk-plugin-search-results/?n=' + user, '_blank');
     }
     function searchNameVine(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://namevine.com/#/' + user, '_blank');
     }
     function searchProfileDiscover(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://profilediscover.com/' + user, '_blank');
     }
     function searchPSBDMP(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://psbdmp.ws/api/search/' + user, '_blank');
     }
     function searchReddit(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://www.reddit.com/user/' + user, '_blank');
     }
     function searchSnapchat(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://www.snapchat.com/s/' + user, '_blank');
     }
     function searchSocialSearcher(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://www.social-searcher.com/search-users/?ntw=&q6=' + user, '_blank');
     }
     function searchTikTok(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://www.tiktok.com/@' + user, '_blank');
     }
     function searchTinder(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://tinder.com/@' + user, '_blank');
     }
     function searchTumblr(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://' + user + '.tumblr.com', '_blank');
     }
     function searchUserSearch(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://usersearch.org/results_normal.php?URL_username=' + user, '_blank');
       window.open('https://usersearch.org/results_advanced.php?URL_username=' + user, '_blank');
       window.open('https://usersearch.org/results_advanced1.php?URL_username=' + user, '_blank');
@@ -459,15 +459,15 @@
       window.open('https://usersearch.org/results_crypto.php?URL_username=' + user, '_blank');
     }
     function searchX(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('http://x.com/' + user, '_blank');
     }
     function searchYandex(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('https://yandex.com/search/?text="' + user + '"','_blank');
     }
     function searchYouTube(){
-      const user = getSearchInput();
+      const user = getOsintInput();
       window.open('http://youtube.com/' + user, '_blank');
     }
   </script>

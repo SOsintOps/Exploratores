@@ -1,1 +1,999 @@
-<!-- removed: legacy third-party derived content -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Exploratores Live Audio Streams Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0066ff;
+      --secondary-color: #333;
+      --bg-color: #f9f9f9;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--secondary-color);
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .menu {
+      list-style: none;
+      display: flex;
+      width: 100%;
+      max-width: 1200px;
+      justify-content: space-around;
+    }
+
+    .menu > li {
+      position: relative;
+      height: 60px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .menu > li:hover {
+      background: var(--primary-color);
+      color: #fff;
+    }
+
+    .submenu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      border: 1px solid #ddd;
+      list-style: none;
+      min-width: 200px;
+      z-index: 999;
+    }
+
+    .submenu li {
+      padding: 0.5rem 1rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .submenu li:last-child {
+      border-bottom: none;
+    }
+
+    .submenu a {
+      text-decoration: none;
+      color: var(--secondary-color);
+      display: block;
+    }
+
+    .submenu li:hover {
+      background: var(--primary-color);
+    }
+
+    .submenu li:hover a {
+      color: #fff;
+    }
+
+    .menu > li:hover .submenu {
+      display: block;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 70px 20px 40px;
+      background: #fff;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .two-columns {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .column {
+      flex: 1;
+      min-width: 300px;
+      background: #fafafa;
+      padding: 1rem;
+      border: 1px solid #eee;
+      border-radius: 4px;
+    }
+
+    .column h2 {
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.3rem;
+    }
+
+    .form-section {
+      margin-bottom: 1rem;
+    }
+
+    .form-section form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    input[type="text"], select, input[type="date"] {
+      flex: 1;
+      padding: 0.4rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 0.9rem;
+    }
+
+    input[type="submit"] {
+      width: 140px;
+      padding: 0.4rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      background: #fff;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    input[type="submit"]:hover {
+      background: var(--primary-color);
+      color: #fff;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      border-top: 1px solid #ddd;
+      text-align: center;
+      padding: 0.5rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    footer a {
+      color: var(--primary-color);
+      text-decoration: none;
+      margin-left: 0.5rem;
+    }
+    .note {
+      font-size: 1rem;
+      background-color: #fff9d6; /* light highlight */
+      border-left: 3px solid #ffc107;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-radius: 3px;
+    }
+    @media (max-width: 768px) {
+      .two-columns {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top Navigation Bar -->
+<nav>
+  <ul class="menu">
+    <li><span>HOME</span>
+      <ul class="submenu">
+        <li><a href="../index.html">Index</a></li>
+      </ul>
+    </li>
+    <li><span>Search<br>Engines</span>
+      <ul class="submenu">
+        <li><a href="Search.html">Search Engines</a></li>
+      </ul>
+    </li>
+    <li><span>People &<br>Identities</span>
+      <ul class="submenu">
+        <li><a href="Names.html">Names</a></li>
+        <li><a href="phonenumbers.html">Telephone Numbers</a></li>
+        <li><a href="Address.html">Addresses</a></li>
+        <li><a href="Vehicle.html">Vehicles</a></li>
+        <li><a href="UserNames.html">Usernames</a></li>
+        <li><a href="Email.html">Email Addresses</a></li>
+        <li><a href="Communities.html">Communities</a></li>
+      </ul>
+    </li>
+    <li><span>Social<br>Media</span>
+      <ul class="submenu">
+        <li><a href="Twitter.html">X (Twitter)</a></li>
+        <li><a href="Facebook.html">Facebook</a></li>
+        <li><a href="Instagram.html">Instagram</a></li>
+        <li><a href="LinkedIn.html">LinkedIn</a></li>
+      </ul>
+    </li>
+    <li><span>Websites</span>
+      <ul class="submenu">
+        <li><a href="Domain.html">Domains</a></li>
+        <li><a href="IP.html">IP Addresses</a></li>
+      </ul>
+    </li>
+    <li><span>GeoInt</span>
+      <ul class="submenu">
+        <li><a href="Maps.html">Maps</a></li>
+      </ul>
+    </li>
+    <li><span>Media<br>Analysis</span>
+      <ul class="submenu">
+        <li><a href="Images.html">Images</a></li>
+        <li><a href="Videos.html">Videos</a></li>
+        <li><a href="Documents.html">Documents</a></li>
+      </ul>
+    </li>
+    <li><span>Business<br>Intelligence</span>
+      <ul class="submenu">
+        <li><a href="Business.html">Business &amp; Government</a></li>
+        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
+      </ul>
+    </li>
+    <li><span>Tools</span>
+      <ul class="submenu">
+        <li><a href="API.html">Setting API</a></li>
+        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      
+      <!-- Contenuto principale -->
+      <main>
+        <h1>Live Audio Streams Tool</h1>
+		
+<h2>International</h2>
+
+<script type="text/javascript">
+function makeOsint01(Search01)
+{window.open('https://de1.api.radio-browser.info/json/stations/byname/' + Search01, 'Search01window');}
+</script>
+<form onsubmit="makeOsint01(this.Search01.value); return false;">
+<input type="text" name="Search01" size="30" placeholder="Search Term"/>
+<input type="submit" style="width:140px" value="Radio Stream" /><br></form>
+
+<script type="text/javascript">
+function makeOsint02(Search02)
+{window.open('https://de1.api.radio-browser.info/json/stations/bynameexact/' + Search02, 'Search02window');}
+</script>
+<form onsubmit="makeOsint02(this.Search02.value); return false;">
+<input type="text" name="Search02" size="30" placeholder="Call Letters" value="" />
+<input type="submit" style="width:140px" value="Radio Stream" /><br></form>
+
+<script type="text/javascript">
+function makeOsint03(Search03)
+{window.open('https://de1.api.radio-browser.info/json/stations/bystateexact/' + Search03, 'Search03window');}
+</script>
+<form onsubmit="makeOsint03(this.Search03.value); return false;">
+<input type="text" name="Search03" size="30" placeholder="State Name" value="" />
+<input type="submit" style="width:140px" value="Radio Stream" /><br></form>
+
+<script type="text/javascript">
+function makeOsint04(Search04)
+{window.open('https://de1.api.radio-browser.info/json/stations/bycountryexact/' + Search04, 'Search04window');}
+</script>
+<form onsubmit="makeOsint04(this.Search04.value); return false;">
+<input type="text" name="Search04" size="30" placeholder="Country Name" value="" />
+<input type="submit" style="width:140px" value="Radio Stream" /><br></form>
+
+<script type="text/javascript">
+function makeOsint2(menu2)
+{window.open(menu2, 'inner');}
+</script>
+<form onsubmit="makeOsint2(this.menu2.value); return false;">
+<select name="menu2" style="width:200px">
+<option>Radio News Stream</option>
+<option value="https://www.hlsplayer.org/play?url=https://live-hls-audio-web-aje.getaj.net/VOICE-AJE/index.m3u8">Al Jazeera News</option>
+<option value="http://stream.live.vc.bbcmedia.co.uk/bbc_world_service">BBC News</option>
+<option value="https://www.hlsplayer.org/play?url=https://cbcradiolive.akamaized.net/hls/live/2041053/ES_R1SRE/master.m3u8">CBC News</option>
+<option value="https://www.hlsplayer.org/play?url=https://live.amperwave.net/manifest/audacy-cbsnewsaac-hlsc.m3u8">CBS News</option>
+</select>
+<input type="submit" style="width:50px" value="Play" /></form>
+
+<script type="text/javascript">
+function makeOsint(menu, frequency)
+{window.open(menu + frequency + 'am&keys=xyyyVVVVVzzzzz', 'secondwindow');}
+</script>
+<form onsubmit="makeOsint(this.menu.value, this.frequency.value); return false;">
+<select name="menu" style="width:200px">
+<option>Remote Radio Access</option>
+<option value="http://190.123.83.42:8073/?f=">Argentina</option>
+<option value="http://kiwisdr.areg.org.au:8074/?f=">Australia</option>
+<option value="http://carinthia.proxy.kiwisdr.com:8073/?f=">Austria</option>
+<option value="http://on5pvd.dyndns.info:8073/?f=">Belgium</option>
+<option value="http://kiwibsb.ddns.net:8073/?f=">Brazil</option>
+<option value="http://on5pvd.dyndns.info:8073/?f=">Brussels</option>
+<option value="http://ve6hfd.ddns.net:8074/?f=">Canada: Alberta</option>
+<option value="http://kj6ei.ddns.net:8073/?f=">Canada: BC</option>
+<option value="http://24.78.155.2:8073/?f=">Canada: Manitoba</option>
+<option value="http://hobiecat.zapto.org:8073/?f=">Canada: Ontario</option>
+<option value="http://ve2cwq.ddns.net:8080/?f=">Canada: Quebec</option>
+<option value="http://ce3pbr.proxy.kiwisdr.com:8073/?f=">Chile</option>
+<option value="http://sdr.cyhams.org:8073/?f=">Cyprus</option>
+<option value="http://109.164.114.15:8073/?f=">Czech Republic</option>
+<option value="http://46.32.47.202:8073/?f=">Denmark</option>
+<option value="http://sdxl-loh.ddns.net:8073/?f=">Finland</option>
+<option value="http://88.163.155.169:18073/?f=">France</option>
+<option value="http://80.88.23.229:8073/?f=">Germany</option>
+<option value="http://elektrongr.ddns.net:8073/?f=">Greece</option>
+<option value="http://vr2bg.proxy.kiwisdr.com:8073/?f=">Hong Kong</option>
+<option value="http://kiwiradio.proxy.kiwisdr.com:8073/?f=">Hungary</option>
+<option value="http://78.40.253.65:80/?f=">Iceland</option>
+<option value="http://103.232.186.40:8073/?f=">India</option>
+<option value="http://swloi33.proxy.kiwisdr.com:8073/?f=">Indonesia</option>
+<option value="http://emeraldsdr.proxy.kiwisdr.com:8073/?f=">Ireland</option>
+<option value="http://kiwi.minish.org:8073//?f=">Ireland</option>
+<option value="http://iw2nke.ddns.net:8073/">Italy</option>
+<option value="http://202.22.211.123:8073/?f=">Japan</option>
+<option value="http://hik.iptime.org:8075/?f=">Korea</option>
+<option value="http://v51b.ddns.net:8073/?f=">Namibia</option>
+<option value="http://83.82.152.141:8073/?f=">Netherlands</option>
+<option value="http://kiwisdr.annett.co.nz:8073/?f=">New Zealand</option>
+<option value="http://77.223.174.203:8073/?f=">Norway</option>
+<option value="http://88.220.45.111:8073/?f=">Poland</option>
+<option value="http://picamiolos.dynns.com:8073/?f=">Portugal</option>
+<option value="http://kiwisdr-dorohoi.ddns.net:8073/?f=">Romania</option>
+<option value="http://r3tio.proxy.kiwisdr.com:8073/?f=">Russia</option>
+<option value="http://argyllsdr.ddns.net:8073/?f=">Scotland</option>
+<option value="http://s57bit.proxy.kiwisdr.com:8073/?f=">Slovenia</option>
+<option value="http://sdrbcn.duckdns.org:8073/?f=">Spain</option>
+<option value="http://j6skim.ddns.net:8073/?f=">St. Lucia</option>
+<option value="http://sm2byc.ddns.net:8073/?f=">Sweden</option>
+<option value="http://80.75.112.98:8075/?f=">Switzerland</option>
+<option value="http://bm7gup77.ddns.net:8073/?f=">Taiwan</option>
+<option value="http://89.238.176.189:55937/?f=">Thailand</option>
+<option value="http://thescotts.ddns.net:8073/?f=">UK: Amersham</option>
+<option value="http://msars.ddns.net:8073/?f=">UK: Burgess Hill</option>
+<option value="http://g3sdh.com:8054/?f=">UK: Bristol</option>
+<option value="http://kiwisdr1.hoka.co.uk:8072/?f=">UK: Canterbury</option>
+<option value="http://g4gnk.proxy.kiwisdr.com:8073/?f=">UK: Herfordshire</option>
+<option value="http://kiwi.24x7.hk:8073/?f=">Ukraine</option>
+<option value="http://wl7no.ddns.net:8074/?f=">US: Alaska</option>
+<option value="http://kj7cat.com:8073/?f=">US: Arizona</option>
+<option value="http://73.185.80.191:8073/?f=">US: California</option>
+<option value="http://kb6c.proxy.kiwisdr.com:8073/?f=">US: California (LA)</option>
+<option value="http://kiwisdr.ucsd.edu:8073/?f=">US: California (SD)</option>
+<option value="http://75.144.20.99:8073/?f=">US: California (SJ)</option>
+<option value="http://n0emp.ddns.net:8073/?f=">US: Colorado (FC)</option>
+<option value="http://jpvm54.ddns.net:8073/?f=">US: Colorado (Lakewood)</option>
+<option value="http://w0air.ddns.net:8073/?f=">US: Colorado (Loveland)</option>
+<option value="http://75.71.97.203:8073/?f=">US: Colorado (N)</option>
+<option value="http://sigmasdr.ddns.net:8073/?f=">US: Connecticut</option>
+<option value="http://qth.ddns.net:8073/?f=">US: Florida</option>
+<option value="http://kd7nfr.freeddns.org:8073/?f=">US: Georgia</option>
+<option value="http://72.235.217.245:8073/?f=">US: Hawaii</option>
+<option value="http://kiwisdr.k7biz.com:8073/?f=">US: Idaho</option>
+<option value="http://ab9mq.hopto.org:8073/?f=">US: Illinois</option>
+<option value="http://kt0tt.dynu.net:8073/?f=">US: Iowa</option>
+<option value="http://lounix.net:8073/?f=">US: Kansas</option>
+<option value="http://98.23.53.14:8073/?f=">US: Kentucky</option>
+<option value="http://mdusakiwi.ddns.net:8073/?f=">US: Maryland</option>
+<option value="http://kb1uif-kiwisdr.ddns.net:8073/?f=">US: Massachussets</option>
+<option value="http://kiwi.k8bmz.net:8073/?f=">US: Michigan</option>
+<option value="http://bikedork.myddns.me:8073/?f=">US: Minnesota</option>
+<option value="http://kb0fxkiwisdr.hopto.org:8073/?f=">US: Missouri</option>
+<option value="http://108.174.127.102:8073/?f=">US: Montana</option>
+<option value="http://kiwisdr.criffield.net:8073/?f=">US: Nebraska</option>
+<option value="http://12.29.214.134:8073/?f=">US: Nevada</option>
+<option value="http://73.150.139.247:8073/?f=">US: New Jersey</option>
+<option value="http://kiwisdrshane77781.hopto.org:8073/?f=">US: New Mexico</option>
+<option value="http://matt1234.viewnetcam.com:8073/?f=">US: New York</option>
+<option value="http://ssi.proxy.kiwisdr.com:8073/?f=">US: North Carolina</option>
+<option value="http://hulksmashkiwi.proxy.kiwisdr.com:8073/?f=">US: Ohio</option>
+<option value="http://sdr.w5tsu.net:8073/?f=">US: Oklahoma</option>
+<option value="http://kk6pr.ddns.net:8075/?f=">US: Oregon</option>
+<option value="http://scottgs.dynip.com:8073/?f=">US: Tennessee</option>
+<option value="http://data3.caprockweather.com:8073/?f=">US: Texas</option>
+<option value="http://sdr.ddns.net:8073/?f=">US: Texas</option>
+<option value="http://ka7oeikiwi.ddns.net:8073/?f=">US: Utah</option>
+<option value="http://alex.proxy.kiwisdr.com:8073/?f=">US: Virginia</option>
+<option value="http://kiwisdr.gadallah.net:8073/?f=">US: Washington</option>
+<option value="http://www.na5b.com:8073/?f=">US: Washington DC</option>
+<option value="http://kd9khz.proxy.kiwisdr.com:8073/?f=">US: Wisconsin</option>
+<option value="http://tranp.sytes.net:8073/?f=">Vietnam</option>
+</select>
+<input type="text" name="frequency" size="15" placeholder="Frequency KHz" value="" />
+<input type="submit" style="width:50px" value="Play" /></form><br>
+
+<a href="http://rx.linkfanel.net/" target="_blank"><button style="width:400px">Launch Live Shortwave Receiver Map</button></a><br><br>
+
+<form name="02">
+<select name="sites" id="sites">
+<option value="" selected>Select Country</option>
+<option value="https://www.broadcastify.com/listen/coid/1">United States</option>
+<option value="https://www.broadcastify.com/listen/coid/2">Canada</option>
+<option value="https://www.broadcastify.com/listen/coid/6">Antigua and Barbuda</option>
+<option value="https://www.broadcastify.com/listen/coid/13">Argentina</option>
+<option value="https://www.broadcastify.com/listen/coid/15">Austria</option>
+<option value="https://www.broadcastify.com/listen/coid/16">Australia</option>
+<option value="https://www.broadcastify.com/listen/coid/31">Brazil</option>
+<option value="https://www.broadcastify.com/listen/coid/44">Chile</option>
+<option value="https://www.broadcastify.com/listen/coid/47">Colombia</option>
+<option value="https://www.broadcastify.com/listen/coid/55">Germany</option>
+<option value="https://www.broadcastify.com/listen/coid/66">Spain</option>
+<option value="https://www.broadcastify.com/listen/coid/68">Finland</option>
+<option value="https://www.broadcastify.com/listen/coid/99">Ireland</option>
+<option value="https://www.broadcastify.com/listen/coid/151">Malaysia</option>
+<option value="https://www.broadcastify.com/listen/coid/155">Niger</option>
+<option value="https://www.broadcastify.com/listen/coid/159">Netherlands</option>
+<option value="https://www.broadcastify.com/listen/coid/160">Norway</option>
+<option value="https://www.broadcastify.com/listen/coid/165">New Zealand</option>
+<option value="https://www.broadcastify.com/listen/coid/168">Peru</option>
+<option value="https://www.broadcastify.com/listen/coid/171">Philippines</option>
+<option value="https://www.broadcastify.com/listen/coid/173">Poland</option>
+<option value="https://www.broadcastify.com/listen/coid/183">Russian Federation</option>
+<option value="https://www.broadcastify.com/listen/coid/194">Slovak Republic</option>
+<option value="https://www.broadcastify.com/listen/coid/223">United Kingdom</option>
+    </select>
+<input type="button" name="Submit" value="Emergency Services" onClick="window.open(sites.value, '_blank')">
+</form>
+
+<form name="04">
+<select name="sites" id="sites">
+<option value="" selected>Select Country</option>
+<option value="https://www.broadcastify.com/listen/coid/1/aviation">United States</option>
+<option value="https://www.broadcastify.com/listen/coid/2/aviation">Canada</option>
+<option value="https://www.broadcastify.com/listen/coid/6/aviation">Antigua and Barbuda</option>
+<option value="https://www.broadcastify.com/listen/coid/13/aviation">Argentina</option>
+<option value="https://www.broadcastify.com/listen/coid/15/aviation">Austria</option>
+<option value="https://www.broadcastify.com/listen/coid/16/aviation">Australia</option>
+<option value="https://www.broadcastify.com/listen/coid/31/aviation">Brazil</option>
+<option value="https://www.broadcastify.com/listen/coid/44/aviation">Chile</option>
+<option value="https://www.broadcastify.com/listen/coid/47/aviation">Colombia</option>
+<option value="https://www.broadcastify.com/listen/coid/55/aviation">Germany</option>
+<option value="https://www.broadcastify.com/listen/coid/66/aviation">Spain</option>
+<option value="https://www.broadcastify.com/listen/coid/68/aviation">Finland</option>
+<option value="https://www.broadcastify.com/listen/coid/99/aviation">Ireland</option>
+<option value="https://www.broadcastify.com/listen/coid/151/aviation">Malaysia</option>
+<option value="https://www.broadcastify.com/listen/coid/155/aviation">Niger</option>
+<option value="https://www.broadcastify.com/listen/coid/159/aviation">Netherlands</option>
+<option value="https://www.broadcastify.com/listen/coid/160/aviation">Norway</option>
+<option value="https://www.broadcastify.com/listen/coid/165/aviation">New Zealand</option>
+<option value="https://www.broadcastify.com/listen/coid/168/aviation">Peru</option>
+<option value="https://www.broadcastify.com/listen/coid/171/aviation">Philippines</option>
+<option value="https://www.broadcastify.com/listen/coid/173/aviation">Poland</option>
+<option value="https://www.broadcastify.com/listen/coid/183/aviation">Russian Federation</option>
+<option value="https://www.broadcastify.com/listen/coid/194/aviation">Slovak Republic</option>
+<option value="https://www.broadcastify.com/listen/coid/223/aviation">United Kingdom</option>
+    </select>
+<input type="button" name="Submit" value="Aviation Radio" onClick="window.open(sites.value, '_blank')">
+</form>
+
+
+<form name="06">
+<select name="sites" id="sites">
+<option value="" selected>Select Country</option>
+<option value="https://www.broadcastify.com/listen/coid/1/rail">United States</option>
+<option value="https://www.broadcastify.com/listen/coid/2/rail">Canada</option>
+<option value="https://www.broadcastify.com/listen/coid/6/rail">Antigua and Barbuda</option>
+<option value="https://www.broadcastify.com/listen/coid/13/rail">Argentina</option>
+<option value="https://www.broadcastify.com/listen/coid/15/rail">Austria</option>
+<option value="https://www.broadcastify.com/listen/coid/16/rail">Australia</option>
+<option value="https://www.broadcastify.com/listen/coid/31/rail">Brazil</option>
+<option value="https://www.broadcastify.com/listen/coid/44/rail">Chile</option>
+<option value="https://www.broadcastify.com/listen/coid/47/rail">Colombia</option>
+<option value="https://www.broadcastify.com/listen/coid/55/rail">Germany</option>
+<option value="https://www.broadcastify.com/listen/coid/66/rail">Spain</option>
+<option value="https://www.broadcastify.com/listen/coid/68/rail">Finland</option>
+<option value="https://www.broadcastify.com/listen/coid/99/rail">Ireland</option>
+<option value="https://www.broadcastify.com/listen/coid/151/rail">Malaysia</option>
+<option value="https://www.broadcastify.com/listen/coid/155/rail">Niger</option>
+<option value="https://www.broadcastify.com/listen/coid/159/rail">Netherlands</option>
+<option value="https://www.broadcastify.com/listen/coid/160/rail">Norway</option>
+<option value="https://www.broadcastify.com/listen/coid/165/rail">New Zealand</option>
+<option value="https://www.broadcastify.com/listen/coid/168/rail">Peru</option>
+<option value="https://www.broadcastify.com/listen/coid/171/rail">Philippines</option>
+<option value="https://www.broadcastify.com/listen/coid/173/rail">Poland</option>
+<option value="https://www.broadcastify.com/listen/coid/183/rail">Russian Federation</option>
+<option value="https://www.broadcastify.com/listen/coid/194/rail">Slovak Republic</option>
+<option value="https://www.broadcastify.com/listen/coid/223/rail">United Kingdom</option>
+<input type="button" name="Submit" value="Railroad Radio" onClick="window.open(sites.value, '_blank')">
+    </select>
+</form>
+
+<form name="08">
+<select name="sites" id="sites">
+<option value="" selected>Select Country</option>
+<option value="https://www.broadcastify.com/listen/coid/1/amateur">United States</option>
+<option value="https://www.broadcastify.com/listen/coid/2/amateur">Canada</option>
+<option value="https://www.broadcastify.com/listen/coid/6/amateur">Antigua and Barbuda</option>
+<option value="https://www.broadcastify.com/listen/coid/13/amateur">Argentina</option>
+<option value="https://www.broadcastify.com/listen/coid/15/amateur">Austria</option>
+<option value="https://www.broadcastify.com/listen/coid/16/amateur">Australia</option>
+<option value="https://www.broadcastify.com/listen/coid/31/amateur">Brazil</option>
+<option value="https://www.broadcastify.com/listen/coid/44/amateur">Chile</option>
+<option value="https://www.broadcastify.com/listen/coid/47/amateur">Colombia</option>
+<option value="https://www.broadcastify.com/listen/coid/55/amateur">Germany</option>
+<option value="https://www.broadcastify.com/listen/coid/66/amateur">Spain</option>
+<option value="https://www.broadcastify.com/listen/coid/68/amateur">Finland</option>
+<option value="https://www.broadcastify.com/listen/coid/99/amateur">Ireland</option>
+<option value="https://www.broadcastify.com/listen/coid/151/amateur">Malaysia</option>
+<option value="https://www.broadcastify.com/listen/coid/155/amateur">Niger</option>
+<option value="https://www.broadcastify.com/listen/coid/159/amateur">Netherlands</option>
+<option value="https://www.broadcastify.com/listen/coid/160/amateur">Norway</option>
+<option value="https://www.broadcastify.com/listen/coid/165/amateur">New Zealand</option>
+<option value="https://www.broadcastify.com/listen/coid/168/amateur">Peru</option>
+<option value="https://www.broadcastify.com/listen/coid/171/amateur">Philippines</option>
+<option value="https://www.broadcastify.com/listen/coid/173/amateur">Poland</option>
+<option value="https://www.broadcastify.com/listen/coid/183/amateur">Russian Federation</option>
+<option value="https://www.broadcastify.com/listen/coid/194/amateur">Slovak Republic</option>
+<option value="https://www.broadcastify.com/listen/coid/223/amateur">United Kingdom</option>
+<input type="button" name="Submit" value="Amateur Radio" onClick="window.open(sites.value, '_blank')">
+    </select>
+</form>
+
+<form name="10">
+<select name="sites" id="sites">
+<option value="" selected>Select Country</option>
+<option value="https://www.broadcastify.com/listen/coid/1/marine">United States</option>
+<option value="https://www.broadcastify.com/listen/coid/2/marine">Canada</option>
+<option value="https://www.broadcastify.com/listen/coid/6/marine">Antigua and Barbuda</option>
+<option value="https://www.broadcastify.com/listen/coid/13/marine">Argentina</option>
+<option value="https://www.broadcastify.com/listen/coid/15/marine">Austria</option>
+<option value="https://www.broadcastify.com/listen/coid/16/marine">Australia</option>
+<option value="https://www.broadcastify.com/listen/coid/31/marine">Brazil</option>
+<option value="https://www.broadcastify.com/listen/coid/44/marine">Chile</option>
+<option value="https://www.broadcastify.com/listen/coid/47/marine">Colombia</option>
+<option value="https://www.broadcastify.com/listen/coid/55/marine">Germany</option>
+<option value="https://www.broadcastify.com/listen/coid/66/marine">Spain</option>
+<option value="https://www.broadcastify.com/listen/coid/68/marine">Finland</option>
+<option value="https://www.broadcastify.com/listen/coid/99/marine">Ireland</option>
+<option value="https://www.broadcastify.com/listen/coid/151/marine">Malaysia</option>
+<option value="https://www.broadcastify.com/listen/coid/155/marine">Niger</option>
+<option value="https://www.broadcastify.com/listen/coid/159/marine">Netherlands</option>
+<option value="https://www.broadcastify.com/listen/coid/160/marine">Norway</option>
+<option value="https://www.broadcastify.com/listen/coid/165/marine">New Zealand</option>
+<option value="https://www.broadcastify.com/listen/coid/168/marine">Peru</option>
+<option value="https://www.broadcastify.com/listen/coid/171/marine">Philippines</option>
+<option value="https://www.broadcastify.com/listen/coid/173/marine">Poland</option>
+<option value="https://www.broadcastify.com/listen/coid/183/marine">Russian Federation</option>
+<option value="https://www.broadcastify.com/listen/coid/194/marine">Slovak Republic</option>
+<option value="https://www.broadcastify.com/listen/coid/223/marine">United Kingdom</option>
+<input type="button" name="Submit" value="Marine Radio" onClick="window.open(sites.value, '_blank')">
+    </select>
+</form>
+
+
+
+<form name="12">
+<select name="sites" id="sites">
+<option value="" selected>Select Country</option>
+<option value="https://www.broadcastify.com/listen/coid/1/other">United States</option>
+<option value="https://www.broadcastify.com/listen/coid/2/other">Canada</option>
+<option value="https://www.broadcastify.com/listen/coid/6/other">Antigua and Barbuda</option>
+<option value="https://www.broadcastify.com/listen/coid/13/other">Argentina</option>
+<option value="https://www.broadcastify.com/listen/coid/15/other">Austria</option>
+<option value="https://www.broadcastify.com/listen/coid/16/other">Australia</option>
+<option value="https://www.broadcastify.com/listen/coid/31/other">Brazil</option>
+<option value="https://www.broadcastify.com/listen/coid/44/other">Chile</option>
+<option value="https://www.broadcastify.com/listen/coid/47/other">Colombia</option>
+<option value="https://www.broadcastify.com/listen/coid/55/other">Germany</option>
+<option value="https://www.broadcastify.com/listen/coid/66/other">Spain</option>
+<option value="https://www.broadcastify.com/listen/coid/68/other">Finland</option>
+<option value="https://www.broadcastify.com/listen/coid/99/other">Ireland</option>
+<option value="https://www.broadcastify.com/listen/coid/151/other">Malaysia</option>
+<option value="https://www.broadcastify.com/listen/coid/155/other">Niger</option>
+<option value="https://www.broadcastify.com/listen/coid/159/other">Netherlands</option>
+<option value="https://www.broadcastify.com/listen/coid/160/other">Norway</option>
+<option value="https://www.broadcastify.com/listen/coid/165/other">New Zealand</option>
+<option value="https://www.broadcastify.com/listen/coid/168/other">Peru</option>
+<option value="https://www.broadcastify.com/listen/coid/171/other">Philippines</option>
+<option value="https://www.broadcastify.com/listen/coid/173/other">Poland</option>
+<option value="https://www.broadcastify.com/listen/coid/183/other">Russian Federation</option>
+<option value="https://www.broadcastify.com/listen/coid/194/other">Slovak Republic</option>
+<option value="https://www.broadcastify.com/listen/coid/223/other">United Kingdom</option>
+<input type="button" name="Submit" value="Weather Radio" onClick="window.open(sites.value, '_blank')">
+    </select>
+</form>
+
+<h2>United States</h2>
+
+<form name="01">
+<select name="sites" id="sites">
+<option value="" selected>Select State</option>
+<option value="https://www.broadcastify.com/listen/stid/1">Alabama</option>
+<option value="https://www.broadcastify.com/listen/stid/2">Alaska</option>
+<option value="https://www.broadcastify.com/listen/stid/4">Arizona</option>
+<option value="https://www.broadcastify.com/listen/stid/5">Arkansas</option>
+<option value="https://www.broadcastify.com/listen/stid/6">California</option>
+<option value="https://www.broadcastify.com/listen/stid/8">Colorado</option>
+<option value="https://www.broadcastify.com/listen/stid/9">Connecticut</option>
+<option value="https://www.broadcastify.com/listen/stid/10">Delaware</option>
+<option value="https://www.broadcastify.com/listen/stid/11">District of Columbia</option>
+<option value="https://www.broadcastify.com/listen/stid/12">Florida</option>
+<option value="https://www.broadcastify.com/listen/stid/13">Georgia</option>
+<option value="https://www.broadcastify.com/listen/stid/66">Guam</option>
+<option value="https://www.broadcastify.com/listen/stid/15">Hawaii</option>
+<option value="https://www.broadcastify.com/listen/stid/16">Idaho</option>
+<option value="https://www.broadcastify.com/listen/stid/17">Illinois</option>
+<option value="https://www.broadcastify.com/listen/stid/18">Indiana</option>
+<option value="https://www.broadcastify.com/listen/stid/19">Iowa</option>
+<option value="https://www.broadcastify.com/listen/stid/20">Kansas</option>
+<option value="https://www.broadcastify.com/listen/stid/21">Kentucky</option>
+<option value="https://www.broadcastify.com/listen/stid/22">Louisiana</option>
+<option value="https://www.broadcastify.com/listen/stid/23">Maine</option>
+<option value="https://www.broadcastify.com/listen/stid/24">Maryland</option>
+<option value="https://www.broadcastify.com/listen/stid/25">Massachusetts</option>
+<option value="https://www.broadcastify.com/listen/stid/26">Michigan</option>
+<option value="https://www.broadcastify.com/listen/stid/27">Minnesota</option>
+<option value="https://www.broadcastify.com/listen/stid/28">Mississippi</option>
+<option value="https://www.broadcastify.com/listen/stid/29">Missouri</option>
+<option value="https://www.broadcastify.com/listen/stid/30">Montana</option>
+<option value="https://www.broadcastify.com/listen/stid/31">Nebraska</option>
+<option value="https://www.broadcastify.com/listen/stid/32">Nevada</option>
+<option value="https://www.broadcastify.com/listen/stid/33">New Hampshire</option>
+<option value="https://www.broadcastify.com/listen/stid/34">New Jersey</option>
+<option value="https://www.broadcastify.com/listen/stid/35">New Mexico</option>
+<option value="https://www.broadcastify.com/listen/stid/36">New York</option>
+<option value="https://www.broadcastify.com/listen/stid/37">North Carolina</option>
+<option value="https://www.broadcastify.com/listen/stid/38">North Dakota</option>
+<option value="https://www.broadcastify.com/listen/stid/39">Ohio</option>
+<option value="https://www.broadcastify.com/listen/stid/40">Oklahoma</option>
+<option value="https://www.broadcastify.com/listen/stid/41">Oregon</option>
+<option value="https://www.broadcastify.com/listen/stid/42">Pennsylvania</option>
+<option value="https://www.broadcastify.com/listen/stid/72">Puerto Rico</option>
+<option value="https://www.broadcastify.com/listen/stid/44">Rhode Island</option>
+<option value="https://www.broadcastify.com/listen/stid/45">South Carolina</option>
+<option value="https://www.broadcastify.com/listen/stid/46">South Dakota</option>
+<option value="https://www.broadcastify.com/listen/stid/47">Tennessee</option>
+<option value="https://www.broadcastify.com/listen/stid/48">Texas</option>
+<option value="https://www.broadcastify.com/listen/stid/49">Utah</option>
+<option value="https://www.broadcastify.com/listen/stid/50">Vermont</option>
+<option value="https://www.broadcastify.com/listen/stid/78">Virgin Islands</option>
+<option value="https://www.broadcastify.com/listen/stid/51">Virginia</option>
+<option value="https://www.broadcastify.com/listen/stid/53">Washington</option>
+<option value="https://www.broadcastify.com/listen/stid/54">West Virginia</option>
+<option value="https://www.broadcastify.com/listen/stid/55">Wisconsin</option>
+<option value="https://www.broadcastify.com/listen/stid/56">Wyoming</option>
+</select>
+<input type="button" name="Submit" value="Emergency Services" onClick="window.open(sites.value, '_blank')">
+</form>
+
+<form name="03">
+<select name="sites" id="sites">
+<option value="" selected>Select State</option>
+<option value="https://www.broadcastify.com/listen/stid/1/aviation">Alabama</option>
+<option value="https://www.broadcastify.com/listen/stid/2/aviation">Alaska</option>
+<option value="https://www.broadcastify.com/listen/stid/4/aviation">Arizona</option>
+<option value="https://www.broadcastify.com/listen/stid/5/aviation">Arkansas</option>
+<option value="https://www.broadcastify.com/listen/stid/6/aviation">California</option>
+<option value="https://www.broadcastify.com/listen/stid/8/aviation">Colorado</option>
+<option value="https://www.broadcastify.com/listen/stid/9/aviation">Connecticut</option>
+<option value="https://www.broadcastify.com/listen/stid/10/aviation">Delaware</option>
+<option value="https://www.broadcastify.com/listen/stid/11/aviation">District of Columbia</option>
+<option value="https://www.broadcastify.com/listen/stid/12/aviation">Florida</option>
+<option value="https://www.broadcastify.com/listen/stid/13/aviation">Georgia</option>
+<option value="https://www.broadcastify.com/listen/stid/66/aviation">Guam</option>
+<option value="https://www.broadcastify.com/listen/stid/15/aviation">Hawaii</option>
+<option value="https://www.broadcastify.com/listen/stid/16/aviation">Idaho</option>
+<option value="https://www.broadcastify.com/listen/stid/17/aviation">Illinois</option>
+<option value="https://www.broadcastify.com/listen/stid/18/aviation">Indiana</option>
+<option value="https://www.broadcastify.com/listen/stid/19/aviation">Iowa</option>
+<option value="https://www.broadcastify.com/listen/stid/20/aviation">Kansas</option>
+<option value="https://www.broadcastify.com/listen/stid/21/aviation">Kentucky</option>
+<option value="https://www.broadcastify.com/listen/stid/22/aviation">Louisiana</option>
+<option value="https://www.broadcastify.com/listen/stid/23/aviation">Maine</option>
+<option value="https://www.broadcastify.com/listen/stid/24/aviation">Maryland</option>
+<option value="https://www.broadcastify.com/listen/stid/25/aviation">Massachusetts</option>
+<option value="https://www.broadcastify.com/listen/stid/26/aviation">Michigan</option>
+<option value="https://www.broadcastify.com/listen/stid/27/aviation">Minnesota</option>
+<option value="https://www.broadcastify.com/listen/stid/28/aviation">Mississippi</option>
+<option value="https://www.broadcastify.com/listen/stid/29/aviation">Missouri</option>
+<option value="https://www.broadcastify.com/listen/stid/30/aviation">Montana</option>
+<option value="https://www.broadcastify.com/listen/stid/31/aviation">Nebraska</option>
+<option value="https://www.broadcastify.com/listen/stid/32/aviation">Nevada</option>
+<option value="https://www.broadcastify.com/listen/stid/33/aviation">New Hampshire</option>
+<option value="https://www.broadcastify.com/listen/stid/34/aviation">New Jersey</option>
+<option value="https://www.broadcastify.com/listen/stid/35/aviation">New Mexico</option>
+<option value="https://www.broadcastify.com/listen/stid/36/aviation">New York</option>
+<option value="https://www.broadcastify.com/listen/stid/37/aviation">North Carolina</option>
+<option value="https://www.broadcastify.com/listen/stid/38/aviation">North Dakota</option>
+<option value="https://www.broadcastify.com/listen/stid/39/aviation">Ohio</option>
+<option value="https://www.broadcastify.com/listen/stid/40/aviation">Oklahoma</option>
+<option value="https://www.broadcastify.com/listen/stid/41/aviation">Oregon</option>
+<option value="https://www.broadcastify.com/listen/stid/42/aviation">Pennsylvania</option>
+<option value="https://www.broadcastify.com/listen/stid/72/aviation">Puerto Rico</option>
+<option value="https://www.broadcastify.com/listen/stid/44/aviation">Rhode Island</option>
+<option value="https://www.broadcastify.com/listen/stid/45/aviation">South Carolina</option>
+<option value="https://www.broadcastify.com/listen/stid/46/aviation">South Dakota</option>
+<option value="https://www.broadcastify.com/listen/stid/47/aviation">Tennessee</option>
+<option value="https://www.broadcastify.com/listen/stid/48/aviation">Texas</option>
+<option value="https://www.broadcastify.com/listen/stid/49/aviation">Utah</option>
+<option value="https://www.broadcastify.com/listen/stid/50/aviation">Vermont</option>
+<option value="https://www.broadcastify.com/listen/stid/78/aviation">Virgin Islands</option>
+<option value="https://www.broadcastify.com/listen/stid/51/aviation">Virginia</option>
+<option value="https://www.broadcastify.com/listen/stid/53/aviation">Washington</option>
+<option value="https://www.broadcastify.com/listen/stid/54/aviation">West Virginia</option>
+<option value="https://www.broadcastify.com/listen/stid/55/aviation">Wisconsin</option>
+<option value="https://www.broadcastify.com/listen/stid/56/aviation">Wyoming</option>
+    </select>
+<input type="button" name="Submit" value="Aviation Radio" onClick="window.open(sites.value, '_blank')">
+</form>
+
+
+<form name="05">
+<select name="sites" id="sites">
+<option value="" selected>Select State</option>
+<option value="https://www.broadcastify.com/listen/stid/1/rail">Alabama</option>
+<option value="https://www.broadcastify.com/listen/stid/2/rail">Alaska</option>
+<option value="https://www.broadcastify.com/listen/stid/4/rail">Arizona</option>
+<option value="https://www.broadcastify.com/listen/stid/5/rail">Arkansas</option>
+<option value="https://www.broadcastify.com/listen/stid/6/rail">California</option>
+<option value="https://www.broadcastify.com/listen/stid/8/rail">Colorado</option>
+<option value="https://www.broadcastify.com/listen/stid/9/rail">Connecticut</option>
+<option value="https://www.broadcastify.com/listen/stid/10/rail">Delaware</option>
+<option value="https://www.broadcastify.com/listen/stid/11/rail">District of Columbia</option>
+<option value="https://www.broadcastify.com/listen/stid/12/rail">Florida</option>
+<option value="https://www.broadcastify.com/listen/stid/13/rail">Georgia</option>
+<option value="https://www.broadcastify.com/listen/stid/66/rail">Guam</option>
+<option value="https://www.broadcastify.com/listen/stid/15/rail">Hawaii</option>
+<option value="https://www.broadcastify.com/listen/stid/16/rail">Idaho</option>
+<option value="https://www.broadcastify.com/listen/stid/17/rail">Illinois</option>
+<option value="https://www.broadcastify.com/listen/stid/18/rail">Indiana</option>
+<option value="https://www.broadcastify.com/listen/stid/19/rail">Iowa</option>
+<option value="https://www.broadcastify.com/listen/stid/20/rail">Kansas</option>
+<option value="https://www.broadcastify.com/listen/stid/21/rail">Kentucky</option>
+<option value="https://www.broadcastify.com/listen/stid/22/rail">Louisiana</option>
+<option value="https://www.broadcastify.com/listen/stid/23/rail">Maine</option>
+<option value="https://www.broadcastify.com/listen/stid/24/rail">Maryland</option>
+<option value="https://www.broadcastify.com/listen/stid/25/rail">Massachusetts</option>
+<option value="https://www.broadcastify.com/listen/stid/26/rail">Michigan</option>
+<option value="https://www.broadcastify.com/listen/stid/27/rail">Minnesota</option>
+<option value="https://www.broadcastify.com/listen/stid/28/rail">Mississippi</option>
+<option value="https://www.broadcastify.com/listen/stid/29/rail">Missouri</option>
+<option value="https://www.broadcastify.com/listen/stid/30/rail">Montana</option>
+<option value="https://www.broadcastify.com/listen/stid/31/rail">Nebraska</option>
+<option value="https://www.broadcastify.com/listen/stid/32/rail">Nevada</option>
+<option value="https://www.broadcastify.com/listen/stid/33/rail">New Hampshire</option>
+<option value="https://www.broadcastify.com/listen/stid/34/rail">New Jersey</option>
+<option value="https://www.broadcastify.com/listen/stid/35/rail">New Mexico</option>
+<option value="https://www.broadcastify.com/listen/stid/36/rail">New York</option>
+<option value="https://www.broadcastify.com/listen/stid/37/rail">North Carolina</option>
+<option value="https://www.broadcastify.com/listen/stid/38/rail">North Dakota</option>
+<option value="https://www.broadcastify.com/listen/stid/39/rail">Ohio</option>
+<option value="https://www.broadcastify.com/listen/stid/40/rail">Oklahoma</option>
+<option value="https://www.broadcastify.com/listen/stid/41/rail">Oregon</option>
+<option value="https://www.broadcastify.com/listen/stid/42/rail">Pennsylvania</option>
+<option value="https://www.broadcastify.com/listen/stid/72/rail">Puerto Rico</option>
+<option value="https://www.broadcastify.com/listen/stid/44/rail">Rhode Island</option>
+<option value="https://www.broadcastify.com/listen/stid/45/rail">South Carolina</option>
+<option value="https://www.broadcastify.com/listen/stid/46/rail">South Dakota</option>
+<option value="https://www.broadcastify.com/listen/stid/47/rail">Tennessee</option>
+<option value="https://www.broadcastify.com/listen/stid/48/rail">Texas</option>
+<option value="https://www.broadcastify.com/listen/stid/49/rail">Utah</option>
+<option value="https://www.broadcastify.com/listen/stid/50/rail">Vermont</option>
+<option value="https://www.broadcastify.com/listen/stid/78/rail">Virgin Islands</option>
+<option value="https://www.broadcastify.com/listen/stid/51/rail">Virginia</option>
+<option value="https://www.broadcastify.com/listen/stid/53/rail">Washington</option>
+<option value="https://www.broadcastify.com/listen/stid/54/rail">West Virginia</option>
+<option value="https://www.broadcastify.com/listen/stid/55/rail">Wisconsin</option>
+<option value="https://www.broadcastify.com/listen/stid/56/rail">Wyoming</option>
+<input type="button" name="Submit" value="Railroad Radio" onClick="window.open(sites.value, '_blank')">
+    </select>
+</form>
+
+
+<form name="07">
+<select name="sites" id="sites">
+<option value="" selected>Select State</option>
+<option value="https://www.broadcastify.com/listen/stid/1/amateur">Alabama</option>
+<option value="https://www.broadcastify.com/listen/stid/2/amateur">Alaska</option>
+<option value="https://www.broadcastify.com/listen/stid/4/amateur">Arizona</option>
+<option value="https://www.broadcastify.com/listen/stid/5/amateur">Arkansas</option>
+<option value="https://www.broadcastify.com/listen/stid/6/amateur">California</option>
+<option value="https://www.broadcastify.com/listen/stid/8/amateur">Colorado</option>
+<option value="https://www.broadcastify.com/listen/stid/9/amateur">Connecticut</option>
+<option value="https://www.broadcastify.com/listen/stid/10/amateur">Delaware</option>
+<option value="https://www.broadcastify.com/listen/stid/11/amateur">District of Columbia</option>
+<option value="https://www.broadcastify.com/listen/stid/12/amateur">Florida</option>
+<option value="https://www.broadcastify.com/listen/stid/13/amateur">Georgia</option>
+<option value="https://www.broadcastify.com/listen/stid/66/amateur">Guam</option>
+<option value="https://www.broadcastify.com/listen/stid/15/amateur">Hawaii</option>
+<option value="https://www.broadcastify.com/listen/stid/16/amateur">Idaho</option>
+<option value="https://www.broadcastify.com/listen/stid/17/amateur">Illinois</option>
+<option value="https://www.broadcastify.com/listen/stid/18/amateur">Indiana</option>
+<option value="https://www.broadcastify.com/listen/stid/19/amateur">Iowa</option>
+<option value="https://www.broadcastify.com/listen/stid/20/amateur">Kansas</option>
+<option value="https://www.broadcastify.com/listen/stid/21/amateur">Kentucky</option>
+<option value="https://www.broadcastify.com/listen/stid/22/amateur">Louisiana</option>
+<option value="https://www.broadcastify.com/listen/stid/23/amateur">Maine</option>
+<option value="https://www.broadcastify.com/listen/stid/24/amateur">Maryland</option>
+<option value="https://www.broadcastify.com/listen/stid/25/amateur">Massachusetts</option>
+<option value="https://www.broadcastify.com/listen/stid/26/amateur">Michigan</option>
+<option value="https://www.broadcastify.com/listen/stid/27/amateur">Minnesota</option>
+<option value="https://www.broadcastify.com/listen/stid/28/amateur">Mississippi</option>
+<option value="https://www.broadcastify.com/listen/stid/29/amateur">Missouri</option>
+<option value="https://www.broadcastify.com/listen/stid/30/amateur">Montana</option>
+<option value="https://www.broadcastify.com/listen/stid/31/amateur">Nebraska</option>
+<option value="https://www.broadcastify.com/listen/stid/32/amateur">Nevada</option>
+<option value="https://www.broadcastify.com/listen/stid/33/amateur">New Hampshire</option>
+<option value="https://www.broadcastify.com/listen/stid/34/amateur">New Jersey</option>
+<option value="https://www.broadcastify.com/listen/stid/35/amateur">New Mexico</option>
+<option value="https://www.broadcastify.com/listen/stid/36/amateur">New York</option>
+<option value="https://www.broadcastify.com/listen/stid/37/amateur">North Carolina</option>
+<option value="https://www.broadcastify.com/listen/stid/38/amateur">North Dakota</option>
+<option value="https://www.broadcastify.com/listen/stid/39/amateur">Ohio</option>
+<option value="https://www.broadcastify.com/listen/stid/40/amateur">Oklahoma</option>
+<option value="https://www.broadcastify.com/listen/stid/41/amateur">Oregon</option>
+<option value="https://www.broadcastify.com/listen/stid/42/amateur">Pennsylvania</option>
+<option value="https://www.broadcastify.com/listen/stid/72/amateur">Puerto Rico</option>
+<option value="https://www.broadcastify.com/listen/stid/44/amateur">Rhode Island</option>
+<option value="https://www.broadcastify.com/listen/stid/45/amateur">South Carolina</option>
+<option value="https://www.broadcastify.com/listen/stid/46/amateur">South Dakota</option>
+<option value="https://www.broadcastify.com/listen/stid/47/amateur">Tennessee</option>
+<option value="https://www.broadcastify.com/listen/stid/48/amateur">Texas</option>
+<option value="https://www.broadcastify.com/listen/stid/49/amateur">Utah</option>
+<option value="https://www.broadcastify.com/listen/stid/50/amateur">Vermont</option>
+<option value="https://www.broadcastify.com/listen/stid/78/amateur">Virgin Islands</option>
+<option value="https://www.broadcastify.com/listen/stid/51/amateur">Virginia</option>
+<option value="https://www.broadcastify.com/listen/stid/53/amateur">Washington</option>
+<option value="https://www.broadcastify.com/listen/stid/54/amateur">West Virginia</option>
+<option value="https://www.broadcastify.com/listen/stid/55/amateur">Wisconsin</option>
+<option value="https://www.broadcastify.com/listen/stid/56/amateur">Wyoming</option>
+<input type="button" name="Submit" value="Amateur Radio" onClick="window.open(sites.value, '_blank')">
+    </select>
+</form>
+
+<form name="09">
+<select name="sites" id="sites">
+<option value="" selected>Select State</option>
+<option value="https://www.broadcastify.com/listen/stid/1/marine">Alabama</option>
+<option value="https://www.broadcastify.com/listen/stid/2/marine">Alaska</option>
+<option value="https://www.broadcastify.com/listen/stid/4/marine">Arizona</option>
+<option value="https://www.broadcastify.com/listen/stid/5/marine">Arkansas</option>
+<option value="https://www.broadcastify.com/listen/stid/6/marine">California</option>
+<option value="https://www.broadcastify.com/listen/stid/8/marine">Colorado</option>
+<option value="https://www.broadcastify.com/listen/stid/9/marine">Connecticut</option>
+<option value="https://www.broadcastify.com/listen/stid/10/marine">Delaware</option>
+<option value="https://www.broadcastify.com/listen/stid/11/marine">District of Columbia</option>
+<option value="https://www.broadcastify.com/listen/stid/12/marine">Florida</option>
+<option value="https://www.broadcastify.com/listen/stid/13/marine">Georgia</option>
+<option value="https://www.broadcastify.com/listen/stid/66/marine">Guam</option>
+<option value="https://www.broadcastify.com/listen/stid/15/marine">Hawaii</option>
+<option value="https://www.broadcastify.com/listen/stid/16/marine">Idaho</option>
+<option value="https://www.broadcastify.com/listen/stid/17/marine">Illinois</option>
+<option value="https://www.broadcastify.com/listen/stid/18/marine">Indiana</option>
+<option value="https://www.broadcastify.com/listen/stid/19/marine">Iowa</option>
+<option value="https://www.broadcastify.com/listen/stid/20/marine">Kansas</option>
+<option value="https://www.broadcastify.com/listen/stid/21/marine">Kentucky</option>
+<option value="https://www.broadcastify.com/listen/stid/22/marine">Louisiana</option>
+<option value="https://www.broadcastify.com/listen/stid/23/marine">Maine</option>
+<option value="https://www.broadcastify.com/listen/stid/24/marine">Maryland</option>
+<option value="https://www.broadcastify.com/listen/stid/25/marine">Massachusetts</option>
+<option value="https://www.broadcastify.com/listen/stid/26/marine">Michigan</option>
+<option value="https://www.broadcastify.com/listen/stid/27/marine">Minnesota</option>
+<option value="https://www.broadcastify.com/listen/stid/28/marine">Mississippi</option>
+<option value="https://www.broadcastify.com/listen/stid/29/marine">Missouri</option>
+<option value="https://www.broadcastify.com/listen/stid/30/marine">Montana</option>
+<option value="https://www.broadcastify.com/listen/stid/31/marine">Nebraska</option>
+<option value="https://www.broadcastify.com/listen/stid/32/marine">Nevada</option>
+<option value="https://www.broadcastify.com/listen/stid/33/marine">New Hampshire</option>
+<option value="https://www.broadcastify.com/listen/stid/34/marine">New Jersey</option>
+<option value="https://www.broadcastify.com/listen/stid/35/marine">New Mexico</option>
+<option value="https://www.broadcastify.com/listen/stid/36/marine">New York</option>
+<option value="https://www.broadcastify.com/listen/stid/37/marine">North Carolina</option>
+<option value="https://www.broadcastify.com/listen/stid/38/marine">North Dakota</option>
+<option value="https://www.broadcastify.com/listen/stid/39/marine">Ohio</option>
+<option value="https://www.broadcastify.com/listen/stid/40/marine">Oklahoma</option>
+<option value="https://www.broadcastify.com/listen/stid/41/marine">Oregon</option>
+<option value="https://www.broadcastify.com/listen/stid/42/marine">Pennsylvania</option>
+<option value="https://www.broadcastify.com/listen/stid/72/marine">Puerto Rico</option>
+<option value="https://www.broadcastify.com/listen/stid/44/marine">Rhode Island</option>
+<option value="https://www.broadcastify.com/listen/stid/45/marine">South Carolina</option>
+<option value="https://www.broadcastify.com/listen/stid/46/marine">South Dakota</option>
+<option value="https://www.broadcastify.com/listen/stid/47/marine">Tennessee</option>
+<option value="https://www.broadcastify.com/listen/stid/48/marine">Texas</option>
+<option value="https://www.broadcastify.com/listen/stid/49/marine">Utah</option>
+<option value="https://www.broadcastify.com/listen/stid/50/marine">Vermont</option>
+<option value="https://www.broadcastify.com/listen/stid/78/marine">Virgin Islands</option>
+<option value="https://www.broadcastify.com/listen/stid/51/marine">Virginia</option>
+<option value="https://www.broadcastify.com/listen/stid/53/marine">Washington</option>
+<option value="https://www.broadcastify.com/listen/stid/54/marine">West Virginia</option>
+<option value="https://www.broadcastify.com/listen/stid/55/marine">Wisconsin</option>
+<option value="https://www.broadcastify.com/listen/stid/56/marine">Wyoming</option>
+<input type="button" name="Submit" value="Marine Radio" onClick="window.open(sites.value, '_blank')">
+    </select>
+</form>
+
+<form name="11">
+<select name="sites" id="sites">
+<option value="" selected>Select State</option>
+<option value="https://www.broadcastify.com/listen/stid/1/other">Alabama</option>
+<option value="https://www.broadcastify.com/listen/stid/2/other">Alaska</option>
+<option value="https://www.broadcastify.com/listen/stid/4/other">Arizona</option>
+<option value="https://www.broadcastify.com/listen/stid/5/other">Arkansas</option>
+<option value="https://www.broadcastify.com/listen/stid/6/other">California</option>
+<option value="https://www.broadcastify.com/listen/stid/8/other">Colorado</option>
+<option value="https://www.broadcastify.com/listen/stid/9/other">Connecticut</option>
+<option value="https://www.broadcastify.com/listen/stid/10/other">Delaware</option>
+<option value="https://www.broadcastify.com/listen/stid/11/other">District of Columbia</option>
+<option value="https://www.broadcastify.com/listen/stid/12/other">Florida</option>
+<option value="https://www.broadcastify.com/listen/stid/13/other">Georgia</option>
+<option value="https://www.broadcastify.com/listen/stid/66/other">Guam</option>
+<option value="https://www.broadcastify.com/listen/stid/15/other">Hawaii</option>
+<option value="https://www.broadcastify.com/listen/stid/16/other">Idaho</option>
+<option value="https://www.broadcastify.com/listen/stid/17/other">Illinois</option>
+<option value="https://www.broadcastify.com/listen/stid/18/other">Indiana</option>
+<option value="https://www.broadcastify.com/listen/stid/19/other">Iowa</option>
+<option value="https://www.broadcastify.com/listen/stid/20/other">Kansas</option>
+<option value="https://www.broadcastify.com/listen/stid/21/other">Kentucky</option>
+<option value="https://www.broadcastify.com/listen/stid/22/other">Louisiana</option>
+<option value="https://www.broadcastify.com/listen/stid/23/other">Maine</option>
+<option value="https://www.broadcastify.com/listen/stid/24/other">Maryland</option>
+<option value="https://www.broadcastify.com/listen/stid/25/other">Massachusetts</option>
+<option value="https://www.broadcastify.com/listen/stid/26/other">Michigan</option>
+<option value="https://www.broadcastify.com/listen/stid/27/other">Minnesota</option>
+<option value="https://www.broadcastify.com/listen/stid/28/other">Mississippi</option>
+<option value="https://www.broadcastify.com/listen/stid/29/other">Missouri</option>
+<option value="https://www.broadcastify.com/listen/stid/30/other">Montana</option>
+<option value="https://www.broadcastify.com/listen/stid/31/other">Nebraska</option>
+<option value="https://www.broadcastify.com/listen/stid/32/other">Nevada</option>
+<option value="https://www.broadcastify.com/listen/stid/33/other">New Hampshire</option>
+<option value="https://www.broadcastify.com/listen/stid/34/other">New Jersey</option>
+<option value="https://www.broadcastify.com/listen/stid/35/other">New Mexico</option>
+<option value="https://www.broadcastify.com/listen/stid/36/other">New York</option>
+<option value="https://www.broadcastify.com/listen/stid/37/other">North Carolina</option>
+<option value="https://www.broadcastify.com/listen/stid/38/other">North Dakota</option>
+<option value="https://www.broadcastify.com/listen/stid/39/other">Ohio</option>
+<option value="https://www.broadcastify.com/listen/stid/40/other">Oklahoma</option>
+<option value="https://www.broadcastify.com/listen/stid/41/other">Oregon</option>
+<option value="https://www.broadcastify.com/listen/stid/42/other">Pennsylvania</option>
+<option value="https://www.broadcastify.com/listen/stid/72/other">Puerto Rico</option>
+<option value="https://www.broadcastify.com/listen/stid/44/other">Rhode Island</option>
+<option value="https://www.broadcastify.com/listen/stid/45/other">South Carolina</option>
+<option value="https://www.broadcastify.com/listen/stid/46/other">South Dakota</option>
+<option value="https://www.broadcastify.com/listen/stid/47/other">Tennessee</option>
+<option value="https://www.broadcastify.com/listen/stid/48/other">Texas</option>
+<option value="https://www.broadcastify.com/listen/stid/49/other">Utah</option>
+<option value="https://www.broadcastify.com/listen/stid/50/other">Vermont</option>
+<option value="https://www.broadcastify.com/listen/stid/78/other">Virgin Islands</option>
+<option value="https://www.broadcastify.com/listen/stid/51/other">Virginia</option>
+<option value="https://www.broadcastify.com/listen/stid/53/other">Washington</option>
+<option value="https://www.broadcastify.com/listen/stid/54/other">West Virginia</option>
+<option value="https://www.broadcastify.com/listen/stid/55/other">Wisconsin</option>
+<option value="https://www.broadcastify.com/listen/stid/56/other">Wyoming</option>
+<input type="button" name="Submit" value="Weather Radio" onClick="window.open(sites.value, '_blank')">
+    </select>
+</form>
+
+
+</td>
+</tr>
+</tbody>
+</table>
+</body>
+  <footer>
+    Global Security Italy • Rome (IT) <a href="License.html">License</a>
+  </footer>
+</html>
