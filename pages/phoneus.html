@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Telephone Numbers • Exploratores</title>
+  <title> US Phone Numbers • Exploratores</title>
   <!-- Font simile a documents.html -->
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
   <style>
@@ -256,7 +256,8 @@
     <li><span>People &<br>Identities</span>
       <ul class="submenu">
         <li><a href="Names.html">Names</a></li>
-        <li><a href="phonenumbers.html">Telephone Numbers</a></li>
+        <li><a href="phoneus.html">US Phones</a></li>
+		<li><a href="phoneint.html">International Phones</a></li>
         <li><a href="Address.html">Addresses</a></li>
         <li><a href="Vehicle.html">Vehicles</a></li>
         <li><a href="UserNames.html">Usernames</a></li>
@@ -307,23 +308,22 @@
 
 <!-- MAIN -->
 <main>
-  <h1 class="page-title">Phone Numbers Tool</h1>
+  <h1 class="page-title">US Phone Numbers Tool</h1>
   <div class="description">
     <p>Insert the phone number's three parts (area code, prefix, line) and then choose a service below.</p>
   </div>
 
   <!-- Tre campi di testo + pulsanti -->
   <div class="phone-inputs">
-    <input type="text" id="phoneA" placeholder="Area" />
-    <input type="text" id="phoneB" placeholder="Prefix" />
-    <input type="text" id="phoneC" placeholder="Line" />
+    <input type="text" id="Area" placeholder="Area" />
+    <input type="text" id="Prefix" placeholder="Prefix" />
+    <input type="text" id="Line" placeholder="Line" />
   </div>
 
   <!-- Pulsanti in ordine alfabetico, con "Populate All" fuori dall'ordinamento -->
   <div class="buttons-grid">
     <!-- Populate All (fuori dall'ordine) -->
-    <button onclick="doPopAll()">Populate All</button>
-
+ 
     <!-- Ordine alfabetico dei servizi: -->
     <button onclick="makeOsint01()">411</button>
     <button onclick="makeOsint02()">800 Notes</button>
@@ -359,9 +359,9 @@
   <script>
     // Raccoglie i 3 valori (area, prefisso, linea)
     function getPhoneParts(){
-      const a = document.getElementById('phoneA').value.trim();
-      const b = document.getElementById('phoneB').value.trim();
-      const c = document.getElementById('phoneC').value.trim();
+      const a = document.getElementById('Area').value.trim();
+      const b = document.getElementById('Prefix').value.trim();
+      const c = document.getElementById('Line').value.trim();
       return {a, b, c};
     }
 
@@ -545,57 +545,10 @@
     </form>
   </div>
 
-  <div class="form-section">
-    <p>Historical (oldphonebook.com):</p>
-    <form onsubmit="doall04(this.all04.value); return false;">
-      <input type="text" name="all04" size="20" placeholder="6185551212" />
-      <input type="submit" value="Historical" /><br><br>
-
-      <div class="historical-container">
-        <!-- COLONNA SINISTRA: anni 1900 -->
-        <div class="column-left">
-          <strong>1994:</strong><br>
-          <iframe allowScriptAccess="always" name="frame1" width="400px" height="50" frameborder="1"></iframe><br><br>
-
-          <strong>1995:</strong><br>
-          <iframe allowScriptAccess="always" name="frame2" width="400px" height="50" frameborder="1"></iframe><br><br>
-
-          <strong>1996:</strong><br>
-          <iframe allowScriptAccess="always" name="frame3" width="400px" height="50" frameborder="1"></iframe><br><br>
-
-          <strong>1997:</strong><br>
-          <iframe allowScriptAccess="always" name="frame4" width="400px" height="50" frameborder="1"></iframe><br><br>
-
-          <strong>1998:</strong><br>
-          <iframe allowScriptAccess="always" name="frame5" width="400px" height="50" frameborder="1"></iframe>
-        </div>
-
-        <!-- COLONNA DESTRA: anni 2000 -->
-        <div class="column-right">
-          <strong>2001:</strong><br>
-          <iframe allowScriptAccess="always" name="frame6" width="400px" height="50" frameborder="1"></iframe><br><br>
-
-          <strong>2002:</strong><br>
-          <iframe allowScriptAccess="always" name="frame7" width="400px" height="50" frameborder="1"></iframe><br><br>
-
-          <strong>2003:</strong><br>
-          <iframe allowScriptAccess="always" name="frame8" width="400px" height="50" frameborder="1"></iframe><br><br>
-
-          <strong>2007:</strong><br>
-          <iframe allowScriptAccess="always" name="frame9" width="400px" height="50" frameborder="1"></iframe><br><br>
-
-          <strong>2008:</strong><br>
-          <iframe allowScriptAccess="always" name="frame10" width="400px" height="50" frameborder="1"></iframe><br><br>
-
-          <strong>2013:</strong><br>
-          <iframe allowScriptAccess="always" name="frame11" width="400px" height="50" frameborder="1"></iframe><br><br>
-
-          <strong>2014:</strong><br>
-          <iframe allowScriptAccess="always" name="frame12" width="400px" height="50" frameborder="1"></iframe>
-        </div>
-      </div>
     </form>
   </div>
+  
+  
 
   <script type="text/javascript">
     // Esempio funzioni aggiuntive:
@@ -613,43 +566,7 @@
       // Aggiungi eventuali ricerche aggiuntive...
     }
 
-    function doall04(all04) {
-      // le stesse setTimeout del sorgente originale
-      window.open('http://www.oldphonebook.com/searchphone2.php?syear=1994&sphone=' + all04, 'frame1');
-      setTimeout(function(){
-        window.open('http://www.oldphonebook.com/searchphone2.php?syear=1995&sphone=' + all04, 'frame2');
-      },1000);
-      setTimeout(function(){
-        window.open('http://www.oldphonebook.com/searchphone2.php?syear=1996&sphone=' + all04, 'frame3');
-      },2000);
-      setTimeout(function(){
-        window.open('http://www.oldphonebook.com/searchphone2.php?syear=1997&sphone=' + all04, 'frame4');
-      },3000);
-      setTimeout(function(){
-        window.open('http://www.oldphonebook.com/searchphone2.php?syear=1998&sphone=' + all04, 'frame5');
-      },4000);
-      setTimeout(function(){
-        window.open('http://www.oldphonebook.com/searchphone2.php?syear=2001&sphone=' + all04, 'frame6');
-      },5000);
-      setTimeout(function(){
-        window.open('http://www.oldphonebook.com/searchphone2.php?syear=2002&sphone=' + all04, 'frame7');
-      },6000);
-      setTimeout(function(){
-        window.open('http://www.oldphonebook.com/searchphone2.php?syear=2003&sphone=' + all04, 'frame8');
-      },7000);
-      setTimeout(function(){
-        window.open('http://www.oldphonebook.com/searchphone2.php?syear=2007&sphone=' + all04, 'frame9');
-      },8000);
-      setTimeout(function(){
-        window.open('http://www.oldphonebook.com/searchphone2.php?syear=2008&sphone=' + all04, 'frame10');
-      },9000);
-      setTimeout(function(){
-        window.open('http://www.oldphonebook.com/searchphone2.php?syear=2013&sphone=' + all04, 'frame11');
-      },10000);
-      setTimeout(function(){
-        window.open('http://www.oldphonebook.com/searchphone2.php?syear=2014&sphone=' + all04, 'frame12');
-      },11000);
-    }
+
   </script>
 
 </main>

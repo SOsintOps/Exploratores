@@ -73,6 +73,10 @@
       display: block;
       line-height: 1.2;
     }
+     .menu > li a.active, .menu > li span.active-main { /* Style for active top-level item */
+        color: var(--primary-color);
+        font-weight: bold;
+    }
 
     /* SUBMENU */
     .submenu {
@@ -100,6 +104,10 @@
       text-decoration: none;
       color: var(--secondary-color);
       display:block;
+    }
+     .submenu li a.active { 
+        color: var(--primary-color); 
+        font-weight: bold; 
     }
     .submenu li:hover {
       background-color: var(--primary-color);
@@ -257,16 +265,66 @@
 
 <nav>
   <ul class="menu">
-    <li><span>HOME</span><ul class="submenu"><li><a href="../index.html">Index</a></li></ul></li>
-    <li><span>Search<br>Engines</span><ul class="submenu"><li><a href="Search.html" class="active">Search Engines</a></li></ul></li>
-    <li><span>People &<br>Identities</span><ul class="submenu"><li><a href="Names.html">Names</a></li><li><a href="phonenumbers.html">Telephone Numbers</a></li><li><a href="Address.html">Addresses</a></li><li><a href="Vehicle.html">Vehicles</a></li><li><a href="UserNames.html">Usernames</a></li><li><a href="Email.html">Email Addresses</a></li><li><a href="Communities.html">Communities</a></li></ul></li>
-    <li><span>Social<br>Media</span><ul class="submenu"><li><a href="Twitter.html">X (Twitter)</a></li><li><a href="Facebook.html">Facebook</a></li><li><a href="Instagram.html">Instagram</a></li><li><a href="LinkedIn.html">LinkedIn</a></li></ul></li>
-    <li><span>Websites</span><ul class="submenu"><li><a href="Domain.html">Domains</a></li><li><a href="IP.html">IP Addresses</a></li></ul></li>
-    <li><span>GeoInt</span><ul class="submenu"><li><a href="Location.html">Location</a></li><li><a href="Maps.html">Maps</a></li></ul></li>
-    <li><span>Media<br>Analysis</span><ul class="submenu"><li><a href="Images.html">Images</a></li><li><a href="Videos.html">Videos</a></li><li><a href="Documents.html">Documents</a></li></ul></li>
-    <li><span>Business<br>Intelligence</span><ul class="submenu"><li><a href="Business.html">Business &amp; Government</a></li><li><a href="Currencies.html">Virtual Currencies</a></li></ul></li>
-    <li><span>Security</span><ul class="submenu"><li><a href="Breaches.html">Data Breaches & Leaks</a></li><li><a href="Pastes.html">Pastes</a></li></ul></li>
-    <li><span>Tools</span><ul class="submenu"><li><a href="API.html">Setting API</a></li><li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li></ul></li>
+    <li><span>HOME</span>
+      <ul class="submenu">
+        <li><a href="../index.html">Index</a></li>
+      </ul>
+    </li>
+    <li><span>Search<br>Engines</span>
+      <ul class="submenu">
+        <li><a href="Search.html">Search Engines</a></li>
+      </ul>
+    </li>
+    <li><span>People &<br>Identities</span>
+      <ul class="submenu">
+        <li><a href="Names.html">Names</a></li>
+        <li><a href="phoneus.html">US Phones</a></li>
+		<li><a href="phoneint.html">International Phones</a></li>
+        <li><a href="Address.html">Addresses</a></li>
+        <li><a href="Vehicle.html">Vehicles</a></li>
+        <li><a href="UserNames.html">Usernames</a></li>
+        <li><a href="Email.html">Email Addresses</a></li>
+        <li><a href="Communities.html">Communities</a></li>
+      </ul>
+    </li>
+    <li><span>Social<br>Media</span>
+      <ul class="submenu">
+        <li><a href="Twitter.html">X (Twitter)</a></li>
+        <li><a href="Facebook.html">Facebook</a></li>
+        <li><a href="Instagram.html">Instagram</a></li>
+        <li><a href="LinkedIn.html">LinkedIn</a></li>
+      </ul>
+    </li>
+    <li><span>Websites</span>
+      <ul class="submenu">
+        <li><a href="Domain.html">Domains</a></li>
+        <li><a href="IP.html">IP Addresses</a></li>
+      </ul>
+    </li>
+    <li><span>GeoInt</span>
+      <ul class="submenu">
+        <li><a href="Maps.html">Maps</a></li>
+      </ul>
+    </li>
+    <li><span>Media<br>Analysis</span>
+      <ul class="submenu">
+        <li><a href="Images.html">Images</a></li>
+        <li><a href="Videos.html">Videos</a></li>
+        <li><a href="Documents.html">Documents</a></li>
+      </ul>
+    </li>
+    <li><span>Business<br>Intelligence</span>
+      <ul class="submenu">
+        <li><a href="Business.html">Business &amp; Government</a></li>
+        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
+      </ul>
+    </li>
+    <li><span>Tools</span>
+      <ul class="submenu">
+        <li><a href="API.html">Setting API</a></li>
+        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -310,28 +368,22 @@
     <div class="column">
       <h2>Tor Network</h2>
       <div class="button-grid">
-        <button class="button" onclick="makeOsint37()">Tor.link</button>
-        <button class="button" onclick="makeOsint23()">Torch</button>
         <button class="button" onclick="makeOsint24()">Tor66</button>
-        <button class="button" onclick="makeOsint25()">Haystack</button>
         <button class="button" onclick="makeOsint26()">Ahmia (Onion)</button>
-        <button class="button" onclick="makeOsint27()">SearchDemon</button>
-        <button class="button" onclick="makeOsint28()">Excavator</button>
         <button class="button" onclick="makeOsint29()">GDark</button>
         <button class="button" onclick="makeOsint30()">Hidden Reviews</button>
         <button class="button" onclick="makeOsint31()">OnionLand</button>
-        <button class="button" onclick="makeOsint32()">Phobos</button>
         <button class="button" onclick="makeOsint33()">Submarine</button>
         <button class="button" onclick="makeOsint34()">DeepSearch</button>
         <button class="button" onclick="makeOsint35()">OnionCenter</button>
         <button class="button" onclick="makeOsint36()">FreshOnion</button>
       </div>
       <div class="note">
-        <strong>NOTE:</strong> To use these functionalities, you need to have access to the Tor network.
+        <strong>NOTE:</strong> You must use the Tor browser to access these functionalities.
       </div>
     </div>
   </div>
-  </main>
+</main>
 
 <footer>
   Global Security Italy • Rome (IT)
@@ -339,35 +391,30 @@
 </footer>
 
 <script>
-  /* Funzione per recuperare i termini dalla casella di testo */
   function getOsintValue() {
     const inputElement = document.getElementById('searchInput');
     if (inputElement) {
-      return inputElement.value.trim(); // Aggiunto .trim()
+      return inputElement.value.trim();
     }
-    return ""; // Restituisce stringa vuota se l'elemento non è trovato
+    return "";
   }
 
-  // Helper generico per aprire le finestre di ricerca
-  function openSearchWindow(baseUrl, queryParameter, isPath = false) {
+  // Helper function (non utilizzata attivamente ma definita)
+  function openSearchWindow(baseUrl, queryParameterOrPath, isPath = false) {
     var val = getOsintValue();
     if (val === "") {
-      // alert("Please enter search terms."); // Feedback opzionale all'utente
       return; 
     }
     let finalUrl;
-    if (isPath) { // Se il termine va nel percorso e non deve essere completamente encodato
-      finalUrl = baseUrl + val; // Il browser gestirà l'encoding base per i percorsi
-    } else { // Per i parametri di query, encodare sempre
+    if (isPath) { 
+      finalUrl = baseUrl + val; 
+    } else { 
       finalUrl = baseUrl + encodeURIComponent(val);
     }
-    // Usa il nome della funzione chiamante (o un nome generico) per la finestra
-    // Per semplicità, usiamo un nome generico incrementale o basato sull'URL
-    let windowName = queryParameter + 'window'; 
-    // Per alcuni URL specifici, potresti voler mantenere i nomi originali (Search01window, etc.)
-    // ma per una funzione helper generica questo approccio è più semplice.
-    // Se i nomi specifici sono cruciali, la funzione helper dovrebbe accettare anche newWindowName
-    window.open(finalUrl, windowName);
+    // Per semplicità, usiamo un nome generico, dato che la funzione helper era stata rimossa
+    // dalla logica attiva delle funzioni makeOsintXX nel codice precedente.
+    // Se si decidesse di usare questo helper, il windowName andrebbe gestito.
+    window.open(finalUrl, queryParameterOrPath.replace(/\W/g, '') + 'window');
   }
   
   function openSearchWindowWithSuffix(baseUrl, queryParameter, suffix, newWindowName) {
@@ -377,63 +424,39 @@
     window.open(url, newWindowName);
   }
 
-
   // CLEAR WEB
-  function makeOsint01() { openSearchWindow('http://google.com/search?q=', 'GoogleSearch', false); }
-  function makeOsint02() { openSearchWindowWithSuffix('http://google.com/search?q=', 'GoogleDateSearch', '&tbs=cdr:1,cd_min:1/1/0,sbd:1', 'Search02window'); }
-  function makeOsint03() { openSearchWindowWithSuffix('http://www.google.com/search?tbm=nws&q=', 'GoogleNewsSearch', '', 'Search03window'); }
-  function makeOsint05() { 
-    var val = getOsintValue(); if (val === "") return;
-    window.open('https://www.google.com/search?q=inurl%3Aftp%20-inurl%3A(http|https)%20' + encodeURIComponent(val), 'Search05window');
-  }
-  function makeOsint06() { 
-    var val = getOsintValue(); if (val === "") return;
-    window.open('https://www.google.com/search?q=intitle%3Aindex.of+' + encodeURIComponent(val), 'Search06window');
-  }
-  function makeOsint07() { openSearchWindowWithSuffix('http://scholar.google.com/scholar?&q=', 'GoogleScholarSearch', '', 'Search07window'); }
-  function makeOsint08() { openSearchWindow('https://patents.google.com/?q=', 'GooglePatentsSearch', 'Search08window'); }
-  function makeOsint09() { 
-    var val = getOsintValue(); if (val === "") return;
-    window.open('http://bing.com/search?q="' + encodeURIComponent(val) + '"', 'Search09window');
-  }
-  function makeOsint10() { 
-    var val = getOsintValue(); if (val === "") return;
-    window.open('http://bing.com/news/search?q="' + encodeURIComponent(val) + '"', 'Search10window');
-  }
-  function makeOsint11() { openSearchWindow('http://search.yahoo.com/search?p=', 'YahooSearch', 'Search11window'); }
-  function makeOsint12() { openSearchWindow('http://www.yandex.com/yandsearch?text=', 'YandexSearch', 'Search12window'); }
-  function makeOsint13() { openSearchWindow('http://baidu.com/s?wd=', 'BaiduSearch', 'Search13window'); }
-  function makeOsint14() { openSearchWindow('https://baresearch.org/?q=', 'SearxSearch', 'Search14window'); }
-  function makeOsint16() { openSearchWindow('https://duckduckgo.com/?q=', 'DuckDuckGoSearch', 'Search16window'); }
-  function makeOsint17() { openSearchWindow('https://startpage.com/do/search?q=', 'StartPageSearch', 'Search17window'); }
-  function makeOsint18() { openSearchWindow('https://www.qwant.com/?q=', 'QwantSearch', 'Search18window'); }
-  function makeOsint19() { openSearchWindow('https://search.brave.com/search?q=', 'BraveSearch', 'Search19window'); }
-  function makeOsint20() { 
-    var val = getOsintValue(); if (val === "") return;
-    // Per Wayback, val è parte del percorso e potrebbe essere un URL, quindi non si encoda aggressivamente.
-    window.open('https://web.archive.org/web/*/' + val, 'Search20window'); 
-  }
-  function makeOsint21() { openSearchWindow('https://ahmia.fi/search/?q=', 'AhmiaSearch', 'Search21window'); }
+  function makeOsint01() { var val = getOsintValue(); if (val === "") return; window.open('http://google.com/search?q=' + encodeURIComponent(val), 'Search01window'); }
+  function makeOsint02() { var val = getOsintValue(); if (val === "") return; window.open('http://google.com/search?q=' + encodeURIComponent(val) + '&tbs=cdr:1,cd_min:1/1/0,sbd:1', 'Search02window'); }
+  function makeOsint03() { var val = getOsintValue(); if (val === "") return; window.open('http://www.google.com/search?tbm=nws&q=' + encodeURIComponent(val), 'Search03window'); }
+  function makeOsint05() { var val = getOsintValue(); if (val === "") return; window.open('https://www.google.com/search?q=inurl%3Aftp%20-inurl%3A(http|https)%20' + encodeURIComponent(val), 'Search05window'); }
+  function makeOsint06() { var val = getOsintValue(); if (val === "") return; window.open('https://www.google.com/search?q=intitle%3Aindex.of+' + encodeURIComponent(val), 'Search06window'); }
+  function makeOsint07() { var val = getOsintValue(); if (val === "") return; window.open('http://scholar.google.com/scholar?&q=' + encodeURIComponent(val), 'Search07window'); }
+  function makeOsint08() { var val = getOsintValue(); if (val === "") return; window.open('https://patents.google.com/?q=' + encodeURIComponent(val), 'Search08window'); }
+  function makeOsint09() { var val = getOsintValue(); if (val === "") return; window.open('http://bing.com/search?q="' + encodeURIComponent(val) + '"', 'Search09window'); }
+  function makeOsint10() { var val = getOsintValue(); if (val === "") return; window.open('http://bing.com/news/search?q="' + encodeURIComponent(val) + '"', 'Search10window'); }
+  function makeOsint11() { var val = getOsintValue(); if (val === "") return; window.open('http://search.yahoo.com/search?p=' + encodeURIComponent(val), 'Search11window'); }
+  function makeOsint12() { var val = getOsintValue(); if (val === "") return; window.open('http://www.yandex.com/yandsearch?text=' + encodeURIComponent(val), 'Search12window'); }
+  function makeOsint13() { var val = getOsintValue(); if (val === "") return; window.open('http://baidu.com/s?wd=' + encodeURIComponent(val), 'Search13window'); }
+  function makeOsint14() { var val = getOsintValue(); if (val === "") return; window.open('https://baresearch.org/?q=' + encodeURIComponent(val), 'Search14window'); }
+  function makeOsint16() { var val = getOsintValue(); if (val === "") return; window.open('https://duckduckgo.com/?q=' + encodeURIComponent(val), 'Search16window'); }
+  function makeOsint17() { var val = getOsintValue(); if (val === "") return; window.open('https://startpage.com/do/search?q=' + encodeURIComponent(val), 'Search17window'); }
+  function makeOsint18() { var val = getOsintValue(); if (val === "") return; window.open('https://www.qwant.com/?q=' + encodeURIComponent(val), 'Search18window'); }
+  function makeOsint19() { var val = getOsintValue(); if (val === "") return; window.open('https://search.brave.com/search?q=' + encodeURIComponent(val), 'Search19window'); }
+  function makeOsint20() { var val = getOsintValue(); if (val === "") return; window.open('https://web.archive.org/web/*/' + val, 'Search20window'); }
+  function makeOsint21() { var val = getOsintValue(); if (val === "") return; window.open('https://ahmia.fi/search/?q=' + encodeURIComponent(val), 'Search21window'); }
 
-  // TOR NETWORK
-  function makeOsint37() { openSearchWindow('https://tor.link/?q=', 'TorLinkSearch', 'Search37window'); }
-  function makeOsint23() { openSearchWindowWithSuffix('http://torch4st4l57l2u2vr5wqwvwyueucvnrao4xajqr2klmcmicrv7ccaad.onion/search?query=', 'TorchSearch', '&action=search', 'Search23window');}
-  function makeOsint24() { openSearchWindow('http://www.tor66sewebgixwhcqfnp5inzp5x5uohhdy3kvtnyfxc2e5mxiuh34iid.onion/search?q=', 'Tor66Search', 'Search24window');}
-  function makeOsint25() { openSearchWindow('http://haystak5njsmn2hqkewecpaxetahtwhsbsa64jom2k22z5afxhnpxfid.onion/?q=', 'HaystackSearch', 'Search25window');}
-  function makeOsint26() { openSearchWindowWithSuffix('http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/search/?q=', 'AhmiaOnionSearch', '&action=search', 'Search26window');}
-  function makeOsint27() { openSearchWindow('http://srcdemonm74icqjvejew6fprssuolyoc2usjdwflevbdpqoetw4x3ead.onion/search?q=', 'SearchDemon', 'Search27window');}
-  function makeOsint28() { // Path based for Excavator
-    var val = getOsintValue(); if (val === "") return;
-    window.open('http://2fd6cemt4gmccflhm6imvdfvli3nf7zn6rfrwpsy7uhxrgbypvwf5fad.onion/search/' + encodeURIComponent(val), 'Search28window');
-  }
-  function makeOsint29() { openSearchWindowWithSuffix('http://zb2jtkhnbvhkya3d46twv3g7lkobi4s62tjffqmafjibixk6pmq75did.onion/gdark/search.php?query=', 'GDarkSearch', '&search=1', 'Search29window');}
-  function makeOsint30() { openSearchWindow('http://u5lyidiw4lpkonoctpqzxgyk6xop7w7w3oho4dzzsi272rwnjhyx7ayd.onion/?s=', 'HiddenReviewsSearch', 'Search30window');}
-  function makeOsint31() { openSearchWindow('http://3bbad7fauom4d6sgppalyqddsqbf5u5p56b5k5uk2zxsy3d6ey2jobad.onion/search?q=', 'OnionLandSearch', 'Search31window');}
-  function makeOsint32() { openSearchWindow('http://phobosxilamwcg75xt22id7aywkzol6q6rfl2flipcqoc4e4ahima5id.onion/search?query=', 'PhobosSearch', 'Search32window');}
-  function makeOsint33() { openSearchWindow('http://no6m4wzdexe3auiupv2zwif7rm6qwxcyhslkcnzisxgeiw6pvjsgafad.onion/search.php?term=', 'SubmarineSearch', 'Search33window');}
-  function makeOsint34() { openSearchWindow('http://searchgf7gdtauh7bhnbyed4ivxqmuoat3nm6zfrg3ymkq6mtnpye3ad.onion/search?q=', 'DeepSearch', 'Search34window');}
-  function makeOsint35() { openSearchWindowWithSuffix('http://5qqrlc7hw3tsgokkqifb33p3mrlpnleka2bjg7n46vih2synghb6ycid.onion/index.php?a=search&q=', 'OnionCenterSearch', '', 'Search35window'); }
-  function makeOsint36() { openSearchWindow('http://freshonifyfe4rmuh6qwpsexfhdrww7wnt5qmkoertwxmcuvm4woo4ad.onion/?query=', 'FreshOnionSearch', 'Search36window');}
+  // TOR NETWORK 
+  // Funzioni rimosse: makeOsint37 (Tor.link), makeOsint23 (Torch), makeOsint25 (Haystack)
+  // makeOsint27 (SearchDemon), makeOsint28 (Excavator), makeOsint32 (Phobos)
+  function makeOsint24() { var val = getOsintValue(); if (val === "") return; window.open('http://www.tor66sewebgixwhcqfnp5inzp5x5uohhdy3kvtnyfxc2e5mxiuh34iid.onion/search?q=' + encodeURIComponent(val), 'Search24window');}
+  function makeOsint26() { var val = getOsintValue(); if (val === "") return; window.open('http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/search/?q=' + encodeURIComponent(val) + '&action=search', 'Search26window');}
+  function makeOsint29() { var val = getOsintValue(); if (val === "") return; window.open('http://zb2jtkhnbvhkya3d46twv3g7lkobi4s62tjffqmafjibixk6pmq75did.onion/gdark/search.php?query=' + encodeURIComponent(val) + '&search=1', 'Search29window');}
+  function makeOsint30() { var val = getOsintValue(); if (val === "") return; window.open('http://u5lyidiw4lpkonoctpqzxgyk6xop7w7w3oho4dzzsi272rwnjhyx7ayd.onion/?s=' + encodeURIComponent(val), 'Search30window');}
+  function makeOsint31() { var val = getOsintValue(); if (val === "") return; window.open('http://3bbad7fauom4d6sgppalyqddsqbf5u5p56b5k5uk2zxsy3d6ey2jobad.onion/search?q=' + encodeURIComponent(val), 'Search31window');}
+  function makeOsint33() { var val = getOsintValue(); if (val === "") return; window.open('http://no6m4wzdexe3auiupv2zwif7rm6qwxcyhslkcnzisxgeiw6pvjsgafad.onion/search.php?term=' + encodeURIComponent(val), 'Search33window');}
+  function makeOsint34() { var val = getOsintValue(); if (val === "") return; window.open('http://searchgf7gdtauh7bhnbyed4ivxqmuoat3nm6zfrg3ymkq6mtnpye3ad.onion/search?q=' + encodeURIComponent(val), 'Search34window');}
+  function makeOsint35() { var val = getOsintValue(); if (val === "") return; window.open('http://5qqrlc7hw3tsgokkqifb33p3mrlpnleka2bjg7n46vih2synghb6ycid.onion/index.php?a=search&q=' + encodeURIComponent(val), 'Search35window'); } // Suffix era vuoto, corretto per usare openSearchWindow
+  function makeOsint36() { var val = getOsintValue(); if (val === "") return; window.open('http://freshonifyfe4rmuh6qwpsexfhdrww7wnt5qmkoertwxmcuvm4woo4ad.onion/?query=' + encodeURIComponent(val), 'Search36window');}
 
   // Script per mostra/nascondi submenu al passaggio del mouse (navbar script)
   document.querySelectorAll('.menu > li').forEach(item => {

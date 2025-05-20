@@ -293,16 +293,66 @@
 
 <nav>
   <ul class="menu">
-    <li><span>HOME</span><ul class="submenu"><li><a href="../index.html">Index</a></li></ul></li>
-    <li><span>Search<br>Engines</span><ul class="submenu"><li><a href="Search.html">Search Engines</a></li></ul></li>
-    <li><span>People &<br>Identities</span><ul class="submenu"><li><a href="Name.html" class="active">Names</a></li><li><a href="phonenumbers.html">Telephone Numbers</a></li><li><a href="Address.html">Addresses</a></li><li><a href="Vehicle.html">Vehicles</a></li><li><a href="Username.html">Usernames</a></li><li><a href="Email.html">Email Addresses</a></li><li><a href="Communities.html">Communities</a></li></ul></li>
-    <li><span>Social<br>Media</span><ul class="submenu"><li><a href="Twitter.html">X (Twitter)</a></li><li><a href="Facebook.html">Facebook</a></li><li><a href="Instagram.html">Instagram</a></li><li><a href="LinkedIn.html">LinkedIn</a></li></ul></li>
-    <li><span>Websites</span><ul class="submenu"><li><a href="Domain.html">Domains</a></li><li><a href="IP.html">IP Addresses</a></li></ul></li>
-    <li><span>GeoInt</span><ul class="submenu"><li><a href="Location.html">Location</a></li><li><a href="Maps.html">Maps</a></li></ul></li>
-    <li><span>Media<br>Analysis</span><ul class="submenu"><li><a href="Images.html">Images</a></li><li><a href="Videos.html">Videos</a></li><li><a href="Documents.html">Documents</a></li></ul></li>
-    <li><span>Business<br>Intelligence</span><ul class="submenu"><li><a href="Business.html">Business &amp; Government</a></li><li><a href="Currencies.html">Virtual Currencies</a></li></ul></li>
-     <li><span>Security</span><ul class="submenu"><li><a href="Breaches.html">Data Breaches & Leaks</a></li><li><a href="Pastes.html">Pastes</a></li></ul></li>
-    <li><span>Tools</span><ul class="submenu"><li><a href="API.html">Setting API</a></li><li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li></ul></li>
+    <li><span>HOME</span>
+      <ul class="submenu">
+        <li><a href="../index.html">Index</a></li>
+      </ul>
+    </li>
+    <li><span>Search<br>Engines</span>
+      <ul class="submenu">
+        <li><a href="Search.html">Search Engines</a></li>
+      </ul>
+    </li>
+    <li><span>People &<br>Identities</span>
+      <ul class="submenu">
+        <li><a href="Names.html">Names</a></li>
+        <li><a href="phoneus.html">US Phones</a></li>
+		<li><a href="phoneint.html">International Phones</a></li>
+        <li><a href="Address.html">Addresses</a></li>
+        <li><a href="Vehicle.html">Vehicles</a></li>
+        <li><a href="UserNames.html">Usernames</a></li>
+        <li><a href="Email.html">Email Addresses</a></li>
+        <li><a href="Communities.html">Communities</a></li>
+      </ul>
+    </li>
+    <li><span>Social<br>Media</span>
+      <ul class="submenu">
+        <li><a href="Twitter.html">X (Twitter)</a></li>
+        <li><a href="Facebook.html">Facebook</a></li>
+        <li><a href="Instagram.html">Instagram</a></li>
+        <li><a href="LinkedIn.html">LinkedIn</a></li>
+      </ul>
+    </li>
+    <li><span>Websites</span>
+      <ul class="submenu">
+        <li><a href="Domain.html">Domains</a></li>
+        <li><a href="IP.html">IP Addresses</a></li>
+      </ul>
+    </li>
+    <li><span>GeoInt</span>
+      <ul class="submenu">
+        <li><a href="Maps.html">Maps</a></li>
+      </ul>
+    </li>
+    <li><span>Media<br>Analysis</span>
+      <ul class="submenu">
+        <li><a href="Images.html">Images</a></li>
+        <li><a href="Videos.html">Videos</a></li>
+        <li><a href="Documents.html">Documents</a></li>
+      </ul>
+    </li>
+    <li><span>Business<br>Intelligence</span>
+      <ul class="submenu">
+        <li><a href="Business.html">Business &amp; Government</a></li>
+        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
+      </ul>
+    </li>
+    <li><span>Tools</span>
+      <ul class="submenu">
+        <li><a href="API.html">Setting API</a></li>
+        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -316,7 +366,7 @@
       <input type="text" id="lastName" class="input-field" placeholder="Last Name (e.g., Rossi)">
     </div>
     <div class="note"> 
-        <strong>NOTE:</strong> Please enter the subject's first name and last name above, then press the buttons for the type of search you wish to perform. Some services may work better with only a last name, or with names in a different order.
+        <strong>NOTE:</strong> Information obtained through these search tools always requires validation by an analyst.
     </div>
   </section>
 
@@ -336,31 +386,29 @@
     <div class="column">
       <h2>UNITED STATES</h2>
       <div class="button-grid">
-        <button class="button" onclick="searchTruePeople()">TruePeople</button>
-        <button class="button" onclick="searchFastPeople()">FastPeople</button>
-        <button class="button" onclick="searchNuwber()">Nuwber</button>
-        <button class="button" onclick="searchUSAOfficial()">USA-Official</button>
-        <button class="button" onclick="searchFamilyTreeNow()">FamilyTreeNow</button>
-        <button class="button" onclick="searchIntelius()">Intelius</button>
-        <button class="button" onclick="searchRadaris()">Radaris</button>
-        <button class="button" onclick="searchCyberBackground()">CyberBackground</button>
-        <button class="button" onclick="searchSpytox()">Spytox</button>
-        <button class="button" onclick="searchSearchPeople()">SearchPeopleFree</button>
-        <button class="button" onclick="searchSpokeo()">Spokeo</button>
+        <button class="button" onclick="searchAddresses()">Addresses.com</button>
         <button class="button" onclick="searchAdvBackground()">AdvBackgroundChk</button>
+        <button class="button" onclick="searchClassmates()">Classmates</button>
+        <button class="button" onclick="searchCyberBackground()">CyberBackground</button>
+        <button class="button" onclick="searchFamilyTreeNow()">FamilyTreeNow</button>
+        <button class="button" onclick="searchFastPeople()">FastPeople</button>
+        <button class="button" onclick="searchIDCrawl()">ID Crawl</button>
+        <button class="button" onclick="searchIntelius()">Intelius</button>
+        <button class="button" onclick="searchNuwber()">Nuwber</button>
+        <button class="button" onclick="searchPeopleByName()">PeopleByName</button>
+        <button class="button" onclick="searchPeopleSearchNow()">PeopleSearchNow</button>
+        <button class="button" onclick="searchRadaris()">Radaris</button>
+        <button class="button" onclick="searchRocketReach()">RocketReach</button>
+        <button class="button" onclick="searchSearchPeople()">SearchPeopleFree</button>
+        <button class="button" onclick="searchSocialSearcher()">SocialSearcher</button>
+        <button class="button" onclick="searchSpokeo()">Spokeo</button>
+        <button class="button" onclick="searchThatsThem()">ThatsThem</button>
+        <button class="button" onclick="searchTruePeople()">TruePeople</button>
+        <button class="button" onclick="searchTruthFinder()">TruthFinder</button>
+        <button class="button" onclick="searchUSAOfficial()">USA-Official</button>
+        <button class="button" onclick="searchWhitePages()">WhitePages</button>
         <button class="button" onclick="searchYasni()">Yasni</button>
         <button class="button" onclick="searchZabasearch()">Zabasearch</button>
-        <button class="button" onclick="searchPeopleSearchNow()">PeopleSearchNow</button>
-        <button class="button" onclick="searchSocialSearcher()">SocialSearcher</button>
-        <button class="button" onclick="searchTruthFinder()">TruthFinder</button>
-        <button class="button" onclick="searchPeopleByName()">PeopleByName</button>
-        <button class="button" onclick="searchWhitePages()">WhitePages</button>
-        <button class="button" onclick="searchThatsThem()">ThatsThem</button>
-        <button class="button" onclick="searchClustrMaps()">ClustrMaps</button>
-        <button class="button" onclick="searchRocketReach()">RocketReach</button>
-        <button class="button" onclick="searchAddresses()">Addresses.com</button>
-        <button class="button" onclick="searchClassmates()">Classmates</button>
-        <button class="button" onclick="searchIDCrawl()">ID Crawl</button>
       </div>
     </div>
   </div>
@@ -398,7 +446,7 @@
     }
 
     // INTERNATIONAL
-    function searchWebMii() { const names = getNames(); if(names) searchAndOpen('http://webmii.com/people?n="' + 'FULL_NAME_ENC' + '"', names, 'WebMiiWindow'); }
+    function searchWebMii() { const names = getNames(); if(names) searchAndOpen('https://webmii.com/people?n="' + 'FULL_NAME_ENC' + '"', names, 'WebMiiWindow'); }
     function searchPagineBianche() { const names = getNames(); if(names) searchAndOpen('https://www.paginebianche.it/persone?qs=' + 'FIRST_NAME_DASH_ENC' + '-' + 'LAST_NAME_DASH_ENC', names, 'PagineBianche'); }
     function searchPagineGialle() { const names = getNames(); if(names) searchAndOpen('https://www.paginegialle.it/ricerca/' + 'FIRST_NAME_DASH_ENC' + '-' + 'LAST_NAME_DASH_ENC', names, 'PagineGialle'); }
 
@@ -411,19 +459,17 @@
     function searchIntelius() { const names = getNames(); if(names) searchAndOpen('https://www.intelius.com/people-search/' + 'FIRST_NAME_DASH_ENC' + '-' + 'LAST_NAME_DASH_ENC', names, 'InteliusWindow'); }
     function searchRadaris() { const names = getNames(); if(names) searchAndOpen('https://radaris.com/p/' + 'FIRST_NAME_RAW' + '/' + 'LAST_NAME_RAW', names, 'RadarisWindow'); } // Uses raw names in path
     function searchCyberBackground() { const names = getNames(); if(names) searchAndOpen('https://www.cyberbackgroundchecks.com/people/' + 'FIRST_NAME_DASH_ENC' + '-' + 'LAST_NAME_DASH_ENC', names, 'CyberBackgroundWindow'); }
-    function searchSpytox() { const names = getNames(); if(names) searchAndOpen('https://www.spytox.com/people/search?name=' + 'FULL_NAME_ENC', names, 'SpytoxWindow'); } // Uses + for space, enc takes care of it
     function searchSearchPeople() { const names = getNames(); if(names) searchAndOpen('https://www.searchpeoplefree.com/find/' + 'FIRST_NAME_DASH_ENC' + '-' + 'LAST_NAME_DASH_ENC', names, 'SearchPeopleWindow'); }
     function searchSpokeo() { const names = getNames(); if(names) searchAndOpen('https://www.spokeo.com/' + 'FIRST_NAME_DASH_ENC' + '-' + 'LAST_NAME_DASH_ENC' + '?loaded=1', names, 'SpokeoWindow'); }
     function searchAdvBackground() { const names = getNames(); if(names) searchAndOpen('https://www.advancedbackgroundchecks.com/names/' + 'FIRST_NAME_DASH_ENC' + '-' + 'LAST_NAME_DASH_ENC', names, 'AdvBackgroundWindow'); }
-    function searchYasni() { const names = getNames(); if(names) searchAndOpen('http://www.yasni.com/' + 'FULL_NAME_ENC' + '/check+people?sh', names, 'YasniWindow'); } // Uses + for space, enc takes care of it
+    function searchYasni() { const names = getNames(); if(names) searchAndOpen('https://www.yasni.com/' + 'FULL_NAME_ENC' + '/check+people?sh', names, 'YasniWindow'); } // Uses + for space, enc takes care of it
     function searchZabasearch() { const names = getNames(); if(names) searchAndOpen('https://www.zabasearch.com/people/' + 'FULL_NAME_ENC', names, 'ZabasearchWindow'); } // Uses + for space
     function searchPeopleSearchNow() { const names = getNames(); if(names) searchAndOpen('https://www.peoplesearchnow.com/person/' + 'FIRST_NAME_DASH_ENC' + '-' + 'LAST_NAME_DASH_ENC', names, 'PeopleSearchNowWindow'); }
     function searchSocialSearcher() { const names = getNames(); if(names) searchAndOpen('https://www.social-searcher.com/search-users/?q6=' + 'FULL_NAME_ENC', names, 'SocialSearcherWindow'); }
     function searchTruthFinder() { const names = getNames(); if(names) searchAndOpen('https://www.truthfinder.com/results/?firstName=' + 'FIRST_NAME_ENC' + '&lastName=' + 'LAST_NAME_ENC' + '&state=ALL', names, 'TruthFinderWindow'); }
-    function searchPeopleByName() { const names = getNames(); if(names) searchAndOpen('http://www.peoplebyname.com/people/' + 'LAST_NAME_RAW' + '/' + 'FIRST_NAME_RAW', names, 'PeopleByNameWindow'); } // Uses raw names in path
+    function searchPeopleByName() { const names = getNames(); if(names) searchAndOpen('https://www.peoplebyname.com/people/' + 'LAST_NAME_RAW' + '/' + 'FIRST_NAME_RAW', names, 'PeopleByNameWindow'); } // Uses raw names in path
     function searchWhitePages() { const names = getNames(); if(names) searchAndOpen('https://www.whitepages.com/name/' + 'FULL_NAME_DASH_ENC', names, 'WhitePagesWindow');}
     function searchThatsThem() { const names = getNames(); if(names) searchAndOpen('https://thatsthem.com/name/' + 'FULL_NAME_DASH_ENC', names, 'ThatsThemWindow'); }
-    function searchClustrMaps() { const names = getNames(); if(names) searchAndOpen('https://clustrmaps.com/persons/' + 'FULL_NAME_DASH_ENC', names, 'ClustrMapsWindow'); }
     function searchRocketReach() { 
       const names = getNames(); 
       if(names) {
