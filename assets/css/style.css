@@ -1,76 +1,298 @@
-/* Definizione delle variabili CSS */
 :root {
-  --font-family: 'Roboto', sans-serif;
-  --font-size: 14px;
-  --sidebar-width: 200px;
-  --bg-sidebar: #f1f1f1;
-  --link-color: #000;
-  --link-padding: 8px 16px;
-  --link-hover-bg: #555;
-  --link-hover-color: #fff;
-  --active-bg: #303942;
-  --active-color: #fff;
-  --grey-bg: #cdcdcd;
-  --grey-color: #000;
-  --blue-bg: #b4c8da;
-  --blue-color: #000;
+  --primary-color: #0066ff;
+  --secondary-color: #333;
+  --neutral-color: #888;
+  --bg-color: #f9f9f9;
 }
 
-/* Stili base */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: var(--font-family);
-  font-size: var(--font-size);
+  font-family: 'IBM Plex Sans', sans-serif;
+  background-color: var(--bg-color);
+  padding-top: 60px;
+  padding-bottom: 60px;
   margin: 0;
-  padding: 0;
 }
 
-/* Selettori specifici per input e div, se necessari */
-input,
-div {
-  font-family: var(--font-family);
-  font-size: var(--font-size);
+/* TYPOGRAPHY */
+h1 {
+  text-align: center;
+  margin: 16px 0;
+  font-size: 2rem;
 }
 
-/* Stile per la navigazione laterale */
-aside nav ul {
+h2 {
+  margin: 16px 0;
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+h3 {
+  margin: 16px 0;
+}
+
+.center-text {
+  text-align: center;
+}
+
+/* NAVBAR */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+}
+.menu {
   list-style: none;
-  margin: 0;
   padding: 0;
-  width: var(--sidebar-width);
-  background-color: var(--bg-sidebar);
+  margin: 0;
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  justify-content: space-around;
 }
-
-/* Stili per i link della sidebar */
-aside nav ul li a {
+.menu > li {
+  position: relative;
+  height: 60px;
+  flex: 1 1 auto;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.85rem;
+  border-right: 1px solid #eee;
+  transition: background-color 0.2s ease-in, color 0.2s ease-in;
+}
+.menu > li:last-child {
+  border-right: none;
+}
+.menu > li:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+.menu > li span,
+.menu > li a.active {
   display: block;
-  color: var(--link-color);
-  padding: var(--link-padding);
+  line-height: 1.2;
+}
+
+/* SUBMENU */
+.submenu {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  list-style: none;
+  border: 1px solid #ddd;
+  min-width: 200px;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.submenu li {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #eee;
+}
+.submenu li:last-child {
+  border-bottom: none;
+}
+.submenu li a {
   text-decoration: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  color: var(--secondary-color);
+  display: block;
+  transition: color 0.2s;
+}
+.submenu li:hover {
+  background-color: var(--primary-color);
+}
+.submenu li:hover a {
+  color: #ffffff;
+}
+.menu > li:hover .submenu {
+  display: block;
 }
 
-aside nav ul li a:hover {
-  background-color: var(--link-hover-bg);
-  color: var(--link-hover-color);
+/* MAIN CONTENT */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
 }
 
-aside nav ul li a.active {
-  background-color: var(--active-bg);
-  color: var(--active-color);
+/* SEARCH/INDEX CONTENT */
+.search-instructions {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+.search-instructions label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.input-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.input-field {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }
 
-aside nav ul li a.grey {
-  background-color: var(--grey-bg);
-  color: var(--grey-color);
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.column {
+  flex: 1;
+  min-width: 300px;
+  background-color: #fafafa;
+  padding: 1rem;
+  border: 1px solid #eee;
+  border-radius: 4px;
 }
 
-aside nav ul li a.blue {
-  background-color: var(--blue-bg);
-  color: var(--blue-color);
+/* BUTTON GRID */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.button {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 3px;
+  text-align: center;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.button:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-/* Stile per garantire l'allineamento verticale in eventuali tabelle */
-table td,
-table td * {
-  vertical-align: top;
+/* NOTE BOX */
+.note {
+  font-size: 0.9rem;
+  background-color: #fff9d6;
+  border-left: 3px solid #ffc107;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 3px;
+}
+.note strong {
+  font-weight: bold;
+}
+
+/* ANALYTIC STANDARDS */
+.standards-container {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.standards-column {
+  flex: 1;
+  min-width: 300px;
+}
+.standards-list {
+  list-style: disc;
+  padding-left: 20px;
+}
+.standards-list > li {
+  position: relative;
+  margin-bottom: 12px;
+  cursor: help;
+}
+.standards-list > li .description-text {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #dedede;
+  padding: 12px;
+  margin-top: 6px;
+  width: 95%;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 6px;
+  line-height: 1.5;
+  color: var(--secondary-color);
+  z-index: 10;
+}
+.standards-list > li:hover .description-text {
+  display: block;
+}
+
+/* FOOTER */
+footer {
+  background-color: #ffffff;
+  border-top: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #555;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .columns {
+    flex-direction: column;
+  }
+}
+@media (max-width: 768px) {
+  .menu > li {
+    font-size: 0.75rem;
+    padding: 0 0.2rem;
+  }
+  .button-grid {
+    grid-template-columns: 1fr;
+  }
 }

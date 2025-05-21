@@ -5,619 +5,247 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>International Phone Numbers • Exploratores</title>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #0066ff;
-      --secondary-color: #333;
-      --bg-color: #f9f9f9;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'IBM Plex Sans', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--secondary-color);
-      padding: 20px; 
-    }
-
-    main {
-      max-width: 1000px; 
-      margin: 0 auto;
-      padding: 10px; 
-      background-color: #fff; 
-      border: 1px solid #ddd;
-      border-radius: 4px;
-    }
-    
-    .input-section-container {
-        margin-bottom: 1.5rem;
-        padding: 1rem;
-        background: #f0f0f0; 
-        border-radius: 4px;
-    }
-    .input-section-container label.section-label {
-        display: block;
-        font-weight: bold;
-        font-size: 1rem;
-        margin-bottom: 0.75rem;
-        color: var(--secondary-color);
-    }
-    .input-fields-group {
-        display: flex;
-        flex-wrap: wrap; 
-        gap: 0.75rem; 
-        align-items: flex-end;
-    }
-    .input-fields-group .input-group {
-        display: flex;
-        flex-direction: column;
-        flex: 1 1 200px; 
-    }
-    .input-fields-group label { 
-        font-size: 0.85rem;
-        color: var(--secondary-color);
-        margin-bottom: 0.25rem;
-        display: block; 
-    }
-    .input-fields-group input[type="text"] {
-        padding: 0.6rem; 
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        font-size: 0.95rem; 
-        width: 100%; 
-    }
-     /* Specifiche per i campi input globali */
-    #fullPhoneNumberInputContainer { flex-basis: 100%; }
-    #countryCodeInputContainer, #countryLettersInputContainer, #nationalNumberInputContainer {
-        flex-basis: 150px; 
-        flex-grow: 1;
-    }
-    /* NAVBAR FISSA IN ALTO */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background-color: #ffffff;
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      justify-content: center;
-      z-index: 1000;
-    }
-    .menu {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      max-width: 1200px;
-      width: 100%;
-      justify-content: space-around;
-      border: 1px solid #ccc;
-    }
-    .menu > li {
-      position: relative;
-      height: 60px;
-      width: 120px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 1rem;
-      border-right: 1px solid #ccc;
-      transition: background-color 0.2s ease-in;
-    }
-    .menu > li:last-child {
-      border-right: none;
-    }
-    .menu > li:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-    }
-    .menu > li span {
-      display: block;
-      line-height: 1.2;
-    }
-
-    /* SUBMENU */
-    .submenu {
-      display: none;
-      position: absolute;
-      background-color: #ffffff;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      border: 1px solid #ddd;
-      min-width: 200px;
-      z-index: 999;
-    }
-    .submenu li {
-      padding: 10px;
-      border-bottom: 1px solid #eee;
-    }
-    .submenu li:last-child {
-      border-bottom: none;
-    }
-    .submenu li a {
-      text-decoration: none;
-      color: var(--secondary-color);
-    }
-    .submenu li:hover {
-      background-color: var(--primary-color);
-    }
-    .submenu li:hover a {
-      color: #ffffff;
-    }
-
-    /* MOSTRA/NASCONDI SUBMENU AL PASSAGGIO DEL MOUSE */
-    .menu > li:hover .submenu {
-      display: block;
-    }
-	
-	    /* MAIN */
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 70px 20px 40px; /* spazio per non sovrapporsi con la navbar fissa */
-      background-color: #fff;
-    }
-    h1.page-title {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    .description {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-	
-	
-    /* FOOTER */
-    footer {
-      background-color: #ffffff;
-      border-top: 1px solid #ddd;
-      padding: 10px;
-      text-align: center;
-      font-size: 0.9em;
-      color: #555;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-    }
-    footer a {
-      color: var(--primary-color);
-      text-decoration: none;
-      margin-left: 10px;
-    }
-
-    /* RESPONSIVE MENU */
-    @media (max-width: 768px) {
-      .menu > li {
-        width: auto;
-        flex: 1;
-      }
-    }
-    .form-section {
-      margin-top: 1.5rem; 
-      margin-bottom: 1.5rem; padding: 1rem;
-      background: #fafafa; border: 1px solid #eee; border-radius: 4px;
-    }
-    .form-section h2 { 
-      margin-top: 0; margin-bottom: 1rem; font-size: 1.2rem; 
-      color: var(--primary-color); border-bottom: 1px solid var(--primary-color); padding-bottom: 0.5rem;
-    }
-    
-    .search-button {
-      width: 140px; padding: 0.5rem 0.5rem; height: auto; 
-      border: 1px solid #ccc; border-radius: 3px; background: #fff;
-      font-size: 0.9rem; cursor: pointer; transition: background-color 0.2s, color 0.2s;
-      text-align: center; line-height: 1.2; flex-shrink: 0;
-      display: inline-block; vertical-align: middle;
-      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-    }
-    .search-button:hover {
-      background: var(--primary-color); color: #fff;
-    }
-    
-    .button-grid { 
-      display: grid;
-      grid-template-columns: repeat(4, 1fr); /* 4 pulsanti per riga */
-      gap: 0.75rem; 
-      margin-top: 0.75rem; 
-    }
-    .button-grid .search-button {
-      width: 100%; 
-    }
-
-    @media (max-width: 992px) { 
-        .button-grid {
-            grid-template-columns: repeat(3, 1fr); /* 3 pulsanti per riga */
-        }
-    }
-    @media (max-width: 768px) {
-      .input-fields-group { flex-direction: column; align-items: stretch; }
-      .input-fields-group .input-group { width: 100%; margin-bottom: 0.5rem; }
-      .input-fields-group input[type="text"] { width: 100%; }
-      .button-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
-    }
-     @media (max-width: 480px) { 
-        .button-grid {
-            grid-template-columns: repeat(2, 1fr); /* 2 pulsanti per riga */
-        }
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-<nav>
-  <ul class="menu">
-    <li><span>HOME</span>
-      <ul class="submenu">
-        <li><a href="../index.html">Index</a></li>
-      </ul>
-    </li>
-    <li><span>Search<br>Engines</span>
-      <ul class="submenu">
-        <li><a href="Searchengines.html">Search Engines</a></li>
-      </ul>
-    </li>
-    <li><span>People &<br>Identities</span>
-      <ul class="submenu">
-        <li><a href="Names.html">Names</a></li>
-        <li><a href="phoneus.html">US Phones</a></li>
-		<li><a href="phoneint.html">International Phones</a></li>
-        <li><a href="Address.html">Addresses</a></li>
-        <li><a href="vehicles.html">Vehicles</a></li>
-        <li><a href="usernames.html">Usernames</a></li>
-        <li><a href="Email.html">Email Addresses</a></li>
-        <li><a href="Communities.html">Communities</a></li>
-      </ul>
-    </li>
-    <li><span>Social<br>Media</span>
-      <ul class="submenu">
-        <li><a href="X.html">X (Twitter)</a></li>
-        <li><a href="Facebook.html">Facebook</a></li>
-        <li><a href="Instagram.html">Instagram</a></li>
-        <li><a href="LinkedIn.html">LinkedIn</a></li>
-      </ul>
-    </li>
-    <li><span>Websites</span>
-      <ul class="submenu">
-        <li><a href="Domains.html">Domains</a></li>
-        <li><a href="IP.html">IP Addresses</a></li>
-      </ul>
-    </li>
-    <li><span>GeoInt</span>
-      <ul class="submenu">
-        <li><a href="Maps.html">Maps</a></li>
-      </ul>
-    </li>
-    <li><span>Media<br>Analysis</span>
-      <ul class="submenu">
-        <li><a href="Images.html">Images</a></li>
-        <li><a href="Videos.html">Videos</a></li>
-        <li><a href="docs.html">Documents</a></li>
-      </ul>
-    </li>
-    <li><span>Business<br>Intelligence</span>
-      <ul class="submenu">
-        <li><a href="Business.html">Business &amp; Government</a></li>
-        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
-      </ul>
-    </li>
-    <li><span>Tools</span>
-      <ul class="submenu">
 
-        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>  
-<main>
+  <nav>
+    <ul class="menu">
+      <li><span>HOME</span>
+        <ul class="submenu">
+          <li><a href="../index.html">Index</a></li>
+        </ul>
+      </li>
+      <li><span>Search<br>Engines</span>
+        <ul class="submenu">
+          <li><a href="Searchengines.html">Search Engines</a></li>
+        </ul>
+      </li>
+      <li><span>People &<br>Identities</span>
+        <ul class="submenu">
+          <li><a href="Names.html">Names</a></li>
+          <li><a href="phoneus.html">US Phones</a></li>
+          <li><a href="phoneint.html" class="active">International Phones</a></li>
+          <li><a href="Address.html">Addresses</a></li>
+          <li><a href="vehicles.html">Vehicles</a></li>
+          <li><a href="usernames.html">Usernames</a></li>
+          <li><a href="Email.html">Email Addresses</a></li>
+          <li><a href="Communities.html">Communities</a></li>
+        </ul>
+      </li>
+      <li><span>Social<br>Media</span>
+        <ul class="submenu">
+          <li><a href="X.html">X (Twitter)</a></li>
+          <li><a href="Facebook.html">Facebook</a></li>
+          <li><a href="Instagram.html">Instagram</a></li>
+          <li><a href="LinkedIn.html">LinkedIn</a></li>
+        </ul>
+      </li>
+      <li><span>Websites</span>
+        <ul class="submenu">
+          <li><a href="Domains.html">Domains</a></li>
+          <li><a href="IP.html">IP Addresses</a></li>
+        </ul>
+      </li>
+      <li><span>GeoInt</span>
+        <ul class="submenu">
+          <li><a href="Maps.html">Maps</a></li>
+        </ul>
+      </li>
+      <li><span>Media<br>Analysis</span>
+        <ul class="submenu">
+          <li><a href="Images.html">Images</a></li>
+          <li><a href="Videos.html">Videos</a></li>
+          <li><a href="docs.html">Documents</a></li>
+        </ul>
+      </li>
+      <li><span>Business<br>Intelligence</span>
+        <ul class="submenu">
+          <li><a href="Business.html">Business &amp; Government</a></li>
+          <li><a href="Currencies.html">Virtual Currencies</a></li>
+        </ul>
+      </li>
+      <li><span>Tools</span>
+        <ul class="submenu">
+          <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
 
-  <h1 class="page-title">International Phone Numbers Tool</h1>
-  
-  <div class="input-section-container">
-    <label for="fullPhoneNumberInput" class="section-label">Primary Input (Mainly for "Full Number" Tools):</label>
-    <div class="input-fields-group">
-      <div class="input-group" id="fullPhoneNumberInputContainer">
-        <label for="fullPhoneNumberInput">Full Number (E.164 format recommended):</label>
-        <input type="text" id="fullPhoneNumberInput" name="fullPhoneNumber" placeholder="+393403011758">
+  <main>
+    <h1 class="page-title">International Phone Numbers Tool</h1>
+
+      <h2>Tools using Full Phone Number</h2>
+    <section class="search-instructions">
+      <label for="fullPhoneNumberInput">Please insert the full phone number components Full Number E.164):</label>
+      <div class="input-container">
+        <input type="text" id="fullPhoneNumberInput" class="input-field" placeholder="+393403011758">
+      </div>
+    </section>
+
+    <div class="form-section">
+
+      <div class="button-grid">
+        <button class="button" onclick="Infphone06()">RiskIQ WHOIS</button>
+        <button class="button" onclick="Infphone07()">WhatsApp leaks</button>
+        <button class="button" onclick="Infphone08()">Sync.me</button>
+        <button class="button" onclick="Infphone11()">411.com</button>
+        <button class="button" onclick="Infphone35()">EPIEOS</button>
+        <button class="button" onclick="Infphone36()">Facebook (Posts</button>
+        <button class="button" onclick="Infphone37()">My SMS Box (Ru</button>
+        <button class="button" onclick="Infphone38()">OFAC Sanctions</button>
+        <button class="button" onclick="Infphone39()">Vedbex (Manual</button>
+        <button class="button" onclick="Infphone03()">EmobileTracker (Manual</button>
+        <button class="button" onclick="Infphone04()">FreeCarrierLookup (Manual</button>
       </div>
     </div>
-  </div>
-  
-  <div class="form-section">
-    <h2>Tools Primarily Using Full Phone Number / General Info</h2>
-    <div class="button-grid">
-      <input type="button" class="search-button" value="RiskIQ WHOIS" onclick="Infphone06()">
-      <input type="button" class="search-button" value="WhatsApp leaks" onclick="Infphone07()">
-      <input type="button" class="search-button" value="Sync.me" onclick="Infphone08()">
-      <input type="button" class="search-button" value="411.com" onclick="Infphone11()">
-      <input type="button" class="search-button" value="EPIEOS" onclick="Infphone35()">
-      <input type="button" class="search-button" value="Facebook (Posts)" onclick="Infphone36()">
-      <input type="button" class="search-button" value="My SMS Box (Ru)" onclick="Infphone37()">
-      <input type="button" class="search-button" value="OFAC Sanctions" onclick="Infphone38()">
-      <input type="button" class="search-button" value="Vedbex (Manual)" onclick="Infphone39()">
-      <input type="button" class="search-button" value="EmobileTracker (Manual)" onclick="Infphone03()">
-      <input type="button" class="search-button" value="FreeCarrierLookup (Manual)" onclick="Infphone04()">
+<br>
+
+      <h2>Tools Using Specific Phone Number Components</h2>
+
+    <section class="search-instructions">
+      <label>Please insert the phone number components:</label>
+      <div class="input-container">
+        <input type="text" id="countryCodeInput" class="input-field" placeholder="Country Code (+39)">
+        <input type="text" id="countryLettersInput" class="input-field" placeholder="Country ISO (2 letters)">
+        <input type="text" id="nationalNumberInput" class="input-field" placeholder="National Number">
+      </div>
+    </section>
+
+    <div class="form-section">
+
+      
+      <div class="button-grid">
+        <button class="button" onclick="Infphone01()">AQL Network (UK</button>
+        <button class="button" onclick="Infphone05()">Nigeria Phonebook</button>
+        <button class="button" onclick="Infphone09()">ThatsThem</button>
+        <button class="button" onclick="Infphone10()">Truecaller</button>
+      </div>
+    </div><br>
+
+    <div class="form-section">
+      <h3>DomainTools Phone Variant Searches</h3>
+	      
+      <div class="button-grid">
+        <button class="button" onclick="Infphone02()">+CC.Num</button>
+        <button class="button" onclick="Infphone12()">+CC.0Num</button>
+        <button class="button" onclick="Infphone13()">Num Only</button>
+        <button class="button" onclick="Infphone14()">0Num Only</button>
+        <button class="button" onclick="Infphone15()">eNum@gmail</button>
+        <button class="button" onclick="Infphone16()">eNum@mail.ru</button>
+        <button class="button" onclick="Infphone17()">eNum@yandex.ru</button>
+        <button class="button" onclick="Infphone18()">eNum@yandex.com</button>
+        <button class="button" onclick="Infphone19()">eNum@protonmail</button>
+        <button class="button" onclick="Infphone20()">eNum@proton.ch</button>
+        <button class="button" onclick="Infphone21()">eNum@proton.me</button>
+        <button class="button" onclick="Infphone22()">eNum@pm.me</button>
+        <button class="button" onclick="Infphone23()">eNum@hotmail.com</button>
+        <button class="button" onclick="Infphone24()">eNum@yahoo.com</button>
+        <button class="button" onclick="Infphone25DT()">Num@gmail.com</button>
+        <button class="button" onclick="Infphone26DT()">Num@mail.ru</button>
+        <button class="button" onclick="Infphone27DT()">Num@yandex.ru</button>
+        <button class="button" onclick="Infphone28DT()">Num@yandex.com</button>
+        <button class="button" onclick="Infphone29DT()">Num@protonmail.com</button>
+        <button class="button" onclick="Infphone30DT()">Num@protonmail.ch</button>
+        <button class="button" onclick="Infphone31DT()">Num@proton.me</button>
+        <button class="button" onclick="Infphone32DT()">Num@pm.me</button>
+        <button class="button" onclick="Infphone33DT()">Num@hotmail.com</button>
+        <button class="button" onclick="Infphone34DT()">Num@yahoo.com</button>
+      </div>
+	  <div class="note"> <strong>NOTE:</strong> These primarily use 'Country Code' & 'National Number'.</div>
     </div>
-  </div>
-  <br>
-  <br>
-  <br>
-  <div class="input-section-container">
-     <label class="section-label">Specific Phone Number Components (for tools below):</label>
-    <div class="input-fields-group">
-        <div class="input-group" id="countryCodeInputContainer">
-        <label for="countryCodeInput">Country Code:</label>
-        <input type="text" id="countryCodeInput" name="countryCode" placeholder="+39">
-        </div>
-        <div class="input-group" id="countryLettersInputContainer">
-        <label for="countryLettersInput">Country ISO (2 letters):</label>
-        <input type="text" id="countryLettersInput" name="countryLetters" placeholder="IT">
-        </div>
-        <div class="input-group" id="nationalNumberInputContainer">
-        <label for="nationalNumberInput">National Number:</label>
-        <input type="text" id="nationalNumberInput" name="nationalNumber" placeholder="3403011758">
-        </div>
-    </div>
-  </div>
+  </main>
 
-  <div class="form-section">
-    <h2>Tools Using Specific Phone Number Components</h2>
-    <p style="font-size:0.85em; margin-bottom:0.75rem;">(e.g., AQL, Nigeria Phonebook, ThatsThem, Truecaller)</p>
-    <div class="button-grid">
-      <input type="button" class="search-button" value="AQL Network (UK)" onclick="Infphone01()">
-      <input type="button" class="search-button" value="Nigeria Phonebook" onclick="Infphone05()">
-      <input type="button" class="search-button" value="ThatsThem" onclick="Infphone09()">
-      <input type="button" class="search-button" value="Truecaller" onclick="Infphone10()">
-    </div>
-  </div>
+  <footer>
+    Global Security Italy • Rome (IT)
+    <a href="License.html">License</a>
+  </footer>
 
-  <div class="form-section">
-    <h2>DomainTools Phone Variant Searches</h2> 
-    <p style="font-size:0.85em; margin-bottom:0.75rem;">(These primarily use 'Country Code' & 'National Number' inputs)</p>
-    <div class="button-grid">
-      <input type="button" class="search-button" value="DT Whois (+CC.Num)" onclick="Infphone02()">
-      <input type="button" class="search-button" value="DT Whois (+CC.0Num)" onclick="Infphone12()">
-      <input type="button" class="search-button" value="DT Whois (Num Only)" onclick="Infphone13()">
-      <input type="button" class="search-button" value="DT Whois (0Num Only)" onclick="Infphone14()">
-      <input type="button" class="search-button" value="DT (eNum@gmail)" onclick="Infphone15()">
-      <input type="button" class="search-button" value="DT (eNum@mail.ru)" onclick="Infphone16()">
-      <input type="button" class="search-button" value="DT (eNum@yandex.ru)" onclick="Infphone17()">
-      <input type="button" class="search-button" value="DT (eNum@yandex.com)" onclick="Infphone18()">
-      <input type="button" class="search-button" value="DT (eNum@protonmail)" onclick="Infphone19()">
-      <input type="button" class="search-button" value="DT (eNum@proton.ch)" onclick="Infphone20()">
-      <input type="button" class="search-button" value="DT (eNum@proton.me)" onclick="Infphone21()">
-      <input type="button" class="search-button" value="DT (eNum@pm.me)" onclick="Infphone22()">
-      <input type="button" class="search-button" value="DT (eNum@hotmail)" onclick="Infphone23()">
-      <input type="button" class="search-button" value="DT (eNum@yahoo)" onclick="Infphone24()">
-      <input type="button" class="search-button" value="DT (Num@gmail.com)" onclick="Infphone25DT()">
-      <input type="button" class="search-button" value="DT (Num@mail.ru)" onclick="Infphone26DT()">
-      <input type="button" class="search-button" value="DT (Num@yandex.ru)" onclick="Infphone27DT()">
-      <input type="button" class="search-button" value="DT (Num@yandex.com)" onclick="Infphone28DT()">
-      <input type="button" class="search-button" value="DT (Num@protonmail)" onclick="Infphone29DT()">
-      <input type="button" class="search-button" value="DT (Num@proton.ch)" onclick="Infphone30DT()">
-      <input type="button" class="search-button" value="DT (Num@proton.me)" onclick="Infphone31DT()">
-      <input type="button" class="search-button" value="DT (Num@pm.me)" onclick="Infphone32DT()">
-      <input type="button" class="search-button" value="DT (Num@hotmail.com)" onclick="Infphone33DT()">
-      <input type="button" class="search-button" value="DT (Num@yahoo.com)" onclick="Infphone34DT()">
-    </div>
-  </div>
-</main>
+  <script>
+    document.querySelectorAll('.menu > li').forEach(item => {
+      item.addEventListener('mouseover', () => {
+        const sm = item.querySelector('.submenu'); if (sm) sm.style.display = 'block';
+      });
+      item.addEventListener('mouseout', () => {
+        const sm = item.querySelector('.submenu'); if (sm) sm.style.display = 'none';
+      });
+    });
 
-<footer>
-  Global Security Italy • Rome (IT)
-  <a href="License.html">License</a>
-</footer>
-
-<script type="text/javascript">
-  // Helper function to get and validate values from the global input fields
-  function getPhoneInputs(options = { requireFull: false, requireCountryCode: false, requireNatNum: false, requireCountryLetters: false, allowEitherFullOrParts: false }) {
-    const fullNumEl = document.getElementById('fullPhoneNumberInput');
-    const countryCodeEl = document.getElementById('countryCodeInput');
-    const countryLettersEl = document.getElementById('countryLettersInput');
-    const nationalNumEl = document.getElementById('nationalNumberInput');
-
-    let fullNum = fullNumEl ? fullNumEl.value.trim() : "";
-    let countryCode = countryCodeEl ? countryCodeEl.value.trim() : "";
-    let countryLetters = countryLettersEl ? countryLettersEl.value.trim().toLowerCase() : "";
-    let nationalNum = nationalNumEl ? nationalNumEl.value.trim() : "";
-
-    if (fullNum.startsWith("+") && (countryCode === "" || nationalNum === "")) {
-        let ccCandidate = "";
-        let nnCandidate = "";
-        if (fullNum.length > 1) {
-            for (let i = 1; i <= 3; i++) { 
-                if (fullNum.length > (i + 1)) {
-                    let potentialCC = fullNum.substring(0, i + 1);
-                    let potentialNatNum = fullNum.substring(i + 1);
-                    if (potentialNatNum.replace(/\D/g, '').length > 4) {
-                        if (countryCode === "") countryCode = potentialCC;
-                        if (nationalNum === "") nationalNum = potentialNatNum.replace(/\D/g, '');
-                        break; 
-                    }
-                }
-            }
-        }
-    } else if (nationalNum === "" && fullNum !== "" && !fullNum.startsWith("+")) {
-        nationalNum = fullNum.replace(/\D/g, ''); 
+    function getPhoneInputs(options = { requireFull: false, requireCountryCode: false, requireNatNum: false, requireCountryLetters: false, allowEitherFullOrParts: false }) {
+      const fullNum = document.getElementById('fullPhoneNumberInput')?.value.trim() || "";
+      const countryCode = document.getElementById('countryCodeInput')?.value.trim() || "";
+      const countryLetters = (document.getElementById('countryLettersInput')?.value.trim().toLowerCase()) || "";
+      const nationalNum = document.getElementById('nationalNumberInput')?.value.trim() || "";
+      if (options.requireFull && !fullNum) { alert('Full Phone Number required.'); return null; }
+      if (options.requireCountryCode && !countryCode) { alert('Country Code required.'); return null; }
+      if (options.requireNatNum && !nationalNum) { alert('National Number required.'); return null; }
+      return { fullNumber: fullNum, countryDiallingCode: countryCode, countryTwoLetters: countryLetters, nationalNumber: nationalNum };
     }
-    
-    nationalNum = nationalNum.replace(/\D/g, ''); 
-
-    let alertMsg = "";
-    if (options.allowEitherFullOrParts) {
-        if (fullNum === "" && (countryCode === "" || nationalNum === "")) {
-             alertMsg = "Please enter either the Full Phone Number or both Country Code and National Number.";
-        }
-    } else {
-        if (options.requireFull && fullNum === "") {
-            alertMsg = "Full Phone Number (starting with +countrycode) is required.";
-        } else if (options.requireCountryCode && countryCode === "") {
-            alertMsg = "Country Dialing Code (e.g., +1) is required.";
-        } else if (options.requireNatNum && nationalNum === "") {
-            alertMsg = "National Number part is required.";
-        } else if (options.requireCountryLetters && countryLetters === "") {
-            alertMsg = "2-Letter Country Code (e.g., US) is required.";
-        }
+    function Infphone06() {
+      const p = getPhoneInputs({ allowEitherFullOrParts: true }); if (!p) return;
+      const num = p.fullNumber || (p.countryDiallingCode + p.nationalNumber);
+      window.open('https://community.riskiq.com/search/whois/phone?query=' + encodeURIComponent(num), '_blank');
     }
-    if (alertMsg) {
-        alert(alertMsg);
-        return null;
+    function Infphone07() { window.open('https://whatsapp.checkleaked.cc/', '_blank'); }
+    function Infphone08() {
+      const p = getPhoneInputs({ allowEitherFullOrParts: true }); if (!p) return;
+      const num = p.fullNumber || (p.countryDiallingCode + p.nationalNumber);
+      window.open('https://sync.me/search/?number=' + encodeURIComponent(num), '_blank');
     }
-    
-    let derivedFullNum = fullNum;
-    if(derivedFullNum === "" && countryCode !== "" && nationalNum !== "") {
-        derivedFullNum = countryCode + nationalNum;
+    function Infphone11() {
+      const p = getPhoneInputs({ requireNatNum: true }); if (!p) return;
+      const nn = p.nationalNumber;
+      const fmt = `1-${nn.substring(0,3)}-${nn.substring(3,6)}-${nn.substring(6)}`;
+      window.open('https://www.411.com/phone/' + encodeURIComponent(fmt), '_blank');
     }
-
-    return {
-      fullNumber: derivedFullNum,
-      countryDiallingCode: countryCode,
-      countryTwoLetters: countryLetters,
-      nationalNumber: nationalNum 
-    };
-  }
-
-  // --- Functions primarily using Full Phone Number (or derivable) ---
-  function Infphone06() { 
-    const phone = getPhoneInputs({allowEitherFullOrParts: true});
-    if (!phone) return;
-    const numToSearch = phone.fullNumber || (phone.countryDiallingCode + phone.nationalNumber);
-    if (numToSearch.replace(/\D/g, '').length < 7) { alert("Phone number seems too short for RiskIQ WHOIS."); return; }
-    window.open('https://community.riskiq.com/search/whois/phone?query=' + encodeURIComponent(numToSearch), '_blank');
-  }
-  function Infphone07() { window.open('https://whatsapp.checkleaked.cc/', '_blank'); } 
-  function Infphone08() { 
-    const phone = getPhoneInputs({allowEitherFullOrParts: true});
-    if (!phone) return;
-    const numToSearch = phone.fullNumber || (phone.countryDiallingCode + phone.nationalNumber);
-    if (numToSearch.replace(/\D/g, '').length < 7) { alert("Phone number seems too short."); return; }
-    window.open('https://sync.me/search/?number=' + encodeURIComponent(numToSearch), '_blank');
-  }
-   function Infphone11() { 
-    const phone = getPhoneInputs({requireNatNum: true}); 
-    if (!phone || phone.nationalNumber.length < 7) { alert("National number (at least 7 digits) required for 411.com."); return; }
-    let numToSearch = phone.nationalNumber;
-    let formattedNum = `1-${numToSearch.substring(0,3)}-${numToSearch.substring(3,6)}-${numToSearch.substring(6)}`;
-    window.open('https://www.411.com/phone/' + encodeURIComponent(formattedNum), '_blank');
-  }
-  function Infphone35() { 
-    const phone = getPhoneInputs({requireFull: true});
-    if (!phone || !phone.fullNumber.startsWith('+')) { alert("EPIEOS requires the full phone number to start with a '+' country code."); return; }
-    window.open('https://epieos.com/?q=' + encodeURIComponent(phone.fullNumber) + '&t=phone', '_blank');
-  }
-  function Infphone36() { 
-    const phone = getPhoneInputs({allowEitherFullOrParts: true});
-    if (!phone) return;
-    const numToSearch = phone.fullNumber || (phone.countryDiallingCode + phone.nationalNumber);
-    if (numToSearch.replace(/\D/g, '').length < 7) { alert("Phone number seems too short."); return; }
-    window.open('https://www.facebook.com/search/posts/?q=' + encodeURIComponent(numToSearch), '_blank');
-  }
-  function Infphone37() { 
-    const phone = getPhoneInputs({allowEitherFullOrParts: true});
-    if (!phone) return;
-    const numToSearch = (phone.fullNumber || (phone.countryDiallingCode + phone.nationalNumber)).replace('+', '');
-    if (numToSearch.length < 7) { alert("Phone number seems too short."); return; }
-    window.open('https://mysmsbox.ru/phone-search/' + encodeURIComponent(numToSearch), '_blank'); 
-  }
-  function Infphone38() { 
-    const phone = getPhoneInputs({allowEitherFullOrParts: true});
-    if (!phone) return;
-    const numToSearch = phone.fullNumber || (phone.countryDiallingCode + phone.nationalNumber);
-     if (numToSearch.length < 7) { alert("Phone number seems too short."); return; }
-    window.open('https://sanctionssearch.ofac.treas.gov/Details.aspx?id=' + encodeURIComponent(numToSearch), '_blank'); 
-  }
-  function Infphone39() { window.open('https://www.vedbex.com/phone2skype', '_blank');}
-  function Infphone03() { window.open('https://www.emobiletracker.com/', '_blank'); }
-  function Infphone04() { window.open('https://freecarrierlookup.com/', '_blank'); }
-
-
-  // --- Functions using Specific Phone Number Components ---
-  function Infphone01() { 
-    const phone = getPhoneInputs({requireCountryCode: true, requireNatNum: true}); 
-    if (!phone) return;
-    const numToSearch = (phone.countryDiallingCode + phone.nationalNumber).replace(/\+/g, '');
-    window.open('https://portal.aql.com/telecoms/network_lookup.php/?number=' + encodeURIComponent(numToSearch) + '&nlSubmit=submit', '_blank');
-  }
-  function Infphone05() { 
-    const phone = getPhoneInputs({requireNatNum: true}); 
-    if (!phone) return; 
-    window.open('https://nigeriaphonebook.com/search-result?searchKey=' + encodeURIComponent(phone.nationalNumber), '_blank');
-  }
-  function Infphone09() { 
-    const phone = getPhoneInputs({requireNatNum: true}); 
-    if (!phone || phone.nationalNumber.length < 7) { alert("National number (at least 7 digits) required for ThatsThem."); return; }
-    let numOnly = phone.nationalNumber; 
-    if (numOnly.length >= 7) {
-        const set1 = numOnly.substring(0, 3);
-        const set2 = numOnly.substring(3, 6);
-        const set3 = numOnly.substring(6);
-        window.open('https://thatsthem.com/phone/' + set1 + '-' + set2 + '-' + set3, '_blank');
+    function Infphone35() {
+      const p = getPhoneInputs({ requireFull: true }); if (!p) return;
+      window.open('https://epieos.com/?q=' + encodeURIComponent(p.fullNumber) + '&t=phone', '_blank');
     }
-  }
-  function Infphone10() { 
-    const phone = getPhoneInputs({requireNatNum: true, requireCountryLetters: true}); 
-    if (!phone) return;
-    window.open('https://www.truecaller.com/search/' + phone.countryTwoLetters + '/' + encodeURIComponent(phone.nationalNumber), '_blank');
-  }
-  
-  // DomainTools Phone Variant Functions
-  function getDtParts() { 
-      const phone = getPhoneInputs({requireCountryCode: true, requireNatNum: true}); 
-      if (!phone) return null;
-      return phone;
-  }
-  function openDtVariant(urlTemplateBase, emailPrefix, emailSuffix) {
-    const p = getDtParts(); 
-    if(!p) return;
-    let searchTerm = "";
-    if (emailPrefix === "e") { searchTerm = 'e' + p.nationalNumber + emailSuffix;
-    } else if (emailPrefix === "Num") { searchTerm = p.nationalNumber + emailSuffix;
-    } else if (emailPrefix === "+CC.Num") { searchTerm = p.countryDiallingCode + '.' + p.nationalNumber;
-    } else if (emailPrefix === "+CC.0Num") { searchTerm = p.countryDiallingCode + '.0' + p.nationalNumber;
-    } else if (emailPrefix === "NumOnly") { searchTerm = p.nationalNumber;
-    } else if (emailPrefix === "0NumOnly") { searchTerm = '0' + p.nationalNumber; }
-    if (searchTerm === "") { alert("Could not construct search term for DomainTools variant."); return; }
-    window.open(urlTemplateBase + encodeURIComponent(searchTerm) + '%22%5D%5D%5D&historical=1', '_blank');
-  }
-  const dtBaseUrl = 'https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22';
-  function Infphone02() { openDtVariant(dtBaseUrl, "+CC.Num", ""); } 
-  function Infphone12() { openDtVariant(dtBaseUrl, "+CC.0Num", ""); }
-  function Infphone13() { openDtVariant(dtBaseUrl, "NumOnly", ""); }
-  function Infphone14() { openDtVariant(dtBaseUrl, "0NumOnly", ""); }
-  function Infphone15() { openDtVariant(dtBaseUrl, "e", "@gmail.com"); }
-  function Infphone16() { openDtVariant(dtBaseUrl, "e", "@mail.ru"); }
-  function Infphone17() { openDtVariant(dtBaseUrl, "e", "@yandex.ru"); }
-  function Infphone18() { openDtVariant(dtBaseUrl, "e", "@yandex.com"); }
-  function Infphone19() { openDtVariant(dtBaseUrl, "e", "@protonmail.com"); }
-  function Infphone20() { openDtVariant(dtBaseUrl, "e", "@protonmail.ch"); }
-  function Infphone21() { openDtVariant(dtBaseUrl, "e", "@proton.me"); }
-  function Infphone22() { openDtVariant(dtBaseUrl, "e", "@pm.me"); }
-  function Infphone23() { openDtVariant(dtBaseUrl, "e", "@hotmail.com"); }
-  function Infphone24() { openDtVariant(dtBaseUrl, "e", "@yahoo.com"); }
-  function Infphone25DT() { openDtVariant(dtBaseUrl, "Num", "@gmail.com"); } 
-  function Infphone26DT() { openDtVariant(dtBaseUrl, "Num", "@mail.ru"); }
-  function Infphone27DT() { openDtVariant(dtBaseUrl, "Num", "@yandex.ru"); }
-  function Infphone28DT() { openDtVariant(dtBaseUrl, "Num", "@yandex.com"); }
-  function Infphone29DT() { openDtVariant(dtBaseUrl, "Num", "@protonmail.com"); }
-  function Infphone30DT() { openDtVariant(dtBaseUrl, "Num", "@protonmail.ch"); }
-  function Infphone31DT() { openDtVariant(dtBaseUrl, "Num", "@proton.me"); }
-  function Infphone32DT() { openDtVariant(dtBaseUrl, "Num", "@pm.me"); }
-  function Infphone33DT() { openDtVariant(dtBaseUrl, "Num", "@hotmail.com"); }
-  function Infphone34DT() { openDtVariant(dtBaseUrl, "Num", "@yahoo.com"); }
-
-  // Funzione Bulk Open All General Lookups rimossa
-  // function doAllGeneralLookups() { ... }
-</script>
-
+    function Infphone36() {
+      const p = getPhoneInputs({ allowEitherFullOrParts: true }); if (!p) return;
+      const num = p.fullNumber || (p.countryDiallingCode + p.nationalNumber);
+      window.open('https://www.facebook.com/search/posts/?q=' + encodeURIComponent(num), '_blank');
+    }
+    function Infphone37() { window.open('https://mysmsbox.ru/phone-search/' + encodeURIComponent((getPhoneInputs({ allowEitherFullOrParts: true }).fullNumber||"")), '_blank'); }
+    function Infphone38() { const p = getPhoneInputs({ allowEitherFullOrParts: true }); if (!p) return; window.open('https://sanctionssearch.ofac.treas.gov/Details.aspx?id=' + encodeURIComponent(p.fullNumber||''), '_blank'); }
+    function Infphone39() { window.open('https://www.vedbex.com/phone2skype', '_blank'); }
+    function Infphone03() { window.open('https://www.emobiletracker.com/', '_blank'); }
+    function Infphone04() { window.open('https://freecarrierlookup.com/', '_blank'); }
+    function Infphone01() {
+      const p = getPhoneInputs({ requireCountryCode: true, requireNatNum: true }); if (!p) return;
+      window.open('https://portal.aql.com/telecoms/network_lookup.php/?number=' + encodeURIComponent((p.countryDiallingCode + p.nationalNumber).replace('+','')) + '&nlSubmit=submit', '_blank');
+    }
+    function Infphone05() { const p = getPhoneInputs({ requireNatNum: true }); if (!p) return; window.open('https://nigeriaphonebook.com/search-result?searchKey=' + encodeURIComponent(p.nationalNumber), '_blank'); }
+    function Infphone09() { const p = getPhoneInputs({ requireNatNum: true }); if (!p) return; const nn = p.nationalNumber; window.open('https://thatsthem.com/phone/' + nn.substring(0,3)+'-'+nn.substring(3,6)+'-'+nn.substring(6), '_blank'); }
+    function Infphone10() { const p = getPhoneInputs({ requireNatNum: true, requireCountryLetters: true }); if (!p) return; window.open('https://www.truecaller.com/search/' + p.countryTwoLetters + '/' + encodeURIComponent(p.nationalNumber), '_blank'); }
+    function openDtVariant(base, prefix, suffix) { const p = getPhoneInputs({ requireCountryCode: true, requireNatNum: true }); if (!p) return; let term = prefix.startsWith('e')? 'e'+p.nationalNumber+suffix : prefix.includes('CC')? p.countryDiallingCode.replace('+','')+'.'+(prefix.includes('0')?'0':'')+p.nationalNumber : p.nationalNumber+suffix; window.open(base + encodeURIComponent(term) + '%22%5D%5D%5D&historical=1', '_blank'); }
+    const dtBase = 'https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22';
+    function Infphone02() { openDtVariant(dtBase, '+CC.Num',''); }
+    function Infphone12() { openDtVariant(dtBase, '+CC.0Num',''); }
+    function Infphone13() { openDtVariant(dtBase, 'NumOnly',''); }
+    function Infphone14() { openDtVariant(dtBase, '0NumOnly',''); }
+    function Infphone15() { openDtVariant(dtBase, 'e','@gmail.com'); }
+    function Infphone16() { openDtVariant(dtBase, 'e','@mail.ru'); }
+    function Infphone17() { openDtVariant(dtBase, 'e','@yandex.ru'); }
+    function Infphone18() { openDtVariant(dtBase, 'e','@yandex.com'); }
+    function Infphone19() { openDtVariant(dtBase, 'e','@protonmail.com'); }
+    function Infphone20() { openDtVariant(dtBase, 'e','@protonmail.ch'); }
+    function Infphone21() { openDtVariant(dtBase, 'e','@proton.me'); }
+    function Infphone22() { openDtVariant(dtBase, 'e','@pm.me'); }
+    function Infphone23() { openDtVariant(dtBase, 'e','@hotmail.com'); }
+    function Infphone24() { openDtVariant(dtBase, 'e','@yahoo.com'); }
+    function Infphone25DT() { openDtVariant(dtBase, 'Num','@gmail.com'); }
+    function Infphone26DT() { openDtVariant(dtBase, 'Num','@mail.ru'); }
+    function Infphone27DT() { openDtVariant(dtBase, 'Num','@yandex.ru'); }
+    function Infphone28DT() { openDtVariant(dtBase, 'Num','@yandex.com'); }
+    function Infphone29DT() { openDtVariant(dtBase, 'Num','@protonmail.com'); }
+    function Infphone30DT() { openDtVariant(dtBase, 'Num','@protonmail.ch'); }
+    function Infphone31DT() { openDtVariant(dtBase, 'Num','@proton.me'); }
+    function Infphone32DT() { openDtVariant(dtBase, 'Num','@pm.me'); }
+    function Infphone33DT() { openDtVariant(dtBase, 'Num','@hotmail.com'); }
+    function Infphone34DT() { openDtVariant(dtBase, 'Num','@yahoo.com'); }
+  </script>
 </body>
 </html>

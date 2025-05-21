@@ -3,244 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> US Phone Numbers • Exploratores</title>
-  <!-- Font simile a docs.html -->
+  <title>US Phone Numbers • Exploratores</title>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #0066ff;
-      --secondary-color: #333;
-      --neutral-color: #888;
-      --bg-color: #f9f9f9;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'IBM Plex Sans', sans-serif;
-      background-color: var(--bg-color);
-    }
-
-    /* NAVBAR FISSA IN ALTO */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background-color: #ffffff;
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      justify-content: center;
-      z-index: 1000;
-    }
-    .menu {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      max-width: 1200px;
-      width: 100%;
-      justify-content: space-around;
-      border: 1px solid #ccc;
-    }
-    .menu > li {
-      position: relative;
-      height: 60px;
-      width: 120px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 1rem;
-      border-right: 1px solid #ccc;
-      transition: background-color 0.2s ease-in;
-    }
-    .menu > li:last-child {
-      border-right: none;
-    }
-    .menu > li:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-    }
-    .menu > li span {
-      display: block;
-      line-height: 1.2;
-    }
-
-    /* SUBMENU */
-    .submenu {
-      display: none;
-      position: absolute;
-      background-color: #ffffff;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      border: 1px solid #ddd;
-      min-width: 200px;
-      z-index: 999;
-    }
-    .submenu li {
-      padding: 10px;
-      border-bottom: 1px solid #eee;
-    }
-    .submenu li:last-child {
-      border-bottom: none;
-    }
-    .submenu li a {
-      text-decoration: none;
-      color: var(--secondary-color);
-    }
-    .submenu li:hover {
-      background-color: var(--primary-color);
-    }
-    .submenu li:hover a {
-      color: #ffffff;
-    }
-
-    /* MOSTRA/NASCONDI SUBMENU AL PASSAGGIO DEL MOUSE */
-    .menu > li:hover .submenu {
-      display: block;
-    }
-
-    /* MAIN */
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 70px 20px 40px; /* spazio per non sovrapporsi con la navbar fissa */
-      background-color: #fff;
-    }
-    h1.page-title {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    .description {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Sezione iniziale con 3 input + pulsanti */
-    .phone-inputs {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 1rem;
-    }
-    .phone-inputs input {
-      width: 100px;
-      padding: 6px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      font-size: 0.9rem;
-    }
-
-    .buttons-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-    }
-    .buttons-grid button {
-      padding: 6px;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      cursor: pointer;
-      font-size: 0.9rem;
-      border-radius: 3px;
-      transition: background-color 0.2s ease-in;
-    }
-    .buttons-grid button:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-    }
-
-    /* Form "speciali" in fondo */
-    .form-section {
-      background-color: #fafafa;
-      border: 1px solid #eee;
-      padding: 1rem;
-      border-radius: 4px;
-      margin-bottom: 1.5rem;
-    }
-    .form-section p {
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-    }
-    .form-section input[type="text"] {
-      margin-bottom: 0.5rem;
-      margin-right: 5px;
-      padding: 6px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      font-size: 0.9rem;
-    }
-    .form-section input[type="submit"] {
-      padding: 6px;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      cursor: pointer;
-      border-radius: 3px;
-      transition: background-color 0.2s ease-in;
-      font-size: 0.9rem;
-    }
-    .form-section input[type="submit"]:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-    }
-
-    /* FOOTER */
-    footer {
-      background-color: #ffffff;
-      border-top: 1px solid #ddd;
-      padding: 10px;
-      text-align: center;
-      font-size: 0.9em;
-      color: #555;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-    }
-    footer a {
-      color: var(--primary-color);
-      text-decoration: none;
-      margin-left: 10px;
-    }
-
-    /* RESPONSIVE MENU */
-    @media (max-width: 768px) {
-      .menu > li {
-        width: auto;
-        flex: 1;
-      }
-    }
-
-    /* DUE COLONNE PER LE ANNUALITA' DI HISTORICAL */
-    .historical-container {
-      display: flex;
-      gap: 2rem; /* spaziatura fra le due colonne */
-      margin-top: 1rem;
-    }
-    .historical-container .column-left,
-    .historical-container .column-right {
-      flex: 1;
-    }
-    .historical-container iframe {
-      margin-bottom: 10px;
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
   <ul class="menu">
     <li><span>HOME</span>
@@ -299,296 +67,161 @@
     </li>
     <li><span>Tools</span>
       <ul class="submenu">
-
         <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
       </ul>
     </li>
   </ul>
 </nav>
 
-<!-- MAIN -->
-<main>
-  <h1 class="page-title">US Phone Numbers Tool</h1>
-  <div class="description">
-    <p>Insert the phone number's three parts (area code, prefix, line) and then choose a service below.</p>
-  </div>
+  <main>
+    <h1 class="page-title">US Phone Numbers Tool</h1>
+    <p class="center-text description">
+      Insert the phone number's three parts (area code, prefix, line) and then choose a service below.
+    </p>
 
-  <!-- Tre campi di testo + pulsanti -->
-  <div class="phone-inputs">
-    <input type="text" id="Area" placeholder="Area" />
-    <input type="text" id="Prefix" placeholder="Prefix" />
-    <input type="text" id="Line" placeholder="Line" />
-  </div>
+    <section class="search-instructions">
+      <label for="area">Phone Parts:</label>
+      <div class="input-container">
+        <input type="text" id="area" class="input-field" placeholder="Area" />
+        <input type="text" id="prefix" class="input-field" placeholder="Prefix" />
+        <input type="text" id="line" class="input-field" placeholder="Line" />
+      </div>
+      <div class="note">
+        <strong>NOTE:</strong> Information obtained through these search tools always requires validation by an analyst.
+      </div>
+    </section>
 
-  <!-- Pulsanti in ordine alfabetico, con "Populate All" fuori dall'ordinamento -->
-  <div class="buttons-grid">
-    <!-- Populate All (fuori dall'ordine) -->
- 
-    <!-- Ordine alfabetico dei servizi: -->
-    <button onclick="makeOsint01()">411</button>
-    <button onclick="makeOsint02()">800 Notes</button>
-    <button onclick="makeOsint03()">AdvBackground</button>
-    <button onclick="makeOsint04()">AmericaPhone</button>
-    <button onclick="makeOsint28()">Bing</button>
-    <button onclick="makeOsint05()">CallerSmart</button>
-    <button onclick="makeOsint06()">CyberBackground</button>
-    <button onclick="makeOsint07()">Dehashed</button>
-    <button onclick="makeOsint30()">Facebook</button>
-    <button onclick="makeOsint08()">FastPeople</button>
-    <button onclick="makeOsint27()">Google</button>
-    <button onclick="makeOsint09()">InfoTracer</button>
-    <button onclick="makeOsint10()">Numpi</button>
-    <button onclick="makeOsint11()">Nuwber</button>
-    <button onclick="makeOsint12()">OKCaller</button>
-    <button onclick="makeOsint13()">PeopleSearch</button>
-    <button onclick="makeOsint14()">PhoneOwner</button>
-    <button onclick="makeOsint17()">SearchPeople</button>
-    <button onclick="makeOsint18()">Spytox</button>
-    <button onclick="makeOsint19()">Sync.me</button>
-    <button onclick="makeOsint20()">ThatsThem</button>
-    <button onclick="makeOsint21()">TruePeople</button>
-    <button onclick="makeOsint22()">USPhonebook</button>
-    <button onclick="makeOsint15()">WhatsApp</button>
-    <button onclick="makeOsint23()">WhitePages</button>
-    <button onclick="makeOsint24()">WhoseNo</button>
-    <button onclick="makeOsint29()">Yandex</button>
-    <button onclick="makeOsint25()">YellowPages</button>
-    <button onclick="makeOsint26()">ZabaSearch</button>
-  </div>
+    <div class="button-grid">
+      <button class="button" onclick="USphone01()">411</button>
+      <button class="button" onclick="USphone02()">800 Notes</button>
+      <button class="button" onclick="USphone03()">AdvBackground</button>
+      <button class="button" onclick="USphone04()">AmericaPhone</button>
+      <button class="button" onclick="USphone28()">Bing</button>
+      <button class="button" onclick="USphone05()">CallerSmart</button>
+      <button class="button" onclick="USphone06()">CyberBackground</button>
+      <button class="button" onclick="USphone07()">Dehashed</button>
+      <button class="button" onclick="USphone30()">Facebook</button>
+      <button class="button" onclick="USphone08()">FastPeople</button>
+      <button class="button" onclick="USphone27()">Google</button>
+      <button class="button" onclick="USphone09()">InfoTracer</button>
+      <button class="button" onclick="USphone10()">Numpi</button>
+      <button class="button" onclick="USphone11()">Nuwber</button>
+      <button class="button" onclick="USphone12()">OKCaller</button>
+      <button class="button" onclick="USphone13()">PeopleSearch</button>
+      <button class="button" onclick="USphone14()">PhoneOwner</button>
+      <button class="button" onclick="USphone17()">SearchPeople</button>
+      <button class="button" onclick="USphone18()">Spytox</button>
+      <button class="button" onclick="USphone19()">Sync.me</button>
+      <button class="button" onclick="USphone20()">ThatsThem</button>
+      <button class="button" onclick="USphone21()">TruePeople</button>
+      <button class="button" onclick="USphone22()">USPhonebook</button>
+      <button class="button" onclick="USphone15()">WhatsApp</button>
+      <button class="button" onclick="USphone23()">WhitePages</button>
+      <button class="button" onclick="USphone24()">WhoseNo</button>
+      <button class="button" onclick="USphone29()">Yandex</button>
+      <button class="button" onclick="USphone25()">YellowPages</button>
+      <button class="button" onclick="USphone26()">ZabaSearch</button>
+    </div>
+
+    <!-- Special forms -->
+    <div class="historical-container">
+    <div class="form-section">
+      <p>Google/Bing (multiformat):</p>
+      <form onsubmit="doall02(area.value, prefix.value, line.value, all4.value, all5.value, all6.value); return false;">
+        <div class="input-container">
+          <input type="text" id="all1" class="input-field" placeholder="Area" />
+          <input type="text" id="all2" class="input-field" placeholder="Prefix" />
+          <input type="text" id="all3" class="input-field" placeholder="Line" />
+        </div>
+        <div class="input-container">
+          <input type="text" id="all4" class="input-field" placeholder="six one two" />
+          <input type="text" id="all5" class="input-field" placeholder="five five five" />
+          <input type="text" id="all6" class="input-field" placeholder="one two one two" />
+        </div>
+        <button type="submit" class="button">Google/Bing</button>
+      </form>
+    </div>
+
+    <div class="form-section">
+      <p>Search on Craigslist:</p>
+      <form onsubmit="doall03(area.value, prefix.value, line.value, all4.value, all5.value, all6.value); return false;">
+        <div class="input-container">
+          <input type="text" id="all1b" class="input-field" placeholder="Area" />
+          <input type="text" id="all2b" class="input-field" placeholder="Prefix" />
+          <input type="text" id="all3b" class="input-field" placeholder="Line" />
+        </div>
+        <div class="input-container">
+          <input type="text" id="all4b" class="input-field" placeholder="six one two" />
+          <input type="text" id="all5b" class="input-field" placeholder="five five five" />
+          <input type="text" id="all6b" class="input-field" placeholder="one two one two" />
+        </div>
+        <button type="submit" class="button">Craigslist</button>
+      </form>
+        </div>
+  </main>
+
+  <footer>
+    Global Security Italy • Rome (IT)
+    <a href="License.html">License</a>
+  </footer>
 
   <script>
-    // Raccoglie i 3 valori (area, prefisso, linea)
     function getPhoneParts(){
-      const a = document.getElementById('Area').value.trim();
-      const b = document.getElementById('Prefix').value.trim();
-      const c = document.getElementById('Line').value.trim();
+      const a = document.getElementById('area').value.trim();
+      const b = document.getElementById('prefix').value.trim();
+      const c = document.getElementById('line').value.trim();
       return {a, b, c};
     }
 
-    // Esempio "Populate All" - se vuoi popolare altri campi
-    function doPopAll(){
-      const {a, b, c} = getPhoneParts();
-      alert("Populating others with: " + a + "-" + b + "-" + c);
-    }
-
-    // 411
-    function makeOsint01(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://www.411.com/phone/1-' + a + '-' + b + '-' + c, '_blank');
-    }
-    // 800 Notes
-    function makeOsint02(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://800notes.com/Phone.aspx/1-' + a + '-' + b + '-' + c, '_blank');
-    }
-    // AdvBackground
-    function makeOsint03(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://www.advancedbackgroundchecks.com/' + a + '-' + b + '-' + c, '_blank');
-    }
-    // AmericaPhone
-    function makeOsint04(){
-      const {a, b, c} = getPhoneParts();
-      window.open('http://www.americaphonebook.com/reverse.php?number=' + a + b + c, '_blank');
-    }
-    // Bing
-    function makeOsint28(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://www.bing.com/search?q=' + a + '-' + b + '-' + c, '_blank');
-    }
-    // CallerSmart
-    function makeOsint05(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://www.callersmart.com/phone-number/' + a + '-' + b + '-' + c + '?phone-number=' + a + b + c, '_blank');
-    }
-    // CyberBackground
-    function makeOsint06(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://www.cyberbackgroundchecks.com/phone/' + a + '-' + b + '-' + c, '_blank');
-    }
-    // Dehashed
-    function makeOsint07(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://dehashed.com/search?query=' + a + b + c, '_blank');
-    }
-    // Facebook
-    function makeOsint30(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://mbasic.facebook.com/login/device-based/ar/login/?multiple_results=0&scp=1&pls=' + a + b + c, '_blank');
-    }
-    // FastPeople
-    function makeOsint08(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://www.fastpeoplesearch.com/' + a + '-' + b + '-' + c, '_blank');
-    }
-    // Google
-    function makeOsint27(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://www.google.com/search?q=' + a + '-' + b + '-' + c, '_blank');
-    }
-    // InfoTracer
-    function makeOsint09(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://infotracer.com/phone-lookup/results/?phone=' + a + b + c, '_blank');
-    }
-    // Numpi
-    function makeOsint10(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://numpi.com/phone-info/' + a + b + c, '_blank');
-    }
-    // Nuwber
-    function makeOsint11(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://nuwber.com/search/phone?phone=' + a + b + c, '_blank');
-    }
-    // OKCaller
-    function makeOsint12(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://www.okcaller.com/' + a + b + c, '_blank');
-    }
-    // PeopleSearch
-    function makeOsint13(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://www.peoplesearchnow.com/phone/' + a + '-' + b + '-' + c, '_blank');
-    }
-    // PhoneOwner
-    function makeOsint14(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://phoneowner.com/phone/' + a + b + c, '_blank');
-    }
-    // SearchPeople
-    function makeOsint17(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://www.searchpeoplefree.com/phone-lookup/' + a + '-' + b + '-' + c, '_blank');
-    }
-    // Spytox
-    function makeOsint18(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://www.spytox.com/people/search?phone=' + a + '-' + b + '-' + c, '_blank');
-    }
-    // Sync.me
-    function makeOsint19(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://sync.me/search/?number=1' + a + b + c, '_blank');
-    }
-    // ThatsThem
-    function makeOsint20(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://thatsthem.com/phone/' + a + '-' + b + '-' + c, '_blank');
-    }
-    // TruePeople
-    function makeOsint21(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://www.truepeoplesearch.com/results?phoneno=(' + a + ')' + b + '-' + c, '_blank');
-    }
-    // USPhonebook
-    function makeOsint22(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://www.usphonebook.com/' + a + '-' + b + '-' + c, '_blank');
-    }
-    // WhatsApp
-    function makeOsint15(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://whatsapp.checkleaked.cc/1' + a + b + c, '_blank');
-    }
-    // WhitePages
-    function makeOsint23(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://www.whitepages.com/phone/1-' + a + '-' + b + '-' + c, '_blank');
-    }
-    // WhoseNo
-    function makeOsint24(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://www.whoseno.com/US/' + a + b + c, '_blank');
-    }
-    // Yandex
-    function makeOsint29(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://yandex.com/search/?text=' + a + '-' + b + '-' + c, '_blank');
-    }
-    // YellowPages
-    function makeOsint25(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://people.yellowpages.com/whitepages/phone-lookup?phone=' + a + b + c, '_blank');
-    }
-    // ZabaSearch
-    function makeOsint26(){
-      const {a, b, c} = getPhoneParts();
-      window.open('https://www.zabasearch.com/phone/' + a + b + c, '_blank');
-    }
-  </script>
-
-  <!-- Form e funzioni "speciali" (Google/Bing multi, Craigslist, Historical) -->
-  <div class="form-section">
-    <p>Google/Bing (multiformat):</p>
-    <form onsubmit="doall02(this.all1.value, this.all2.value, this.all3.value, this.all4.value, this.all5.value, this.all6.value); return false;">
-      <input type="text" name="all1" size="4" placeholder="Area"/>
-      <input type="text" name="all2" size="4" placeholder="Prefix"/>
-      <input type="text" name="all3" size="5" placeholder="Line"/><br><br>
-      <input type="text" name="all4" size="4" placeholder="e.g. 'six one two'"/>
-      <input type="text" name="all5" size="4" placeholder="e.g. 'five five five'"/>
-      <input type="text" name="all6" size="5" placeholder="e.g. 'one two one two'"/><br><br>
-      <input type="submit" value="Google/Bing" />
-    </form>
-  </div>
-
-  <div class="form-section">
-    <p>Search on Craigslist:</p>
-    <form onsubmit="doall03(this.all1.value, this.all2.value, this.all3.value, this.all4.value, this.all5.value, this.all6.value); return false;">
-      <input type="text" name="all1" size="4" placeholder="Area"/>
-      <input type="text" name="all2" size="4" placeholder="Prefix"/>
-      <input type="text" name="all3" size="5" placeholder="Line"/><br><br>
-      <input type="text" name="all4" size="4" placeholder="six one two"/>
-      <input type="text" name="all5" size="4" placeholder="five five five"/>
-      <input type="text" name="all6" size="5" placeholder="one two one two"/><br><br>
-      <input type="submit" value="Craigslist"/>
-    </form>
-  </div>
-
-    </form>
-  </div>
-  
-  
-
-  <script type="text/javascript">
-    // Esempio funzioni aggiuntive:
-    function doall02(all1, all2, all3, all4, all5, all6) {
-      // Google, Bing, ecc...
-      window.open('https://www.google.com/search?q=%22' + all1 + all2 + all3 + '%22', 'g1');
-      setTimeout(function(){
-        window.open('https://www.bing.com/search?q=%22' + all1 + '-' + all2 + '-' + all3 + '%22', 'b1');
+    function USphone01(){const {a,b,c}=getPhoneParts();window.open(`https://www.411.com/phone/1-${a}-${b}-${c}`,'_blank');}
+    function USphone02(){const {a,b,c}=getPhoneParts();window.open(`https://800notes.com/Phone.aspx/1-${a}-${b}-${c}`,'_blank');}
+    function USphone03(){const {a,b,c}=getPhoneParts();window.open(`https://www.advancedbackgroundchecks.com/${a}-${b}-${c}`,'_blank');}
+    function USphone04(){const {a,b,c}=getPhoneParts();window.open(`http://www.americaphonebook.com/reverse.php?number=${a+b+c}`,'_blank');}
+    function USphone05(){const {a,b,c}=getPhoneParts();window.open(`https://www.callersmart.com/phone-number/${a}-${b}-${c}?phone-number=${a+b+c}`,'_blank');}
+    function USphone06(){const {a,b,c}=getPhoneParts();window.open(`https://www.cyberbackgroundchecks.com/phone/${a}-${b}-${c}`,'_blank');}
+    function USphone07(){const {a,b,c}=getPhoneParts();window.open(`https://dehashed.com/search?query=${a+b+c}`,'_blank');}
+    function USphone08(){const {a,b,c}=getPhoneParts();window.open(`https://www.fastpeoplesearch.com/${a}-${b}-${c}`,'_blank');}
+    function USphone09(){const {a,b,c}=getPhoneParts();window.open(`https://infotracer.com/phone-lookup/results/?phone=${a+b+c}`,'_blank');}
+    function USphone10(){const {a,b,c}=getPhoneParts();window.open(`https://numpi.com/phone-info/${a+b+c}`,'_blank');}
+    function USphone11(){const {a,b,c}=getPhoneParts();window.open(`https://nuwber.com/search/phone?phone=${a+b+c}`,'_blank');}
+    function USphone12(){const {a,b,c}=getPhoneParts();window.open(`https://www.okcaller.com/${a+b+c}`,'_blank');}
+    function USphone13(){const {a,b,c}=getPhoneParts();window.open(`https://www.peoplesearchnow.com/phone/${a}-${b}-${c}`,'_blank');}
+    function USphone14(){const {a,b,c}=getPhoneParts();window.open(`https://phoneowner.com/phone/${a+b+c}`,'_blank');}
+    function USphone15(){const {a,b,c}=getPhoneParts();window.open(`https://whatsapp.checkleaked.cc/1${a+b+c}`,'_blank');}
+    function USphone17(){const {a,b,c}=getPhoneParts();window.open(`https://www.searchpeoplefree.com/phone-lookup/${a}-${b}-${c}`,'_blank');}
+    function USphone18(){const {a,b,c}=getPhoneParts();window.open(`https://www.spytox.com/people/search?phone=${a}-${b}-${c}`,'_blank');}
+    function USphone19(){const {a,b,c}=getPhoneParts();window.open(`https://sync.me/search/?number=1${a+b+c}`,'_blank');}
+    function USphone20(){const {a,b,c}=getPhoneParts();window.open(`https://thatsthem.com/phone/${a}-${b}-${c}`,'_blank');}
+    function USphone21(){const {a,b,c}=getPhoneParts();window.open(`https://www.truepeoplesearch.com/results?phoneno=(${a})${b}-${c}`,'_blank');}
+    function USphone22(){const {a,b,c}=getPhoneParts();window.open(`https://www.usphonebook.com/${a}-${b}-${c}`,'_blank');}
+    function USphone23(){const {a,b,c}=getPhoneParts();window.open(`https://www.whitepages.com/phone/1-${a}-${b}-${c}`,'_blank');}
+    function USphone24(){const {a,b,c}=getPhoneParts();window.open(`https://www.whoseno.com/US/${a}${b}${c}`,'_blank');}
+    function USphone25(){const {a,b,c}=getPhoneParts();window.open(`https://people.yellowpages.com/whitepages/phone-lookup?phone=${a+b+c}`,'_blank');}
+    function USphone26(){const {a,b,c}=getPhoneParts();window.open(`https://www.zabasearch.com/phone/${a+b+c}`,'_blank');}
+    function USphone27(){const {a,b,c}=getPhoneParts();window.open(`https://www.google.com/search?q=${a}-${b}-${c}`,'_blank');}
+    function USphone28(){const {a,b,c}=getPhoneParts();window.open(`https://www.bing.com/search?q=${a}-${b}-${c}`,'_blank');}
+    function USphone29(){const {a,b,c}=getPhoneParts();window.open(`https://yandex.com/search/?text=${a}-${b}-${c}`,'_blank');}
+    
+    function doall02(a,b,c,d,e,f) {
+      window.open(`https://www.google.com/search?q="${a}${b}${c}"`,'g1');
+      setTimeout(()=>{
+        window.open(`https://www.bing.com/search?q="${a}-${b}-${c}"`,'b1');
       },1000);
-      // ... e così via
+    }
+    function doall03(a,b,c) {
+      window.open(`https://www.google.com/search?q=site%3Acraigslist.org+"${a}${b}${c}"`,'c1');
     }
 
-    function doall03(all1, all2, all3, all4, all5, all6) {
-      window.open('https://www.google.com/search?q=site%3Acraigslist.org+%22' + all1 + all2 + all3 + '%22', 'c1');
-      // Aggiungi eventuali ricerche aggiuntive...
-    }
-
-
+    // Navbar hover
+    document.querySelectorAll('.menu > li').forEach(item =>{
+      item.addEventListener('mouseover',() =>{
+        const sm = item.querySelector('.submenu'); if(sm) sm.style.display='block';
+      });
+      item.addEventListener('mouseout',() =>{
+        const sm = item.querySelector('.submenu'); if(sm) sm.style.display='none';
+      });
+    });
   </script>
-
-</main>
-
-<footer>
-  Global Security Italy • Rome (IT)
-  <a href="License.html">License</a>
-</footer>
-
-<script>
-  // Navbar: mostra/nascondi i submenu
-  document.querySelectorAll('.menu > li').forEach(item => {
-    item.addEventListener('mouseover', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'block';
-    });
-    item.addEventListener('mouseout', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'none';
-    });
-  });
-</script>
 
 </body>
 </html>
