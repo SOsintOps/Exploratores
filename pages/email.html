@@ -4,507 +4,156 @@
   <meta charset="UTF-8">
   <title>Exploratores Email Tool</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Esempio di font come docs.html -->
+  <!-- Font IBM Plex Sans -->
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --primary-color: #0066ff;
-      --secondary-color: #333;
-      --bg-color: #f9f9f9;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'IBM Plex Sans', sans-serif;
-      background-color: var(--bg-color);
-    }
-
-    /* NAVBAR FISSA */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background-color: #ffffff;
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      justify-content: center;
-      z-index: 1000;
-    }
-    .menu {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      max-width: 1200px;
-      width: 100%;
-      justify-content: space-around;
-      border: 1px solid #ccc;
-    }
-    .menu > li {
-      position: relative;
-      height: 60px;
-      width: 120px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 1rem;
-      border-right: 1px solid #ccc;
-      transition: background-color 0.2s ease-in;
-    }
-    .menu > li:last-child {
-      border-right: none;
-    }
-    .menu > li:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-    }
-    .menu > li span {
-      display: block;
-      line-height: 1.2;
-    }
-
-    /* SUBMENU */
-    .submenu {
-      display: none;
-      position: absolute;
-      background-color: #ffffff;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      border: 1px solid #ddd;
-      min-width: 200px;
-      z-index: 999;
-    }
-    .submenu li {
-      padding: 10px;
-      border-bottom: 1px solid #eee;
-    }
-    .submenu li:last-child {
-      border-bottom: none;
-    }
-    .submenu li a {
-      text-decoration: none;
-      color: var(--secondary-color);
-    }
-    .submenu li:hover {
-      background-color: var(--primary-color);
-    }
-    .submenu li:hover a {
-      color: #ffffff;
-    }
-    /* MOSTRA/NASCONDI SUBMENU */
-    .menu > li:hover .submenu {
-      display: block;
-    }
-
-    /* MAIN */
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 70px 20px 40px; /* spazio per la navbar fissa */
-      background-color: #fff;
-    }
-    h1.page-title {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    /* Sezione di istruzioni / input */
-    .search-instructions {
-      margin-bottom: 1.5rem;
-    }
-    .search-instructions label {
-      display: inline-block;
-      margin-bottom: 0.3rem;
-      font-weight: 600;
-    }
-    .search-instructions p {
-      margin: 0.5rem 0 1rem;
-      line-height: 1.4;
-    }
-    .input-area {
-      margin-bottom: 1.5rem;
-    }
-    .input-area input {
-      width: 300px;
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      font-size: 1rem;
-    }
-
-    /* Layout a due colonne */
-    .two-columns {
-      display: flex;
-      gap: 1rem;
-    }
-    .column {
-      flex: 1;
-      min-width: 300px;
-      background-color: #fafafa;
-      padding: 1rem;
-      border: 1px solid #eee;
-      border-radius: 4px;
-    }
-    .column h2 {
-      margin-top: 0;
-      margin-bottom: 0.8rem;
-      font-size: 1.1rem;
-      font-weight: bold;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 0.3rem;
-    }
-
-    /* Griglia di pulsanti: 4 per riga */
-    .buttons-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 130px);
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .buttons-grid button {
-      width: 130px;
-      height: 40px;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      font-size: 0.9rem;
-      cursor: pointer;
-      border-radius: 3px;
-      transition: background-color 0.2s ease-in;
-    }
-    .buttons-grid button:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-    }
-
-    /* FOOTER */
-    footer {
-      background-color: #ffffff;
-      border-top: 1px solid #ddd;
-      padding: 10px;
-      text-align: center;
-      font-size: 0.9em;
-      color: #555;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-    }
-    footer a {
-      color: var(--primary-color);
-      text-decoration: none;
-      margin-left: 10px;
-    }
-/* NOTE BOXES */
-    .note {
-      font-size: 1rem;
-      background-color: #fff9d6; /* light highlight */
-      border-left: 3px solid #ffc107;
-      padding: 0.5rem;
-      margin-bottom: 0.5rem;
-      border-radius: 3px;
-    }
-    /* RESPONSIVE MENU */
-    @media (max-width: 768px) {
-      .menu > li {
-        width: auto;
-        flex: 1;
-      }
-      .buttons-grid {
-        grid-template-columns: repeat(auto-fill, 130px);
-        justify-content: center;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
-<!-- NAVBAR -->
-<nav>
-  <ul class="menu">
-    <li><span>HOME</span>
-      <ul class="submenu">
-        <li><a href="../index.html">Index</a></li>
-      </ul>
-    </li>
-    <li><span>Search<br>Engines</span>
-      <ul class="submenu">
-        <li><a href="Searchengines.html">Search Engines</a></li>
-      </ul>
-    </li>
-    <li><span>People &<br>Identities</span>
-      <ul class="submenu">
-        <li><a href="Names.html">Names</a></li>
-        <li><a href="phoneus.html">US Phones</a></li>
-		<li><a href="phoneint.html">International Phones</a></li>
-        <li><a href="Address.html">Addresses</a></li>
-        <li><a href="vehicles.html">Vehicles</a></li>
-        <li><a href="usernames.html">Usernames</a></li>
-        <li><a href="Email.html">Email Addresses</a></li>
-        <li><a href="Communities.html">Communities</a></li>
-      </ul>
-    </li>
-    <li><span>Social<br>Media</span>
-      <ul class="submenu">
-        <li><a href="X.html">X (Twitter)</a></li>
-        <li><a href="Facebook.html">Facebook</a></li>
-        <li><a href="Instagram.html">Instagram</a></li>
-        <li><a href="LinkedIn.html">LinkedIn</a></li>
-      </ul>
-    </li>
-    <li><span>Websites</span>
-      <ul class="submenu">
-        <li><a href="Domains.html">Domains</a></li>
-        <li><a href="IP.html">IP Addresses</a></li>
-      </ul>
-    </li>
-    <li><span>GeoInt</span>
-      <ul class="submenu">
-        <li><a href="Maps.html">Maps</a></li>
-      </ul>
-    </li>
-    <li><span>Media<br>Analysis</span>
-      <ul class="submenu">
-        <li><a href="Images.html">Images</a></li>
-        <li><a href="Videos.html">Videos</a></li>
-        <li><a href="docs.html">Documents</a></li>
-      </ul>
-    </li>
-    <li><span>Business<br>Intelligence</span>
-      <ul class="submenu">
-        <li><a href="Business.html">Business &amp; Government</a></li>
-        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
-      </ul>
-    </li>
-    <li><span>Tools</span>
-      <ul class="submenu">
+  <!-- NAVBAR -->
+  <nav>
+    <ul class="menu">
+      <li><span>HOME</span><ul class="submenu"><li><a href="../index.html">Index</a></li></ul></li>
+      <li><span>Search<br>Engines</span><ul class="submenu"><li><a href="Searchengines.html">Search Engines</a></li></ul></li>
+      <li><span>People &<br>Identities</span>
+        <ul class="submenu">
+          <li><a href="Names.html">Names</a></li>
+          <li><a href="phoneus.html">US Phones</a></li>
+          <li><a href="phoneint.html">International Phones</a></li>
+          <li><a href="Address.html">Addresses</a></li>
+          <li><a href="vehicles.html">Vehicles</a></li>
+          <li><a href="usernames.html">Usernames</a></li>
+          <li><a href="Email.html" class="active">Email Addresses</a></li>
+          <li><a href="Communities.html">Communities</a></li>
+        </ul>
+      </li>
+      <li><span>Social<br>Media</span><ul class="submenu"><li><a href="X.html">X (Twitter)</a></li><li><a href="Facebook.html">Facebook</a></li><li><a href="Instagram.html">Instagram</a></li><li><a href="LinkedIn.html">LinkedIn</a></li></ul></li>
+      <li><span>Websites</span><ul class="submenu"><li><a href="Domains.html">Domains</a></li><li><a href="IP.html">IP Addresses</a></li></ul></li>
+      <li><span>GeoInt</span><ul class="submenu"><li><a href="Maps.html">Maps</a></li></ul></li>
+      <li><span>Media<br>Analysis</span><ul class="submenu"><li><a href="Images.html">Images</a></li><li><a href="Videos.html">Videos</a></li><li><a href="docs.html">Documents</a></li></ul></li>
+      <li><span>Business<br>Intelligence</span><ul class="submenu"><li><a href="Business.html">Business &amp; Government</a></li><li><a href="Currencies.html">Virtual Currencies</a></li></ul></li>
+      <li><span>Tools</span><ul class="submenu"><li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li></ul></li>
+    </ul>
+  </nav>
 
-        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+  <main>
+    <h1 class="page-title">Email Addresses</h1>
 
-<main>
-  <h1 class="page-title">Email Addresses</h1>
+    <!-- Istruzioni + input -->
+    <section class="search-instructions">
+      <label for="emailInput">Insert email address here:</label>
+      <div class="input-container">
+        <input type="text" id="emailInput" class="input-field" placeholder="Email Address">
+      </div>
+      <div class="note">
+        <strong>NOTE:</strong> After entering the email, click one of the buttons below.
+      </div>
+    </section>
 
-  <!-- Istruzioni + singola casella di input -->
-  <section class="search-instructions">
-    <label for="emailInput">Insert email address here:</label>
-    <div class="input-area">
-      <input type="text" id="emailInput" placeholder="Email Address" />
-    </div>
-	 <div class="note">
-        <strong>NOTE:</strong> Please enter the email address in the box above and then press the buttons corresponding to the type of search you wish to perform.
-     </div>
-    <p>
-      
-    </p>
-  </section>
+    <!-- Due colonne -->
+    <div class="columns">
+      <!-- Colonna sinistra -->
+      <div class="column">
+        <h2>Search Engines</h2>
+        <div class="button-grid">
+          <button class="button" onclick="searchGoogle()">Google</button>
+          <button class="button" onclick="searchBing()">Bing</button>
+          <button class="button" onclick="searchYandex()">Yandex</button>
+        </div>
 
-  <!-- Due colonne -->
-  <div class="two-columns">
-    <!-- Colonna sinistra -->
-    <div class="column">
-      <!-- SEARCH ENGINES -->
-      <h2>Search Engines</h2>
-      <div class="buttons-grid">
-        <button onclick="searchGoogle()">Google</button>
-        <button onclick="searchBing()">Bing</button>
-        <button onclick="searchYandex()">Yandex</button>
+        <h2>Services</h2>
+        <div class="button-grid">
+          <button class="button" onclick="searchEmailrep()">Emailrep</button>
+          <button class="button" onclick="searchGravatar()">Gravatar</button>
+          <button class="button" onclick="searchSpycloud()">Spycloud</button>
+          <button class="button" onclick="searchCybernews()">Cybernews</button>
+          <button class="button" onclick="searchOCCRP()">OCCRP</button>
+          <button class="button" onclick="searchThatsThem()">ThatsThem</button>
+          <button class="button" onclick="searchScamsearch()">ScamSearch</button>
+          <button class="button" onclick="searchSpytox()">SpyTox</button>
+          <button class="button" onclick="searchAnalyzeID()">AnalyzeID</button>
+        </div>
+
+        <h2>WHOIS Data</h2>
+        <div class="button-grid">
+          <button class="button" onclick="searchWhoxy()">Whoxy</button>
+          <button class="button" onclick="searchWhoisology()">Whoisology</button>
+        </div>
       </div>
 
-      <!-- SERVICES -->
-      <h2>Services</h2>
-      <div class="buttons-grid">
-        <button onclick="searchEmailrep()">Emailrep</button>
-        <button onclick="searchGravatar()">Gravatar</button>
-        <button onclick="searchSpycloud()">Spycloud</button>
-        <button onclick="searchCybernews()">Cybernews</button>
+      <!-- Colonna destra -->
+      <div class="column">
+        <h2>Leaks</h2>
+        <div class="button-grid">
+          <button class="button" onclick="searchDehashed()">Dehashed</button>
+          <button class="button" onclick="searchHudsonrock()">HudsonRock</button>
+          <button class="button" onclick="searchPsbdmp()">PSBDMP</button>
+          <button class="button" onclick="searchIntelX()">IntelX</button>
+          <button class="button" onclick="searchCleantalk()">CleanTalk</button>
+          <button class="button" onclick="searchLeakIX()">LeakIX</button>
+          <button class="button" onclick="searchHunterVerify()">HunterVerify</button>
+        </div>
 
-        <button onclick="searchOCCRP()">OCCRP</button>
-        <button onclick="searchThatsThem()">ThatsThem</button>
-        <button onclick="searchScamsearch()">ScamSearch</button>
-        <button onclick="searchSpytox()">SpyTox</button>
-
-        <button onclick="searchAnalyzeID()">AnalyzeID</button>
-      </div>
-
-      <!-- WHOIS data -->
-      <h2>WHOIS data</h2>
-      <div class="buttons-grid">
-        <button onclick="searchWhoxy()">Whoxy</button>
-        <button onclick="searchWhoisology()">Whoisology</button>
+        <h2>Social Networks</h2>
+        <div class="button-grid">
+          <button class="button" onclick="searchProtonmail()">Protonmail</button>
+          <button class="button" onclick="searchMyspace()">MySpace</button>
+          <button class="button" onclick="searchFlickr()">Flickr</button>
+        </div>
       </div>
     </div>
-    
-    <!-- Colonna destra -->
-    <div class="column">
-      <!-- LEAKS -->
-      <h2>Leaks</h2>
-      <div class="buttons-grid">
-        <button onclick="searchDehashed()">Dehashed</button>
-        <button onclick="searchHudsonrock()">HudsonRock</button>
-        <button onclick="searchPsbdmp()">PSBDMP</button>
-        <button onclick="searchIntelX()">IntelX</button>
+  </main>
 
-        <button onclick="searchCleantalk()">CleanTalk</button>
-        <button onclick="searchLeakIX()">LeakIX</button>
-        <button onclick="searchHunterVerify()">HunterVerify</button>
-      </div>
+  <footer>
+    Global Security Italy • Rome (IT)
+    <a href="License.html">License</a>
+  </footer>
 
-      <!-- SOCIAL NETWORKS -->
-      <h2>Social Networks</h2>
-      <div class="buttons-grid">
-        <button onclick="searchProtonmail()">Protonmail</button>
-        <button onclick="searchMyspace()">MySpace</button>
-        <button onclick="searchFlickr()">Flickr</button>
-      </div>
-    </div>
-  </div>
+  <script>
+    function getEmail() {
+      return document.getElementById('emailInput').value.trim();
+    }
 
-</main>
+    // SEARCH ENGINES
+    function searchGoogle()  { open('https://google.com/search?q="' + getEmail() + '"','_blank'); }
+    function searchBing()    { open('https://bing.com/search?q="'   + getEmail() + '"','_blank'); }
+    function searchYandex()  { open('https://yandex.com/search/?text="' + getEmail() + '"','_blank'); }
 
-<footer>
-  Global Security Italy • Rome (IT)
-  <a href="License.html">License</a>
-</footer>
+    // SERVICES
+    function searchEmailrep()   { open('https://emailrep.io/query/'         + getEmail(), '_blank'); }
+    function searchGravatar()   { open('https://gravatar.com/site/check/'   + getEmail(), '_blank'); }
+    function searchSpycloud()   { open('https://portal.spycloud.com/endpoint/enriched-stats/' + getEmail(), '_blank'); }
+    function searchCybernews()  { open('https://check.cybernews.com/chk/?e=' + getEmail(), '_blank'); }
+    function searchOCCRP()      { open('https://data.occrp.org/search?q='    + getEmail(), '_blank'); }
+    function searchThatsThem()  { open('https://thatsthem.com/email/'        + getEmail(), '_blank'); }
+    function searchScamsearch() { open('https://scamsearch.io/search_report?search=' + getEmail(), '_blank'); }
+    function searchSpytox()     { open('https://spytox.com/people/search?email=' + getEmail(), '_blank'); }
+    function searchAnalyzeID()  { open('http://analyzeid.com/?email='       + getEmail(), '_blank'); }
 
-<script>
-  // Funzione per ottenere valore dell'unica casella
-  function getEmail(){
-    return document.getElementById('emailInput').value.trim();
-  }
+    // WHOIS DATA
+    function searchWhoxy()      { open('https://whoxy.com/search.php?email='      + getEmail(), '_blank'); }
+    function searchWhoisology() { open('https://whoisology.com/email/'           + getEmail(), '_blank'); }
 
-  // SEARCH ENGINES
-  function searchGoogle(){
-    const email = getEmail();
-    window.open('http://google.com/search?q="' + email + '"','_blank');
-  }
-  function searchBing(){
-    const email = getEmail();
-    window.open('http://bing.com/search?q="' + email + '"','_blank');
-  }
-  function searchYandex(){
-    const email = getEmail();
-    window.open('https://yandex.com/search/?text="' + email + '"','_blank');
-  }
+    // LEAKS
+    function searchDehashed()    { open('https://dehashed.com/search?query="'    + getEmail() + '"', '_blank'); }
+    function searchHudsonrock()  { open('https://cavalier.hudsonrock.com/api/json/v2/preview/search-by-login/osint-tools?email=' + getEmail(), '_blank'); }
+    function searchPsbdmp()      { open('https://psbdmp.ws/api/search/'          + getEmail(), '_blank'); }
+    function searchIntelX()      { open('https://intelx.io/?s='                  + getEmail(), '_blank'); }
+    function searchCleantalk()   { open('https://cleantalk.org/email-checker/'   + getEmail(), '_blank'); }
+    function searchLeakIX()      { open('https://leakix.net/search?scope=leak&q="' + getEmail() + '"','_blank'); }
+    function searchHunterVerify(){ open('https://hunter.io/email-verifier/'      + getEmail(), '_blank'); }
 
-  // SERVICES
-  function searchEmailrep(){
-    const email = getEmail();
-    window.open('https://emailrep.io/query/' + email,'_blank');
-  }
-  function searchGravatar(){
-    const email = getEmail();
-    window.open('https://gravatar.com/site/check/' + email,'_blank');
-  }
-  function searchSpycloud(){
-    const email = getEmail();
-    window.open('https://portal.spycloud.com/endpoint/enriched-stats/' + email,'_blank');
-  }
-  function searchCybernews(){
-    const email = getEmail();
-    window.open('https://check.cybernews.com/chk/?lang=en_US&e=' + email,'_blank');
-  }
-  function searchOCCRP(){
-    const email = getEmail();
-    window.open('https://data.occrp.org/search?q=' + email,'_blank');
-  }
-  function searchThatsThem(){
-    const email = getEmail();
-    window.open('https://thatsthem.com/email/' + email,'_blank');
-  }
-  function searchScamsearch(){
-    const email = getEmail();
-    window.open('https://scamsearch.io/search_report?searchoption=all&search=' + email,'_blank');
-  }
-  function searchSpytox(){
-    const email = getEmail();
-    window.open('https://www.spytox.com/people/search?email=' + email,'_blank');
-  }
-  function searchAnalyzeID(){
-    const email = getEmail();
-    window.open('http://analyzeid.com/?email=' + email,'_blank');
-  }
+    // SOCIAL NETWORKS
+    function searchProtonmail(){ open('https://api.protonmail.ch/pks/lookup?op=get&search=' + getEmail(), '_blank'); }
+    function searchMyspace()   { open('https://myspace.com/search/people?q='   + getEmail(), '_blank'); }
+    function searchFlickr()    { open('https://flickr.com/search/people/?q='   + getEmail(), '_blank'); }
 
-  // WHOIS data
-  function searchWhoxy(){
-    const email = getEmail();
-    window.open('https://www.whoxy.com/search.php?email=' + email,'_blank');
-  }
-  function searchWhoisology(){
-    const email = getEmail();
-    window.open('https://whoisology.com/email/' + email,'_blank');
-  }
-
-  // LEAKS
-  function searchDehashed(){
-    const email = getEmail();
-    window.open('https://dehashed.com/search?query="' + email + '"','_blank');
-  }
-  function searchHudsonrock(){
-    const email = getEmail();
-    window.open('https://cavalier.hudsonrock.com/api/json/v2/preview/search-by-login/osint-tools?email=' + email,'_blank');
-  }
-  function searchPsbdmp(){
-    const email = getEmail();
-    window.open('https://psbdmp.ws/api/search/' + email,'_blank');
-  }
-  function searchIntelX(){
-    const email = getEmail();
-    window.open('https://intelx.io/?s=' + email,'_blank');
-  }
-  function searchCleantalk(){
-    const email = getEmail();
-    window.open('https://cleantalk.org/email-checker/' + email,'_blank');
-  }
-  function searchLeakIX(){
-    const email = getEmail();
-    window.open('https://leakix.net/search?scope=leak&q=%22' + email + '%22','_blank');
-  }
-  function searchHunterVerify(){
-    const email = getEmail();
-    window.open('https://hunter.io/email-verifier/' + email,'_blank');
-  }
-
-  // SOCIAL NETWORKS
-  function searchProtonmail(){
-    const email = getEmail();
-    window.open('https://api.protonmail.ch/pks/lookup?op=get&search=' + email,'_blank');
-  }
-  function searchMyspace(){
-    const email = getEmail();
-    window.open('https://myspace.com/search/people?q=' + email,'_blank');
-  }
-  function searchFlickr(){
-    const email = getEmail();
-    window.open('https://www.flickr.com/search/people/?q=' + email,'_blank');
-  }
-
-  // Mostra/Nascondi submenu
-  document.querySelectorAll('.menu > li').forEach(item => {
-    item.addEventListener('mouseover', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'block';
+    // Navbar submenu show/hide
+    document.querySelectorAll('.menu > li').forEach(item => {
+      item.addEventListener('mouseover', () => item.querySelector('.submenu')?.style.setProperty('display','block'));
+      item.addEventListener('mouseout',  () => item.querySelector('.submenu')?.style.setProperty('display','none'));
     });
-    item.addEventListener('mouseout', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'none';
-    });
-  });
-</script>
+  </script>
 
 </body>
 </html>

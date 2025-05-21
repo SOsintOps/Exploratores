@@ -5,418 +5,240 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Exploratores Vehicles Tool</title>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #0066ff;
-      --secondary-color: #333;
-      --bg-color: #f9f9f9;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'IBM Plex Sans', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--secondary-color);
-      padding-top: 60px; 
-      padding-bottom: 60px; 
-    }
-
-    /* NAVBAR */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background-color: #ffffff;
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      justify-content: center;
-      z-index: 1000;
-    }
-    .menu {
-      list-style: none;
-      display: flex;
-      max-width: 1200px;
-      width: 100%;
-      justify-content: space-around;
-    }
-    .menu > li {
-      position: relative;
-      height: 60px;
-      flex: 1;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 0.85rem; 
-      border-right: 1px solid #eee;
-      transition: background-color 0.2s ease-in;
-    }
-    .menu > li:last-child { border-right: none; }
-    .menu > li:hover { background-color: var(--primary-color); color: #fff; }
-    .menu > li span { display: block; line-height: 1.2; }
-    .menu > li a.active, .menu > li span.active-main {
-        color: var(--primary-color);
-        font-weight: bold;
-    }
-    .submenu {
-      display: none; position: absolute; background-color: #ffffff;
-      top: 100%; left: 50%; transform: translateX(-50%);
-      list-style: none; border: 1px solid #ddd; min-width: 200px; z-index: 999;
-    }
-    .submenu li { padding: 0.5rem 1rem; border-bottom: 1px solid #eee; }
-    .submenu li:last-child { border-bottom: none; }
-    .submenu li a { text-decoration: none; color: var(--secondary-color); display: block; }
-    .submenu li a.active { color: var(--primary-color); font-weight: bold; }
-    .submenu li:hover { background-color: var(--primary-color); }
-    .submenu li:hover a { color: #fff; }
-    .menu > li:hover .submenu { display: block; }
-
-    /* MAIN CONTENT */
-    main {
-      max-width: 1200px; margin: 0 auto;
-      padding: 20px; background-color: #fff; 
-    }
-    h1.page-title { text-align: center; margin-bottom: 1rem; font-size: 1.5rem; }
-    
-    .search-instructions {
-      margin-bottom: 1.5rem;
-      padding: 1rem;
-      background-color: #f0f0f0;
-      border-radius: 4px;
-    }
-    .search-instructions label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-    .search-instructions p {
-      margin: 0.5rem 0 0;
-      line-height: 1.4;
-      font-size: 0.9rem;
-      color: #555;
-    }
-    
-    .columns-container { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top:1.5rem; }
-    .column { flex: 1; min-width: 300px; border-radius: 4px; }
-    
-    .form-section {
-      margin-bottom: 1.5rem; padding: 1rem;
-      background: #fafafa; border: 1px solid #eee; border-radius: 4px;
-    }
-    .form-section h2 { 
-      margin-top: 0; margin-bottom: 1rem; font-size: 1.2rem; 
-      color: var(--primary-color); border-bottom: 1px solid var(--primary-color); padding-bottom: 0.5rem;
-    }
-     .column > .form-section:first-child > h2 {
-        margin-top:0;
-    }
-    
-    .input-row { 
-      margin-bottom: 1rem;
-      display: flex;
-      flex-wrap: wrap; 
-      gap: 0.5rem;
-    }
-    .input-row input[type="text"] {
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      font-size: 0.9rem;
-      flex-grow: 1; 
-    }
-    .input-row input#vinValue { 
-        width: 100%;
-        flex-grow: 0; /* VIN input prende tutta la larghezza se è l'unico */
-    }
-    .input-row input#lpNumber { flex-basis: 200px; }
-    .input-row input#lpState { flex-basis: 120px; }
-
-    .button { /* Standardized button style */
-      width: 140px; 
-      padding: 0.5rem 0.5rem; 
-      height: auto; 
-      background-color: #fff;
-      border: 1px solid #ccc;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: background-color 0.2s ease-in, color 0.2s ease-in;
-      border-radius: 3px;
-      text-align: center; 
-      line-height: 1.2; 
-      display: inline-block; 
-      vertical-align: middle;
-      overflow: hidden;         
-      text-overflow: ellipsis;  
-      white-space: nowrap;   
-    }
-    .button:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-    }
-
-    .buttons-grid { 
-        display: grid;
-        grid-template-columns: repeat(3, auto); /* Modificato per 3 colonne */
-        gap: 0.75rem; 
-        margin-bottom: 1.5rem; 
-        justify-content: start; /* Allinea la griglia a sinistra se c'è spazio */
-    }
-    /* I pulsanti nella griglia useranno la larghezza fissa definita dalla classe .button */
-
-    footer {
-      background-color: #ffffff; border-top: 1px solid #ddd; padding: 10px;
-      text-align: center; font-size: 0.9em; color: #555;
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
-    }
-    footer a { color: var(--primary-color); text-decoration: none; margin-left: 10px; }
-
-    @media (max-width: 992px) { .columns-container { flex-direction: column; } }
-    @media (max-width: 768px) {
-      .menu > li { width: auto; flex: 1; font-size: 0.75rem; padding: 0 0.2rem; }
-      .input-row { flex-direction: column; }
-      .input-row input[type="text"] { width: 100%; margin-right: 0; margin-bottom: 0.5rem; }
-      .buttons-grid { 
-          grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Torna a responsive su mobile */
-      }
-      .buttons-grid .button { width: 100%; } /* Pulsanti full-width quando in colonna singola mobile */
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
-<nav>
-  <ul class="menu">
-    <li><span>HOME</span>
-      <ul class="submenu">
-        <li><a href="../index.html">Index</a></li>
-      </ul>
-    </li>
-    <li><span>Search<br>Engines</span>
-      <ul class="submenu">
-        <li><a href="Searchengines.html">Search Engines</a></li>
-      </ul>
-    </li>
-    <li><span>People &<br>Identities</span>
-      <ul class="submenu">
-        <li><a href="Names.html">Names</a></li>
-        <li><a href="phoneus.html">US Phones</a></li>
-		<li><a href="phoneint.html">International Phones</a></li>
-        <li><a href="Address.html">Addresses</a></li>
-        <li><a href="vehicles.html">Vehicles</a></li>
-        <li><a href="usernames.html">Usernames</a></li>
-        <li><a href="Email.html">Email Addresses</a></li>
-        <li><a href="Communities.html">Communities</a></li>
-      </ul>
-    </li>
-    <li><span>Social<br>Media</span>
-      <ul class="submenu">
-        <li><a href="X.html">X (Twitter)</a></li>
-        <li><a href="Facebook.html">Facebook</a></li>
-        <li><a href="Instagram.html">Instagram</a></li>
-        <li><a href="LinkedIn.html">LinkedIn</a></li>
-      </ul>
-    </li>
-    <li><span>Websites</span>
-      <ul class="submenu">
-        <li><a href="Domains.html">Domains</a></li>
-        <li><a href="IP.html">IP Addresses</a></li>
-      </ul>
-    </li>
-    <li><span>GeoInt</span>
-      <ul class="submenu">
-        <li><a href="Maps.html">Maps</a></li>
-      </ul>
-    </li>
-    <li><span>Media<br>Analysis</span>
-      <ul class="submenu">
-        <li><a href="Images.html">Images</a></li>
-        <li><a href="Videos.html">Videos</a></li>
-        <li><a href="docs.html">Documents</a></li>
-      </ul>
-    </li>
-    <li><span>Business<br>Intelligence</span>
-      <ul class="submenu">
-        <li><a href="Business.html">Business &amp; Government</a></li>
-        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
-      </ul>
-    </li>
-    <li><span>Tools</span>
-      <ul class="submenu">
+  <nav>
+    <ul class="menu">
+      <li><span>HOME</span>
+        <ul class="submenu">
+          <li><a href="../index.html">Index</a></li>
+        </ul>
+      </li>
+      <li><span>Search<br>Engines</span>
+        <ul class="submenu">
+          <li><a href="Searchengines.html">Search Engines</a></li>
+        </ul>
+      </li>
+      <li><span>People &<br>Identities</span>
+        <ul class="submenu">
+          <li><a href="Names.html">Names</a></li>
+          <li><a href="phoneus.html">US Phones</a></li>
+          <li><a href="phoneint.html">International Phones</a></li>
+          <li><a href="Address.html">Addresses</a></li>
+          <li><a href="vehicles.html" class="active">Vehicles</a></li>
+          <li><a href="usernames.html">Usernames</a></li>
+          <li><a href="Email.html">Email Addresses</a></li>
+          <li><a href="Communities.html">Communities</a></li>
+        </ul>
+      </li>
+      <li><span>Social<br>Media</span>
+        <ul class="submenu">
+          <li><a href="X.html">X (Twitter)</a></li>
+          <li><a href="Facebook.html">Facebook</a></li>
+          <li><a href="Instagram.html">Instagram</a></li>
+          <li><a href="LinkedIn.html">LinkedIn</a></li>
+        </ul>
+      </li>
+      <li><span>Websites</span>
+        <ul class="submenu">
+          <li><a href="Domains.html">Domains</a></li>
+          <li><a href="IP.html">IP Addresses</a></li>
+        </ul>
+      </li>
+      <li><span>GeoInt</span>
+        <ul class="submenu">
+          <li><a href="Maps.html">Maps</a></li>
+        </ul>
+      </li>
+      <li><span>Media<br>Analysis</span>
+        <ul class="submenu">
+          <li><a href="Images.html">Images</a></li>
+          <li><a href="Videos.html">Videos</a></li>
+          <li><a href="docs.html">Documents</a></li>
+        </ul>
+      </li>
+      <li><span>Business<br>Intelligence</span>
+        <ul class="submenu">
+          <li><a href="Business.html">Business &amp; Government</a></li>
+          <li><a href="Currencies.html">Virtual Currencies</a></li>
+        </ul>
+      </li>
+      <li><span>Tools</span>
+        <ul class="submenu">
+          <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
 
-        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-<main>
-  <h1 class="page-title">Exploratores Vehicles Tool</h1>
-
-  <section class="search-instructions">
-        <p>
-      Please enter the VIN or license plate data in the boxes below, then press 
-      the buttons corresponding to the type of search you wish to perform.
-    </p>
-  </section>
-
-  <div class="columns-container">
-    <div class="column" id="left-column">
-      <div class="form-section">
-        <h2>VIN Finder</h2>
-        <div class="input-row">
-          <input type="text" id="vinValue" placeholder="VIN (17 chars)" />
+  <main>
+    <h1 class="page-title">Vehicles Tool</h1>
+    <div class="note">
+      <strong>NOTE:</strong> Please enter the VIN or license plate data in the boxes below, then press the buttons corresponding to the type of search you wish to perform.
+</div>
+    <div class="columns">
+      <!-- VIN Finder Column -->
+      <div class="column">
+        <div class="form-section">
+          <h2>VIN Finder</h2>
+          <div class="input-container">
+            <input type="text" id="vinValue" class="input-field" placeholder="VIN (17 chars)" />
+          </div>
+          <div class="button-grid">
+            <button class="button" onclick="makeOsint06()">VINDecoderz</button>
+            <button class="button" onclick="makeOsint07()">FaxVIN</button>
+            <button class="button" onclick="makeOsint08()">CheckThatVIN</button>
+            <button class="button" onclick="makeOsint09()">VINCheck.info</button>
+            <button class="button" onclick="makeOsint10()">SearchQuarry</button>
+            <button class="button" onclick="makeOsint11()">CycleVIN</button>
+            <button class="button" onclick="makeOsint12()">RecordFinder</button>
+            <button class="button" onclick="makeOsint13()">CanadaVIN</button>
+          </div>
         </div>
-        <div class="buttons-grid">
-          <button class="button" onclick="makeOsint06()">VINDecoderz</button>
-          <button class="button" onclick="makeOsint07()">FaxVIN</button>
-          <button class="button" onclick="makeOsint08()">CheckThatVIN</button>
-          <button class="button" onclick="makeOsint09()">VINCheck.info</button>
-          <button class="button" onclick="makeOsint10()">SearchQuarry</button>
-          <button class="button" onclick="makeOsint11()">CycleVIN</button>
-          <button class="button" onclick="makeOsint12()">RecordFinder</button>
-          <button class="button" onclick="makeOsint13()">CanadaVIN</button>
+      </div>
+
+      <!-- License Plates Column -->
+      <div class="column">
+        <div class="form-section">
+          <h2>License Plates (USA)</h2>
+          <div class="input-container">
+            <input type="text" id="lpNumber" class="input-field" placeholder="License Plate" />
+            <input type="text" id="lpState"  class="input-field" placeholder="2-Letter State" />
+          </div>
+          <div class="button-grid">
+            <button class="button" onclick="makeOsint01()">Carvana</button>
+            <button class="button" onclick="makeOsint02()">SearchQuarry</button>
+            <button class="button" onclick="makeOsint03()">RecordFinder</button>
+            <button class="button" onclick="makeOsint04()">InfoTracer</button>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h2>Car Identifier</h2>
+          <p>(Carnet.ai Visual Identification)</p>
+          <button class="button" style="width:100%; max-width:280px;"
+                  onclick="window.open('https://carnet.ai/', '_blank')">
+            Launch Carnet.ai
+          </button>
         </div>
       </div>
     </div>
+  </main>
 
-    <div class="column" id="right-column">
-      <div class="form-section">
-        <h2>License Plates (USA)</h2>
-        <div class="input-row">
-          <input type="text" id="lpNumber" placeholder="License Plate" />
-          <input type="text" id="lpState" placeholder="2-Letter State" />
-        </div>
-        <div class="buttons-grid">
-          <button class="button" onclick="makeOsint01()">Carvana</button>
-          <button class="button" onclick="makeOsint02()">SearchQuarry</button>
-          <button class="button" onclick="makeOsint03()">RecordFinder</button>
-          <button class="button" onclick="makeOsint04()">InfoTracer</button>
-        </div>
-      </div>
+  <footer>
+    Global Security Italy • Rome (IT)
+    <a href="License.html">License</a>
+  </footer>
 
-      <div class="form-section">
-        <h2>Car Identifier</h2>
-        <p style="font-size:0.9em; margin-bottom:0.75rem;">(Carnet.ai Visual Identification)</p>
-        <button class="button" style="width:100%; max-width:280px;" onclick="window.open('https://carnet.ai/', '_blank')">
-          Launch Carnet.ai
-        </button>
-      </div>
-    </div>
-  </div>
-</main>
-
-<footer>
-  Global Security Italy • Rome (IT)
-  <a href="License.html">License</a>
-</footer>
-
-<script>
-  function getVIN(){
-    const vinInput = document.getElementById('vinValue');
-    if (!vinInput) return "";
-    return vinInput.value.trim();
-  }
-
-  function getLicensePlateParts(){
-    const plateElement = document.getElementById('lpNumber');
-    const stateElement = document.getElementById('lpState');
-    if (!plateElement || !stateElement) return null;
-
-    const plate = plateElement.value.trim();
-    const state = stateElement.value.trim().toUpperCase();
-
-    if (plate === "" || state === "") {
-      alert("Please enter both License Plate and State.");
-      return null;
-    }
-    if (state.length !== 2) { 
-      alert("State must be a 2-letter abbreviation (e.g., CA, NY).");
-      return null;
-    }
-    return { plate, state };
-  }
-
-  // Plate Searches
-  function makeOsint01(){
-    const lpData = getLicensePlateParts();
-    if (!lpData) return;
-    window.open('https://www.carvana.com/sell-my-car/getoffer/vehicle?licensePlate=' + encodeURIComponent(lpData.plate) + '&plateState=' + encodeURIComponent(lpData.state), '_blank');
-  }
-  function makeOsint02(){
-    const lpData = getLicensePlateParts();
-    if (!lpData) return;
-    window.open('https://www.searchquarry.com/vehicle_records/lregister?sqtb=license_plate&license_plates=' + encodeURIComponent(lpData.plate) + '&state=' + encodeURIComponent(lpData.state), '_blank');
-  }
-  function makeOsint03(){
-    const lpData = getLicensePlateParts();
-    if (!lpData) return;
-    window.open('https://recordsfinder.com/search/plate/loader/?flow=plate&plateNumber=' + encodeURIComponent(lpData.plate) + '&state=' + encodeURIComponent(lpData.state), '_blank');
-  }
-  function makeOsint04(){
-    const lpData = getLicensePlateParts();
-    if (!lpData) return;
-    window.open('https://infotracer.com/loading/?type=plate-lookup&mercSubId=plate&plate=' + encodeURIComponent(lpData.plate) + '&state=' + encodeURIComponent(lpData.state), '_blank');
-  }
-
-  // VIN Searches
-  function makeOsint06(){
-    const vin = getVIN();
-    if (vin === "") { alert("Please enter a VIN."); return; }
-    window.open('https://www.vindecoderz.com/EN/check-lookup/' + encodeURIComponent(vin), '_blank');
-  }
-  function makeOsint07(){
-    const vin = getVIN();
-    if (vin === "") { alert("Please enter a VIN."); return; }
-    window.open('https://www.faxvin.com/order/decoding?vin=' + encodeURIComponent(vin), '_blank');
-  }
-  function makeOsint08(){
-    const vin = getVIN();
-    if (vin === "") { alert("Please enter a VIN."); return; }
-    window.open('https://checkthatvin.com/ctv/#/vin-search/' + encodeURIComponent(vin), '_blank'); 
-  }
-  function makeOsint09(){
-    const vin = getVIN();
-    if (vin === "") { alert("Please enter a VIN."); return; }
-    window.open('https://vincheck.info/check/report-summary.php?vin=' + encodeURIComponent(vin), '_blank');
-  }
-  function makeOsint10(){
-    const vin = getVIN();
-    if (vin === "") { alert("Please enter a VIN."); return; }
-    window.open('https://www.searchquarry.com/vin-decoder/search/' + encodeURIComponent(vin), '_blank');
-  }
-  function makeOsint11(){
-    const vin = getVIN();
-    if (vin === "") { alert("Please enter a VIN."); return; }
-    window.open('https://www.cyclevin.com/vin-report/?vin=' + encodeURIComponent(vin), '_blank');
-  }
-  function makeOsint12(){
-    const vin = getVIN();
-    if (vin === "") { alert("Please enter a VIN."); return; }
-    window.open('https://recordsfinder.com/search/vin-check/loader/?flow=vin-check&vin=' + encodeURIComponent(vin), '_blank');
-  }
-  function makeOsint13(){
-    const vin = getVIN();
-    if (vin === "") { alert("Please enter a VIN."); return; }
-    window.open('https://csps.con.rcmp-grc.gc.ca/queryVehicles?vin=' + encodeURIComponent(vin), '_blank');
-  }
-
-  // Navbar submenu script
-  document.querySelectorAll('.menu > li').forEach(item => {
-    item.addEventListener('mouseover', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'block';
+  <script>
+    // Navbar submenu
+    document.querySelectorAll('.menu > li').forEach(item => {
+      item.addEventListener('mouseover', () => {
+        const sm = item.querySelector('.submenu');
+        if (sm) sm.style.display = 'block';
+      });
+      item.addEventListener('mouseout', () => {
+        const sm = item.querySelector('.submenu');
+        if (sm) sm.style.display = 'none';
+      });
     });
-    item.addEventListener('mouseout', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'none';
-    });
-  });
-</script>
+
+    // Helpers
+    function getVIN() {
+      return document.getElementById('vinValue').value.trim();
+    }
+    function getLicensePlateParts() {
+      const plate = document.getElementById('lpNumber').value.trim();
+      const state = document.getElementById('lpState').value.trim().toUpperCase();
+      if (!plate || state.length !== 2) {
+        alert("Please enter a license plate and a 2-letter state.");
+        return null;
+      }
+      return { plate, state };
+    }
+
+    // Plate Searches
+    function makeOsint01() {
+      const d = getLicensePlateParts(); if (!d) return;
+      window.open(
+        'https://www.carvana.com/sell-my-car/getoffer/vehicle?licensePlate='
+        + encodeURIComponent(d.plate)
+        + '&plateState=' + encodeURIComponent(d.state),
+        '_blank'
+      );
+    }
+    function makeOsint02() {
+      const d = getLicensePlateParts(); if (!d) return;
+      window.open(
+        'https://www.searchquarry.com/vehicle_records/lregister?sqtb=license_plate&license_plates='
+        + encodeURIComponent(d.plate)
+        + '&state=' + encodeURIComponent(d.state),
+        '_blank'
+      );
+    }
+    function makeOsint03() {
+      const d = getLicensePlateParts(); if (!d) return;
+      window.open(
+        'https://recordsfinder.com/search/plate/loader/?flow=plate&plateNumber='
+        + encodeURIComponent(d.plate)
+        + '&state=' + encodeURIComponent(d.state),
+        '_blank'
+      );
+    }
+    function makeOsint04() {
+      const d = getLicensePlateParts(); if (!d) return;
+      window.open(
+        'https://infotracer.com/loading/?type=plate-lookup&mercSubId=plate&plate='
+        + encodeURIComponent(d.plate)
+        + '&state=' + encodeURIComponent(d.state),
+        '_blank'
+      );
+    }
+
+    // VIN Searches
+    function makeOsint06() {
+      const v = getVIN();
+      if (!v) return alert("Please enter a VIN.");
+      window.open('https://www.vindecoderz.com/EN/check-lookup/' + encodeURIComponent(v), '_blank');
+    }
+    function makeOsint07() {
+      const v = getVIN();
+      if (!v) return alert("Please enter a VIN.");
+      window.open('https://www.faxvin.com/order/decoding?vin=' + encodeURIComponent(v), '_blank');
+    }
+    function makeOsint08() {
+      const v = getVIN();
+      if (!v) return alert("Please enter a VIN.");
+      window.open('https://checkthatvin.com/ctv/#/vin-search/' + encodeURIComponent(v), '_blank');
+    }
+    function makeOsint09() {
+      const v = getVIN();
+      if (!v) return alert("Please enter a VIN.");
+      window.open('https://vincheck.info/check/report-summary.php?vin=' + encodeURIComponent(v), '_blank');
+    }
+    function makeOsint10() {
+      const v = getVIN();
+      if (!v) return alert("Please enter a VIN.");
+      window.open('https://www.searchquarry.com/vin-decoder/search/' + encodeURIComponent(v), '_blank');
+    }
+    function makeOsint11() {
+      const v = getVIN();
+      if (!v) return alert("Please enter a VIN.");
+      window.open('https://www.cyclevin.com/vin-report/?vin=' + encodeURIComponent(v), '_blank');
+    }
+    function makeOsint12() {
+      const v = getVIN();
+      if (!v) return alert("Please enter a VIN.");
+      window.open('https://recordsfinder.com/search/vin-check/loader/?flow=vin-check&vin=' + encodeURIComponent(v), '_blank');
+    }
+    function makeOsint13() {
+      const v = getVIN();
+      if (!v) return alert("Please enter a VIN.");
+      window.open('https://csps.con.rcmp-grc.gc.ca/queryVehicles?vin=' + encodeURIComponent(v), '_blank');
+    }
+  </script>
 
 </body>
 </html>

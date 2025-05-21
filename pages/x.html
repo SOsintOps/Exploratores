@@ -4,556 +4,194 @@
   <meta charset="UTF-8">
   <title>Exploratores X (Twitter) Tool</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Example font usage (like docs.html) -->
+  <!-- Font IBM Plex Sans -->
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --primary-color: #0066ff;
-      --secondary-color: #333;
-      --bg-color: #f9f9f9;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'IBM Plex Sans', sans-serif;
-      background-color: var(--bg-color);
-    }
-
-    /* FIXED NAVBAR */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background-color: #ffffff;
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      justify-content: center;
-      z-index: 1000;
-    }
-    .menu {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      max-width: 1200px;
-      width: 100%;
-      justify-content: space-around;
-      border: 1px solid #ccc;
-    }
-    .menu > li {
-      position: relative;
-      height: 60px;
-      width: 120px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 1rem;
-      border-right: 1px solid #ccc;
-      transition: background-color 0.2s ease-in;
-    }
-    .menu > li:last-child {
-      border-right: none;
-    }
-    .menu > li:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-    }
-    .menu > li span {
-      display: block;
-      line-height: 1.2;
-    }
-
-    /* SUBMENU */
-    .submenu {
-      display: none;
-      position: absolute;
-      background-color: #ffffff;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      border: 1px solid #ddd;
-      min-width: 200px;
-      z-index: 999;
-    }
-    .submenu li {
-      padding: 10px;
-      border-bottom: 1px solid #eee;
-    }
-    .submenu li:last-child {
-      border-bottom: none;
-    }
-    .submenu li a {
-      text-decoration: none;
-      color: var(--secondary-color);
-    }
-    .submenu li:hover {
-      background-color: var(--primary-color);
-    }
-    .submenu li:hover a {
-      color: #fff;
-    }
-
-    /* SHOW/HIDE SUBMENU ON HOVER */
-    .menu > li:hover .submenu {
-      display: block;
-    }
-
-    /* MAIN CONTENT */
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 70px 20px 40px; /* so the navbar won't overlap */
-      background-color: #fff;
-    }
-    h1.page-title {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    /* TWO-COLUMN LAYOUT */
-    .two-columns {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .column {
-      flex: 1;
-      min-width: 300px;
-      background-color: #fafafa;
-      padding: 1rem;
-      border: 1px solid #eee;
-      border-radius: 4px;
-    }
-    .column h2 {
-      margin-top: 0;
-      margin-bottom: 0.8rem;
-      font-size: 1.1rem;
-      font-weight: bold;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 0.3rem;
-    }
-
-    /* GENERIC FORM STYLING */
-    .form-section {
-      margin-bottom: 1rem;
-    }
-    .form-section form {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .form-section input[type="text"] {
-      flex: 1;
-      padding: 0.4rem;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      font-size: 0.9rem;
-    }
-    .form-section input[type="submit"],
-    .form-section button {
-      width: 140px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      background-color: #fff;
-      transition: background-color 0.2s ease-in;
-      padding: 0.4rem 0.6rem;
-    }
-    .form-section input[type="submit"]:hover,
-    .form-section button:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-    }
-
-    /* ARRANGING BUTTONS, MAX 3 PER ROW */
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-
-    /* NOTE BOXES */
-    .note {
-      font-size: 1rem;
-      background-color: #fff9d6; /* light highlight */
-      border-left: 3px solid #ffc107;
-      padding: 0.5rem;
-      margin-bottom: 0.5rem;
-      border-radius: 3px;
-    }
-
-    /* FIXED FOOTER */
-    footer {
-      background-color: #ffffff;
-      border-top: 1px solid #ddd;
-      padding: 10px;
-      text-align: center;
-      font-size: 0.9em;
-      color: #555;
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-    }
-    footer a {
-      color: var(--primary-color);
-      text-decoration: none;
-      margin-left: 10px;
-    }
-
-    /* RESPONSIVE MENU */
-    @media (max-width: 768px) {
-      .menu > li {
-        width: auto;
-        flex: 1;
-      }
-      .two-columns {
-        flex-direction: column;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
-<!-- 
-  NOTE: Many of these searches require a valid X (Twitter) account,
-  otherwise you might not see all the relevant results.
--->
+  <!-- NAVBAR -->
+  <nav>
+    <ul class="menu">
+      <li><span>HOME</span><ul class="submenu"><li><a href="../index.html">Index</a></li></ul></li>
+      <li><span>Search<br>Engines</span><ul class="submenu"><li><a href="Searchengines.html">Search Engines</a></li></ul></li>
+      <li><span>People &<br>Identities</span>
+        <ul class="submenu">
+          <li><a href="Names.html">Names</a></li>
+          <li><a href="phoneus.html">US Phones</a></li>
+          <li><a href="phoneint.html">International Phones</a></li>
+          <li><a href="Address.html">Addresses</a></li>
+          <li><a href="vehicles.html">Vehicles</a></li>
+          <li><a href="usernames.html">Usernames</a></li>
+          <li><a href="Email.html">Email Addresses</a></li>
+          <li><a href="Communities.html">Communities</a></li>
+        </ul>
+      </li>
+      <li><span>Social<br>Media</span><ul class="submenu"><li><a href="X.html" class="active">X (Twitter)</a></li><li><a href="Facebook.html">Facebook</a></li><li><a href="Instagram.html">Instagram</a></li><li><a href="LinkedIn.html">LinkedIn</a></li></ul></li>
+      <li><span>Websites</span><ul class="submenu"><li><a href="Domains.html">Domains</a></li><li><a href="IP.html">IP Addresses</a></li></ul></li>
+      <li><span>GeoInt</span><ul class="submenu"><li><a href="Maps.html">Maps</a></li></ul></li>
+      <li><span>Media<br>Analysis</span><ul class="submenu"><li><a href="Images.html">Images</a></li><li><a href="Videos.html">Videos</a></li><li><a href="docs.html">Documents</a></li></ul></li>
+      <li><span>Business<br>Intelligence</span><ul class="submenu"><li><a href="Business.html">Business &amp; Government</a></li><li><a href="Currencies.html">Virtual Currencies</a></li></ul></li>
+      <li><span>Tools</span><ul class="submenu"><li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li></ul></li>
+    </ul>
+  </nav>
 
-<!-- NAVBAR -->
-<nav>
-  <ul class="menu">
-    <li><span>HOME</span>
-      <ul class="submenu">
-        <li><a href="../index.html">Index</a></li>
-      </ul>
-    </li>
-    <li><span>Search<br>Engines</span>
-      <ul class="submenu">
-        <li><a href="Searchengines.html">Search Engines</a></li>
-      </ul>
-    </li>
-    <li><span>People &<br>Identities</span>
-      <ul class="submenu">
-        <li><a href="Names.html">Names</a></li>
-        <li><a href="phoneus.html">US Phones</a></li>
-		<li><a href="phoneint.html">International Phones</a></li>
-        <li><a href="Address.html">Addresses</a></li>
-        <li><a href="vehicles.html">Vehicles</a></li>
-        <li><a href="usernames.html">Usernames</a></li>
-        <li><a href="Email.html">Email Addresses</a></li>
-        <li><a href="Communities.html">Communities</a></li>
-      </ul>
-    </li>
-    <li><span>Social<br>Media</span>
-      <ul class="submenu">
-        <li><a href="X.html">X (Twitter)</a></li>
-        <li><a href="Facebook.html">Facebook</a></li>
-        <li><a href="Instagram.html">Instagram</a></li>
-        <li><a href="LinkedIn.html">LinkedIn</a></li>
-      </ul>
-    </li>
-    <li><span>Websites</span>
-      <ul class="submenu">
-        <li><a href="Domains.html">Domains</a></li>
-        <li><a href="IP.html">IP Addresses</a></li>
-      </ul>
-    </li>
-    <li><span>GeoInt</span>
-      <ul class="submenu">
-        <li><a href="Maps.html">Maps</a></li>
-      </ul>
-    </li>
-    <li><span>Media<br>Analysis</span>
-      <ul class="submenu">
-        <li><a href="Images.html">Images</a></li>
-        <li><a href="Videos.html">Videos</a></li>
-        <li><a href="docs.html">Documents</a></li>
-      </ul>
-    </li>
-    <li><span>Business<br>Intelligence</span>
-      <ul class="submenu">
-        <li><a href="Business.html">Business &amp; Government</a></li>
-        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
-      </ul>
-    </li>
-    <li><span>Tools</span>
-      <ul class="submenu">
+  <main>
+    <h1 class="page-title">Exploratores X (Twitter) Tool</h1>
 
-        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-<main>
-  <h1 class="page-title">Exploratores X (Twitter) Tool</h1>
-
-  <div class="two-columns">
-    
-    <!-- LEFT COLUMN -->
-    <div class="column">
-      <h2>Account &amp; Basic Searches</h2>
-
-      <div class="note">
-        <strong>NOTE:</strong> Insert your Twitter handle (without “@”). Example: <em>username123</em>.
-      </div>
-      <div class="form-section">
-        <form>
-          <input type="text" id="accountInput" name="accountInput" placeholder="Twitter Username" />
-        </form>
-        <div class="button-row">
-          <button onclick="makeOsint01(document.getElementById('accountInput').value)">Profile</button>
-          <button onclick="makeOsint02(document.getElementById('accountInput').value)">Outgoing</button>
-          <button onclick="makeOsint03(document.getElementById('accountInput').value)">Incoming</button>
+    <div class="columns-container">
+      
+      <!-- LEFT COLUMN -->
+      <div class="column">
+        <h2>Account &amp; Basic Searches</h2>
+        <div class="note"><strong>NOTE:</strong> Inserisci il tuo handle (senza “@”).</div>
+        <section class="search-instructions">
+          <label for="accountInput">Twitter Username:</label>
+          <div class="input-container">
+            <input type="text" id="accountInput" class="input-field" placeholder="username123">
+          </div>
+        </section>
+        <div class="button-grid">
+          <button class="button" onclick="makeOsint01(accountInput.value)">Profile</button>
+          <button class="button" onclick="makeOsint02(accountInput.value)">Outgoing</button>
+          <button class="button" onclick="makeOsint03(accountInput.value)">Incoming</button>
+          <button class="button" onclick="makeOsint04(accountInput.value)">Only Replies</button>
+          <button class="button" onclick="makeOsint05(accountInput.value)">No Replies</button>
+          <button class="button" onclick="makeOsint06(accountInput.value)">Media</button>
+          <button class="button" onclick="makeOsint40(accountInput.value)">Highlights</button>
+          <button class="button" onclick="makeOsint41(accountInput.value)">Lists Created</button>
+          <button class="button" onclick="makeOsint07(accountInput.value)">Lists Included</button>
+          <button class="button" onclick="makeOsint09(accountInput.value)">Topics</button>
+          <button class="button" onclick="makeOsint42(accountInput.value)">Links</button>
+          <button class="button" onclick="makeOsint10(accountInput.value)">Followers</button>
+          <button class="button" onclick="makeOsint11(accountInput.value)">Following</button>
         </div>
-        <div class="button-row">
-          <button onclick="makeOsint04(document.getElementById('accountInput').value)">Only Replies</button>
-          <button onclick="makeOsint05(document.getElementById('accountInput').value)">No Replies</button>
-          <button onclick="makeOsint06(document.getElementById('accountInput').value)">Media</button>
-        </div>
-        <div class="button-row">
-          <button onclick="makeOsint40(document.getElementById('accountInput').value)">Highlights</button>
-          <button onclick="makeOsint41(document.getElementById('accountInput').value)">Lists Created</button>
-          <button onclick="makeOsint07(document.getElementById('accountInput').value)">Lists Included</button>
-        </div>
-        <div class="button-row">
-          <button onclick="makeOsint09(document.getElementById('accountInput').value)">Topics</button>
-          <button onclick="makeOsint42(document.getElementById('accountInput').value)">Links</button>
-          <button onclick="makeOsint10(document.getElementById('accountInput').value)">Followers</button>
-        </div>
-        <div class="button-row">
-          <button onclick="makeOsint11(document.getElementById('accountInput').value)">Following</button>
+
+        <h2>By Year (User or Terms)</h2>
+        <div class="note"><strong>NOTE:</strong> Username o keyword + anno (4 cifre).</div>
+        <section class="search-instructions">
+          <label for="yearInputA">Term/Username:</label>
+          <div class="input-container">
+            <input type="text" id="yearInputA" class="input-field" placeholder="username o keyword">
+          </div>
+          <label for="yearInputB">Year:</label>
+          <div class="input-container">
+            <input type="text" id="yearInputB" class="input-field" placeholder="2022">
+          </div>
+        </section>
+        <div class="button-grid">
+          <button class="button" onclick="makeOsint12(yearInputA.value, yearInputB.value)">Outgoing</button>
+          <button class="button" onclick="makeOsint13(yearInputA.value, yearInputB.value)">Incoming</button>
+          <button class="button" onclick="makeOsint14(yearInputA.value, yearInputB.value)">Media</button>
+          <button class="button" onclick="makeOsint15(yearInputA.value, yearInputB.value)">Term</button>
+          <button class="button" onclick="makeOsint16(yearInputA.value, yearInputB.value)">No Replies</button>
+          <button class="button" onclick="makeOsint17(yearInputA.value, yearInputB.value)">Only Replies</button>
         </div>
       </div>
 
-      <h2>By Year (User or Terms)</h2>
-      <div class="note">
-        <strong>NOTE:</strong> Insert either a Twitter handle or a keyword, plus a 4-digit year (e.g., “2022”).
-      </div>
-      <div class="form-section">
-        <form>
-          <input type="text" id="yearInputA" placeholder="Username or search term"/>
-          <input type="text" id="yearInputB" placeholder="Year (e.g. 2022)"/>
-        </form>
-        <div class="button-row">
-          <button onclick="makeOsint12(document.getElementById('yearInputA').value, document.getElementById('yearInputB').value)">Outgoing by Year</button>
-          <button onclick="makeOsint13(document.getElementById('yearInputA').value, document.getElementById('yearInputB').value)">Incoming by Year</button>
-          <button onclick="makeOsint14(document.getElementById('yearInputA').value, document.getElementById('yearInputB').value)">Media by Year</button>
+      <!-- RIGHT COLUMN -->
+      <div class="column">
+        <h2>Web Archives &amp; Others</h2>
+        <div class="note"><strong>NOTE:</strong> Inserisci un handle per cercare negli archivi.</div>
+        <section class="search-instructions">
+          <label for="archivesInput">Twitter Username:</label>
+          <div class="input-container">
+            <input type="text" id="archivesInput" class="input-field" placeholder="username123">
+          </div>
+        </section>
+        <div class="button-grid">
+          <button class="button" onclick="makeOsint20(archivesInput.value)">Google Archives</button>
+          <button class="button" onclick="makeOsint21(archivesInput.value)">Google Tweets</button>
+          <button class="button" onclick="makeOsint22(archivesInput.value)">Bing Archives</button>
+          <button class="button" onclick="makeOsint23(archivesInput.value)">Yandex Archives</button>
+          <button class="button" onclick="makeOsint26(archivesInput.value)">Wayback</button>
+          <button class="button" onclick="makeOsint27(archivesInput.value)">Memory.lol</button>
+          <button class="button" onclick="makeOsint32(archivesInput.value)">TwitterAudit</button>
         </div>
-        <div class="button-row">
-          <button onclick="makeOsint15(document.getElementById('yearInputA').value, document.getElementById('yearInputB').value)">Term by Year</button>
-          <button onclick="makeOsint16(document.getElementById('yearInputA').value, document.getElementById('yearInputB').value)">No Replies</button>
-          <button onclick="makeOsint17(document.getElementById('yearInputA').value, document.getElementById('yearInputB').value)">Only Replies</button>
-        </div>
-      </div>
-    </div>
-    
-    <!-- RIGHT COLUMN -->
-    <div class="column">
-      <h2>Web Archives &amp; Others</h2>
-      <div class="note">
-        <strong>NOTE:</strong> Insert a Twitter handle here to search in Google/Bing/Wayback archives.
-      </div>
-      <div class="form-section">
-        <form>
-          <input type="text" id="archivesInput" placeholder="Twitter Username"/>
-        </form>
-        <div class="button-row">
-          <button onclick="makeOsint20(document.getElementById('archivesInput').value)">Google Archives</button>
-          <button onclick="makeOsint21(document.getElementById('archivesInput').value)">Google Tweets</button>
-          <button onclick="makeOsint22(document.getElementById('archivesInput').value)">Bing Archives</button>
-        </div>
-        <div class="button-row">
-          <button onclick="makeOsint23(document.getElementById('archivesInput').value)">Yandex Archives</button>
-          <button onclick="makeOsint26(document.getElementById('archivesInput').value)">Wayback</button>
-          <button onclick="makeOsint27(document.getElementById('archivesInput').value)">Historical</button>
-        </div>
-        <div class="button-row">
-          <button onclick="makeOsint32(document.getElementById('archivesInput').value)">Twitter Audit</button>
-        </div>
-      </div>
 
-      <div class="note">
-        <strong>NOTE:</strong> Insert a numeric Twitter User ID for memory.lol lookups (e.g., “123456789”).
-      </div>
-      <div class="form-section">
-        <form>
-          <input type="text" id="memLolID" placeholder="Twitter User ID"/>
-        </form>
-        <div class="button-row">
-          <button onclick="makeOsint28a(document.getElementById('memLolID').value)">Memory.lol ID</button>
+        <div class="note"><strong>NOTE:</strong> Inserisci un User ID numerico per memory.lol.</div>
+        <section class="search-instructions">
+          <label for="memLolID">Twitter User ID:</label>
+          <div class="input-container">
+            <input type="text" id="memLolID" class="input-field" placeholder="123456789">
+          </div>
+        </section>
+        <div class="button-grid">
+          <button class="button" onclick="makeOsint28a(memLolID.value)">Memory.lol ID</button>
         </div>
-      </div>
 
-      <h2>Lists</h2>
-      <div class="note">
-        <strong>NOTE:</strong> Insert a numeric List ID (e.g., “1234567890”) to see list details.
-      </div>
-      <div class="form-section">
-        <form>
-          <input type="text" id="listsInput" placeholder="List Number"/>
-        </form>
-        <div class="button-row">
-          <button onclick="makeOsint36a(document.getElementById('listsInput').value)">List</button>
-          <button onclick="makeOsint37a(document.getElementById('listsInput').value)">Members</button>
-          <button onclick="makeOsint38a(document.getElementById('listsInput').value)">Followers</button>
+        <h2>Lists</h2>
+        <div class="note"><strong>NOTE:</strong> Inserisci un List ID numerico.</div>
+        <section class="search-instructions">
+          <label for="listsInput">List ID:</label>
+          <div class="input-container">
+            <input type="text" id="listsInput" class="input-field" placeholder="1234567890">
+          </div>
+        </section>
+        <div class="button-grid">
+          <button class="button" onclick="makeOsint36a(listsInput.value)">List</button>
+          <button class="button" onclick="makeOsint37a(listsInput.value)">Members</button>
+          <button class="button" onclick="makeOsint38a(listsInput.value)">Followers</button>
         </div>
-      </div>
 
-      <h2>Other Searching</h2>
-      <div class="note">
-        <strong>NOTE:</strong> Insert a real name (e.g. “John Doe”) to find possible profiles.
-      </div>
-      <div class="form-section">
-        <form>
-          <input type="text" id="searchNameInput" placeholder="Real Name"/>
-        </form>
-        <div class="button-row">
-          <button onclick="makeOsint34a(document.getElementById('searchNameInput').value)">Profile Search</button>
+        <h2>Other Searching</h2>
+        <div class="note"><strong>NOTE:</strong> Inserisci un nome reale per la ricerca.</div>
+        <section class="search-instructions">
+          <label for="searchNameInput">Real Name:</label>
+          <div class="input-container">
+            <input type="text" id="searchNameInput" class="input-field" placeholder="John Doe">
+          </div>
+        </section>
+        <div class="button-grid">
+          <button class="button" onclick="makeOsint34a(searchNameInput.value)">Profile Search</button>
         </div>
       </div>
     </div>
-  </div>
-</main>
+  </main>
 
-<footer>
-  Global Security Italy • Rome (IT)
-  <a href="License.html">License</a>
-</footer>
+  <footer>
+    Global Security Italy • Rome (IT)
+    <a href="License.html">License</a>
+  </footer>
 
-<script>
-  // Show/hide submenu on hover
-  document.querySelectorAll('.menu > li').forEach(item => {
-    item.addEventListener('mouseover', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'block';
+  <script>
+    // Show/hide submenu on hover
+    document.querySelectorAll('.menu > li').forEach(item => {
+      item.addEventListener('mouseover', () => item.querySelector('.submenu')?.style.setProperty('display','block'));
+      item.addEventListener('mouseout',  () => item.querySelector('.submenu')?.style.setProperty('display','none'));
     });
-    item.addEventListener('mouseout', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'none';
-    });
-  });
-</script>
+  </script>
 
-<!-- JavaScript functions for X (Twitter) tool -->
-<script type="text/javascript">
-/* 
-  NOTE: For many of these searches, you need
-  to be logged into an X (Twitter) account 
-  to see full results.
-*/
-
-/* Account & Basic */
-function makeOsint01(Search01){
-  window.open('https://twitter.com/'+Search01,'Search01window');
-}
-function makeOsint02(Search02){
-  window.open('https://twitter.com/search?q=from%3A'+Search02+'&f=live');
-}
-function makeOsint03(Search03){
-  window.open('https://twitter.com/search?q=to%3A'+Search03+'&f=live');
-}
-function makeOsint04(Search04){
-  window.open('https://twitter.com/search?q=from%3A'+Search04+'%20filter%3Areplies&f=live');
-}
-function makeOsint05(Search05){
-  window.open('https://twitter.com/search?q=from%3A'+Search05+'%20-filter%3Areplies&f=live');
-}
-function makeOsint06(Search06){
-  window.open('https://twitter.com/'+Search06+'/media');
-}
-function makeOsint40(Search40){
-  window.open('https://twitter.com/'+Search40+'/highlights');
-}
-function makeOsint41(Search41){
-  window.open('https://twitter.com/'+Search41+'/lists');
-}
-function makeOsint07(Search07){
-  window.open('https://twitter.com/'+Search07+'/lists/memberships');
-}
-function makeOsint09(Search09){
-  window.open('https://twitter.com/'+Search09+'/topics');
-}
-function makeOsint42(Search42){
-  window.open('https://twitter.com/search?q=from%3A'+Search42+'%20filter%3Alinks&f=live');
-}
-function makeOsint10(Search10){
-  window.open('https://twitter.com/'+Search10+'/followers');
-}
-function makeOsint11(Search11){
-  window.open('https://twitter.com/'+Search11+'/following');
-}
-
-/* By Year (User or Terms) */
-function makeOsint12(username, year){
-  window.open('https://twitter.com/search?q=from%3A'+username+'%20since%3A'+year+'-01-01%20until%3A'+year+'-12-31&f=live');
-}
-function makeOsint13(username, year){
-  window.open('https://twitter.com/search?q=to%3A'+username+'%20since%3A'+year+'-01-01%20until%3A'+year+'-12-31&f=live');
-}
-function makeOsint14(username, year){
-  window.open('https://twitter.com/search?q=from%3A'+username+'%20since%3A'+year+'-01-01%20until%3A'+year+'-12-31%20filter%3Amedia&f=live');
-}
-function makeOsint15(term, year){
-  window.open('https://twitter.com/search?q='+term+'%20since%3A'+year+'-01-01%20until%3A'+year+'-12-31&f=live');
-}
-function makeOsint16(username, year){
-  window.open('https://twitter.com/search?q=from%3A'+username+'%20since%3A'+year+'-01-01%20until%3A'+year+'-12-31%20-filter%3Areplies&f=live');
-}
-function makeOsint17(username, year){
-  window.open('https://twitter.com/search?q=from%3A'+username+'%20since%3A'+year+'-01-01%20until%3A'+year+'-12-31%20filter%3Areplies&f=live');
-}
-
-/* Web Archives & Tools */
-function makeOsint20(Search20){
-  window.open('http://google.com/search?q=site%3Atwitter.com%2F'+Search20);
-}
-function makeOsint21(Search21){
-  window.open('https://www.google.com/search?q=site%3Atwitter.com%2F'+Search21+'%2Fstatus%2F');
-}
-function makeOsint22(Search22){
-  window.open('http://www.bing.com/search?q=twitter.com/'+Search22);
-}
-function makeOsint23(Search23){
-  window.open('https://www.yandex.com/search/?text=https%3A%2F%2Ftwitter.com%2F'+Search23);
-}
-function makeOsint26(Search26){
-  window.open('http://web.archive.org/web/*/twitter.com/'+Search26);
-}
-function makeOsint27(Search27){
-  window.open('https://api.memory.lol/v1/tw/'+Search27);
-}
-function makeOsint28a(Search28a){
-  window.open('https://api.memory.lol/v1/tw/id/'+Search28a);
-}
-function makeOsint32(Search32){
-  window.open('https://www.twitteraudit.com/'+Search32);
-}
-function makeOsint34a(Search34a){
-  window.open('https://twitter.com/search?q='+Search34a+'&f=user');
-}
-
-/* Lists */
-function makeOsint36a(Search36a){
-  window.open('https://twitter.com/i/lists/'+Search36a);
-}
-function makeOsint37a(Search37a){
-  window.open('https://twitter.com/i/lists/'+Search37a+'/members');
-}
-function makeOsint38a(Search38a){
-  window.open('https://twitter.com/i/lists/'+Search38a+'/followers');
-}
-</script>
-
+  <!-- JavaScript functions for X (Twitter) tool -->
+  <script>
+    function makeOsint01(v){ window.open('https://twitter.com/'+encodeURIComponent(v),'_blank'); }
+    function makeOsint02(v){ window.open('https://twitter.com/search?q=from%3A'+encodeURIComponent(v)+'&f=live','_blank'); }
+    function makeOsint03(v){ window.open('https://twitter.com/search?q=to%3A'+encodeURIComponent(v)+'&f=live','_blank'); }
+    function makeOsint04(v){ window.open('https://twitter.com/search?q=from%3A'+encodeURIComponent(v)+'%20filter%3Areplies&f=live','_blank'); }
+    function makeOsint05(v){ window.open('https://twitter.com/search?q=from%3A'+encodeURIComponent(v)+'%20-filter%3Areplies&f=live','_blank'); }
+    function makeOsint06(v){ window.open('https://twitter.com/'+encodeURIComponent(v)+'/media','_blank'); }
+    function makeOsint07(v){ window.open('https://twitter.com/'+encodeURIComponent(v)+'/lists/memberships','_blank'); }
+    function makeOsint09(v){ window.open('https://twitter.com/'+encodeURIComponent(v)+'/topics','_blank'); }
+    function makeOsint10(v){ window.open('https://twitter.com/'+encodeURIComponent(v)+'/followers','_blank'); }
+    function makeOsint11(v){ window.open('https://twitter.com/'+encodeURIComponent(v)+'/following','_blank'); }
+    function makeOsint12(u,y){ window.open('https://twitter.com/search?q=from%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31&f=live','_blank'); }
+    function makeOsint13(u,y){ window.open('https://twitter.com/search?q=to%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31&f=live','_blank'); }
+    function makeOsint14(u,y){ window.open('https://twitter.com/search?q=from%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31%20filter%3Amedia&f=live','_blank'); }
+    function makeOsint15(t,y){ window.open('https://twitter.com/search?q='+encodeURIComponent(t)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31&f=live','_blank'); }
+    function makeOsint16(u,y){ window.open('https://twitter.com/search?q=from%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31%20-filter%3Areplies&f=live','_blank'); }
+    function makeOsint17(u,y){ window.open('https://twitter.com/search?q=from%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31%20filter%3Areplies&f=live','_blank'); }
+    function makeOsint20(v){ window.open('https://www.google.com/search?q=site:twitter.com/'+encodeURIComponent(v),'_blank'); }
+    function makeOsint21(v){ window.open('https://www.google.com/search?q=site:twitter.com/'+encodeURIComponent(v)+'/status/','_blank'); }
+    function makeOsint22(v){ window.open('https://www.bing.com/search?q=twitter.com/'+encodeURIComponent(v),'_blank'); }
+    function makeOsint23(v){ window.open('https://www.yandex.com/search/?text=https%3A%2F%2Ftwitter.com%2F'+encodeURIComponent(v),'_blank'); }
+    function makeOsint26(v){ window.open('https://web.archive.org/web/*/twitter.com/'+encodeURIComponent(v),'_blank'); }
+    function makeOsint27(v){ window.open('https://api.memory.lol/v1/tw/'+encodeURIComponent(v),'_blank'); }
+    function makeOsint28a(v){ window.open('https://api.memory.lol/v1/tw/id/'+encodeURIComponent(v),'_blank'); }
+    function makeOsint32(v){ window.open('https://www.twitteraudit.com/'+encodeURIComponent(v),'_blank'); }
+    function makeOsint34a(v){ window.open('https://twitter.com/search?q='+encodeURIComponent(v)+'&f=user','_blank'); }
+    function makeOsint36a(v){ window.open('https://twitter.com/i/lists/'+encodeURIComponent(v),'_blank'); }
+    function makeOsint37a(v){ window.open('https://twitter.com/i/lists/'+encodeURIComponent(v)+'/members','_blank'); }
+    function makeOsint38a(v){ window.open('https://twitter.com/i/lists/'+encodeURIComponent(v)+'/followers','_blank'); }
+  </script>
 </body>
 </html>

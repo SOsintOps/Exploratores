@@ -1,369 +1,352 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Exploratores – Communities Tool</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font IBM Plex Sans -->
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-  <style>
-    :root { --primary-color: #0066ff; --secondary-color: #333; --bg-color: #f9f9f9; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'IBM Plex Sans', sans-serif; background-color: var(--bg-color); }
-    nav { position: fixed; top:0; left:0; right:0; background:#fff; border-bottom:1px solid #ddd; display:flex; justify-content:center; z-index:1000; }
-    .menu { list-style:none; display:flex; max-width:1200px; width:100%; justify-content:space-around; }
-    .menu>li { position:relative; height:60px; width:120px; cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center; font-size:0.85rem; border-right:1px solid #ccc; }
-    .menu>li:last-child { border-right:none; }
-    .menu>li span { line-height:1.2; }
-    .submenu { display:none; position:absolute; top:100%; left:50%; transform:translateX(-50%); background:#fff; list-style:none; border:1px solid #ddd; min-width:200px; z-index:999; }
-    .submenu li { padding:10px; border-bottom:1px solid #eee; }
-    .submenu li:last-child { border-bottom:none; }
-    .submenu li a { text-decoration:none; color:var(--secondary-color); }
-    .menu>li:hover .submenu { display:block; }
-    main { max-width:1200px; margin:0 auto; padding:70px 20px 60px; background:#fff; }
-    h1.page-title { text-align:center; margin-bottom:1rem; }
-    .two-columns { display:flex; gap:1rem; flex-wrap:wrap; }
-    .column { flex:1; min-width:300px; background:#fafafa; padding:1rem; border:1px solid #eee; border-radius:4px; }
-    .column h2 { margin-bottom:0.8rem; font-size:1.1rem; font-weight:bold; border-bottom:1px solid #ccc; padding-bottom:0.3rem; }
-    .form-section { margin-bottom:0.5rem; }
-    .form-section form { display:flex; gap:0.5rem; }
-    .form-section input[type="text"] { flex:1; padding:0.4rem; border:1px solid #ccc; border-radius:3px; font-size:0.9rem; }
-    .button-row { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem; }
-    .button-row button { width:140px; font-size:0.9rem; cursor:pointer; border:1px solid #ccc; border-radius:3px; background:#fff; padding:0.4rem 0.6rem; transition:background-color 0.2s ease-in; }
-    .button-row button:hover { background:var(--primary-color); color:#fff; }
-    footer { background:#fff; border-top:1px solid #ddd; padding:10px; text-align:center; font-size:0.9em; color:#555; position:fixed; bottom:0; left:0; right:0; }
-    footer a { color:var(--primary-color); text-decoration:none; margin-left:10px; }
-    @media(max-width:768px) { .menu>li { width:auto; flex:1; } .two-columns { flex-direction:column; } }
-	/* NOTE BOXES */
-    .note {
-      font-size: 1rem;
-      background-color: #fff9d6; /* light highlight */
-      border-left: 3px solid #ffc107;
-      padding: 0.5rem;
-      margin-bottom: 0.5rem;
-      border-radius: 3px;
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-<nav>
-  <ul class="menu">
-    <li><span>HOME</span>
-      <ul class="submenu">
-        <li><a href="../index.html">Index</a></li>
-      </ul>
-    </li>
-    <li><span>Search<br>Engines</span>
-      <ul class="submenu">
-        <li><a href="Searchengines.html">Search Engines</a></li>
-      </ul>
-    </li>
-    <li><span>People &<br>Identities</span>
-      <ul class="submenu">
-        <li><a href="Names.html">Names</a></li>
-        <li><a href="phoneus.html">US Phones</a></li>
-		<li><a href="phoneint.html">International Phones</a></li>
-        <li><a href="Address.html">Addresses</a></li>
-        <li><a href="vehicles.html">Vehicles</a></li>
-        <li><a href="usernames.html">Usernames</a></li>
-        <li><a href="Email.html">Email Addresses</a></li>
-        <li><a href="Communities.html">Communities</a></li>
-      </ul>
-    </li>
-    <li><span>Social<br>Media</span>
-      <ul class="submenu">
-        <li><a href="X.html">X (Twitter)</a></li>
-        <li><a href="Facebook.html">Facebook</a></li>
-        <li><a href="Instagram.html">Instagram</a></li>
-        <li><a href="LinkedIn.html">LinkedIn</a></li>
-      </ul>
-    </li>
-    <li><span>Websites</span>
-      <ul class="submenu">
-        <li><a href="Domains.html">Domains</a></li>
-        <li><a href="IP.html">IP Addresses</a></li>
-      </ul>
-    </li>
-    <li><span>GeoInt</span>
-      <ul class="submenu">
-        <li><a href="Maps.html">Maps</a></li>
-      </ul>
-    </li>
-    <li><span>Media<br>Analysis</span>
-      <ul class="submenu">
-        <li><a href="Images.html">Images</a></li>
-        <li><a href="Videos.html">Videos</a></li>
-        <li><a href="docs.html">Documents</a></li>
-      </ul>
-    </li>
-    <li><span>Business<br>Intelligence</span>
-      <ul class="submenu">
-        <li><a href="Business.html">Business &amp; Government</a></li>
-        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
-      </ul>
-    </li>
-    <li><span>Tools</span>
-      <ul class="submenu">
 
-        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+  <!-- NAVBAR -->
+  <nav>
+    <ul class="menu">
+      <li><span>HOME</span><ul class="submenu"><li><a href="../index.html">Index</a></li></ul></li>
+      <li><span>Search<br>Engines</span><ul class="submenu"><li><a href="Searchengines.html">Search Engines</a></li></ul></li>
+      <li><span>People &<br>Identities</span>
+        <ul class="submenu">
+          <li><a href="Names.html">Names</a></li>
+          <li><a href="phoneus.html">US Phones</a></li>
+          <li><a href="phoneint.html">International Phones</a></li>
+          <li><a href="Address.html">Addresses</a></li>
+          <li><a href="vehicles.html">Vehicles</a></li>
+          <li><a href="usernames.html">Usernames</a></li>
+          <li><a href="Email.html">Email Addresses</a></li>
+          <li><a href="Communities.html" class="active">Communities</a></li>
+        </ul>
+      </li>
+      <li><span>Social<br>Media</span><ul class="submenu"><li><a href="X.html">X (Twitter)</a></li><li><a href="Facebook.html">Facebook</a></li><li><a href="Instagram.html">Instagram</a></li><li><a href="LinkedIn.html">LinkedIn</a></li></ul></li>
+      <li><span>Websites</span><ul class="submenu"><li><a href="Domains.html">Domains</a></li><li><a href="IP.html">IP Addresses</a></li></ul></li>
+      <li><span>GeoInt</span><ul class="submenu"><li><a href="Maps.html">Maps</a></li></ul></li>
+      <li><span>Media<br>Analysis</span><ul class="submenu"><li><a href="Images.html">Images</a></li><li><a href="Videos.html">Videos</a></li><li><a href="docs.html">Documents</a></li></ul></li>
+      <li><span>Business<br>Intelligence</span><ul class="submenu"><li><a href="Business.html">Business &amp; Government</a></li><li><a href="Currencies.html">Virtual Currencies</a></li></ul></li>
+      <li><span>Tools</span><ul class="submenu"><li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li></ul></li>
+    </ul>
+  </nav>
 
-<main>
-  <h1 class="page-title">Exploratores – Communities Tool</h1>
-  
-  <div class="note">For proper function of these features, an active investigative profile is required.</div>
+  <main>
+    <h1 class="page-title">Communities Tool</h1>
 
-  <div class="two-columns">
-
-    <!-- Left column -->
-    <div class="column">
-      <h2>Reddit</h2>
-      <div class="form-section">
-        <form onsubmit="return false;">
-          <input type="text" id="redditTerm" placeholder="Search term"/>
-        </form>
-      </div>
-      <div class="button-row">
-        <button onclick="makeOsint01(document.getElementById('redditTerm').value)">Keyword</button>
-        <button onclick="makeOsint02(document.getElementById('redditTerm').value)">Title</button>
-        <button onclick="makeOsint10a(document.getElementById('redditTerm').value)">PullPush Asc</button>
-        <button onclick="makeOsint10b(document.getElementById('redditTerm').value)">PullPush Desc</button>
-      </div>
-      <div class="form-section">
-        <form onsubmit="return false;">
-          <input type="text" id="redditUser" placeholder="Username"/>
-        </form>
-      </div>
-      <div class="button-row">
-        <button onclick="makeOsint03(document.getElementById('redditUser').value)">Profile</button>
-        <button onclick="makeOsint04(document.getElementById('redditUser').value)">Submissions</button>
-        <button onclick="makeOsint05(document.getElementById('redditUser').value)">Comments</button>
-        <button onclick="makeOsint06(document.getElementById('redditUser').value)">Archive</button>
-      </div>
-      <div class="button-row">
-        <button onclick="makeOsint08(document.getElementById('redditUser').value)">API Asc</button>
-        <button onclick="makeOsint09(document.getElementById('redditUser').value)">API Desc</button>
-      </div>
-
-      <h2>Hacker News</h2>
-      <div class="form-section">
-        <form onsubmit="return false;">
-          <input type="text" id="hnTerm" placeholder="Search term"/>
-        </form>
-      </div>
-      <div class="button-row">
-        <button onclick="makeOsint17(document.getElementById('hnTerm').value)">Search</button>
-        <button onclick="makeOsint22(document.getElementById('hnTerm').value)">Google Site</button>
-      </div>
-      <div class="form-section">
-        <form onsubmit="return false;">
-          <input type="text" id="hnUser" placeholder="Username"/>
-        </form>
-      </div>
-      <div class="button-row">
-        <button onclick="makeOsint18(document.getElementById('hnUser').value)">Profile</button>
-        <button onclick="makeOsint19(document.getElementById('hnUser').value)">Submissions</button>
-        <button onclick="makeOsint20(document.getElementById('hnUser').value)">Threads</button>
-        <button onclick="makeOsint21(document.getElementById('hnUser').value)">Favorites</button>
-      </div>
-
-      <h2>4chan</h2>
-      <div class="form-section">
-        <form onsubmit="return false;">
-          <input type="text" id="chanTerm" placeholder="Search term"/>
-        </form>
-      </div>
-      <div class="button-row">
-        <button onclick="makeOsint23(document.getElementById('chanTerm').value)">Boards</button>
-        <button onclick="makeOsint24(document.getElementById('chanTerm').value)">Threads</button>
-        <button onclick="makeOsint25(document.getElementById('chanTerm').value)">Archive</button>
-        <button onclick="makeOsint26(document.getElementById('chanTerm').value)">Google</button>
-      </div>
-
-      <h2>TikTok</h2>
-      <div class="form-section">
-        <form onsubmit="return false;">
-          <input type="text" id="ttUser" placeholder="Username"/>
-        </form>
-      </div>
-      <div class="button-row">
-        <button onclick="makeOsint27(document.getElementById('ttUser').value)">Profile</button>
-        <button onclick="makeOsint28(document.getElementById('ttUser').value)">Users</button>
-      </div>
-      <div class="form-section">
-        <form onsubmit="return false;">
-          <input type="text" id="ttKey" placeholder="Keyword"/>
-        </form>
-      </div>
-      <div class="button-row">
-        <button onclick="makeOsint29(document.getElementById('ttKey').value)">Tags</button>
-        <button onclick="makeOsint30(document.getElementById('ttKey').value)">Search</button>
-        <button onclick="makeOsint31(document.getElementById('ttKey').value)">Videos</button>
-        <button onclick="makeOsint32(document.getElementById('ttKey').value)">Google</button>
-      </div>
+    <div class="note">
+      For proper function of these features, an active investigative profile is required.
     </div>
 
-    <!-- Right column -->
-    <div class="column">
-      <h2>Discord</h2>
-      <div class="form-section">
-        <form onsubmit="return false;">
-          <input type="text" id="dcTerm" placeholder="Server name/ID"/>
-        </form>
-      </div>
-      <div class="button-row">
-        <button onclick="makeOsint57(document.getElementById('dcTerm').value)">Invite</button>
-        <button onclick="makeOsint58(document.getElementById('dcTerm').value)">Disboard</button>
-        <button onclick="makeOsint60(document.getElementById('dcTerm').value)">Discord.me</button>
-        <button onclick="makeOsint61(document.getElementById('dcTerm').value)">Servers</button>
-      </div>
-      <div class="button-row">
-        <button onclick="makeOsint62(document.getElementById('dcTerm').value)">Bee</button>
-        <button onclick="makeOsint63(document.getElementById('dcTerm').value)">Google</button>
+    <div class="columns">
+      <!-- Left column -->
+      <div class="column">
+        <!-- Reddit -->
+        <div class="form-section">
+          <h2>Reddit</h2>
+          <section class="search-instructions">
+            <label for="redditTerm">Search term:</label>
+            <div class="input-container">
+              <input type="text" id="redditTerm" class="input-field" placeholder="Search term">
+            </div>
+          </section>
+          <div class="button-grid">
+            <button class="button" onclick="makeOsint01(redditTerm.value)">Keyword</button>
+            <button class="button" onclick="makeOsint02(redditTerm.value)">Title</button>
+            <button class="button" onclick="makeOsint10a(redditTerm.value)">PullPush Asc</button>
+            <button class="button" onclick="makeOsint10b(redditTerm.value)">PullPush Desc</button>
+          </div>
+
+          <section class="search-instructions">
+            <label for="redditUser">Username:</label>
+            <div class="input-container">
+              <input type="text" id="redditUser" class="input-field" placeholder="Username">
+            </div>
+          </section>
+          <div class="button-grid">
+            <button class="button" onclick="makeOsint03(redditUser.value)">Profile</button>
+            <button class="button" onclick="makeOsint04(redditUser.value)">Submissions</button>
+            <button class="button" onclick="makeOsint05(redditUser.value)">Comments</button>
+            <button class="button" onclick="makeOsint06(redditUser.value)">Archive</button>
+            <button class="button" onclick="makeOsint08(redditUser.value)">API Asc</button>
+            <button class="button" onclick="makeOsint09(redditUser.value)">API Desc</button>
+          </div>
+        </div>
+
+        <!-- Hacker News -->
+        <div class="form-section">
+          <h2>Hacker News</h2>
+          <section class="search-instructions">
+            <label for="hnTerm">Search term:</label>
+            <div class="input-container">
+              <input type="text" id="hnTerm" class="input-field" placeholder="Search term">
+            </div>
+          </section>
+          <div class="button-grid">
+            <button class="button" onclick="makeOsint17(hnTerm.value)">Search</button>
+            <button class="button" onclick="makeOsint22(hnTerm.value)">Google Site</button>
+          </div>
+
+          <section class="search-instructions">
+            <label for="hnUser">Username:</label>
+            <div class="input-container">
+              <input type="text" id="hnUser" class="input-field" placeholder="Username">
+            </div>
+          </section>
+          <div class="button-grid">
+            <button class="button" onclick="makeOsint18(hnUser.value)">Profile</button>
+            <button class="button" onclick="makeOsint19(hnUser.value)">Submissions</button>
+            <button class="button" onclick="makeOsint20(hnUser.value)">Threads</button>
+            <button class="button" onclick="makeOsint21(hnUser.value)">Favorites</button>
+          </div>
+        </div>
+
+        <!-- 4chan -->
+        <div class="form-section">
+          <h2>4chan</h2>
+          <section class="search-instructions">
+            <label for="chanTerm">Search term:</label>
+            <div class="input-container">
+              <input type="text" id="chanTerm" class="input-field" placeholder="Search term">
+            </div>
+          </section>
+          <div class="button-grid">
+            <button class="button" onclick="makeOsint23(chanTerm.value)">Boards</button>
+            <button class="button" onclick="makeOsint24(chanTerm.value)">Threads</button>
+            <button class="button" onclick="makeOsint25(chanTerm.value)">Archive</button>
+            <button class="button" onclick="makeOsint26(chanTerm.value)">Google</button>
+          </div>
+        </div>
+
+        <!-- TikTok -->
+        <div class="form-section">
+          <h2>TikTok</h2>
+          <section class="search-instructions">
+            <label for="ttUser">Username:</label>
+            <div class="input-container">
+              <input type="text" id="ttUser" class="input-field" placeholder="Username">
+            </div>
+          </section>
+          <div class="button-grid">
+            <button class="button" onclick="makeOsint27(ttUser.value)">Profile</button>
+            <button class="button" onclick="makeOsint28(ttUser.value)">Users</button>
+          </div>
+
+          <section class="search-instructions">
+            <label for="ttKey">Keyword:</label>
+            <div class="input-container">
+              <input type="text" id="ttKey" class="input-field" placeholder="Keyword">
+            </div>
+          </section>
+          <div class="button-grid">
+            <button class="button" onclick="makeOsint29(ttKey.value)">Tags</button>
+            <button class="button" onclick="makeOsint30(ttKey.value)">Search</button>
+            <button class="button" onclick="makeOsint31(ttKey.value)">Videos</button>
+            <button class="button" onclick="makeOsint32(ttKey.value)">Google</button>
+          </div>
+        </div>
       </div>
 
-      <h2>Parler</h2>
-      <div class="form-section">
-        <form onsubmit="return false;">
-          <input type="text" id="parUser" placeholder="Username"/>
-        </form>
-      </div>
-      <div class="button-row">
-        <button onclick="makeOsint64(document.getElementById('parUser').value)">Profile</button>
-        <button onclick="makeOsint64a(document.getElementById('parUser').value)">Submissions</button>
-        <button onclick="makeOsint64b(document.getElementById('parUser').value)">Comments</button>
-      </div>
+      <!-- Right column -->
+      <div class="column">
+        <!-- Discord -->
+        <div class="form-section">
+          <h2>Discord</h2>
+          <section class="search-instructions">
+            <label for="dcTerm">Server name/ID:</label>
+            <div class="input-container">
+              <input type="text" id="dcTerm" class="input-field" placeholder="Server name/ID">
+            </div>
+          </section>
+          <div class="button-grid">
+            <button class="button" onclick="makeOsint57(dcTerm.value)">Invite</button>
+            <button class="button" onclick="makeOsint58(dcTerm.value)">Disboard</button>
+            <button class="button" onclick="makeOsint60(dcTerm.value)">Discord.me</button>
+            <button class="button" onclick="makeOsint61(dcTerm.value)">Servers</button>
+            <button class="button" onclick="makeOsint62(dcTerm.value)">Bee</button>
+            <button class="button" onclick="makeOsint63(dcTerm.value)">Google</button>
+          </div>
+        </div>
 
-      <h2>Gab</h2>
-      <div class="form-section">
-        <form onsubmit="return false;">
-          <input type="text" id="gabUser" placeholder="Username"/>
-        </form>
-      </div>
-      <div class="button-row">
-        <button onclick="makeOsint65(document.getElementById('gabUser').value)">Profile</button>
-        <button onclick="makeOsint66(document.getElementById('gabUser').value)">Groups</button>
-      </div>
+        <!-- Parler -->
+        <div class="form-section">
+          <h2>Parler</h2>
+          <section class="search-instructions">
+            <label for="parUser">Username:</label>
+            <div class="input-container">
+              <input type="text" id="parUser" class="input-field" placeholder="Username">
+            </div>
+          </section>
+          <div class="button-grid">
+            <button class="button" onclick="makeOsint64(parUser.value)">Profile</button>
+            <button class="button" onclick="makeOsint64a(parUser.value)">Submissions</button>
+            <button class="button" onclick="makeOsint64b(parUser.value)">Comments</button>
+          </div>
+        </div>
 
-      <h2>Gettr</h2>
-      <div class="form-section">
-        <form onsubmit="return false;">
-          <input type="text" id="gettrUser" placeholder="Username"/>
-        </form>
-      </div>
-      <div class="button-row">
-        <button onclick="makeOsint65c(document.getElementById('gettrUser').value)">Profile</button>
-        <button onclick="makeOsint66c(document.getElementById('gettrUser').value)">Comments</button>
-        <button onclick="makeOsint67c(document.getElementById('gettrUser').value)">Media</button>
-        <button onclick="makeOsint68c(document.getElementById('gettrUser').value)">Likes</button>
-      </div>
+        <!-- Gab -->
+        <div class="form-section">
+          <h2>Gab</h2>
+          <section class="search-instructions">
+            <label for="gabUser">Username:</label>
+            <div class="input-container">
+              <input type="text" id="gabUser" class="input-field" placeholder="Username">
+            </div>
+          </section>
+          <div class="button-grid">
+            <button class="button" onclick="makeOsint65(gabUser.value)">Profile</button>
+            <button class="button" onclick="makeOsint66(gabUser.value)">Groups</button>
+          </div>
+        </div>
 
-      <h2>Mastodon</h2>
-      <div class="form-section">
-        <form onsubmit="return false;">
-          <input type="text" id="mastodonTerm" placeholder="Search term"/>
-        </form>
-      </div>
-      <div class="button-row">
-        <button onclick="makeOsint65d(document.getElementById('mastodonTerm').value)">Accounts</button>
-        <button onclick="makeOsint66d(document.getElementById('mastodonTerm').value)">Hashtags</button>
-      </div>
+        <!-- Gettr -->
+        <div class="form-section">
+          <h2>Gettr</h2>
+          <section class="search-instructions">
+            <label for="gettrUser">Username:</label>
+            <div class="input-container">
+              <input type="text" id="gettrUser" class="input-field" placeholder="Username">
+            </div>
+          </section>
+          <div class="button-grid">
+            <button class="button" onclick="makeOsint65c(gettrUser.value)">Profile</button>
+            <button class="button" onclick="makeOsint66c(gettrUser.value)">Comments</button>
+            <button class="button" onclick="makeOsint67c(gettrUser.value)">Media</button>
+            <button class="button" onclick="makeOsint68c(gettrUser.value)">Likes</button>
+          </div>
+        </div>
 
-      <h2>Telegram</h2>
-      <div class="form-section">
-        <form onsubmit="return false;">
-          <input type="text" id="tgUser" placeholder="User/Channel Name"/>
-        </form>
-      </div>
-      <div class="button-row">
-        <button onclick="makeOsint67(document.getElementById('tgUser').value)">Profile/Channel</button>
-        <button onclick="makeOsint68(document.getElementById('tgUser').value)">Channel Preview</button>
-        <button onclick="makeOsint69(document.getElementById('tgUser').value)">Telegra.ph</button>
-        <button onclick="makeOsint72(document.getElementById('tgUser').value)">Telemetr.io</button>
-      </div>
-      <div class="form-section">
-        <form onsubmit="return false;">
-          <input type="text" id="tgKey" placeholder="Keyword"/>
-        </form>
-      </div>
-      <div class="button-row">
-        <button onclick="makeOsint70(document.getElementById('tgKey').value)">Group Search</button>
-        <button onclick="makeOsint71(document.getElementById('tgKey').value)">Channel Search</button>
-      </div>
+        <!-- Mastodon -->
+        <div class="form-section">
+          <h2>Mastodon</h2>
+          <section class="search-instructions">
+            <label for="mastodonTerm">Search term:</label>
+            <div class="input-container">
+              <input type="text" id="mastodonTerm" class="input-field" placeholder="Search term">
+            </div>
+          </section>
+          <div class="button-grid">
+            <button class="button" onclick="makeOsint65d(mastodonTerm.value)">Accounts</button>
+            <button class="button" onclick="makeOsint66d(mastodonTerm.value)">Hashtags</button>
+          </div>
+        </div>
 
+        <!-- Telegram -->
+        <div class="form-section">
+          <h2>Telegram</h2>
+          <section class="search-instructions">
+            <label for="tgUser">User/Channel Name:</label>
+            <div class="input-container">
+              <input type="text" id="tgUser" class="input-field" placeholder="User/Channel Name">
+            </div>
+          </section>
+          <div class="button-grid">
+            <button class="button" onclick="makeOsint67(tgUser.value)">Profile/Channel</button>
+            <button class="button" onclick="makeOsint68(tgUser.value)">Channel Preview</button>
+            <button class="button" onclick="makeOsint69(tgUser.value)">Telegra.ph</button>
+            <button class="button" onclick="makeOsint72(tgUser.value)">Telemetr.io</button>
+          </div>
+
+          <section class="search-instructions">
+            <label for="tgKey">Keyword:</label>
+            <div class="input-container">
+              <input type="text" id="tgKey" class="input-field" placeholder="Keyword">
+            </div>
+          </section>
+          <div class="button-grid">
+            <button class="button" onclick="makeOsint70(tgKey.value)">Group Search</button>
+            <button class="button" onclick="makeOsint71(tgKey.value)">Channel Search</button>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</main>
+  </main>
 
-<footer>
-  Global Security Italy • Rome (IT)
-  <a href="License.html">License</a>
-</footer>
+  <footer>
+    Global Security Italy • Rome (IT)
+    <a href="License.html">License</a>
+  </footer>
 
-<script>
-// define all makeOsintXX functions
-function makeOsint01(v){window.open('https://old.reddit.com/search?q='+v,'Search01');}
-function makeOsint02(v){window.open('https://old.reddit.com/search?q=title:'+v,'Search02');}
-function makeOsint03(v){window.open('https://old.reddit.com/user/'+v,'Search03');}
-function makeOsint04(v){window.open('https://old.reddit.com/user/'+v+'/submitted','Search04');}
-function makeOsint05(v){window.open('https://old.reddit.com/user/'+v+'/comments/','Search05');}
-function makeOsint06(v){window.open('https://web.archive.org/*/https://www.reddit.com/user/'+v,'Search06');}
-function makeOsint08(v){window.open('https://api.pullpush.io/reddit/search/comment/?author='+v+'&sort=asc&size=100','Search08');}
-function makeOsint09(v){window.open('https://api.pullpush.io/reddit/search/comment/?author='+v+'&sort=desc&size=100','Search09');}
-function makeOsint10a(v){window.open('https://api.pullpush.io/reddit/search/comment/?q='+v+'&sort=asc&size=100','Search10a');}
-function makeOsint10b(v){window.open('https://api.pullpush.io/reddit/search/comment/?q='+v+'&sort=desc&size=100','Search10b');}
+  <script>
+    // Navbar submenu show/hide
+    document.querySelectorAll('.menu > li').forEach(item => {
+      item.addEventListener('mouseover', () => item.querySelector('.submenu')?.style.setProperty('display','block'));
+      item.addEventListener('mouseout',  () => item.querySelector('.submenu')?.style.setProperty('display','none'));
+    });
 
-function makeOsint17(v){window.open('https://hn.algolia.com/?query='+v+'&sort=byDate&prefix&page=0&dateRange=all&type=all','Search17');}
-function makeOsint18(v){window.open('https://news.ycombinator.com/user?id='+v,'Search18');}
-function makeOsint19(v){window.open('https://news.ycombinator.com/submitted?id='+v,'Search19');}
-function makeOsint20(v){window.open('https://news.ycombinator.com/threads?id='+v,'Search20');}
-function makeOsint21(v){window.open('https://news.ycombinator.com/favorites?id='+v,'Search21');}
-function makeOsint22(v){window.open('https://www.google.com/search?q=site:news.ycombinator.com+'+v,'Search22');}
+    // Reddit
+    function makeOsint01(v){window.open('https://old.reddit.com/search?q='+encodeURIComponent(v),'_blank');}
+    function makeOsint02(v){window.open('https://old.reddit.com/search?q=title:'+encodeURIComponent(v),'_blank');}
+    function makeOsint03(v){window.open('https://old.reddit.com/user/'+encodeURIComponent(v),'_blank');}
+    function makeOsint04(v){window.open('https://old.reddit.com/user/'+encodeURIComponent(v)+'/submitted','_blank');}
+    function makeOsint05(v){window.open('https://old.reddit.com/user/'+encodeURIComponent(v)+'/comments/','_blank');}
+    function makeOsint06(v){window.open('https://web.archive.org/*/https://www.reddit.com/user/'+encodeURIComponent(v),'_blank');}
+    function makeOsint08(v){window.open('https://api.pullpush.io/reddit/search/comment/?author='+encodeURIComponent(v)+'&sort=asc&size=100','_blank');}
+    function makeOsint09(v){window.open('https://api.pullpush.io/reddit/search/comment/?author='+encodeURIComponent(v)+'&sort=desc&size=100','_blank');}
+    function makeOsint10a(v){window.open('https://api.pullpush.io/reddit/search/comment/?q='+encodeURIComponent(v)+'&sort=asc&size=100','_blank');}
+    function makeOsint10b(v){window.open('https://api.pullpush.io/reddit/search/comment/?q='+encodeURIComponent(v)+'&sort=desc&size=100','_blank');}
 
-function makeOsint23(v){window.open('http://4chansearch.com/?q='+v+'&s=4','Search23');}
-function makeOsint24(v){window.open('http://4chansearch.com/?q='+v+'&s=7','Search24');}
-function makeOsint25(v){window.open('https://archive.4plebs.org/_/search/text/'+v+'/order/asc/','Search25');}
-function makeOsint26(v){window.open('https://www.google.com/search?q=site:4chan.org+'+v,'Search26');}
+    // Hacker News
+    function makeOsint17(v){window.open('https://hn.algolia.com/?query='+encodeURIComponent(v)+'&sort=byDate&page=0','_blank');}
+    function makeOsint18(v){window.open('https://news.ycombinator.com/user?id='+encodeURIComponent(v),'_blank');}
+    function makeOsint19(v){window.open('https://news.ycombinator.com/submitted?id='+encodeURIComponent(v),'_blank');}
+    function makeOsint20(v){window.open('https://news.ycombinator.com/threads?id='+encodeURIComponent(v),'_blank');}
+    function makeOsint21(v){window.open('https://news.ycombinator.com/favorites?id='+encodeURIComponent(v),'_blank');}
+    function makeOsint22(v){window.open('https://www.google.com/search?q=site:news.ycombinator.com+'+encodeURIComponent(v),'_blank');}
 
-function makeOsint27(v){window.open('https://www.tiktok.com/@'+v,'Search27');}
-function makeOsint28(v){window.open('https://www.tiktok.com/search/user?q='+v,'Search28');}
-function makeOsint29(v){window.open('https://www.tiktok.com/tag/'+v,'Search29');}
-function makeOsint30(v){window.open('https://www.tiktok.com/search?q='+v,'Search30');}
-function makeOsint31(v){window.open('https://www.tiktok.com/search/video?q='+v,'Search31');}
-function makeOsint32(v){window.open('https://www.google.com/search?q=site:tiktok.com+'+v,'Search32');}
+    // 4chan
+    function makeOsint23(v){window.open('http://4chansearch.com/?q='+encodeURIComponent(v)+'&s=4','_blank');}
+    function makeOsint24(v){window.open('http://4chansearch.com/?q='+encodeURIComponent(v)+'&s=7','_blank');}
+    function makeOsint25(v){window.open('https://archive.4plebs.org/_/search/text/'+encodeURIComponent(v)+'/order/asc/','_blank');}
+    function makeOsint26(v){window.open('https://www.google.com/search?q=site:4chan.org+'+encodeURIComponent(v),'_blank');}
 
-function makeOsint57(v){window.open('https://discord.gg/'+v,'Search57');}
-function makeOsint58(v){window.open('https://disboard.org/search?keyword='+v,'Search58');}
-function makeOsint60(v){window.open('https://discord.me/servers?search='+v,'Search60');}
-function makeOsint61(v){window.open('https://discordservers.com/search/'+v,'Search61');}
-function makeOsint62(v){window.open('https://discordbee.com/servers?q='+v,'Search62');}
-function makeOsint63(v){window.open('https://www.google.com/search?q=site:discord.com+'+v,'Search63');}
+    // TikTok
+    function makeOsint27(v){window.open('https://www.tiktok.com/@'+encodeURIComponent(v),'_blank');}
+    function makeOsint28(v){window.open('https://www.tiktok.com/search/user?q='+encodeURIComponent(v),'_blank');}
+    function makeOsint29(v){window.open('https://www.tiktok.com/tag/'+encodeURIComponent(v),'_blank');}
+    function makeOsint30(v){window.open('https://www.tiktok.com/search?q='+encodeURIComponent(v),'_blank');}
+    function makeOsint31(v){window.open('https://www.tiktok.com/search/video?q='+encodeURIComponent(v),'_blank');}
+    function makeOsint32(v){window.open('https://www.google.com/search?q=site:tiktok.com+'+encodeURIComponent(v),'_blank');}
 
-function makeOsint64(v){window.open('https://old.reddit.com/user/'+v,'Search64');}
-function makeOsint64a(v){window.open('https://old.reddit.com/user/'+v+'/submitted','Search64a');}
-function makeOsint64b(v){window.open('https://old.reddit.com/user/'+v+'/comments/','Search64b');}
+    // Discord
+    function makeOsint57(v){window.open('https://discord.gg/'+encodeURIComponent(v),'_blank');}
+    function makeOsint58(v){window.open('https://disboard.org/search?keyword='+encodeURIComponent(v),'_blank');}
+    function makeOsint60(v){window.open('https://discord.me/servers?search='+encodeURIComponent(v),'_blank');}
+    function makeOsint61(v){window.open('https://discordservers.com/search/'+encodeURIComponent(v),'_blank');}
+    function makeOsint62(v){window.open('https://discordbee.com/servers?q='+encodeURIComponent(v),'_blank');}
+    function makeOsint63(v){window.open('https://www.google.com/search?q=site:discord.com+'+encodeURIComponent(v),'_blank');}
 
-function makeOsint65(v){window.open('https://gab.com/'+v,'Search65');}
-function makeOsint66(v){window.open('https://gab.com/groups/'+v,'Search66');}
+    // Parler
+    function makeOsint64(v){window.open('https://parler.com/profile/'+encodeURIComponent(v),'_blank');}
+    function makeOsint64a(v){window.open('https://parler.com/profile/'+encodeURIComponent(v)+'/posts','_blank');}
+    function makeOsint64b(v){window.open('https://parler.com/profile/'+encodeURIComponent(v)+'/comments','_blank');}
 
-function makeOsint65c(v){window.open('https://www.gettr.com/user/'+v,'Search65c');}
-function makeOsint66c(v){window.open('https://www.gettr.com/user/'+v+'/comments','Search66c');}
-function makeOsint67c(v){window.open('https://www.gettr.com/user/'+v+'/medias','Search67c');}
-function makeOsint68c(v){window.open('https://www.gettr.com/user/'+v+'/likes','Search68c');}
+    // Gab
+    function makeOsint65(v){window.open('https://gab.com/'+encodeURIComponent(v),'_blank');}
+    function makeOsint66(v){window.open('https://gab.com/groups/'+encodeURIComponent(v),'_blank');}
 
-function makeOsint65d(v){window.open('https://mastodon.social/api/v2/search?q='+v+'&limit=40&type=accounts','Search65d');}
-function makeOsint66d(v){window.open('https://mastodon.social/api/v2/search?q='+v+'&limit=40&type=hashtags','Search66d');}
+    // Gettr
+    function makeOsint65c(v){window.open('https://www.gettr.com/user/'+encodeURIComponent(v),'_blank');}
+    function makeOsint66c(v){window.open('https://www.gettr.com/user/'+encodeURIComponent(v)+'/comments','_blank');}
+    function makeOsint67c(v){window.open('https://www.gettr.com/user/'+encodeURIComponent(v)+'/medias','_blank');}
+    function makeOsint68c(v){window.open('https://www.gettr.com/user/'+encodeURIComponent(v)+'/likes','_blank');}
 
-function makeOsint67(v){window.open('https://t.me/'+v,'Search67');}
-function makeOsint68(v){window.open('https://telegram.me/s/'+v,'Search68');}
-function makeOsint69(v){window.open('https://telesco.pe/'+v,'Search69');}
-function makeOsint70(v){window.open('https://www.telegram-group.com/en?s='+v,'Search70');}
-function makeOsint71(v){window.open('https://telegramchannels.me/search?type=all&search='+v,'Search71');}
-function makeOsint72(v){window.open('https://telemetr.io/en/channels?channel='+v,'Search72');}
-</script>
+    // Mastodon
+    function makeOsint65d(v){window.open('https://mastodon.social/api/v2/search?q='+encodeURIComponent(v)+'&limit=40&type=accounts','_blank');}
+    function makeOsint66d(v){window.open('https://mastodon.social/api/v2/search?q='+encodeURIComponent(v)+'&limit=40&type=hashtags','_blank');}
+
+    // Telegram
+    function makeOsint67(v){window.open('https://t.me/'+encodeURIComponent(v),'_blank');}
+    function makeOsint68(v){window.open('https://telegram.me/s/'+encodeURIComponent(v),'_blank');}
+    function makeOsint69(v){window.open('https://telesco.pe/'+encodeURIComponent(v),'_blank');}
+    function makeOsint70(v){window.open('https://www.telegram-group.com/en?s='+encodeURIComponent(v),'_blank');}
+    function makeOsint71(v){window.open('https://telegramchannels.me/search?type=all&search='+encodeURIComponent(v),'_blank');}
+    function makeOsint72(v){window.open('https://telemetr.io/en/channels?channel='+encodeURIComponent(v),'_blank');}
+  </script>
 </body>
 </html>
-```

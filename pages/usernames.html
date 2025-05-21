@@ -5,494 +5,180 @@
   <title>Exploratores Usernames Tool</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Font in stile docs.html -->
+  <!-- Font IBM Plex Sans -->
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --primary-color: #0066ff;
-      --secondary-color: #333;
-      --bg-color: #f9f9f9;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'IBM Plex Sans', sans-serif;
-      background-color: var(--bg-color);
-    }
-
-    /* NAVBAR FISSA */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background-color: #ffffff;
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      justify-content: center;
-      z-index: 1000;
-    }
-    .menu {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      max-width: 1200px;
-      width: 100%;
-      justify-content: space-around;
-      border: 1px solid #ccc;
-    }
-    .menu > li {
-      position: relative;
-      height: 60px;
-      width: 120px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 1rem;
-      border-right: 1px solid #ccc;
-      transition: background-color 0.2s ease-in;
-    }
-    .menu > li:last-child {
-      border-right: none;
-    }
-    .menu > li:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-    }
-    .menu > li span {
-      display: block;
-      line-height: 1.2;
-    }
-
-    /* SUBMENU */
-    .submenu {
-      display: none;
-      position: absolute;
-      background-color: #ffffff;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      border: 1px solid #ddd;
-      min-width: 200px;
-      z-index: 999;
-    }
-    .submenu li {
-      padding: 10px;
-      border-bottom: 1px solid #eee;
-    }
-    .submenu li:last-child {
-      border-bottom: none;
-    }
-    .submenu li a {
-      text-decoration: none;
-      color: var(--secondary-color);
-    }
-    .submenu li:hover {
-      background-color: var(--primary-color);
-    }
-    .submenu li:hover a {
-      color: #ffffff;
-    }
-    /* MOSTRA/NASCONDI SUBMENU AL PASSAGGIO DEL MOUSE */
-    .menu > li:hover .submenu {
-      display: block;
-    }
-
-    /* MAIN */
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 70px 20px 40px;
-      background-color: #fff;
-    }
-    h1.page-title {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    /* Sezione con testo e input allineato a sinistra */
-    .search-instructions {
-      margin-bottom: 1.5rem;
-    }
-    .search-instructions label {
-      display: inline-block;
-      margin-bottom: 0.3rem;
-      font-weight: 600;
-    }
-    .search-instructions p {
-      margin: 0.5rem 0 1rem;
-      line-height: 1.4;
-    }
-    .input-container {
-      margin-bottom: 1rem;
-    }
-    .input-field {
-      width: 300px;
-      padding: 0.5rem;
-      font-size: 1rem;
-      border: 1px solid #ddd;
-      border-radius: 3px;
-    }
-
-    /* Pulsanti in 4 colonne, stessa dimensione */
-    .buttons-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 120px); /* 4 colonne da 120px */
-      gap: 0.5rem;
-      justify-content: flex-start; /* allinea i pulsanti a sinistra */
-    }
-    .buttons-grid button {
-      width: 120px; /* larghezza fissa */
-      height: 40px; /* altezza fissa */
-      background-color: #fff;
-      border: 1px solid #ccc;
-      font-size: 0.9rem;
-      cursor: pointer;
-      border-radius: 3px;
-      transition: background-color 0.2s ease-in;
-      text-align: center;
-    }
-    .buttons-grid button:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-    }
-
-    /* FOOTER */
-    footer {
-      background-color: #ffffff;
-      border-top: 1px solid #ddd;
-      padding: 10px;
-      text-align: center;
-      font-size: 0.9em;
-      color: #555;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-    }
-    footer a {
-      color: var(--primary-color);
-      text-decoration: none;
-      margin-left: 10px;
-    }
-
-    /* RESPONSIVE MENU */
-    @media (max-width: 768px) {
-      .menu > li {
-        width: auto;
-        flex: 1;
-      }
-      /* Per schermi stretti, puoi far scorrere i pulsanti su righe multiple */
-      .buttons-grid {
-        grid-template-columns: repeat(auto-fill, 120px);
-        justify-content: center;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav>
-  <ul class="menu">
-    <li><span>HOME</span>
-      <ul class="submenu">
-        <li><a href="../index.html">Index</a></li>
-      </ul>
-    </li>
-    <li><span>Search<br>Engines</span>
-      <ul class="submenu">
-        <li><a href="Searchengines.html">Search Engines</a></li>
-      </ul>
-    </li>
-    <li><span>People &<br>Identities</span>
-      <ul class="submenu">
-        <li><a href="Names.html">Names</a></li>
-        <li><a href="phoneus.html">US Phones</a></li>
-		<li><a href="phoneint.html">International Phones</a></li>
-        <li><a href="Address.html">Addresses</a></li>
-        <li><a href="vehicles.html">Vehicles</a></li>
-        <li><a href="usernames.html">Usernames</a></li>
-        <li><a href="Email.html">Email Addresses</a></li>
-        <li><a href="Communities.html">Communities</a></li>
-      </ul>
-    </li>
-    <li><span>Social<br>Media</span>
-      <ul class="submenu">
-        <li><a href="X.html">X (Twitter)</a></li>
-        <li><a href="Facebook.html">Facebook</a></li>
-        <li><a href="Instagram.html">Instagram</a></li>
-        <li><a href="LinkedIn.html">LinkedIn</a></li>
-      </ul>
-    </li>
-    <li><span>Websites</span>
-      <ul class="submenu">
-        <li><a href="Domains.html">Domains</a></li>
-        <li><a href="IP.html">IP Addresses</a></li>
-      </ul>
-    </li>
-    <li><span>GeoInt</span>
-      <ul class="submenu">
-        <li><a href="Maps.html">Maps</a></li>
-      </ul>
-    </li>
-    <li><span>Media<br>Analysis</span>
-      <ul class="submenu">
-        <li><a href="Images.html">Images</a></li>
-        <li><a href="Videos.html">Videos</a></li>
-        <li><a href="docs.html">Documents</a></li>
-      </ul>
-    </li>
-    <li><span>Business<br>Intelligence</span>
-      <ul class="submenu">
-        <li><a href="Business.html">Business &amp; Government</a></li>
-        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
-      </ul>
-    </li>
-    <li><span>Tools</span>
-      <ul class="submenu">
+  <!-- NAVBAR -->
+  <nav>
+    <ul class="menu">
+      <li><span>HOME</span>
+        <ul class="submenu"><li><a href="../index.html">Index</a></li></ul>
+      </li>
+      <li><span>Search<br>Engines</span>
+        <ul class="submenu"><li><a href="Searchengines.html">Search Engines</a></li></ul>
+      </li>
+      <li><span>People &<br>Identities</span>
+        <ul class="submenu">
+          <li><a href="Names.html">Names</a></li>
+          <li><a href="phoneus.html">US Phones</a></li>
+          <li><a href="phoneint.html">International Phones</a></li>
+          <li><a href="Address.html">Addresses</a></li>
+          <li><a href="vehicles.html">Vehicles</a></li>
+          <li><a href="usernames.html" class="active">Usernames</a></li>
+          <li><a href="Email.html">Email Addresses</a></li>
+          <li><a href="Communities.html">Communities</a></li>
+        </ul>
+      </li>
+      <li><span>Social<br>Media</span>
+        <ul class="submenu">
+          <li><a href="X.html">X (Twitter)</a></li>
+          <li><a href="Facebook.html">Facebook</a></li>
+          <li><a href="Instagram.html">Instagram</a></li>
+          <li><a href="LinkedIn.html">LinkedIn</a></li>
+        </ul>
+      </li>
+      <li><span>Websites</span>
+        <ul class="submenu">
+          <li><a href="Domains.html">Domains</a></li>
+          <li><a href="IP.html">IP Addresses</a></li>
+        </ul>
+      </li>
+      <li><span>GeoInt</span>
+        <ul class="submenu"><li><a href="Maps.html">Maps</a></li></ul>
+      </li>
+      <li><span>Media<br>Analysis</span>
+        <ul class="submenu">
+          <li><a href="Images.html">Images</a></li>
+          <li><a href="Videos.html">Videos</a></li>
+          <li><a href="docs.html">Documents</a></li>
+        </ul>
+      </li>
+      <li><span>Business<br>Intelligence</span>
+        <ul class="submenu">
+          <li><a href="Business.html">Business &amp; Government</a></li>
+          <li><a href="Currencies.html">Virtual Currencies</a></li>
+        </ul>
+      </li>
+      <li><span>Tools</span>
+        <ul class="submenu"><li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li></ul>
+      </li>
+    </ul>
+  </nav>
 
-        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+  <main>
+    <h1 class="page-title">Usernames Tool</h1>
 
-<main>
-  <h1 class="page-title">Usernames Tool</h1>
+    <!-- Istruzioni -->
+    <section class="search-instructions">
+      <label for="OsintInput">Insert username here:</label>
+      <div class="input-container">
+        <input type="text" id="OsintInput" class="input-field" placeholder="Username">
+      </div>
+    </section>
 
-  <!-- Istruzioni e input allineati a sinistra -->
-  <section class="search-instructions">
-    <label for="OsintInput">Insert username here:</label>
-    <div class="input-container">
-      <input type="text" id="OsintInput" class="input-field" placeholder="Username">
+    <!-- Nota -->
+    <div class="note">
+      <strong>NOTE:</strong> Please enter the username above, then click a button to perform the search.
     </div>
-    <p>
-      Please enter the username in the box above and then press the buttons corresponding 
-      to the type of search you wish to perform.
-    </p>
-  </section>
 
-  <!-- Pulsanti in 4 colonne, dimensione fissa, in ordine alfabetico -->
-  <div class="buttons-grid">
-    <button onclick="searchBing()">Bing</button>
-    <button onclick="searchCheckistan()">Checkistan</button>
-    <button onclick="searchDehashed()">Dehashed</button>
-    <button onclick="searchDehashedEmails()">Dehashed Emails</button>
+    <!-- Pulsanti in griglia -->
+    <div class="button-grid">
+      <button class="button" onclick="searchBing()">Bing</button>
+      <button class="button" onclick="searchCheckistan()">Checkistan</button>
+      <button class="button" onclick="searchDehashed()">Dehashed</button>
+      <button class="button" onclick="searchDehashedEmails()">Dehashed Emails</button>
 
-    <button onclick="searchEmailSearch()">Email Search</button>
-    <button onclick="searchFacebook()">Facebook</button>
-    <button onclick="searchGhunt()">Ghunt</button>
-    <button onclick="searchGoogle()">Google</button>
+      <button class="button" onclick="searchEmailSearch()">Email Search</button>
+      <button class="button" onclick="searchFacebook()">Facebook</button>
+      <button class="button" onclick="searchGhunt()">Ghunt</button>
+      <button class="button" onclick="searchGoogle()">Google</button>
 
-    <button onclick="searchGravatar()">Gravatar</button>
-    <button onclick="searchIDCrawl()">ID Crawl</button>
-    <button onclick="searchInstantUsername()">InstantUser</button>
-    <button onclick="searchInstagram()">Instagram</button>
+      <button class="button" onclick="searchGravatar()">Gravatar</button>
+      <button class="button" onclick="searchIDCrawl()">ID Crawl</button>
+      <button class="button" onclick="searchInstantUsername()">InstantUser</button>
+      <button class="button" onclick="searchInstagram()">Instagram</button>
 
-    <button onclick="searchLinkTree()">LinkTree</button>
-    <button onclick="searchMedium()">Medium</button>
-    <button onclick="searchNameChecker()">NameChecker</button>
-    <button onclick="searchNameChck()">NameChck</button>
+      <button class="button" onclick="searchLinkTree()">LinkTree</button>
+      <button class="button" onclick="searchMedium()">Medium</button>
+      <button class="button" onclick="searchNameChecker()">NameChecker</button>
+      <button class="button" onclick="searchNameChck()">NameChck</button>
 
-    <button onclick="searchNameVine()">NameVine</button>
-    <button onclick="searchProfileDiscover()">ProfileDisc</button>
-    <button onclick="searchPSBDMP()">PSBDMP</button>
-    <button onclick="searchReddit()">Reddit</button>
+      <button class="button" onclick="searchNameVine()">NameVine</button>
+      <button class="button" onclick="searchProfileDiscover()">ProfileDisc</button>
+      <button class="button" onclick="searchPSBDMP()">PSBDMP</button>
+      <button class="button" onclick="searchReddit()">Reddit</button>
 
-    <button onclick="searchSnapchat()">Snapchat</button>
-    <button onclick="searchSocialSearcher()">SocialSearch</button>
-    <button onclick="searchTikTok()">TikTok</button>
-    <button onclick="searchTinder()">Tinder</button>
+      <button class="button" onclick="searchSnapchat()">Snapchat</button>
+      <button class="button" onclick="searchSocialSearcher()">SocialSearch</button>
+      <button class="button" onclick="searchTikTok()">TikTok</button>
+      <button class="button" onclick="searchTinder()">Tinder</button>
 
-    <button onclick="searchTumblr()">Tumblr</button>
-    <button onclick="searchUserSearch()">UserSearch</button>
-    <button onclick="searchX()">X (Twitter)</button>
-    <button onclick="searchYandex()">Yandex</button>
+      <button class="button" onclick="searchTumblr()">Tumblr</button>
+      <button class="button" onclick="searchUserSearch()">UserSearch</button>
+      <button class="button" onclick="searchX()">X (Twitter)</button>
+      <button class="button" onclick="searchYandex()">Yandex</button>
 
-    <button onclick="searchYouTube()">YouTube</button>
-  </div>
+      <button class="button" onclick="searchYouTube()">YouTube</button>
+    </div>
+  </main>
 
+  <footer>
+    Global Security Italy • Rome (IT)
+    <a href="License.html">License</a>
+  </footer>
+
+  <!-- Script di ricerca -->
   <script>
-    function getOsintInput(){
+    function getOsintInput() {
       return document.getElementById('OsintInput').value.trim();
     }
-
-    function searchBing(){
-      const term = getOsintInput();
-      window.open('https://www.bing.com/search?q=%22' + term + '%22','_blank');
+    function searchBing()             { open('https://www.bing.com/search?q="'       + getOsintInput() + '"', '_blank'); }
+    function searchCheckistan()      { open('https://usernamechecker.checkistan.com/#' + getOsintInput(), '_blank'); }
+    function searchDehashed()        { open('https://dehashed.com/search?query="'   + getOsintInput() + '"', '_blank'); }
+    function searchDehashedEmails()  {
+      const u = getOsintInput();
+      ['@gmail.com','@yahoo.com','@hotmail.com','@protonmail.com','@live.com','@outlook.com','@icloud.com','@yandex.com','@gmx.com','@mail.com','@mac.com','@me.com']
+        .forEach((d,i) => setTimeout(() => open(`https://dehashed.com/search?query="${u+ d}"`, '_blank'), i*1000));
     }
-    function searchCheckistan(){
-      const term = getOsintInput();
-      window.open('https://usernamechecker.checkistan.com/#' + term,'_blank');
+    function searchEmailSearch()     { open('https://www.google.com/search?q="' + getOsintInput() + '@gmail.com" OR "' + getOsintInput() + '@yahoo.com"', '_blank'); }
+    function searchFacebook()        { open('https://facebook.com/' + getOsintInput(), '_blank'); }
+    function searchGhunt()           { open('https://gmail-osint.activetk.jp/' + getOsintInput(), '_blank'); }
+    function searchGoogle()          { open('https://www.google.com/search?q="' + getOsintInput() + '"', '_blank'); }
+    function searchGravatar()        { open('https://en.gravatar.com/' + getOsintInput(), '_blank'); }
+    function searchIDCrawl()         { open('https://www.idcrawl.com/u/' + getOsintInput(), '_blank'); }
+    function searchInstantUsername() { open('https://instantusername.com/?q=' + getOsintInput(), '_blank'); }
+    function searchInstagram()       { open('https://instagram.com/' + getOsintInput(), '_blank'); }
+    function searchLinkTree()        { open('https://linktr.ee/' + getOsintInput(), '_blank'); }
+    function searchMedium()          { open('https://medium.com/@' + getOsintInput(), '_blank'); }
+    function searchNameChecker()     { open('https://www.namechecker.org/#' + getOsintInput(), '_blank'); }
+    function searchNameChck()        { open('https://namechk.com/namechk-plugin-search-results/?n=' + getOsintInput(), '_blank'); }
+    function searchNameVine()        { open('https://namevine.com/#/' + getOsintInput(), '_blank'); }
+    function searchProfileDiscover() { open('https://profilediscover.com/' + getOsintInput(), '_blank'); }
+    function searchPSBDMP()          { open('https://psbdmp.ws/api/search/' + getOsintInput(), '_blank'); }
+    function searchReddit()          { open('https://www.reddit.com/user/' + getOsintInput(), '_blank'); }
+    function searchSnapchat()        { open('https://www.snapchat.com/s/' + getOsintInput(), '_blank'); }
+    function searchSocialSearcher()  { open('https://www.social-searcher.com/search-users/?q6=' + getOsintInput(), '_blank'); }
+    function searchTikTok()          { open('https://www.tiktok.com/@' + getOsintInput(), '_blank'); }
+    function searchTinder()          { open('https://tinder.com/@' + getOsintInput(), '_blank'); }
+    function searchTumblr()          { open(`https://${getOsintInput()}.tumblr.com`, '_blank'); }
+    function searchUserSearch() { 
+      ['results_normal','results_advanced','results_advanced1','results_advanced2','results_advanced4','results_advanced5','results_advanced6','results_advanced7','results_dating','results_forums','results_crypto']
+        .forEach(path => open(`https://usersearch.org/${path}.php?URL_username=${getOsintInput()}`, '_blank'));
     }
-    function searchDehashed(){
-      const term = getOsintInput();
-      window.open('https://dehashed.com/search?query="' + term + '"','_blank');
-    }
-    function searchDehashedEmails(){
-      const user = getOsintInput();
-      setTimeout(()=>{window.open('https://dehashed.com/search?query=%22' + user + '@gmail.com%22','_blank');},1000);
-      setTimeout(()=>{window.open('https://dehashed.com/search?query=%22' + user + '@yahoo.com%22','_blank');},3000);
-      setTimeout(()=>{window.open('https://dehashed.com/search?query=%22' + user + '@hotmail.com%22','_blank');},6000);
-      setTimeout(()=>{window.open('https://dehashed.com/search?query=%22' + user + '@protonmail.com%22','_blank');},9000);
-      setTimeout(()=>{window.open('https://dehashed.com/search?query=%22' + user + '@live.com%22','_blank');},12000);
-      setTimeout(()=>{window.open('https://dehashed.com/search?query=%22' + user + '@outlook.com%22','_blank');},15000);
-      setTimeout(()=>{window.open('https://dehashed.com/search?query=%22' + user + '@icloud.com%22','_blank');},18000);
-      setTimeout(()=>{window.open('https://dehashed.com/search?query=%22' + user + '@yandex.com%22','_blank');},21000);
-      setTimeout(()=>{window.open('https://dehashed.com/search?query=%22' + user + '@gmx.com%22','_blank');},23000);
-      setTimeout(()=>{window.open('https://dehashed.com/search?query=%22' + user + '@mail.com%22','_blank');},26000);
-      setTimeout(()=>{window.open('https://dehashed.com/search?query=%22' + user + '@mac.com%22','_blank');},29000);
-      setTimeout(()=>{window.open('https://dehashed.com/search?query=%22' + user + '@me.com%22','_blank');},32000);
-    }
-    function searchEmailSearch(){
-      const user = getOsintInput();
-      window.open('https://www.google.com/search?q=%22' 
-        + user + '@gmail.com%22OR%22' + user + '@yahoo.com%22OR%22' + user + '@hotmail.com%22OR%22'
-        + user + '@protonmail.com%22OR%22' + user + '@live.com%22OR%22' + user + '@icloud.com%22OR%22'
-        + user + '@yandex.com%22OR%22' + user + '@gmx.com%22OR%22' + user + '@mail.com%22OR%22'
-        + user + '@mac.com%22OR%22' + user + '@me.com%22', '_blank');
-    }
-    function searchFacebook(){
-      const user = getOsintInput();
-      window.open('https://facebook.com/' + user, '_blank');
-    }
-    function searchGhunt(){
-      const user = getOsintInput();
-      window.open('https://gmail-osint.activetk.jp/' + user, '_blank');
-    }
-    function searchGoogle(){
-      const term = getOsintInput();
-      window.open('https://www.google.com/search?q="%22' + term + '%22','_blank');
-    }
-    function searchGravatar(){
-      const user = getOsintInput();
-      window.open('https://en.gravatar.com/' + user, '_blank');
-    }
-    function searchIDCrawl(){
-      const user = getOsintInput();
-      window.open('https://www.idcrawl.com/u/' + user, '_blank');
-    }
-    function searchInstantUsername(){
-      const user = getOsintInput();
-      window.open('https://instantusername.com/?q=' + user, '_blank');
-    }
-    function searchInstagram(){
-      const user = getOsintInput();
-      window.open('http://instagram.com/' + user, '_blank');
-    }
-    function searchLinkTree(){
-      const user = getOsintInput();
-      window.open('https://linktr.ee/' + user, '_blank');
-    }
-    function searchMedium(){
-      const user = getOsintInput();
-      window.open('https://medium.com/@' + user, '_blank');
-    }
-    function searchNameChecker(){
-      const user = getOsintInput();
-      window.open('https://www.namechecker.org/#' + user, '_blank');
-    }
-    function searchNameChck(){
-      const user = getOsintInput();
-      window.open('https://namechk.com/namechk-plugin-search-results/?n=' + user, '_blank');
-    }
-    function searchNameVine(){
-      const user = getOsintInput();
-      window.open('https://namevine.com/#/' + user, '_blank');
-    }
-    function searchProfileDiscover(){
-      const user = getOsintInput();
-      window.open('https://profilediscover.com/' + user, '_blank');
-    }
-    function searchPSBDMP(){
-      const user = getOsintInput();
-      window.open('https://psbdmp.ws/api/search/' + user, '_blank');
-    }
-    function searchReddit(){
-      const user = getOsintInput();
-      window.open('https://www.reddit.com/user/' + user, '_blank');
-    }
-    function searchSnapchat(){
-      const user = getOsintInput();
-      window.open('https://www.snapchat.com/s/' + user, '_blank');
-    }
-    function searchSocialSearcher(){
-      const user = getOsintInput();
-      window.open('https://www.social-searcher.com/search-users/?ntw=&q6=' + user, '_blank');
-    }
-    function searchTikTok(){
-      const user = getOsintInput();
-      window.open('https://www.tiktok.com/@' + user, '_blank');
-    }
-    function searchTinder(){
-      const user = getOsintInput();
-      window.open('https://tinder.com/@' + user, '_blank');
-    }
-    function searchTumblr(){
-      const user = getOsintInput();
-      window.open('https://' + user + '.tumblr.com', '_blank');
-    }
-    function searchUserSearch(){
-      const user = getOsintInput();
-      window.open('https://usersearch.org/results_normal.php?URL_username=' + user, '_blank');
-      window.open('https://usersearch.org/results_advanced.php?URL_username=' + user, '_blank');
-      window.open('https://usersearch.org/results_advanced1.php?URL_username=' + user, '_blank');
-      window.open('https://usersearch.org/results_advanced2.php?URL_username=' + user, '_blank');
-      window.open('https://usersearch.org/results_advanced4.php?URL_username=' + user, '_blank');
-      window.open('https://usersearch.org/results_advanced5.php?URL_username=' + user, '_blank');
-      window.open('https://usersearch.org/results_advanced6.php?URL_username=' + user, '_blank');
-      window.open('https://usersearch.org/results_advanced7.php?URL_username=' + user, '_blank');
-      window.open('https://usersearch.org/results_dating.php?URL_username=' + user, '_blank');
-      window.open('https://usersearch.org/results_forums.php?URL_username=' + user, '_blank');
-      window.open('https://usersearch.org/results_crypto.php?URL_username=' + user, '_blank');
-    }
-    function searchX(){
-      const user = getOsintInput();
-      window.open('http://x.com/' + user, '_blank');
-    }
-    function searchYandex(){
-      const user = getOsintInput();
-      window.open('https://yandex.com/search/?text="' + user + '"','_blank');
-    }
-    function searchYouTube(){
-      const user = getOsintInput();
-      window.open('http://youtube.com/' + user, '_blank');
-    }
+    function searchX()               { open('https://x.com/' + getOsintInput(), '_blank'); }
+    function searchYandex()          { open('https://yandex.com/search/?text="' + getOsintInput() + '"', '_blank'); }
+    function searchYouTube()         { open('https://youtube.com/' + getOsintInput(), '_blank'); }
+    
+    // submenu navbar
+    document.querySelectorAll('.menu > li').forEach(item => {
+      item.addEventListener('mouseover', () => item.querySelector('.submenu')?.style.setProperty('display','block'));
+      item.addEventListener('mouseout',  () => item.querySelector('.submenu')?.style.setProperty('display','none'));
+    });
   </script>
-
-</main>
-
-<footer>
-  Global Security Italy • Rome (IT)
-  <a href="License.html">License</a>
-</footer>
-
-<script>
-  // Mostra/Nascondi submenu
-  document.querySelectorAll('.menu > li').forEach(item => {
-    item.addEventListener('mouseover', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'block';
-    });
-    item.addEventListener('mouseout', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'none';
-    });
-  });
-</script>
 
 </body>
 </html>

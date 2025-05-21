@@ -2,266 +2,207 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Addresses • Exploratores</title>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
-<nav>
-  <ul class="menu">
-    <li><span>HOME</span>
-      <ul class="submenu">
-        <li><a href="../index.html">Index</a></li>
-      </ul>
-    </li>
-    <li><span>Search<br>Engines</span>
-      <ul class="submenu">
-        <li><a href="Searchengines.html">Search Engines</a></li>
-      </ul>
-    </li>
-    <li><span>People &<br>Identities</span>
-      <ul class="submenu">
-        <li><a href="Names.html">Names</a></li>
-        <li><a href="phoneus.html">US Phones</a></li>
-		<li><a href="phoneint.html">International Phones</a></li>
-        <li><a href="Address.html">Addresses</a></li>
-        <li><a href="vehicles.html">Vehicles</a></li>
-        <li><a href="usernames.html">Usernames</a></li>
-        <li><a href="Email.html">Email Addresses</a></li>
-        <li><a href="Communities.html">Communities</a></li>
-      </ul>
-    </li>
-    <li><span>Social<br>Media</span>
-      <ul class="submenu">
-        <li><a href="X.html">X (Twitter)</a></li>
-        <li><a href="Facebook.html">Facebook</a></li>
-        <li><a href="Instagram.html">Instagram</a></li>
-        <li><a href="LinkedIn.html">LinkedIn</a></li>
-      </ul>
-    </li>
-    <li><span>Websites</span>
-      <ul class="submenu">
-        <li><a href="Domains.html">Domains</a></li>
-        <li><a href="IP.html">IP Addresses</a></li>
-      </ul>
-    </li>
-    <li><span>GeoInt</span>
-      <ul class="submenu">
-        <li><a href="Maps.html">Maps</a></li>
-      </ul>
-    </li>
-    <li><span>Media<br>Analysis</span>
-      <ul class="submenu">
-        <li><a href="Images.html">Images</a></li>
-        <li><a href="Videos.html">Videos</a></li>
-        <li><a href="docs.html">Documents</a></li>
-      </ul>
-    </li>
-    <li><span>Business<br>Intelligence</span>
-      <ul class="submenu">
-        <li><a href="Business.html">Business &amp; Government</a></li>
-        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
-      </ul>
-    </li>
-    <li><span>Tools</span>
-      <ul class="submenu">
+  <nav>
+    <ul class="menu">
+      <li><span>HOME</span><ul class="submenu"><li><a href="../index.html">Index</a></li></ul></li>
+      <li><span>Search<br>Engines</span><ul class="submenu"><li><a href="Searchengines.html">Search Engines</a></li></ul></li>
+      <li><span>People &<br>Identities</span>
+        <ul class="submenu">
+          <li><a href="Names.html">Names</a></li>
+          <li><a href="phoneus.html">US Phones</a></li>
+          <li><a href="phoneint.html">International Phones</a></li>
+          <li><a href="Address.html" class="active">Addresses</a></li>
+          <li><a href="vehicles.html">Vehicles</a></li>
+          <li><a href="usernames.html">Usernames</a></li>
+          <li><a href="Email.html">Email Addresses</a></li>
+          <li><a href="Communities.html">Communities</a></li>
+        </ul>
+      </li>
+      <li><span>Social<br>Media</span><ul class="submenu"><li><a href="X.html">X (Twitter)</a></li><li><a href="Facebook.html">Facebook</a></li><li><a href="Instagram.html">Instagram</a></li><li><a href="LinkedIn.html">LinkedIn</a></li></ul></li>
+      <li><span>Websites</span><ul class="submenu"><li><a href="Domains.html">Domains</a></li><li><a href="IP.html">IP Addresses</a></li></ul></li>
+      <li><span>GeoInt</span><ul class="submenu"><li><a href="Maps.html">Maps</a></li></ul></li>
+      <li><span>Media<br>Analysis</span><ul class="submenu"><li><a href="Images.html">Images</a></li><li><a href="Videos.html">Videos</a></li><li><a href="docs.html">Documents</a></li></ul></li>
+      <li><span>Business<br>Intelligence</span><ul class="submenu"><li><a href="Business.html">Business &amp; Government</a></li><li><a href="Currencies.html">Virtual Currencies</a></li></ul></li>
+      <li><span>Tools</span><ul class="submenu"><li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li></ul></li>
+    </ul>
+  </nav>
 
-        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-<main>
-  <h1 class="page-title">Address Search Tool</h1>
+  <main>
+    <h1 class="page-title">Address Search Tool</h1>
     <div class="note">
-        <strong>NOTE:</strong> Address formats vary by country. Use the appropriate fields for US, EU, or Italy for best results. Some services may require specific input order or components.
+      <strong>NOTE:</strong> Address formats vary by country. Use the appropriate fields for US, EU, or Italy.
     </div>
 
-  <div class="columns-container">
-    <div class="column">
-      <div class="form-section">
-        <h2>US ADDRESSES</h2>
-        <div class="address-inputs">
-          <input type="text" id="usNum"    placeholder="Number" />
-          <input type="text" id="usStreet" placeholder="Street" />
-          <input type="text" id="usCity"   placeholder="City" />
-          <input type="text" id="usState"  placeholder="State" />
-          <input type="text" id="usZip"    placeholder="ZIP" />
+    <div class="columns">
+      <!-- US column -->
+      <div class="column">
+        <section class="search-instructions">
+          <h2>US ADDRESSES</h2>
+          <div class="input-container">
+            <input class="input-field" type="text" id="usNum"    placeholder="Number">
+            <input class="input-field" type="text" id="usStreet" placeholder="Street">
+            <input class="input-field" type="text" id="usCity"   placeholder="City">
+            <input class="input-field" type="text" id="usState"  placeholder="State">
+            <input class="input-field" type="text" id="usZip"    placeholder="ZIP">
+          </div>
+        </section>
+        <div class="form-section">
+          <div class="button-grid">
+            <button class="button" onclick="AddresstUS19()">Addresses.com</button>
+            <button class="button" onclick="AddresstUS09()">AdvBackgChk</button>
+            <button class="button" onclick="AddresstUS05()">CyberBkgChk</button>
+            <button class="button" onclick="AddresstUS11()">FastPeople</button>
+            <button class="button" onclick="AddresstUS01()">GISGraphy</button>
+            <button class="button" onclick="AddresstUS04()">Google</button>
+            <button class="button" onclick="AddresstUS06()">Hudway</button>
+            <button class="button" onclick="AddresstUS18()">PeopleFinders</button>
+            <button class="button" onclick="AddresstUS03()">Rehold</button>
+            <button class="button" onclick="AddresstUS15()">SmartBkgChk</button>
+            <button class="button" onclick="AddresstUS07()">SearchPplFree</button>
+            <button class="button" onclick="AddresstUS08()">Spokeo</button>
+            <button class="button" onclick="AddresstUS10()">TruePeople</button>
+            <button class="button" onclick="AddresstUS17()">USA People</button>
+            <button class="button" onclick="AddresstUS14()">WhitePages</button>
+            <button class="button" onclick="AddresstUS02()">Zillow</button>
+          </div>
         </div>
-        <div class="button-grid">
-          <button class="button" onclick="makeOsintUS19()">Addresses.com</button>
-          <button class="button" onclick="makeOsintUS09()">AdvBackgChk</button>
-          <button class="button" onclick="makeOsintUS05()">CyberBkgChk</button>
-          <button class="button" onclick="makeOsintUS11()">FastPeople</button>
-          <button class="button" onclick="makeOsintUS01()">GISGraphy</button>
-          <button class="button" onclick="makeOsintUS04()">Google</button>
-          <button class="button" onclick="makeOsintUS06()">Hudway</button>
-          <button class="button" onclick="makeOsintUS18()">PeopleFinders</button>
-          <button class="button" onclick="makeOsintUS03()">Rehold</button>
-          <button class="button" onclick="makeOsintUS15()">SmartBkgChk</button>
-          <button class="button" onclick="makeOsintUS07()">SearchPplFree</button>
-          <button class="button" onclick="makeOsintUS08()">Spokeo</button>
-          <button class="button" onclick="makeOsintUS10()">TruePeople</button>
-          <button class="button" onclick="makeOsintUS17()">USA People</button>
-          <button class="button" onclick="makeOsintUS14()">WhitePages</button>
-          <button class="button" onclick="makeOsintUS02()">Zillow</button>
+      </div>
+
+      <!-- EU + Italy column -->
+      <div class="column">
+        <section class="search-instructions">
+          <h2>INTERNATIONAL ADDRESSES</h2>
+          <div class="input-container">
+            <input class="input-field" type="text" id="euStreet" placeholder="Street">
+            <input class="input-field" type="text" id="euNum"    placeholder="Number">
+            <input class="input-field" type="text" id="euCity"   placeholder="City">
+            <input class="input-field" type="text" id="euZip"    placeholder="Postal">
+            <input class="input-field" type="text" id="euRegion" placeholder="Region/Country">
+          </div>
+        </section>
+        <div class="form-section">
+          <div class="button-grid">
+            <button class="button" onclick="AddresstEU20()">GISGraphy</button>
+            <button class="button" onclick="AddresstEU21()">Google</button>
+            <button class="button" onclick="AddresstEU22()">FastPeople EU</button>
+          </div>
         </div>
+
+        <section class="search-instructions">
+          <h2>Italy Addresses</h2>
+          <h3>Pagine Bianche – Aziende</h3>
+          <div class="input-container">
+            <input class="input-field" type="text" id="itCompany" placeholder="Company name">
+            <input class="input-field" type="text" id="itCity"    placeholder="City">
+            <input class="input-field" type="text" id="itProv"    placeholder="Province">
+          </div>
+          <div class="button-grid">
+            <button class="button" onclick="makeOsint23qs(
+              document.getElementById('itCompany').value,
+              document.getElementById('itCity').value,
+              document.getElementById('itProv').value
+            )">Search Companies</button>
+          </div>
+
+          <h3>Pagine Bianche – Persone</h3>
+          <div class="input-container">
+            <input class="input-field" type="text" id="itFirst" placeholder="First Name">
+            <input class="input-field" type="text" id="itLast"  placeholder="Last Name">
+            <input class="input-field" type="text" id="itCityP" placeholder="City">
+            <input class="input-field" type="text" id="itProvP" placeholder="Province">
+          </div>
+          <div class="button-grid">
+            <button class="button" onclick="makeOsint24(
+              document.getElementById('itFirst').value,
+              document.getElementById('itLast').value,
+              document.getElementById('itCityP').value,
+              document.getElementById('itProvP').value
+            )">Search People</button>
+          </div>
+
+          <h3>Pagine Gialle</h3>
+          <div class="input-container">
+            <input class="input-field" type="text" id="itAct" placeholder="Activity">
+            <input class="input-field" type="text" id="itLoc" placeholder="Location">
+          </div>
+          <div class="button-grid">
+            <button class="button" onclick="makeOsint25(
+              document.getElementById('itAct').value,
+              document.getElementById('itLoc').value
+            )">Pagine Gialle</button>
+          </div>
+        </section>
       </div>
     </div>
+  </main>
 
-    <div class="column">
-      <div class="form-section">
-        <h2>EU ADDRESSES</h2>
-        <div class="address-inputs">
-          <input type="text" id="euStreet" placeholder="Street" />
-          <input type="text" id="euNum"    placeholder="Number" />
-          <input type="text" id="euCity"   placeholder="City" />
-          <input type="text" id="euZip"    placeholder="Postal" />
-          <input type="text" id="euRegion" placeholder="Region/Country" />
-        </div>
-        <div class="button-grid">
-          <button class="button" onclick="makeOsintEU20()">GISGraphy</button>
-          <button class="button" onclick="makeOsintEU21()">Google</button>
-          <button class="button" onclick="makeOsintEU22()">FastPeople EU</button>
-        </div>
-      </div>
-      
-      <div class="form-section italy-section">
-        <h3>Italy</h3>
-        <h4>Pagine Bianche - Aziende</h4>
-        <form onsubmit="event.preventDefault(); makeOsint23qs(this.Search23qs.value, this.Search23city.value, this.Search23prov.value);">
-          <input type="text" name="Search23qs"   placeholder="Company name" />
-          <input type="text" name="Search23city" placeholder="City (e.g., Pordenone)" />
-          <input type="text" name="Search23prov" placeholder="Province (e.g., PN)" />
-          <input type="submit" class="search-button" value="Search Companies"/>
-        </form>
+  <footer>
+    Global Security Italy • Rome (IT)
+    <a href="License.html">License</a>
+  </footer>
 
-        <h4>Pagine Bianche - Persone</h4>
-        <form onsubmit="event.preventDefault(); makeOsint24(this.Search24a.value, this.Search24b.value, this.Search24c.value, this.Search24d.value);">
-          <input type="text" name="Search24a" placeholder="First Name (e.g., Mario)" />
-          <input type="text" name="Search24b" placeholder="Last Name (e.g., Rossi)" />
-          <input type="text" name="Search24c" placeholder="City (e.g., Roma)" />
-          <input type="text" name="Search24d" placeholder="Province (e.g., RM)" />
-          <input type="submit" class="search-button" value="Search People"/>
-        </form>
-
-        <h4>Pagine Gialle</h4>
-        <form onsubmit="event.preventDefault(); makeOsint25(this.Search25a.value, this.Search25b.value);">
-          <input type="text" name="Search25a" placeholder="Activity (e.g., Ristorante)" />
-          <input type="text" name="Search25b" placeholder="Location (e.g., Milano)" />
-          <input type="submit" class="search-button" value="Pagine Gialle"/>
-        </form>
-      </div>
-    </div>
-  </div>
-</main>
-
-<script>
-  function getUSAddressParts(){
-    const number = document.getElementById('usNum').value.trim();
-    const street = document.getElementById('usStreet').value.trim();
-    const city   = document.getElementById('usCity').value.trim();
-    const state  = document.getElementById('usState').value.trim();
-    const zip    = document.getElementById('usZip').value.trim();
-    if (street === "" || (city === "" && zip === "")) {
-        alert("For US searches, please provide at least Street and City/ZIP.");
-        return null;
-    }
-    return {number, street, city, state, zip};
-  }
-
-  function getEUAddressParts(){
-    const number = document.getElementById('euNum').value.trim();
-    const street = document.getElementById('euStreet').value.trim();
-    const city   = document.getElementById('euCity').value.trim();
-    const region = document.getElementById('euRegion').value.trim(); // Can be region or country
-    const zip    = document.getElementById('euZip').value.trim();
-    if (street === "" || city === "" || zip === "") {
-        alert("For EU searches, please provide at least Street, City, and Postal Code.");
-        return null;
-    }
-    return {number, street, city, region, zip};
-  }
-
-  function buildUrl(parts, joinChar = '+') {
-      return parts.filter(part => part !== "").map(part => encodeURIComponent(part)).join(joinChar);
-  }
-
-  // US Searches
-  function makeOsintUS19(){ const addr = getUSAddressParts(); if(!addr) return; window.open('https://www.addresses.com/addr/' + buildUrl([addr.number, addr.street], '+') + '/' + buildUrl([addr.city, addr.state], '+') + '/', '_blank'); }
-  function makeOsintUS09(){ const addr = getUSAddressParts(); if(!addr) return; window.open('https://www.advancedbackgroundchecks.com/address/' + buildUrl([addr.number, addr.street], '-') + '_' + buildUrl([addr.city, addr.state, addr.zip], '-'), '_blank'); }
-  function makeOsintUS05(){ const addr = getUSAddressParts(); if(!addr) return; window.open('https://www.cyberbackgroundchecks.com/address/' + buildUrl([addr.number, addr.street], '-') + '/' + encodeURIComponent(addr.city) + '/' + encodeURIComponent(addr.state), '_blank'); }
-  function makeOsintUS11(){ const addr = getUSAddressParts(); if(!addr) return; window.open('https://www.fastpeoplesearch.com/address/' + buildUrl([addr.number, addr.street], '-') + '_' + buildUrl([addr.city, addr.state, addr.zip], '-'), '_blank'); }
-  function makeOsintUS01(){ const addr = getUSAddressParts(); if(!addr) return; window.open('https://services.gisgraphy.com/geocoding/geocode?address=' + buildUrl([addr.number, addr.street, addr.city, addr.state, addr.zip], '+') + '&format=json', '_blank'); }
-  function makeOsintUS04(){ const addr = getUSAddressParts(); if(!addr) return; window.open('https://www.google.com/search?q=' + buildUrl([addr.number, addr.street, addr.city, addr.state, addr.zip], '+'), '_blank'); }
-  function makeOsintUS06(){ const addr = getUSAddressParts(); if(!addr) return; window.open('https://hudwayglass.com/house/' + buildUrl([addr.number, addr.street], '+') + ',+' + buildUrl([addr.city, addr.state], '+'), '_blank'); }
-  function makeOsintUS18(){ const addr = getUSAddressParts(); if(!addr) return; window.open('https://www.peoplefinders.com/people/search/address?address=' + buildUrl([addr.number, addr.street], '%20') + '&city=' + encodeURIComponent(addr.city) + '&state=' + encodeURIComponent(addr.state), '_blank'); }
-  function makeOsintUS03(){ const addr = getUSAddressParts(); if(!addr) return; window.open('https://rehold.com/' + buildUrl([addr.city, addr.state], '+') + '/' + encodeURIComponent(addr.street) + '/' + encodeURIComponent(addr.number), '_blank'); }
-  function makeOsintUS15(){ const addr = getUSAddressParts(); if(!addr) return; window.open('https://www.smartbackgroundchecks.com/address-search/' + buildUrl([addr.number, addr.street], '-') + '/' + encodeURIComponent(addr.city) + '/' + encodeURIComponent(addr.state), '_blank'); }
-  function makeOsintUS07(){ const addr = getUSAddressParts(); if(!addr) return; window.open('https://www.searchpeoplefree.com/address/' + encodeURIComponent(addr.state) + '/' + encodeURIComponent(addr.city) + '/' + encodeURIComponent(addr.street) + '/' + encodeURIComponent(addr.number), '_blank'); }
-  function makeOsintUS08(){ const addr = getUSAddressParts(); if(!addr) return; window.open('https://www.spokeo.com/' + encodeURIComponent(addr.state) + '/' + encodeURIComponent(addr.city) + '/' + buildUrl([addr.number, addr.street], '-'), '_blank'); }
-  function makeOsintUS10(){ const addr = getUSAddressParts(); if(!addr) return; window.open('https://www.truepeoplesearch.com/resultaddress?streetaddress=' + buildUrl([addr.number, addr.street], '%20') + '&citystatezip=' + buildUrl([addr.city, addr.state, addr.zip], '%20'), '_blank'); }
-  function makeOsintUS17(){ const addr = getUSAddressParts(); if(!addr) return; window.open('https://www.usa-people-search.com/address/' + buildUrl([addr.number, addr.street], '-') + '/' + buildUrl([addr.city, addr.state], '-'), '_blank'); }
-  function makeOsintUS14(){ const addr = getUSAddressParts(); if(!addr) return; window.open('https://www.whitepages.com/address/' + buildUrl([addr.number, addr.street], '-') + '/' + buildUrl([addr.city, addr.state], '-'), '_blank'); }
-  function makeOsintUS02(){ const addr = getUSAddressParts(); if(!addr) return; window.open('https://www.zillow.com/homes/' + buildUrl([addr.number, addr.street, addr.city, addr.state, addr.zip], '-') + '_rb/', '_blank'); }
-
-
-  // EU Searches
-  function makeOsintEU20(){ 
-    const addr = getEUAddressParts(); if(!addr) return; 
-    let query = buildUrl([addr.street, addr.number, addr.zip, addr.city, addr.region], '+');
-    window.open('https://services.gisgraphy.com/geocoding/geocode?address=' + query + '&format=json', '_blank');
-  }
-  function makeOsintEU21(){ 
-    const addr = getEUAddressParts(); if(!addr) return;
-    let query = buildUrl([addr.street, addr.number, addr.zip, addr.city, addr.region], '+');
-    window.open('https://www.google.com/search?q=' + query, '_blank');
-  }
-  function makeOsintEU22(){ 
-    const addr = getEUAddressParts(); if(!addr) return;
-    // FastPeopleSearch specific EU formatting might be different, this is a guess based on US one
-    let query = buildUrl([addr.number, addr.street], '-') + '_' + buildUrl([addr.city, addr.region, addr.zip], '-');
-    window.open('https://www.fastpeoplesearch.com/address/' + query, '_blank'); // Assuming similar structure to US
-  }
-
-  // Italy Searches
-  function makeOsint23qs(companyName, city, province) {
-    const cn = companyName.trim(); const ci = city.trim(); const pr = province.trim().toUpperCase();
-    if (cn === "" || ci === "" || pr === "") { alert("Company name, city, and province are required."); return; }
-    var url = 'https://www.paginebianche.it/aziende?qs=' + encodeURIComponent(cn) +
-              '&dv=' + encodeURIComponent(ci + ' (' + pr + ')');
-    window.open(url, '_blank');
-  }
-  function makeOsint24(firstName, lastName, city, province) {
-    const fn = firstName.trim(); const ln = lastName.trim(); 
-    const ci = city.trim().charAt(0).toUpperCase() + city.slice(1).toLowerCase(); 
-    const pr = province.trim().toUpperCase();
-    if ((fn === "" && ln === "") || ci === "" || pr === "") { alert("At least one name, city, and province are required."); return; }
-    var url = 'https://www.paginebianche.it/persone?qs=' + encodeURIComponent(fn) + '%20' + encodeURIComponent(ln) +
-              '&dv=' + encodeURIComponent(ci + ' (' + pr + ')');
-    window.open(url, '_blank');
-  }
-  function makeOsint25(activity, location) {
-    const act = activity.trim(); const loc = location.trim();
-    if (act === "" || loc === "") { alert("Activity and Location are required."); return; }
-    window.open('https://www.paginegialle.it/ricerca/' + encodeURIComponent(act) + '/' + encodeURIComponent(loc), '_blank');
-  }
-
-  // Navbar: mostra/nascondi i submenu (script già presente e corretto)
-  document.querySelectorAll('.menu > li').forEach(item => {
-    item.addEventListener('mouseover', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'block';
+  <script>
+    // submenu
+    document.querySelectorAll('.menu > li').forEach(item => {
+      item.addEventListener('mouseover', () => {
+        const sm = item.querySelector('.submenu');
+        if (sm) sm.style.display = 'block';
+      });
+      item.addEventListener('mouseout', () => {
+        const sm = item.querySelector('.submenu');
+        if (sm) sm.style.display = 'none';
+      });
     });
-    item.addEventListener('mouseout', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'none';
-    });
-  });
-</script>
 
+    function getUSAddressParts(){
+      const n = v=>document.getElementById(v).value.trim();
+      const addr={ number:n('usNum'), street:n('usStreet'), city:n('usCity'), state:n('usState'), zip:n('usZip') };
+      if(!addr.street||(!addr.city&& !addr.zip)){ alert("Provide Street + City/ZIP"); return }
+      return addr;
+    }
+    function getEUAddressParts(){
+      const n=v=>document.getElementById(v).value.trim();
+      const addr={ number:n('euNum'), street:n('euStreet'), city:n('euCity'), region:n('euRegion'), zip:n('euZip') };
+      if(!addr.street||!addr.city||!addr.zip){ alert("Provide Street, City, Postal"); return }
+      return addr;
+    }
+    const buildUrl=(p,c)=>p.filter(Boolean).map(encodeURIComponent).join(c);
+
+    // US
+    function AddresstUS19(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.addresses.com/addr/'+buildUrl([a.number,a.street],'+')+'/'+buildUrl([a.city,a.state],'+')+'/','_blank') }
+    function AddresstUS09(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.advancedbackgroundchecks.com/address/'+buildUrl([a.number,a.street],'-')+'_'+buildUrl([a.city,a.state,a.zip],'-'),'_blank')}
+    function AddresstUS05(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.cyberbackgroundchecks.com/address/'+buildUrl([a.number,a.street],'-')+'/'+encodeURIComponent(a.city)+'/'+encodeURIComponent(a.state),'_blank')}
+    function AddresstUS11(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.fastpeoplesearch.com/address/'+buildUrl([a.number,a.street],'-')+'_'+buildUrl([a.city,a.state,a.zip],'-'),'_blank')}
+    function AddresstUS01(){ const a=getUSAddressParts(); if(!a)return; window.open('https://services.gisgraphy.com/geocoding/geocode?address='+buildUrl([a.number,a.street,a.city,a.state,a.zip],'+')+'&format=json','_blank')}
+    function AddresstUS04(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.google.com/search?q='+buildUrl([a.number,a.street,a.city,a.state,a.zip],'+'),'_blank')}
+    function AddresstUS06(){ const a=getUSAddressParts(); if(!a)return; window.open('https://hudwayglass.com/house/'+buildUrl([a.number,a.street],'+')+',+'+buildUrl([a.city,a.state],'+'),'_blank')}
+    function AddresstUS18(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.peoplefinders.com/people/search/address?address='+buildUrl([a.number,a.street],'%20')+'&city='+encodeURIComponent(a.city)+'&state='+encodeURIComponent(a.state),'_blank')}
+    function AddresstUS03(){ const a=getUSAddressParts(); if(!a)return; window.open('https://rehold.com/'+buildUrl([a.city,a.state],'+')+'/'+encodeURIComponent(a.street)+'/'+encodeURIComponent(a.number),'_blank')}
+    function AddresstUS15(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.smartbackgroundchecks.com/address-search/'+buildUrl([a.number,a.street],'-')+'/'+encodeURIComponent(a.city)+'/'+encodeURIComponent(a.state),'_blank')}
+    function AddresstUS07(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.searchpeoplefree.com/address/'+encodeURIComponent(a.state)+'/'+encodeURIComponent(a.city)+'/'+encodeURIComponent(a.street)+'/'+encodeURIComponent(a.number),'_blank')}
+    function AddresstUS08(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.spokeo.com/'+encodeURIComponent(a.state)+'/'+encodeURIComponent(a.city)+'/'+buildUrl([a.number,a.street],'-'),'_blank')}
+    function AddresstUS10(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.truepeoplesearch.com/resultaddress?streetaddress='+buildUrl([a.number,a.street],'%20')+'&citystatezip='+buildUrl([a.city,a.state,a.zip],'%20'),'_blank')}
+    function AddresstUS17(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.usa-people-search.com/address/'+buildUrl([a.number,a.street],'-')+'/'+buildUrl([a.city,a.state],'-'),'_blank')}
+    function AddresstUS14(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.whitepages.com/address/'+buildUrl([a.number,a.street],'-')+'/'+buildUrl([a.city,a.state],'-'),'_blank')}
+    function AddresstUS02(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.zillow.com/homes/'+buildUrl([a.number,a.street,a.city,a.state,a.zip],'-')+'_rb/','_blank')}
+
+    // EU
+    function AddresstEU20(){ const a=getEUAddressParts(); if(!a)return; window.open('https://services.gisgraphy.com/geocoding/geocode?address='+buildUrl([a.street,a.number,a.zip,a.city,a.region],'+')+'&format=json','_blank')}
+    function AddresstEU21(){ const a=getEUAddressParts(); if(!a)return; window.open('https://www.google.com/search?q='+buildUrl([a.street,a.number,a.zip,a.city,a.region],'+'),'_blank')}
+    function AddresstEU22(){ const a=getEUAddressParts(); if(!a)return; window.open('https://www.fastpeoplesearch.com/address/'+buildUrl([a.number,a.street],'-')+'_'+buildUrl([a.city,a.region,a.zip],'-'),'_blank')}
+
+    // Italy
+    function makeOsint23qs(cn,ci,pr){ if(!cn||!ci||!pr){ alert("Company, city, province req."); return } window.open('https://www.paginebianche.it/aziende?qs='+encodeURIComponent(cn)+'&dv='+encodeURIComponent(ci+' ('+pr+')'),'_blank')}
+    function makeOsint24(fn,ln,ci,pr){ if((!fn&&!ln)||!ci||!pr){ alert("Name, city, province req."); return } window.open('https://www.paginebianche.it/persone?qs='+encodeURIComponent(fn+' '+ln)+'&dv='+encodeURIComponent(ci+' ('+pr+')'),'_blank')}
+    function makeOsint25(act,loc){ if(!act||!loc){ alert("Activity, location req."); return } window.open('https://www.paginegialle.it/ricerca/'+encodeURIComponent(act)+'/'+encodeURIComponent(loc),'_blank')}
+  </script>
 </body>
 </html>
+```
