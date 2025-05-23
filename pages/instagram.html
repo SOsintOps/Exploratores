@@ -1,379 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Exploratores Instagram Tool</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Typography matches other updated tools -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exploratores Instagram Tool</title> 
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-    <style>
-    :root {
-      --primary-color: #0066ff;
-      --secondary-color: #333;
-      --bg-color: #f9f9f9;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'IBM Plex Sans', sans-serif;
-      background-color: var(--bg-color);
-    }
-
-    /* FIXED NAVBAR */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background-color: #ffffff;
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      justify-content: center;
-      z-index: 1000;
-    }
-    .menu {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      max-width: 1200px;
-      width: 100%;
-      justify-content: space-around;
-      border: 1px solid #ccc;
-    }
-    .menu > li {
-      position: relative;
-      height: 60px;
-      width: 120px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 1rem;
-      border-right: 1px solid #ccc;
-      transition: background-color 0.2s ease-in;
-    }
-    .menu > li:last-child {
-      border-right: none;
-    }
-    .menu > li:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-    }
-    .menu > li span {
-      display: block;
-      line-height: 1.2;
-    }
-
-    /* SUBMENU */
-    .submenu {
-      display: none;
-      position: absolute;
-      background-color: #ffffff;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      border: 1px solid #ddd;
-      min-width: 200px;
-      z-index: 999;
-    }
-    .submenu li {
-      padding: 10px;
-      border-bottom: 1px solid #eee;
-    }
-    .submenu li:last-child {
-      border-bottom: none;
-    }
-    .submenu li a {
-      text-decoration: none;
-      color: var(--secondary-color);
-    }
-    .submenu li:hover {
-      background-color: var(--primary-color);
-    }
-    .submenu li:hover a {
-      color: #fff;
-    }
-
-    /* SHOW/HIDE SUBMENU ON HOVER */
-    .menu > li:hover .submenu {
-      display: block;
-    }
-
-    /* MAIN CONTENT */
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 70px 20px 40px; /* so the navbar won't overlap */
-      background-color: #fff;
-    }
-    h1.page-title {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    /* TWO-COLUMN LAYOUT */
-    .two-columns {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .column {
-      flex: 1;
-      min-width: 300px;
-      background-color: #fafafa;
-      padding: 1rem;
-      border: 1px solid #eee;
-      border-radius: 4px;
-    }
-    .column h2 {
-      margin-top: 0;
-      margin-bottom: 0.8rem;
-      font-size: 1.1rem;
-      font-weight: bold;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 0.3rem;
-    }
-
-    /* GENERIC FORM STYLING */
-    .form-section {
-      margin-bottom: 1rem;
-    }
-    .form-section form {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .form-section input[type="text"] {
-      flex: 1;
-      padding: 0.4rem;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      font-size: 0.9rem;
-    }
-    .form-section input[type="submit"],
-    .form-section button {
-      width: 140px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      background-color: #fff;
-      transition: background-color 0.2s ease-in;
-      padding: 0.4rem 0.6rem;
-    }
-    .form-section input[type="submit"]:hover,
-    .form-section button:hover {
-      background-color: var(--primary-color);
-      color: #fff;
-    }
-
-    /* ARRANGING BUTTONS, MAX 3 PER ROW */
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-    }
-
-    /* NOTE BOXES */
-    .note {
-      font-size: 1rem;
-      background-color: #fff9d6; /* light highlight */
-      border-left: 3px solid #ffc107;
-      padding: 0.5rem;
-      margin-bottom: 0.5rem;
-      border-radius: 3px;
-    }
-
-    /* FIXED FOOTER */
-    footer {
-      background-color: #ffffff;
-      border-top: 1px solid #ddd;
-      padding: 10px;
-      text-align: center;
-      font-size: 0.9em;
-      color: #555;
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-    }
-    footer a {
-      color: var(--primary-color);
-      text-decoration: none;
-      margin-left: 10px;
-    }
-
-    /* RESPONSIVE MENU */
-    @media (max-width: 768px) {
-      .menu > li {
-        width: auto;
-        flex: 1;
-      }
-      .two-columns {
-        flex-direction: column;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
-<!-- 
-  NOTE: Many of these searches require a valid X (Twitter) account,
-  otherwise you might not see all the relevant results.
--->
-
-<!-- NAVBAR -->
-<nav>
-  <ul class="menu">
-    <li><span>HOME</span>
-      <ul class="submenu">
-        <li><a href="../index.html">Index</a></li>
-      </ul>
-    </li>
-    <li><span>Search<br>Engines</span>
-      <ul class="submenu">
-        <li><a href="Searchengines.html">Search Engines</a></li>
-      </ul>
-    </li>
-    <li><span>People &<br>Identities</span>
-      <ul class="submenu">
-        <li><a href="Names.html">Names</a></li>
-        <li><a href="phoneus.html">US Phones</a></li>
-		<li><a href="phoneint.html">International Phones</a></li>
-        <li><a href="Address.html">Addresses</a></li>
-        <li><a href="vehicles.html">Vehicles</a></li>
-        <li><a href="usernames.html">Usernames</a></li>
-        <li><a href="Email.html">Email Addresses</a></li>
-        <li><a href="Communities.html">Communities</a></li>
-      </ul>
-    </li>
-    <li><span>Social<br>Media</span>
-      <ul class="submenu">
-        <li><a href="X.html">X (Twitter)</a></li>
-        <li><a href="Facebook.html">Facebook</a></li>
-        <li><a href="Instagram.html">Instagram</a></li>
-        <li><a href="LinkedIn.html">LinkedIn</a></li>
-      </ul>
-    </li>
-    <li><span>Websites</span>
-      <ul class="submenu">
-        <li><a href="Domains.html">Domains</a></li>
-        <li><a href="IP.html">IP Addresses</a></li>
-      </ul>
-    </li>
-    <li><span>GeoInt</span>
-      <ul class="submenu">
-        <li><a href="Maps.html">Maps</a></li>
-      </ul>
-    </li>
-    <li><span>Media<br>Analysis</span>
-      <ul class="submenu">
-        <li><a href="Images.html">Images</a></li>
-        <li><a href="Videos.html">Videos</a></li>
-        <li><a href="docs.html">Documents</a></li>
-      </ul>
-    </li>
-    <li><span>Business<br>Intelligence</span>
-      <ul class="submenu">
-        <li><a href="Business.html">Business &amp; Government</a></li>
-        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
-      </ul>
-    </li>
-    <li><span>Tools</span>
-      <ul class="submenu">
-
-        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+  <nav>
+    <ul class="menu">
+      <li><span>HOME</span><ul class="submenu"><li><a href="../index.html">Index</a></li></ul></li>
+      <li><span>Search<br>Engines</span><ul class="submenu"><li><a href="Searchengines.html">Search Engines</a></li></ul></li>
+      <li><span>People &<br>Identities</span>
+        <ul class="submenu">
+          <li><a href="Names.html">Names</a></li>
+          <li><a href="phoneus.html">US Phones</a></li>
+          <li><a href="phoneint.html">International Phones</a></li>
+          <li><a href="Address.html">Addresses</a></li>
+          <li><a href="vehicles.html">Vehicles</a></li>
+          <li><a href="usernames.html">Usernames</a></li>
+          <li><a href="Email.html">Email Addresses</a></li>
+          <li><a href="Communities.html">Communities</a></li>
+        </ul>
+      </li>
+      <li><span>Social<br>Media</span>
+        <ul class="submenu">
+          <li><a href="X.html">X (Twitter)</a></li>
+          <li><a href="Facebook.html">Facebook</a></li>
+          <li><a href="Instagram.html" class="active">Instagram</a></li>
+          <li><a href="LinkedIn.html">LinkedIn</a></li>
+        </ul>
+      </li>
+      <li><span>Websites</span><ul class="submenu"><li><a href="Domains.html">Domains</a></li><li><a href="IP.html">IP Addresses</a></li></ul></li>
+      <li><span>GeoInt</span><ul class="submenu"><li><a href="Maps.html">Maps</a></li></ul></li>
+      <li><span>Media<br>Analysis</span><ul class="submenu"><li><a href="Images.html">Images</a></li><li><a href="Videos.html">Videos</a></li><li><a href="docs.html">Documents</a></li></ul></li>
+      <li><span>Business<br>Intelligence</span><ul class="submenu"><li><a href="Business.html">Business &amp; Government</a></li><li><a href="Currencies.html">Virtual Currencies</a></li></ul></li>
+      <li><span>Tools</span><ul class="submenu"><li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li></ul></li>
+    </ul>
+  </nav>
 
   <main>
-    <h1 class="page-title">Instagram Tool</h1>
+    <h1 class="page-title">Instagram Tools</h1>
 
-    <div class="two-columns">
-      <!-- LEFT COLUMN -->
+    <div class="columns">
       <div class="column">
-        <h2>Account &amp; Basic</h2>
-        <div class="note"><strong>NOTE:</strong> Enter an Instagram handle (without “@”).</div>
-        <div class="form-section">
-          <form>
-            <input type="text" id="igHandle" placeholder="Instagram Username" />
-          </form>
-          <div class="button-row">
-            <button onclick="makeOsint01(getVal('igHandle'))">Profile</button>
-            <button onclick="makeOsint02(getVal('igHandle'))">Channel</button>
-            <button onclick="makeOsint03(getVal('igHandle'))">Tagged</button>
+        <h2>User Profile &amp; Direct Info</h2>
+        <section class="search-instructions">
+          <label for="mainUsernameInput">Instagram Username:</label>
+          <div class="input-container">
+            <input type="text" id="mainUsernameInput" class="input-field" placeholder="Enter Username">
           </div>
+        </section>
+        <div class="note"><strong>NOTE:</strong> Please enter an Instagram username.</div>      
+        <div class="button-grid">
+          <button class="button" onclick="Instagram01(getVal('mainUsernameInput'))">IG Profile</button>
+          <button class="button" onclick="Instagram02(getVal('mainUsernameInput'))">IG Channel</button>
+          <button class="button" onclick="Instagram03(getVal('mainUsernameInput'))">IG Tagged</button>
         </div>
-        <h2>Followers / Following (User ID)</h2>
-        <div class="note">Provide the numeric Instagram User ID for these endpoints.</div>
-        <div class="form-section">
-          <form>
-            <input type="text" id="igId" placeholder="Instagram User ID" />
-          </form>
-          <div class="button-row">
-            <button onclick="makeOsint10a(getVal('igId'))">Followers (GraphQL)</button>
-            <button onclick="makeOsint11a(getVal('igId'))">Following (GraphQL)</button>
-          </div>
+
+        <h4>External &amp; Cross-Platform</h4><br>
+        
+        <div class="button-grid">
+          <button class="button" onclick="Instagram18(getVal('mainUsernameInput'))">Threads Profile</button>
+          <button class="button" onclick="Instagram04(getVal('mainUsernameInput'))">Google Outgoing</button>
+          <button class="button" onclick="Instagram05(getVal('mainUsernameInput'))">Google Incoming</button>
+          <button class="button" onclick="Instagram06(getVal('mainUsernameInput'))">Bing Search</button>
+          <button class="button" onclick="Instagram07(getVal('mainUsernameInput'))">Yandex Search</button>
+          <button class="button" onclick="Instagram08(getVal('mainUsernameInput'))">X/Twitter Posts</button>
+          <button class="button" onclick="Instagram09(getVal('mainUsernameInput'))">Dumpor Profile</button>
+          <button class="button" onclick="Instagram17(getVal('mainUsernameInput'))">Toolzu Profile</button>
         </div>
-        <h2>Associations &amp; Keyword</h2>
-        <div class="form-section">
-          <form>
-            <input type="text" id="assocUser" placeholder="Username" />
-            <input type="text" id="assocKey" placeholder="Search Term" />
-          </form>
-          <div class="button-row">
-            <button onclick="makeOsint12(getVal('assocUser'), getVal('assocKey'))">User + Term</button>
-            <button onclick="makeOsint13(getVal('assocUser'), getVal('assocKey'))">User + User</button>
+<br>
+        <h2>GraphQL Queries (User ID)</h2>
+        <section class="search-instructions">
+          <label for="igUserIdInput">Instagram User ID:</label>
+          <div class="input-container">
+            <input type="text" id="igUserIdInput" class="input-field" placeholder="IG User ID">
           </div>
+        </section>
+        <div class="note"><strong>NOTE:</strong> Provide the numeric Instagram User ID.</div>
+        <div class="button-grid">
+          <button class="button" onclick="Instagram10a(getVal('igUserIdInput'))">Followers</button>
+          <button class="button" onclick="Instagram11a(getVal('igUserIdInput'))">Following</button>
         </div>
       </div>
 
-      <!-- RIGHT COLUMN -->
       <div class="column">
-        <h2>External Lookups</h2>
-        <div class="note">Use the handle for Google/Bing/Yandex or Dumpor look‑ups.</div>
-        <div class="form-section">
-          <form>
-            <input type="text" id="extHandle" placeholder="Instagram Username" />
-          </form>
-          <div class="button-row">
-            <button onclick="makeOsint04(getVal('extHandle'))">Google Outgoing</button>
-            <button onclick="makeOsint05(getVal('extHandle'))">Google Incoming</button>
-            <button onclick="makeOsint06(getVal('extHandle'))">Bing Search</button>
+        <h2>Combined &amp; Term Searches</h2>
+        <section class="search-instructions">
+          <div class="input-container">
+            <div style="flex: 1;">
+              <label for="comboUser">Username:</label>
+              <input type="text" id="comboUser" class="input-field" placeholder="Username" style="width: 100%;">
+            </div>
+            <div style="flex: 1;">
+              <label for="comboTerm">Search Term/User B:</label>
+              <input type="text" id="comboTerm" class="input-field" placeholder="Term or Username B" style="width: 100%;">
+            </div>
           </div>
-          <div class="button-row">
-            <button onclick="makeOsint07(getVal('extHandle'))">Yandex Search</button>
-            <button onclick="makeOsint09(getVal('extHandle'))">Dumpor Profile</button>
-            <button onclick="makeOsint17(getVal('extHandle'))">Toolzu Profile</button>
-          </div>
+        </section>
+        <div class="button-grid">
+          <button class="button" onclick="Instagram12(getVal('comboUser'), getVal('comboTerm'))">User + Term (Google)</button>
+          <button class="button" onclick="Instagram13(getVal('comboUser'), getVal('comboTerm'))">Associations (Google)</button>
         </div>
-
-        <h2>Hashtags &amp; Threads</h2>
-        <div class="form-section">
-          <form>
-            <input type="text" id="tagInput" placeholder="Hashtag or Term" />
-          </form>
-          <div class="button-row">
-            <button onclick="makeOsint14(getVal('tagInput'))">IG Hashtag</button>
-            <button onclick="makeOsint15(getVal('tagInput'))">Google Site Search</button>
-            <button onclick="makeOsint16(getVal('tagInput'))">Dumpor Tag</button>
+<br>
+        <h2>Hashtag Searches</h2>
+        <section class="search-instructions">
+          <label for="tagTermInput">Hashtag or General Term:</label>
+          <div class="input-container">
+            <input type="text" id="tagTermInput" class="input-field" placeholder="Hashtag (no #) or Term">
           </div>
-        </div>
-        <div class="form-section">
-          <form>
-            <input type="text" id="threadsHandle" placeholder="Username" />
-          </form>
-          <div class="button-row">
-            <button onclick="makeOsint18(getVal('threadsHandle'))">Threads Profile</button>
-          </div>
+        </section>
+        <div class="button-grid">
+          <button class="button" onclick="Instagram14(getVal('tagTermInput'))">IG Hashtag</button>
+          <button class="button" onclick="Instagram15(getVal('tagTermInput'))">IG Terms (Google)</button>
+          <button class="button" onclick="Instagram16(getVal('tagTermInput'))">Dumpor Tag</button>
         </div>
       </div>
     </div>
@@ -384,34 +127,47 @@
   </footer>
 
   <script>
-    // submenu hover (same pattern across tools)
     document.querySelectorAll('.menu > li').forEach(el=>{
       el.addEventListener('mouseover',()=>{const s=el.querySelector('.submenu');if(s) s.style.display='block';});
       el.addEventListener('mouseout',()=>{const s=el.querySelector('.submenu');if(s) s.style.display='none';});
     });
-    const getVal=id=>document.getElementById(id).value.trim();
+    const getVal=id=>{ const el=document.getElementById(id); return el ? el.value.trim() : "";};
   </script>
 
-  <!-- Original JS functions kept for backend functionality -->
-  <script type="text/javascript">
-    function makeOsint01(u){window.open('https://instagram.com/'+u,'_blank');}
-    function makeOsint02(u){window.open('https://instagram.com/'+u+'/channel/','_blank');}
-    function makeOsint03(u){window.open('https://instagram.com/'+u+'/tagged/','_blank');}
-    function makeOsint04(u){window.open('https://www.google.com/search?q=site%3Ainstagram.com+%22'+u+'%22','_blank');}
-    function makeOsint05(u){window.open('https://www.google.com/search?q=site%3Ainstagram.com+%22@'+u+'%22','_blank');}
-    function makeOsint06(u){window.open('https://www.bing.com/search?q=site%3Ainstagram.com+%22'+u+'%22','_blank');}
-    function makeOsint07(u){window.open('https://yandex.com/search/?text=site%3Ainstagram.com+%22'+u+'%22','_blank');}
-    function makeOsint08(u){window.open('https://www.google.com/search?q=site%3Atwitter.com+%E2%80%9C'+u+'%E2%80%9D+%E2%80%9Cinstagram.com%2Fp%E2%80%9D','_blank');}
-    function makeOsint09(u){window.open('https://dumpor.com/v/'+u,'_blank');}
-    function makeOsint17(u){window.open('https://toolzu.com/profile-analyzer/instagram/?username='+u,'_blank');}
-    function makeOsint10a(id){window.open('https://www.instagram.com/graphql/query/?query_hash=c76146de99bb02f6415203be841dd25a&variables={%22id%22:%22'+id+'%22,%22include_reel%22:true,%22fetch_mutual%22:true,%22first%22:50}','_blank');}
-    function makeOsint11a(id){window.open('https://www.instagram.com/graphql/query/?query_hash=d04b0a864b4b54837c0d870b0e77e076&variables={%22id%22:%22'+id+'%22,%22include_reel%22:true,%22fetch_mutual%22:false,%22first%22:50}','_blank');}
-    function makeOsint12(u,t){window.open('https://www.google.com/search?q=site%3Ainstagram.com+%E2%80%9C'+u+'%E2%80%9D+%E2%80%9C'+t+'%E2%80%9D','_blank');}
-    function makeOsint13(u1,u2){window.open('https://www.google.com/search?q=site%3Ainstagram.com+%E2%80%9C'+u1+'%E2%80%9D+%E2%80%9C'+u2+'%E2%80%9D','_blank');}
-    function makeOsint14(tag){window.open('https://www.instagram.com/explore/tags/'+tag,'_blank');}
-    function makeOsint15(term){window.open('https://www.google.com/search?q=site%3Ainstagram.com+'+term,'_blank');}
-    function makeOsint16(tag){window.open('https://dumpor.com/t/'+tag,'_blank');}
-    function makeOsint18(u){window.open('https://www.threads.net/@'+u,'_blank');}
+  <script>
+    function Instagram01(u){if(!u)return; window.open('https://instagram.com/'+encodeURIComponent(u),'_blank');}
+    function Instagram02(u){if(!u)return; window.open('https://instagram.com/'+encodeURIComponent(u)+'/channel/','_blank');}
+    function Instagram03(u){if(!u)return; window.open('https://instagram.com/'+encodeURIComponent(u)+'/tagged/','_blank');}
+    function Instagram04(u){if(!u)return; window.open('https://www.google.com/search?q=site%3Ainstagram.com+%22'+encodeURIComponent(u)+'%22','_blank');}
+    function Instagram05(u){if(!u)return; window.open('https://www.google.com/search?q=site%3Ainstagram.com+%22@'+encodeURIComponent(u)+'%22','_blank');}
+    function Instagram06(u){if(!u)return; window.open('https://www.bing.com/search?q=site%3Ainstagram.com+%22'+encodeURIComponent(u)+'%22','_blank');}
+    function Instagram07(u){if(!u)return; window.open('https://yandex.com/search/?text=site%3Ainstagram.com+%22'+encodeURIComponent(u)+'%22','_blank');}
+    function Instagram08(u){if(!u)return; window.open('https://www.google.com/search?q=site%3Ax.com+%22'+encodeURIComponent(u)+'%22+%22instagram.com%2Fp%22','_blank');}
+    function Instagram09(u){if(!u)return; window.open('https://dumpor.com/v/'+encodeURIComponent(u),'_blank');}
+    function Instagram17(u){if(!u)return; window.open('https://toolzu.com/profile-analyzer/instagram/?username='+encodeURIComponent(u),'_blank');}
+    function Instagram10a(id){if(!id)return; window.open('https://www.instagram.com/graphql/query/?query_hash=c76146de99bb02f6415203be841dd25a&variables={%22id%22:%22'+encodeURIComponent(id)+'%22,%22include_reel%22:true,%22fetch_mutual%22:true,%22first%22:50}','_blank');}
+    function Instagram11a(id){if(!id)return; window.open('https://www.instagram.com/graphql/query/?query_hash=d04b0a864b4b54837c0d870b0e77e076&variables={%22id%22:%22'+encodeURIComponent(id)+'%22,%22include_reel%22:true,%22fetch_mutual%22:false,%22first%22:50}','_blank');}
+    
+    function Instagram12(u, t) {
+      if (!u || !t) { 
+        alert("Please fill in both fields (Username and Search Term/User B) to continue.");
+        return;
+      }
+      window.open('https://www.google.com/search?q=site%3Ainstagram.com+%22'+encodeURIComponent(u)+'%22+%22'+encodeURIComponent(t)+'%22','_blank');
+    }
+    
+    function Instagram13(u1, u2) {
+      if (!u1 || !u2) { 
+        alert("Please fill in both fields (Username and Search Term/User B) to continue.");
+        return;
+      }
+      window.open('https://www.google.com/search?q=site%3Ainstagram.com+%22'+encodeURIComponent(u1)+'%22+%22'+encodeURIComponent(u2)+'%22','_blank');
+    }
+    
+    function Instagram14(tag){if(!tag)return; window.open('https://www.instagram.com/explore/tags/'+encodeURIComponent(tag),'_blank');}
+    function Instagram15(term){if(!term)return; window.open('https://www.google.com/search?q=site%3Ainstagram.com+'+encodeURIComponent(term),'_blank');}
+    function Instagram16(tag){if(!tag)return; window.open('https://dumpor.com/t/'+encodeURIComponent(tag),'_blank');}
+    function Instagram18(u){if(!u)return; window.open('https://www.threads.net/@'+encodeURIComponent(u),'_blank');}
   </script>
 </body>
 </html>

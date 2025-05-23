@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Exploratores X (Twitter) Tool</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Font IBM Plex Sans -->
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <nav>
     <ul class="menu">
       <li><span>HOME</span><ul class="submenu"><li><a href="../index.html">Index</a></li></ul></li>
@@ -37,113 +35,119 @@
   </nav>
 
   <main>
-    <h1 class="page-title">Exploratores X (Twitter) Tool</h1>
+    <h1 class="page-title">X (Twitter) Tools</h1>
 
-    <div class="columns-container">
+    <div class="columns">
       
-      <!-- LEFT COLUMN -->
       <div class="column">
         <h2>Account &amp; Basic Searches</h2>
-        <div class="note"><strong>NOTE:</strong> Inserisci il tuo handle (senza “@”).</div>
         <section class="search-instructions">
-          <label for="accountInput">Twitter Username:</label>
+          <label for="accountInput">X (Twitter) Username:</label>
           <div class="input-container">
-            <input type="text" id="accountInput" class="input-field" placeholder="username123">
+            <input type="text" id="accountInput" class="input-field" placeholder="Username">
           </div>
         </section>
-        <div class="button-grid">
-          <button class="button" onclick="makeOsint01(accountInput.value)">Profile</button>
-          <button class="button" onclick="makeOsint02(accountInput.value)">Outgoing</button>
-          <button class="button" onclick="makeOsint03(accountInput.value)">Incoming</button>
-          <button class="button" onclick="makeOsint04(accountInput.value)">Only Replies</button>
-          <button class="button" onclick="makeOsint05(accountInput.value)">No Replies</button>
-          <button class="button" onclick="makeOsint06(accountInput.value)">Media</button>
-          <button class="button" onclick="makeOsint40(accountInput.value)">Highlights</button>
-          <button class="button" onclick="makeOsint41(accountInput.value)">Lists Created</button>
-          <button class="button" onclick="makeOsint07(accountInput.value)">Lists Included</button>
-          <button class="button" onclick="makeOsint09(accountInput.value)">Topics</button>
-          <button class="button" onclick="makeOsint42(accountInput.value)">Links</button>
-          <button class="button" onclick="makeOsint10(accountInput.value)">Followers</button>
-          <button class="button" onclick="makeOsint11(accountInput.value)">Following</button>
+        <div class="note"><strong>NOTE:</strong> Enter the target's handle (without “@”).</div>
+		<div class="button-grid">
+          <button class="button" onclick="Twitter01(accountInput.value)">Profile</button>
+          <button class="button" onclick="Twitter02(accountInput.value)">Outgoing</button>
+          <button class="button" onclick="Twitter03(accountInput.value)">Incoming</button>
+          <button class="button" onclick="Twitter04(accountInput.value)">Only Replies</button>
+          <button class="button" onclick="Twitter05(accountInput.value)">No Replies</button>
+          <button class="button" onclick="Twitter06(accountInput.value)">Media</button>
+          <button class="button" onclick="Twitter40(accountInput.value)">Highlights</button>
+          <button class="button" onclick="Twitter41(accountInput.value)">Lists Created</button>
+          <button class="button" onclick="Twitter07(accountInput.value)">Lists Included</button>
+          <button class="button" onclick="Twitter09(accountInput.value)">Topics</button>
+          <button class="button" onclick="Twitter42(accountInput.value)">Links</button>
+          <button class="button" onclick="Twitter10(accountInput.value)">Followers</button>
+          <button class="button" onclick="Twitter11(accountInput.value)">Following</button>
         </div>
-
-        <h2>By Year (User or Terms)</h2>
-        <div class="note"><strong>NOTE:</strong> Username o keyword + anno (4 cifre).</div>
-        <section class="search-instructions">
-          <label for="yearInputA">Term/Username:</label>
-          <div class="input-container">
-            <input type="text" id="yearInputA" class="input-field" placeholder="username o keyword">
-          </div>
-          <label for="yearInputB">Year:</label>
-          <div class="input-container">
-            <input type="text" id="yearInputB" class="input-field" placeholder="2022">
-          </div>
-        </section>
-        <div class="button-grid">
-          <button class="button" onclick="makeOsint12(yearInputA.value, yearInputB.value)">Outgoing</button>
-          <button class="button" onclick="makeOsint13(yearInputA.value, yearInputB.value)">Incoming</button>
-          <button class="button" onclick="makeOsint14(yearInputA.value, yearInputB.value)">Media</button>
-          <button class="button" onclick="makeOsint15(yearInputA.value, yearInputB.value)">Term</button>
-          <button class="button" onclick="makeOsint16(yearInputA.value, yearInputB.value)">No Replies</button>
-          <button class="button" onclick="makeOsint17(yearInputA.value, yearInputB.value)">Only Replies</button>
-        </div>
-      </div>
-
-      <!-- RIGHT COLUMN -->
-      <div class="column">
-        <h2>Web Archives &amp; Others</h2>
-        <div class="note"><strong>NOTE:</strong> Inserisci un handle per cercare negli archivi.</div>
-        <section class="search-instructions">
-          <label for="archivesInput">Twitter Username:</label>
-          <div class="input-container">
-            <input type="text" id="archivesInput" class="input-field" placeholder="username123">
-          </div>
-        </section>
-        <div class="button-grid">
-          <button class="button" onclick="makeOsint20(archivesInput.value)">Google Archives</button>
-          <button class="button" onclick="makeOsint21(archivesInput.value)">Google Tweets</button>
-          <button class="button" onclick="makeOsint22(archivesInput.value)">Bing Archives</button>
-          <button class="button" onclick="makeOsint23(archivesInput.value)">Yandex Archives</button>
-          <button class="button" onclick="makeOsint26(archivesInput.value)">Wayback</button>
-          <button class="button" onclick="makeOsint27(archivesInput.value)">Memory.lol</button>
-          <button class="button" onclick="makeOsint32(archivesInput.value)">TwitterAudit</button>
-        </div>
-
-        <div class="note"><strong>NOTE:</strong> Inserisci un User ID numerico per memory.lol.</div>
-        <section class="search-instructions">
-          <label for="memLolID">Twitter User ID:</label>
-          <div class="input-container">
-            <input type="text" id="memLolID" class="input-field" placeholder="123456789">
-          </div>
-        </section>
-        <div class="button-grid">
-          <button class="button" onclick="makeOsint28a(memLolID.value)">Memory.lol ID</button>
-        </div>
-
+ <br>
         <h2>Lists</h2>
-        <div class="note"><strong>NOTE:</strong> Inserisci un List ID numerico.</div>
+        
         <section class="search-instructions">
           <label for="listsInput">List ID:</label>
           <div class="input-container">
             <input type="text" id="listsInput" class="input-field" placeholder="1234567890">
           </div>
         </section>
-        <div class="button-grid">
-          <button class="button" onclick="makeOsint36a(listsInput.value)">List</button>
-          <button class="button" onclick="makeOsint37a(listsInput.value)">Members</button>
-          <button class="button" onclick="makeOsint38a(listsInput.value)">Followers</button>
+        <div class="note"><strong>NOTE:</strong> Enter a numeric List ID.</div>
+		<div class="button-grid">
+          <button class="button" onclick="Twitter36a(listsInput.value)">List</button>
+          <button class="button" onclick="Twitter37a(listsInput.value)">Members</button>
+          <button class="button" onclick="Twitter38a(listsInput.value)">Followers</button>
         </div>
-
+ <br>
         <h2>Other Searching</h2>
-        <div class="note"><strong>NOTE:</strong> Inserisci un nome reale per la ricerca.</div>
+        
         <section class="search-instructions">
           <label for="searchNameInput">Real Name:</label>
           <div class="input-container">
             <input type="text" id="searchNameInput" class="input-field" placeholder="John Doe">
           </div>
         </section>
-        <div class="button-grid">
-          <button class="button" onclick="makeOsint34a(searchNameInput.value)">Profile Search</button>
+        <div class="note"><strong>NOTE:</strong> Enter a real name for the search.</div>
+		<div class="button-grid">
+          <button class="button" onclick="Twitter34a(searchNameInput.value)">Profile Search</button>
+        </div>
+      </div>
+ <br>
+      <div class="column">
+        <h2>By Year (User or Terms)</h2>
+        
+        <section class="search-instructions">
+          <div class="input-container">
+            <div style="flex: 1;">
+              <label for="yearInputA">Term/Username:</label>
+              <input type="text" id="yearInputA" class="input-field" placeholder="username or keyword" style="width: 100%;">
+            </div>
+            <div style="flex: 1;">
+              <label for="yearInputB">Year:</label>
+              <input type="text" id="yearInputB" class="input-field" placeholder="2022" style="width: 100%;">
+            </div>
+          </div>
+      
+		</section>
+  <div class="note"><strong>NOTE:</strong> Username or keyword + year (4 digits).</div>      
+	  <div class="button-grid">
+          <button class="button" onclick="Twitter12(yearInputA.value, yearInputB.value)">Outgoing</button>
+          <button class="button" onclick="Twitter13(yearInputA.value, yearInputB.value)">Incoming</button>
+          <button class="button" onclick="Twitter14(yearInputA.value, yearInputB.value)">Media</button>
+          <button class="button" onclick="Twitter15(yearInputA.value, yearInputB.value)">Term</button>
+          <button class="button" onclick="Twitter16(yearInputA.value, yearInputB.value)">No Replies</button>
+          <button class="button" onclick="Twitter17(yearInputA.value, yearInputB.value)">Only Replies</button>
+        </div>
+         <br>
+        <h2>Web Archives &amp; Others</h2>
+        
+        <section class="search-instructions">
+          <label for="archivesInput">X (Twitter) Username:</label>
+          <div class="input-container">
+            <input type="text" id="archivesInput" class="input-field" placeholder="username123">
+          </div>
+        </section>
+        <div class="note"><strong>NOTE:</strong> Enter a handle to search archives.</div>
+		<div class="button-grid">
+          <button class="button" onclick="Twitter20(archivesInput.value)">Google Archives</button>
+          <button class="button" onclick="Twitter21(archivesInput.value)">Google Tweets</button>
+          <button class="button" onclick="Twitter22(archivesInput.value)">Bing Archives</button>
+          <button class="button" onclick="Twitter23(archivesInput.value)">Yandex Archives</button>
+          <button class="button" onclick="Twitter26(archivesInput.value)">Wayback</button>
+          <button class="button" onclick="Twitter27(archivesInput.value)">Memory.lol</button>
+          <button class="button" onclick="Twitter32(archivesInput.value)">TwitterAudit</button>
+        </div>
+
+ <br>
+        <section class="search-instructions">
+          <label for="memLolID">X (Twitter) User ID:</label>
+          <div class="input-container">
+            <input type="text" id="memLolID" class="input-field" placeholder="123456789">
+          </div>
+        </section>
+       <div class="note"><strong>NOTE:</strong> Enter a numeric User ID for memory.lol.</div> 
+ <div class="button-grid">
+          <button class="button" onclick="Twitter28a(memLolID.value)">Memory.lol ID</button>
         </div>
       </div>
     </div>
@@ -155,43 +159,44 @@
   </footer>
 
   <script>
-    // Show/hide submenu on hover
     document.querySelectorAll('.menu > li').forEach(item => {
       item.addEventListener('mouseover', () => item.querySelector('.submenu')?.style.setProperty('display','block'));
       item.addEventListener('mouseout',  () => item.querySelector('.submenu')?.style.setProperty('display','none'));
     });
   </script>
 
-  <!-- JavaScript functions for X (Twitter) tool -->
   <script>
-    function makeOsint01(v){ window.open('https://twitter.com/'+encodeURIComponent(v),'_blank'); }
-    function makeOsint02(v){ window.open('https://twitter.com/search?q=from%3A'+encodeURIComponent(v)+'&f=live','_blank'); }
-    function makeOsint03(v){ window.open('https://twitter.com/search?q=to%3A'+encodeURIComponent(v)+'&f=live','_blank'); }
-    function makeOsint04(v){ window.open('https://twitter.com/search?q=from%3A'+encodeURIComponent(v)+'%20filter%3Areplies&f=live','_blank'); }
-    function makeOsint05(v){ window.open('https://twitter.com/search?q=from%3A'+encodeURIComponent(v)+'%20-filter%3Areplies&f=live','_blank'); }
-    function makeOsint06(v){ window.open('https://twitter.com/'+encodeURIComponent(v)+'/media','_blank'); }
-    function makeOsint07(v){ window.open('https://twitter.com/'+encodeURIComponent(v)+'/lists/memberships','_blank'); }
-    function makeOsint09(v){ window.open('https://twitter.com/'+encodeURIComponent(v)+'/topics','_blank'); }
-    function makeOsint10(v){ window.open('https://twitter.com/'+encodeURIComponent(v)+'/followers','_blank'); }
-    function makeOsint11(v){ window.open('https://twitter.com/'+encodeURIComponent(v)+'/following','_blank'); }
-    function makeOsint12(u,y){ window.open('https://twitter.com/search?q=from%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31&f=live','_blank'); }
-    function makeOsint13(u,y){ window.open('https://twitter.com/search?q=to%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31&f=live','_blank'); }
-    function makeOsint14(u,y){ window.open('https://twitter.com/search?q=from%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31%20filter%3Amedia&f=live','_blank'); }
-    function makeOsint15(t,y){ window.open('https://twitter.com/search?q='+encodeURIComponent(t)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31&f=live','_blank'); }
-    function makeOsint16(u,y){ window.open('https://twitter.com/search?q=from%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31%20-filter%3Areplies&f=live','_blank'); }
-    function makeOsint17(u,y){ window.open('https://twitter.com/search?q=from%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31%20filter%3Areplies&f=live','_blank'); }
-    function makeOsint20(v){ window.open('https://www.google.com/search?q=site:twitter.com/'+encodeURIComponent(v),'_blank'); }
-    function makeOsint21(v){ window.open('https://www.google.com/search?q=site:twitter.com/'+encodeURIComponent(v)+'/status/','_blank'); }
-    function makeOsint22(v){ window.open('https://www.bing.com/search?q=twitter.com/'+encodeURIComponent(v),'_blank'); }
-    function makeOsint23(v){ window.open('https://www.yandex.com/search/?text=https%3A%2F%2Ftwitter.com%2F'+encodeURIComponent(v),'_blank'); }
-    function makeOsint26(v){ window.open('https://web.archive.org/web/*/twitter.com/'+encodeURIComponent(v),'_blank'); }
-    function makeOsint27(v){ window.open('https://api.memory.lol/v1/tw/'+encodeURIComponent(v),'_blank'); }
-    function makeOsint28a(v){ window.open('https://api.memory.lol/v1/tw/id/'+encodeURIComponent(v),'_blank'); }
-    function makeOsint32(v){ window.open('https://www.twitteraudit.com/'+encodeURIComponent(v),'_blank'); }
-    function makeOsint34a(v){ window.open('https://twitter.com/search?q='+encodeURIComponent(v)+'&f=user','_blank'); }
-    function makeOsint36a(v){ window.open('https://twitter.com/i/lists/'+encodeURIComponent(v),'_blank'); }
-    function makeOsint37a(v){ window.open('https://twitter.com/i/lists/'+encodeURIComponent(v)+'/members','_blank'); }
-    function makeOsint38a(v){ window.open('https://twitter.com/i/lists/'+encodeURIComponent(v)+'/followers','_blank'); }
+    function Twitter01(v){ window.open('https://x.com/'+encodeURIComponent(v),'_blank'); }
+    function Twitter02(v){ window.open('https://x.com/search?q=from%3A'+encodeURIComponent(v)+'&f=live','_blank'); }
+    function Twitter03(v){ window.open('https://x.com/search?q=to%3A'+encodeURIComponent(v)+'&f=live','_blank'); }
+    function Twitter04(v){ window.open('https://x.com/search?q=from%3A'+encodeURIComponent(v)+'%20filter%3Areplies&f=live','_blank'); }
+    function Twitter05(v){ window.open('https://x.com/search?q=from%3A'+encodeURIComponent(v)+'%20-filter%3Areplies&f=live','_blank'); }
+    function Twitter06(v){ window.open('https://x.com/'+encodeURIComponent(v)+'/media','_blank'); }
+    function Twitter07(v){ window.open('https://x.com/'+encodeURIComponent(v)+'/lists/memberships','_blank'); }
+    function Twitter09(v){ window.open('https://x.com/'+encodeURIComponent(v)+'/topics','_blank'); }
+    function Twitter10(v){ window.open('https://x.com/'+encodeURIComponent(v)+'/followers','_blank'); }
+    function Twitter11(v){ window.open('https://x.com/'+encodeURIComponent(v)+'/following','_blank'); }
+    function Twitter12(u,y){ window.open('https://x.com/search?q=from%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31&f=live','_blank'); }
+    function Twitter13(u,y){ window.open('https://x.com/search?q=to%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31&f=live','_blank'); }
+    function Twitter14(u,y){ window.open('https://x.com/search?q=from%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31%20filter%3Amedia&f=live','_blank'); }
+    function Twitter15(t,y){ window.open('https://x.com/search?q='+encodeURIComponent(t)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31&f=live','_blank'); }
+    function Twitter16(u,y){ window.open('https://x.com/search?q=from%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31%20-filter%3Areplies&f=live','_blank'); }
+    function Twitter17(u,y){ window.open('https://x.com/search?q=from%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31%20filter%3Areplies&f=live','_blank'); }
+    function Twitter20(v){ window.open('https://www.google.com/search?q=site:x.com/'+encodeURIComponent(v),'_blank'); }
+    function Twitter21(v){ window.open('https://www.google.com/search?q=site:x.com/'+encodeURIComponent(v)+'/status/','_blank'); }
+    function Twitter22(v){ window.open('https://www.bing.com/search?q=x.com/'+encodeURIComponent(v),'_blank'); }
+    function Twitter23(v){ window.open('https://www.yandex.com/search/?text=https%3A%2F%2Fx.com%2F'+encodeURIComponent(v),'_blank'); }
+    function Twitter26(v){ window.open('https://web.archive.org/web/*/x.com/'+encodeURIComponent(v),'_blank'); }
+    function Twitter27(v){ window.open('https://api.memory.lol/v1/tw/'+encodeURIComponent(v),'_blank'); }
+    function Twitter28a(v){ window.open('https://api.memory.lol/v1/tw/id/'+encodeURIComponent(v),'_blank'); }
+    function Twitter32(v){ window.open('https://www.twitteraudit.com/'+encodeURIComponent(v),'_blank'); }
+    function Twitter34a(v){ window.open('https://x.com/search?q='+encodeURIComponent(v)+'&f=user','_blank'); }
+    function Twitter36a(v){ window.open('https://x.com/i/lists/'+encodeURIComponent(v),'_blank'); }
+    function Twitter37a(v){ window.open('https://x.com/i/lists/'+encodeURIComponent(v)+'/members','_blank'); }
+    function Twitter38a(v){ window.open('https://x.com/i/lists/'+encodeURIComponent(v)+'/followers','_blank'); }
+    function Twitter40(v){ window.open('https://x.com/'+encodeURIComponent(v)+'/highlights/','_blank'); }
+    function Twitter41(v){ window.open('https://x.com/'+encodeURIComponent(v)+'/lists/','_blank'); }
+    function Twitter42(v){ window.open('https://x.com/search?q=from%3A'+encodeURIComponent(v)+'%20filter%3Alinks&f=live','_blank'); }
   </script>
 </body>
 </html>

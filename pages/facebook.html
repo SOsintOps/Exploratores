@@ -5,192 +5,115 @@
   <title>Exploratores Facebook Tool</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #0066ff;
-      --secondary-color: #333;
-      --bg-color: #f9f9f9;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'IBM Plex Sans', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--secondary-color);
-      padding-bottom: 60px;
-    }
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
-      background: #fff; border-bottom: 1px solid #ddd;
-      display: flex; justify-content: center; z-index: 1000;
-    }
-    .menu {
-      list-style: none; display: flex; width:100%; max-width:1200px; justify-content:space-around;
-    }
-    .menu>li {
-      position: relative; height:60px; flex:1; cursor:pointer;
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      text-align:center; font-size:1rem; border-right:1px solid #eee;
-      transition:background-color .2s;
-    }
-    .menu>li:last-child { border-right:none; }
-    .menu>li:hover { background:var(--primary-color); color:#fff; }
-    .menu>li span { line-height:1.2; }
-    .submenu {
-      display:none; position:absolute; top:100%; left:50%; transform:translateX(-50%);
-      background:#fff; list-style:none; border:1px solid #ddd; min-width:200px; z-index:999;
-    }
-    .submenu li { padding:10px; border-bottom:1px solid #eee; }
-    .submenu li:last-child { border-bottom:none; }
-    .submenu li a { text-decoration:none; color:var(--secondary-color); display:block; }
-    .submenu li:hover { background:var(--primary-color); }
-    .submenu li:hover a { color:#fff; }
-    .menu>li:hover .submenu { display:block; }
-    main {
-      max-width:1200px; margin:0 auto; padding:80px 20px 20px; background:#fff;
-    }
-    h1.page-title { text-align:center; margin-bottom:1.5rem; font-size:1.5rem; }
-    .note {
-      font-size:1rem; background:#fff9d6; border-left:3px solid #ffc107;
-      padding:.75rem; margin-bottom:1.5rem; border-radius:3px;
-    }
-    .columns-container { display:flex; gap:1.5rem; }
-    .column { flex:1; min-width:0; border-radius:4px; }
-    .form-section h3 {
-      margin-bottom:.8rem; font-size:1.1rem; border-bottom:1px solid #ccc; padding-bottom:.3rem;
-    }
-    .form-section { margin-bottom:1.5rem; padding:1rem; background:#fafafa; border:1px solid #eee; border-radius:4px; }
-    .form-section form { display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; }
-    .single-input-container { margin-bottom:.75rem; }
-    .single-input-container input[type="text"],
-    .form-section input[type="text"] {
-      flex:1 1 150px; padding:.5rem; border:1px solid #ccc; border-radius:3px; font-size:.9rem;
-    }
-    .single-input-container input[type="text"] { width:100%; }
-    input[type="submit"], input[type="button"].search-button {
-      padding:.5rem .8rem; border:1px solid #ccc; border-radius:3px; background:#fff;
-      font-size:.9rem; cursor:pointer; transition:background-color .2s,color .2s;
-      text-align:center; line-height:1.2; flex-shrink:0; min-width:120px;
-    }
-    input[type="submit"]:hover, input[type="button"].search-button:hover {
-      background:var(--primary-color); color:#fff;
-    }
-    .button-grid {
-      display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem;
-    }
-    .button-grid .search-button { flex-grow:1; flex-basis:130px; }
-    footer {
-      background:#fff; border-top:1px solid #ddd; padding:10px;
-      text-align:center; font-size:.9em; color:#555;
-      position:fixed; bottom:0; left:0; right:0; z-index:1000;
-    }
-    footer a { color:var(--primary-color); text-decoration:none; margin-left:10px; }
-    @media (max-width:992px) { .columns-container { flex-direction:column; } }
-    @media (max-width:768px) {
-      .menu>li { font-size:.75rem; padding:0 .2rem; }
-      .form-section form { flex-direction:column; align-items:stretch; }
-      .form-section input, .button-grid { width:100%; flex-direction:column; }
-      .button-grid .search-button { width:100%; }
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
-<nav>
-  <ul class="menu">
-    <li><span>HOME</span><ul class="submenu"><li><a href="../index.html">Index</a></li></ul></li>
-    <li><span>Search<br>Engines</span><ul class="submenu"><li><a href="Searchengines.html">Search Engines</a></li></ul></li>
-    <li><span>People &<br>Identities</span><ul class="submenu"><li><a href="Names.html">Names</a></li><li><a href="phoneus.html">US Phones</a></li><li><a href="phoneint.html">International Phones</a></li><li><a href="Address.html">Addresses</a></li><li><a href="vehicles.html">Vehicles</a></li><li><a href="usernames.html">Usernames</a></li><li><a href="Email.html">Email Addresses</a></li><li><a href="Communities.html">Communities</a></li></ul></li>
-    <li><span>Social<br>Media</span><ul class="submenu"><li><a href="X.html">X (Twitter)</a></li><li><a href="Facebook.html" class="active">Facebook</a></li><li><a href="Instagram.html">Instagram</a></li><li><a href="LinkedIn.html">LinkedIn</a></li></ul></li>
+  <nav>
+    <ul class="menu">
+      <li><span>HOME</span><ul class="submenu"><li><a href="../index.html">Index</a></li></ul></li>
+      <li><span>Search<br>Engines</span><ul class="submenu"><li><a href="Searchengines.html">Search Engines</a></li></ul></li>
+      <li><span>People &<br>Identities</span>
+        <ul class="submenu">
+            <li><a href="Names.html">Names</a></li>
+            <li><a href="phoneus.html">US Phones</a></li>
+            <li><a href="phoneint.html">International Phones</a></li>
+            <li><a href="Address.html">Addresses</a></li>
+            <li><a href="vehicles.html">Vehicles</a></li>
+            <li><a href="usernames.html">Usernames</a></li>
+            <li><a href="Email.html">Email Addresses</a></li>
+            <li><a href="Communities.html">Communities</a></li>
+        </ul>
+    </li>
+    <li><span>Social<br>Media</span>
+        <ul class="submenu">
+            <li><a href="X.html">X (Twitter)</a></li>
+            <li><a href="Facebook.html" class="active">Facebook</a></li>
+            <li><a href="Instagram.html">Instagram</a></li>
+            <li><a href="LinkedIn.html">LinkedIn</a></li>
+        </ul>
+    </li>
     <li><span>Websites</span><ul class="submenu"><li><a href="Domains.html">Domains</a></li><li><a href="IP.html">IP Addresses</a></li></ul></li>
     <li><span>GeoInt</span><ul class="submenu"><li><a href="Maps.html">Maps</a></li></ul></li>
     <li><span>Media<br>Analysis</span><ul class="submenu"><li><a href="Images.html">Images</a></li><li><a href="Videos.html">Videos</a></li><li><a href="docs.html">Documents</a></li></ul></li>
     <li><span>Business<br>Intelligence</span><ul class="submenu"><li><a href="Business.html">Business &amp; Government</a></li><li><a href="Currencies.html">Virtual Currencies</a></li></ul></li>
     <li><span>Tools</span><ul class="submenu"><li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li></ul></li>
-  </ul>
-</nav>
+    </ul>
+  </nav>
 
 <main>
-  <h1 class="page-title">Exploratores Facebook Tool</h1>
-  <div class="note"><strong>NOTE:</strong> For proper function of these features, an active investigative profile is required.</div>
+  <h1 class="page-title">Facebook Tools</h1>
+  <div class="note"><strong>NOTE:</strong> For proper function of these features, an active Facebook investigative profile is required.</div>
 
-  <div class="columns-container">
-    <!-- LEFT COLUMN -->
+  <div class="columns">
     <div class="column">
-      <div class="form-section">
-        <h3>Username Lookup</h3>
-        <div class="single-input-container">
-          <input type="text" id="PopAll" placeholder="FB Username"/>
-        </div>
-        <div class="button-grid">
-          <input type="button" class="search-button" value="Timeline" onclick="makeOsint01(PopAll.value)">
-          <input type="button" class="search-button" value="About" onclick="makeOsint02(PopAll.value)">
-          <input type="button" class="search-button" value="Employment" onclick="makeOsint03(PopAll.value)">
-          <input type="button" class="search-button" value="Education" onclick="makeOsint04(PopAll.value)">
-          <input type="button" class="search-button" value="Locations" onclick="makeOsint05(PopAll.value)">
-          <input type="button" class="search-button" value="Contact Info" onclick="makeOsint06(PopAll.value)">
-          <input type="button" class="search-button" value="Basic Info" onclick="makeOsint07(PopAll.value)">
-          <input type="button" class="search-button" value="Relationships" onclick="makeOsint08(PopAll.value)">
-          <input type="button" class="search-button" value="Family" onclick="makeOsint09(PopAll.value)">
-          <input type="button" class="search-button" value="Biography" onclick="makeOsint10(PopAll.value)">
-          <input type="button" class="search-button" value="Life Events" onclick="makeOsint11(PopAll.value)">
-          <input type="button" class="search-button" value="Friends" onclick="makeOsint12(PopAll.value)">
-          <input type="button" class="search-button" value="Following" onclick="makeOsint41(PopAll.value)">
-          <input type="button" class="search-button" value="Photos" onclick="makeOsint13(PopAll.value)">
-          <input type="button" class="search-button" value="Photo Albums" onclick="makeOsint14(PopAll.value)">
-          <input type="button" class="search-button" value="Videos" onclick="makeOsint15(PopAll.value)">
-          <input type="button" class="search-button" value="Reels" onclick="makeOsint42(PopAll.value)">
-          <input type="button" class="search-button" value="Check-ins" onclick="makeOsint16(PopAll.value)">
-          <input type="button" class="search-button" value="Visits" onclick="makeOsint43(PopAll.value)">
-          <input type="button" class="search-button" value="Recent Check-ins" onclick="makeOsint17(PopAll.value)">
-          <input type="button" class="search-button" value="Sports" onclick="makeOsint18(PopAll.value)">
-          <input type="button" class="search-button" value="Music" onclick="makeOsint19(PopAll.value)">
-          <input type="button" class="search-button" value="Movies" onclick="makeOsint20(PopAll.value)">
-          <input type="button" class="search-button" value="TV" onclick="makeOsint21(PopAll.value)">
-          <input type="button" class="search-button" value="Books" onclick="makeOsint22(PopAll.value)">
-          <input type="button" class="search-button" value="Apps & Games" onclick="makeOsint23(PopAll.value)">
-          <input type="button" class="search-button" value="Likes" onclick="makeOsint24(PopAll.value)">
-          <input type="button" class="search-button" value="Events" onclick="makeOsint25(PopAll.value)">
-          <input type="button" class="search-button" value="Facts" onclick="makeOsint26(PopAll.value)">
-          <input type="button" class="search-button" value="Reviews" onclick="makeOsint27(PopAll.value)">
-          <input type="button" class="search-button" value="Reviews Given" onclick="makeOsint44(PopAll.value)">
-          <input type="button" class="search-button" value="Reviews Written" onclick="makeOsint45(PopAll.value)">
-          <input type="button" class="search-button" value="Notes" onclick="makeOsint28(PopAll.value)">
-        </div>
+      <h2>Username Lookup</h2>
+      <div class="input-container">
+        <input type="text" id="PopAll" class="input-field" placeholder="Enter FB Username or User ID"/>
+      </div>
+      <div class="button-grid">
+        <input type="button" class="button" value="Timeline" onclick="Facebook01(PopAll.value)">
+        <input type="button" class="button" value="About" onclick="Facebook02(PopAll.value)">
+        <input type="button" class="button" value="Employment" onclick="Facebook03(PopAll.value)">
+        <input type="button" class="button" value="Education" onclick="Facebook04(PopAll.value)">
+        <input type="button" class="button" value="Locations" onclick="Facebook05(PopAll.value)">
+        <input type="button" class="button" value="Contact Info" onclick="Facebook06(PopAll.value)">
+        <input type="button" class="button" value="Basic Info" onclick="Facebook07(PopAll.value)">
+        <input type="button" class="button" value="Relationships" onclick="Facebook08(PopAll.value)">
+        <input type="button" class="button" value="Family" onclick="Facebook09(PopAll.value)">
+        <input type="button" class="button" value="Biography" onclick="Facebook10(PopAll.value)">
+        <input type="button" class="button" value="Life Events" onclick="Facebook11(PopAll.value)">
+        <input type="button" class="button" value="Friends" onclick="Facebook12(PopAll.value)">
+        <input type="button" class="button" value="Following" onclick="Facebook41(PopAll.value)">
+        <input type="button" class="button" value="Photos" onclick="Facebook13(PopAll.value)">
+        <input type="button" class="button" value="Photo Albums" onclick="Facebook14(PopAll.value)">
+        <input type="button" class="button" value="Videos" onclick="Facebook15(PopAll.value)">
+        <input type="button" class="button" value="Reels" onclick="Facebook42(PopAll.value)">
+        <input type="button" class="button" value="Check-ins" onclick="Facebook16(PopAll.value)">
+        <input type="button" class="button" value="Visits (Map)" onclick="Facebook43(PopAll.value)">
+        <input type="button" class="button" value="Recent Check-ins" onclick="Facebook17(PopAll.value)">
+        <input type="button" class="button" value="Sports" onclick="Facebook18(PopAll.value)">
+        <input type="button" class="button" value="Music" onclick="Facebook19(PopAll.value)">
+        <input type="button" class="button" value="Movies" onclick="Facebook20(PopAll.value)">
+        <input type="button" class="button" value="TV Shows" onclick="Facebook21(PopAll.value)">
+        <input type="button" class="button" value="Books" onclick="Facebook22(PopAll.value)">
+        <input type="button" class="button" value="Apps & Games" onclick="Facebook23(PopAll.value)">
+        <input type="button" class="button" value="Likes" onclick="Facebook24(PopAll.value)">
+        <input type="button" class="button" value="Events" onclick="Facebook25(PopAll.value)">
+        <input type="button" class="button" value="Facts" onclick="Facebook26(PopAll.value)">
+        <input type="button" class="button" value="Reviews" onclick="Facebook27(PopAll.value)">
+        <input type="button" class="button" value="Reviews Given" onclick="Facebook44(PopAll.value)">
+        <input type="button" class="button" value="Reviews Written" onclick="Facebook45(PopAll.value)">
+        <input type="button" class="button" value="Notes" onclick="Facebook28(PopAll.value)">
       </div>
     </div>
 
-    <!-- RIGHT COLUMN -->
     <div class="column">
-      <div class="form-section">
-        <h3>FB User Number Lookup</h3>
-        <form onsubmit="event.preventDefault(); makeOsint28a(this.Search28a.value);">
-          <input type="text" id="Search28a" name="Search28a" placeholder="FB User Number"/>
-          <input type="submit" class="search-button" value="Profile"/>
-        </form>
+      <h2>FB User Number Lookup</h2>
+      <div class="input-container">
+        <input type="text" id="userNumberInput" class="input-field" placeholder="Enter FB User Number (ID)"/>
       </div>
+      <input type="button" class="button" style="width:100%; margin-bottom: 1.5rem;" value="Go to Profile" onclick="Facebook28a(userNumberInput.value)">
 
-      <div class="form-section">
-        <h3>Search Terms</h3>
-        <div class="single-input-container">
-          <input type="text" id="generalSearchTermsInput" placeholder="Enter Search Terms"/>
-        </div>
-        <div class="button-grid">
-          <input type="button" class="search-button" value="Posts" onclick="makeOsint30(generalSearchTermsInput.value)">
-          <input type="button" class="search-button" value="People" onclick="makeOsint31(generalSearchTermsInput.value)">
-          <input type="button" class="search-button" value="Photos" onclick="makeOsint32(generalSearchTermsInput.value)">
-          <input type="button" class="search-button" value="Videos" onclick="makeOsint33(generalSearchTermsInput.value)">
-          <input type="button" class="search-button" value="Marketplace" onclick="makeOsint34(generalSearchTermsInput.value)">
-          <input type="button" class="search-button" value="Pages" onclick="makeOsint35(generalSearchTermsInput.value)">
-          <input type="button" class="search-button" value="Places" onclick="makeOsint36(generalSearchTermsInput.value)">
-          <input type="button" class="search-button" value="Groups" onclick="makeOsint37(generalSearchTermsInput.value)">
-          <input type="button" class="search-button" value="Apps" onclick="makeOsint38(generalSearchTermsInput.value)">
-          <input type="button" class="search-button" value="Events" onclick="makeOsint39(generalSearchTermsInput.value)">
-          <input type="button" class="search-button" value="Links" onclick="makeOsint40(generalSearchTermsInput.value)">
-          <input type="button" class="search-button" value="Watch" onclick="makeOsint46(generalSearchTermsInput.value)">
-        </div>
+      <h2>General Search Terms</h2>
+      <div class="input-container">
+        <input type="text" id="generalSearchTermsInput" class="input-field" placeholder="Enter Search Terms"/>
+      </div>
+      <div class="button-grid">
+        <input type="button" class="button" value="Posts" onclick="Facebook30(generalSearchTermsInput.value)">
+        <input type="button" class="button" value="People" onclick="Facebook31(generalSearchTermsInput.value)">
+        <input type="button" class="button" value="Photos" onclick="Facebook32(generalSearchTermsInput.value)">
+        <input type="button" class="button" value="Videos" onclick="Facebook33(generalSearchTermsInput.value)">
+        <input type="button" class="button" value="Marketplace" onclick="Facebook34(generalSearchTermsInput.value)">
+        <input type="button" class="button" value="Pages" onclick="Facebook35(generalSearchTermsInput.value)">
+        <input type="button" class="button" value="Places" onclick="Facebook36(generalSearchTermsInput.value)">
+        <input type="button" class="button" value="Groups" onclick="Facebook37(generalSearchTermsInput.value)">
+        <input type="button" class="button" value="Apps" onclick="Facebook38(generalSearchTermsInput.value)">
+        <input type="button" class="button" value="Events" onclick="Facebook39(generalSearchTermsInput.value)">
+        <input type="button" class="button" value="Links" onclick="Facebook40(generalSearchTermsInput.value)">
+        <input type="button" class="button" value="Watch" onclick="Facebook46(generalSearchTermsInput.value)">
       </div>
     </div>
-
   </div>
 </main>
 
@@ -200,23 +123,89 @@
 </footer>
 
 <script>
-// Show/hide submenu
+// Show/hide submenu for fixed nav
 document.querySelectorAll('.menu > li').forEach(item => {
-  item.addEventListener('mouseover', ()=> item.querySelector('.submenu')?.style.setProperty('display','block'));
-  item.addEventListener('mouseout',  ()=> item.querySelector('.submenu')?.style.setProperty('display','none'));
+  const submenu = item.querySelector('.submenu');
+  if (submenu) {
+    item.addEventListener('mouseover', () => submenu.style.display = 'block');
+    item.addEventListener('mouseout', () => submenu.style.display = 'none');
+  }
 });
 
 // Helper per le ricerche
 function executeSearch(baseUrl, term, suffix='', queryParam='', noEncoding=false) {
-  term = term.trim(); if(!term) return;
-  let url = queryParam
-    ? baseUrl + queryParam + (noEncoding ? term : encodeURIComponent(term)) + suffix
-    : baseUrl + (noEncoding ? term : encodeURIComponent(term)) + suffix;
+  term = term.trim();
+  if(!term && queryParam !== 'q=') {
+    if (!baseUrl.includes("facebook.com/search")) {
+      alert("Please enter a search term.");
+      return;
+    }
+  }
+  if(!term) term = '';
+
+  let url;
+  if (queryParam) {
+    url = baseUrl + queryParam + (noEncoding ? term : encodeURIComponent(term)) + suffix;
+  } else {
+    url = baseUrl + (noEncoding ? term : encodeURIComponent(term)) + suffix;
+  }
   window.open(url,'_blank');
 }
 
-// Tutte le makeOsintXX... (omesse qui per brevità, ma rimangono identiche)
-</script>
+// --- Funzioni Ripristinate ---
 
+// Username Lookup functions
+function Facebook01(term) { executeSearch('https://www.facebook.com/', term); }
+function Facebook02(term) { executeSearch('https://www.facebook.com/', term, '/about'); }
+function Facebook03(term) { executeSearch('https://www.facebook.com/', term, '/about/section/work'); }
+function Facebook04(term) { executeSearch('https://www.facebook.com/', term, '/about/section/education'); }
+function Facebook05(term) { executeSearch('https://www.facebook.com/', term, '/about/section/living'); }
+function Facebook06(term) { executeSearch('https://www.facebook.com/', term, '/about/section/contact-info'); }
+function Facebook07(term) { executeSearch('https://www.facebook.com/', term, '/about/section/basic-info'); }
+function Facebook08(term) { executeSearch('https://www.facebook.com/', term, '/about/section/relationship'); }
+function Facebook09(term) { executeSearch('https://www.facebook.com/', term, '/about/section/family'); }
+function Facebook10(term) { executeSearch('https://www.facebook.com/', term, '/about/section/bio'); }
+function Facebook11(term) { executeSearch('https://www.facebook.com/', term, '/about/section/year-overviews'); }
+function Facebook12(term) { executeSearch('https://www.facebook.com/', term, '/friends'); }
+function Facebook13(term) { executeSearch('https://www.facebook.com/', term, '/photos_by'); }
+function Facebook14(term) { executeSearch('https://www.facebook.com/', term, '/photos_albums'); }
+function Facebook15(term) { executeSearch('https://www.facebook.com/', term, '/videos_by'); }
+function Facebook16(term) { executeSearch('https://www.facebook.com/', term, '/places_visited'); }
+function Facebook17(term) { executeSearch('https://www.facebook.com/', term, '/places_recent'); }
+function Facebook18(term) { executeSearch('https://www.facebook.com/', term, '/sports'); }
+function Facebook19(term) { executeSearch('https://www.facebook.com/', term, '/music'); }
+function Facebook20(term) { executeSearch('https://www.facebook.com/', term, '/movies'); }
+function Facebook21(term) { executeSearch('https://www.facebook.com/', term, '/tv'); }
+function Facebook22(term) { executeSearch('https://www.facebook.com/', term, '/books'); }
+function Facebook23(term) { executeSearch('https://www.facebook.com/', term, '/games'); }
+function Facebook24(term) { executeSearch('https://www.facebook.com/', term, '/likes'); }
+function Facebook25(term) { executeSearch('https://www.facebook.com/', term, '/events'); }
+function Facebook26(term) { executeSearch('https://www.facebook.com/', term, '/about_details'); }
+function Facebook27(term) { executeSearch('https://www.facebook.com/', term, '/reviews'); }
+function Facebook28(term) { executeSearch('https://www.facebook.com/', term, '/notes'); }
+function Facebook41(term) { executeSearch('https://www.facebook.com/', term, '/following'); }
+function Facebook42(term) { executeSearch('https://www.facebook.com/', term, '/reels'); }
+function Facebook43(term) { executeSearch('https://www.facebook.com/', term, '/map'); }
+function Facebook44(term) { executeSearch('https://www.facebook.com/', term, '/reviews_given'); }
+function Facebook45(term) { executeSearch('https://www.facebook.com/', term, '/reviews_written'); }
+
+// FB User Number Lookup
+function Facebook28a(term) { executeSearch('https://www.facebook.com/', term); }
+
+// Search Terms functions
+function Facebook30(term) { executeSearch('https://www.facebook.com/search/posts/', term, '', 'q='); }
+function Facebook31(term) { executeSearch('https://www.facebook.com/search/people/', term, '', 'q='); }
+function Facebook32(term) { executeSearch('https://www.facebook.com/search/photos/', term, '', 'q='); }
+function Facebook33(term) { executeSearch('https://www.facebook.com/search/videos/', term, '', 'q='); }
+function Facebook34(term) { executeSearch('https://www.facebook.com/search/marketplace/', term, '', 'q='); }
+function Facebook35(term) { executeSearch('https://www.facebook.com/search/pages/', term, '', 'q='); }
+function Facebook36(term) { executeSearch('https://www.facebook.com/search/places/', term, '', 'q='); }
+function Facebook37(term) { executeSearch('https://www.facebook.com/search/groups/', term, '', 'q='); }
+function Facebook38(term) { executeSearch('https://www.facebook.com/search/apps/', term, '', 'q='); }
+function Facebook39(term) { executeSearch('https://www.facebook.com/search/events/', term, '', 'q='); }
+function Facebook40(term) { executeSearch('https://www.facebook.com/search/links/', term, '', 'q='); }
+function Facebook46(term) { executeSearch('https://www.facebook.com/watch/search/', term, '', 'q='); }
+
+</script>
 </body>
 </html>
