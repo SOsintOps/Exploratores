@@ -5,236 +5,19 @@
   <title>Exploratores Maps Tool</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #0066ff;
-      --secondary-color: #333;
-      --bg-color: #f9f9f9;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'IBM Plex Sans', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--secondary-color);
-      padding-top: 60px; /* Space for fixed navbar */
-      padding-bottom: 60px; /* Space for fixed footer */
-    }
-
-    /* NAVBAR */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background-color: #ffffff;
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      justify-content: center;
-      z-index: 1000;
-    }
-    .menu {
-      list-style: none;
-      display: flex;
-      max-width: 1200px;
-      width: 100%;
-      justify-content: space-around;
-    }
-    .menu > li {
-      position: relative;
-      height: 60px;
-      flex: 1;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 1rem;
-      border-right: 1px solid #eee;
-      transition: background-color 0.2s ease-in;
-    }
-    .menu > li:last-child { border-right: none; }
-    .menu > li:hover { background-color: var(--primary-color); color: #fff; }
-    .menu > li span { display: block; line-height: 1.2; }
-    .submenu {
-      display: none; position: absolute; background-color: #ffffff;
-      top: 100%; left: 50%; transform: translateX(-50%);
-      list-style: none; border: 1px solid #ddd; min-width: 200px; z-index: 999;
-    }
-    .submenu li { padding: 0.5rem 1rem; border-bottom: 1px solid #eee; }
-    .submenu li:last-child { border-bottom: none; }
-    .submenu li a { text-decoration: none; color: var(--secondary-color); display: block; }
-    .submenu li:hover { background-color: var(--primary-color); }
-    .submenu li:hover a { color: #fff; }
-    .menu > li:hover .submenu { display: block; }
-
-    /* MAIN CONTENT */
-    main {
-      max-width: 1200px; margin: 0 auto;
-      padding: 20px; background-color: #fff; 
-    }
-    h1.page-title { text-align: center; margin-bottom: 1.5rem; font-size: 1.5rem; }
-    
-    .note {
-      font-size: 1rem;
-      background-color: #fff9d6;
-      border-left: 3px solid #ffc107;
-      padding: 0.75rem;
-      margin-bottom: 1.5rem;
-      border-radius: 3px;
-    }
-    .note strong {
-        font-weight: bold;
-    }
-    
-    .columns-container { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.5rem; }
-    .column { flex: 1; min-width: 300px; border-radius: 4px; }
-    
-    .form-section {
-      margin-bottom: 1.5rem; padding: 1rem;
-      background: #fafafa; border: 1px solid #eee; border-radius: 4px;
-    }
-    .form-section h2 { 
-      margin-top: 0; margin-bottom: 1rem; font-size: 1.2rem; 
-      color: var(--primary-color); border-bottom: 1px solid var(--primary-color); padding-bottom: 0.5rem;
-    }
-     .column > .form-section:first-child > h2,
-     main > .form-section:first-of-type > h2 { 
-        margin-top:0;
-    }
-
-
-    .form-section h3 { 
-      margin-top: 1rem; margin-bottom: 0.8rem; font-size: 1.1rem;
-      border-bottom: 1px solid #ccc; padding-bottom: 0.3rem;
-    }
-    .form-section > h3:first-child { margin-top: 0; }
-
-    /* Address Converter Form Inputs */
-    .address-converter-form input[type="text"] {
-        margin-right: 0.5rem; 
-        margin-bottom: 0.5rem; 
-        flex: 1 1 80px; 
-        padding: 0.5rem; border: 1px solid #ccc;
-        border-radius: 3px; font-size: 0.9rem;
-    }
-    .address-converter-form input[name="street"] {
-        flex: 2 1 150px; 
-    }
-
-    /* Latitude/Longitude Input Container */
-    .latlon-input-container {
-        display: flex;
-        flex-direction: column; 
-        gap: 0.5rem; 
-        margin-bottom: 1.5rem;
-        padding: 1rem;
-        background: #f0f0f0; 
-        border-radius: 4px;
-    }
-    .latlon-input-container p.input-label {
-        margin-bottom: 0.25rem; 
-        font-size: 0.9rem;
-        color: var(--secondary-color);
-    }
-    .latlon-input-fields { 
-        display: flex;
-        gap: 1rem;
-    }
-    .latlon-input-fields input[type="text"] {
-        flex: 1;
-        width: auto; 
-        padding: 0.5rem; 
-        border: 1px solid #ccc;
-        border-radius: 3px; 
-        font-size: 0.9rem;
-    }
-    
-    /* General Form Styling within sections */
-    .form-section form { 
-      display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
-    }
-    /* For single input containers that might exist elsewhere */
-    .single-input-container input[type="text"] {
-      width: 100%; padding: 0.5rem; border: 1px solid #ccc;
-      border-radius: 3px; font-size: 0.9rem;
-    }
-     .form-section form input[type="text"] { /* Only for specific forms with multiple text inputs */
-        flex: 1 1 180px;
-        width: auto; /* Override width 100% from single-input if needed */
-    }
-
-
-    input[type="submit"].search-button,
-    input[type="button"].search-button {
-      width: 140px; padding: 0.5rem 0.5rem; height: auto;
-      border: 1px solid #ccc; border-radius: 3px; background: #fff;
-      font-size: 0.9rem; cursor: pointer; transition: background-color 0.2s, color 0.2s;
-      text-align: center; line-height: 1.2; flex-shrink: 0;
-      display: inline-block; vertical-align: middle;
-      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-    }
-    input[type="submit"].search-button:hover,
-    input[type="button"].search-button:hover {
-      background: var(--primary-color); color: #fff;
-    }
-    .address-converter-form input[type="submit"].search-button {
-        width: auto; 
-        min-width: 100px;
-        padding: 0.5rem 1rem; 
-        flex-grow: 0;
-        margin-bottom: 0.5rem; 
-    }
-
-    .button-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
-
-    footer {
-      background-color: #ffffff; border-top: 1px solid #ddd; padding: 10px;
-      text-align: center; font-size: 0.9em; color: #555;
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
-    }
-    footer a { color: var(--primary-color); text-decoration: none; margin-left: 10px; }
-
-    @media (max-width: 992px) { .columns-container { flex-direction: column; } }
-    @media (max-width: 768px) {
-      .menu > li { width: auto; flex: 1; font-size: 0.75rem; padding: 0 0.2rem; }
-      .form-section form, .address-converter-form, .latlon-input-fields { flex-direction: column; align-items: stretch; }
-      .form-section form input[type="text"],
-      .address-converter-form input[type="text"],
-      .latlon-input-fields input[type="text"] { width: 100%; margin-bottom: 0.5rem; margin-right: 0; }
-      
-      .form-section form input[type="submit"].search-button,
-      .form-section form input[type="button"].search-button,
-      .address-converter-form input[type="submit"].search-button { 
-        width: 100%; 
-        margin-bottom: 0.5rem;
-      }
-      .button-grid { flex-direction: column; }
-      .button-grid .search-button { width: 100%; }
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
 <nav>
   <ul class="menu">
-    <li><span>HOME</span>
-      <ul class="submenu">
-        <li><a href="../index.html">Index</a></li>
-      </ul>
-    </li>
-    <li><span>Search<br>Engines</span>
-      <ul class="submenu">
-        <li><a href="Searchengines.html">Search Engines</a></li>
-      </ul>
-    </li>
+    <li><span>HOME</span><ul class="submenu"><li><a href="../index.html">Index</a></li></ul></li>
+    <li><span>Search<br>Engines</span><ul class="submenu"><li><a href="Searchengines.html">Search Engines</a></li></ul></li>
     <li><span>People &<br>Identities</span>
       <ul class="submenu">
         <li><a href="Names.html">Names</a></li>
         <li><a href="phoneus.html">US Phones</a></li>
-		<li><a href="phoneint.html">International Phones</a></li>
+        <li><a href="phoneint.html">International Phones</a></li>
         <li><a href="Address.html">Addresses</a></li>
         <li><a href="vehicles.html">Vehicles</a></li>
         <li><a href="usernames.html">Usernames</a></li>
@@ -256,137 +39,159 @@
         <li><a href="IP.html">IP Addresses</a></li>
       </ul>
     </li>
-    <li><span>GeoInt</span>
-      <ul class="submenu">
-        <li><a href="Maps.html">Maps</a></li>
-      </ul>
-    </li>
-    <li><span>Media<br>Analysis</span>
-      <ul class="submenu">
-        <li><a href="Images.html">Images</a></li>
-        <li><a href="Videos.html">Videos</a></li>
-        <li><a href="docs.html">Documents</a></li>
-      </ul>
-    </li>
-    <li><span>Business<br>Intelligence</span>
-      <ul class="submenu">
-        <li><a href="Business.html">Business &amp; Government</a></li>
-        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
-      </ul>
-    </li>
-    <li><span>Tools</span>
-      <ul class="submenu">
-
-        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
-      </ul>
-    </li>
+    <li><span>GeoInt</span><ul class="submenu"><li><a href="Maps.html" class="active">Maps</a></li></ul></li>
+    <li><span>Media<br>Analysis</span><ul class="submenu"><li><a href="Images.html">Images</a></li><li><a href="Videos.html">Videos</a></li><li><a href="docs.html">Documents</a></li></ul></li>
+    <li><span>Business<br>Intelligence</span><ul class="submenu"><li><a href="Business.html">Business &amp; Government</a></li><li><a href="Currencies.html">Virtual Currencies</a></li></ul></li>
+    <li><span>Tools</span><ul class="submenu"><li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li></ul></li>
   </ul>
 </nav>
-      
+    
 <main>
-  <h1 class="page-title">Exploratores Maps Tool</h1>
-  
-  <div class="latlon-input-container">
-    <p class="input-label"><strong>Please insert the coordinates:</strong></p>
-    <div class="latlon-input-fields">
-        <input type="text" id="latitudeInput" placeholder="Latitude">
-        <input type="text" id="longitudeInput" placeholder="Longitude">
-    </div>
-  </div>
-<div class="note"> <strong>NOTE:</strong> For coordinates, use decimal degrees. Latitude: N positive, S negative. Longitude: E positive, W negative (e.g., Lat: 45.4642, Lon: -74.0060). </div>
+  <h1 class="page-title">Maps Tools</h1>
 
-  <div class="columns-container">
-    <div class="column" id="left-column">
-      <div class="form-section">
-        <h2>Google Maps</h2>
-        <div class="button-grid">
-          <input type="button" class="search-button" value="Google Map" onclick="makeOsint01()">
-          <input type="button" class="search-button" value="Google Sat" onclick="makeOsint02()">
-          <input type="button" class="search-button" value="Google Street" onclick="makeOsint03()">
-          <input type="button" class="search-button" value="Google Street (N)" onclick="makeOsint04()">
-          <input type="button" class="search-button" value="Google Street (E)" onclick="makeOsint05()">
-          <input type="button" class="search-button" value="Google Street (S)" onclick="makeOsint06()">
-          <input type="button" class="search-button" value="Google Street (W)" onclick="makeOsint07()">
-        </div>
+  <section class="search-instructions">
+    <div class="input-container">
+      <div style="flex: 1;">
+        <label for="latitudeInput">Latitude:</label>
+        <input type="text" id="latitudeInput" class="input-field" placeholder="e.g., 40.7128" style="width: 100%;">
       </div>
-      <div class="form-section">
-        <h2>Bing Maps</h2>
-        <div class="button-grid">
-          <input type="button" class="search-button" value="Bing Map" onclick="makeOsint08()">
-          <input type="button" class="search-button" value="Bing Sat" onclick="makeOsint09()">
-          <input type="button" class="search-button" value="Bing Sat (N)" onclick="makeOsint10()">
-          <input type="button" class="search-button" value="Bing Sat (E)" onclick="makeOsint11()">
-          <input type="button" class="search-button" value="Bing Sat (S)" onclick="makeOsint12()">
-          <input type="button" class="search-button" value="Bing Sat (W)" onclick="makeOsint13()">
-          <input type="button" class="search-button" value="Bing Street (N)" onclick="makeOsint14()">
-          <input type="button" class="search-button" value="Bing Street (E)" onclick="makeOsint15()">
-          <input type="button" class="search-button" value="Bing Street (S)" onclick="makeOsint16()">
-          <input type="button" class="search-button" value="Bing Street (W)" onclick="makeOsint17()">
-        </div>
+      <div style="flex: 1;">
+        <label for="longitudeInput">Longitude:</label>
+        <input type="text" id="longitudeInput" class="input-field" placeholder="e.g., -74.0060" style="width: 100%;">
       </div>
     </div>
+  </section>
+  <div class="note"> <strong>NOTE:</strong> For coordinates, use decimal degrees. Latitude: N positive, S negative. Longitude: E positive, W negative.</div>
 
-    <div class="column" id="right-column">
-      <div class="form-section">
-        <h2>Other Map Services</h2>
-        <div class="button-grid">
-          <input type="button" class="search-button" value="Zoom Earth" onclick="makeOsint18()">
-          <input type="button" class="search-button" value="Here Sat" onclick="makeOsint20()">
-          <input type="button" class="search-button" value="Yandex Sat" onclick="makeOsint21()">
-          <input type="button" class="search-button" value="Apple Maps" onclick="makeOsint22()">
-          <input type="button" class="search-button" value="World Imagery" onclick="makeOsint23()">
-          <input type="button" class="search-button" value="Mapillary" onclick="makeOsint25()">
-          <input type="button" class="search-button" value="KartaView" onclick="makeOsint26()">
-          <input type="button" class="search-button" value="Land Viewer" onclick="makeOsint27()">
-          <input type="button" class="search-button" value="Apple Maps Alt" onclick="makeOsint28()">
-        </div>
+  <div class="columns">
+    <div class="column">
+      <h2>Google Maps</h2>
+      <div class="button-grid">
+        <button class="button" onclick="Maps01()">Google Map</button>
+        <button class="button" onclick="Maps02()">Google Sat</button>
+        <button class="button" onclick="Maps03()">Google Street</button>
+        <button class="button" onclick="Maps05()">Google Street (E)</button>
+        <button class="button" onclick="Maps04()">Google Street (N)</button>
+        <button class="button" onclick="Maps06()">Google Street (S)</button>
+        <button class="button" onclick="Maps07()">Google Street (W)</button>
       </div>
-      <div class="form-section">
-        <h2>Real Estate Maps</h2>
-        <div class="button-grid">
-          <input type="button" class="search-button" value="AcreValue" onclick="makeOsint29()">
-          <input type="button" class="search-button" value="Zillow" onclick="makeOsint30()">
-          <input type="button" class="search-button" value="Trulia" onclick="makeOsint31()">
-          <input type="button" class="search-button" value="Realtor" onclick="makeOsint33()">
-        </div>
+      
+      <h2>Bing Maps</h2>
+      <div class="button-grid">
+        <button class="button" onclick="Maps08()">Bing Map</button>
+        <button class="button" onclick="Maps09()">Bing Sat</button>
+        <button class="button" onclick="Maps11()">Bing Sat (E)</button>
+        <button class="button" onclick="Maps10()">Bing Sat (N)</button>
+        <button class="button" onclick="Maps12()">Bing Sat (S)</button>
+        <button class="button" onclick="Maps13()">Bing Sat (W)</button>
+        <button class="button" onclick="Maps15()">Bing Street (E)</button>
+        <button class="button" onclick="Maps14()">Bing Street (N)</button>
+        <button class="button" onclick="Maps16()">Bing Street (S)</button>
+        <button class="button" onclick="Maps17()">Bing Street (W)</button>
+      </div>
+    </div>
+
+    <div class="column">
+      <h2>Other Map Services</h2>
+      <div class="button-grid">
+        <button class="button" onclick="Maps22()">Apple Maps</button>
+        <button class="button" onclick="Maps28()">Apple Maps Alt</button>
+        <button class="button" onclick="Maps20()">Here Sat</button>
+        <button class="button" onclick="Maps26()">KartaView</button>
+        <button class="button" onclick="Maps27()">Land Viewer</button>
+        <button class="button" onclick="Maps25()">Mapillary</button>
+        <button class="button" onclick="Maps23()">World Imagery</button>
+        <button class="button" onclick="Maps21()">Yandex Sat</button>
+        <button class="button" onclick="Maps18()">Zoom Earth</button>
+      </div>
+
+      <h2>Real Estate Maps</h2>
+      <div class="button-grid">
+        <button class="button" onclick="Maps29()">AcreValue</button>
+        <button class="button" onclick="Maps33()">Realtor</button>
+        <button class="button" onclick="Maps31()">Trulia</button>
+        <button class="button" onclick="Maps30()">Zillow</button>
       </div>
     </div>
   </div> 
   
-  <div class="form-section" style="margin-top: 1.5rem;"> 
-    <h2>Address to Geocode</h2>
-	<h3>USA</h3>
-    <form class="address-converter-form" onsubmit="event.preventDefault(); makeOsint00(this.number.value, this.street.value, this.city.value, this.state.value, this.zip.value);">
-      <input type="text" name="number" placeholder="Nr.">
-      <input type="text" name="street" placeholder="Street">
-      <input type="text" name="city" placeholder="City">
-      <input type="text" name="state" placeholder="State">
-      <input type="text" name="zip" placeholder="Zip">
-      <input type="submit" class="search-button" value="Convert">
-    </form>
-  
+  <hr style="margin: 2rem 0;">
 
-	<h3>ITALY</h3>
-    <form class="address-converter-form" onsubmit="event.preventDefault(); makeOsint00(this.number.value, this.street.value, this.city.value, this.state.value, this.zip.value);">
-      <input type="text" name="street" placeholder="VIA/piazza">
-      <input type="text" name="number" placeholder="Nr.">
-	  <input type="text" name="zip" placeholder="CAP">
-	  <input type="text" name="city" placeholder="City">
-      <input type="text" name="state" placeholder="Nation">
-      <input type="submit" class="search-button" value="Convert">
-    </form>
+  <h2>Address to Geocode</h2>
+  <div class="columns">
+    <div class="column">
+      <h3>USA</h3>
+      <section class="search-instructions">
+        <label for="usa_number">Number:</label>
+        <div class="input-container">
+          <input type="text" id="usa_number" class="input-field" placeholder="Nr.">
+        </div>
+        <label for="usa_street">Street:</label>
+        <div class="input-container">
+          <input type="text" id="usa_street" class="input-field" placeholder="Street">
+        </div>
+        <label for="usa_city">City:</label>
+        <div class="input-container">
+          <input type="text" id="usa_city" class="input-field" placeholder="City">
+        </div>
+        <label for="usa_state">State:</label>
+        <div class="input-container">
+          <input type="text" id="usa_state" class="input-field" placeholder="State">
+        </div>
+        <label for="usa_zip">Zip Code:</label>
+        <div class="input-container">
+          <input type="text" id="usa_zip" class="input-field" placeholder="Zip">
+        </div>
+        <div class="button-grid" style="margin-top: 1rem;">
+          <button class="button" style="width:100%;" onclick="geocodeUSA()">Convert Address</button>
+        </div>
+      </section>
+    </div>
+    <div class="column">
+      <h3>ITALY</h3>
+      <section class="search-instructions">
+        <label for="italy_street">Street/Square (Via/Piazza):</label>
+        <div class="input-container">
+          <input type="text" id="italy_street" class="input-field" placeholder="Via/Piazza">
+        </div>
+        <label for="italy_number">Number (Nr.):</label>
+        <div class="input-container">
+          <input type="text" id="italy_number" class="input-field" placeholder="Nr.">
+        </div>
+        <label for="italy_zip">Postal Code (CAP):</label>
+        <div class="input-container">
+          <input type="text" id="italy_zip" class="input-field" placeholder="CAP">
+        </div>
+        <label for="italy_city">City (Città):</label>
+        <div class="input-container">
+          <input type="text" id="italy_city" class="input-field" placeholder="Città">
+        </div>
+        <label for="italy_nation">Nation (Nazione):</label>
+        <div class="input-container">
+          <input type="text" id="italy_nation" class="input-field" placeholder="Nazione (e.g., Italia)">
+        </div>
+        <div class="button-grid" style="margin-top: 1rem;">
+          <button class="button" style="width:100%;" onclick="geocodeITALY()">Convert Address</button>
+        </div>
+      </section>
+    </div>
   </div>
-
-
-
 </main>
+    
+<footer>
+  Global Security Italy • Rome (IT) <a href="License.html">License</a>
+</footer>
 
-<script type="text/javascript">
+<script>
+  document.querySelectorAll('.menu > li').forEach(el=>{
+    el.addEventListener('mouseover',()=>{const s=el.querySelector('.submenu');if(s) s.style.display='block';});
+    el.addEventListener('mouseout',()=>{const s=el.querySelector('.submenu');if(s) s.style.display='none';});
+  });
+  const getVal=id=>{ const el=document.getElementById(id); return el ? el.value.trim() : "";};
+
   function getCoords() {
-    const latInput = document.getElementById('latitudeInput');
-    const lonInput = document.getElementById('longitudeInput');
-    const lat = latInput.value.trim();
-    const lon = lonInput.value.trim();
+    const lat = getVal('latitudeInput');
+    const lon = getVal('longitudeInput');
     
     if (lat === "" || lon === "") {
       alert("Please enter both Latitude and Longitude values.");
@@ -399,62 +204,80 @@
     return { lat: lat, lon: lon };
   }
 
-  function makeOsint00(number, street, city, state, zip) {
-    const numT = number.trim();
-    const streetT = street.trim();
-    const cityT = city.trim();
-    const stateT = state.trim();
-    const zipT = zip.trim();
-    if (streetT === "" || cityT === "" || stateT === "") {
-      alert("Street, City, and State are required for geocoding.");
+  function geocodeAddress(number, street, city, state, zip) {
+    if (!street || !city || !state) { // Street, City, State are generally core requirements
+      alert("Street, City, and Nation/State are required for geocoding.");
       return;
     }
     let addressParts = [];
-    if (numT) addressParts.push(encodeURIComponent(numT));
-    if (streetT) addressParts.push(encodeURIComponent(streetT));
-    if (cityT) addressParts.push(encodeURIComponent(cityT));
-    if (stateT) addressParts.push(encodeURIComponent(stateT));
-    if (zipT) addressParts.push(encodeURIComponent(zipT));
+    if (number) addressParts.push(encodeURIComponent(number));
+    if (street) addressParts.push(encodeURIComponent(street));
+    if (city) addressParts.push(encodeURIComponent(city));
+    if (state) addressParts.push(encodeURIComponent(state));
+    if (zip) addressParts.push(encodeURIComponent(zip));
     const addressQuery = addressParts.join('+');
-    window.open('https://services.gisgraphy.com/geocoding/geocode?address=' + addressQuery + '&format=json', '_blank');
+    // Consider making the geocoding URL/service configurable or a constant
+    window.open('https://nominatim.openstreetmap.org/search?q=' + addressQuery + '&format=json&limit=1', '_blank'); 
+    // Changed to Nominatim as gisgraphy.com might have restrictions or be down. Nominatim is more open.
+  }
+
+  function geocodeUSA() {
+    geocodeAddress(
+      getVal('usa_number'), 
+      getVal('usa_street'), 
+      getVal('usa_city'), 
+      getVal('usa_state'), 
+      getVal('usa_zip')
+    );
+  }
+
+  function geocodeITALY() {
+    // For Italy, the 'state' field is used for 'Nation', and 'zip' for 'CAP'.
+    // The order of parameters for geocodeAddress is: number, street, city, state(nation), zip(cap)
+    geocodeAddress(
+      getVal('italy_number'),    // number
+      getVal('italy_street'),   // street
+      getVal('italy_city'),     // city
+      getVal('italy_nation'),   // state (using nation field)
+      getVal('italy_zip')       // zip (using cap field)
+    );
   }
 
   // Google Maps
-  function makeOsint01() { const coords = getCoords(); if(!coords) return; window.open('https://maps.google.com/?q=' + coords.lat + ',' + coords.lon + '&ll=' + coords.lat + ',' + coords.lon + '&z=18', '_blank');}
-  function makeOsint02() { const coords = getCoords(); if(!coords) return; window.open('https://maps.google.com/?q=' + coords.lat + ',' + coords.lon + '&ll=' + coords.lat + ',' + coords.lon + '&z=18&t=k', '_blank');} 
-  function makeOsint03() { const coords = getCoords(); if(!coords) return; window.open('https://maps.google.com/?layer=c&cbll=' + coords.lat + ',' + coords.lon + '&cbp=12,0,0,0,-90', '_blank');} 
-  function makeOsint04() { const coords = getCoords(); if(!coords) return; window.open('https://maps.google.com/?layer=c&cbll=' + coords.lat + ',' + coords.lon + '&cbp=12,0,0,0,0', '_blank');} 
-  function makeOsint05() { const coords = getCoords(); if(!coords) return; window.open('https://maps.google.com/?layer=c&cbll=' + coords.lat + ',' + coords.lon + '&cbp=12,90,0,0,0', '_blank');}
-  function makeOsint06() { const coords = getCoords(); if(!coords) return; window.open('https://maps.google.com/?layer=c&cbll=' + coords.lat + ',' + coords.lon + '&cbp=12,180,0,0,0', '_blank');} 
-  function makeOsint07() { const coords = getCoords(); if(!coords) return; window.open('https://maps.google.com/?layer=c&cbll=' + coords.lat + ',' + coords.lon + '&cbp=12,270,0,0,0', '_blank');}
-
+  function Maps01() { const coords = getCoords(); if(!coords) return; window.open('https://www.google.com/maps?q='+coords.lat+','+coords.lon+'&ll='+coords.lat+','+coords.lon+'&z=18', '_blank');}
+  function Maps02() { const coords = getCoords(); if(!coords) return; window.open('https://www.google.com/maps?q='+coords.lat+','+coords.lon+'&ll='+coords.lat+','+coords.lon+'&z=18&t=k', '_blank');}  
+  function Maps03() { const coords = getCoords(); if(!coords) return; window.open('https://www.google.com/maps?layer=c&cbll='+coords.lat+','+coords.lon+'&cbp=12,0,0,0,0', '_blank');}  
+  function Maps04() { const coords = getCoords(); if(!coords) return; window.open('https://www.google.com/maps?layer=c&cbll='+coords.lat+','+coords.lon+'&cbp=12,0,0,0,0', '_blank');}  // N (Default 0)
+  function Maps05() { const coords = getCoords(); if(!coords) return; window.open('https://www.google.com/maps?layer=c&cbll='+coords.lat+','+coords.lon+'&cbp=12,90,0,0,0', '_blank');} // E
+  function Maps06() { const coords = getCoords(); if(!coords) return; window.open('https://www.google.com/maps?layer=c&cbll='+coords.lat+','+coords.lon+'&cbp=12,180,0,0,0', '_blank');} // S
+  function Maps07() { const coords = getCoords(); if(!coords) return; window.open('https://www.google.com/maps?layer=c&cbll='+coords.lat+','+coords.lon+'&cbp=12,270,0,0,0', '_blank');} // W
 
   // Bing Maps
-  function makeOsint08() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?&cp=' + coords.lat + '~' + coords.lon + '&lvl=20', '_blank');}
-  function makeOsint09() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&sty=a', '_blank');}
-  function makeOsint10() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&sty=h&dir=0', '_blank');}
-  function makeOsint11() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&sty=h&dir=90', '_blank');}
-  function makeOsint12() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&sty=h&dir=180', '_blank');}
-  function makeOsint13() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&sty=h&dir=270', '_blank');}
-  function makeOsint14() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&dir=0&style=x', '_blank');}
-  function makeOsint15() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&dir=90&style=x', '_blank');}
-  function makeOsint16() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&dir=180&style=x', '_blank');}
-  function makeOsint17() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&dir=270&style=x', '_blank');}
+  function Maps08() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20', '_blank');}
+  function Maps09() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&sty=a', '_blank');}
+  function Maps10() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&sty=h&dir=0', '_blank');}
+  function Maps11() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&sty=h&dir=90', '_blank');}
+  function Maps12() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&sty=h&dir=180', '_blank');}
+  function Maps13() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&sty=h&dir=270', '_blank');}
+  function Maps14() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&dir=0&style=x', '_blank');}
+  function Maps15() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&dir=90&style=x', '_blank');}
+  function Maps16() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&dir=180&style=x', '_blank');}
+  function Maps17() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&dir=270&style=x', '_blank');}
 
   // Other Map Services
-  function makeOsint18() { const coords = getCoords(); if(!coords) return; window.open('https://zoom.earth/#view=' + coords.lat + ',' + coords.lon + ',20z', '_blank');}
-  function makeOsint20() { const coords = getCoords(); if(!coords) return; window.open('https://wego.here.com/?map=' + coords.lat + ',' + coords.lon + ',20,satellite', '_blank');}
-  function makeOsint21() { const coords = getCoords(); if(!coords) return; window.open('https://yandex.com/maps/?l=sat&ll=' + coords.lon + '%2C' + coords.lat + '&z=18', '_blank');}
-  function makeOsint22() { const coords = getCoords(); if(!coords) return; window.open('https://beta.maps.apple.com/?t=k&z=18&ll=' + coords.lat + '%2C' + coords.lon, '_blank');}
-  function makeOsint23() { const coords = getCoords(); if(!coords) return; window.open('https://livingatlas.arcgis.com/wayback/#active=20337&mapCenter=' + coords.lon + '%2C' + coords.lat + '%2C18', '_blank');}
-  function makeOsint25() { const coords = getCoords(); if(!coords) return; window.open('https://www.mapillary.com/app/?lat=' + coords.lat + '&lng=' + coords.lon + '&z=18', '_blank');}
-  function makeOsint26() { const coords = getCoords(); if(!coords) return; window.open('http://kartaview.org/map/@' + coords.lat + ',' + coords.lon + ',18z', '_blank');}
-  function makeOsint27() { const coords = getCoords(); if(!coords) return; window.open('https://eos.com/landviewer/?lat=' + coords.lat + '&lng=' + coords.lon + '&z=18', '_blank');}
-  function makeOsint28() { const coords = getCoords(); if(!coords) return; window.open('https://satellites.pro/USA_map#' + coords.lat + ',' + coords.lon + ',18', '_blank');}
+  function Maps18() { const coords = getCoords(); if(!coords) return; window.open('https://zoom.earth/#view=' + coords.lat + ',' + coords.lon + ',20z', '_blank');}
+  function Maps20() { const coords = getCoords(); if(!coords) return; window.open('https://wego.here.com/?map=' + coords.lat + ',' + coords.lon + ',20,satellite', '_blank');}
+  function Maps21() { const coords = getCoords(); if(!coords) return; window.open('https://yandex.com/maps/?l=sat&ll=' + coords.lon + '%2C' + coords.lat + '&z=18', '_blank');}
+  function Maps22() { const coords = getCoords(); if(!coords) return; window.open('https://beta.maps.apple.com/?t=k&z=18&ll=' + coords.lat + '%2C' + coords.lon, '_blank');}
+  function Maps23() { const coords = getCoords(); if(!coords) return; window.open('https://livingatlas.arcgis.com/wayback/#active=20337&mapCenter=' + coords.lon + '%2C' + coords.lat + '%2C18', '_blank');}
+  function Maps25() { const coords = getCoords(); if(!coords) return; window.open('https://www.mapillary.com/app/?lat=' + coords.lat + '&lng=' + coords.lon + '&z=18', '_blank');}
+  function Maps26() { const coords = getCoords(); if(!coords) return; window.open('http://kartaview.org/map/@' + coords.lat + ',' + coords.lon + ',18z', '_blank');}
+  function Maps27() { const coords = getCoords(); if(!coords) return; window.open('https://eos.com/landviewer/?lat=' + coords.lat + '&lng=' + coords.lon + '&z=18', '_blank');}
+  function Maps28() { const coords = getCoords(); if(!coords) return; window.open('https://satellites.pro/USA_map#' + coords.lat + ',' + coords.lon + ',18', '_blank');}
 
   // Real Estate Maps
-  function makeOsint29() { const coords = getCoords(); if(!coords) return; window.open('https://www.acrevalue.com/map/?lat=' + coords.lat + '&lng=' + coords.lon + '&zoom=17', '_blank');}
-  function makeOsint30() { 
+  function Maps29() { const coords = getCoords(); if(!coords) return; window.open('https://www.acrevalue.com/map/?lat=' + coords.lat + '&lng=' + coords.lon + '&zoom=17', '_blank');}
+  function Maps30() { 
     const coords = getCoords(); if(!coords) return;
     const lat = parseFloat(coords.lat);
     const lon = parseFloat(coords.lon);
@@ -462,27 +285,14 @@
     const searchQueryState = `{"isMapVisible":true,"mapBounds":{${mapBounds}},"filterState":{"sort":{"value":"globalrelevanceex"},"ah":{"value":true}},"isListVisible":true,"mapZoom":15}`;
     window.open('https://www.zillow.com/homes/for_sale/?searchQueryState=' + encodeURIComponent(searchQueryState), '_blank');
   }
-  function makeOsint31() { 
+  function Maps31() { 
     const coords = getCoords(); if(!coords) return;
     window.open('https://www.trulia.com/map/?location=' + encodeURIComponent(coords.lat + "," + coords.lon) + '&zoom=17', '_blank');
   }
-  function makeOsint33() { 
+  function Maps33() { 
     const coords = getCoords(); if(!coords) return;
     window.open('https://www.realtor.com/realestateandhomes-search?map=true#lat=' + coords.lat + ';lng=' + coords.lon + ';zoom=17', '_blank');
   }
-
-  document.querySelectorAll('form').forEach(form => {
-    if (!form.hasAttribute('onsubmit') || !form.getAttribute('onsubmit').includes('return false;')) {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-        });
-    }
-  });
 </script>
-
-<footer>
-  Global Security Italy • Rome (IT) <a href="License.html">License</a>
-</footer>
-
 </body>
 </html>
