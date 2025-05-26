@@ -29,7 +29,7 @@
       <li><span>Websites</span><ul class="submenu"><li><a href="Domains.html">Domains</a></li><li><a href="IP.html">IP Addresses</a></li></ul></li>
       <li><span>GeoInt</span><ul class="submenu"><li><a href="Maps.html">Maps</a></li></ul></li>
       <li><span>Media<br>Analysis</span><ul class="submenu"><li><a href="Images.html">Images</a></li><li><a href="Videos.html">Videos</a></li><li><a href="docs.html">Documents</a></li></ul></li>
-      <li><span>Business<br>Intelligence</span><ul class="submenu"><li><a href="Business.html">Business &amp; Government</a></li><li><a href="Currencies.html">Virtual Currencies</a></li></ul></li>
+      <li><span>Business<br>Intelligence</span><ul class="submenu"><li><a href="Business.html">Business & Government</a></li><li><a href="Currencies.html">Virtual Currencies</a></li></ul></li>
       <li><span>Tools</span><ul class="submenu"><li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li></ul></li>
     </ul>
   </nav>
@@ -41,7 +41,6 @@
     </div>
 
     <div class="columns">
-      <!-- US column -->
       <div class="column">
         <section class="search-instructions">
           <h2>US ADDRESSES</h2>
@@ -53,29 +52,26 @@
             <input class="input-field" type="text" id="usZip"    placeholder="ZIP">
           </div>
         </section>
-        <div class="form-section">
-          <div class="button-grid">
-            <button class="button" onclick="AddresstUS19()">Addresses.com</button>
-            <button class="button" onclick="AddresstUS09()">AdvBackgChk</button>
-            <button class="button" onclick="AddresstUS05()">CyberBkgChk</button>
-            <button class="button" onclick="AddresstUS11()">FastPeople</button>
-            <button class="button" onclick="AddresstUS01()">GISGraphy</button>
-            <button class="button" onclick="AddresstUS04()">Google</button>
-            <button class="button" onclick="AddresstUS06()">Hudway</button>
-            <button class="button" onclick="AddresstUS18()">PeopleFinders</button>
-            <button class="button" onclick="AddresstUS03()">Rehold</button>
-            <button class="button" onclick="AddresstUS15()">SmartBkgChk</button>
-            <button class="button" onclick="AddresstUS07()">SearchPplFree</button>
-            <button class="button" onclick="AddresstUS08()">Spokeo</button>
-            <button class="button" onclick="AddresstUS10()">TruePeople</button>
-            <button class="button" onclick="AddresstUS17()">USA People</button>
-            <button class="button" onclick="AddresstUS14()">WhitePages</button>
-            <button class="button" onclick="AddresstUS02()">Zillow</button>
-          </div>
+        <div class="button-grid">
+          <button class="button" onclick="AddressesUS_19()">Addresses.com</button>
+          <button class="button" onclick="AddressesUS_09()">AdvBackgChk</button>
+          <button class="button" onclick="AddressesUS_05()">CyberBkgChk</button>
+          <button class="button" onclick="AddressesUS_11()">FastPeople</button>
+          <button class="button" onclick="AddressesUS_01()">GISGraphy</button>
+          <button class="button" onclick="AddressesUS_04()">Google</button>
+          <button class="button" onclick="AddressesUS_06()">Hudway</button>
+          <button class="button" onclick="AddressesUS_18()">PeopleFinders</button>
+          <button class="button" onclick="AddressesUS_03()">Rehold</button>
+          <button class="button" onclick="AddressesUS_07()">SearchPplFree</button>
+          <button class="button" onclick="AddressesUS_15()">SmartBkgChk</button>
+          <button class="button" onclick="AddressesUS_08()">Spokeo</button>
+          <button class="button" onclick="AddressesUS_10()">TruePeople</button>
+          <button class="button" onclick="AddressesUS_17()">USA People</button>
+          <button class="button" onclick="AddressesUS_14()">WhitePages</button>
+          <button class="button" onclick="AddressesUS_02()">Zillow</button>
         </div>
       </div>
 
-      <!-- EU + Italy column -->
       <div class="column">
         <section class="search-instructions">
           <h2>INTERNATIONAL ADDRESSES</h2>
@@ -87,14 +83,35 @@
             <input class="input-field" type="text" id="euRegion" placeholder="Region/Country">
           </div>
         </section>
-        <div class="form-section">
+        <div class="button-grid">
+          <button class="button" onclick="AddressesEU_22()">FastPeople EU</button>
+          <button class="button" onclick="AddressesEU_20()">GISGraphy</button>
+          <button class="button" onclick="AddressesEU_21()">Google</button>
+        </div>
+        
+        <div>
+          <h3>Additional International Tools</h3>
+          <section class="search-instructions">
+            <label for="additionalIntlSearchInput">Enter International Address, Name, or Term:</label>
+            <div class="input-container">
+              <input type="text" id="additionalIntlSearchInput" class="input-field" placeholder="Address, name, keyword..."/>
+            </div>
+            <div class="note"><strong>NOTE:</strong> Use the term above with the tools below. Some tools may perform a general site search if the input is not directly applicable.</div>
+          </section>
           <div class="button-grid">
-            <button class="button" onclick="AddresstEU20()">GISGraphy</button>
-            <button class="button" onclick="AddresstEU21()">Google</button>
-            <button class="button" onclick="AddresstEU22()">FastPeople EU</button>
+            <button type="button" class="button" onclick="AddressesTool_01(document.getElementById('additionalIntlSearchInput').value)">192.com (UK)</button>
+            <button type="button" class="button" onclick="AddressesTool_02(document.getElementById('additionalIntlSearchInput').value)">411.com (US)</button>
+            <button type="button" class="button" onclick="AddressesTool_03(document.getElementById('additionalIntlSearchInput').value)">Canada411</button>
+            <button type="button" class="button" onclick="AddressesTool_04(document.getElementById('additionalIntlSearchInput').value)">DomainTools - WHOIS</button>
+            <button type="button" class="button" onclick="AddressesTool_05(document.getElementById('additionalIntlSearchInput').value)">Google Maps</button>
+            <button type="button" class="button" onclick="AddressesTool_06(document.getElementById('additionalIntlSearchInput').value)">Google Search</button>
+            <button type="button" class="button" onclick="AddressesTool_07(document.getElementById('additionalIntlSearchInput').value)">OCCRP Aleph</button>
+            <button type="button" class="button" onclick="AddressesTool_08(document.getElementById('additionalIntlSearchInput').value)">RiskIQ - Address</button>
+            <button type="button" class="button" onclick="AddressesTool_09(document.getElementById('additionalIntlSearchInput').value)">ThatsThem</button>
+            <button type="button" class="button" onclick="AddressesTool_10(document.getElementById('additionalIntlSearchInput').value)">TruePeopleSearch (US)</button>
           </div>
         </div>
-
+        
         <section class="search-instructions">
           <h2>Italy Addresses</h2>
           <h3>Pagine Bianche – Aziende</h3>
@@ -104,7 +121,7 @@
             <input class="input-field" type="text" id="itProv"    placeholder="Province">
           </div>
           <div class="button-grid">
-            <button class="button" onclick="makeOsint23qs(
+            <button class="button" onclick="AddressesIT_Companies(
               document.getElementById('itCompany').value,
               document.getElementById('itCity').value,
               document.getElementById('itProv').value
@@ -119,7 +136,7 @@
             <input class="input-field" type="text" id="itProvP" placeholder="Province">
           </div>
           <div class="button-grid">
-            <button class="button" onclick="makeOsint24(
+            <button class="button" onclick="AddressesIT_People(
               document.getElementById('itFirst').value,
               document.getElementById('itLast').value,
               document.getElementById('itCityP').value,
@@ -133,7 +150,7 @@
             <input class="input-field" type="text" id="itLoc" placeholder="Location">
           </div>
           <div class="button-grid">
-            <button class="button" onclick="makeOsint25(
+            <button class="button" onclick="AddressesIT_YellowPages(
               document.getElementById('itAct').value,
               document.getElementById('itLoc').value
             )">Pagine Gialle</button>
@@ -144,12 +161,10 @@
   </main>
 
   <footer>
-    Global Security Italy • Rome (IT)
-    <a href="License.html">License</a>
+    <p>Global Security Italy • Rome (IT) <a href="License.html">License</a></p>
   </footer>
 
   <script>
-    // submenu
     document.querySelectorAll('.menu > li').forEach(item => {
       item.addEventListener('mouseover', () => {
         const sm = item.querySelector('.submenu');
@@ -162,47 +177,72 @@
     });
 
     function getUSAddressParts(){
-      const n = v=>document.getElementById(v).value.trim();
-      const addr={ number:n('usNum'), street:n('usStreet'), city:n('usCity'), state:n('usState'), zip:n('usZip') };
-      if(!addr.street||(!addr.city&& !addr.zip)){ alert("Provide Street + City/ZIP"); return }
+      const n = v => document.getElementById(v).value.trim();
+      const addr = { number: n('usNum'), street: n('usStreet'), city: n('usCity'), state: n('usState'), zip: n('usZip') };
+      if (!addr.street || (!addr.city && !addr.zip)) { 
+        alert("For US Addresses, please provide Street AND (City OR ZIP Code)."); 
+        return; 
+      }
       return addr;
     }
     function getEUAddressParts(){
-      const n=v=>document.getElementById(v).value.trim();
-      const addr={ number:n('euNum'), street:n('euStreet'), city:n('euCity'), region:n('euRegion'), zip:n('euZip') };
-      if(!addr.street||!addr.city||!addr.zip){ alert("Provide Street, City, Postal"); return }
+      const n = v => document.getElementById(v).value.trim();
+      const addr = { number: n('euNum'), street: n('euStreet'), city: n('euCity'), region: n('euRegion'), zip: n('euZip') };
+      if (!addr.street || !addr.city || !addr.zip) { 
+        alert("For International Addresses, please provide Street, City, AND Postal Code."); 
+        return; 
+      }
       return addr;
     }
-    const buildUrl=(p,c)=>p.filter(Boolean).map(encodeURIComponent).join(c);
+    const buildUrl = (parts, charJoin) => parts.filter(part => part !== null && part !== undefined && part !== '').map(encodeURIComponent).join(charJoin);
 
-    // US
-    function AddresstUS19(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.addresses.com/addr/'+buildUrl([a.number,a.street],'+')+'/'+buildUrl([a.city,a.state],'+')+'/','_blank') }
-    function AddresstUS09(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.advancedbackgroundchecks.com/address/'+buildUrl([a.number,a.street],'-')+'_'+buildUrl([a.city,a.state,a.zip],'-'),'_blank')}
-    function AddresstUS05(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.cyberbackgroundchecks.com/address/'+buildUrl([a.number,a.street],'-')+'/'+encodeURIComponent(a.city)+'/'+encodeURIComponent(a.state),'_blank')}
-    function AddresstUS11(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.fastpeoplesearch.com/address/'+buildUrl([a.number,a.street],'-')+'_'+buildUrl([a.city,a.state,a.zip],'-'),'_blank')}
-    function AddresstUS01(){ const a=getUSAddressParts(); if(!a)return; window.open('https://services.gisgraphy.com/geocoding/geocode?address='+buildUrl([a.number,a.street,a.city,a.state,a.zip],'+')+'&format=json','_blank')}
-    function AddresstUS04(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.google.com/search?q='+buildUrl([a.number,a.street,a.city,a.state,a.zip],'+'),'_blank')}
-    function AddresstUS06(){ const a=getUSAddressParts(); if(!a)return; window.open('https://hudwayglass.com/house/'+buildUrl([a.number,a.street],'+')+',+'+buildUrl([a.city,a.state],'+'),'_blank')}
-    function AddresstUS18(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.peoplefinders.com/people/search/address?address='+buildUrl([a.number,a.street],'%20')+'&city='+encodeURIComponent(a.city)+'&state='+encodeURIComponent(a.state),'_blank')}
-    function AddresstUS03(){ const a=getUSAddressParts(); if(!a)return; window.open('https://rehold.com/'+buildUrl([a.city,a.state],'+')+'/'+encodeURIComponent(a.street)+'/'+encodeURIComponent(a.number),'_blank')}
-    function AddresstUS15(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.smartbackgroundchecks.com/address-search/'+buildUrl([a.number,a.street],'-')+'/'+encodeURIComponent(a.city)+'/'+encodeURIComponent(a.state),'_blank')}
-    function AddresstUS07(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.searchpeoplefree.com/address/'+encodeURIComponent(a.state)+'/'+encodeURIComponent(a.city)+'/'+encodeURIComponent(a.street)+'/'+encodeURIComponent(a.number),'_blank')}
-    function AddresstUS08(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.spokeo.com/'+encodeURIComponent(a.state)+'/'+encodeURIComponent(a.city)+'/'+buildUrl([a.number,a.street],'-'),'_blank')}
-    function AddresstUS10(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.truepeoplesearch.com/resultaddress?streetaddress='+buildUrl([a.number,a.street],'%20')+'&citystatezip='+buildUrl([a.city,a.state,a.zip],'%20'),'_blank')}
-    function AddresstUS17(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.usa-people-search.com/address/'+buildUrl([a.number,a.street],'-')+'/'+buildUrl([a.city,a.state],'-'),'_blank')}
-    function AddresstUS14(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.whitepages.com/address/'+buildUrl([a.number,a.street],'-')+'/'+buildUrl([a.city,a.state],'-'),'_blank')}
-    function AddresstUS02(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.zillow.com/homes/'+buildUrl([a.number,a.street,a.city,a.state,a.zip],'-')+'_rb/','_blank')}
+    function AddressesUS_19(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.addresses.com/addr/'+buildUrl([a.number,a.street],'+')+'/'+buildUrl([a.city,a.state],'+')+'/','_blank'); }
+    function AddressesUS_09(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.advancedbackgroundchecks.com/address/'+buildUrl([a.number,a.street],'-')+'_'+buildUrl([a.city,a.state,a.zip],'-'),'_blank');}
+    function AddressesUS_05(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.cyberbackgroundchecks.com/address/'+buildUrl([a.number,a.street],'-')+'/'+encodeURIComponent(a.city)+'/'+encodeURIComponent(a.state),'_blank');}
+    function AddressesUS_11(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.fastpeoplesearch.com/address/'+buildUrl([a.number,a.street],'-')+'_'+buildUrl([a.city,a.state,a.zip],'-'),'_blank');}
+    function AddressesUS_01(){ const a=getUSAddressParts(); if(!a)return; window.open('https://services.gisgraphy.com/geocoding/geocode?address='+buildUrl([a.number,a.street,a.city,a.state,a.zip],'+')+'&format=json','_blank');}
+    function AddressesUS_04(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.google.com/search?q='+buildUrl([a.number,a.street,a.city,a.state,a.zip],'+'),'_blank');}
+    function AddressesUS_06(){ const a=getUSAddressParts(); if(!a)return; window.open('https://hudwayglass.com/house/'+buildUrl([a.number,a.street],'+')+',+'+buildUrl([a.city,a.state],'+'),'_blank');}
+    function AddressesUS_18(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.peoplefinders.com/people/search/address?address='+buildUrl([a.number,a.street],'%20')+'&city='+encodeURIComponent(a.city)+'&state='+encodeURIComponent(a.state),'_blank');}
+    function AddressesUS_03(){ const a=getUSAddressParts(); if(!a)return; window.open('https://rehold.com/'+buildUrl([a.city,a.state],'+')+'/'+encodeURIComponent(a.street)+'/'+encodeURIComponent(a.number),'_blank');}
+    function AddressesUS_07(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.searchpeoplefree.com/address/'+encodeURIComponent(a.state)+'/'+encodeURIComponent(a.city)+'/'+encodeURIComponent(a.street)+'/'+encodeURIComponent(a.number),'_blank');}
+    function AddressesUS_15(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.smartbackgroundchecks.com/address-search/'+buildUrl([a.number,a.street],'-')+'/'+encodeURIComponent(a.city)+'/'+encodeURIComponent(a.state),'_blank');}
+    function AddressesUS_08(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.spokeo.com/'+encodeURIComponent(a.state)+'/'+encodeURIComponent(a.city)+'/'+buildUrl([a.number,a.street],'-'),'_blank');}
+    function AddressesUS_10(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.truepeoplesearch.com/resultaddress?streetaddress='+buildUrl([a.number,a.street],'%20')+'&citystatezip='+buildUrl([a.city,a.state,a.zip],'%20'),'_blank');}
+    function AddressesUS_17(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.usa-people-search.com/address/'+buildUrl([a.number,a.street],'-')+'/'+buildUrl([a.city,a.state],'-'),'_blank');}
+    function AddressesUS_14(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.whitepages.com/address/'+buildUrl([a.number,a.street],'-')+'/'+buildUrl([a.city,a.state],'-'),'_blank');}
+    function AddressesUS_02(){ const a=getUSAddressParts(); if(!a)return; window.open('https://www.zillow.com/homes/'+buildUrl([a.number,a.street,a.city,a.state,a.zip],'-')+'_rb/','_blank');}
 
-    // EU
-    function AddresstEU20(){ const a=getEUAddressParts(); if(!a)return; window.open('https://services.gisgraphy.com/geocoding/geocode?address='+buildUrl([a.street,a.number,a.zip,a.city,a.region],'+')+'&format=json','_blank')}
-    function AddresstEU21(){ const a=getEUAddressParts(); if(!a)return; window.open('https://www.google.com/search?q='+buildUrl([a.street,a.number,a.zip,a.city,a.region],'+'),'_blank')}
-    function AddresstEU22(){ const a=getEUAddressParts(); if(!a)return; window.open('https://www.fastpeoplesearch.com/address/'+buildUrl([a.number,a.street],'-')+'_'+buildUrl([a.city,a.region,a.zip],'-'),'_blank')}
+    function AddressesEU_22(){ const a=getEUAddressParts(); if(!a)return; window.open('https://www.fastpeoplesearch.com/address/'+buildUrl([a.number,a.street],'-')+'_'+buildUrl([a.city,a.region,a.zip],'-'),'_blank');}
+    function AddressesEU_20(){ const a=getEUAddressParts(); if(!a)return; window.open('https://services.gisgraphy.com/geocoding/geocode?address='+buildUrl([a.street,a.number,a.zip,a.city,a.region],'+')+'&format=json','_blank');}
+    function AddressesEU_21(){ const a=getEUAddressParts(); if(!a)return; window.open('https://www.google.com/search?q='+buildUrl([a.street,a.number,a.zip,a.city,a.region],'+'),'_blank');}
 
-    // Italy
-    function makeOsint23qs(cn,ci,pr){ if(!cn||!ci||!pr){ alert("Company, city, province req."); return } window.open('https://www.paginebianche.it/aziende?qs='+encodeURIComponent(cn)+'&dv='+encodeURIComponent(ci+' ('+pr+')'),'_blank')}
-    function makeOsint24(fn,ln,ci,pr){ if((!fn&&!ln)||!ci||!pr){ alert("Name, city, province req."); return } window.open('https://www.paginebianche.it/persone?qs='+encodeURIComponent(fn+' '+ln)+'&dv='+encodeURIComponent(ci+' ('+pr+')'),'_blank')}
-    function makeOsint25(act,loc){ if(!act||!loc){ alert("Activity, location req."); return } window.open('https://www.paginegialle.it/ricerca/'+encodeURIComponent(act)+'/'+encodeURIComponent(loc),'_blank')}
+    function AddressesTool_01(inputValue) { inputValue = inputValue.trim(); window.open('https://www.192.com/places/search/', '_blank'); }
+    function AddressesTool_02(inputValue) { inputValue = inputValue.trim(); window.open('https://www.411.com/reverse-address', '_blank'); }
+    function AddressesTool_03(inputValue) { inputValue = inputValue.trim(); window.open('https://www.canada411.ca/search/address.html', '_blank'); }
+    function AddressesTool_04(inputValue) { const term = inputValue.trim(); if(term==="")return; window.open('https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22' + encodeURIComponent(term) + '%22%5D%5D%5D&historical=1', '_blank'); }
+    function AddressesTool_05(inputValue) { const term = inputValue.trim(); if(term==="")return; window.open('https://www.google.com/maps/place/' + encodeURIComponent(term), '_blank'); }
+    function AddressesTool_06(inputValue) { const term = inputValue.trim(); if(term==="")return; window.open('https://www.google.com/search?q=%22' + encodeURIComponent(term) + '%22', '_blank'); }
+    function AddressesTool_07(inputValue) { const term = inputValue.trim(); if(term==="")return; window.open('https://aleph.occrp.org/search?limit=30&q=%22' + encodeURIComponent(term) + '%22', '_blank'); }
+    function AddressesTool_08(inputValue) { const term = inputValue.trim(); if(term==="")return; window.open('https://community.riskiq.com/search/whois/address?query=' + encodeURIComponent(term), '_blank'); }
+    function AddressesTool_09(inputValue) { inputValue = inputValue.trim(); window.open('https://thatsthem.com/reverse-address-lookup', '_blank'); }
+    function AddressesTool_10(inputValue) { inputValue = inputValue.trim(); window.open('https://www.truepeoplesearch.com/', '_blank'); }
+    
+    function AddressesIT_Companies(cn,ci,pr){ 
+      cn=cn.trim(); ci=ci.trim(); pr=pr.trim();
+      if(!cn||!ci||!pr){ alert("For Italian Company Search, please provide Company Name, City, AND Province."); return } 
+      window.open('https://www.paginebianche.it/aziende?qs='+encodeURIComponent(cn)+'&dv='+encodeURIComponent(ci+' ('+pr+')'),'_blank');
+    }
+    function AddressesIT_People(fn,ln,ci,pr){ 
+      fn=fn.trim(); ln=ln.trim(); ci=ci.trim(); pr=pr.trim();
+      if((!fn&&!ln)||!ci||!pr){ alert("For Italian People Search, please provide First OR Last Name, City, AND Province."); return } 
+      window.open('https://www.paginebianche.it/persone?qs='+encodeURIComponent(fn+' '+ln).trim()+'&dv='+encodeURIComponent(ci+' ('+pr+')'),'_blank');
+    }
+    function AddressesIT_YellowPages(act,loc){ 
+      act=act.trim(); loc=loc.trim();
+      if(!act||!loc){ alert("For Pagine Gialle, please provide Activity AND Location."); return } 
+      window.open('https://www.paginegialle.it/ricerca/'+encodeURIComponent(act)+'/'+encodeURIComponent(loc),'_blank');
+    }
   </script>
 </body>
 </html>
-```

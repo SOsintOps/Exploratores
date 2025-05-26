@@ -23,9 +23,9 @@
     </li>
     <li><span>People &<br>Identities</span>
       <ul class="submenu">
-        <li><a href="Names.html">Names</a></li>
+        <li><a href="Names.html" class="active">Names</a></li>
         <li><a href="phoneus.html">US Phones</a></li>
-		<li><a href="phoneint.html">International Phones</a></li>
+        <li><a href="phoneint.html">International Phones</a></li>
         <li><a href="Address.html">Addresses</a></li>
         <li><a href="vehicles.html">Vehicles</a></li>
         <li><a href="usernames.html">Usernames</a></li>
@@ -62,12 +62,11 @@
     <li><span>Business<br>Intelligence</span>
       <ul class="submenu">
         <li><a href="Business.html">Business &amp; Government</a></li>
-        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
+        <li><a href="Currencies.html">Virtual Currencies</a></li>
       </ul>
     </li>
     <li><span>Tools</span>
       <ul class="submenu">
-
         <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
       </ul>
     </li>
@@ -92,41 +91,89 @@
     <div class="column">
       <h2>INTERNATIONAL</h2>
       <div class="button-grid">
-        <button class="button" onclick="searchWebMii()">WebMii</button>
+      <button type="button" class="button" onclick="Names_AdvIntl_9jaBook()">9ja Book</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_ASA()">Advertising Standards Authority (ASA)</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_CensysCert()">Censys Certificates</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_Crunchbase()">Crunchbase - Person</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_DomainToolsWHOIS()">DomainTools - WHOIS</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_FacebookDirect()">Facebook (Direct)</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_FacebookGoogle()">Facebook (Google)</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_GoogleMaps()">Google Maps</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_GoogleSearch()">Google Search</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_IDCrawlName()">iD Crawl</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_InstagramGoogle()">Instagram (Google)</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_Interpol()">Interpol - RedNotices</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_OCCRP()">OCCRP Aleph</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_OFACRecent()">OFAC Sanctions - Rec.</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_OFACSearch()">OFAC Sanctions - Search</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_OpenCorporates()">Open Corporates</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_OpenSanctions()">Open Sanctions</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_RiskIQ()">RiskIQ - Address</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_SocialSearcherName()">Social Searcher (Name)</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_ThatsThemName()">ThatsThem</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_TruePeopleSearch()">TruePeopleSearch (US Addr)</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_TwitterDirect()">Twitter (Direct)</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_TwitterGoogle()">Twitter (Google)</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_UDRPSearch()">UDRPsearch</button>
+		<button class="button" onclick="Names_WebMii()">WebMii</button>
       </div>
+
+      <h3>Canada</h3>
+      <div class="button-grid">
+        <button type="button" class="button" onclick="Names_AdvIntl_Canada411()">Canada411</button>
+      </div>
+
+      <h3>India</h3>
+      <div class="button-grid">
+        <button type="button" class="button" onclick="Names_AdvIntl_ZaubaCorp()">Zauba Corp (Person)</button>
+      </div>
+
       <h3>Italy</h3>
       <div class="button-grid">
-        <button class="button" onclick="searchPagineBianche()">Pagine Bianche</button>
-        <button class="button" onclick="searchPagineGialle()">Pagine Gialle</button>
+        <button class="button" onclick="Names_PagineBianche()">Pagine Bianche</button>
+        <button class="button" onclick="Names_PagineGialle()">Pagine Gialle</button>
+      </div>
+      
+      <h3>Russia</h3>
+      <div class="button-grid">
+        <button type="button" class="button" onclick="Names_AdvIntl_CheckoRU()">Checko</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_RusFinder()">RusFinder</button>
+      </div>
+
+      <h3>United Kingdom</h3>
+      <div class="button-grid">
+        <button type="button" class="button" onclick="Names_AdvIntl_UKPhoneBookName()">UKPhoneBook (Name)</button>
+        <button type="button" class="button" onclick="Names_AdvIntl_UKPhoneBookResi()">UKPhoneBook (Res.)</button>
       </div>
     </div>
 
     <div class="column">
       <h2>UNITED STATES</h2>
       <div class="button-grid">
-        <button class="button" onclick="searchAddresses()">Addresses.com</button>
-        <button class="button" onclick="searchAdvBackground()">AdvBackgroundChk</button>
-        <button class="button" onclick="searchClassmates()">Classmates</button>
-        <button class="button" onclick="searchCyberBackground()">CyberBackground</button>
-        <button class="button" onclick="searchFamilyTreeNow()">FamilyTreeNow</button>
-        <button class="button" onclick="searchFastPeople()">FastPeople</button>
-        <button class="button" onclick="searchIDCrawl()">ID Crawl</button>
-        <button class="button" onclick="searchIntelius()">Intelius</button>
-        <button class="button" onclick="searchNuwber()">Nuwber</button>
-        <button class="button" onclick="searchPeopleByName()">PeopleByName</button>
-        <button class="button" onclick="searchPeopleSearchNow()">PeopleSearchNow</button>
-        <button class="button" onclick="searchRadaris()">Radaris</button>
-        <button class="button" onclick="searchRocketReach()">RocketReach</button>
-        <button class="button" onclick="searchSearchPeople()">SearchPeopleFree</button>
-        <button class="button" onclick="searchSocialSearcher()">SocialSearcher</button>
-        <button class="button" onclick="searchSpokeo()">Spokeo</button>
-        <button class="button" onclick="searchThatsThem()">ThatsThem</button>
-        <button class="button" onclick="searchTruePeople()">TruePeople</button>
-        <button class="button" onclick="searchTruthFinder()">TruthFinder</button>
-        <button class="button" onclick="searchUSAOfficial()">USA-Official</button>
-        <button class="button" onclick="searchWhitePages()">WhitePages</button>
-        <button class="button" onclick="searchYasni()">Yasni</button>
-        <button class="button" onclick="searchZabasearch()">Zabasearch</button>
+        <button class="button" onclick="Names_Addresses()">Addresses.com</button>
+        <button class="button" onclick="Names_AdvBackground()">AdvBackgroundChk</button>
+        <button class="button" onclick="Names_Classmates()">Classmates</button>
+        <button class="button" onclick="Names_CyberBackground()">CyberBackground</button>
+        <button class="button" onclick="Names_FamilyTreeNow()">FamilyTreeNow</button>
+        <button class="button" onclick="Names_FastPeople()">FastPeople</button>
+        <button class="button" onclick="Names_IDCrawl()">ID Crawl</button>
+        <button class="button" onclick="Names_Intelius()">Intelius</button>
+        <button class="button" onclick="Names_Nuwber()">Nuwber</button>
+        <button class="button" onclick="Names_PeopleByName()">PeopleByName</button>
+        <button class="button" onclick="Names_PeopleSearchNow()">PeopleSearchNow</button>
+        <button class="button" onclick="Names_Radaris()">Radaris</button>
+        <button class="button" onclick="Names_RocketReach()">RocketReach</button>
+        <button class="button" onclick="Names_SearchPeopleFree()">SearchPeopleFree</button>
+        <button class="button" onclick="Names_AdvIntl_SearchSystems()">Search Systems</button>
+        <button class="button" onclick="Names_SocialSearcher()">SocialSearcher</button>
+        <button class="button" onclick="Names_Spokeo()">Spokeo</button>
+        <button class="button" onclick="Names_ThatsThem()">ThatsThem</button>
+        <button class="button" onclick="Names_TruePeople()">TruePeople</button>
+        <button class="button" onclick="Names_TruthFinder()">TruthFinder</button>
+        <button class="button" onclick="Names_USAOfficial()">USA-Official</button>
+        <button class="button" onclick="Names_WhitePages()">WhitePages</button>
+        <button class="button" onclick="Names_Yasni()">Yasni</button>
+        <button class="button" onclick="Names_Zabasearch()">Zabasearch</button>
       </div>
     </div>
   </div>
@@ -137,71 +184,104 @@
       const lastName = document.getElementById('lastName').value.trim();
       if (firstName === "" && lastName === "") {
         alert("Please enter at least a first or last name.");
-        return null; // Indicate failure or empty input
+        return null; 
       }
       return { firstName, lastName };
     }
 
     function searchAndOpen(urlTemplate, nameObj, windowName) {
-        if (!nameObj) return; // names were empty
-        let url = urlTemplate
-            .replace('FIRST_NAME_RAW', nameObj.firstName) // For paths that don't need encoding
-            .replace('LAST_NAME_RAW', nameObj.lastName)
-            .replace('FULL_NAME_RAW', (nameObj.firstName + " " + nameObj.lastName).trim())
-            .replace('FIRST_NAME_ENC', encodeURIComponent(nameObj.firstName))
-            .replace('LAST_NAME_ENC', encodeURIComponent(nameObj.lastName))
-            .replace('FULL_NAME_ENC', encodeURIComponent((nameObj.firstName + " " + nameObj.lastName).trim()))
-            .replace('FIRST_NAME_DASH_ENC', encodeURIComponent(nameObj.firstName)) // For when dash is separator
-            .replace('LAST_NAME_DASH_ENC', encodeURIComponent(nameObj.lastName));
+        if (!nameObj && urlTemplate.includes('NAME')) { 
+            if (urlTemplate.includes('FIRST_NAME') || urlTemplate.includes('LAST_NAME') || urlTemplate.includes('FULL_NAME')) {
+                return; 
+            }
+        }
         
-        // Specific handling for dash-separated full names
-        if (urlTemplate.includes('FULL_NAME_DASH_ENC')) {
-             const fullNameDash = [nameObj.firstName, nameObj.lastName].filter(Boolean).map(encodeURIComponent).join('-');
-             url = url.replace('FULL_NAME_DASH_ENC', fullNameDash);
+        let url = urlTemplate;
+        if (nameObj) { 
+            const fullName = (nameObj.firstName + " " + nameObj.lastName).trim();
+            const fullNameDash = [nameObj.firstName, nameObj.lastName].filter(Boolean).join('-');
+            const fullNameDashLower = fullNameDash.toLowerCase();
+
+            url = url
+                .replace(/FIRST_NAME_RAW/g, nameObj.firstName)
+                .replace(/LAST_NAME_RAW/g, nameObj.lastName)
+                .replace(/FULL_NAME_RAW/g, fullName)
+                .replace(/FIRST_NAME_ENC/g, encodeURIComponent(nameObj.firstName))
+                .replace(/LAST_NAME_ENC/g, encodeURIComponent(nameObj.lastName))
+                .replace(/FULL_NAME_ENC/g, encodeURIComponent(fullName))
+                .replace(/FIRST_NAME_DASH_ENC/g, encodeURIComponent(nameObj.firstName)) 
+                .replace(/LAST_NAME_DASH_ENC/g, encodeURIComponent(nameObj.lastName))
+                .replace(/FULL_NAME_DASH_ENC/g, encodeURIComponent(fullNameDash))
+                .replace(/FULL_NAME_DASH_LOWER_ENC/g, encodeURIComponent(fullNameDashLower));
         }
         
         window.open(url, windowName || '_blank');
     }
 
-    // INTERNATIONAL
-    function searchWebMii() { const names = getNames(); if(names) searchAndOpen('https://webmii.com/people?n="' + 'FULL_NAME_ENC' + '"', names, 'WebMiiWindow'); }
-    function searchPagineBianche() { const names = getNames(); if(names) searchAndOpen('https://www.paginebianche.it/persone?qs=' + 'FIRST_NAME_DASH_ENC' + '-' + 'LAST_NAME_DASH_ENC', names, 'PagineBianche'); }
-    function searchPagineGialle() { const names = getNames(); if(names) searchAndOpen('https://www.paginegialle.it/ricerca/' + 'FIRST_NAME_DASH_ENC' + '-' + 'LAST_NAME_DASH_ENC', names, 'PagineGialle'); }
+    function Names_WebMii() { const names = getNames(); if(names) searchAndOpen('https://webmii.com/people?n="FULL_NAME_ENC"', names, 'WebMiiWindow'); }
+    function Names_PagineBianche() { const names = getNames(); if(names) searchAndOpen('https://www.paginebianche.it/persone?qs=FIRST_NAME_DASH_ENC-LAST_NAME_DASH_ENC', names, 'PagineBianche'); }
+    function Names_PagineGialle() { const names = getNames(); if(names) searchAndOpen('https://www.paginegialle.it/ricerca/FIRST_NAME_DASH_ENC-LAST_NAME_DASH_ENC', names, 'PagineGialle'); }
 
-    // UNITED STATES
-    function searchTruePeople() { const names = getNames(); if(names) searchAndOpen('https://www.truepeoplesearch.com/results?name=' + 'FULL_NAME_ENC', names, 'TruePeopleWindow'); }
-    function searchFastPeople() { const names = getNames(); if(names) searchAndOpen('https://www.fastpeoplesearch.com/name/' + 'FIRST_NAME_DASH_ENC' + '-' + 'LAST_NAME_DASH_ENC', names, 'FastPeopleWindow'); }
-    function searchNuwber() { const names = getNames(); if(names) searchAndOpen('https://nuwber.com/search?name=' + 'FULL_NAME_ENC', names, 'NuwberWindow'); }
-    function searchUSAOfficial() { const names = getNames(); if(names) searchAndOpen('https://usa-official.com/' + 'FIRST_NAME_DASH_ENC' + '-' + 'LAST_NAME_DASH_ENC', names, 'USAOfficialWindow'); }
-    function searchFamilyTreeNow() { const names = getNames(); if(names) searchAndOpen('https://www.familytreenow.com/search/genealogy/results?first=' + 'FIRST_NAME_ENC' + '&last=' + 'LAST_NAME_ENC', names, 'FamilyTreeNowWindow'); }
-    function searchIntelius() { const names = getNames(); if(names) searchAndOpen('https://www.intelius.com/people-search/' + 'FIRST_NAME_DASH_ENC' + '-' + 'LAST_NAME_DASH_ENC', names, 'InteliusWindow'); }
-    function searchRadaris() { const names = getNames(); if(names) searchAndOpen('https://radaris.com/p/' + 'FIRST_NAME_RAW' + '/' + 'LAST_NAME_RAW', names, 'RadarisWindow'); } // Uses raw names in path
-    function searchCyberBackground() { const names = getNames(); if(names) searchAndOpen('https://www.cyberbackgroundchecks.com/people/' + 'FIRST_NAME_DASH_ENC' + '-' + 'LAST_NAME_DASH_ENC', names, 'CyberBackgroundWindow'); }
-    function searchSearchPeople() { const names = getNames(); if(names) searchAndOpen('https://www.searchpeoplefree.com/find/' + 'FIRST_NAME_DASH_ENC' + '-' + 'LAST_NAME_DASH_ENC', names, 'SearchPeopleWindow'); }
-    function searchSpokeo() { const names = getNames(); if(names) searchAndOpen('https://www.spokeo.com/' + 'FIRST_NAME_DASH_ENC' + '-' + 'LAST_NAME_DASH_ENC' + '?loaded=1', names, 'SpokeoWindow'); }
-    function searchAdvBackground() { const names = getNames(); if(names) searchAndOpen('https://www.advancedbackgroundchecks.com/names/' + 'FIRST_NAME_DASH_ENC' + '-' + 'LAST_NAME_DASH_ENC', names, 'AdvBackgroundWindow'); }
-    function searchYasni() { const names = getNames(); if(names) searchAndOpen('https://www.yasni.com/' + 'FULL_NAME_ENC' + '/check+people?sh', names, 'YasniWindow'); } // Uses + for space, enc takes care of it
-    function searchZabasearch() { const names = getNames(); if(names) searchAndOpen('https://www.zabasearch.com/people/' + 'FULL_NAME_ENC', names, 'ZabasearchWindow'); } // Uses + for space
-    function searchPeopleSearchNow() { const names = getNames(); if(names) searchAndOpen('https://www.peoplesearchnow.com/person/' + 'FIRST_NAME_DASH_ENC' + '-' + 'LAST_NAME_DASH_ENC', names, 'PeopleSearchNowWindow'); }
-    function searchSocialSearcher() { const names = getNames(); if(names) searchAndOpen('https://www.social-searcher.com/search-users/?q6=' + 'FULL_NAME_ENC', names, 'SocialSearcherWindow'); }
-    function searchTruthFinder() { const names = getNames(); if(names) searchAndOpen('https://www.truthfinder.com/results/?firstName=' + 'FIRST_NAME_ENC' + '&lastName=' + 'LAST_NAME_ENC' + '&state=ALL', names, 'TruthFinderWindow'); }
-    function searchPeopleByName() { const names = getNames(); if(names) searchAndOpen('https://www.peoplebyname.com/people/' + 'LAST_NAME_RAW' + '/' + 'FIRST_NAME_RAW', names, 'PeopleByNameWindow'); } // Uses raw names in path
-    function searchWhitePages() { const names = getNames(); if(names) searchAndOpen('https://www.whitepages.com/name/' + 'FULL_NAME_DASH_ENC', names, 'WhitePagesWindow');}
-    function searchThatsThem() { const names = getNames(); if(names) searchAndOpen('https://thatsthem.com/name/' + 'FULL_NAME_DASH_ENC', names, 'ThatsThemWindow'); }
-    function searchRocketReach() { 
+    function Names_Addresses() { const names = getNames(); if(names) searchAndOpen('https://www.addresses.com/people/FULL_NAME_DASH_ENC', names, 'AddressesWindow'); }
+    function Names_AdvBackground() { const names = getNames(); if(names) searchAndOpen('https://www.advancedbackgroundchecks.com/names/FIRST_NAME_DASH_ENC-LAST_NAME_DASH_ENC', names, 'AdvBackgroundWindow'); }
+    function Names_Classmates() { const names = getNames(); if(names) searchAndOpen('https://www.classmates.com/siteui/ybsearch/results?q=FULL_NAME_ENC', names, 'ClassmatesWindow'); }
+    function Names_CyberBackground() { const names = getNames(); if(names) searchAndOpen('https://www.cyberbackgroundchecks.com/people/FIRST_NAME_DASH_ENC-LAST_NAME_DASH_ENC', names, 'CyberBackgroundWindow'); }
+    function Names_FamilyTreeNow() { const names = getNames(); if(names) searchAndOpen('https://www.familytreenow.com/search/genealogy/results?first=FIRST_NAME_ENC&last=LAST_NAME_ENC', names, 'FamilyTreeNowWindow'); }
+    function Names_FastPeople() { const names = getNames(); if(names) searchAndOpen('https://www.fastpeoplesearch.com/name/FIRST_NAME_DASH_ENC-LAST_NAME_DASH_ENC', names, 'FastPeopleWindow'); }
+    function Names_IDCrawl() { const names = getNames(); if(names) searchAndOpen('https://www.idcrawl.com/FIRST_NAME_DASH_ENC-LAST_NAME_DASH_ENC', names, 'IDCrawlWindow'); }
+    function Names_Intelius() { const names = getNames(); if(names) searchAndOpen('https://www.intelius.com/people-search/FIRST_NAME_DASH_ENC-LAST_NAME_DASH_ENC', names, 'InteliusWindow'); }
+    function Names_Nuwber() { const names = getNames(); if(names) searchAndOpen('https://nuwber.com/search?name=FULL_NAME_ENC', names, 'NuwberWindow'); }
+    function Names_PeopleByName() { const names = getNames(); if(names) searchAndOpen('https://www.peoplebyname.com/people/LAST_NAME_RAW/FIRST_NAME_RAW', names, 'PeopleByNameWindow'); }
+    function Names_PeopleSearchNow() { const names = getNames(); if(names) searchAndOpen('https://www.peoplesearchnow.com/person/FIRST_NAME_DASH_ENC-LAST_NAME_DASH_ENC', names, 'PeopleSearchNowWindow'); }
+    function Names_Radaris() { const names = getNames(); if(names) searchAndOpen('https://radaris.com/p/FIRST_NAME_RAW/LAST_NAME_RAW', names, 'RadarisWindow'); }
+    function Names_RocketReach() { 
       const names = getNames(); 
       if(names) {
-        const query = encodeURIComponent(names.firstName + " " + names.lastName).trim();
-        // Google search dork, query for site:rocketreach.co needs to be part of the main q parameter
+        const query = encodeURIComponent((names.firstName + " " + names.lastName).trim());
         const url = 'https://google.com/search?q=site:rocketreach.co+"' + query + '"';
         window.open(url, 'RocketReachWindow');
       }
     }
-    function searchAddresses() { const names = getNames(); if(names) searchAndOpen('https://www.addresses.com/people/' + 'FULL_NAME_DASH_ENC', names, 'AddressesWindow'); }
-    function searchClassmates() { const names = getNames(); if(names) searchAndOpen('https://www.classmates.com/siteui/ybsearch/results?q=' + 'FULL_NAME_ENC', names, 'ClassmatesWindow'); }
-    function searchIDCrawl() { const names = getNames(); if(names) searchAndOpen('https://www.idcrawl.com/' + 'FIRST_NAME_DASH_ENC' + '-' + 'LAST_NAME_DASH_ENC', names, 'IDCrawlWindow'); }
-  
-    // Script per mostra/nascondi submenu al passaggio del mouse
+    function Names_SearchPeopleFree() { const names = getNames(); if(names) searchAndOpen('https://www.searchpeoplefree.com/find/FIRST_NAME_DASH_ENC-LAST_NAME_DASH_ENC', names, 'SearchPeopleWindow'); }
+    function Names_SocialSearcher() { const names = getNames(); if(names) searchAndOpen('https://www.social-searcher.com/search-users/?q6=FULL_NAME_ENC', names, 'SocialSearcherWindow'); }
+    function Names_Spokeo() { const names = getNames(); if(names) searchAndOpen('https://www.spokeo.com/FIRST_NAME_DASH_ENC-LAST_NAME_DASH_ENC?loaded=1', names, 'SpokeoWindow'); }
+    function Names_ThatsThem() { const names = getNames(); if(names) searchAndOpen('https://thatsthem.com/name/FULL_NAME_DASH_ENC', names, 'ThatsThemWindow'); }
+    function Names_TruePeople() { const names = getNames(); if(names) searchAndOpen('https://www.truepeoplesearch.com/results?name=FULL_NAME_ENC', names, 'TruePeopleWindow'); }
+    function Names_TruthFinder() { const names = getNames(); if(names) searchAndOpen('https://www.truthfinder.com/results/?firstName=FIRST_NAME_ENC&lastName=LAST_NAME_ENC&state=ALL', names, 'TruthFinderWindow'); }
+    function Names_USAOfficial() { const names = getNames(); if(names) searchAndOpen('https://usa-official.com/FIRST_NAME_DASH_ENC-LAST_NAME_DASH_ENC', names, 'USAOfficialWindow'); }
+    function Names_WhitePages() { const names = getNames(); if(names) searchAndOpen('https://www.whitepages.com/name/FULL_NAME_DASH_ENC', names, 'WhitePagesWindow');}
+    function Names_Yasni() { const names = getNames(); if(names) searchAndOpen('https://www.yasni.com/FULL_NAME_ENC/check+people?sh', names, 'YasniWindow'); }
+    function Names_Zabasearch() { const names = getNames(); if(names) searchAndOpen('https://www.zabasearch.com/people/FULL_NAME_ENC', names, 'ZabasearchWindow'); }
+
+    function Names_AdvIntl_Crunchbase() { const n = getNames(); if(n) searchAndOpen('https://www.crunchbase.com/discover/people/FULL_NAME_DASH_LOWER_ENC', n); }
+    function Names_AdvIntl_FacebookDirect() { const n = getNames(); if(n) searchAndOpen('https://www.facebook.com/search/top?q=FULL_NAME_ENC', n); }
+    function Names_AdvIntl_FacebookGoogle() { const n = getNames(); if(n) searchAndOpen('https://www.google.com/search?q=site%3Afacebook.com+"FULL_NAME_ENC"', n); }
+    function Names_AdvIntl_GoogleSearch() { const n = getNames(); if(n) searchAndOpen('https://www.google.com/search?q="FULL_NAME_ENC"', n); }
+    function Names_AdvIntl_IDCrawlName() { const n = getNames(); if(n) searchAndOpen('https://www.idcrawl.com/FULL_NAME_DASH_ENC', n); }
+    function Names_AdvIntl_InstagramGoogle() { const n = getNames(); if(n) searchAndOpen('https://www.google.com/search?q=site%3Ainstagram.com+"FULL_NAME_ENC"', n); }
+    function Names_AdvIntl_Interpol() { searchAndOpen('https://www.interpol.int/en/How-we-work/Notices/View-Red-Notices', null); }
+    function Names_AdvIntl_OCCRP() { const n = getNames(); if(n) searchAndOpen('https://aleph.occrp.org/search?limit=30&q=FULL_NAME_ENC', n); }
+    function Names_AdvIntl_OpenCorporates() { const n = getNames(); if(n) searchAndOpen('https://opencorporates.com/officers?q=FULL_NAME_ENC', n); }
+    function Names_AdvIntl_OpenSanctions() { const n = getNames(); if(n) searchAndOpen('https://www.opensanctions.org/search/?q=FULL_NAME_ENC', n); }
+    function Names_AdvIntl_SearchSystems() { const n = getNames(); if(n) searchAndOpen('https://publicrecords.searchsystems.net/', n); } // Moved to US section, uses name
+    function Names_AdvIntl_SocialSearcherName() { const n = getNames(); if(n) searchAndOpen('https://www.social-searcher.com/search-users/?q6=FULL_NAME_ENC', n); }
+    function Names_AdvIntl_ThatsThemName() { const n = getNames(); if(n) searchAndOpen('https://thatsthem.com/name/FULL_NAME_DASH_ENC', n); }
+    function Names_AdvIntl_TruePeopleSearch() { const n = getNames(); if(n) searchAndOpen('https://www.truepeoplesearch.com/resultaddress?streetaddress=FULL_NAME_ENC', n); } // This was likely meant for address, for name it's different
+    function Names_AdvIntl_TwitterDirect() { const n = getNames(); if(n) searchAndOpen('https://twitter.com/search?q=(FULL_NAME_ENC)&src=typed_query&f=user', n); }
+    function Names_AdvIntl_TwitterGoogle() { const n = getNames(); if(n) searchAndOpen('https://www.google.com/search?q=site%3Atwitter.com+"FULL_NAME_ENC"', n); }
+    function Names_AdvIntl_ZaubaCorp() { const n = getNames(); if(n) searchAndOpen('https://www.zaubacorp.com/directorsearchresults/FULL_NAME_ENC', n); }
+    function Names_AdvIntl_RusFinder() { const n = getNames(); if(n) searchAndOpen('https://rusfinder.pro/search/', n); }
+    function Names_AdvIntl_9jaBook() { const n = getNames(); if(n) searchAndOpen('https://9jabook.com/main/search/search?q=FULL_NAME_ENC', n); }
+    function Names_AdvIntl_ASA() { const n = getNames(); if(n) searchAndOpen('https://www.asa.org.uk/search.html?q=FULL_NAME_ENC', n); }
+    function Names_AdvIntl_CensysCert() { const n = getNames(); if(n) searchAndOpen('https://search.censys.io/search?resource=certificates&sort=RELEVANCE&per_page=25&virtual_hosts=EXCLUDE&q=FULL_NAME_ENC', n); }
+    function Names_AdvIntl_CheckoRU() { const n = getNames(); if(n) searchAndOpen('https://checko.ru/search?query=FULL_NAME_ENC', n); }
+    function Names_AdvIntl_OFACRecent() { const n = getNames(); if(n) searchAndOpen('https://ofac.treasury.gov/recent-actions?search_api_fulltext=FULL_NAME_ENC&ra-start-date=&ra-end-date=&ra_year=', n); }
+    function Names_AdvIntl_OFACSearch() { searchAndOpen('https://sanctionssearch.ofac.treas.gov/', null); }
+    function Names_AdvIntl_UDRPSearch() { const n = getNames(); if(n) searchAndOpen('https://www.udrpsearch.com/search?query=FULL_NAME_ENC&search=parties', n); }
+    function Names_AdvIntl_UKPhoneBookResi() { searchAndOpen('https://www.ukphonebook.com/residential-telephone-directory/', null); }
+    function Names_AdvIntl_UKPhoneBookName() { const n = getNames(); if(n) searchAndOpen('https://www.ukphonebook.com/find-a-person/by-fullname/FULL_NAME_ENC', n); }
+    function Names_AdvIntl_Canada411() { searchAndOpen('https://www.canada411.ca/search/address.html', null); } // Name not used
+    
     document.querySelectorAll('.menu > li').forEach(item => {
       item.addEventListener('mouseover', function() {
         const submenu = this.querySelector('.submenu');
@@ -216,8 +296,7 @@
 </main>
 
 <footer>
-  Global Security Italy • Rome (IT)
-  <a href="License.html">License</a>
+  <p>Global Security Italy • Rome (IT) <a href="License.html">License</a></p>
 </footer>
 
 </body>
