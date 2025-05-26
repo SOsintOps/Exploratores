@@ -2,267 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Exploratores Virtual Currencies Tool</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploratores Virtual Currencies Tool</title>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #0066ff;
-      --secondary-color: #333;
-      --bg-color: #f9f9f9;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'IBM Plex Sans', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--secondary-color);
-      padding-bottom: 60px; /* Footer height */
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      background: #fff;
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      justify-content: center;
-      z-index: 1000;
-    }
-
-    .menu {
-      list-style: none;
-      display: flex;
-      width: 100%;
-      max-width: 1200px;
-      justify-content: space-around;
-    }
-
-    .menu > li {
-      position: relative;
-      height: 60px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.2s;
-    }
-
-    .menu > li:hover {
-      background: var(--primary-color);
-      color: #fff;
-    }
-
-    .submenu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #fff;
-      border: 1px solid #ddd;
-      list-style: none;
-      min-width: 200px;
-      z-index: 999;
-    }
-
-    .submenu li {
-      padding: 0.5rem 1rem;
-      border-bottom: 1px solid #eee;
-    }
-
-    .submenu li:last-child {
-      border-bottom: none;
-    }
-
-    .submenu a {
-      text-decoration: none;
-      color: var(--secondary-color);
-      display: block;
-    }
-
-    .submenu li:hover {
-      background: var(--primary-color);
-    }
-
-    .submenu li:hover a {
-      color: #fff;
-    }
-
-    .menu > li:hover .submenu {
-      display: block;
-    }
-
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 80px 20px 20px; 
-      background: #fff;
-    }
-
-    .page-title {
-      text-align: center;
-      margin-bottom: 1.5rem;
-      font-size: 1.5rem;
-    }
-    
-    h2 {
-      margin-top: 1.5rem;
-      margin-bottom: 0.8rem;
-      font-size: 1.2rem;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 0.3rem;
-    }
-    
-    /* Ensure first h2 in each column has no top margin */
-    .column-left > .form-section:first-child > h2,
-    .column-right > .form-section:first-child > h2 {
-        margin-top: 0;
-    }
-
-    .form-section {
-      margin-bottom: 1.5rem;
-      padding: 1rem;
-      background: #fafafa;
-      border: 1px solid #eee;
-      border-radius: 4px;
-    }
-
-    .form-section form { 
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem; 
-      align-items: center;
-    }
-    
-    .single-input-container {
-        margin-bottom: 0.75rem;
-    }
-    .single-input-container input[type="text"] {
-        width: 100%;
-        padding: 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        font-size: 0.9rem;
-        box-sizing: border-box;
-    }
-
-    input[type="text"], select, input[type="date"] {
-      flex: 1 1 200px; 
-      padding: 0.5rem; 
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      font-size: 0.9rem;
-    }
-
-    input[type="submit"], input[type="button"] {
-      width: auto; 
-      min-width: 140px; 
-      padding: 0.5rem 0.8rem; 
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      background: #fff;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: background-color 0.2s, color 0.2s;
-      text-align: center;
-      line-height: 1.2; 
-    }
-
-    input[type="submit"]:hover, input[type="button"]:hover {
-      background: var(--primary-color);
-      color: #fff;
-    }
-
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.75rem; 
-    }
-    .button-row input[type="button"]{
-        flex-grow: 1; 
-        flex-basis: 140px; 
-    }
-
-    /* Two-column layout styles */
-    .two-column-container {
-      display: flex;
-      gap: 1.5rem; /* Space between columns */
-    }
-    .column-left, .column-right {
-      flex: 1; /* Each column takes equal width */
-      min-width: 0; /* Prevent flexbox overflow issues */
-    }
-
-    footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: #fff;
-      border-top: 1px solid #ddd;
-      text-align: center;
-      padding: 0.5rem;
-      font-size: 0.9rem;
-      color: #555;
-      z-index: 1000;
-    }
-
-    footer a {
-      color: var(--primary-color);
-      text-decoration: none;
-      margin-left: 0.5rem;
-    }
-    
-    .note {
-      font-size: 1rem;
-      background-color: #fff9d6;
-      border-left: 3px solid #ffc107;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      border-radius: 3px;
-    }
-
-    @media (max-width: 992px) { /* Breakpoint for stacking columns */
-        .two-column-container {
-            flex-direction: column;
-        }
-    }
-
-    @media (max-width: 768px) {
-      .form-section form, .single-input-container {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .single-input-container input[type="text"] {
-          width: 100%;
-      }
-      input[type="text"], select, input[type="date"], input[type="submit"], input[type="button"] {
-        width: 100%;
-        flex-basis: auto; 
-      }
-      .button-row {
-        flex-direction: column;
-      }
-      .button-row input[type="button"] {
-        width: 100%;
-      }
-      .menu > li {
-        font-size: 0.7rem; 
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
@@ -282,7 +25,7 @@
       <ul class="submenu">
         <li><a href="Names.html">Names</a></li>
         <li><a href="phoneus.html">US Phones</a></li>
-		<li><a href="phoneint.html">International Phones</a></li>
+        <li><a href="phoneint.html">International Phones</a></li>
         <li><a href="Address.html">Addresses</a></li>
         <li><a href="vehicles.html">Vehicles</a></li>
         <li><a href="usernames.html">Usernames</a></li>
@@ -324,7 +67,6 @@
     </li>
     <li><span>Tools</span>
       <ul class="submenu">
-
         <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
       </ul>
     </li>
@@ -334,109 +76,140 @@
 <main>
   <h1 class="page-title">Virtual Currencies Tool</h1>
 
-  <div class="two-column-container">
-    <div class="column-left">
-      <div class="form-section">
+  <div class="columns">
+    <div class="column"> <div>
         <h2>Bitcoin Address Tools</h2>
-        <div class="single-input-container">
-          <input type="text" id="bitcoinAddressInput" name="bitcoinAddressInput" placeholder="Bitcoin Address"/>
+        <div class="input-container">
+          <input type="text" id="bitcoinAddressInput" name="bitcoinAddressInput" class="input-field" placeholder="Bitcoin Address"/>
         </div>
-        <div class="button-row">
-          <input type="button" value="BTC Validation" onclick="makeOsint01(document.getElementById('bitcoinAddressInput').value)">
-          <input type="button" value="Satoshi Received" onclick="makeOsint03(document.getElementById('bitcoinAddressInput').value)">
-          <input type="button" value="Satoshi Sent" onclick="makeOsint04(document.getElementById('bitcoinAddressInput').value)">
-          <input type="button" value="Satoshi Balance" onclick="makeOsint05(document.getElementById('bitcoinAddressInput').value)">
+        <div class="button-grid button-grid-3col">
+          <button type="button" class="button" onclick="Currencies14(document.getElementById('bitcoinAddressInput').value)">BC BTC</button>
+          <button type="button" class="button" onclick="Currencies09(document.getElementById('bitcoinAddressInput').value)">BitcoinAbuse</button>
+          <button type="button" class="button" onclick="Currencies08(document.getElementById('bitcoinAddressInput').value)">Blockchain</button>
         </div>
-        <div class="button-row">
-          <input type="button" value="Summary" onclick="makeOsint06(document.getElementById('bitcoinAddressInput').value)">
-          <input type="button" value="Creation Date" onclick="makeOsint07(document.getElementById('bitcoinAddressInput').value)">
-          <input type="button" value="Blockchain" onclick="makeOsint08(document.getElementById('bitcoinAddressInput').value)">
-          <input type="button" value="BitcoinAbuse" onclick="makeOsint09(document.getElementById('bitcoinAddressInput').value)">
+        <div class="button-grid button-grid-3col">
+          <button type="button" class="button" onclick="Currencies01(document.getElementById('bitcoinAddressInput').value)">BTC Validation</button>
+          <button type="button" class="button" onclick="Currencies07(document.getElementById('bitcoinAddressInput').value)">Creation Date</button>
+          <button type="button" class="button" onclick="Currencies11(document.getElementById('bitcoinAddressInput').value)">OXT</button>
         </div>
-        <div class="button-row">
-          <input type="button" value="WhosWho" onclick="makeOsint10(document.getElementById('bitcoinAddressInput').value)">
-          <input type="button" value="OXT" onclick="makeOsint11(document.getElementById('bitcoinAddressInput').value)">
-          <input type="button" value="WalletExplorer (Addr)" onclick="makeOsint12(document.getElementById('bitcoinAddressInput').value)">
-          <input type="button" value="BC BTC" onclick="makeOsint14(document.getElementById('bitcoinAddressInput').value)">
+        <div class="button-grid button-grid-3col">
+          <button type="button" class="button" onclick="Currencies05(document.getElementById('bitcoinAddressInput').value)">Satoshi Balance</button>
+          <button type="button" class="button" onclick="Currencies03(document.getElementById('bitcoinAddressInput').value)">Satoshi Received</button>
+          <button type="button" class="button" onclick="Currencies04(document.getElementById('bitcoinAddressInput').value)">Satoshi Sent</button>
+        </div>
+        <div class="button-grid button-grid-3col">
+          <button type="button" class="button" onclick="Currencies06(document.getElementById('bitcoinAddressInput').value)">Summary</button>
+          <button type="button" class="button" onclick="Currencies12(document.getElementById('bitcoinAddressInput').value)">WalletExplorer (Addr)</button>
+          <button type="button" class="button" onclick="Currencies10(document.getElementById('bitcoinAddressInput').value)">WhosWho</button>
         </div>
       </div>
 
-      <div class="form-section">
-        <h2>General Bitcoin Information</h2>
-        <form onsubmit="event.preventDefault(); makeOsint02();"> 
-          <input type="submit" value="1 BTC Price"/>
+      <div>
+        <h2>Currency Converters</h2>
+        <form onsubmit="event.preventDefault(); Currencies22b(this.Search22b.value);">
+          <div class="input-button-line">
+            <input type="text" id="Search22b" name="Search22b" class="input-field" placeholder="Bitcoin Amount"/>
+            <button type="submit" class="button" style="width: 160px;">BTC &gt; EUR</button>
+          </div>
+        </form>
+        <form onsubmit="event.preventDefault(); Currencies23b(this.Search23b.value);">
+          <div class="input-button-line">
+            <input type="text" id="Search23b" name="Search23b" class="input-field" placeholder="Euro Amount"/>
+            <button type="submit" class="button" style="width: 160px;">EUR &gt; BTC</button>
+          </div>
+        </form>
+        <form onsubmit="event.preventDefault(); Currencies22(this.Search22.value);">
+          <div class="input-button-line">
+            <input type="text" id="Search22" name="Search22" class="input-field" placeholder="Bitcoin Amount"/>
+            <button type="submit" class="button" style="width: 160px;">BTC &gt; USD</button>
+          </div>
+        </form>
+        <form onsubmit="event.preventDefault(); Currencies23(this.Search23.value);">
+          <div class="input-button-line">
+            <input type="text" id="Search23" name="Search23" class="input-field" placeholder="Dollar Amount"/>
+            <button type="submit" class="button" style="width: 160px;">USD &gt; BTC</button>
+          </div>
+        </form>
+        <form onsubmit="event.preventDefault(); Currencies24(this.Search24.value);">
+          <div class="input-button-line">
+            <input type="text" id="Search24" name="Search24" class="input-field" placeholder="Satoshi Amount"/>
+            <button type="submit" class="button" style="width: 160px;">Satoshi &gt; USD</button>
+          </div>
+        </form>
+        <form onsubmit="event.preventDefault(); Currencies25(this.Search25.value);">
+          <div class="input-button-line">
+            <input type="text" id="Search25" name="Search25" class="input-field" placeholder="Dollar Amount"/>
+            <button type="submit" class="button" style="width: 160px;">USD &gt; Satoshi</button>
+          </div>
         </form>
       </div>
     </div>
 
-    <div class="column-right">
-      <div class="form-section">
+    <div class="column"> <div>
         <h2>Other Cryptocurrency Lookups</h2>
-        <form onsubmit="event.preventDefault(); makeOsint15(this.Search15.value);">
-          <input type="text" id="Search15" name="Search15" placeholder="Wallet ID"/>
-          <input type="submit" value="WalletExplorer (ID)"/>
+        <form onsubmit="event.preventDefault(); Currencies19(this.Search19.value);">
+          <div class="input-button-line">
+            <input type="text" id="Search19" name="Search19" class="input-field" placeholder="Bitcoin-SV Address"/>
+            <button type="submit" class="button" style="width: 160px;">BC Bitcoin-SV</button>
+          </div>
         </form>
-        <form onsubmit="event.preventDefault(); makeOsint16(this.Search16.value);">
-          <input type="text" id="Search16" name="Search16" placeholder="Ethereum Address"/>
-          <input type="submit" value="BC Ethereum"/>
+        <form onsubmit="event.preventDefault(); Currencies17(this.Search17.value);">
+          <div class="input-button-line">
+            <input type="text" id="Search17" name="Search17" class="input-field" placeholder="Bitcoin-Cash Hash"/>
+            <button type="submit" class="button" style="width: 160px;">BC Cash</button>
+          </div>
         </form>
-        <form onsubmit="event.preventDefault(); makeOsint17(this.Search17.value);">
-          <input type="text" id="Search17" name="Search17" placeholder="Bitcoin-Cash Hash"/>
-          <input type="submit" value="BC Cash"/>
+        <form onsubmit="event.preventDefault(); Currencies21(this.Search21.value);">
+          <div class="input-button-line">
+            <input type="text" id="Search21" name="Search21" class="input-field" placeholder="Dash Address"/>
+            <button type="submit" class="button" style="width: 160px;">BC Dash</button>
+          </div>
         </form>
-        <form onsubmit="event.preventDefault(); makeOsint18(this.Search18.value);">
-          <input type="text" id="Search18" name="Search18" placeholder="Litecoin Address"/>
-          <input type="submit" value="BC Litecoin"/>
+        <form onsubmit="event.preventDefault(); Currencies20(this.Search20.value);">
+          <div class="input-button-line">
+            <input type="text" id="Search20" name="Search20" class="input-field" placeholder="Dogecoin Address"/>
+            <button type="submit" class="button" style="width: 160px;">BC Dogecoin</button>
+          </div>
         </form>
-        <form onsubmit="event.preventDefault(); makeOsint19(this.Search19.value);">
-          <input type="text" id="Search19" name="Search19" placeholder="Bitcoin-SV Address"/>
-          <input type="submit" value="BC Bitcoin-SV"/>
+        <form onsubmit="event.preventDefault(); Currencies16(this.Search16.value);">
+          <div class="input-button-line">
+            <input type="text" id="Search16" name="Search16" class="input-field" placeholder="Ethereum Address"/>
+            <button type="submit" class="button" style="width: 160px;">BC Ethereum</button>
+          </div>
         </form>
-        <form onsubmit="event.preventDefault(); makeOsint20(this.Search20.value);">
-          <input type="text" id="Search20" name="Search20" placeholder="Dogecoin Address"/>
-          <input type="submit" value="BC Dogecoin"/>
+        <form onsubmit="event.preventDefault(); Currencies18(this.Search18.value);">
+          <div class="input-button-line">
+            <input type="text" id="Search18" name="Search18" class="input-field" placeholder="Litecoin Address"/>
+            <button type="submit" class="button" style="width: 160px;">BC Litecoin</button>
+          </div>
         </form>
-        <form onsubmit="event.preventDefault(); makeOsint21(this.Search21.value);">
-          <input type="text" id="Search21" name="Search21" placeholder="Dash Address"/>
-          <input type="submit" value="BC Dash"/>
-        </form>
-      </div>
-
-      <div class="form-section">
-        <h2>Currency Converters</h2>
-        <form onsubmit="event.preventDefault(); makeOsint22(this.Search22.value);">
-          <input type="text" id="Search22" name="Search22" placeholder="Bitcoin Amount"/>
-          <input type="submit" value="BTC > USD"/>
-        </form>
-        <form onsubmit="event.preventDefault(); makeOsint23(this.Search23.value);">
-          <input type="text" id="Search23" name="Search23" placeholder="Dollar Amount"/>
-          <input type="submit" value="USD > BTC"/>
-        </form>
-        <form onsubmit="event.preventDefault(); makeOsint24(this.Search24.value);">
-          <input type="text" id="Search24" name="Search24" placeholder="Satoshi Amount"/>
-          <input type="submit" value="Satoshi > USD"/>
-        </form>
-        <form onsubmit="event.preventDefault(); makeOsint25(this.Search25.value);">
-          <input type="text" id="Search25" name="Search25" placeholder="Dollar Amount"/>
-          <input type="submit" value="USD > Satoshi"/>
+        <form onsubmit="event.preventDefault(); Currencies15(this.Search15.value);">
+          <div class="input-button-line">
+            <input type="text" id="Search15" name="Search15" class="input-field" placeholder="Wallet ID"/>
+            <button type="submit" class="button" style="width: 160px;">WalletExplorer (ID)</button>
+          </div>
         </form>
       </div>
 
-      <div class="form-section">
+      <div>
         <h2>Security Tools</h2>
-        <form onsubmit="event.preventDefault(); makeOsint26(this.Search26.value);">
-          <input type="text" id="Search26" name="Search26" placeholder="Virtual Currency Address"/>
-          <input type="submit" value="ScamSearch"/>
+        <form onsubmit="event.preventDefault(); Currencies26(this.Search26.value);">
+          <div class="input-button-line">
+            <input type="text" id="Search26" name="Search26" class="input-field" placeholder="Virtual Currency Address"/>
+            <button type="submit" class="button" style="width: 160px;">ScamSearch</button>
+          </div>
         </form>
       </div>
       
-      <div class="form-section">
+      <div>
         <h2>Unix Time Converter</h2>
         <form onsubmit="event.preventDefault(); convert();">
-            <input type='text' placeholder='Unix Timestamp' id='timestamp'>
-            <input type='submit' value='Convert Timestamp'>
+          <div class="input-button-line">
+            <input type='text' placeholder='Unix Timestamp' id='timestamp' class="input-field">
+            <button type='submit' class="button" style="width: 160px;">Convert Timestamp</button>
+          </div>
         </form>
-        <span id='datetime' style="display: block; margin-top: 0.5rem;"></span>
+        <span id='datetime'></span> 
       </div>
     </div>
   </div>
@@ -444,24 +217,31 @@
 </main>
 
 <script type="text/javascript">
-// Bitcoin Address Specific Searches (use value from 'bitcoinAddressInput' input)
-function makeOsint01(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockexplorer.com/api/addr/' + OsintValue, 'Search01window'); }
-function makeOsint03(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchain.info/q/getreceivedbyaddress/' + OsintValue, 'Search03window'); }
-function makeOsint04(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchain.info/q/getsentbyaddress/' + OsintValue, 'Search04window'); }
-function makeOsint05(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchain.info/q/addressbalance/' + OsintValue, 'Search05window'); }
-function makeOsint06(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://explorer.cloverpool.com/btc/address/' + OsintValue, 'Search06window'); }
-function makeOsint07(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchain.info/q/addressfirstseen/' + OsintValue, 'Search07window'); }
-function makeOsint08(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://www.blockchain.com/btc/address/' + OsintValue, 'Search08window'); }
-function makeOsint09(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://www.chainabuse.com/address/' + OsintValue, 'Search09window'); }
-function makeOsint10(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://bitcoinwhoswho.com/address/' + OsintValue, 'Search10window'); }
-function makeOsint11(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://oxt.me/address/' + OsintValue, 'Search11window'); }
-function makeOsint12(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://www.walletexplorer.com/address/' + OsintValue, 'Search12window'); }
-function makeOsint14(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/bitcoin/address/' + OsintValue, 'Search14window'); }
+// Submenu mouseover/mouseout logic for nav
+document.querySelectorAll('.menu > li').forEach(item => {
+  const submenu = item.querySelector('.submenu');
+  if (submenu) {
+      item.addEventListener('mouseover', () => submenu.style.display = 'block');
+      item.addEventListener('mouseout', () => submenu.style.display = 'none');
+  }
+});
 
-// General Bitcoin Info (no input value needed from a field for its core function)
-function makeOsint02() { window.open('https://blockchain.info/q/24hrprice', 'Search02window'); }
+// Bitcoin Address Specific Searches
+function Currencies01(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockexplorer.com/api/addr/' + OsintValue, 'Search01window'); }
+function Currencies03(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchain.info/q/getreceivedbyaddress/' + OsintValue, 'Search03window'); }
+function Currencies04(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchain.info/q/getsentbyaddress/' + OsintValue, 'Search04window'); }
+function Currencies05(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchain.info/q/addressbalance/' + OsintValue, 'Search05window'); }
+function Currencies06(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://explorer.cloverpool.com/btc/address/' + OsintValue, 'Search06window'); }
+function Currencies07(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchain.info/q/addressfirstseen/' + OsintValue, 'Search07window'); }
+function Currencies08(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://www.blockchain.com/btc/address/' + OsintValue, 'Search08window'); }
+function Currencies09(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://www.chainabuse.com/address/' + OsintValue, 'Search09window'); }
+function Currencies10(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://bitcoinwhoswho.com/address/' + OsintValue, 'Search10window'); }
+function Currencies11(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://oxt.me/address/' + OsintValue, 'Search11window'); }
+function Currencies12(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://www.walletexplorer.com/address/' + OsintValue, 'Search12window'); }
+function Currencies14(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/bitcoin/address/' + OsintValue, 'Search14window'); }
 
-// Unix Time Converter
+// Function Currencies02() was removed.
+
 function convert() {
   var unixtimestamp = document.getElementById('timestamp').value;
   if (!unixtimestamp || isNaN(unixtimestamp)) {
@@ -480,30 +260,35 @@ function convert() {
   document.getElementById('datetime').innerHTML = convdataTime;
 }
 
-// Other Crypto and Converters (added basic empty string check and isNaN for amounts)
-function makeOsint15(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://www.walletexplorer.com/address/' + OsintValue, 'Search15window'); }
-function makeOsint16(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/ethereum/address/' + OsintValue, 'Search16window'); }
-function makeOsint17(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/bitcoin-cash/address/' + OsintValue, 'Search17window'); }
-function makeOsint18(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/litecoin/address/' + OsintValue, 'Search18window'); }
-function makeOsint19(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/bitcoin/address/' + OsintValue, 'Search19window'); } 
-function makeOsint20(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/dogecoin/address/' + OsintValue, 'Search20window'); }
-function makeOsint21(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/dash/address/' + OsintValue, 'Search21window'); }
-function makeOsint22(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://api.coinconvert.net/convert/btc/usd?amount=' + OsintValue, 'Search22window'); }
-function makeOsint23(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://blockchain.info/tobtc?currency=USD&value=' + OsintValue, 'Search23window'); }
-function makeOsint24(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://api.exchangerate.host/convert?from=SAT&to=USD&amount=' + OsintValue, 'Search24window'); }
-function makeOsint25(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://api.exchangerate.host/convert?from=USD&to=SAT&amount=' + OsintValue, 'Search25window'); }
-function makeOsint26(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://scamsearch.io/search_report?searchoption=all&search=' + OsintValue, 'Search26window'); }
+// Other Crypto
+function Currencies15(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://www.walletexplorer.com/address/' + OsintValue, 'Search15window'); }
+function Currencies16(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/ethereum/address/' + OsintValue, 'Search16window'); }
+function Currencies17(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/bitcoin-cash/address/' + OsintValue, 'Search17window'); }
+function Currencies18(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/litecoin/address/' + OsintValue, 'Search18window'); }
+function Currencies19(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/bitcoin-sv/address/' + OsintValue, 'Search19window'); }
+function Currencies20(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/dogecoin/address/' + OsintValue, 'Search20window'); }
+function Currencies21(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/dash/address/' + OsintValue, 'Search21window'); }
 
-// Ensure all form submissions are handled by JS to prevent page reload
+// Currency Converters
+function Currencies22(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://api.coinconvert.net/convert/btc/usd?amount=' + OsintValue, 'Search22window'); }
+function Currencies22b(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://api.coinconvert.net/convert/btc/eur?amount=' + OsintValue, 'Search22bwindow'); }
+function Currencies23(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://blockchain.info/tobtc?currency=USD&value=' + OsintValue, 'Search23window'); }
+function Currencies23b(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://blockchain.info/tobtc?currency=EUR&value=' + OsintValue, 'Search23bwindow'); }
+function Currencies24(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://api.exchangerate.host/convert?from=SAT&to=USD&amount=' + OsintValue, 'Search24window'); }
+function Currencies25(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://api.exchangerate.host/convert?from=USD&to=SAT&amount=' + OsintValue, 'Search25window'); }
+
+// Security Tools
+function Currencies26(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://scamsearch.io/search_report?searchoption=all&search=' + OsintValue, 'Search26window'); }
+
 document.querySelectorAll('form').forEach(form => {
   form.addEventListener('submit', function(event) {
-    event.preventDefault();
+    // Inline onsubmit attributes already handle event.preventDefault()
   });
 });
 </script>
 
 <footer>
-  Global Security Italy • Rome (IT) <a href="License.html">License</a>
+  <p>Global Security Italy • Rome (IT) <a href="License.html">License</a></p>
 </footer>
 
 </body>

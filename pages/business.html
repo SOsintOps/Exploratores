@@ -5,167 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Exploratores Business & Government Tool</title>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #0066ff;
-      --secondary-color: #333;
-      --bg-color: #f9f9f9;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'IBM Plex Sans', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--secondary-color);
-      padding-top: 60px; /* Space for fixed navbar */
-      padding-bottom: 60px; /* Space for fixed footer */
-    }
-
-    /* NAVBAR */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background-color: #ffffff;
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      justify-content: center;
-      z-index: 1000;
-    }
-    .menu {
-      list-style: none;
-      display: flex;
-      max-width: 1200px;
-      width: 100%;
-      justify-content: space-around;
-    }
-    .menu > li {
-      position: relative;
-      height: 60px;
-      flex: 1;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 1rem;
-      border-right: 1px solid #eee;
-      transition: background-color 0.2s ease-in;
-    }
-    .menu > li:last-child { border-right: none; }
-    .menu > li:hover { background-color: var(--primary-color); color: #fff; }
-    .menu > li span { display: block; line-height: 1.2; }
-    .submenu {
-      display: none; position: absolute; background-color: #ffffff;
-      top: 100%; left: 50%; transform: translateX(-50%);
-      list-style: none; border: 1px solid #ddd; min-width: 200px; z-index: 999;
-    }
-    .submenu li { padding: 0.5rem 1rem; border-bottom: 1px solid #eee; }
-    .submenu li:last-child { border-bottom: none; }
-    .submenu li a { text-decoration: none; color: var(--secondary-color); display: block; }
-    .submenu li:hover { background-color: var(--primary-color); }
-    .submenu li:hover a { color: #fff; }
-    .menu > li:hover .submenu { display: block; }
-
-    /* MAIN CONTENT */
-    main {
-      max-width: 1200px; margin: 0 auto;
-      padding: 20px; background-color: #fff; 
-    }
-    h1.page-title { text-align: center; margin-bottom: 1.5rem; font-size: 1.5rem; }
-    
-    .note {
-      font-size: 1rem;
-      background-color: #fff9d6;
-      border-left: 3px solid #ffc107;
-      padding: 0.75rem;
-      margin-bottom: 1.5rem;
-      border-radius: 3px;
-    }
-    .note strong {
-        font-weight: bold;
-    }
-    
-    .columns-container { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    .column { flex: 1; min-width: 300px; border-radius: 4px; }
-    
-    .form-section {
-      margin-bottom: 1.5rem; padding: 1rem;
-      background: #fafafa; border: 1px solid #eee; border-radius: 4px;
-    }
-    .form-section h2 { /* Main section titles in columns */
-      margin-top: 0; margin-bottom: 1rem; font-size: 1.2rem; 
-      color: var(--primary-color); border-bottom: 1px solid var(--primary-color); padding-bottom: 0.5rem;
-    }
-     .column > .form-section:first-child > h2 {
-        margin-top: 0;
-    }
-    .form-section h3 { /* Sub-section titles */
-      margin-top: 1rem; margin-bottom: 0.8rem; font-size: 1.1rem;
-      border-bottom: 1px solid #ccc; padding-bottom: 0.3rem;
-    }
-    .form-section > h3:first-child { margin-top: 0; }
-
-
-    .single-input-container { margin-bottom: 0.75rem; }
-    .single-input-container input[type="text"],
-    .form-section form input[type="text"] {
-      width: 100%; padding: 0.5rem; border: 1px solid #ccc;
-      border-radius: 3px; font-size: 0.9rem;
-    }
-    
-    .form-section form { 
-      display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
-    }
-    .form-section form input[type="text"] { /* For forms with multiple text inputs */
-        flex: 1 1 150px; /* Allow shrinking and basis */
-    }
-
-    input[type="submit"].search-button,
-    input[type="button"].search-button {
-      width: 140px; padding: 0.5rem 0.5rem; height: auto;
-      border: 1px solid #ccc; border-radius: 3px; background: #fff;
-      font-size: 0.9rem; cursor: pointer; transition: background-color 0.2s, color 0.2s;
-      text-align: center; line-height: 1.2; flex-shrink: 0;
-      display: inline-block; vertical-align: middle;
-      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-    }
-    input[type="submit"].search-button:hover,
-    input[type="button"].search-button:hover {
-      background: var(--primary-color); color: #fff;
-    }
-
-    .button-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
-    .button-grid .search-button {
-      /* Fixed width is applied by the general .search-button rule */
-    }
-    .form-section form input[type="submit"].search-button {
-        width: 140px; /* Ensure fixed width for submit buttons in forms */
-        flex-grow: 0; 
-    }
-
-    footer {
-      background-color: #ffffff; border-top: 1px solid #ddd; padding: 10px;
-      text-align: center; font-size: 0.9em; color: #555;
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
-    }
-    footer a { color: var(--primary-color); text-decoration: none; margin-left: 10px; }
-
-    @media (max-width: 992px) { .columns-container { flex-direction: column; } }
-    @media (max-width: 768px) {
-      .menu > li { width: auto; flex: 1; font-size: 0.75rem; padding: 0 0.2rem; }
-      .form-section form { flex-direction: column; align-items: stretch; }
-      .form-section form input[type="text"],
-      .form-section form input[type="submit"].search-button,
-      .form-section form input[type="button"].search-button { width: 100%; margin-bottom:0.5rem; }
-      .form-section form input[type="text"]:last-of-type { margin-bottom: 0.5rem; }
-      .button-grid { flex-direction: column; }
-      .button-grid .search-button { width: 100%; }
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
@@ -185,7 +25,7 @@
       <ul class="submenu">
         <li><a href="Names.html">Names</a></li>
         <li><a href="phoneus.html">US Phones</a></li>
-		<li><a href="phoneint.html">International Phones</a></li>
+        <li><a href="phoneint.html">International Phones</a></li>
         <li><a href="Address.html">Addresses</a></li>
         <li><a href="vehicles.html">Vehicles</a></li>
         <li><a href="usernames.html">Usernames</a></li>
@@ -221,101 +61,111 @@
     </li>
     <li><span>Business<br>Intelligence</span>
       <ul class="submenu">
-        <li><a href="Business.html">Business &amp; Government</a></li>
-        <li><a href="Currencies.html" class="active">Virtual Currencies</a></li>
+        <li><a href="Business.html" class="active">Business &amp; Government</a></li>
+        <li><a href="Currencies.html">Virtual Currencies</a></li>
       </ul>
     </li>
     <li><span>Tools</span>
       <ul class="submenu">
-
         <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
       </ul>
     </li>
   </ul>
 </nav>
-      
+    
 <main>
   <h1 class="page-title">Exploratores Business & Government Tool</h1>
-  <div class="note"> <strong>NOTE:</strong> For proper function of these features, an active investigative profile is required. </div>
-  <div class="columns-container">
+  <div class="note"> <strong>NOTE:</strong> For proper function of one or more search features on this page, active profiles or accounts may be required. </div>
+  
+  <div class="columns">
     <div class="column" id="officers-column">
-      <div class="form-section">
+      <div>
         <h2>OFFICERS</h2>
-        <div class="single-input-container">
-          <input type="text" id="officerNameInput" placeholder="Officer Name">
+        <div class="input-container">
+          <input type="text" id="officerNameInput" class="input-field" placeholder="Officer Name">
         </div>
         <div class="button-grid">
-          <input type="button" class="search-button" value="Pacer" onclick="makeOsint01(document.getElementById('officerNameInput').value)">
-          <input type="button" class="search-button" value="Recap" onclick="makeOsint02(document.getElementById('officerNameInput').value)">
-          <input type="button" class="search-button" value="UniCourt" onclick="makeOsint03(document.getElementById('officerNameInput').value)">
-          <input type="button" class="search-button" value="JudyRecords" onclick="makeOsint04(document.getElementById('officerNameInput').value)">
-          <input type="button" class="search-button" value="FOIA" onclick="makeOsint05(document.getElementById('officerNameInput').value)">
-          <input type="button" class="search-button" value="MuckrockFOIA" onclick="makeOsint06(document.getElementById('officerNameInput').value)">
-          <input type="button" class="search-button" value="Trellis" onclick="makeOsint07(document.getElementById('officerNameInput').value)">
-          <input type="button" class="search-button" value="OpenCorporates" onclick="makeOsint08(document.getElementById('officerNameInput').value)">
-          <input type="button" class="search-button" value="AIHIT" onclick="makeOsint09(document.getElementById('officerNameInput').value)">
-          <input type="button" class="search-button" value="LittleSis" onclick="makeOsint12(document.getElementById('officerNameInput').value)">
-          <input type="button" class="search-button" value="Open Secrets" onclick="makeOsint13(document.getElementById('officerNameInput').value)">
-          <input type="button" class="search-button" value="MoneyLine" onclick="makeOsint14(document.getElementById('officerNameInput').value)">
+          <button type="button" class="button" onclick="Business09(document.getElementById('officerNameInput').value)">AIHIT</button>
+          <button type="button" class="button" onclick="Business05(document.getElementById('officerNameInput').value)">FOIA</button>
+          <button type="button" class="button" onclick="Business04(document.getElementById('officerNameInput').value)">JudyRecords</button>
+          <button type="button" class="button" onclick="Business12(document.getElementById('officerNameInput').value)">LittleSis</button>
+          <button type="button" class="button" onclick="Business14(document.getElementById('officerNameInput').value)">MoneyLine</button>
+          <button type="button" class="button" onclick="Business06(document.getElementById('officerNameInput').value)">MuckrockFOIA</button>
+          <button type="button" class="button" onclick="Business08(document.getElementById('officerNameInput').value)">OpenCorporates</button>
+          <button type="button" class="button" onclick="Business13(document.getElementById('officerNameInput').value)">Open Secrets</button>
+          <button type="button" class="button" onclick="Business01(document.getElementById('officerNameInput').value)">Pacer</button>
+          <button type="button" class="button" onclick="Business02(document.getElementById('officerNameInput').value)">Recap</button>
+          <button type="button" class="button" onclick="Business07(document.getElementById('officerNameInput').value)">Trellis</button>
+          <button type="button" class="button" onclick="Business03(document.getElementById('officerNameInput').value)">UniCourt</button>
         </div>
       </div>
       
-      <div class="form-section">
+      <div>
         <h3>Open Payrolls</h3>
-        <form onsubmit="event.preventDefault(); makeOsint10(this.officerFirstNamePayrolls.value, this.officerLastNamePayrolls.value);">
-          <input type="text" name="officerFirstNamePayrolls" placeholder="First Name">
-          <input type="text" name="officerLastNamePayrolls" placeholder="Last Name">
-          <input type="submit" class="search-button" value="Search Payrolls">
+        <form onsubmit="event.preventDefault(); Business10(this.officerFirstNamePayrolls.value, this.officerLastNamePayrolls.value);">
+          <div class="input-container">
+            <input type="text" name="officerFirstNamePayrolls" class="input-field" placeholder="First Name">
+            <input type="text" name="officerLastNamePayrolls" class="input-field" placeholder="Last Name">
+            <button type="submit" class="button">Search Payrolls</button>
+          </div>
         </form>
       </div>
       
-      <div class="form-section">
+      <div>
         <h3>Voter Records</h3>
-        <form onsubmit="event.preventDefault(); makeOsint15(this.officerFirstNameVoter.value, this.officerLastNameVoter.value);">
-          <input type="text" name="officerFirstNameVoter" placeholder="First Name">
-          <input type="text" name="officerLastNameVoter" placeholder="Last Name">
-          <input type="submit" class="search-button" value="Search Voters">
+        <form onsubmit="event.preventDefault(); Business15(this.officerFirstNameVoter.value, this.officerLastNameVoter.value);">
+          <div class="input-container">
+            <input type="text" name="officerFirstNameVoter" class="input-field" placeholder="First Name">
+            <input type="text" name="officerLastNameVoter" class="input-field" placeholder="Last Name">
+            <button type="submit" class="button">Search Voters</button>
+          </div>
         </form>
       </div>
     </div>
     
     <div class="column" id="companies-column">
-      <div class="form-section">
+      <div>
         <h2>COMPANIES</h2>
-        <div class="single-input-container">
-          <input type="text" id="companyNameInput" placeholder="Company Name">
-        </div>
+        <div class="input-container">
+          <input type="text" id="companyNameInput" class="input-field" placeholder="Company Name">
+        </div> 
         <div class="button-grid">
-          <input type="button" class="search-button" value="Pacer" onclick="makeOsint16(document.getElementById('companyNameInput').value)">
-          <input type="button" class="search-button" value="Recap" onclick="makeOsint17(document.getElementById('companyNameInput').value)">
-          <input type="button" class="search-button" value="UniCourt" onclick="makeOsint18(document.getElementById('companyNameInput').value)">
-          <input type="button" class="search-button" value="JudyRecords" onclick="makeOsint19(document.getElementById('companyNameInput').value)">
-          <input type="button" class="search-button" value="FOIA" onclick="makeOsint20(document.getElementById('companyNameInput').value)">
-          <input type="button" class="search-button" value="MuckrockFOIA" onclick="makeOsint21(document.getElementById('companyNameInput').value)">
-          <input type="button" class="search-button" value="Trellis" onclick="makeOsint22(document.getElementById('companyNameInput').value)">
-          <input type="button" class="search-button" value="OpenCorporates" onclick="makeOsint23(document.getElementById('companyNameInput').value)">
-          <input type="button" class="search-button" value="AIHIT" onclick="makeOsint24(document.getElementById('companyNameInput').value)">
-          <input type="button" class="search-button" value="LittleSis" onclick="makeOsint26(document.getElementById('companyNameInput').value)">
+          <button type="button" class="button" onclick="Business24(document.getElementById('companyNameInput').value)">AIHIT</button>
+          <button type="button" class="button" onclick="Business20(document.getElementById('companyNameInput').value)">FOIA</button>
+          <button type="button" class="button" onclick="Business19(document.getElementById('companyNameInput').value)">JudyRecords</button>
+          <button type="button" class="button" onclick="Business26(document.getElementById('companyNameInput').value)">LittleSis</button>
+          <button type="button" class="button" onclick="Business21(document.getElementById('companyNameInput').value)">MuckrockFOIA</button>
+          <button type="button" class="button" onclick="Business23(document.getElementById('companyNameInput').value)">OpenCorporates</button>
+          <button type="button" class="button" onclick="Business16(document.getElementById('companyNameInput').value)">Pacer</button>
+          <button type="button" class="button" onclick="Business17(document.getElementById('companyNameInput').value)">Recap</button>
+          <button type="button" class="button" onclick="Business22(document.getElementById('companyNameInput').value)">Trellis</button>
+          <button type="button" class="button" onclick="Business18(document.getElementById('companyNameInput').value)">UniCourt</button>
         </div>
       </div>
 
-      <div class="form-section">
+      <div>
         <h3>Company Contact Info</h3>
-        <form onsubmit="event.preventDefault(); makeOsint27(this.companyEmail.value);">
-          <input type="text" name="companyEmail" placeholder="Email Address">
-          <input type="submit" class="search-button" value="AIHIT (Email)">
+        <form onsubmit="event.preventDefault(); Business27(this.companyEmail.value);">
+          <div class="input-container">
+            <input type="text" name="companyEmail" class="input-field" placeholder="Email Address">
+            <button type="submit" class="button">AIHIT (Email)</button>
+          </div>
         </form>
-        <form onsubmit="event.preventDefault(); makeOsint28(this.companyPhone.value);">
-          <input type="text" name="companyPhone" placeholder="Telephone Number">
-          <input type="submit" class="search-button" value="AIHIT (Phone)">
+        <form onsubmit="event.preventDefault(); Business28(this.companyPhone.value);">
+          <div class="input-container">
+            <input type="text" name="companyPhone" class="input-field" placeholder="Telephone Number">
+            <button type="submit" class="button">AIHIT (Phone)</button>
+          </div>
         </form>
       </div>
       
-      <div class="form-section">
+      <div>
         <h3>SSDI Search (Company Related)</h3>
-        <form onsubmit="event.preventDefault(); makeOsint29(this.companySsn.value);">
-          <input type="text" name="companySsn" placeholder="SSN">
-          <input type="submit" class="search-button" value="SSDI">
+        <form onsubmit="event.preventDefault(); Business29(this.companySsn.value);">
+          <div class="input-container">
+            <input type="text" name="companySsn" class="input-field" placeholder="SSN">
+            <button type="submit" class="button">SSDI</button>
+          </div>
         </form>
       </div>
     </div>
@@ -323,59 +173,56 @@
 </main>
     
 <script type="text/javascript">
-  // Funzione doPopAll rimossa
-
-  function makeOsint01(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://search.uscourts.gov/search?affiliate=uscourts_pacer&locale=en&query=' + encodeURIComponent(term), '_blank'); }
-  function makeOsint02(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.courtlistener.com/?type=r&q=' + encodeURIComponent(term), '_blank'); }
-  function makeOsint03(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.google.com/search?q=site:unicourt.com+' + encodeURIComponent(term), '_blank'); }
-  function makeOsint04(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.judyrecords.com/getSearchResults/?search=' + encodeURIComponent(term), '_blank'); }
-  function makeOsint05(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://search.foia.gov/search?affiliate=foia.gov&query=' + encodeURIComponent(term), '_blank'); }
-  function makeOsint06(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.muckrock.com/foi/list/?q=' + encodeURIComponent(term), '_blank'); }
-  function makeOsint07(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://trellis.law/rulings/"' + encodeURIComponent(term) + '"?state=az&state=ca&state=ct&state=de&state=fl&state=ga&state=il&state=ma&state=nv&state=nj&state=ny&state=oh&state=pa&state=ri&state=tx&state=wa', '_blank'); }
-  function makeOsint08(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://opencorporates.com/officers?q=' + encodeURIComponent(term), '_blank'); }
-  function makeOsint09(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.aihitdata.com/search/companies?t=' + encodeURIComponent(term), '_blank'); }
+  function Business01(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://search.uscourts.gov/search?affiliate=uscourts_pacer&locale=en&query=' + encodeURIComponent(term), '_blank'); }
+  function Business02(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.courtlistener.com/?type=r&q=' + encodeURIComponent(term), '_blank'); }
+  function Business03(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.google.com/search?q=site:unicourt.com+' + encodeURIComponent(term), '_blank'); }
+  function Business04(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.judyrecords.com/getSearchResults/?search=' + encodeURIComponent(term), '_blank'); }
+  function Business05(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://search.foia.gov/search?affiliate=foia.gov&query=' + encodeURIComponent(term), '_blank'); }
+  function Business06(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.muckrock.com/foi/list/?q=' + encodeURIComponent(term), '_blank'); }
+  function Business07(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://trellis.law/rulings/"' + encodeURIComponent(term) + '"?state=az&state=ca&state=ct&state=de&state=fl&state=ga&state=il&state=ma&state=nv&state=nj&state=ny&state=oh&state=pa&state=ri&state=tx&state=wa', '_blank'); }
+  function Business08(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://opencorporates.com/officers?q=' + encodeURIComponent(term), '_blank'); }
+  function Business09(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.aihitdata.com/search/companies?t=' + encodeURIComponent(term), '_blank'); }
   
-  function makeOsint10(firstName, lastName) {
+  function Business10(firstName, lastName) {
     const fName = firstName.trim(); const lName = lastName.trim();
     if(fName==="" || lName==="") return;
     window.open('https://openpayrolls.com/search/' + encodeURIComponent(fName) + '-' + encodeURIComponent(lName), '_blank');
   }
-  function makeOsint12(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://littlesis.org/search?q=' + encodeURIComponent(term), '_blank'); }
-  function makeOsint13(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.opensecrets.org/search?q=' + encodeURIComponent(term), '_blank'); }
-  function makeOsint14(OsintValue) { const term = OsintValue.trim(); if(term==="")return; window.open('http://politicalmoneyline.com/tr/tr_MG_IndivDonor.aspx?sMP=1&sText=' + encodeURIComponent(term) + '&sCycle=2020', '_blank'); }
+  function Business12(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://littlesis.org/search?q=' + encodeURIComponent(term), '_blank'); }
+  function Business13(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.opensecrets.org/search?q=' + encodeURIComponent(term), '_blank'); }
+  function Business14(OsintValue) { const term = OsintValue.trim(); if(term==="")return; window.open('http://politicalmoneyline.com/tr/tr_MG_IndivDonor.aspx?sMP=1&sText=' + encodeURIComponent(term) + '&sCycle=2020', '_blank'); }
   
-  function makeOsint15(firstName, lastName) {
+  function Business15(firstName, lastName) {
     const fName = firstName.trim(); const lName = lastName.trim();
     if(fName==="" || lName==="") return;
     window.open('https://voterrecords.com/voters/' + encodeURIComponent(fName) + '-' + encodeURIComponent(lName), '_blank');
   }
 
-  function makeOsint16(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://search.uscourts.gov/search?affiliate=uscourts_pacer&locale=en&query=' + encodeURIComponent(term), '_blank'); }
-  function makeOsint17(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.courtlistener.com/?type=r&q=' + encodeURIComponent(term), '_blank'); }
-  function makeOsint18(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.google.com/search?q=site:unicourt.com+' + encodeURIComponent(term), '_blank'); }
-  function makeOsint19(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.judyrecords.com/getSearchResults/?search=' + encodeURIComponent(term), '_blank'); }
-  function makeOsint20(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://search.foia.gov/search?affiliate=foia.gov&query=' + encodeURIComponent(term), '_blank'); }
-  function makeOsint21(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.muckrock.com/foi/list/?q=' + encodeURIComponent(term), '_blank'); }
-  function makeOsint22(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://trellis.law/rulings/"' + encodeURIComponent(term) + '"?state=az&state=ca&state=ct&state=de&state=fl&state=ga&state=il&state=ma&state=nv&state=nj&state=ny&state=oh&state=pa&state=ri&state=tx&state=wa', '_blank'); }
-  function makeOsint23(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://opencorporates.com/companies?q=' + encodeURIComponent(term), '_blank'); }
-  function makeOsint24(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.aihitdata.com/search/companies?c=' + encodeURIComponent(term), '_blank'); }
-  function makeOsint26(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://littlesis.org/search?q=' + encodeURIComponent(term), '_blank'); }
-  function makeOsint27(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.aihitdata.com/search/companies?k=' + encodeURIComponent(term), '_blank'); }
-  function makeOsint28(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.aihitdata.com/search/companies?k=' + encodeURIComponent(term), '_blank'); }
-  function makeOsint29(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.genealogybank.com/explore/ssdi/all?fname=&minit=&lname=&kwinc=&kwexc=&birthy_0=&birthy_1=&deathy_0=&deathy_1=&ssnum=' + encodeURIComponent(term), '_blank'); }
+  function Business16(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://search.uscourts.gov/search?affiliate=uscourts_pacer&locale=en&query=' + encodeURIComponent(term), '_blank'); }
+  function Business17(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.courtlistener.com/?type=r&q=' + encodeURIComponent(term), '_blank'); }
+  function Business18(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.google.com/search?q=site:unicourt.com+' + encodeURIComponent(term), '_blank'); }
+  function Business19(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.judyrecords.com/getSearchResults/?search=' + encodeURIComponent(term), '_blank'); }
+  function Business20(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://search.foia.gov/search?affiliate=foia.gov&query=' + encodeURIComponent(term), '_blank'); }
+  function Business21(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.muckrock.com/foi/list/?q=' + encodeURIComponent(term), '_blank'); }
+  function Business22(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://trellis.law/rulings/"' + encodeURIComponent(term) + '"?state=az&state=ca&state=ct&state=de&state=fl&state=ga&state=il&state=ma&state=nv&state=nj&state=ny&state=oh&state=pa&state=ri&state=tx&state=wa', '_blank'); }
+  function Business23(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://opencorporates.com/companies?q=' + encodeURIComponent(term), '_blank'); }
+  function Business24(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.aihitdata.com/search/companies?c=' + encodeURIComponent(term), '_blank'); }
+  function Business26(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://littlesis.org/search?q=' + encodeURIComponent(term), '_blank'); }
+  function Business27(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.aihitdata.com/search/companies?k=' + encodeURIComponent(term), '_blank'); }
+  function Business28(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.aihitdata.com/search/companies?k=' + encodeURIComponent(term), '_blank'); }
+  function Business29(OsintValue) { const term = OsintValue.trim(); if(term==="") return; window.open('https://www.genealogybank.com/explore/ssdi/all?fname=&minit=&lname=&kwinc=&kwexc=&birthy_0=&birthy_1=&deathy_0=&deathy_1=&ssnum=' + encodeURIComponent(term), '_blank'); }
 
-  // General form handler
-  document.querySelectorAll('form').forEach(form => {
-    if (!form.hasAttribute('onsubmit') || !form.getAttribute('onsubmit').includes('return false;')) {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-        });
+  document.querySelectorAll('.menu > li').forEach(item => {
+    const submenu = item.querySelector('.submenu');
+    if (submenu) {
+        item.addEventListener('mouseover', () => submenu.style.display = 'block');
+        item.addEventListener('mouseout', () => submenu.style.display = 'none');
     }
   });
 </script>
     
 <footer>
-  Global Security Italy • Rome (IT) <a href="License.html">License</a>
+  <p>Global Security Italy • Rome (IT) <a href="License.html">License</a></p>
 </footer>
 
 </body>

@@ -1,6 +1,6 @@
 :root {
   --primary-color: #0066ff;
-  --secondary-color: #333;
+  --secondary-color: #333; /* Default text color */
   --neutral-color: #888;
   --bg-color: #f9f9f9;
 }
@@ -14,8 +14,9 @@
 body {
   font-family: 'IBM Plex Sans', sans-serif;
   background-color: var(--bg-color);
-  padding-top: 60px;
-  padding-bottom: 60px;
+  color: var(--secondary-color); /* Default text color for the body */
+  padding-top: 60px;    /* Space for fixed navbar */
+  padding-bottom: 60px; /* Space for fixed footer */
   margin: 0;
 }
 
@@ -36,6 +37,13 @@ h2 {
 
 h3 {
   margin: 16px 0;
+  font-size: 1.1rem;
+}
+
+.page-title { /* Used for H1 elements that are main page titles */
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .center-text {
@@ -48,7 +56,7 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  background-color: #ffffff;
+  background-color: #ffffff; /* White background for navbar */
   border-bottom: 1px solid #ddd;
   display: flex;
   justify-content: center;
@@ -76,18 +84,37 @@ nav {
   font-size: 0.85rem;
   border-right: 1px solid #eee;
   transition: background-color 0.2s ease-in, color 0.2s ease-in;
+  /* Text color will be inherited from body or set by child 'a'/'span' specific rules */
 }
 .menu > li:last-child {
   border-right: none;
 }
-.menu > li:hover {
-  background-color: var(--primary-color);
-  color: #fff;
-}
-.menu > li span,
-.menu > li a.active {
+
+/* Styling for text/links within main menu items */
+.menu > li a,
+.menu > li span {
   display: block;
   line-height: 1.2;
+  text-decoration: none; /* Remove underline from links */
+  color: var(--secondary-color); /* Default text color for menu items */
+  transition: color 0.2s ease-in;
+}
+
+/* Style for the active menu link */
+.menu > li a.active {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* Hover state for the entire main menu <li> */
+.menu > li:hover {
+  background-color: var(--primary-color);
+}
+
+/* Text of links and spans within .menu > li becomes white when the <li> is hovered */
+.menu > li:hover > a,
+.menu > li:hover > span {
+  color: #fff;
 }
 
 /* SUBMENU */
@@ -113,7 +140,7 @@ nav {
 }
 .submenu li a {
   text-decoration: none;
-  color: var(--secondary-color);
+  color: var(--secondary-color); /* Submenu link text color */
   display: block;
   transition: color 0.2s;
 }
@@ -121,7 +148,7 @@ nav {
   background-color: var(--primary-color);
 }
 .submenu li:hover a {
-  color: #ffffff;
+  color: #ffffff; /* Submenu link text color on hover */
 }
 .menu > li:hover .submenu {
   display: block;
@@ -135,7 +162,7 @@ main {
   background-color: #fff;
 }
 
-/* SEARCH/INDEX CONTENT */
+/* SEARCH/INDEX CONTENT & INPUT CONTAINERS */
 .search-instructions {
   margin-bottom: 1.5rem;
   padding: 1rem;
@@ -148,14 +175,26 @@ main {
   font-weight: 600;
   font-size: 1rem;
 }
+
+/* Original .input-container: allows items to wrap if needed (e.g., multiple inputs) */
 .input-container {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 1rem;
 }
-.input-field {
-  flex: 1;
+
+/* NEW class: For a single input field and a button on the same line */
+.input-button-line {
+  display: flex;
+  align-items: center; /* Vertically align input and button */
+  /* flex-wrap: nowrap; is the default for flex, so not strictly needed unless overriding */
+  gap: 0.5rem; /* Space between input and button */
+  margin-bottom: 1rem; /* Consistent bottom margin */
+}
+
+.input-field { /* General styling for input fields */
+  flex: 1; /* Default grow/shrink behavior */
   min-width: 200px;
   padding: 0.6rem;
   font-size: 1rem;
@@ -163,6 +202,13 @@ main {
   border-radius: 3px;
 }
 
+/* Specific behavior for .input-field within .input-button-line */
+.input-button-line .input-field {
+  flex-grow: 1; /* Make the input field take available space */
+}
+
+
+/* COLUMN LAYOUT */
 .columns {
   display: flex;
   flex-wrap: wrap;
@@ -178,15 +224,23 @@ main {
   border-radius: 4px;
 }
 
-/* BUTTON GRID */
-.button-grid {
+/* NEW class: For arranging forms (or other items) in a 3-column grid */
+.form-row-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 0.75rem;
+  grid-template-columns: repeat(3, 1fr); /* Creates 3 equal-width columns */
+  gap: 1.5rem; /* Consistent gap */
   margin-bottom: 1rem;
 }
+.form-row-grid > form {
+  /* Optional: Add specific styling for forms within this grid if needed */
+  /* e.g., background-color: #fdfdfd; padding: 0.75rem; border: 1px solid #f0f0f0; */
+}
+
+
+/* BUTTONS */
+/* Base .button style - restored to width: 100% as per your original CSS */
 .button {
-  width: 100%;
+  width: 100%; /* Buttons will try to fill their container width */
   padding: 0.5rem;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -200,12 +254,37 @@ main {
   white-space: nowrap;
   transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  color: var(--secondary-color); /* Ensure default text color */
 }
 .button:hover {
   background-color: var(--primary-color);
   color: #fff;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
+
+/* Buttons within .input-button-line should have auto width */
+.input-button-line .button {
+  width: auto;
+  flex-shrink: 0; /* Prevent the button from shrinking */
+  min-width: 100px; /* Or a suitable min-width for your button text, e.g. 140px */
+}
+
+/* BUTTON GRID */
+.button-grid {
+  display: grid;
+  /* Responsive columns: fills with as many buttons of min 140px as fit */
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+/* Buttons in .button-grid will correctly take 100% width of their grid cell
+   due to the base .button { width: 100%; } rule. */
+
+/* NEW modifier class: For strictly 3 columns in a button grid */
+.button-grid-3col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 
 /* NOTE BOX */
 .note {
@@ -220,7 +299,15 @@ main {
   font-weight: bold;
 }
 
-/* ANALYTIC STANDARDS */
+/* Styling for Unix timestamp output */
+#datetime {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* ANALYTIC STANDARDS (as provided by you) */
 .standards-container {
   display: flex;
   gap: 40px;
@@ -283,8 +370,11 @@ footer a {
 
 /* RESPONSIVE */
 @media (max-width: 992px) {
-  .columns {
+  .columns { /* Main columns stack */
     flex-direction: column;
+  }
+  .form-row-grid { /* Form grid becomes responsive, e.g., 2 columns */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Adjust minmax as needed */
   }
 }
 @media (max-width: 768px) {
@@ -292,7 +382,21 @@ footer a {
     font-size: 0.75rem;
     padding: 0 0.2rem;
   }
-  .button-grid {
+  .button-grid,
+  .button-grid-3col { /* All button grids become single column */
     grid-template-columns: 1fr;
+  }
+  .form-row-grid { /* Form grid becomes single column */
+    grid-template-columns: 1fr;
+  }
+  .input-button-line { /* Allow input and button to wrap on small screens */
+    flex-wrap: wrap;
+  }
+  .input-button-line .input-field,
+  .input-button-line .button { /* Input and button take full width when wrapped */
+    width: 100%;
+  }
+  .input-button-line .input-field {
+    margin-bottom: 0.5rem; /* Add space if button wraps below input */
   }
 }
