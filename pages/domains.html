@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Exploratores Domain Tool</title>
+  <title>Domain Tools • Exploratores</title>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
@@ -68,7 +68,7 @@
     <li><span>Tools</span>
       <ul class="submenu">
         <li><a href="Guidelines.html">Guidelines</a></li>  
-        <li><a href="../tools/CyberChef_v10.19.4.html">CyberChef</a></li>
+        <li><a href="CyberChef.html" class="active">CyberChef</a></li>
       </ul>
     </li>
   </ul>
@@ -78,121 +78,140 @@
   <h1 class="page-title">Domain Tools</h1>
   
   <section class="search-instructions">
-    <label for="domainNameInput">Enter Domain Name:</label>
+    <label for="domainNameInput">Enter Domain Name or Keyword:</label>
     <div class="input-container">
-      <input type="text" id="domainNameInput" class="input-field" placeholder="example.com">
+      <input type="text" id="domainNameInput" class="input-field" placeholder="example.com or search term">
     </div>
   </section>
-  <div class="note"> <strong>NOTE:</strong> Many tools below use the domain entered above. Specific inputs are provided for URL shorteners and ID lookups. </div>
+  <div class="note"> 
+    <strong>NOTE:</strong> Many tools below use the term entered above. Specific inputs are provided for URL shorteners and ID lookups.
+    Note also that some services, like archive.ph, will open their main page and may not use the entered term for an automatic search.
+  </div>
 
   <div class="columns">
     <div class="column">
-      <br><h2>Website Profiling &amp; Technical Analysis</h2>
+      <h2>Website Profiling &amp; Technical Analysis</h2>
       <div class="button-grid">
-        <input type="button" class="button" value="AdSense Lookup (DNSlytics)" onclick="Domains37(getVal('domainNameInput'))">
-        <input type="button" class="button" value="AnalyzeID (Domain)" onclick="Domains35(getVal('domainNameInput'))">
-        <input type="button" class="button" value="BuiltWith" onclick="Domains41(getVal('domainNameInput'))">
-        <input type="button" class="button" value="DomainCodex" onclick="Domains50(getVal('domainNameInput'))">
-        <input type="button" class="button" value="DomainIQ" onclick="Domains38(getVal('domainNameInput'))">
-        <input type="button" class="button" value="GA Lookup (DNSlytics)" onclick="Domains36(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Google Site Search" onclick="Domains26(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Host.io (Domain)" onclick="Domains44(getVal('domainNameInput'))">
-        <input type="button" class="button" value="InformerEmails" onclick="Domains88(getVal('domainNameInput'))">
-        <input type="button" class="button" value="NerdyData" onclick="Domains40(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Robots.txt" onclick="Domains43(getVal('domainNameInput'))">
-        <input type="button" class="button" value="SpyOnWeb" onclick="Domains34(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Webscout" onclick="Domains95(getVal('domainNameInput'))">
-        <input type="button" class="button" value="WMTips" onclick="Domains48(getVal('domainNameInput'))">
+        <button type="button" class="button" onclick="Domains_AdSenseLookupDNSlytics()">AdSense Lookup (DNSlytics)</button>
+        <button type="button" class="button" onclick="Domains_AnalyzeIDDomain()">AnalyzeID (Domain)</button>
+        <button type="button" class="button" onclick="Domains_BuiltWith()">BuiltWith</button>
+        <button type="button" class="button" onclick="Domains_DomainCodex()">DomainCodex</button>
+        <button type="button" class="button" onclick="Domains_DomainIQProfile()">DomainIQ</button>
+        <button type="button" class="button" onclick="Domains_GALookupDNSlytics()">GA Lookup (DNSlytics)</button>
+        <button type="button" class="button" onclick="Domains_GoogleSiteSearch()">Google Site Search</button>
+        <button type="button" class="button" onclick="Domains_HostIoDomain()">Host.io (Domain)</button>
+        <button type="button" class="button" onclick="Domains_InformerEmails()">InformerEmails</button>
+        <button type="button" class="button" onclick="Domains_NerdyData()">NerdyData</button>
+        <button type="button" class="button" onclick="Domains_RobotsTxt()">Robots.txt</button>
+        <button type="button" class="button" onclick="Domains_SpyOnWeb()">SpyOnWeb</button>
+        <button type="button" class="button" onclick="Domains_WMTips()">WMTips</button>
+        <button type="button" class="button" onclick="Domains_Webscout()">Webscout</button>
       </div>
 
       <br><h4>Service Screenshots</h4><br>
       <div class="button-grid">
-        <input type="button" class="button" value="DMNs.app" onclick="Domains33(getVal('domainNameInput'))">
-        <input type="button" class="button" value="DomainIQ" onclick="Domains32(getVal('domainNameInput'))">
-        <input type="button" class="button" value="DomainTools" onclick="Domains31(getVal('domainNameInput'))">
-        <input type="button" class="button" value="EasyCounter" onclick="Domains30(getVal('domainNameInput'))">
-        <input type="button" class="button" value="HypeStat" onclick="Domains87(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Informer" onclick="Domains28(getVal('domainNameInput'))">
-        <input type="button" class="button" value="URLScan" onclick="Domains29(getVal('domainNameInput'))">
+        <button type="button" class="button" onclick="Domains_DMNsAppScreenshot()">DMNs.app</button>
+        <button type="button" class="button" onclick="Domains_DomainIQSnapshot()">DomainIQ</button>
+        <button type="button" class="button" onclick="Domains_DomainToolsWhois()">DomainTools</button> 
+        <button type="button" class="button" onclick="Domains_EasyCounterScreenshot()">EasyCounter</button>
+        <button type="button" class="button" onclick="Domains_HypeStatScreenshot()">HypeStat</button>
+        <button type="button" class="button" onclick="Domains_InformerScreenshot()">Informer</button>
+        <button type="button" class="button" onclick="Domains_URLScanDomain()">URLScan</button>
       </div>
 
       <br><h2>Website Archives &amp; History</h2>
       <div class="button-grid">
-        <input type="button" class="button" value="Archive Scan (CDX)" onclick="Domains83(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Archive URL Wildcard" onclick="Domains94(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Archive.md" onclick="Domains21(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Archive.org" onclick="Domains20(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Arquivo.pt" onclick="Domains24(getVal('domainNameInput'))">
-        <input type="button" class="button" value="CarbonDating" onclick="Domains25(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Congress Archives" onclick="Domains23(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Mementoweb" onclick="Domains22(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Who.Is History" onclick="Domains10(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Whois Archive 1" onclick="Domains15(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Whois Archive 2" onclick="Domains16(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Whois Archive 3" onclick="Domains17(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Whois Archive 4" onclick="Domains18(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Whois Archive 5" onclick="Domains19(getVal('domainNameInput'))">
+        <button type="button" class="button" onclick="Domains_ArchiveITDeepWebCrawl()">Archive-IT (DeepWebCrawl)</button>
+        <button type="button" class="button" onclick="Domains_ArchiveMd()">Archive.md</button>
+        <button type="button" class="button" onclick="Domains_ArchiveOrg()">Archive.org (View Snapshots)</button>
+        <button type="button" class="button" onclick="Domains_ArchivePhHomepage()">archive.ph (Homepage)</button>
+        <button type="button" class="button" onclick="Domains_ArchiveScanCDX()">Archive Scan (CDX)</button>
+        <button type="button" class="button" onclick="Domains_ArchiveURLWildcard()">Archive URL Wildcard</button>
+        <button type="button" class="button" onclick="Domains_ArquivoPt()">Arquivo.pt</button>
+        <button type="button" class="button" onclick="Domains_CarbonDating()">CarbonDating</button>
+        <button type="button" class="button" onclick="Domains_CongressArchives()">Congress Archives</button>
+        <button type="button" class="button" onclick="Domains_DomainToolsScreenshotHistory()">DomainTools (Screenshot History)</button>
+        <button type="button" class="button" onclick="Domains_ElephindSearch()">Elephind (Newspaper Archives)</button>
+        <button type="button" class="button" onclick="Domains_GoogleCacheSearch()">Google Cache</button>
+        <button type="button" class="button" onclick="Domains_Mementoweb()">Mementoweb</button>
+        <button type="button" class="button" onclick="Domains_WayBackGeneralSearch()">WayBackMachine (Keyword Search)</button>
+        <button type="button" class="button" onclick="Domains_WhoIsDomainHistory()">Who.Is History</button>
+        <button type="button" class="button" onclick="Domains_WhoisArchive1()">Whois Archive (who.is)</button>
+        <button type="button" class="button" onclick="Domains_WhoisArchive2()">Whois Archive (DomainTools)</button>
+        <button type="button" class="button" onclick="Domains_WhoisArchive3()">Whois Archive (Whoxy)</button>
+        <button type="button" class="button" onclick="Domains_WhoisArchive4()">Whois Archive (DomainBigData)</button>
+        <button type="button" class="button" onclick="Domains_WhoisArchive5()">Whois Archive (Whoisology)</button>
       </div>
 
       <br><h2>SEO, Traffic &amp; Links</h2>
       <div class="button-grid">
-        <input type="button" class="button" value="Backlinks (Linkody)" onclick="Domains56(getVal('domainNameInput'))">
-        <input type="button" class="button" value="CopyScape" onclick="Domains57(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Host.io Backlinks" onclick="Domains45(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Host.io Redirects" onclick="Domains46(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Moz" onclick="Domains52(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Reddit (Domain Mentions)" onclick="Domains55(getVal('domainNameInput'))">
-        <input type="button" class="button" value="SharedCount" onclick="Domains54(getVal('domainNameInput'))">
-        <input type="button" class="button" value="SimilarWeb" onclick="Domains51(getVal('domainNameInput'))">
-        <input type="button" class="button" value="SiteMapper" onclick="Domains58(getVal('domainNameInput'))">
-        <input type="button" class="button" value="SpyFu" onclick="Domains53(getVal('domainNameInput'))">
+        <button type="button" class="button" onclick="Domains_BacklinksLinkody()">Backlinks (Linkody)</button>
+        <button type="button" class="button" onclick="Domains_CopyScape()">CopyScape</button>
+        <button type="button" class="button" onclick="Domains_HostIoBacklinks()">Host.io Backlinks</button>
+        <button type="button" class="button" onclick="Domains_HostIoRedirects()">Host.io Redirects</button>
+        <button type="button" class="button" onclick="Domains_Moz()">Moz</button>
+        <button type="button" class="button" onclick="Domains_RedditDomainMentions()">Reddit (Domain Mentions)</button>
+        <button type="button" class="button" onclick="Domains_SharedCount()">SharedCount</button>
+        <button type="button" class="button" onclick="Domains_SimilarWeb()">SimilarWeb</button>
+        <button type="button" class="button" onclick="Domains_SiteMapper()">SiteMapper</button>
+        <button type="button" class="button" onclick="Domains_SpyFu()">SpyFu</button>
       </div>
-    </div> 
+    </div>  
     
     <div class="column">
       <br><h2>Security &amp; Reputation</h2>
       <div class="button-grid">
-        <input type="button" class="button" value="Blacklight" onclick="Domains63(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Dehashed (Domain)" onclick="Domains65(getVal('domainNameInput'))">
-        <input type="button" class="button" value="HudsonRock (Domain)" onclick="Domains66(getVal('domainNameInput'))">
-        <input type="button" class="button" value="IntelligenceX (Domain)" onclick="Domains67(getVal('domainNameInput'))">
-        <input type="button" class="button" value="LeakIX Domain" onclick="Domains85(getVal('domainNameInput'))">
-        <input type="button" class="button" value="LeakIX Search (Domain)" onclick="Domains86(getVal('domainNameInput'))">
-        <input type="button" class="button" value="MyWOT" onclick="Domains91(getVal('domainNameInput'))">
-        <input type="button" class="button" value="SecurityTrails" onclick="Domains61(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Skymem (Domain)" onclick="Domains68(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Spam.org" onclick="Domains89(getVal('domainNameInput'))">
-        <input type="button" class="button" value="ThreatCrowd" onclick="Domains62(getVal('domainNameInput'))">
-        <input type="button" class="button" value="ThreatIntel" onclick="Domains59(getVal('domainNameInput'))">
-        <input type="button" class="button" value="URLScan (Page Search)" onclick="Domains84(getVal('domainNameInput'))">
-        <input type="button" class="button" value="VirusTotal" onclick="Domains14VT(getVal('domainNameInput'))">
+        <button type="button" class="button" onclick="Domains_Blacklight()">Blacklight</button>
+        <button type="button" class="button" onclick="Domains_DehashedDomain()">Dehashed (Domain)</button>
+        <button type="button" class="button" onclick="Domains_HudsonRockDomain()">HudsonRock (Domain)</button>
+        <button type="button" class="button" onclick="Domains_IntelligenceXDomain()">IntelligenceX (Domain)</button>
+        <button type="button" class="button" onclick="Domains_LeakIXDomain()">LeakIX Domain</button>
+        <button type="button" class="button" onclick="Domains_LeakIXSearchDomain()">LeakIX Search (Domain)</button>
+        <button type="button" class="button" onclick="Domains_MyWOT()">MyWOT</button>
+        <button type="button" class="button" onclick="Domains_SecurityTrails()">SecurityTrails</button>
+        <button type="button" class="button" onclick="Domains_SkymemDomain()">Skymem (Domain)</button>
+        <button type="button" class="button" onclick="Domains_SpamOrg()">Spam.org</button>
+        <button type="button" class="button" onclick="Domains_ThreatCrowd()">ThreatCrowd</button>
+        <button type="button" class="button" onclick="Domains_ThreatIntelPlatform()">ThreatIntel</button>
+        <button type="button" class="button" onclick="Domains_URLScanPageSearch()">URLScan (Page Search)</button>
+        <button type="button" class="button" onclick="Domains_UrlScanGeneralSearch()">urlscan.io (General Search)</button>
+        <button type="button" class="button" onclick="Domains_VirusTotalDomain()">VirusTotal</button>
       </div>
 
       <br><h2>Whois &amp; DNS Lookup</h2>
       <div class="button-grid">
-        <input type="button" class="button" value="CRT.sh" onclick="Domains64(getVal('domainNameInput'))">
-        <input type="button" class="button" value="DNS Report (ViewDNS)" onclick="Domains06(getVal('domainNameInput'))">
-        <input type="button" class="button" value="DNSDump" onclick="Domains42(getVal('domainNameInput'))">
-        <input type="button" class="button" value="DNSlytics (Domain)" onclick="Domains47(getVal('domainNameInput'))">
-        <input type="button" class="button" value="DomainApp DNS" onclick="Domains11(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Reverse Domain (ViewDNS)" onclick="Domains03(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Robtex" onclick="Domains49(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Subdomains (Columbus)" onclick="Domains93(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Who.Is" onclick="Domains08(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Who.Is DNS" onclick="Domains09(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Whois (ViewDNS)" onclick="Domains01(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Whoisology" onclick="Domains13(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Whoxy" onclick="Domains12(getVal('domainNameInput'))">
+        <button type="button" class="button" onclick="Domains_CrtSh()">CRT.sh</button>
+        <button type="button" class="button" onclick="Domains_DNSReportViewDNS()">DNS Report (ViewDNS)</button>
+        <button type="button" class="button" onclick="Domains_DNSDump()">DNSDump</button>
+        <button type="button" class="button" onclick="Domains_DNSlyticsDomain()">DNSlytics (Domain)</button>
+        <button type="button" class="button" onclick="Domains_DomainAppDNS()">DomainApp DNS</button>
+        <button type="button" class="button" onclick="Domains_ReverseDomainViewDNS()">Reverse Domain (ViewDNS)</button>
+        <button type="button" class="button" onclick="Domains_Robtex()">Robtex</button>
+        <button type="button" class="button" onclick="Domains_SubdomainsColumbus()">Subdomains (Columbus)</button>
+        <button type="button" class="button" onclick="Domains_WhoIs()">Who.Is</button>
+        <button type="button" class="button" onclick="Domains_WhoIsDNS()">Who.Is DNS</button>
+        <button type="button" class="button" onclick="Domains_WhoisViewDNS()">Whois (ViewDNS)</button>
+        <button type="button" class="button" onclick="Domains_Whoisology()">Whoisology</button>
+        <button type="button" class="button" onclick="Domains_Whoxy()">Whoxy</button>
       </div>
 
       <br><h2>IP &amp; Network Info</h2>
       <div class="button-grid">
-        <input type="button" class="button" value="Censys (Domain)" onclick="Domains60(getVal('domainNameInput'))">
-        <input type="button" class="button" value="IP History (ViewDNS)" onclick="Domains05(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Port Scan (ViewDNS)" onclick="Domains04(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Reverse IP (ViewDNS)" onclick="Domains02(getVal('domainNameInput'))">
-        <input type="button" class="button" value="Shodan (Domain)" onclick="Domains92(getVal('domainNameInput'))">
-        <input type="button" class="button" value="TraceRoute (ViewDNS)" onclick="Domains07(getVal('domainNameInput'))">
+        <button type="button" class="button" onclick="Domains_CensysDomain()">Censys (Domain)</button>
+        <button type="button" class="button" onclick="Domains_IPHistoryViewDNS()">IP History (ViewDNS)</button>
+        <button type="button" class="button" onclick="Domains_PortScanViewDNS()">Port Scan (ViewDNS)</button>
+        <button type="button" class="button" onclick="Domains_ReverseIPViewDNS()">Reverse IP (ViewDNS)</button>
+        <button type="button" class="button" onclick="Domains_ShodanDomain()">Shodan (Domain)</button>
+        <button type="button" class="button" onclick="Domains_TraceRouteViewDNS()">TraceRoute (ViewDNS)</button>
+      </div>
+
+      <br><h2>Public Records & Domain Research</h2>
+      <div class="button-grid">
+        <button type="button" class="button" onclick="Domains_ASASearch()">ASA Search</button>
+        <button type="button" class="button" onclick="Domains_GoogleGroupsSearch()">Google Groups Search</button>
+        <button type="button" class="button" onclick="Domains_OCCRPalephSearch()">OCCRP Aleph Search</button>
+        <button type="button" class="button" onclick="Domains_OFACSanctionsSearch()">OFAC Sanctions Search</button>
+        <button type="button" class="button" onclick="Domains_WIPOSearchGoogle()">WIPO Search (Google)</button>
       </div>
     </div>
   </div>
@@ -209,9 +228,9 @@
         </div>
       </section>
       <div class="button-grid">
-        <input type="button" class="button" value="Bit.ly Expand" onclick="Domains69(getVal('shortUrlInput'))">
-        <input type="button" class="button" value="Expand Any Short URL" onclick="Domains73(getVal('shortUrlInput'))">
-        <input type="button" class="button" value="Tiny.cc Expand" onclick="Domains71(getVal('shortUrlInput'))">
+        <button type="button" class="button" onclick="Domains_ExpandBitly()">Bit.ly Expand</button>
+        <button type="button" class="button" onclick="Domains_ExpandAnyShortURL()">Expand Any Short URL</button>
+        <button type="button" class="button" onclick="Domains_ExpandTinyCC()">Tiny.cc Expand</button>
       </div>
 
       <br><h2>AdSense ID Lookup</h2>
@@ -222,9 +241,9 @@
         </div>
       </section>
       <div class="button-grid">
-        <input type="button" class="button" value="AnalyzeID" onclick="Domains75(getVal('adSenseIdInput'))">
-        <input type="button" class="button" value="DNSlytics" onclick="Domains76(getVal('adSenseIdInput'))">
-        <input type="button" class="button" value="HackerTarget" onclick="Domains77(getVal('adSenseIdInput'))">
+        <button type="button" class="button" onclick="Domains_AdSenseLookupAnalyzeID()">AnalyzeID</button>
+        <button type="button" class="button" onclick="Domains_AdSenseLookupDNSlyticsByID()">DNSlytics</button>
+        <button type="button" class="button" onclick="Domains_AdSenseLookupHackerTarget()">HackerTarget</button>
       </div>
     </div>
 
@@ -237,34 +256,57 @@
         </div>
       </section>
       <div class="button-grid">
-        <input type="button" class="button" value="AnalyzeID" onclick="Domains79(getVal('analyticsIdInput'))">
-        <input type="button" class="button" value="DNSlytics" onclick="Domains80(getVal('analyticsIdInput'))">
-        <input type="button" class="button" value="HackerTarget" onclick="Domains82(getVal('analyticsIdInput'))">
-        <input type="button" class="button" value="PublicWWW" onclick="Domains81(getVal('analyticsIdInput'))">
+        <button type="button" class="button" onclick="Domains_AnalyticsLookupAnalyzeID()">AnalyzeID</button>
+        <button type="button" class="button" onclick="Domains_AnalyticsLookupDNSlytics()">DNSlytics</button>
+        <button type="button" class="button" onclick="Domains_AnalyticsLookupHackerTarget()">HackerTarget</button>
+        <button type="button" class="button" onclick="Domains_AnalyticsLookupPublicWWW()">PublicWWW</button>
       </div>
     </div>
   </div>
 </main>
 
 <footer>
-  Global Security Italy • Rome (IT) <a href="License.html">License</a>
+  <p>Global Security Italy • Rome (IT) <a href="license.html">License</a></p>
 </footer>
 
 <script>
-  document.querySelectorAll('.menu > li').forEach(el=>{
-    el.addEventListener('mouseover',()=>{const s=el.querySelector('.submenu');if(s) s.style.display='block';});
-    el.addEventListener('mouseout',()=>{const s=el.querySelector('.submenu');if(s) s.style.display='none';});
+  // Standard Navbar script
+  document.querySelectorAll('.menu > li').forEach(item => {
+    item.addEventListener('mouseover', function() {
+      const submenu = this.querySelector('.submenu');
+      if(submenu) submenu.style.display = 'block';
+    });
+    item.addEventListener('mouseout', function() {
+      const submenu = this.querySelector('.submenu');
+      if(submenu) submenu.style.display = 'none';
+    });
   });
-  const getVal=id=>{ const el=document.getElementById(id); return el ? el.value.trim() : "";};
 
+  // Helper function to get and trim input value
+  function Domains_getInputValue(id) {
+    const el = document.getElementById(id);
+    return el ? el.value.trim() : "";
+  }
+
+  // Helper function to get, validate input, and show alert
+  function Domains_getAndValidateInput(inputId, placeholderForAlert = "a value") {
+    const value = Domains_getInputValue(inputId);
+    if (!value) {
+      alert("Please enter " + placeholderForAlert + " in the designated field.");
+      return null;
+    }
+    return value;
+  }
+  
+  // constructQuery function (kept as per user request)
   function constructQuery(params) {
     let query = "";
-    if (params.k && getVal('eeKeyword')) query += encodeURIComponent(params.k) + '+';
-    if (params.f && getVal('eeFName')) query += encodeURIComponent(params.f) + '+';
-    if (params.l && getVal('eeLName')) query += encodeURIComponent(params.l) + '+';
-    if (params.t && getVal('eeTitle')) query += encodeURIComponent(params.t) + '+';
-    if (params.c && getVal('eeCompany')) query += encodeURIComponent(params.c) + '+';
-    if (params.s && getVal('eeSchool')) query += encodeURIComponent(params.s) + '+';
+    if (params.k && Domains_getInputValue('eeKeyword')) query += encodeURIComponent(params.k) + '+';
+    if (params.f && Domains_getInputValue('eeFName')) query += encodeURIComponent(params.f) + '+';
+    if (params.l && Domains_getInputValue('eeLName')) query += encodeURIComponent(params.l) + '+';
+    if (params.t && Domains_getInputValue('eeTitle')) query += encodeURIComponent(params.t) + '+';
+    if (params.c && Domains_getInputValue('eeCompany')) query += encodeURIComponent(params.c) + '+';
+    if (params.s && Domains_getInputValue('eeSchool')) query += encodeURIComponent(params.s) + '+';
     
     if (query.endsWith('+')) {
       query = query.slice(0, -1);
@@ -272,94 +314,132 @@
     return query;
   }
 
-  function Domains01(val) { if(!val)return; window.open('http://viewdns.info/whois/?domain=' + encodeURIComponent(val), '_blank'); }
-  function Domains02(val) { if(!val)return; window.open('http://viewdns.info/reverseip/?host=' + encodeURIComponent(val) + '&t=1', '_blank'); }
-  function Domains03(val) { if(!val)return; window.open('http://viewdns.info/reversewhois/?q=' + encodeURIComponent(val) + '&t=1', '_blank'); }
-  function Domains04(val) { if(!val)return; window.open('http://viewdns.info/portscan/?host=' + encodeURIComponent(val), '_blank'); }
-  function Domains05(val) { if(!val)return; window.open('http://viewdns.info/iphistory/?domain=' + encodeURIComponent(val), '_blank'); }
-  function Domains06(val) { if(!val)return; window.open('http://viewdns.info/dnsreport/?domain=' + encodeURIComponent(val), '_blank'); }
-  function Domains07(val) { if(!val)return; window.open('http://viewdns.info/traceroute/?domain=' + encodeURIComponent(val), '_blank'); }
-  function Domains08(val) { if(!val)return; window.open('http://who.is/whois/' + encodeURIComponent(val), '_blank'); }
-  function Domains09(val) { if(!val)return; window.open('http://who.is/dns/' + encodeURIComponent(val), '_blank'); }
-  function Domains10(val) { if(!val)return; window.open('http://who.is/domain-history/' + encodeURIComponent(val), '_blank'); }
-  function Domains11(val) { if(!val)return; window.open('https://dmns.app/domains?q=' + encodeURIComponent(val), '_blank'); }
-  function Domains12(val) { if(!val)return; window.open('https://www.whoxy.com/' + encodeURIComponent(val), '_blank'); }
-  function Domains13(val) { if(!val)return; window.open('https://whoisology.com/' + encodeURIComponent(val), '_blank'); }
-  function Domains14VT(val) { if(!val)return; window.open('https://www.virustotal.com/#/domain/' + encodeURIComponent(val), '_blank'); }
-  function Domains15(val) { if(!val)return; window.open('https://web.archive.org/web/http://www.who.is/whois/' + encodeURIComponent(val), '_blank'); }
-  function Domains16(val) { if(!val)return; window.open('https://web.archive.org/web/https://whois.domaintools.com/' + encodeURIComponent(val), '_blank'); }
-  function Domains17(val) { if(!val)return; window.open('https://web.archive.org/web/https://www.whoxy.com/' + encodeURIComponent(val), '_blank'); }
-  function Domains18(val) { if(!val)return; window.open('https://web.archive.org/web/https://domainbigdata.com/' + encodeURIComponent(val), '_blank'); }
-  function Domains19(val) { if(!val)return; window.open('https://web.archive.org/web/https://whoisology.com/' + encodeURIComponent(val), '_blank'); }
-  function Domains20(val) { if(!val)return; window.open('http://web.archive.org/web/*/' + encodeURIComponent(val), '_blank'); }
-  function Domains21(val) { if(!val)return; window.open('http://archive.md/' + encodeURIComponent(val), '_blank'); }
-  function Domains22(val) { if(!val)return; window.open('http://timetravel.mementoweb.org/list/19991212110000/http://' + encodeURIComponent(val), '_blank'); }
-  function Domains23(val) { if(!val)return; window.open('https://webarchive.loc.gov/all/*/http://' + encodeURIComponent(val), '_blank'); }
-  function Domains24(val) { if(!val)return; window.open('https://arquivo.pt/url/search?hitsPerPage=100&q=' + encodeURIComponent(val), '_blank'); }
-  function Domains25(val) { if(!val)return; window.open('http://carbondate.cs.odu.edu/#' + encodeURIComponent(val), '_blank'); }
-  function Domains26(val) { if(!val)return; window.open('http://google.com/search?q=site%3A' + encodeURIComponent(val), '_blank'); }
-  function Domains28(val) { if(!val)return; window.open('https://website.informer.com/' + encodeURIComponent(val) + '#tab_stats', '_blank'); }
-  function Domains29(val) { if(!val)return; window.open('https://urlscan.io/domain/' + encodeURIComponent(val), '_blank'); }
-  function Domains30(val) { if(!val)return; window.open('https://www.easycounter.com/report/' + encodeURIComponent(val), '_blank'); }
-  function Domains31(val) { if(!val)return; window.open('https://whois.domaintools.com/' + encodeURIComponent(val), '_blank'); }
-  function Domains32(val) { if(!val)return; window.open('https://www.domainiq.com/snapshot_history#' + encodeURIComponent(val), '_blank'); }
-  function Domains33(val) { if(!val)return; window.open('https://files.dmns.app/screenshots/' + encodeURIComponent(val) + '.jpg', '_blank'); }
-  function Domains34(val) { if(!val)return; window.open('http://spyonweb.com/' + encodeURIComponent(val), '_blank'); }
-  function Domains35(val) { if(!val)return; window.open('http://analyzeid.com/?domain=' + encodeURIComponent(val), '_blank'); }
-  function Domains36(val) { if(!val)return; window.open('https://dnslytics.com/reverse-analytics/' + encodeURIComponent(val), '_blank'); }
-  function Domains37(val) { if(!val)return; window.open('https://dnslytics.com/reverse-adsense/' + encodeURIComponent(val), '_blank'); }
-  function Domains38(val) { if(!val)return; window.open('https://www.domainiq.com/snapshot_history?data=' + encodeURIComponent(val) + '#' + encodeURIComponent(val), '_blank'); }
-  function Domains40(val) { if(!val)return; window.open('https://www.nerdydata.com/reports/new?search=%7B%22all%22%3A%5B%7B%22type%22%3A%22code%22,%22value%22%3A%22' + encodeURIComponent(val) + '%22%7D%5D,%22any%22%3A%5B%5D,%22none%22%3A%5B%5D%7D', '_blank'); }
-  function Domains41(val) { if(!val)return; window.open('https://builtwith.com/' + encodeURIComponent(val), '_blank'); }
-  function Domains42(val) { if(!val)return; window.open('https://dnsdumpster.com/static/map/' + encodeURIComponent(val) + '.png', '_blank'); }
-  function Domains43(val) { if(!val)return; window.open('http://' + encodeURIComponent(val) + '/robots.txt', '_blank'); }
-  function Domains44(val) { if(!val)return; window.open('https://host.io/' + encodeURIComponent(val), '_blank'); }
-  function Domains45(val) { if(!val)return; window.open('https://host.io/backlinks/' + encodeURIComponent(val), '_blank'); }
-  function Domains46(val) { if(!val)return; window.open('https://host.io/redirects/' + encodeURIComponent(val), '_blank'); }
-  function Domains47(val) { if(!val)return; window.open('https://dnslytics.com/domain/' + encodeURIComponent(val), '_blank'); }
-  function Domains48(val) { if(!val)return; window.open('https://www.wmtips.com/tools/info/' + encodeURIComponent(val), '_blank'); }
-  function Domains49(val) { if(!val)return; window.open('https://www.robtex.com/dns-lookup/' + encodeURIComponent(val), '_blank'); }
-  function Domains50(val) { if(!val)return; window.open('https://www.domaincodex.com/search.php?q=' + encodeURIComponent(val), '_blank'); }
-  function Domains51(val) { if(!val)return; window.open('http://www.similarweb.com/website/' + encodeURIComponent(val), '_blank'); }
-  function Domains52(val) { if(!val)return; window.open('https://moz.com/domain-analysis?site=' + encodeURIComponent(val), '_blank'); }
-  function Domains53(val) { if(!val)return; window.open('https://www.spyfu.com/overview/domain?query=' + encodeURIComponent(val), '_blank'); }
-  function Domains54(val) { if(!val)return; window.open('https://api.sharedcount.com/v1.0/?url=https%3A%2F%2F' + encodeURIComponent(val) + '&apikey=1934f519a63e142e0d3c893e59cc37fe0172e98a', '_blank'); }
-  function Domains55(val) { if(!val)return; window.open('https://www.reddit.com/search?q=site:' + encodeURIComponent(val), '_blank'); }
-  function Domains56(val) { if(!val)return; window.open('http://bc.linkody.com/en/seo-tools/free-backlink-checker/' + encodeURIComponent(val), '_blank'); }
-  function Domains57(val) { if(!val)return; window.open('https://www.copyscape.com/?q=http%3A%2F%2F' + encodeURIComponent(val), '_blank'); }
-  function Domains58(val) { if(!val)return; window.open('http://www.visualsitemapper.com/map/' + encodeURIComponent(val), '_blank'); }
-  function Domains59(val) { if(!val)return; window.open('https://threatintelligenceplatform.com/report/' + encodeURIComponent(val), '_blank'); }
-  function Domains60(val) { if(!val)return; window.open('https://search.censys.io/search?resource=hosts&sort=RELEVANCE&per_page=100&virtual_hosts=INCLUDE&q=' + encodeURIComponent(val), '_blank'); }
-  function Domains61(val) { if(!val)return; window.open('https://securitytrails.com/list/apex_domain/' + encodeURIComponent(val), '_blank'); }
-  function Domains62(val) { if(!val)return; window.open('https://ci-www.threatcrowd.org/domain.php?domain=' + encodeURIComponent(val), '_blank'); }
-  function Domains63(val) { if(!val)return; window.open('https://themarkup.org/blacklight?url=' + encodeURIComponent(val), '_blank'); }
-  function Domains64(val) { if(!val)return; window.open('https://crt.sh/?q=' + encodeURIComponent(val), '_blank'); }
-  function Domains65(val) { if(!val)return; window.open('https://dehashed.com/search?query=%22' + encodeURIComponent(val) + '%22', '_blank'); }
-  function Domains66(val) { if(!val)return; window.open('https://www.hudsonrock.com/search?domain=' + encodeURIComponent(val), '_blank'); }
-  function Domains67(val) { if(!val)return; window.open('https://intelx.io/?s=' + encodeURIComponent(val), '_blank'); }
-  function Domains68(val) { if(!val)return; window.open('https://www.skymem.info/srch?q=' + encodeURIComponent(val), '_blank'); }
-  function Domains69(val) { if(!val)return; window.open('https://' + encodeURIComponent(val) + '+', '_blank'); }
-  function Domains71(val) { if(!val)return; window.open('https://' + encodeURIComponent(val) + '~', '_blank'); }
-  function Domains73(val) { if(!val)return; window.open('http://checkshorturl.com/expand.php?u=' + encodeURIComponent(val), '_blank'); }
-  function Domains75(val) { if(!val)return; window.open('https://analyzeid.com/id/ca-pub-' + encodeURIComponent(val), '_blank'); }
-  function Domains76(val) { if(!val)return; window.open('https://dnslytics.com/reverse-adsense/pub-' + encodeURIComponent(val), '_blank'); }
-  function Domains77(val) { if(!val)return; window.open('https://api.hackertarget.com/analyticslookup/?q=pub-' + encodeURIComponent(val), '_blank'); }
-  function Domains79(val) { if(!val)return; window.open('https://analyzeid.com/id/ua-' + encodeURIComponent(val), '_blank'); }
-  function Domains80(val) { if(!val)return; window.open('https://dnslytics.com/reverse-analytics/ua-' + encodeURIComponent(val), '_blank'); }
-  function Domains81(val) { if(!val)return; window.open('https://publicwww.com/websites/ua-' + encodeURIComponent(val) + '%22/', '_blank'); }
-  function Domains82(val) { if(!val)return; window.open('https://api.hackertarget.com/analyticslookup/?q=UA-' + encodeURIComponent(val), '_blank'); }
-  function Domains83(val) { if(!val)return; window.open('https://web.archive.org/cdx/search/cdx?url=' + encodeURIComponent(val) + '/*&output=text&fl=original&collapse=urlkey', '_blank'); }
-  function Domains84(val) { if(!val)return; window.open('https://urlscan.io/search/#page.domain%3A' + encodeURIComponent(val), '_blank'); } 
-  function Domains85(val) { if(!val)return; window.open('https://leakix.net/domain/' + encodeURIComponent(val), '_blank'); }
-  function Domains86(val) { if(!val)return; window.open('https://leakix.net/search?scope=leak&q=' + encodeURIComponent(val), '_blank'); }
-  function Domains87(val) { if(!val)return; window.open('https://hypestat.com/info/' + encodeURIComponent(val), '_blank'); }
-  function Domains88(val) { if(!val)return; window.open('https://website.informer.com/' + encodeURIComponent(val) + '/emails', '_blank'); }
-  function Domains89(val) { if(!val)return; window.open('https://www.spam.org/search?type=domain&convert_block=1&group_ips=1&data=' + encodeURIComponent(val), '_blank'); }
-  function Domains91(val) { if(!val)return; window.open('https://www.mywot.com/en/scorecard/' + encodeURIComponent(val), '_blank'); }
-  function Domains92(val) { if(!val)return; window.open('https://www.shodan.io/domain/' + encodeURIComponent(val), '_blank'); }
-  function Domains93(val) { if(!val)return; window.open('https://columbus.elmasy.com/lookup/' + encodeURIComponent(val), '_blank'); }
-  function Domains94(val) { if(!val)return; window.open('http://web.archive.org/web/*/' + encodeURIComponent(val) + '/*', '_blank'); }
-  function Domains95(val) { if(!val)return; window.open('https://webscout.io/lookup/' + encodeURIComponent(val), '_blank'); }
+  // --- Domain Tool Functions ---
+  function Domains_WhoisViewDNS() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('http://viewdns.info/whois/?domain=' + encodeURIComponent(val), '_blank'); }
+  function Domains_ReverseIPViewDNS() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or IP'); if(!val)return; window.open('http://viewdns.info/reverseip/?host=' + encodeURIComponent(val) + '&t=1', '_blank'); }
+  function Domains_ReverseDomainViewDNS() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or other query term'); if(!val)return; window.open('http://viewdns.info/reversewhois/?q=' + encodeURIComponent(val) + '&t=1', '_blank'); }
+  function Domains_PortScanViewDNS() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or IP'); if(!val)return; window.open('http://viewdns.info/portscan/?host=' + encodeURIComponent(val), '_blank'); }
+  function Domains_IPHistoryViewDNS() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or IP'); if(!val)return; window.open('http://viewdns.info/iphistory/?domain=' + encodeURIComponent(val), '_blank'); }
+  function Domains_DNSReportViewDNS() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('http://viewdns.info/dnsreport/?domain=' + encodeURIComponent(val), '_blank'); }
+  function Domains_TraceRouteViewDNS() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or IP'); if(!val)return; window.open('http://viewdns.info/traceroute/?domain=' + encodeURIComponent(val), '_blank'); }
+  function Domains_WhoIs() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('http://who.is/whois/' + encodeURIComponent(val), '_blank'); }
+  function Domains_WhoIsDNS() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('http://who.is/dns/' + encodeURIComponent(val), '_blank'); }
+  function Domains_WhoIsDomainHistory() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('http://who.is/domain-history/' + encodeURIComponent(val), '_blank'); }
+  function Domains_DomainAppDNS() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://dmns.app/domains?q=' + encodeURIComponent(val), '_blank'); }
+  function Domains_Whoxy() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://www.whoxy.com/' + encodeURIComponent(val), '_blank'); }
+  function Domains_Whoisology() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://whoisology.com/' + encodeURIComponent(val), '_blank'); }
+  function Domains_VirusTotalDomain() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://www.virustotal.com/#/domain/' + encodeURIComponent(val), '_blank'); }
+  function Domains_WhoisArchive1() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://web.archive.org/web/http://www.who.is/whois/' + encodeURIComponent(val), '_blank'); }
+  function Domains_WhoisArchive2() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://web.archive.org/web/https://whois.domaintools.com/' + encodeURIComponent(val), '_blank'); }
+  function Domains_WhoisArchive3() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://web.archive.org/web/https://www.whoxy.com/' + encodeURIComponent(val), '_blank'); }
+  function Domains_WhoisArchive4() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://web.archive.org/web/https://domainbigdata.com/' + encodeURIComponent(val), '_blank'); }
+  function Domains_WhoisArchive5() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://web.archive.org/web/https://whoisology.com/' + encodeURIComponent(val), '_blank'); }
+  function Domains_ArchiveOrg() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val)return; window.open('http://web.archive.org/web/*/' + encodeURIComponent(val), '_blank'); }
+  function Domains_ArchiveMd() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val)return; window.open('http://archive.md/' + encodeURIComponent(val), '_blank'); }
+  function Domains_Mementoweb() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val)return; window.open('http://timetravel.mementoweb.org/list/19991212110000/http://' + encodeURIComponent(val), '_blank'); }
+  function Domains_CongressArchives() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val)return; window.open('https://webarchive.loc.gov/all/*/http://' + encodeURIComponent(val), '_blank'); }
+  function Domains_ArquivoPt() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val)return; window.open('https://arquivo.pt/url/search?hitsPerPage=100&q=' + encodeURIComponent(val), '_blank'); }
+  function Domains_CarbonDating() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val)return; window.open('http://carbondate.cs.odu.edu/#' + encodeURIComponent(val), '_blank'); }
+  function Domains_GoogleSiteSearch() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('http://google.com/search?q=site%3A' + encodeURIComponent(val), '_blank'); }
+  function Domains_InformerScreenshot() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://website.informer.com/' + encodeURIComponent(val) + '#tab_stats', '_blank'); }
+  function Domains_URLScanDomain() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://urlscan.io/domain/' + encodeURIComponent(val), '_blank'); }
+  function Domains_EasyCounterScreenshot() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://www.easycounter.com/report/' + encodeURIComponent(val), '_blank'); }
+  // Domains_DomainToolsWhois() function was already defined for a button in Service Screenshots
+  function Domains_DomainIQSnapshot() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://www.domainiq.com/snapshot_history#' + encodeURIComponent(val), '_blank'); }
+  function Domains_DMNsAppScreenshot() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://files.dmns.app/screenshots/' + encodeURIComponent(val) + '.jpg', '_blank'); }
+  function Domains_SpyOnWeb() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or tracking ID'); if(!val)return; window.open('http://spyonweb.com/' + encodeURIComponent(val), '_blank'); }
+  function Domains_AnalyzeIDDomain() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('http://analyzeid.com/?domain=' + encodeURIComponent(val), '_blank'); }
+  function Domains_GALookupDNSlytics() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://dnslytics.com/reverse-analytics/' + encodeURIComponent(val), '_blank'); }
+  function Domains_AdSenseLookupDNSlytics() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://dnslytics.com/reverse-adsense/' + encodeURIComponent(val), '_blank'); }
+  function Domains_DomainIQProfile() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://www.domainiq.com/snapshot_history?data=' + encodeURIComponent(val) + '#' + encodeURIComponent(val), '_blank'); }
+  function Domains_NerdyData() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or code snippet'); if(!val)return; window.open('https://www.nerdydata.com/reports/new?search=%7B%22all%22%3A%5B%7B%22type%22%3A%22code%22,%22value%22%3A%22' + encodeURIComponent(val) + '%22%7D%5D,%22any%22%3A%5B%5D,%22none%22%3A%5B%5D%7D', '_blank'); }
+  function Domains_BuiltWith() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://builtwith.com/' + encodeURIComponent(val), '_blank'); }
+  function Domains_DNSDump() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://dnsdumpster.com/static/map/' + encodeURIComponent(val) + '.png', '_blank'); }
+  function Domains_RobotsTxt() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('http://' + encodeURIComponent(val) + '/robots.txt', '_blank'); }
+  function Domains_HostIoDomain() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://host.io/' + encodeURIComponent(val), '_blank'); }
+  function Domains_HostIoBacklinks() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://host.io/backlinks/' + encodeURIComponent(val), '_blank'); }
+  function Domains_HostIoRedirects() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://host.io/redirects/' + encodeURIComponent(val), '_blank'); }
+  function Domains_DNSlyticsDomain() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://dnslytics.com/domain/' + encodeURIComponent(val), '_blank'); }
+  function Domains_WMTips() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://www.wmtips.com/tools/info/' + encodeURIComponent(val), '_blank'); }
+  function Domains_Robtex() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://www.robtex.com/dns-lookup/' + encodeURIComponent(val), '_blank'); }
+  function Domains_DomainCodex() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://www.domaincodex.com/search.php?q=' + encodeURIComponent(val), '_blank'); }
+  function Domains_SimilarWeb() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('http://www.similarweb.com/website/' + encodeURIComponent(val), '_blank'); }
+  function Domains_Moz() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://moz.com/domain-analysis?site=' + encodeURIComponent(val), '_blank'); }
+  function Domains_SpyFu() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://www.spyfu.com/overview/domain?query=' + encodeURIComponent(val), '_blank'); }
+  function Domains_SharedCount() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://api.sharedcount.com/v1.0/?url=https%3A%2F%2F' + encodeURIComponent(val) + '&apikey=1934f519a63e142e0d3c893e59cc37fe0172e98a', '_blank'); }
+  function Domains_RedditDomainMentions() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://www.reddit.com/search?q=site:' + encodeURIComponent(val), '_blank'); }
+  function Domains_BacklinksLinkody() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('http://bc.linkody.com/en/seo-tools/free-backlink-checker/' + encodeURIComponent(val), '_blank'); }
+  function Domains_CopyScape() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://www.copyscape.com/?q=http%3A%2F%2F' + encodeURIComponent(val), '_blank'); }
+  function Domains_SiteMapper() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('http://www.visualsitemapper.com/map/' + encodeURIComponent(val), '_blank'); }
+  function Domains_ThreatIntelPlatform() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://threatintelligenceplatform.com/report/' + encodeURIComponent(val), '_blank'); }
+  function Domains_CensysDomain() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://search.censys.io/search?resource=hosts&sort=RELEVANCE&per_page=100&virtual_hosts=INCLUDE&q=' + encodeURIComponent(val), '_blank'); }
+  function Domains_SecurityTrails() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://securitytrails.com/list/apex_domain/' + encodeURIComponent(val), '_blank'); }
+  function Domains_ThreatCrowd() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://ci-www.threatcrowd.org/domain.php?domain=' + encodeURIComponent(val), '_blank'); }
+  function Domains_Blacklight() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val)return; window.open('https://themarkup.org/blacklight?url=' + encodeURIComponent(val), '_blank'); }
+  function Domains_CrtSh() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://crt.sh/?q=' + encodeURIComponent(val), '_blank'); }
+  function Domains_DehashedDomain() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://dehashed.com/search?query=%22' + encodeURIComponent(val) + '%22', '_blank'); }
+  function Domains_HudsonRockDomain() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://www.hudsonrock.com/search?domain=' + encodeURIComponent(val), '_blank'); }
+  function Domains_IntelligenceXDomain() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://intelx.io/?s=' + encodeURIComponent(val), '_blank'); }
+  function Domains_SkymemDomain() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://www.skymem.info/srch?q=' + encodeURIComponent(val), '_blank'); }
+  function Domains_ExpandBitly() { const val = Domains_getAndValidateInput('shortUrlInput', 'a Bit.ly shortened URL'); if(!val)return; const cleanUrl = val.replace(/^https?:\/\//,''); window.open('https://' + cleanUrl + '+', '_blank'); }
+  function Domains_ExpandTinyCC() { const val = Domains_getAndValidateInput('shortUrlInput', 'a Tiny.cc shortened URL'); if(!val)return; const cleanUrl = val.replace(/^https?:\/\//,''); window.open('https://' + cleanUrl + '~', '_blank'); }
+  function Domains_ExpandAnyShortURL() { const val = Domains_getAndValidateInput('shortUrlInput', 'a shortened URL'); if(!val)return; window.open('http://checkshorturl.com/expand.php?u=' + encodeURIComponent(val), '_blank'); }
+  function Domains_AdSenseLookupAnalyzeID() { const val = Domains_getAndValidateInput('adSenseIdInput', 'an AdSense ID'); if(!val)return; window.open('https://analyzeid.com/id/ca-pub-' + encodeURIComponent(val), '_blank'); }
+  function Domains_AdSenseLookupDNSlyticsByID() { const val = Domains_getAndValidateInput('adSenseIdInput', 'an AdSense ID'); if(!val)return; window.open('https://dnslytics.com/reverse-adsense/pub-' + encodeURIComponent(val), '_blank'); }
+  function Domains_AdSenseLookupHackerTarget() { const val = Domains_getAndValidateInput('adSenseIdInput', 'an AdSense ID'); if(!val)return; window.open('https://api.hackertarget.com/analyticslookup/?q=pub-' + encodeURIComponent(val), '_blank'); }
+  function Domains_AnalyticsLookupAnalyzeID() { const val = Domains_getAndValidateInput('analyticsIdInput', 'an Analytics ID'); if(!val)return; window.open('https://analyzeid.com/id/ua-' + encodeURIComponent(val), '_blank'); }
+  function Domains_AnalyticsLookupDNSlytics() { const val = Domains_getAndValidateInput('analyticsIdInput', 'an Analytics ID'); if(!val)return; window.open('https://dnslytics.com/reverse-analytics/ua-' + encodeURIComponent(val), '_blank'); }
+  function Domains_AnalyticsLookupPublicWWW() { const val = Domains_getAndValidateInput('analyticsIdInput', 'an Analytics ID'); if(!val)return; window.open('https://publicwww.com/websites/ua-' + encodeURIComponent(val) + '%22/', '_blank'); }
+  function Domains_AnalyticsLookupHackerTarget() { const val = Domains_getAndValidateInput('analyticsIdInput', 'an Analytics ID'); if(!val)return; window.open('https://api.hackertarget.com/analyticslookup/?q=UA-' + encodeURIComponent(val), '_blank'); }
+  function Domains_ArchiveScanCDX() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://web.archive.org/cdx/search/cdx?url=' + encodeURIComponent(val) + '/*&output=text&fl=original&collapse=urlkey', '_blank'); }
+  function Domains_URLScanPageSearch() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://urlscan.io/search/#page.domain%3A' + encodeURIComponent(val), '_blank'); }  
+  function Domains_LeakIXDomain() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://leakix.net/domain/' + encodeURIComponent(val), '_blank'); }
+  function Domains_LeakIXSearchDomain() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://leakix.net/search?scope=leak&q=' + encodeURIComponent(val), '_blank'); }
+  function Domains_HypeStatScreenshot() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://hypestat.com/info/' + encodeURIComponent(val), '_blank'); }
+  function Domains_InformerEmails() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://website.informer.com/' + encodeURIComponent(val) + '/emails', '_blank'); }
+  function Domains_SpamOrg() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://www.spam.org/search?type=domain&convert_block=1&group_ips=1&data=' + encodeURIComponent(val), '_blank'); }
+  function Domains_MyWOT() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val)return; window.open('https://www.mywot.com/en/scorecard/' + encodeURIComponent(val), '_blank'); }
+  function Domains_ShodanDomain() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://www.shodan.io/domain/' + encodeURIComponent(val), '_blank'); }
+  function Domains_SubdomainsColumbus() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://columbus.elmasy.com/lookup/' + encodeURIComponent(val), '_blank'); }
+  function Domains_ArchiveURLWildcard() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('http://web.archive.org/web/*/' + encodeURIComponent(val) + '/*', '_blank'); }
+  function Domains_Webscout() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; window.open('https://webscout.io/lookup/' + encodeURIComponent(val), '_blank'); }
+
+  // --- New Archive Functions from Snippet ---
+  function Domains_ArchiveITDeepWebCrawl() {
+    const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or keyword'); if (!val) return;
+    window.open('https://archive-it.org/collections/11718?q=' + encodeURIComponent(val), '_blank');
+  }
+  function Domains_ArchivePhHomepage() {
+    // This function opens the homepage as per user instruction, input is not used for the URL.
+    // const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or keyword');
+    // if (!val) return; // Input validation might still be desired before opening, even if not used in URL.
+    window.open('https://archive.ph/', '_blank');
+  }
+  function Domains_DomainToolsScreenshotHistory() {
+    const val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if (!val) return;
+    window.open('https://research.domaintools.com/research/screenshot-history/' + encodeURIComponent(val), '_blank');
+  }
+  function Domains_ElephindSearch() {
+    const val = Domains_getAndValidateInput('domainNameInput', 'a keyword'); if (!val) return;
+    window.open('https://elephind.com/?a=q&hs=1&r=1&results=1&txq=' + encodeURIComponent(val), '_blank');
+  }
+  function Domains_GoogleCacheSearch() {
+    const val = Domains_getAndValidateInput('domainNameInput', 'a URL or domain name'); if (!val) return;
+    window.open('http://webcache.googleusercontent.com/search?q=cache:' + encodeURIComponent(val), '_blank');
+  }
+  function Domains_UrlScanGeneralSearch() {
+    const val = Domains_getAndValidateInput('domainNameInput', 'a search term'); if (!val) return;
+    window.open('https://urlscan.io/search/#' + encodeURIComponent(val), '_blank');
+  }
+  function Domains_WayBackGeneralSearch() {
+    const val = Domains_getAndValidateInput('domainNameInput', 'a keyword or domain name'); if (!val) return;
+    window.open('https://archive.org/search.php?query=' + encodeURIComponent(val), '_blank');
+  }
+  function Domains_WIPOSearchGoogle() {
+    const val = Domains_getAndValidateInput('domainNameInput', 'a keyword or domain name'); if (!val) return;
+    window.open('https://www.google.com/search?q=site%3Ahttps://www.wipo.int/ AND %22' + encodeURIComponent(val) + '%22', '_blank');
+  }
+
 </script>
 </body>
 </html>

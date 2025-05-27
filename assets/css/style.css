@@ -40,6 +40,15 @@ h3 {
   font-size: 1.1rem;
 }
 
+.cyberchef-iframe {
+  width: 100%;
+  /* Un'altezza di esempio potrebbe essere calcolata per riempire lo spazio verticale disponibile, 
+     considerando l'altezza di header, footer ed eventuali padding del main.
+     Es: height: calc(100vh - 150px); (aggiusta 150px secondo necessità) */
+  height: 80vh; /* O un valore fisso ma responsivo se preferisci */
+  border: none;
+}
+
 .page-title { /* Used for H1 elements that are main page titles */
   text-align: center;
   margin-bottom: 1.5rem;
