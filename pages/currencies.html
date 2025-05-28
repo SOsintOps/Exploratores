@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Exploratores Virtual Currencies Tool</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Currencies • Exploratores</title>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
@@ -35,7 +35,7 @@
     </li>
     <li><span>Social<br>Media</span>
       <ul class="submenu">
-        <li><a href="X.html">X (Twitter)</a></li>
+        <li><a href="X.html">X</a></li>
         <li><a href="Facebook.html">Facebook</a></li>
         <li><a href="Instagram.html">Instagram</a></li>
         <li><a href="LinkedIn.html">LinkedIn</a></li>
@@ -69,6 +69,8 @@
       <ul class="submenu">
         <li><a href="Guidelines.html">Guidelines</a></li>  
         <li><a href="CyberChef.html">CyberChef</a></li>
+        <li><a href="Customise.html">Customise Page</a></li>
+        <li><a href="FAQ.html">FAQ</a></li>
       </ul>
     </li>
   </ul>
@@ -78,219 +80,250 @@
   <h1 class="page-title">Virtual Currencies Tool</h1>
 
   <div class="columns">
-    <div class="column"> <div>
+    <div class="column">
+      <section>
         <h2>Bitcoin Address Tools</h2>
-        <div class="input-container">
-          <input type="text" id="bitcoinAddressInput" name="bitcoinAddressInput" class="input-field" placeholder="Bitcoin Address"/>
+        <div class="search-instructions">
+          <label for="bitcoinAddressInput">Enter Bitcoin Address:</label>
+          <div class="input-container">
+            <input type="text" id="bitcoinAddressInput" class="input-field" placeholder="Bitcoin Address"/>
+          </div>
         </div>
         <div class="button-grid button-grid-3col">
-          <button type="button" class="button" onclick="Currencies14(document.getElementById('bitcoinAddressInput').value)">BC BTC</button>
-          <button type="button" class="button" onclick="Currencies09(document.getElementById('bitcoinAddressInput').value)">BitcoinAbuse</button>
-          <button type="button" class="button" onclick="Currencies08(document.getElementById('bitcoinAddressInput').value)">Blockchain</button>
+          <button type="button" class="button" onclick="Currencies_BlockchairBTC()">BC BTC</button>
+          <button type="button" class="button" onclick="Currencies_BitcoinWhosWho()">BitcoinWhosWho</button>
+          <button type="button" class="button" onclick="Currencies_BlockchainComBTC()">Blockchain.com</button>
+          <button type="button" class="button" onclick="Currencies_ValidateBTCAddress()">BTC Validation</button>
+          <button type="button" class="button" onclick="Currencies_ChainabuseBTC()">Chainabuse</button>
+          <button type="button" class="button" onclick="Currencies_CloverpoolSummary()">Summary (Cloverpool)</button>
+          <button type="button" class="button" onclick="Currencies_GetBTCFirstSeen()">Creation Date</button>
+          <button type="button" class="button" onclick="Currencies_OXTmeBTC()">OXT.me</button>
+          <button type="button" class="button" onclick="Currencies_GetBTCBalance()">Satoshi Balance</button>
+          <button type="button" class="button" onclick="Currencies_GetBTCReceived()">Satoshi Received</button>
+          <button type="button" class="button" onclick="Currencies_GetBTCSent()">Satoshi Sent</button>
+          <button type="button" class="button" onclick="Currencies_WalletExplorerAddress()">WalletExplorer (Addr)</button>
         </div>
-        <div class="button-grid button-grid-3col">
-          <button type="button" class="button" onclick="Currencies01(document.getElementById('bitcoinAddressInput').value)">BTC Validation</button>
-          <button type="button" class="button" onclick="Currencies07(document.getElementById('bitcoinAddressInput').value)">Creation Date</button>
-          <button type="button" class="button" onclick="Currencies11(document.getElementById('bitcoinAddressInput').value)">OXT</button>
-        </div>
-        <div class="button-grid button-grid-3col">
-          <button type="button" class="button" onclick="Currencies05(document.getElementById('bitcoinAddressInput').value)">Satoshi Balance</button>
-          <button type="button" class="button" onclick="Currencies03(document.getElementById('bitcoinAddressInput').value)">Satoshi Received</button>
-          <button type="button" class="button" onclick="Currencies04(document.getElementById('bitcoinAddressInput').value)">Satoshi Sent</button>
-        </div>
-        <div class="button-grid button-grid-3col">
-          <button type="button" class="button" onclick="Currencies06(document.getElementById('bitcoinAddressInput').value)">Summary</button>
-          <button type="button" class="button" onclick="Currencies12(document.getElementById('bitcoinAddressInput').value)">WalletExplorer (Addr)</button>
-          <button type="button" class="button" onclick="Currencies10(document.getElementById('bitcoinAddressInput').value)">WhosWho</button>
-        </div>
-      </div>
+      </section>
 
-      <div>
+      <section style="margin-top: 2rem;">
+        <h2>Security Tools</h2>
+        <div class="search-instructions">
+          <label for="securityQueryInput">Enter Address or Term for Security Check:</label>
+          <div class="input-container">
+            <input type="text" id="securityQueryInput" class="input-field" placeholder="Crypto Address or Term"/>
+          </div>
+        </div>
+        <div class="button-grid">
+          <button type="button" class="button" onclick="Currencies_OFACSanctionsHomepage()">OFAC Sanctions (Homepage)</button>
+          <button type="button" class="button" onclick="Currencies_RiskIQByAddress()">RiskIQ Trackers (Address Query)</button>
+          <button type="button" class="button" onclick="Currencies_ScamSearchAddress()">ScamSearch</button>
+        </div>
+      </section>
+      
+      <section style="margin-top: 2rem;">
+        <h2>Unix Time Converter</h2>
+        <div class="search-instructions">
+          <label for="unixTimestampInput">Enter Unix Timestamp:</label>
+          <div class="input-button-line">
+              <input type='text' id='unixTimestampInput' class="input-field" placeholder='Unix Timestamp'>
+              <button type='button' class="button" onclick="Currencies_ConvertUnixTime()">Convert</button>
+          </div>
+        </div>
+        <span id='datetime'></span> 
+      </section>
+
+      <section style="margin-top: 2rem;">
         <h2>Currency Converters</h2>
-        <form onsubmit="event.preventDefault(); Currencies22b(this.Search22b.value);">
-          <div class="input-button-line">
-            <input type="text" id="Search22b" name="Search22b" class="input-field" placeholder="Bitcoin Amount"/>
-            <button type="submit" class="button" style="width: 160px;">BTC &gt; EUR</button>
+        <div class="search-instructions" style="margin-bottom: 0.5rem;">
+          <label for="cryptoAmountToConvertInput">From Crypto Amount:</label>
+          <div class="input-container">
+            <input type="text" id="cryptoAmountToConvertInput" class="input-field" placeholder="e.g., 1.5 (BTC, Satoshi)">
           </div>
-        </form>
-        <form onsubmit="event.preventDefault(); Currencies23b(this.Search23b.value);">
-          <div class="input-button-line">
-            <input type="text" id="Search23b" name="Search23b" class="input-field" placeholder="Euro Amount"/>
-            <button type="submit" class="button" style="width: 160px;">EUR &gt; BTC</button>
+        </div>
+        <div class="button-grid button-grid-3col">
+          <button type="button" class="button" onclick="Currencies_ConvertBTCToEUR()">BTC &gt; EUR</button>
+          <button type="button" class="button" onclick="Currencies_ConvertBTCToUSD()">BTC &gt; USD</button>
+          <button type="button" class="button" onclick="Currencies_ConvertSatoshiToUSD()">Satoshi &gt; USD</button>
+        </div>
+
+        <div class="search-instructions" style="margin-top: 1.5rem; margin-bottom: 0.5rem;">
+          <label for="fiatAmountToConvertInput">From Fiat Amount:</label>
+          <div class="input-container">
+            <input type="text" id="fiatAmountToConvertInput" class="input-field" placeholder="e.g., 100 (EUR, USD)">
           </div>
-        </form>
-        <form onsubmit="event.preventDefault(); Currencies22(this.Search22.value);">
-          <div class="input-button-line">
-            <input type="text" id="Search22" name="Search22" class="input-field" placeholder="Bitcoin Amount"/>
-            <button type="submit" class="button" style="width: 160px;">BTC &gt; USD</button>
-          </div>
-        </form>
-        <form onsubmit="event.preventDefault(); Currencies23(this.Search23.value);">
-          <div class="input-button-line">
-            <input type="text" id="Search23" name="Search23" class="input-field" placeholder="Dollar Amount"/>
-            <button type="submit" class="button" style="width: 160px;">USD &gt; BTC</button>
-          </div>
-        </form>
-        <form onsubmit="event.preventDefault(); Currencies24(this.Search24.value);">
-          <div class="input-button-line">
-            <input type="text" id="Search24" name="Search24" class="input-field" placeholder="Satoshi Amount"/>
-            <button type="submit" class="button" style="width: 160px;">Satoshi &gt; USD</button>
-          </div>
-        </form>
-        <form onsubmit="event.preventDefault(); Currencies25(this.Search25.value);">
-          <div class="input-button-line">
-            <input type="text" id="Search25" name="Search25" class="input-field" placeholder="Dollar Amount"/>
-            <button type="submit" class="button" style="width: 160px;">USD &gt; Satoshi</button>
-          </div>
-        </form>
-      </div>
+        </div>
+        <div class="button-grid button-grid-3col">
+          <button type="button" class="button" onclick="Currencies_ConvertEURToBTC()">EUR &gt; BTC</button>
+          <button type="button" class="button" onclick="Currencies_ConvertUSDToBTC()">USD &gt; BTC</button>
+          <button type="button" class="button" onclick="Currencies_ConvertUSDToSatoshi()">USD &gt; Satoshi</button>
+        </div>
+      </section>
     </div>
 
-    <div class="column"> <div>
+    <div class="column">
+      <section>
         <h2>Other Cryptocurrency Lookups</h2>
-        <form onsubmit="event.preventDefault(); Currencies19(this.Search19.value);">
-          <div class="input-button-line">
-            <input type="text" id="Search19" name="Search19" class="input-field" placeholder="Bitcoin-SV Address"/>
-            <button type="submit" class="button" style="width: 160px;">BC Bitcoin-SV</button>
+        <div class="search-instructions">
+          <label for="otherCryptoAddressInput">Enter Address (e.g., ETH, SOL, BSC, Wallet ID):</label>
+          <div class="input-container">
+            <input type="text" id="otherCryptoAddressInput" class="input-field" placeholder="Address or Wallet ID"/>
           </div>
-        </form>
-        <form onsubmit="event.preventDefault(); Currencies17(this.Search17.value);">
-          <div class="input-button-line">
-            <input type="text" id="Search17" name="Search17" class="input-field" placeholder="Bitcoin-Cash Hash"/>
-            <button type="submit" class="button" style="width: 160px;">BC Cash</button>
-          </div>
-        </form>
-        <form onsubmit="event.preventDefault(); Currencies21(this.Search21.value);">
-          <div class="input-button-line">
-            <input type="text" id="Search21" name="Search21" class="input-field" placeholder="Dash Address"/>
-            <button type="submit" class="button" style="width: 160px;">BC Dash</button>
-          </div>
-        </form>
-        <form onsubmit="event.preventDefault(); Currencies20(this.Search20.value);">
-          <div class="input-button-line">
-            <input type="text" id="Search20" name="Search20" class="input-field" placeholder="Dogecoin Address"/>
-            <button type="submit" class="button" style="width: 160px;">BC Dogecoin</button>
-          </div>
-        </form>
-        <form onsubmit="event.preventDefault(); Currencies16(this.Search16.value);">
-          <div class="input-button-line">
-            <input type="text" id="Search16" name="Search16" class="input-field" placeholder="Ethereum Address"/>
-            <button type="submit" class="button" style="width: 160px;">BC Ethereum</button>
-          </div>
-        </form>
-        <form onsubmit="event.preventDefault(); Currencies18(this.Search18.value);">
-          <div class="input-button-line">
-            <input type="text" id="Search18" name="Search18" class="input-field" placeholder="Litecoin Address"/>
-            <button type="submit" class="button" style="width: 160px;">BC Litecoin</button>
-          </div>
-        </form>
-        <form onsubmit="event.preventDefault(); Currencies15(this.Search15.value);">
-          <div class="input-button-line">
-            <input type="text" id="Search15" name="Search15" class="input-field" placeholder="Wallet ID"/>
-            <button type="submit" class="button" style="width: 160px;">WalletExplorer (ID)</button>
-          </div>
-        </form>
-      </div>
+        </div>
+        <div class="button-grid button-grid-3col">
+          <button type="button" class="button" onclick="Currencies_BlockchairBCH()">BC Bitcoin-Cash</button>
+          <button type="button" class="button" onclick="Currencies_BlockchairBSV()">BC Bitcoin-SV</button>
+          <button type="button" class="button" onclick="Currencies_BlockchairDASH()">BC Dash</button>
+          <button type="button" class="button" onclick="Currencies_BlockchairDOGE()">BC Dogecoin</button>
+          <button type="button" class="button" onclick="Currencies_BlockchairETH()">BC Ethereum</button>
+          <button type="button" class="button" onclick="Currencies_BlockchairLTC()">BC Litecoin</button>
+          <button type="button" class="button" onclick="Currencies_EtherscanAddress()">Etherscan (ETH)</button>
+          <button type="button" class="button" onclick="Currencies_MetaSleuthBSC()">MetaSleuth (BSC)</button>
+          <button type="button" class="button" onclick="Currencies_MetaSleuthETH()">MetaSleuth (ETH)</button>
+          <button type="button" class="button" onclick="Currencies_MetaSleuthPolygon()">MetaSleuth (Polygon)</button>
+          <button type="button" class="button" onclick="Currencies_PolygonScanAddress()">PolygonScan</button>
+          <button type="button" class="button" onclick="Currencies_SolanaFMAddress()">SolanaFM</button>
+          <button type="button" class="button" onclick="Currencies_WalletExplorerByID()">WalletExplorer (ID)</button>
+        </div>
+      </section>
 
-      <div>
-        <h2>Security Tools</h2>
-        <form onsubmit="event.preventDefault(); Currencies26(this.Search26.value);">
-          <div class="input-button-line">
-            <input type="text" id="Search26" name="Search26" class="input-field" placeholder="Virtual Currency Address"/>
-            <button type="submit" class="button" style="width: 160px;">ScamSearch</button>
+      <section style="margin-top: 2rem;">
+        <h2>Blockchain Analysis & Intelligence</h2>
+        <div class="search-instructions">
+          <label for="genericCryptoQueryInput">Enter Crypto Address, TxHash, or Entity ID:</label>
+          <div class="input-container">
+            <input type="text" id="genericCryptoQueryInput" class="input-field" placeholder="Address, TxHash, Entity ID"/>
           </div>
-        </form>
-      </div>
-      
-      <div>
-        <h2>Unix Time Converter</h2>
-        <form onsubmit="event.preventDefault(); convert();">
-          <div class="input-button-line">
-            <input type='text' placeholder='Unix Timestamp' id='timestamp' class="input-field">
-            <button type='submit' class="button" style="width: 160px;">Convert Timestamp</button>
-          </div>
-        </form>
-        <span id='datetime'></span> 
-      </div>
+        </div>
+        <div class="button-grid button-grid-3col">
+          <button type="button" class="button" onclick="Currencies_ArkhamExplorer()">Arkham (Explorer)</button>
+          <button type="button" class="button" onclick="Currencies_ArkhamVisualizer()">Arkham (Visualizer)</button>
+          <button type="button" class="button" onclick="Currencies_BlockscanLookup()">Blockscan</button>
+          <button type="button" class="button" onclick="Currencies_BreadcrumbsReport()">Breadcrumbs</button>
+          <button type="button" class="button" onclick="Currencies_CrystalExplorer()">Crystal Explorer</button>
+          <button type="button" class="button" onclick="Currencies_CrystalVisualizer()">Crystal Visualizer</button>
+          <button type="button" class="button" onclick="Currencies_GoogleSearchAddress()">Google (Search Address)</button>
+          <button type="button" class="button" onclick="Currencies_MetaSleuthBTC()">MetaSleuth (BTC)</button>
+          <button type="button" class="button" onclick="Currencies_OKLinkExplorer()">OKLink Explorer **CAUTION: Chinese**</button>
+          <button type="button" class="button" onclick="Currencies_OKLinkVisualisation()">OKLink Visualisation **CAUTION: Chinese**</button>
+          <button type="button" class="button" onclick="Currencies_PhalconExplorerETH()">Phalcon Explorer (ETH)</button>
+          <button type="button" class="button" onclick="Currencies_ZapperAccount()">Zapper (DeFi/NFT)</button>
+        </div>
+      </section>
     </div>
   </div>
-
 </main>
 
-<script type="text/javascript">
-// Submenu mouseover/mouseout logic for nav
-document.querySelectorAll('.menu > li').forEach(item => {
-  const submenu = item.querySelector('.submenu');
-  if (submenu) {
-      item.addEventListener('mouseover', () => submenu.style.display = 'block');
-      item.addEventListener('mouseout', () => submenu.style.display = 'none');
-  }
-});
-
-// Bitcoin Address Specific Searches
-function Currencies01(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockexplorer.com/api/addr/' + OsintValue, 'Search01window'); }
-function Currencies03(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchain.info/q/getreceivedbyaddress/' + OsintValue, 'Search03window'); }
-function Currencies04(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchain.info/q/getsentbyaddress/' + OsintValue, 'Search04window'); }
-function Currencies05(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchain.info/q/addressbalance/' + OsintValue, 'Search05window'); }
-function Currencies06(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://explorer.cloverpool.com/btc/address/' + OsintValue, 'Search06window'); }
-function Currencies07(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchain.info/q/addressfirstseen/' + OsintValue, 'Search07window'); }
-function Currencies08(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://www.blockchain.com/btc/address/' + OsintValue, 'Search08window'); }
-function Currencies09(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://www.chainabuse.com/address/' + OsintValue, 'Search09window'); }
-function Currencies10(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://bitcoinwhoswho.com/address/' + OsintValue, 'Search10window'); }
-function Currencies11(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://oxt.me/address/' + OsintValue, 'Search11window'); }
-function Currencies12(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://www.walletexplorer.com/address/' + OsintValue, 'Search12window'); }
-function Currencies14(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/bitcoin/address/' + OsintValue, 'Search14window'); }
-
-// Function Currencies02() was removed.
-
-function convert() {
-  var unixtimestamp = document.getElementById('timestamp').value;
-  if (!unixtimestamp || isNaN(unixtimestamp)) {
-    document.getElementById('datetime').innerHTML = "Please enter a valid Unix timestamp.";
-    return;
-  }
-  var months_arr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var date = new Date(unixtimestamp * 1000);
-  var hours = date.getHours();
-  var minutes = "0" + date.getMinutes();
-  var seconds = "0" + date.getSeconds();
-  var year = date.getFullYear();
-  var month = months_arr[date.getMonth()];
-  var day = date.getDate();
-  var convdataTime = month + '-' + day + '-' + year + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-  document.getElementById('datetime').innerHTML = convdataTime;
-}
-
-// Other Crypto
-function Currencies15(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://www.walletexplorer.com/address/' + OsintValue, 'Search15window'); }
-function Currencies16(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/ethereum/address/' + OsintValue, 'Search16window'); }
-function Currencies17(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/bitcoin-cash/address/' + OsintValue, 'Search17window'); }
-function Currencies18(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/litecoin/address/' + OsintValue, 'Search18window'); }
-function Currencies19(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/bitcoin-sv/address/' + OsintValue, 'Search19window'); }
-function Currencies20(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/dogecoin/address/' + OsintValue, 'Search20window'); }
-function Currencies21(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://blockchair.com/dash/address/' + OsintValue, 'Search21window'); }
-
-// Currency Converters
-function Currencies22(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://api.coinconvert.net/convert/btc/usd?amount=' + OsintValue, 'Search22window'); }
-function Currencies22b(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://api.coinconvert.net/convert/btc/eur?amount=' + OsintValue, 'Search22bwindow'); }
-function Currencies23(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://blockchain.info/tobtc?currency=USD&value=' + OsintValue, 'Search23window'); }
-function Currencies23b(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://blockchain.info/tobtc?currency=EUR&value=' + OsintValue, 'Search23bwindow'); }
-function Currencies24(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://api.exchangerate.host/convert?from=SAT&to=USD&amount=' + OsintValue, 'Search24window'); }
-function Currencies25(OsintValue) { if(OsintValue.trim() === "" || isNaN(OsintValue)) return; window.open('https://api.exchangerate.host/convert?from=USD&to=SAT&amount=' + OsintValue, 'Search25window'); }
-
-// Security Tools
-function Currencies26(OsintValue) { if(OsintValue.trim() === "") return; window.open('https://scamsearch.io/search_report?searchoption=all&search=' + OsintValue, 'Search26window'); }
-
-document.querySelectorAll('form').forEach(form => {
-  form.addEventListener('submit', function(event) {
-    // Inline onsubmit attributes already handle event.preventDefault()
-  });
-});
-</script>
-
 <footer>
-  <p>Global Security Italy • Rome (IT) <a href="License.html">License</a></p>
+  <p>Global Security Italy • Rome (IT) <a href="license.html">License</a></p>
 </footer>
+
+<script>
+  document.querySelectorAll('.menu > li').forEach(item => {
+    const submenu = item.querySelector('.submenu');
+    if (submenu) {
+      item.addEventListener('mouseenter', function() {
+        submenu.style.display = 'block';
+      });
+      item.addEventListener('mouseleave', function() {
+        submenu.style.display = 'none';
+      });
+    }
+  });
+
+  function Currencies_GetAndValidateInput(inputId, placeholderForAlert = "value", requiresNumeric = false) {
+    const inputElement = document.getElementById(inputId);
+    if (!inputElement) {
+      alert("Error: Input field '" + inputId + "' not found.");
+      return null;
+    }
+    const value = inputElement.value.trim();
+    if (!value) {
+      alert("Please enter " + placeholderForAlert + ".");
+      return null;
+    }
+    if (requiresNumeric && isNaN(value)) {
+      alert("Please enter a valid number for " + placeholderForAlert + ".");
+      return null;
+    }
+    return value;
+  }
+
+  // --- Bitcoin Address Specific Searches (Uses 'bitcoinAddressInput') ---
+  function Currencies_ValidateBTCAddress() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://blockexplorer.com/api/addr/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_GetBTCReceived() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://blockchain.info/q/getreceivedbyaddress/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_GetBTCSent() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://blockchain.info/q/getsentbyaddress/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_GetBTCBalance() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://blockchain.info/q/addressbalance/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_CloverpoolSummary() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://explorer.cloverpool.com/btc/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_GetBTCFirstSeen() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://blockchain.info/q/addressfirstseen/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_BlockchainComBTC() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://www.blockchain.com/btc/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_ChainabuseBTC() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://www.chainabuse.com/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_BitcoinWhosWho() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://bitcoinwhoswho.com/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_OXTmeBTC() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://oxt.me/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_WalletExplorerAddress() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://www.walletexplorer.com/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_BlockchairBTC() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://blockchair.com/bitcoin/address/' + encodeURIComponent(val), '_blank'); }
+
+  // --- Blockchain Analysis & Intelligence (Uses 'genericCryptoQueryInput') ---
+  function Currencies_ArkhamExplorer() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address or Entity ID'); if(!val)return; window.open('https://platform.arkhamintelligence.com/explorer/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_ArkhamVisualizer() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address or Entity ID'); if(!val)return; window.open('https://platform.arkhamintelligence.com/visualizer/entity/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_BlockscanLookup() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address'); if(!val)return; window.open('https://blockscan.com/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_BreadcrumbsReport() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address'); if(!val)return; window.open('https://www.breadcrumbs.app/reports/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_CrystalExplorer() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address'); if(!val)return; window.open('https://explorer.crystalblockchain.com/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_CrystalVisualizer() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address or Entity ID'); if(!val)return; window.open('https://explorer.crystalblockchain.com/visualization/new/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_GoogleSearchAddress() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address'); if(!val)return; window.open('https://www.google.com/search?q=%22' + encodeURIComponent(val) + '%22', '_blank'); }
+  function Currencies_MetaSleuthBTC() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a BTC Address'); if(!val)return; window.open('https://metasleuth.io/result/btc/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_OKLinkExplorer() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address or TxID'); if(!val)return; window.open('https://www.oklink.com/middle/multi-search#key=' + encodeURIComponent(val), '_blank'); }
+  function Currencies_OKLinkVisualisation() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address or TxID'); if(!val)return; window.open('https://www.oklink.com/en/tianyan/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_PhalconExplorerETH() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'an ETH Address or TxHash'); if(!val)return; window.open('https://phalcon.xyz/tx/eth/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_ZapperAccount() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'an ETH Address or ENS'); if(!val)return; window.open('https://zapper.fi/account/' + encodeURIComponent(val), '_blank'); }
+
+  // --- Currency Converters ---
+  function Currencies_ConvertBTCToUSD() { const val = Currencies_GetAndValidateInput('cryptoAmountToConvertInput', 'a Bitcoin Amount', true); if(!val)return; window.open('https://api.coinconvert.net/convert/btc/usd?amount=' + encodeURIComponent(val), '_blank'); }
+  function Currencies_ConvertBTCToEUR() { const val = Currencies_GetAndValidateInput('cryptoAmountToConvertInput', 'a Bitcoin Amount', true); if(!val)return; window.open('https://api.coinconvert.net/convert/btc/eur?amount=' + encodeURIComponent(val), '_blank'); }
+  function Currencies_ConvertSatoshiToUSD() { const val = Currencies_GetAndValidateInput('cryptoAmountToConvertInput', 'a Satoshi Amount', true); if(!val)return; window.open('https://api.exchangerate.host/convert?from=SAT&to=USD&amount=' + encodeURIComponent(val), '_blank'); }
+  function Currencies_ConvertUSDToBTC() { const val = Currencies_GetAndValidateInput('fiatAmountToConvertInput', 'a Dollar Amount', true); if(!val)return; window.open('https://blockchain.info/tobtc?currency=USD&value=' + encodeURIComponent(val), '_blank'); }
+  function Currencies_ConvertEURToBTC() { const val = Currencies_GetAndValidateInput('fiatAmountToConvertInput', 'an Euro Amount', true); if(!val)return; window.open('https://blockchain.info/tobtc?currency=EUR&value=' + encodeURIComponent(val), '_blank'); }
+  function Currencies_ConvertUSDToSatoshi() { const val = Currencies_GetAndValidateInput('fiatAmountToConvertInput', 'a Dollar Amount', true); if(!val)return; window.open('https://api.exchangerate.host/convert?from=USD&to=SAT&amount=' + encodeURIComponent(val), '_blank'); }
+
+  // --- Other Cryptocurrency Lookups (Uses 'otherCryptoAddressInput') ---
+  function Currencies_BlockchairETH() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'an Ethereum Address'); if(!val)return; window.open('https://blockchair.com/ethereum/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_BlockchairBCH() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Bitcoin Cash Address'); if(!val)return; window.open('https://blockchair.com/bitcoin-cash/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_BlockchairLTC() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Litecoin Address'); if(!val)return; window.open('https://blockchair.com/litecoin/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_BlockchairBSV() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Bitcoin-SV Address'); if(!val)return; window.open('https://blockchair.com/bitcoin-sv/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_BlockchairDOGE() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Dogecoin Address'); if(!val)return; window.open('https://blockchair.com/dogecoin/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_BlockchairDASH() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Dash Address'); if(!val)return; window.open('https://blockchair.com/dash/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_WalletExplorerByID() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Wallet ID or Address'); if(!val)return; window.open('https://www.walletexplorer.com/address/' + encodeURIComponent(val), '_blank'); } 
+  function Currencies_EtherscanAddress() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'an Ethereum Address'); if(!val)return; window.open('https://etherscan.io/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_MetaSleuthBSC() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a BSC Address'); if(!val)return; window.open('https://metasleuth.io/result/bsc/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_MetaSleuthETH() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'an ETH Address'); if(!val)return; window.open('https://metasleuth.io/result/eth/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_MetaSleuthPolygon() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Polygon Address'); if(!val)return; window.open('https://metasleuth.io/result/polygon/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_PolygonScanAddress() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Polygon Address'); if(!val)return; window.open('https://polygonscan.com/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_SolanaFMAddress() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Solana Address'); if(!val)return; window.open('https://solana.fm/address/' + encodeURIComponent(val), '_blank'); }
+  
+  // --- Security Tools (Uses 'securityQueryInput') ---
+  function Currencies_ScamSearchAddress() { const val = Currencies_GetAndValidateInput('securityQueryInput', 'a Virtual Currency Address or Term'); if(!val)return; window.open('https://scamsearch.io/search_report?searchoption=all&search=' + encodeURIComponent(val), '_blank'); }
+  function Currencies_OFACSanctionsHomepage() { /* Input 'securityQueryInput' is available but not used by this function */ window.open('https://sanctionssearch.ofac.treas.gov/', '_blank'); }
+  function Currencies_RiskIQByAddress() { const val = Currencies_GetAndValidateInput('securityQueryInput', 'a Crypto Address (as query)'); if(!val)return; window.open('https://community.riskiq.com/search/trackers?query=' + encodeURIComponent(val), '_blank'); }
+
+  // --- Unix Time Converter (Uses 'unixTimestampInput') ---
+  function Currencies_ConvertUnixTime() {
+    const unixtimestampStr = Currencies_GetAndValidateInput('unixTimestampInput', 'a Unix Timestamp', true);
+    if (unixtimestampStr === null) {
+        document.getElementById('datetime').innerHTML = "Please enter a valid Unix timestamp.";
+        return;
+    }
+    const timestampNumber = parseInt(unixtimestampStr, 10); 
+    const months_arr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const date = new Date(timestampNumber * 1000);
+    const hours = date.getHours();
+    let minutes = "0" + date.getMinutes();
+    let seconds = "0" + date.getSeconds();
+    const year = date.getFullYear();
+    const month = months_arr[date.getMonth()];
+    const day = date.getDate();
+    const convdataTime = month + '-' + day + '-' + year + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+    document.getElementById('datetime').innerHTML = convdataTime;
+  }
+</script>
 
 </body>
 </html>
