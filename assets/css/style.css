@@ -1,3 +1,4 @@
+/* CSS Custom Properties (Variables) for site-wide theming */
 :root {
   --primary-color: #0066ff;
   --secondary-color: #333; /* Default text color */
@@ -5,12 +6,14 @@
   --bg-color: #f9f9f9;
 }
 
+/* Basic CSS Reset for all elements */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Default body styling */
 body {
   font-family: 'IBM Plex Sans', sans-serif;
   background-color: var(--bg-color);
@@ -20,22 +23,25 @@ body {
   margin: 0;
 }
 
+/* Styling for code example blocks (used in customise.html) */
 pre.code-guide-block {
-  background-color: #f4f4f8; /* Un colore di sfondo leggermente diverso per evidenziare */
+  background-color: #f4f4f8; /* A slightly different background color for highlighting */
   padding: 1em;
   border: 1px solid #ddd;
   border-radius: 4px;
-  overflow-x: auto; /* Necessario se il codice è più largo del contenitore */
+  overflow-x: auto; /* Necessary if the code is wider than the container */
 }
 
+/* Styling for inline code within code example blocks */
 pre.code-guide-block code {
-  font-family: 'Courier New', Courier, monospace; /* O un altro font monospace di tua scelta */
-  font-size: 1.1em; /* Rende il font leggermente più grande */
-  line-height: 1.6; /* Migliora la leggibilità */
-  color: #2c3e50; /* Un colore scuro per il testo del codice */
+  font-family: 'Courier New', Courier, monospace; /* Or another monospace font of your choice */
+  font-size: 1.1em; /* Makes the font slightly larger */
+  line-height: 1.6; /* Improves readability */
+  color: #2c3e50; /* A dark color for the code text */
 }
 
 /* TYPOGRAPHY */
+/* General heading styles */
 h1 {
   text-align: center;
   margin: 16px 0;
@@ -55,26 +61,61 @@ h3 {
   font-size: 1.1rem;
 }
 
+/* Styling for the CyberChef iframe container */
 .cyberchef-iframe {
   width: 100%;
-  /* Un'altezza di esempio potrebbe essere calcolata per riempire lo spazio verticale disponibile, 
-     considerando l'altezza di header, footer ed eventuali padding del main.
-     Es: height: calc(100vh - 150px); (aggiusta 150px secondo necessità) */
-  height: 80vh; /* O un valore fisso ma responsivo se preferisci */
+  /* An example height could be calculated to fill the available vertical space,  
+     considering header, footer, and main padding heights.
+     E.g., height: calc(100vh - 150px); (adjust 150px as needed) 
+  */
+  height: 80vh; /* Or a fixed but responsive value if you prefer */
   border: none;
 }
 
-.page-title { /* Used for H1 elements that are main page titles */
+/* Specific styling for main page titles (typically H1) */
+.page-title { 
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
 }
 
+/* Utility class for centering text */
 .center-text {
   text-align: center;
 }
 
+/* LIST STYLING for content lists within the <main> element */
+main ul,
+main ol {
+  list-style-position: outside; /* Ensures bullets/numbers are outside the text flow */
+  padding-left: 20px;           /* Adjusts indentation (default browser is often 40px) */
+  margin-top: 0.75rem;          /* Space before a list */
+  margin-bottom: 1rem;          /* Space after a list */
+}
+
+main ul {
+  list-style-type: disc;        /* Default bullet style for unordered lists in main content */
+}
+
+main ol {
+  list-style-type: decimal;     /* Default number style for ordered lists in main content */
+}
+
+main ul li, 
+main ol li {
+  margin-bottom: 0.5em;         /* Space between list items */
+  line-height: 1.6;             /* Readability for text within list items */
+}
+
+/* Removes extra bottom margin from the last list item in main content lists */
+main ul li:last-child,
+main ol li:last-child {
+  margin-bottom: 0;
+}
+
+
 /* NAVBAR */
+/* Main navigation bar container */
 nav {
   position: fixed;
   top: 0;
@@ -86,6 +127,8 @@ nav {
   justify-content: center;
   z-index: 1000;
 }
+
+/* Main menu list container */
 .menu {
   list-style: none;
   padding: 0;
@@ -95,6 +138,8 @@ nav {
   width: 100%;
   justify-content: space-around;
 }
+
+/* Individual main menu items (<li>) */
 .menu > li {
   position: relative;
   height: 60px;
@@ -108,13 +153,14 @@ nav {
   font-size: 0.85rem;
   border-right: 1px solid #eee;
   transition: background-color 0.2s ease-in, color 0.2s ease-in;
-  /* Text color will be inherited from body or set by child 'a'/'span' specific rules */
 }
+
+/* Removes border from the last main menu item */
 .menu > li:last-child {
   border-right: none;
 }
 
-/* Styling for text/links within main menu items */
+/* Styling for text/links (<a> or <span>) within main menu items */
 .menu > li a,
 .menu > li span {
   display: block;
@@ -124,75 +170,96 @@ nav {
   transition: color 0.2s ease-in;
 }
 
-/* Style for the active menu link */
+/* Style for the active main menu link */
 .menu > li a.active {
   color: var(--primary-color);
   font-weight: bold;
 }
 
-/* Hover state for the entire main menu <li> */
+/* Hover state for the entire main menu item (<li>) */
 .menu > li:hover {
   background-color: var(--primary-color);
 }
 
-/* Text of links and spans within .menu > li becomes white when the <li> is hovered */
+/* Text of links and spans within .menu > li becomes white on <li> hover */
 .menu > li:hover > a,
 .menu > li:hover > span {
   color: #fff;
 }
 
 /* SUBMENU */
+/* Submenu container styling (hidden by default) */
 .submenu {
   display: none;
   position: absolute;
   background-color: #ffffff;
-  top: 100%;
+  top: 100%; /* Positions below the parent menu item */
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); /* Centers the submenu */
   list-style: none;
+  padding: 0; /* Explicitly reset padding for submenu ul */
+  margin: 0;  /* Explicitly reset margin for submenu ul */
   border: 1px solid #ddd;
   min-width: 200px;
   z-index: 999;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
+/* Individual submenu items (<li>) */
 .submenu li {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem; /* This padding is for the content inside li, not the ul itself */
+  margin-bottom: 0; /* Reset any inherited li margin from general rules if not desired */
+  line-height: 1.4; /* Adjusted for submenu item readability, can differ from main content li */
   border-bottom: 1px solid #eee;
 }
+
+/* Removes border from the last submenu item */
 .submenu li:last-child {
   border-bottom: none;
 }
+
+/* Submenu links (<a>) styling */
 .submenu li a {
   text-decoration: none;
   color: var(--secondary-color); /* Submenu link text color */
   display: block;
   transition: color 0.2s;
 }
+
+/* Hover state for individual submenu items (<li>) */
 .submenu li:hover {
   background-color: var(--primary-color);
 }
+
+/* Submenu link (<a>) text color on <li> hover */
 .submenu li:hover a {
-  color: #ffffff; /* Submenu link text color on hover */
+  color: #ffffff;
 }
-.menu > li:hover .submenu {
+
+/* Shows the submenu when the parent main menu item (<li>) is hovered (CSS-driven) */
+.menu > li:hover > .submenu { /* Added direct child selector for robustness */
   display: block;
 }
 
 /* MAIN CONTENT */
+/* Styling for the main content container of each page */
 main {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto; /* Centers the main content */
   padding: 20px;
   background-color: #fff;
 }
 
 /* SEARCH/INDEX CONTENT & INPUT CONTAINERS */
+/* Styling for instructional sections, often containing input fields */
 .search-instructions {
   margin-bottom: 1.5rem;
   padding: 1rem;
   background-color: #f0f0f0;
   border-radius: 4px;
 }
+
+/* Styling for labels within search-instructions sections */
 .search-instructions label {
   display: block;
   margin-bottom: 0.5rem;
@@ -200,7 +267,7 @@ main {
   font-size: 1rem;
 }
 
-/* Original .input-container: allows items to wrap if needed (e.g., multiple inputs) */
+/* Container for multiple input fields, allows wrapping */
 .input-container {
   display: flex;
   flex-wrap: wrap;
@@ -208,16 +275,16 @@ main {
   margin-bottom: 1rem;
 }
 
-/* NEW class: For a single input field and a button on the same line */
+/* Container for a single input field and a button on the same line */
 .input-button-line {
   display: flex;
-  align-items: center; /* Vertically align input and button */
-  /* flex-wrap: nowrap; is the default for flex, so not strictly needed unless overriding */
+  align-items: center; /* Vertically aligns input and button */
   gap: 0.5rem; /* Space between input and button */
-  margin-bottom: 1rem; /* Consistent bottom margin */
+  margin-bottom: 1rem; 
 }
 
-.input-field { /* General styling for input fields */
+/* General styling for text input fields */
+.input-field { 
   flex: 1; /* Default grow/shrink behavior */
   min-width: 200px;
   padding: 0.6rem;
@@ -228,43 +295,47 @@ main {
 
 /* Specific behavior for .input-field within .input-button-line */
 .input-button-line .input-field {
-  flex-grow: 1; /* Make the input field take available space */
+  flex-grow: 1; /* Makes the input field take available horizontal space */
 }
 
 
 /* COLUMN LAYOUT */
+/* Container for a two-column layout */
 .columns {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allows columns to stack on smaller screens */
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
+
+/* Individual column styling */
 .column {
-  flex: 1;
-  min-width: 300px;
+  flex: 1; /* Each column tries to take equal space */
+  min-width: 300px; /* Minimum width before stacking */
   background-color: #fafafa;
   padding: 1rem;
   border: 1px solid #eee;
   border-radius: 4px;
 }
 
-/* NEW class: For arranging forms (or other items) in a 3-column grid */
+/* Grid layout for arranging forms (or other items) in typically 3 columns */
 .form-row-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Creates 3 equal-width columns */
-  gap: 1.5rem; /* Consistent gap */
+  gap: 1.5rem; 
   margin-bottom: 1rem;
 }
+
+/* Optional styling for forms within the form-row-grid */
 .form-row-grid > form {
-  /* Optional: Add specific styling for forms within this grid if needed */
   /* e.g., background-color: #fdfdfd; padding: 0.75rem; border: 1px solid #f0f0f0; */
 }
 
 
 /* BUTTONS */
-/* Base .button style - restored to width: 100% as per your original CSS */
+/* Base style for all buttons */
 .button {
-  width: 100%; /* Buttons will try to fill their container width */
+  width: 100%; /* Buttons will try to fill their container width by default */
   padding: 0.5rem;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -278,43 +349,45 @@ main {
   white-space: nowrap;
   transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  color: var(--secondary-color); /* Ensure default text color */
+  color: var(--secondary-color); /* Default text color for buttons */
 }
+
+/* Hover state for buttons */
 .button:hover {
   background-color: var(--primary-color);
   color: #fff;
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-/* Buttons within .input-button-line should have auto width */
+/* Buttons within .input-button-line should have automatic width */
 .input-button-line .button {
   width: auto;
   flex-shrink: 0; /* Prevent the button from shrinking */
-  min-width: 100px; /* Or a suitable min-width for your button text, e.g. 140px */
+  min-width: 100px; 
 }
 
 /* BUTTON GRID */
+/* Container for a responsive grid of buttons */
 .button-grid {
   display: grid;
-  /* Responsive columns: fills with as many buttons of min 140px as fit */
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Responsive columns */
   gap: 0.75rem;
   margin-bottom: 1rem;
 }
-/* Buttons in .button-grid will correctly take 100% width of their grid cell
-   due to the base .button { width: 100%; } rule. */
+/* Buttons in .button-grid take 100% width of their grid cell due to base .button style */
 
-/* NEW modifier class: For strictly 3 columns in a button grid */
+/* Modifier class for a button grid strictly with 3 columns */
 .button-grid-3col {
   grid-template-columns: repeat(3, 1fr);
 }
 
 
 /* NOTE BOX */
+/* Styling for notification/note boxes */
 .note {
   font-size: 0.9rem;
-  background-color: #fff9d6;
-  border-left: 3px solid #ffc107;
+  background-color: #fff9d6; /* Light yellow background */
+  border-left: 3px solid #ffc107; /* Yellow accent border */
   padding: 0.75rem;
   margin-bottom: 1rem;
   border-radius: 3px;
@@ -323,7 +396,7 @@ main {
   font-weight: bold;
 }
 
-/* Styling for Unix timestamp output */
+/* Styling for Unix timestamp output (used in Currencies.html) */
 #datetime {
   display: block;
   margin-top: 0.5rem;
@@ -331,26 +404,37 @@ main {
   color: var(--primary-color);
 }
 
-/* ANALYTIC STANDARDS (as provided by you) */
+/* ANALYTIC STANDARDS (for Guidelines.html) */
+/* Container for standards display */
 .standards-container {
   display: flex;
   gap: 40px;
   flex-wrap: wrap;
   margin-top: 20px;
 }
+
+/* Column within the standards container */
 .standards-column {
   flex: 1;
   min-width: 300px;
 }
+
+/* List styling for standards */
 .standards-list {
   list-style: disc;
-  padding-left: 20px;
+  /* It will inherit from 'main ul' if specific padding is not needed here */
+  /* padding-left: 20px; */ 
 }
+
+/* Individual standard list items with hover effect for description */
 .standards-list > li {
   position: relative;
-  margin-bottom: 12px;
+  /* It will inherit from 'main ul li' if specific margin is not needed here */
+  /* margin-bottom: 12px; */ 
   cursor: help;
 }
+
+/* Description text box, hidden by default, shown on hover */
 .standards-list > li .description-text {
   display: none;
   position: absolute;
@@ -368,11 +452,14 @@ main {
   color: var(--secondary-color);
   z-index: 10;
 }
+
+/* Shows the description text on list item hover */
 .standards-list > li:hover .description-text {
   display: block;
 }
 
 /* FOOTER */
+/* Footer styling, fixed at the bottom */
 footer {
   background-color: #ffffff;
   border-top: 1px solid #ddd;
@@ -386,41 +473,64 @@ footer {
   right: 0;
   z-index: 1000;
 }
+
+/* Links within the footer */
 footer a {
   color: var(--primary-color);
   text-decoration: none;
   margin-left: 10px;
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE STYLES */
+/* Adjustments for medium-sized screens and smaller (e.g., tablets) */
 @media (max-width: 992px) {
-  .columns { /* Main columns stack */
+  /* Main page columns stack vertically */
+  .columns { 
     flex-direction: column;
   }
-  .form-row-grid { /* Form grid becomes responsive, e.g., 2 columns */
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Adjust minmax as needed */
+  /* Form grid becomes responsive, adapting column count */
+  .form-row-grid { 
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
   }
 }
+
+/* Styling for the logo on the index page */
+.index-logo {
+  max-width: 500px;
+  height: auto;
+  margin-bottom: 1rem;
+  display: block; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Adjustments for small screens (e.g., mobile phones) */
 @media (max-width: 768px) {
+  /* Reduce font size in the main menu */
   .menu > li {
     font-size: 0.75rem;
     padding: 0 0.2rem;
   }
+  /* All button grids (default and 3-column) become single column */
   .button-grid,
-  .button-grid-3col { /* All button grids become single column */
+  .button-grid-3col { 
     grid-template-columns: 1fr;
   }
-  .form-row-grid { /* Form grid becomes single column */
+  /* Form grid also becomes single column */
+  .form-row-grid { 
     grid-template-columns: 1fr;
   }
-  .input-button-line { /* Allow input and button to wrap on small screens */
+  /* Allow input and button in a line to wrap */
+  .input-button-line { 
     flex-wrap: wrap;
   }
+  /* Input and button take full width when wrapped in input-button-line */
   .input-button-line .input-field,
-  .input-button-line .button { /* Input and button take full width when wrapped */
+  .input-button-line .button { 
     width: 100%;
   }
+  /* Add space below input field if button wraps to the next line */
   .input-button-line .input-field {
-    margin-bottom: 0.5rem; /* Add space if button wraps below input */
+    margin-bottom: 0.5rem; 
   }
 }
