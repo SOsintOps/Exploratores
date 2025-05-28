@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Customise Page • Exploratores</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<nav>
+  <ul class="menu">
+    <li><span>HOME</span>
+      <ul class="submenu">
+        <li><a href="../index.html">Index</a></li>
+      </ul>
+    </li>
+    <li><span>Search<br>Engines</span>
+      <ul class="submenu">
+        <li><a href="Searchengines.html">Search Engines</a></li>
+      </ul>
+    </li>
+    <li><span>People &<br>Identities</span>
+      <ul class="submenu">
+        <li><a href="Names.html">Names</a></li>
+        <li><a href="phoneus.html">US Phones</a></li>
+        <li><a href="phoneint.html">International Phones</a></li>
+        <li><a href="Address.html">Addresses</a></li>
+        <li><a href="vehicles.html">Vehicles</a></li>
+        <li><a href="usernames.html">Usernames</a></li>
+        <li><a href="Email.html">Email Addresses</a></li>
+        <li><a href="Communities.html">Communities</a></li>
+      </ul>
+    </li>
+    <li><span>Social<br>Media</span>
+      <ul class="submenu">
+        <li><a href="X.html">X</a></li>
+        <li><a href="Facebook.html">Facebook</a></li>
+        <li><a href="Instagram.html">Instagram</a></li>
+        <li><a href="LinkedIn.html">LinkedIn</a></li>
+      </ul>
+    </li>
+    <li><span>Websites</span>
+      <ul class="submenu">
+        <li><a href="Domains.html">Domains</a></li>
+        <li><a href="IP.html">IP Addresses</a></li>
+      </ul>
+    </li>
+    <li><span>GeoInt</span>
+      <ul class="submenu">
+        <li><a href="Maps.html">Maps</a></li>
+      </ul>
+    </li>
+    <li><span>Media<br>Analysis</span>
+      <ul class="submenu">
+        <li><a href="Images.html">Images</a></li>
+        <li><a href="Videos.html">Videos</a></li>
+        <li><a href="docs.html">Documents</a></li>
+      </ul>
+    </li>
+    <li><span>Business<br>Intelligence</span>
+      <ul class="submenu">
+        <li><a href="Business.html">Business &amp; Government</a></li>
+        <li><a href="Currencies.html">Virtual Currencies</a></li>
+      </ul>
+    </li>
+    <li><span>Tools</span>
+      <ul class="submenu">
+        <li><a href="Guidelines.html">Guidelines</a></li>  
+        <li><a href="CyberChef.html">CyberChef</a></li>
+        <li><a href="Customise.html" class="active">Customise Page</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    
+<main>
+  <h1 class="page-title">Customising Exploratores Pages</h1>
+
+  <section>
+    <h2>Page Structure Overview</h2>
+    <p>Exploratores OSINT Toolkit pages follow a consistent HTML structure to ensure maintainability and a uniform user experience. All styling is handled by an external CSS file linked in the <code>&lt;head&gt;</code>.</p>
+    
+    <h3>Key HTML Components:</h3>
+    <ul>
+      <li><strong><code>&lt;!DOCTYPE html&gt;</code> and <code>&lt;html lang="en"&gt;</code></strong>: Standard document declaration.</li>
+      <li><strong><code>&lt;head&gt;</code></strong>: Contains:
+        <ul>
+          <li><code>&lt;meta charset="UTF-8" /&gt;</code></li>
+          <li><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&gt;</code></li>
+          <li><code>&lt;title&gt;Page Name • Exploratores&lt;/title&gt;</code> (Replace "Page Name" accordingly).</li>
+          <li>Link to Google Fonts (IBM Plex Sans).</li>
+          <li>Link to the external stylesheet: <code>&lt;link rel="stylesheet" href="../assets/css/style.css"&gt;</code> (path may vary based on page location).</li>
+        </ul>
+      </li>
+      <li><strong><code>&lt;body&gt;</code></strong>: Contains the visible page content, structured into:
+        <ul>
+          <li><code>&lt;nav&gt;...&lt;/nav&gt;</code>: The main navigation bar.</li>
+          <li><code>&lt;main&gt;...&lt;/main&gt;</code>: The primary content of the page.</li>
+          <li><code>&lt;footer&gt;...&lt;/footer&gt;</code>: The page footer.</li>
+          <li><code>&lt;script&gt;...&lt;/script&gt;</code>: A single block for JavaScript before the closing <code>&lt;/body&gt;</code> tag.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3>Navbar (<code>&lt;nav&gt;</code>) Structure:</h3>
+    <p>The navigation bar uses a specific nested list structure:</p>
+    <pre class="code-guide-block"><code>&lt;ul class="menu"&gt;
+  &lt;li&gt;
+    &lt;span&gt;MENU TITLE&lt;/span&gt; 
+    &lt;!-- or &lt;a href="..."&gt;MENU TITLE&lt;/a&gt; if it's a direct link --&gt;
+    &lt;ul class="submenu"&gt;
+      &lt;li&gt;&lt;a href="page.html"&gt;Submenu Item&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="currentpage.html" class="active"&gt;Active Submenu Item&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;!-- More LIs for other menu items --&gt;
+&lt;/ul&gt;</code></pre>
+    <p>The <code>class="active"</code> should be on the <code>&lt;a&gt;</code> tag of the current page.</p>
+
+    <h3>Main Content (<code>&lt;main&gt;</code>) Structure:</h3>
+    <p>The <code>&lt;main&gt;</code> section typically starts with:</p>
+    <ul>
+      <li><code>&lt;h1 class="page-title"&gt;Page Title&lt;/h1&gt;</code></li>
+    </ul>
+    <p>It then uses various semantic elements and global CSS classes for layout and styling, such as:</p>
+    <ul>
+      <li><code>&lt;div class="columns"&gt;</code> and <code>&lt;div class="column"&gt;</code>: For creating multi-column layouts.</li>
+      <li><code>&lt;section class="search-instructions"&gt;</code>: Wraps primary input areas. Often contains a <code>&lt;label&gt;</code>, input fields, and sometimes a <code>&lt;div class="note"&gt;</code>.</li>
+      <li><code>&lt;div class="input-container"&gt;</code>: Groups one or more input fields.</li>
+      <li><code>&lt;div class="input-button-line"&gt;</code>: For aligning a single input field and a button on the same line.</li>
+      <li><code>&lt;input type="text" class="input-field"&gt;</code>: Standard text input.</li>
+      <li><code>&lt;div class="button-grid"&gt;</code>: For creating responsive grids of buttons. Specific column counts can be forced (e.g., <code>button-grid-3col</code>).</li>
+      <li><code>&lt;button type="button" class="button"&gt;Button Text&lt;/button&gt;</code>: Standard button.</li>
+      <li><code>&lt;div class="note"&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Text...&lt;/div&gt;</code>: For advisory notes.</li>
+      <li>Category titles within <code>&lt;main&gt;</code> usually use <code>&lt;h2&gt;</code>.</li>
+    </ul>
+
+    <h3>Footer (<code>&lt;footer&gt;</code>) Structure:</h3>
+    <p>The footer has a standard text format:</p>
+    <pre class="code-guide-block"><code>&lt;footer&gt;
+  &lt;p&gt;Global Security Italy • Rome (IT) &lt;a href="path/to/license.html"&gt;License&lt;/a&gt;&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+    <p>Adapt the path to <code>license.html</code> as needed.</p>
+
+    <h3>JavaScript:</h3>
+    <p>All custom JavaScript for the page, including event handlers and helper functions, resides in a single <code>&lt;script&gt;</code> block placed just before the closing <code>&lt;/body&gt;</code> tag. This includes the standard navbar submenu script.</p>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Adding a New Input Field</h2>
+    <p>To add a new input field to a page, follow these steps:</p>
+    <ol>
+      <li>
+        <strong>Locate the Target Area:</strong> Decide where the new input field should appear. This is often within an existing <code>&lt;section class="search-instructions"&gt;</code> or a new one if it's for a distinct tool. You might also place it within a <code>&lt;div class="column"&gt;</code> if using a columnar layout.
+      </li>
+      <li>
+        <strong>Add HTML for the Input Field:</strong>
+        <p>Use a structure similar to this, adapting as necessary:</p>
+        <pre class="code-guide-block"><code>&lt;!-- Example within a search-instructions section --&gt;
+&lt;section class="search-instructions"&gt;
+  &lt;label for="newInputId"&gt;Your New Input Label:&lt;/label&gt;
+  &lt;div class="input-container"&gt;
+    &lt;input type="text" id="newInputId" class="input-field" placeholder="Enter data here"&gt;
+  &lt;/div&gt;
+  &lt;!-- Optionally, add a note related to this input --&gt;
+  &lt;div class="note"&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Specific instructions for this input.&lt;/div&gt;
+&lt;/section&gt;</code></pre>
+        <ul>
+          <li>Ensure the <code>&lt;label&gt;</code>'s <code>for</code> attribute matches the <code>&lt;input&gt;</code>'s <code>id</code> attribute.</li>
+          <li>Use a **unique <code>id</code>** for your new input field. This ID will be used by JavaScript to retrieve its value.</li>
+          <li>Use the class <code>input-field</code> for consistent styling.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Consider Grouping:</strong> If the input field is part of a line with a button, use <code>&lt;div class="input-button-line"&gt;</code> to group them.
+        <pre class="code-guide-block"><code>&lt;div class="input-button-line"&gt;
+  &lt;label for="newInputWithButton" class="sr-only"&gt;Input:&lt;/label&gt; &lt;!-- Screen-reader only label if context is clear --&gt;
+  &lt;input type="text" id="newInputWithButton" class="input-field" placeholder="Enter data"&gt;
+  &lt;button type="button" class="button" onclick="PageName_ProcessNewInput()"&gt;Process&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </li>
+    </ol>
+  </section>
+  
+  <hr>
+
+  <section>
+    <h2>Adding a New Function with a Button</h2>
+    <p>To add a new tool or functionality triggered by a button:</p>
+    <ol>
+      <li>
+        <strong>Add the HTML Button:</strong>
+        <ul>
+          <li>Place the button in an appropriate location, often within a <code>&lt;div class="button-grid"&gt;</code> for a collection of tools, or a <code>&lt;div class="input-button-line"&gt;</code> if it's paired with an input.</li>
+          <li>Use the standard button markup:
+            <pre class="code-guide-block"><code>&lt;button type="button" class="button" onclick="PageName_YourNewFunction()"&gt;New Tool Button&lt;/button&gt;</code></pre>
+          </li>
+          <li>Replace <code>PageName_YourNewFunction</code> with the actual name of your JavaScript function, following the <code>PageName_ActionDescription</code> convention.</li>
+          <li>Replace "New Tool Button" with the desired button text.</li>
+          <li>Ensure buttons within a <code>button-grid</code> are alphabetized by their label if it makes sense for the group.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Write the JavaScript Function:</strong>
+        <ul>
+          <li>Add your new JavaScript function within the single <code>&lt;script&gt;</code> block at the end of the page.</li>
+          <li>Follow this general structure:
+            <pre class="code-guide-block"><code>function PageName_YourNewFunction() {
+  // 1. Get and validate input value(s)
+  // Example: using a helper function (you might need to create or adapt one)
+  const inputValue = PageName_GetAndValidateInput('yourInputId', 'descriptive name for alert');
+  
+  // If validation fails (e.g., input is empty), the helper might return null or an alert might be shown.
+  if (!inputValue) {
+    return; // Stop execution if input is not valid
+  }
+
+  // 2. (Optional) Process the input value if needed
+  // const processedValue = inputValue.toLowerCase(); // Example processing
+
+  // 3. Construct the target URL
+  const baseUrl = "https://targetservice.com/search?query=";
+  // Always URI encode parameters taken from user input
+  const targetUrl = baseUrl + encodeURIComponent(inputValue); 
+
+  // 4. Open the URL in a new tab
+  window.open(targetUrl, '_blank');
+}</code></pre>
+          </li>
+          <li>**Key JavaScript Practices:**
+            <ul>
+              <li>**Function Naming:** Use the <code>PageName_ActionDescription</code> convention (e.g., <code>Domains_SearchWhois</code>, <code>Usernames_CheckAvailability</code>).</li>
+              <li>**Input Retrieval:** Use <code>document.getElementById('yourInputId').value</code> to get input values.
+              <li>**Input Trimming:** Always use <code>.trim()</code> on input values to remove leading/trailing whitespace: <code>value.trim()</code>.</li>
+              <li>**Input Validation:** Check if essential input fields are empty. Provide an <code>alert()</code> to the user if input is missing. Consider creating a helper function for this, for example:
+                <pre class="code-guide-block"><code>function PageName_GetAndValidateInput(inputId, fieldDescriptionForAlert) {
+  const inputElement = document.getElementById(inputId);
+  if (!inputElement) {
+    // This should not happen if IDs are correct
+    alert("Error: Input field '" + inputId + "' not found.");
+    return null;
+  }
+  const value = inputElement.value.trim();
+  if (!value) {
+    alert("Please enter " + fieldDescriptionForAlert + ".");
+    return null;
+  }
+  return value;
+}</code></pre>
+              </li>
+              <li>**URL Encoding:** Always use <code>encodeURIComponent()</code> for any user-provided values that are inserted into URL query parameters or path segments to prevent errors or security issues.</li>
+              <li>**Opening Links:** Use <code>window.open(url, '_blank')</code> to open links in a new browser tab.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <strong>Test Thoroughly:</strong> After adding the HTML and JavaScript, test the new functionality with various inputs, including empty and special characters, to ensure it works as expected.
+      </li>
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  <p>Global Security Italy • Rome (IT) <a href="license.html">License</a></p>
+</footer>
+
+<script>
+  // Standard Navbar script
+  document.querySelectorAll('.menu > li').forEach(item => {
+    item.addEventListener('mouseover', function() {
+      const submenu = this.querySelector('.submenu');
+      if(submenu) submenu.style.display = 'block';
+    });
+    item.addEventListener('mouseout', function() {
+      const submenu = this.querySelector('.submenu');
+      if(submenu) submenu.style.display = 'none';
+    });
+  });
+
+  // Example Helper Function (as described in the text above)
+  /*
+  function PageName_GetAndValidateInput(inputId, fieldDescriptionForAlert) {
+    const inputElement = document.getElementById(inputId);
+    if (!inputElement) {
+      // This should not happen if IDs are correct
+      alert("Error: Input field '" + inputId + "' not found.");
+      return null;
+    }
+    const value = inputElement.value.trim();
+    if (!value) {
+      alert("Please enter " + fieldDescriptionForAlert + ".");
+      return null;
+    }
+    return value;
+  }
+  */
+</script>
+
+</body>
+</html>

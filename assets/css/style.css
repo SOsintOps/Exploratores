@@ -20,6 +20,21 @@ body {
   margin: 0;
 }
 
+pre.code-guide-block {
+  background-color: #f4f4f8; /* Un colore di sfondo leggermente diverso per evidenziare */
+  padding: 1em;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow-x: auto; /* Necessario se il codice è più largo del contenitore */
+}
+
+pre.code-guide-block code {
+  font-family: 'Courier New', Courier, monospace; /* O un altro font monospace di tua scelta */
+  font-size: 1.1em; /* Rende il font leggermente più grande */
+  line-height: 1.6; /* Migliora la leggibilità */
+  color: #2c3e50; /* Un colore scuro per il testo del codice */
+}
+
 /* TYPOGRAPHY */
 h1 {
   text-align: center;
