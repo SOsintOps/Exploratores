@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>International Phone Numbers • Exploratores</title>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <script src="../assets/js/libphonenumber-max.js"></script> 
+  <style>
+    /* Removed .country-name-display style as the element is removed */
+    .phone-intel-display {
+      margin-top: 0.75rem; 
+      font-style: italic;
+      color: #333; 
+      min-height: 1.2em;
+      text-align: left;
+    }
+  </style>
 </head>
 <body>
 
@@ -77,176 +88,694 @@
   <main>
     <h1 class="page-title">International Phone Numbers Tool</h1>
 
-      <h2>Tools using Full Phone Number</h2>
     <section class="search-instructions">
-      <label for="fullPhoneNumberInput">Please insert the full phone number components Full Number E.164):</label>
+      <label>Enter phone number components:</label>
       <div class="input-container">
-        <input type="text" id="fullPhoneNumberInput" class="input-field" placeholder="+393403011758">
+        <input type="text" id="countryCodeInput" class="input-field" placeholder="Country Code (e.g., +39)">
+        <input type="text" id="nationalNumberInput" class="input-field" placeholder="National Number (e.g., 3403011758)">
+        <input type="text" id="countryLettersInput" class="input-field" placeholder="Country ISO (2 letters, e.g., IT)" title="Usually auto-filled from Country Code. You can also type ISO to get Dial Code.">
       </div>
+      <div id="phoneIntelDisplay" class="phone-intel-display"></div> 
     </section>
 
-    <div class="form-section">
-
-      <div class="button-grid">
-        <button class="button" onclick="Infphone06()">RiskIQ WHOIS</button>
-        <button class="button" onclick="Infphone07()">WhatsApp leaks</button>
-        <button class="button" onclick="Infphone08()">Sync.me</button>
-        <button class="button" onclick="Infphone11()">411.com</button>
-        <button class="button" onclick="Infphone35()">EPIEOS</button>
-        <button class="button" onclick="Infphone36()">Facebook (Posts</button>
-        <button class="button" onclick="Infphone37()">My SMS Box (Ru</button>
-        <button class="button" onclick="Infphone38()">OFAC Sanctions</button>
-        <button class="button" onclick="Infphone39()">Vedbex (Manual</button>
-        <button class="button" onclick="Infphone03()">EmobileTracker (Manual</button>
-        <button class="button" onclick="Infphone04()">FreeCarrierLookup (Manual</button>
-      </div>
+    <div class="note">
+      <strong>NOTE:</strong> Phone number data, including country and type association, can vary in precision due to factors like number portability. Always cross-verify findings using multiple sources.
     </div>
-<br>
 
-      <h2>Tools Using Specific Phone Number Components</h2>
+    <div class="button-grid">
+      <button type="button" class="button" onclick="PhoneInt_Search411()">411.com</button>
+      <button type="button" class="button" onclick="PhoneInt_SearchAQL()">AQL Network (UK)</button>
+      <button type="button" class="button" onclick="PhoneInt_SearchEmobileTracker()">EmobileTracker (Manual)</button>
+      <button type="button" class="button" onclick="PhoneInt_SearchEPIEOS()">EPIEOS</button>
+      <button type="button" class="button" onclick="PhoneInt_SearchFacebookPosts()">Facebook (Posts)</button>
+      <button type="button" class="button" onclick="PhoneInt_SearchFreeCarrierLookup()">FreeCarrierLookup (Manual)</button>
+      <button type="button" class="button" onclick="PhoneInt_SearchMySMSBox()">My SMS Box (Ru)</button>
+      <button type="button" class="button" onclick="PhoneInt_SearchNigeriaPhonebook()">Nigeria Phonebook</button>
+      <button type="button" class="button" onclick="PhoneInt_SearchOFAC()">OFAC Sanctions</button>
+      <button type="button" class="button" onclick="PhoneInt_SearchRiskIQ()">RiskIQ WHOIS</button>
+      <button type="button" class="button" onclick="PhoneInt_SearchSyncMe()">Sync.me</button>
+      <button type="button" class="button" onclick="PhoneInt_SearchThatsThem()">ThatsThem</button>
+      <button type="button" class="button" onclick="PhoneInt_SearchTruecaller()">Truecaller</button>
+      <button type="button" class="button" onclick="PhoneInt_SearchVedbex()">Vedbex (Manual)</button>
+      <button type="button" class="button" onclick="PhoneInt_SearchWhatsAppLeaks()">WhatsApp leaks</button>
+    </div>
 
-    <section class="search-instructions">
-      <label>Please insert the phone number components:</label>
-      <div class="input-container">
-        <input type="text" id="countryCodeInput" class="input-field" placeholder="Country Code (+39)">
-        <input type="text" id="countryLettersInput" class="input-field" placeholder="Country ISO (2 letters)">
-        <input type="text" id="nationalNumberInput" class="input-field" placeholder="National Number">
-      </div>
-    </section>
-
-    <div class="form-section">
-
-      
-      <div class="button-grid">
-        <button class="button" onclick="Infphone01()">AQL Network (UK</button>
-        <button class="button" onclick="Infphone05()">Nigeria Phonebook</button>
-        <button class="button" onclick="Infphone09()">ThatsThem</button>
-        <button class="button" onclick="Infphone10()">Truecaller</button>
-      </div>
-    </div><br>
-
-    <div class="form-section">
-      <h3>DomainTools Phone Variant Searches</h3>
-	      
-      <div class="button-grid">
-        <button class="button" onclick="Infphone02()">+CC.Num</button>
-        <button class="button" onclick="Infphone12()">+CC.0Num</button>
-        <button class="button" onclick="Infphone13()">Num Only</button>
-        <button class="button" onclick="Infphone14()">0Num Only</button>
-        <button class="button" onclick="Infphone15()">eNum@gmail</button>
-        <button class="button" onclick="Infphone16()">eNum@mail.ru</button>
-        <button class="button" onclick="Infphone17()">eNum@yandex.ru</button>
-        <button class="button" onclick="Infphone18()">eNum@yandex.com</button>
-        <button class="button" onclick="Infphone19()">eNum@protonmail</button>
-        <button class="button" onclick="Infphone20()">eNum@proton.ch</button>
-        <button class="button" onclick="Infphone21()">eNum@proton.me</button>
-        <button class="button" onclick="Infphone22()">eNum@pm.me</button>
-        <button class="button" onclick="Infphone23()">eNum@hotmail.com</button>
-        <button class="button" onclick="Infphone24()">eNum@yahoo.com</button>
-        <button class="button" onclick="Infphone25DT()">Num@gmail.com</button>
-        <button class="button" onclick="Infphone26DT()">Num@mail.ru</button>
-        <button class="button" onclick="Infphone27DT()">Num@yandex.ru</button>
-        <button class="button" onclick="Infphone28DT()">Num@yandex.com</button>
-        <button class="button" onclick="Infphone29DT()">Num@protonmail.com</button>
-        <button class="button" onclick="Infphone30DT()">Num@protonmail.ch</button>
-        <button class="button" onclick="Infphone31DT()">Num@proton.me</button>
-        <button class="button" onclick="Infphone32DT()">Num@pm.me</button>
-        <button class="button" onclick="Infphone33DT()">Num@hotmail.com</button>
-        <button class="button" onclick="Infphone34DT()">Num@yahoo.com</button>
-      </div>
-	  <div class="note"> <strong>NOTE:</strong> These primarily use 'Country Code' & 'National Number'.</div>
+    <h3>DomainTools Phone Variant Searches</h3>
+    <div class="button-grid">
+      <button type="button" class="button" onclick="PhoneInt_DtVariantPlusCC0Num()">+CC.0Num</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVariantPlusCCNum()">+CC.Num</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVariant0NumOnly()">0Num Only</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVarianteNumGmail()">eNum@gmail</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVarianteNumHotmail()">eNum@hotmail.com</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVarianteNumMailRu()">eNum@mail.ru</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVarianteNumPmMe()">eNum@pm.me</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVarianteNumProtonCh()">eNum@proton.ch</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVarianteNumProtonMe()">eNum@proton.me</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVarianteNumProtonmail()">eNum@protonmail</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVarianteNumYahoo()">eNum@yahoo.com</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVarianteNumYandexCom()">eNum@yandex.com</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVarianteNumYandexRu()">eNum@yandex.ru</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVariantNumOnly()">Num Only</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVariantNumGmail()">Num@gmail.com</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVariantNumHotmail()">Num@hotmail.com</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVariantNumMailRu()">Num@mail.ru</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVariantNumPmMe()">Num@pm.me</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVariantNumProtonMe()">Num@proton.me</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVariantNumProtonmailCh()">Num@protonmail.ch</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVariantNumProtonmailCom()">Num@protonmail.com</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVariantNumYahoo()">Num@yahoo.com</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVariantNumYandexCom()">Num@yandex.com</button>
+      <button type="button" class="button" onclick="PhoneInt_DtVariantNumYandexRu()">Num@yandex.ru</button>
     </div>
   </main>
 
   <footer>
-    Global Security Italy • Rome (IT)
-    <a href="License.html">License</a>
+    <p>Global Security Italy • Rome (IT) <a href="license.html">License</a></p>
   </footer>
 
   <script>
+    // Standard navbar submenu script
     document.querySelectorAll('.menu > li').forEach(item => {
-      item.addEventListener('mouseover', () => {
-        const sm = item.querySelector('.submenu'); if (sm) sm.style.display = 'block';
-      });
-      item.addEventListener('mouseout', () => {
-        const sm = item.querySelector('.submenu'); if (sm) sm.style.display = 'none';
-      });
+      const submenu = item.querySelector('.submenu');
+      if (submenu) { 
+        item.addEventListener('mouseenter', function() {
+          submenu.style.display = 'block';
+        });
+        item.addEventListener('mouseleave', function() {
+          submenu.style.display = 'none';
+        });
+      }
     });
 
-    function getPhoneInputs(options = { requireFull: false, requireCountryCode: false, requireNatNum: false, requireCountryLetters: false, allowEitherFullOrParts: false }) {
-      const fullNum = document.getElementById('fullPhoneNumberInput')?.value.trim() || "";
-      const countryCode = document.getElementById('countryCodeInput')?.value.trim() || "";
-      const countryLetters = (document.getElementById('countryLettersInput')?.value.trim().toLowerCase()) || "";
-      const nationalNum = document.getElementById('nationalNumberInput')?.value.trim() || "";
-      if (options.requireFull && !fullNum) { alert('Full Phone Number required.'); return null; }
-      if (options.requireCountryCode && !countryCode) { alert('Country Code required.'); return null; }
-      if (options.requireNatNum && !nationalNum) { alert('National Number required.'); return null; }
-      return { fullNumber: fullNum, countryDiallingCode: countryCode, countryTwoLetters: countryLetters, nationalNumber: nationalNum };
+    // --- Data Maps ---
+    const dialCodeToIsoMap = {
+      '93': 'AF', '358': 'FI', '355': 'AL', '213': 'DZ', '1684': 'AS', '376': 'AD', '244': 'AO', '1264': 'AI', '672': 'NF',
+      '1268': 'AG', '54': 'AR', '374': 'AM', '297': 'AW', '61': 'CC', '43': 'AT', '994': 'AZ', '1242': 'BS', '973': 'BH',
+      '880': 'BD', '1246': 'BB', '375': 'BY', '32': 'BE', '501': 'BZ', '229': 'BJ', '1441': 'BM', '975': 'BT', '591': 'BO',
+      '387': 'BA', '267': 'BW', '55': 'BR', '246': 'IO', '673': 'BN', '359': 'BG', '226': 'BF', '257': 'BI', '855': 'KH',
+      '237': 'CM', '1': 'US', '238': 'CV', '345': 'KY', '236': 'CF', '235': 'TD', '56': 'CL', '86': 'CN', '57': 'CO',
+      '269': 'KM', '242': 'CG', '243': 'CD', '682': 'CK', '506': 'CR', '225': 'CI', '385': 'HR', '53': 'CU', '357': 'CY',
+      '420': 'CZ', '45': 'DK', '253': 'DJ', '1767': 'DM', '1849': 'DO', '593': 'EC', '20': 'EG', '503': 'SV', '240': 'GQ',
+      '291': 'ER', '372': 'EE', '251': 'ET', '500': 'GS', '298': 'FO', '679': 'FJ', '33': 'FR', '594': 'GF', '689': 'PF',
+      '241': 'GA', '220': 'GM', '995': 'GE', '49': 'DE', '233': 'GH', '350': 'GI', '30': 'GR', '299': 'GL', '1473': 'GD',
+      '590': 'MF', '1671': 'GU', '502': 'GT', '44': 'GB', '224': 'GN', '245': 'GW', '595': 'PY', '509': 'HT', '379': 'VA',
+      '504': 'HN', '852': 'HK', '36': 'HU', '354': 'IS', '91': 'IN', '62': 'ID', '98': 'IR', '964': 'IQ', '353': 'IE',
+      '972': 'IL', '39': 'IT', '1876': 'JM', '81': 'JP', '962': 'JO', '77': 'KZ', '254': 'KE', '686': 'KI', '850': 'KP',
+      '82': 'KR', '965': 'KW', '996': 'KG', '856': 'LA', '371': 'LV', '961': 'LB', '266': 'LS', '231': 'LR', '218': 'LY',
+      '423': 'LI', '370': 'LT', '352': 'LU', '853': 'MO', '389': 'MK', '261': 'MG', '265': 'MW', '60': 'MY', '960': 'MV',
+      '223': 'ML', '356': 'MT', '692': 'MH', '596': 'MQ', '222': 'MR', '230': 'MU', '262': 'RE', '52': 'MX', '691': 'FM',
+      '373': 'MD', '377': 'MC', '976': 'MN', '382': 'ME', '1664': 'MS', '212': 'MA', '258': 'MZ', '95': 'MM', '264': 'NA',
+      '674': 'NR', '977': 'NP', '31': 'NL', '599': 'AN', '687': 'NC', '64': 'NZ', '505': 'NI', '227': 'NE', '234': 'NG',
+      '683': 'NU', '1670': 'MP', '47': 'SJ', '968': 'OM', '92': 'PK', '680': 'PW', '970': 'PS', '507': 'PA', '675': 'PG',
+      '51': 'PE', '63': 'PH', '872': 'PN', '48': 'PL', '351': 'PT', '1939': 'PR', '974': 'QA', '40': 'RO', '7': 'RU',
+      '250': 'RW', '290': 'SH', '1869': 'KN', '1758': 'LC', '508': 'PM', '1784': 'VC', '685': 'WS', '378': 'SM', '239': 'ST',
+      '966': 'SA', '221': 'SN', '381': 'RS', '248': 'SC', '232': 'SL', '65': 'SG', '421': 'SK', '386': 'SI', '677': 'SB',
+      '252': 'SO', '27': 'ZA', '211': 'SS', '94': 'LK', '249': 'SD', '597': 'SR', '268': 'SZ', '46': 'SE', '41': 'CH', 
+      '963': 'SY', '886': 'TW', '992': 'TJ', '255': 'TZ', '66': 'TH', '670': 'TL', '228': 'TG', '690': 'TK', '676': 'TO',
+      '1868': 'TT', '216': 'TN', '90': 'TR', '993': 'TM', '1649': 'TC', '688': 'TV', '256': 'UG', '380': 'UA', '971': 'AE',
+      '598': 'UY', '998': 'UZ', '678': 'VU', '58': 'VE', '84': 'VN', '1284': 'VG', '1340': 'VI', '681': 'WF', '967': 'YE',
+      '260': 'ZM', '263': 'ZW'
+    };
+    const isoToCountryNameMap = {
+      'AF': 'Afghanistan', 'AX': 'Aland Islands', 'AL': 'Albania', 'DZ': 'Algeria', 'AS': 'AmericanSamoa',
+      'AD': 'Andorra', 'AO': 'Angola', 'AI': 'Anguilla', 'AQ': 'Antarctica', 'AG': 'Antigua and Barbuda', 'AR': 'Argentina', 
+      'AM': 'Armenia', 'AW': 'Aruba', 'AU': 'Australia', 'AT': 'Austria', 'AZ': 'Azerbaijan', 'BS': 'Bahamas', 'BH': 'Bahrain', 
+      'BD': 'Bangladesh', 'BB': 'Barbados', 'BY': 'Belarus', 'BE': 'Belgium', 'BZ': 'Belize', 'BJ': 'Benin', 'BM': 'Bermuda',
+      'BT': 'Bhutan', 'BO': 'Bolivia', 'BA': 'Bosnia and Herzegovina', 'BW': 'Botswana', 'BR': 'Brazil',
+      'IO': 'British Indian Ocean Territory', 'BN': 'Brunei Darussalam', 'BG': 'Bulgaria', 'BF': 'Burkina Faso', 'BI': 'Burundi',
+      'KH': 'Cambodia', 'CM': 'Cameroon', 'CA': 'Canada', 'CV': 'Cape Verde', 'KY': 'Cayman Islands',
+      'CF': 'Central African Republic', 'TD': 'Chad', 'CL': 'Chile', 'CN': 'China', 'CX': 'Christmas Island',
+      'CC': 'Cocos (Keeling) Islands', 'CO': 'Colombia', 'KM': 'Comoros', 'CG': 'Congo', 'CD': 'Congo, The Democratic Republic of the',
+      'CK': 'Cook Islands', 'CR': 'Costa Rica', 'CI': "Cote d'Ivoire", 'HR': 'Croatia', 'CU': 'Cuba',
+      'CY': 'Cyprus', 'CZ': 'Czech Republic', 'DK': 'Denmark', 'DJ': 'Djibouti', 'DM': 'Dominica',
+      'DO': 'Dominican Republic', 'EC': 'Ecuador', 'EG': 'Egypt', 'SV': 'El Salvador', 'GQ': 'Equatorial Guinea',
+      'ER': 'Eritrea', 'EE': 'Estonia', 'ET': 'Ethiopia', 'FK': 'Falkland Islands (Malvinas)', 'FO': 'Faroe Islands',
+      'FJ': 'Fiji', 'FI': 'Finland', 'FR': 'France', 'GF': 'French Guiana', 'PF': 'French Polynesia',
+      'GA': 'Gabon', 'GM': 'Gambia', 'GE': 'Georgia', 'DE': 'Germany', 'GH': 'Ghana',
+      'GI': 'Gibraltar', 'GR': 'Greece', 'GL': 'Greenland', 'GD': 'Grenada', 'GP': 'Guadeloupe',
+      'GU': 'Guam', 'GT': 'Guatemala', 'GG': 'Guernsey', 'GN': 'Guinea', 'GW': 'Guinea-Bissau',
+      'GY': 'Guyana', 'HT': 'Haiti', 'VA': 'Holy See (Vatican City State)', 'HN': 'Honduras', 'HK': 'Hong Kong',
+      'HU': 'Hungary', 'IS': 'Iceland', 'IN': 'India', 'ID': 'Indonesia', 'IR': 'Iran',
+      'IQ': 'Iraq', 'IE': 'Ireland', 'IM': 'Isle of Man', 'IL': 'Israel', 'IT': 'Italy',
+      'JM': 'Jamaica', 'JP': 'Japan', 'JE': 'Jersey', 'JO': 'Jordan', 'KZ': 'Kazakhstan',
+      'KE': 'Kenya', 'KI': 'Kiribati', 'KP': "Korea, Democratic People's Republic of", 'KR': 'Korea, Republic of', 'KW': 'Kuwait',
+      'KG': 'Kyrgyzstan', 'LA': "Lao People's Democratic Republic", 'LV': 'Latvia', 'LB': 'Lebanon', 'LS': 'Lesotho',
+      'LR': 'Liberia', 'LY': 'Libya', 'LI': 'Liechtenstein', 'LT': 'Lithuania', 'LU': 'Luxembourg',
+      'MO': 'Macao', 'MK': 'Macedonia', 'MG': 'Madagascar', 'MW': 'Malawi', 'MY': 'Malaysia',
+      'MV': 'Maldives', 'ML': 'Mali', 'MT': 'Malta', 'MH': 'Marshall Islands', 'MQ': 'Martinique',
+      'MR': 'Mauritania', 'MU': 'Mauritius', 'YT': 'Mayotte', 'MX': 'Mexico', 'FM': 'Micronesia, Federated States of',
+      'MD': 'Moldova', 'MC': 'Monaco', 'MN': 'Mongolia', 'ME': 'Montenegro', 'MS': 'Montserrat',
+      'MA': 'Morocco', 'MZ': 'Mozambique', 'MM': 'Myanmar', 'NA': 'Namibia', 'NR': 'Nauru',
+      'NP': 'Nepal', 'NL': 'Netherlands', 'AN': 'Netherlands Antilles', 'NC': 'New Caledonia', 'NZ': 'New Zealand',
+      'NI': 'Nicaragua', 'NE': 'Niger', 'NG': 'Nigeria', 'NU': 'Niue', 'NF': 'Norfolk Island',
+      'MP': 'Northern Mariana Islands', 'NO': 'Norway', 'OM': 'Oman', 'PK': 'Pakistan', 'PW': 'Palau',
+      'PS': 'Palestinian Territory, Occupied', 'PA': 'Panama', 'PG': 'Papua New Guinea', 'PY': 'Paraguay', 'PE': 'Peru',
+      'PH': 'Philippines', 'PN': 'Pitcairn', 'PL': 'Poland', 'PT': 'Portugal', 'PR': 'Puerto Rico',
+      'QA': 'Qatar', 'RO': 'Romania', 'RU': 'Russia', 'RW': 'Rwanda', 'RE': 'Reunion',
+      'BL': 'Saint Barthelemy', 'SH': 'Saint Helena', 'KN': 'Saint Kitts and Nevis', 'LC': 'Saint Lucia', 'MF': 'Saint Martin',
+      'PM': 'Saint Pierre and Miquelon', 'VC': 'Saint Vincent and the Grenadines', 'WS': 'Samoa', 'SM': 'San Marino', 'ST': 'Sao Tome and Principe',
+      'SA': 'Saudi Arabia', 'SN': 'Senegal', 'RS': 'Serbia', 'SC': 'Seychelles', 'SL': 'Sierra Leone',
+      'SG': 'Singapore', 'SK': 'Slovakia', 'SI': 'Slovenia', 'SB': 'Solomon Islands', 'SO': 'Somalia',
+      'ZA': 'South Africa', 'SS': 'South Sudan', 'GS': 'South Georgia and the South Sandwich Islands', 'ES': 'Spain', 'LK': 'Sri Lanka',
+      'SD': 'Sudan', 'SR': 'Suriname', 'SJ': 'Svalbard and Jan Mayen', 'SZ': 'Swaziland', 'SE': 'Sweden',
+      'CH': 'Switzerland', 'SY': 'Syrian Arab Republic', 'TW': 'Taiwan', 'TJ': 'Tajikistan', 'TZ': 'Tanzania, United Republic of',
+      'TH': 'Thailand', 'TL': 'Timor-Leste', 'TG': 'Togo', 'TK': 'Tokelau', 'TO': 'Tonga',
+      'TT': 'Trinidad and Tobago', 'TN': 'Tunisia', 'TR': 'Turkey', 'TM': 'Turkmenistan', 'TC': 'Turks and Caicos Islands',
+      'TV': 'Tuvalu', 'UG': 'Uganda', 'UA': 'Ukraine', 'AE': 'United Arab Emirates', 'GB': 'United Kingdom',
+      'US': 'United States', 'UY': 'Uruguay', 'UZ': 'Uzbekistan', 'VU': 'Vanuatu', 'VE': 'Venezuela',
+      'VN': 'Vietnam', 'VG': 'Virgin Islands, British', 'VI': 'Virgin Islands, U.S.', 'WF': 'Wallis and Futuna',
+      'YE': 'Yemen', 'ZM': 'Zambia', 'ZW': 'Zimbabwe'
+    };
+    const isoToDialCodeMap = {
+      'AF': '93', 'AX': '358', 'AL': '355', 'DZ': '213', 'AS': '1684', 'AD': '376', 'AO': '244', 
+      'AI': '1264', 'AQ': '672', 'AG': '1268', 'AR': '54', 'AM': '374', 'AW': '297', 'AU': '61', 
+      'AT': '43', 'AZ': '994', 'BS': '1242', 'BH': '973', 'BD': '880', 'BB': '1246', 'BY': '375', 
+      'BE': '32', 'BZ': '501', 'BJ': '229', 'BM': '1441', 'BT': '975', 'BO': '591', 'BA': '387', 
+      'BW': '267', 'BR': '55', 'IO': '246', 'BN': '673', 'BG': '359', 'BF': '226', 'BI': '257', 
+      'KH': '855', 'CM': '237', 'CA': '1', 'CV': '238', 'KY': '345', 'CF': '236', 'TD': '235', 
+      'CL': '56', 'CN': '86', 'CX': '61', 'CC': '61', 'CO': '57', 'KM': '269', 'CG': '242', 
+      'CD': '243', 'CK': '682', 'CR': '506', 'CI': '225', 'HR': '385', 'CU': '53', 'CY': '357', 
+      'CZ': '420', 'DK': '45', 'DJ': '253', 'DM': '1767', 'DO': '1849', 'EC': '593', 'EG': '20', 
+      'SV': '503', 'GQ': '240', 'ER': '291', 'EE': '372', 'ET': '251', 'FK': '500', 'FO': '298', 
+      'FJ': '679', 'FI': '358', 'FR': '33', 'GF': '594', 'PF': '689', 'GA': '241', 'GM': '220', 
+      'GE': '995', 'DE': '49', 'GH': '233', 'GI': '350', 'GR': '30', 'GL': '299', 'GD': '1473', 
+      'GP': '590', 'GU': '1671', 'GT': '502', 'GG': '44', 'GN': '224', 'GW': '245', 'GY': '595', 
+      'HT': '509', 'VA': '379', 'HN': '504', 'HK': '852', 'HU': '36', 'IS': '354', 'IN': '91', 
+      'ID': '62', 'IR': '98', 'IQ': '964', 'IE': '353', 'IM': '44', 'IL': '972', 'IT': '39', 
+      'JM': '1876', 'JP': '81', 'JE': '44', 'JO': '962', 'KZ': '77', 'KE': '254', 'KI': '686', 
+      'KP': '850', 'KR': '82', 'KW': '965', 'KG': '996', 'LA': '856', 'LV': '371', 'LB': '961', 
+      'LS': '266', 'LR': '231', 'LY': '218', 'LI': '423', 'LT': '370', 'LU': '352', 'MO': '853', 
+      'MK': '389', 'MG': '261', 'MW': '265', 'MY': '60', 'MV': '960', 'ML': '223', 'MT': '356', 
+      'MH': '692', 'MQ': '596', 'MR': '222', 'MU': '230', 'YT': '262', 'MX': '52', 'FM': '691', 
+      'MD': '373', 'MC': '377', 'MN': '976', 'ME': '382', 'MS': '1664', 'MA': '212', 'MZ': '258', 
+      'MM': '95', 'NA': '264', 'NR': '674', 'NP': '977', 'NL': '31', 'AN': '599', 'NC': '687', 
+      'NZ': '64', 'NI': '505', 'NE': '227', 'NG': '234', 'NU': '683', 'NF': '672', 'MP': '1670', 
+      'NO': '47', 'OM': '968', 'PK': '92', 'PW': '680', 'PS': '970', 'PA': '507', 'PG': '675', 
+      'PY': '595', 'PE': '51', 'PH': '63', 'PN': '872', 'PL': '48', 'PT': '351', 'PR': '1939', 
+      'QA': '974', 'RO': '40', 'RU': '7', 'RW': '250', 'RE': '262', 'BL': '590', 'SH': '290', 
+      'KN': '1869', 'LC': '1758', 'MF': '590', 'PM': '508', 'VC': '1784', 'WS': '685', 'SM': '378', 
+      'ST': '239', 'SA': '966', 'SN': '221', 'RS': '381', 'SC': '248', 'SL': '232', 'SG': '65', 
+      'SK': '421', 'SI': '386', 'SB': '677', 'SO': '252', 'ZA': '27', 'SS': '211', 'GS': '500', 
+      'ES': '34', 'LK': '94', 'SD': '249', 'SR': '597', 'SJ': '47', 'SZ': '268', 'SE': '46', 
+      'CH': '41', 'SY': '963', 'TW': '886', 'TJ': '992', 'TZ': '255', 'TH': '66', 'TL': '670', 
+      'TG': '228', 'TK': '690', 'TO': '676', 'TT': '1868', 'TN': '216', 'TR': '90', 'TM': '993', 
+      'TC': '1649', 'TV': '688', 'UG': '256', 'UA': '380', 'AE': '971', 'GB': '44', 'US': '1', 
+      'UY': '598', 'UZ': '998', 'VU': '678', 'VE': '58', 'VN': '84', 'VG': '1284', 'VI': '1340', 
+      'WF': '681', 'YE': '967', 'ZM': '260', 'ZW': '263'
+    };
+    const phoneNumberTypeTranslations = { // English translations for types
+        'FIXED_LINE': 'Fixed Line',
+        'MOBILE': 'Mobile',
+        'FIXED_LINE_OR_MOBILE': 'Fixed Line or Mobile',
+        'TOLL_FREE': 'Toll-free',
+        'PREMIUM_RATE': 'Premium Rate',
+        'SHARED_COST': 'Shared Cost',
+        'VOIP': 'VoIP',
+        'PERSONAL_NUMBER': 'Personal Number',
+        'PAGER': 'Pager',
+        'UAN': 'UAN',
+        'VOICEMAIL': 'Voicemail',
+        'UNKNOWN': 'Unknown'
+    };
+
+    // --- Core Logic Functions ---
+    function PhoneInt_GetPhoneInputs(options = { requireCountryCode: false, requireNatNum: false, requireCountryLetters: false }) {
+        const countryCodeInputElement = document.getElementById('countryCodeInput');
+        const nationalNumberInputElement = document.getElementById('nationalNumberInput');
+        const countryLettersInputElement = document.getElementById('countryLettersInput');
+
+        let countryCodeValue = countryCodeInputElement ? countryCodeInputElement.value.trim() : "";
+        const nationalNumberValue = nationalNumberInputElement ? nationalNumberInputElement.value.trim() : "";
+        let countryLettersValue = countryLettersInputElement ? countryLettersInputElement.value.trim().toUpperCase() : "";
+
+        if (options.requireCountryCode && !countryCodeValue && countryLettersValue && nationalNumberValue) {
+            const countryNameForIso = isoToCountryNameMap[countryLettersValue];
+            const numericDialCodeForIso = isoToDialCodeMap[countryLettersValue];
+
+            if (numericDialCodeForIso && countryNameForIso) {
+                const fullDialCodeToUse = "+" + numericDialCodeForIso;
+                if (confirm(`Country Code not specified, but ISO '${countryLettersValue}' (${countryNameForIso}) was entered.\nUse prefix '${fullDialCodeToUse}' for this country for the current operation?`)) {
+                    countryCodeValue = fullDialCodeToUse; 
+                } else {
+                    alert('Operation cancelled. Country Code is required or must be confirmed.');
+                    return null; 
+                }
+            } else if (countryLettersValue) { 
+                alert(`The entered ISO Code '${countryLettersValue}' is not recognized or has no associated prefix in the map. Please enter a valid Country Code or a valid ISO Code.`);
+                return null;
+            }
+        }
+
+        if (countryCodeValue) {
+            const countryCodePattern = /^\+\d{1,3}$/;
+            if (!countryCodePattern.test(countryCodeValue)) {
+                alert('Invalid Country Code format. Please enter "+" followed by 1 to 3 digits (e.g., +39).');
+                return null;
+            }
+        } else if (options.requireCountryCode) { 
+            alert('Country Code is required.');
+            return null;
+        }
+
+        if (options.requireNatNum && !nationalNumberValue) {
+            alert('National Number is required.');
+            return null;
+        }
+
+        if (options.requireCountryLetters && !countryLettersValue) {
+            alert('Country ISO Code (2 letters) is required.');
+            return null;
+        }
+        
+        if (!options.requireCountryCode && !options.requireNatNum && !options.requireCountryLetters) {
+            const currentIsoFieldValue = countryLettersInputElement ? countryLettersInputElement.value.trim() : "";
+            if (!countryCodeValue && !nationalNumberValue && !currentIsoFieldValue) { 
+                 alert('Please enter at least the required phone number components to proceed.');
+                 return null;
+            }
+        }
+
+        return { 
+            countryDiallingCode: countryCodeValue, 
+            countryTwoLetters: countryLettersValue, 
+            nationalNumber: nationalNumberValue 
+        };
     }
-    function Infphone06() {
-      const p = getPhoneInputs({ allowEitherFullOrParts: true }); if (!p) return;
-      const num = p.fullNumber || (p.countryDiallingCode + p.nationalNumber);
-      window.open('https://community.riskiq.com/search/whois/phone?query=' + encodeURIComponent(num), '_blank');
+    
+    // Removed PhoneInt_DisplayCountryName() as country name is now part of PhoneInt_DisplayPhoneNumberIntel()
+
+    function PhoneInt_AutoFillCountryISO() {
+        const countryCodeInputElement = document.getElementById('countryCodeInput');
+        const countryLettersInputElement = document.getElementById('countryLettersInput');
+        if (!countryCodeInputElement || !countryLettersInputElement) return;
+
+        let currentCountryCodeValue = countryCodeInputElement.value.trim();
+        let numericCountryCode = '';
+        
+        if (currentCountryCodeValue.startsWith('+')) {
+            numericCountryCode = currentCountryCodeValue.substring(1);
+        } else { 
+            // If country code doesn't start with '+', clear ISO field.
+            // The country name display is handled by PhoneInt_DisplayPhoneNumberIntel via ScheduleIntelAnalysis
+            if (countryLettersInputElement.value !== "") countryLettersInputElement.value = ""; 
+            return; 
+        }
+        
+        let newIsoValue = "";
+        if (numericCountryCode && dialCodeToIsoMap[numericCountryCode]) {
+            newIsoValue = dialCodeToIsoMap[numericCountryCode];
+        }
+        
+        if (countryLettersInputElement.value !== newIsoValue) {
+            countryLettersInputElement.value = newIsoValue;
+            // Note: Changing countryLettersInput.value here will trigger its 'input' listener,
+            // which calls PhoneInt_AutoFillDialCodeFromISO and PhoneInt_ScheduleIntelAnalysis.
+        }
     }
-    function Infphone07() { window.open('https://whatsapp.checkleaked.cc/', '_blank'); }
-    function Infphone08() {
-      const p = getPhoneInputs({ allowEitherFullOrParts: true }); if (!p) return;
-      const num = p.fullNumber || (p.countryDiallingCode + p.nationalNumber);
-      window.open('https://sync.me/search/?number=' + encodeURIComponent(num), '_blank');
+
+    function PhoneInt_AutoFillDialCodeFromISO() {
+        const countryCodeInputElement = document.getElementById('countryCodeInput');
+        const countryLettersInputElement = document.getElementById('countryLettersInput');
+        if (!countryCodeInputElement || !countryLettersInputElement || typeof isoToDialCodeMap === 'undefined') return;
+
+        const isoCode = countryLettersInputElement.value.trim().toUpperCase();
+        
+        if (isoCode && isoToDialCodeMap[isoCode]) {
+            const numericDialCode = isoToDialCodeMap[isoCode];
+            const newDialCode = "+" + numericDialCode;
+            
+            if (countryCodeInputElement.value !== newDialCode) {
+                countryCodeInputElement.value = newDialCode;
+                // This will trigger the 'input' event on countryCodeInputElement
+            }
+        }
     }
-    function Infphone11() {
-      const p = getPhoneInputs({ requireNatNum: true }); if (!p) return;
-      const nn = p.nationalNumber;
-      const fmt = `1-${nn.substring(0,3)}-${nn.substring(3,6)}-${nn.substring(6)}`;
-      window.open('https://www.411.com/phone/' + encodeURIComponent(fmt), '_blank');
+
+    function PhoneInt_DisplayPhoneNumberIntel(phoneNumberString, defaultIsoCountryCode) {
+        const intelDisplayElement = document.getElementById('phoneIntelDisplay');
+        if (!intelDisplayElement) return;
+        intelDisplayElement.textContent = ""; 
+
+        if (typeof libphonenumber === 'undefined') {
+            console.error("libphonenumber-js is not loaded."); // English console error
+            intelDisplayElement.textContent = "Analysis library not available."; // English UI message
+            return;
+        }
+        if (!phoneNumberString || !defaultIsoCountryCode) {
+            // intelDisplayElement.textContent = "Insufficient data for analysis."; // Optional: message if called with insufficient data
+            return; 
+        }
+
+        try {
+            const phoneNumberObject = libphonenumber.parsePhoneNumberFromString(phoneNumberString, defaultIsoCountryCode.toUpperCase());
+            let displayText = "";
+
+            if (phoneNumberObject && phoneNumberObject.isValid()) {
+                const type = phoneNumberObject.getType();
+                const countryISO = phoneNumberObject.country; 
+                let countryName = countryISO && isoToCountryNameMap[countryISO] ? isoToCountryNameMap[countryISO] : "";
+                let typeName = type && phoneNumberTypeTranslations[type] ? phoneNumberTypeTranslations[type] : (type || ""); // Fallback to raw type
+
+                if (countryName && typeName) displayText = `${countryName} - ${typeName}`; 
+                else if (countryName) displayText = `${countryName} - Type not specified`;
+                else if (typeName) displayText = `Type: ${typeName} (Country not specified)`;
+                else displayText = "Number info not fully determinable.";
+            } else {
+                displayText = "Invalid number or info not determinable.";
+            }
+            intelDisplayElement.textContent = displayText;
+        } catch (error) {
+            console.error("Error parsing number with libphonenumber-js:", error); // English console error
+            intelDisplayElement.textContent = "Error during number analysis."; // English UI message
+        }
     }
-    function Infphone35() {
-      const p = getPhoneInputs({ requireFull: true }); if (!p) return;
-      window.open('https://epieos.com/?q=' + encodeURIComponent(p.fullNumber) + '&t=phone', '_blank');
+
+    let debounceIntelTimer; 
+    function PhoneInt_ExecuteIntelAnalysis() {
+        const countryCodeInputElement = document.getElementById('countryCodeInput');
+        const nationalNumberInputElement = document.getElementById('nationalNumberInput');
+        const countryLettersInputElement = document.getElementById('countryLettersInput'); 
+        if (!countryCodeInputElement || !nationalNumberInputElement || !countryLettersInputElement) return;
+
+        const countryCodeValue = countryCodeInputElement.value.trim();
+        const nationalNumberValue = nationalNumberInputElement.value.trim();
+        let referenceIsoForParsing = "";
+
+        if (countryCodeValue.startsWith('+')) {
+            const numericDialCode = countryCodeValue.substring(1);
+            if (dialCodeToIsoMap[numericDialCode]) {
+                referenceIsoForParsing = dialCodeToIsoMap[numericDialCode];
+            }
+        }
+        if (!referenceIsoForParsing && countryLettersInputElement.value.trim()) {
+            const potentialIso = countryLettersInputElement.value.trim().toUpperCase();
+            if (isoToDialCodeMap[potentialIso]) { // Check if it's a valid ISO with a dial code
+                 referenceIsoForParsing = potentialIso;
+            }
+        }
+
+        if (countryCodeValue && /^\+\d{1,3}$/.test(countryCodeValue) && nationalNumberValue && referenceIsoForParsing) {
+            const numberStringToParse = countryCodeValue + nationalNumberValue;
+            PhoneInt_DisplayPhoneNumberIntel(numberStringToParse, referenceIsoForParsing);
+        } else {
+            const phoneIntelDisplayElement = document.getElementById('phoneIntelDisplay');
+            if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        }
     }
-    function Infphone36() {
-      const p = getPhoneInputs({ allowEitherFullOrParts: true }); if (!p) return;
-      const num = p.fullNumber || (p.countryDiallingCode + p.nationalNumber);
-      window.open('https://www.facebook.com/search/posts/?q=' + encodeURIComponent(num), '_blank');
+    function PhoneInt_ScheduleIntelAnalysis() {
+        clearTimeout(debounceIntelTimer); 
+        const countryCodeInputElement = document.getElementById('countryCodeInput');
+        const nationalNumberInputElement = document.getElementById('nationalNumberInput');
+        const phoneIntelDisplayElement = document.getElementById('phoneIntelDisplay');
+        if (!countryCodeInputElement || !nationalNumberInputElement || !phoneIntelDisplayElement) return;
+
+        const countryCodeValue = countryCodeInputElement.value.trim();
+        const nationalNumberValue = nationalNumberInputElement.value.trim();
+
+        if (countryCodeValue && /^\+\d{1,3}$/.test(countryCodeValue) && nationalNumberValue.length >= 4) {
+            debounceIntelTimer = setTimeout(PhoneInt_ExecuteIntelAnalysis, 750); 
+        } else {
+            phoneIntelDisplayElement.textContent = "";
+        }
     }
-    function Infphone37() { window.open('https://mysmsbox.ru/phone-search/' + encodeURIComponent((getPhoneInputs({ allowEitherFullOrParts: true }).fullNumber||"")), '_blank'); }
-    function Infphone38() { const p = getPhoneInputs({ allowEitherFullOrParts: true }); if (!p) return; window.open('https://sanctionssearch.ofac.treas.gov/Details.aspx?id=' + encodeURIComponent(p.fullNumber||''), '_blank'); }
-    function Infphone39() { window.open('https://www.vedbex.com/phone2skype', '_blank'); }
-    function Infphone03() { window.open('https://www.emobiletracker.com/', '_blank'); }
-    function Infphone04() { window.open('https://freecarrierlookup.com/', '_blank'); }
-    function Infphone01() {
-      const p = getPhoneInputs({ requireCountryCode: true, requireNatNum: true }); if (!p) return;
-      window.open('https://portal.aql.com/telecoms/network_lookup.php/?number=' + encodeURIComponent((p.countryDiallingCode + p.nationalNumber).replace('+','')) + '&nlSubmit=submit', '_blank');
+
+    function PhoneInt_HandleEnterKeyForIntel(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); 
+            const phonePartsOptions = { requireCountryCode: true, requireNatNum: true, requireCountryLetters: false };
+            const phoneParts = PhoneInt_GetPhoneInputs(phonePartsOptions);
+            const phoneIntelDisplayElement = document.getElementById('phoneIntelDisplay');
+
+            if (phoneParts) {
+                if (phoneParts.countryDiallingCode && phoneParts.nationalNumber && phoneParts.countryTwoLetters) {
+                    const fullNumberString = phoneParts.countryDiallingCode + phoneParts.nationalNumber;
+                    PhoneInt_DisplayPhoneNumberIntel(fullNumberString, phoneParts.countryTwoLetters);
+                } else {
+                    if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "Insufficient data for full number type analysis.";
+                }
+            } else {
+                if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = ""; 
+            }
+        }
     }
-    function Infphone05() { const p = getPhoneInputs({ requireNatNum: true }); if (!p) return; window.open('https://nigeriaphonebook.com/search-result?searchKey=' + encodeURIComponent(p.nationalNumber), '_blank'); }
-    function Infphone09() { const p = getPhoneInputs({ requireNatNum: true }); if (!p) return; const nn = p.nationalNumber; window.open('https://thatsthem.com/phone/' + nn.substring(0,3)+'-'+nn.substring(3,6)+'-'+nn.substring(6), '_blank'); }
-    function Infphone10() { const p = getPhoneInputs({ requireNatNum: true, requireCountryLetters: true }); if (!p) return; window.open('https://www.truecaller.com/search/' + p.countryTwoLetters + '/' + encodeURIComponent(p.nationalNumber), '_blank'); }
-    function openDtVariant(base, prefix, suffix) { const p = getPhoneInputs({ requireCountryCode: true, requireNatNum: true }); if (!p) return; let term = prefix.startsWith('e')? 'e'+p.nationalNumber+suffix : prefix.includes('CC')? p.countryDiallingCode.replace('+','')+'.'+(prefix.includes('0')?'0':'')+p.nationalNumber : p.nationalNumber+suffix; window.open(base + encodeURIComponent(term) + '%22%5D%5D%5D&historical=1', '_blank'); }
-    const dtBase = 'https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22';
-    function Infphone02() { openDtVariant(dtBase, '+CC.Num',''); }
-    function Infphone12() { openDtVariant(dtBase, '+CC.0Num',''); }
-    function Infphone13() { openDtVariant(dtBase, 'NumOnly',''); }
-    function Infphone14() { openDtVariant(dtBase, '0NumOnly',''); }
-    function Infphone15() { openDtVariant(dtBase, 'e','@gmail.com'); }
-    function Infphone16() { openDtVariant(dtBase, 'e','@mail.ru'); }
-    function Infphone17() { openDtVariant(dtBase, 'e','@yandex.ru'); }
-    function Infphone18() { openDtVariant(dtBase, 'e','@yandex.com'); }
-    function Infphone19() { openDtVariant(dtBase, 'e','@protonmail.com'); }
-    function Infphone20() { openDtVariant(dtBase, 'e','@protonmail.ch'); }
-    function Infphone21() { openDtVariant(dtBase, 'e','@proton.me'); }
-    function Infphone22() { openDtVariant(dtBase, 'e','@pm.me'); }
-    function Infphone23() { openDtVariant(dtBase, 'e','@hotmail.com'); }
-    function Infphone24() { openDtVariant(dtBase, 'e','@yahoo.com'); }
-    function Infphone25DT() { openDtVariant(dtBase, 'Num','@gmail.com'); }
-    function Infphone26DT() { openDtVariant(dtBase, 'Num','@mail.ru'); }
-    function Infphone27DT() { openDtVariant(dtBase, 'Num','@yandex.ru'); }
-    function Infphone28DT() { openDtVariant(dtBase, 'Num','@yandex.com'); }
-    function Infphone29DT() { openDtVariant(dtBase, 'Num','@protonmail.com'); }
-    function Infphone30DT() { openDtVariant(dtBase, 'Num','@protonmail.ch'); }
-    function Infphone31DT() { openDtVariant(dtBase, 'Num','@proton.me'); }
-    function Infphone32DT() { openDtVariant(dtBase, 'Num','@pm.me'); }
-    function Infphone33DT() { openDtVariant(dtBase, 'Num','@hotmail.com'); }
-    function Infphone34DT() { openDtVariant(dtBase, 'Num','@yahoo.com'); }
+
+    const countryCodeField = document.getElementById('countryCodeInput');
+    if (countryCodeField) {
+        countryCodeField.addEventListener('input', function() {
+            PhoneInt_AutoFillCountryISO();    
+            PhoneInt_ScheduleIntelAnalysis(); 
+        });
+        countryCodeField.addEventListener('keydown', PhoneInt_HandleEnterKeyForIntel);
+    }
+    const nationalNumberField = document.getElementById('nationalNumberInput');
+    if (nationalNumberField) {
+        nationalNumberField.addEventListener('input', PhoneInt_ScheduleIntelAnalysis);
+        nationalNumberField.addEventListener('keydown', PhoneInt_HandleEnterKeyForIntel);
+    }
+    const countryLettersField = document.getElementById('countryLettersInput');
+    if (countryLettersField) {
+        countryLettersField.addEventListener('input', function() {
+            // PhoneInt_DisplayCountryName(); was removed
+            PhoneInt_AutoFillDialCodeFromISO(); 
+            // ScheduleIntelAnalysis is implicitly called if AutoFillDialCodeFromISO changes countryCodeField
+        });
+        countryLettersField.addEventListener('keydown', PhoneInt_HandleEnterKeyForIntel);
+    }
+
+    // --- Tool Specific Functions (ensure they call PhoneInt_DisplayPhoneNumberIntel and clear its display on error) ---
+    // (The tool functions are the same as the last complete version, ensure calls to 
+    //  PhoneInt_DisplayPhoneNumberIntel and clearing of phoneIntelDisplayElement are consistent)
+    function PhoneInt_SearchRiskIQ() {
+      const phoneParts = PhoneInt_GetPhoneInputs({ requireCountryCode: true, requireNatNum: true }); 
+      const phoneIntelDisplayElement = document.getElementById('phoneIntelDisplay');
+      if (!phoneParts) {
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = ""; 
+        return;
+      }
+      const fullNumberString = phoneParts.countryDiallingCode + phoneParts.nationalNumber;
+      PhoneInt_DisplayPhoneNumberIntel(fullNumberString, phoneParts.countryTwoLetters); 
+      if (!fullNumberString.replace('+','')) { 
+        alert('Country Code and National Number are required for RiskIQ WHOIS.'); 
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return; 
+      }
+      window.open('https://community.riskiq.com/search/whois/phone?query=' + encodeURIComponent(fullNumberString), '_blank');
+    }
+    function PhoneInt_SearchWhatsAppLeaks() { window.open('https://whatsapp.checkleaked.cc/', '_blank'); }
+    function PhoneInt_SearchSyncMe() {
+      const phoneParts = PhoneInt_GetPhoneInputs({ requireCountryCode: true, requireNatNum: true });
+      const phoneIntelDisplayElement = document.getElementById('phoneIntelDisplay');
+      if (!phoneParts) {
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      const fullNumberString = phoneParts.countryDiallingCode + phoneParts.nationalNumber;
+      PhoneInt_DisplayPhoneNumberIntel(fullNumberString, phoneParts.countryTwoLetters);
+      if (!fullNumberString.replace('+','')) { 
+        alert('Country Code and National Number are required for Sync.me.');
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      window.open('https://sync.me/search/?number=' + encodeURIComponent(fullNumberString), '_blank');
+    }
+    function PhoneInt_Search411() {
+      const phoneParts = PhoneInt_GetPhoneInputs({ requireNatNum: true });
+      const phoneIntelDisplayElement = document.getElementById('phoneIntelDisplay');
+      if (!phoneParts) {
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = ""; 
+
+      const nationalNum = phoneParts.nationalNumber;
+      if (nationalNum.length >= 7) {
+         const formattedNumber = `1-${nationalNum.substring(0,3)}-${nationalNum.substring(3,6)}-${nationalNum.substring(6)}`;
+         window.open('https://www.411.com/phone/' + encodeURIComponent(formattedNumber), '_blank');
+      } else {
+         alert('National Number must be at least 7 digits for 411.com formatting.');
+      }
+    }
+    function PhoneInt_SearchEPIEOS() {
+      const phoneParts = PhoneInt_GetPhoneInputs({ requireCountryCode: true, requireNatNum: true });
+      const phoneIntelDisplayElement = document.getElementById('phoneIntelDisplay');
+      if (!phoneParts) {
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      const fullNumberString = phoneParts.countryDiallingCode + phoneParts.nationalNumber;
+      PhoneInt_DisplayPhoneNumberIntel(fullNumberString, phoneParts.countryTwoLetters);
+      if (!fullNumberString.replace('+','')) { 
+        alert('Country Code and National Number are required for EPIEOS.');
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      window.open('https://epieos.com/?q=' + encodeURIComponent(fullNumberString) + '&t=phone', '_blank');
+    }
+    function PhoneInt_SearchFacebookPosts() {
+      const phoneParts = PhoneInt_GetPhoneInputs({ requireCountryCode: true, requireNatNum: true });
+      const phoneIntelDisplayElement = document.getElementById('phoneIntelDisplay');
+      if (!phoneParts) {
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      const fullNumberString = phoneParts.countryDiallingCode + phoneParts.nationalNumber;
+      PhoneInt_DisplayPhoneNumberIntel(fullNumberString, phoneParts.countryTwoLetters);
+      if (!fullNumberString.replace('+','')) { 
+        alert('Country Code and National Number are required for Facebook search.');
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      window.open('https://www.facebook.com/search/posts/?q=' + encodeURIComponent(fullNumberString), '_blank');
+    }
+    function PhoneInt_SearchMySMSBox() {
+      const phoneParts = PhoneInt_GetPhoneInputs({ requireCountryCode: true, requireNatNum: true });
+      const phoneIntelDisplayElement = document.getElementById('phoneIntelDisplay');
+      if (!phoneParts) {
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      const fullNumberString = phoneParts.countryDiallingCode + phoneParts.nationalNumber;
+      PhoneInt_DisplayPhoneNumberIntel(fullNumberString, phoneParts.countryTwoLetters);
+      if (!fullNumberString.replace('+','')) { 
+        alert('Country Code and National Number are required for My SMS Box.');
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      window.open('https://mysmsbox.ru/phone-search/' + encodeURIComponent(fullNumberString), '_blank');
+    }
+    function PhoneInt_SearchOFAC() {
+      const phoneParts = PhoneInt_GetPhoneInputs({ requireCountryCode: true, requireNatNum: true });
+      const phoneIntelDisplayElement = document.getElementById('phoneIntelDisplay');
+      if (!phoneParts) {
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      const fullNumberString = phoneParts.countryDiallingCode + phoneParts.nationalNumber;
+      PhoneInt_DisplayPhoneNumberIntel(fullNumberString, phoneParts.countryTwoLetters);
+      if (!fullNumberString.replace('+','')) { 
+        alert('Country Code and National Number are required for OFAC Sanctions.');
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      window.open('https://sanctionssearch.ofac.treas.gov/Details.aspx?id=' + encodeURIComponent(fullNumberString), '_blank');
+    }
+    function PhoneInt_SearchVedbex() { window.open('https://www.vedbex.com/phone2skype', '_blank'); }
+    function PhoneInt_SearchEmobileTracker() { window.open('https://www.emobiletracker.com/', '_blank'); }
+    function PhoneInt_SearchFreeCarrierLookup() { window.open('https://freecarrierlookup.com/', '_blank'); }
+
+    function PhoneInt_SearchAQL() {
+      const phoneParts = PhoneInt_GetPhoneInputs({ requireCountryCode: true, requireNatNum: true });
+      const phoneIntelDisplayElement = document.getElementById('phoneIntelDisplay');
+      if (!phoneParts) {
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      const fullNumberStringForIntel = phoneParts.countryDiallingCode + phoneParts.nationalNumber;
+      PhoneInt_DisplayPhoneNumberIntel(fullNumberStringForIntel, phoneParts.countryTwoLetters);
+      
+      const numberToSearch = (phoneParts.countryDiallingCode + phoneParts.nationalNumber).replace('+','');
+      if (!numberToSearch) { 
+        alert('Number (Country Code without "+" and National Number) is required for AQL.');
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      window.open('https://portal.aql.com/telecoms/network_lookup.php/?number=' + encodeURIComponent(numberToSearch) + '&nlSubmit=submit', '_blank');
+    }
+    function PhoneInt_SearchNigeriaPhonebook() { 
+      const phoneParts = PhoneInt_GetPhoneInputs({ requireNatNum: true });
+      const phoneIntelDisplayElement = document.getElementById('phoneIntelDisplay');
+      if (!phoneParts) {
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = ""; 
+      window.open('https://nigeriaphonebook.com/search-result?searchKey=' + encodeURIComponent(phoneParts.nationalNumber), '_blank');
+    }
+    function PhoneInt_SearchThatsThem() {
+      const phoneParts = PhoneInt_GetPhoneInputs({ requireNatNum: true });
+      const phoneIntelDisplayElement = document.getElementById('phoneIntelDisplay');
+      if (!phoneParts) {
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = ""; 
+
+      const nationalNum = phoneParts.nationalNumber;
+      if (nationalNum.length >= 7) {
+        window.open('https://thatsthem.com/phone/' + nationalNum.substring(0,3)+'-'+nationalNum.substring(3,6)+'-'+nationalNum.substring(6), '_blank');
+      } else {
+        alert('National Number must be at least 7 digits for ThatsThem.com formatting.');
+      }
+    }
+    function PhoneInt_SearchTruecaller() { 
+      const phoneParts = PhoneInt_GetPhoneInputs({ requireNatNum: true, requireCountryLetters: true });
+      const phoneIntelDisplayElement = document.getElementById('phoneIntelDisplay');
+      if (!phoneParts) {
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      let potentialFullNumber = phoneParts.nationalNumber; 
+      const numericDialCode = isoToDialCodeMap[phoneParts.countryTwoLetters.toUpperCase()];
+      if (numericDialCode) {
+          potentialFullNumber = "+" + numericDialCode + phoneParts.nationalNumber;
+      }
+      PhoneInt_DisplayPhoneNumberIntel(potentialFullNumber, phoneParts.countryTwoLetters);
+
+      window.open('https://www.truecaller.com/search/' + phoneParts.countryTwoLetters.toLowerCase() + '/' + encodeURIComponent(phoneParts.nationalNumber), '_blank');
+    }
+
+    const PhoneInt_dtBase = 'https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22';
+    function PhoneInt_OpenDtVariant(prefix, suffix = '') { 
+      const phoneParts = PhoneInt_GetPhoneInputs({ requireCountryCode: true, requireNatNum: true }); 
+      const phoneIntelDisplayElement = document.getElementById('phoneIntelDisplay');
+      if (!phoneParts) {
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      
+      const fullNumberString = phoneParts.countryDiallingCode + phoneParts.nationalNumber;
+      PhoneInt_DisplayPhoneNumberIntel(fullNumberString, phoneParts.countryTwoLetters);
+
+      let searchTerm = '';
+      if (prefix.startsWith('e')) {
+        searchTerm = 'e' + phoneParts.nationalNumber + suffix;
+      } else if (prefix.includes('CC')) {
+        searchTerm = phoneParts.countryDiallingCode.replace('+','') + '.' + (prefix.includes('0') ? '0' : '') + phoneParts.nationalNumber;
+      } else { 
+        searchTerm = (prefix.startsWith('0') && prefix.endsWith('Only') ? '0' : '') + phoneParts.nationalNumber + suffix;
+      }
+      if (!searchTerm.replace(/\.|@/g, '')) { 
+         alert('Search term for DomainTools is invalid or incomplete.'); 
+         if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+         return; 
+      }
+      window.open(PhoneInt_dtBase + encodeURIComponent(searchTerm) + '%22%5D%5D%5D&historical=1', '_blank');
+    }
+
+    function PhoneInt_DtVariantPlusCCNum() { PhoneInt_OpenDtVariant('+CC.Num'); }
+    function PhoneInt_DtVariantPlusCC0Num() { PhoneInt_OpenDtVariant('+CC.0Num'); }
+    function PhoneInt_DtVariantNumOnly() { PhoneInt_OpenDtVariant('NumOnly'); }
+    function PhoneInt_DtVariant0NumOnly() { PhoneInt_OpenDtVariant('0NumOnly'); }
+    function PhoneInt_DtVarianteNumGmail() { PhoneInt_OpenDtVariant('e', '@gmail.com'); }
+    function PhoneInt_DtVarianteNumMailRu() { PhoneInt_OpenDtVariant('e', '@mail.ru'); }
+    function PhoneInt_DtVarianteNumYandexRu() { PhoneInt_OpenDtVariant('e', '@yandex.ru'); }
+    function PhoneInt_DtVarianteNumYandexCom() { PhoneInt_OpenDtVariant('e', '@yandex.com'); }
+    function PhoneInt_DtVarianteNumProtonmail() { PhoneInt_OpenDtVariant('e', '@protonmail.com'); }
+    function PhoneInt_DtVarianteNumProtonCh() { PhoneInt_OpenDtVariant('e', '@protonmail.ch'); }
+    function PhoneInt_DtVarianteNumProtonMe() { PhoneInt_OpenDtVariant('e', '@proton.me'); }
+    function PhoneInt_DtVarianteNumPmMe() { PhoneInt_OpenDtVariant('e', '@pm.me'); }
+    function PhoneInt_DtVarianteNumHotmail() { PhoneInt_OpenDtVariant('e', '@hotmail.com'); }
+    function PhoneInt_DtVarianteNumYahoo() { PhoneInt_OpenDtVariant('e', '@yahoo.com'); }
+    function PhoneInt_DtVariantNumGmail() { PhoneInt_OpenDtVariant('Num', '@gmail.com'); }
+    function PhoneInt_DtVariantNumMailRu() { PhoneInt_OpenDtVariant('Num', '@mail.ru'); }
+    function PhoneInt_DtVariantNumYandexRu() { PhoneInt_OpenDtVariant('Num', '@yandex.ru'); }
+    function PhoneInt_DtVariantNumYandexCom() { PhoneInt_OpenDtVariant('Num', '@yandex.com'); }
+    function PhoneInt_DtVariantNumProtonmailCom() { PhoneInt_OpenDtVariant('Num', '@protonmail.com'); }
+    function PhoneInt_DtVariantNumProtonmailCh() { PhoneInt_OpenDtVariant('Num', '@protonmail.ch'); }
+    function PhoneInt_DtVariantNumProtonMe() { PhoneInt_OpenDtVariant('Num', '@proton.me'); }
+    function PhoneInt_DtVariantNumPmMe() { PhoneInt_OpenDtVariant('Num', '@pm.me'); }
+    function PhoneInt_DtVariantNumHotmail() { PhoneInt_OpenDtVariant('Num', '@hotmail.com'); }
+    function PhoneInt_DtVariantNumYahoo() { PhoneInt_OpenDtVariant('Num', '@yahoo.com'); }
   </script>
 </body>
 </html>
