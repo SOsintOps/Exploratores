@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="../assets/css/style.css">
   <script src="../assets/js/libphonenumber-max.js"></script> 
   <style>
-    /* Removed .country-name-display style as the element is removed */
+    /* Styling for the phone intelligence display */
     .phone-intel-display {
       margin-top: 0.75rem; 
       font-style: italic;
-      color: #333; 
+      color: #333; /* Dark gray, adjust as needed */
       min-height: 1.2em;
       text-align: left;
     }
@@ -102,6 +102,14 @@
       <strong>NOTE:</strong> Phone number data, including country and type association, can vary in precision due to factors like number portability. Always cross-verify findings using multiple sources.
     </div>
 
+    <h2>Search Engines</h2>
+    <div class="button-grid">
+      <button type="button" class="button" onclick="PhoneInt_SearchBing()">Bing Search</button>
+      <button type="button" class="button" onclick="PhoneInt_SearchGoogle()">Google Search</button>
+      <button type="button" class="button" onclick="PhoneInt_SearchYandex()">Yandex Search</button>
+    </div>
+
+    <h2>Phone Lookup Services</h2>
     <div class="button-grid">
       <button type="button" class="button" onclick="PhoneInt_Search411()">411.com</button>
       <button type="button" class="button" onclick="PhoneInt_SearchAQL()">AQL Network (UK)</button>
@@ -283,19 +291,11 @@
       'UY': '598', 'UZ': '998', 'VU': '678', 'VE': '58', 'VN': '84', 'VG': '1284', 'VI': '1340', 
       'WF': '681', 'YE': '967', 'ZM': '260', 'ZW': '263'
     };
-    const phoneNumberTypeTranslations = { // English translations for types
-        'FIXED_LINE': 'Fixed Line',
-        'MOBILE': 'Mobile',
-        'FIXED_LINE_OR_MOBILE': 'Fixed Line or Mobile',
-        'TOLL_FREE': 'Toll-free',
-        'PREMIUM_RATE': 'Premium Rate',
-        'SHARED_COST': 'Shared Cost',
-        'VOIP': 'VoIP',
-        'PERSONAL_NUMBER': 'Personal Number',
-        'PAGER': 'Pager',
-        'UAN': 'UAN',
-        'VOICEMAIL': 'Voicemail',
-        'UNKNOWN': 'Unknown'
+    const phoneNumberTypeTranslations = { // English translations
+        'FIXED_LINE': 'Fixed Line', 'MOBILE': 'Mobile', 'FIXED_LINE_OR_MOBILE': 'Fixed Line or Mobile',
+        'TOLL_FREE': 'Toll-free', 'PREMIUM_RATE': 'Premium Rate', 'SHARED_COST': 'Shared Cost',
+        'VOIP': 'VoIP', 'PERSONAL_NUMBER': 'Personal Number', 'PAGER': 'Pager',
+        'UAN': 'UAN', 'VOICEMAIL': 'Voicemail', 'UNKNOWN': 'Unknown'
     };
 
     // --- Core Logic Functions ---
@@ -362,8 +362,6 @@
         };
     }
     
-    // Removed PhoneInt_DisplayCountryName() as country name is now part of PhoneInt_DisplayPhoneNumberIntel()
-
     function PhoneInt_AutoFillCountryISO() {
         const countryCodeInputElement = document.getElementById('countryCodeInput');
         const countryLettersInputElement = document.getElementById('countryLettersInput');
@@ -375,9 +373,8 @@
         if (currentCountryCodeValue.startsWith('+')) {
             numericCountryCode = currentCountryCodeValue.substring(1);
         } else { 
-            // If country code doesn't start with '+', clear ISO field.
-            // The country name display is handled by PhoneInt_DisplayPhoneNumberIntel via ScheduleIntelAnalysis
             if (countryLettersInputElement.value !== "") countryLettersInputElement.value = ""; 
+            // PhoneInt_DisplayCountryName() was removed, country name update is now part of intel display
             return; 
         }
         
@@ -388,9 +385,8 @@
         
         if (countryLettersInputElement.value !== newIsoValue) {
             countryLettersInputElement.value = newIsoValue;
-            // Note: Changing countryLettersInput.value here will trigger its 'input' listener,
-            // which calls PhoneInt_AutoFillDialCodeFromISO and PhoneInt_ScheduleIntelAnalysis.
         }
+        // PhoneInt_DisplayCountryName() was removed
     }
 
     function PhoneInt_AutoFillDialCodeFromISO() {
@@ -406,7 +402,6 @@
             
             if (countryCodeInputElement.value !== newDialCode) {
                 countryCodeInputElement.value = newDialCode;
-                // This will trigger the 'input' event on countryCodeInputElement
             }
         }
     }
@@ -417,12 +412,12 @@
         intelDisplayElement.textContent = ""; 
 
         if (typeof libphonenumber === 'undefined') {
-            console.error("libphonenumber-js is not loaded."); // English console error
-            intelDisplayElement.textContent = "Analysis library not available."; // English UI message
+            console.error("libphonenumber-js is not loaded.");
+            intelDisplayElement.textContent = "Analysis library not available.";
             return;
         }
         if (!phoneNumberString || !defaultIsoCountryCode) {
-            // intelDisplayElement.textContent = "Insufficient data for analysis."; // Optional: message if called with insufficient data
+            // intelDisplayElement.textContent = "Insufficient data for analysis.";
             return; 
         }
 
@@ -434,7 +429,7 @@
                 const type = phoneNumberObject.getType();
                 const countryISO = phoneNumberObject.country; 
                 let countryName = countryISO && isoToCountryNameMap[countryISO] ? isoToCountryNameMap[countryISO] : "";
-                let typeName = type && phoneNumberTypeTranslations[type] ? phoneNumberTypeTranslations[type] : (type || ""); // Fallback to raw type
+                let typeName = type && phoneNumberTypeTranslations[type] ? phoneNumberTypeTranslations[type] : (type || "");
 
                 if (countryName && typeName) displayText = `${countryName} - ${typeName}`; 
                 else if (countryName) displayText = `${countryName} - Type not specified`;
@@ -445,8 +440,8 @@
             }
             intelDisplayElement.textContent = displayText;
         } catch (error) {
-            console.error("Error parsing number with libphonenumber-js:", error); // English console error
-            intelDisplayElement.textContent = "Error during number analysis."; // English UI message
+            console.error("Error parsing number with libphonenumber-js:", error);
+            intelDisplayElement.textContent = "Error during number analysis.";
         }
     }
 
@@ -469,7 +464,7 @@
         }
         if (!referenceIsoForParsing && countryLettersInputElement.value.trim()) {
             const potentialIso = countryLettersInputElement.value.trim().toUpperCase();
-            if (isoToDialCodeMap[potentialIso]) { // Check if it's a valid ISO with a dial code
+            if (isoToDialCodeMap[potentialIso]) { 
                  referenceIsoForParsing = potentialIso;
             }
         }
@@ -537,14 +532,11 @@
         countryLettersField.addEventListener('input', function() {
             // PhoneInt_DisplayCountryName(); was removed
             PhoneInt_AutoFillDialCodeFromISO(); 
-            // ScheduleIntelAnalysis is implicitly called if AutoFillDialCodeFromISO changes countryCodeField
         });
         countryLettersField.addEventListener('keydown', PhoneInt_HandleEnterKeyForIntel);
     }
 
-    // --- Tool Specific Functions (ensure they call PhoneInt_DisplayPhoneNumberIntel and clear its display on error) ---
-    // (The tool functions are the same as the last complete version, ensure calls to 
-    //  PhoneInt_DisplayPhoneNumberIntel and clearing of phoneIntelDisplayElement are consistent)
+    // --- Tool Specific Functions ---
     function PhoneInt_SearchRiskIQ() {
       const phoneParts = PhoneInt_GetPhoneInputs({ requireCountryCode: true, requireNatNum: true }); 
       const phoneIntelDisplayElement = document.getElementById('phoneIntelDisplay');
@@ -658,6 +650,111 @@
         return;
       }
       window.open('https://sanctionssearch.ofac.treas.gov/Details.aspx?id=' + encodeURIComponent(fullNumberString), '_blank');
+    }
+    function PhoneInt_SearchBing() {
+      const phonePartsOptions = { requireCountryCode: false, requireNatNum: true, requireCountryLetters: false };
+      const phoneParts = PhoneInt_GetPhoneInputs(phonePartsOptions);
+      const phoneIntelDisplayElement = document.getElementById('phoneIntelDisplay');
+      if (!phoneParts) {
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = ""; 
+        return;
+      }
+      let searchQuery = "";
+      if (phoneParts.countryDiallingCode && phoneParts.nationalNumber) searchQuery = phoneParts.countryDiallingCode + phoneParts.nationalNumber;
+      else if (phoneParts.nationalNumber) searchQuery = phoneParts.nationalNumber;
+      else {
+        alert('National Number is required for Bing search.'); 
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      if (phoneParts.nationalNumber && phoneParts.countryTwoLetters) {
+          let numberForIntel = "";
+          if (phoneParts.countryDiallingCode) numberForIntel = phoneParts.countryDiallingCode + phoneParts.nationalNumber;
+          else {
+              const numericDialCode = isoToDialCodeMap[phoneParts.countryTwoLetters.toUpperCase()];
+              if (numericDialCode) numberForIntel = "+" + numericDialCode + phoneParts.nationalNumber;
+              else numberForIntel = phoneParts.nationalNumber;
+          }
+          PhoneInt_DisplayPhoneNumberIntel(numberForIntel, phoneParts.countryTwoLetters);
+      } else if (phoneParts.countryDiallingCode && phoneParts.nationalNumber) {
+          const numericDial = phoneParts.countryDiallingCode.substring(1);
+          const derivedIso = dialCodeToIsoMap[numericDial] || "";
+          PhoneInt_DisplayPhoneNumberIntel(searchQuery, derivedIso);
+      } else {
+          if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+      }
+      const bingSearchUrl = `https://www.bing.com/search?q=${encodeURIComponent(searchQuery)}`;
+      window.open(bingSearchUrl, '_blank');
+    }
+    function PhoneInt_SearchGoogle() {
+      const phonePartsOptions = { requireCountryCode: false, requireNatNum: true, requireCountryLetters: false };
+      const phoneParts = PhoneInt_GetPhoneInputs(phonePartsOptions);
+      const phoneIntelDisplayElement = document.getElementById('phoneIntelDisplay');
+      if (!phoneParts) {
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = ""; 
+        return;
+      }
+      let searchQuery = "";
+      if (phoneParts.countryDiallingCode && phoneParts.nationalNumber) searchQuery = phoneParts.countryDiallingCode + phoneParts.nationalNumber;
+      else if (phoneParts.nationalNumber) searchQuery = phoneParts.nationalNumber;
+      else {
+        alert('National Number is required for Google search.'); 
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      if (phoneParts.nationalNumber && phoneParts.countryTwoLetters) {
+          let numberForIntel = "";
+          if (phoneParts.countryDiallingCode) numberForIntel = phoneParts.countryDiallingCode + phoneParts.nationalNumber;
+          else {
+              const numericDialCode = isoToDialCodeMap[phoneParts.countryTwoLetters.toUpperCase()];
+              if (numericDialCode) numberForIntel = "+" + numericDialCode + phoneParts.nationalNumber;
+              else numberForIntel = phoneParts.nationalNumber;
+          }
+          PhoneInt_DisplayPhoneNumberIntel(numberForIntel, phoneParts.countryTwoLetters);
+      } else if (phoneParts.countryDiallingCode && phoneParts.nationalNumber) {
+          const numericDial = phoneParts.countryDiallingCode.substring(1);
+          const derivedIso = dialCodeToIsoMap[numericDial] || "";
+          PhoneInt_DisplayPhoneNumberIntel(searchQuery, derivedIso);
+      } else {
+          if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+      }
+      const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
+      window.open(googleSearchUrl, '_blank');
+    }
+    function PhoneInt_SearchYandex() {
+      const phonePartsOptions = { requireCountryCode: false, requireNatNum: true, requireCountryLetters: false };
+      const phoneParts = PhoneInt_GetPhoneInputs(phonePartsOptions);
+      const phoneIntelDisplayElement = document.getElementById('phoneIntelDisplay');
+      if (!phoneParts) {
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = ""; 
+        return;
+      }
+      let searchQuery = "";
+      if (phoneParts.countryDiallingCode && phoneParts.nationalNumber) searchQuery = phoneParts.countryDiallingCode + phoneParts.nationalNumber;
+      else if (phoneParts.nationalNumber) searchQuery = phoneParts.nationalNumber;
+      else {
+        alert('National Number is required for Yandex search.'); 
+        if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+        return;
+      }
+      if (phoneParts.nationalNumber && phoneParts.countryTwoLetters) {
+          let numberForIntel = "";
+          if (phoneParts.countryDiallingCode) numberForIntel = phoneParts.countryDiallingCode + phoneParts.nationalNumber;
+          else {
+              const numericDialCode = isoToDialCodeMap[phoneParts.countryTwoLetters.toUpperCase()];
+              if (numericDialCode) numberForIntel = "+" + numericDialCode + phoneParts.nationalNumber;
+              else numberForIntel = phoneParts.nationalNumber;
+          }
+          PhoneInt_DisplayPhoneNumberIntel(numberForIntel, phoneParts.countryTwoLetters);
+      } else if (phoneParts.countryDiallingCode && phoneParts.nationalNumber) {
+          const numericDial = phoneParts.countryDiallingCode.substring(1);
+          const derivedIso = dialCodeToIsoMap[numericDial] || "";
+          PhoneInt_DisplayPhoneNumberIntel(searchQuery, derivedIso);
+      } else {
+          if (phoneIntelDisplayElement) phoneIntelDisplayElement.textContent = "";
+      }
+      const yandexSearchUrl = `https://yandex.com/search/?text=${encodeURIComponent(searchQuery)}`;
+      window.open(yandexSearchUrl, '_blank');
     }
     function PhoneInt_SearchVedbex() { window.open('https://www.vedbex.com/phone2skype', '_blank'); }
     function PhoneInt_SearchEmobileTracker() { window.open('https://www.emobiletracker.com/', '_blank'); }
