@@ -61,6 +61,14 @@ h3 {
   font-size: 1.1rem;
 }
 
+.search-instructions-minimal {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 0; /* Rimuove il border-radius della classe base */
+  margin-bottom: 0; /* Opzionale: se non si desidera il margin-bottom della classe base */
+}
+
 /* Styling for the CyberChef iframe container */
 .cyberchef-iframe {
   width: 100%;

@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Exploratores IP Tool</title>
+  <title>IP Addresses • Exploratores</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
 <body>
 
@@ -13,7 +14,7 @@
   <ul class="menu">
     <li><span>HOME</span>
       <ul class="submenu">
-        <li><a href="../index.html">Index</a></li>
+        <li><a href="../launchme.html">Index</a></li>
       </ul>
     </li>
     <li><span>Search<br>Engines</span>
@@ -80,131 +81,276 @@
   <section class="search-instructions">
     <label for="ipAddressInput">Enter IP Address:</label>
     <div class="input-container">
-      <input type="text" id="ipAddressInput" class="input-field" placeholder="Enter IP Address">
+      <input type="text" id="ipAddressInput" class="input-field" placeholder="Enter IP Address (IPv4)">
+    </div>
+    <div class="note" style="margin-top: 0.5rem;">
+      <strong>NOTE:</strong> Access to some detailed information via these tools may require an investigative or professional account with the respective services.
     </div>
   </section>
 
   <div class="columns">
-    <div class="column">
+    <div class="column" id="left-column">
+      <h2>Search Engines</h2>
+      <div class="button-grid">
+        <button type="button" class="button" onclick="IP_SearchBaidu()">Baidu</button>
+        <button type="button" class="button" onclick="IP_SearchBing()">Bing</button>
+        <button type="button" class="button" onclick="IP_SearchGoogle()">Google</button>
+        <button type="button" class="button" onclick="IP_SearchYandex()">Yandex</button>
+      </div>
+
       <h2>General IP Information & DNS</h2>
       <div class="button-grid">
-        <input type="button" class="button" value="Bing IP" onclick="IpAddress10(getIpAddress())">
-        <input type="button" class="button" value="DNSChecker" onclick="IpAddress08(getIpAddress())">
-        <input type="button" class="button" value="IPAddress.com" onclick="IpAddress07(getIpAddress())">
-        <input type="button" class="button" value="IPLocation" onclick="IpAddress11(getIpAddress())">
-        <input type="button" class="button" value="IPLookup" onclick="IpAddress09(getIpAddress())">
-        <input type="button" class="button" value="MXTool (ARIN)" onclick="IpAddress20(getIpAddress())">
-        <input type="button" class="button" value="That's Them" onclick="IpAddress12(getIpAddress())">
-        <input type="button" class="button" value="VD LocateIP" onclick="IpAddress02(getIpAddress())">
-        <input type="button" class="button" value="VD ReverseDNS" onclick="IpAddress06(getIpAddress())">
-        <input type="button" class="button" value="VD ReverseIP" onclick="IpAddress01(getIpAddress())">
-        <input type="button" class="button" value="VD Whois" onclick="IpAddress04(getIpAddress())">
+        <button type="button" class="button" onclick="IP_SearchDNSChecker()">DNSChecker</button>
+        <button type="button" class="button" onclick="IP_SearchDomainToolsWhois()">DomainTools Whois</button>
+        <button type="button" class="button" onclick="IP_SearchInfoByIp()">InfoByIp</button>
+        <button type="button" class="button" onclick="IP_OpenIpApiCoBulk()">ipapi.co (Bulk Geo)</button>
+        <button type="button" class="button" onclick="IP_SearchIPAddressCom()">IPAddress.com</button>
+        <button type="button" class="button" onclick="IP_SearchIPLocationNet()">IPLocation.net</button>
+        <button type="button" class="button" onclick="IP_SearchIPLookupOrg()">IPLookup.org</button>
+        <button type="button" class="button" onclick="IP_OpenMaxMindDemo()">MaxMind Demo</button>
+        <button type="button" class="button" onclick="IP_SearchMXToolARIN()">MXTool (ARIN)</button>
+        <button type="button" class="button" onclick="IP_SearchResolveRsGeo()">Resolve.rs Geo</button>
+        <button type="button" class="button" onclick="IP_SearchRobtex()">Robtex</button>
+        <button type="button" class="button" onclick="IP_SearchThatsThemIP()">That's Them IP</button>
       </div>
 
-      <h2>Network & Port Analysis</h2>
+      <h2>ViewDNS.info Tools</h2>
+      <div class="button-grid button-grid-3col">
+        <button type="button" class="button" onclick="IP_ViewDNS_AbuseContact()">Abuse Contact</button>
+        <button type="button" class="button" onclick="IP_ViewDNS_ASNLookup()">ASN Lookup</button>
+        <button type="button" class="button" onclick="IP_ViewDNS_ChineseFirewallTest()">Chinese Firewall Test</button>
+        <button type="button" class="button" onclick="IP_ViewDNS_DNSRecords()">DNS Records</button>
+        <button type="button" class="button" onclick="IP_ViewDNS_DNSReport()">DNS Report</button>
+        <button type="button" class="button" onclick="IP_ViewDNS_DNSSECTest()">DNSSEC Test</button>
+        <button type="button" class="button" onclick="IP_ViewDNS_GlobalPing()">Global Ping</button>
+        <button type="button" class="button" onclick="IP_ViewDNS_HTTPHeaders()">HTTP Headers</button>
+        <button type="button" class="button" onclick="IP_ViewDNS_IPHistory()">IP History</button>
+        <button type="button" class="button" onclick="IP_ViewDNS_IranFirewallTest()">Iran Firewall Test</button>
+        <button type="button" class="button" onclick="IP_ViewDNS_IsMySiteDown()">Is My Site Down</button>
+        <button type="button" class="button" onclick="IP_SearchVDLocateIP()">LocateIP</button>
+        <button type="button" class="button" onclick="IP_SearchVDPortScan()">PortScan</button>
+        <button type="button" class="button" onclick="IP_SearchVDReverseDNS()">ReverseDNS</button>
+        <button type="button" class="button" onclick="IP_SearchVDReverseIP()">ReverseIP</button>
+        <button type="button" class="button" onclick="IP_ViewDNS_SpamDBLookup()">Spam DB Lookup</button>
+        <button type="button" class="button" onclick="IP_SearchVDTraceRoute()">TraceRoute</button>
+        <button type="button" class="button" onclick="IP_SearchVDWhois()">Whois</button>
+      </div>
+      
+      <h2>NetworksDB.io Tools</h2>
       <div class="button-grid">
-        <input type="button" class="button" value="VD PortScan" onclick="IpAddress03(getIpAddress())">
-        <input type="button" class="button" value="VD TraceRoute" onclick="IpAddress05(getIpAddress())">
+        <button type="button" class="button" onclick="IP_NetworksDB_ASNSearch()">ASN Search</button>
+        <button type="button" class="button" onclick="IP_NetworksDB_DomainsOnIP()">Domains on IP</button>
+        <button type="button" class="button" onclick="IP_NetworksDB_IPDetails()">IP Details</button>
+        <button type="button" class="button" onclick="IP_NetworksDB_NetworkSearch()">Network Search</button>
+        <button type="button" class="button" onclick="IP_SearchNetworksDB_Range()">NetworksDB Range</button>
       </div>
     </div>
 
-    <div class="column">
+    <div class="column" id="right-column">
       <h2>Security & Reputation</h2>
       <div class="button-grid">
-        <input type="button" class="button" value="Censys" onclick="IpAddress22(getIpAddress())">
-        <input type="button" class="button" value="Dehashed (IP)" onclick="IpAddress25(getIpAddress())">
-        <input type="button" class="button" value="IKWYD Torrents" onclick="IpAddress13(getIpAddress())">
-        <input type="button" class="button" value="LeakIX Host" onclick="IpAddress30(getIpAddress())">
-        <input type="button" class="button" value="MXBlacklist" onclick="IpAddress23(getIpAddress())">
-        <input type="button" class="button" value="MXBlocklist" onclick="IpAddress24(getIpAddress())">
-        <input type="button" class="button" value="Shodan History" onclick="IpAddress19(getIpAddress())">
-        <input type="button" class="button" value="Shodan Host" onclick="IpAddress17(getIpAddress())">
-        <input type="button" class="button" value="Shodan Raw" onclick="IpAddress18(getIpAddress())">
-        <input type="button" class="button" value="Shodan Search" onclick="IpAddress16(getIpAddress())">
-        <input type="button" class="button" value="ThreatCrowd" onclick="IpAddress21(getIpAddress())">
+        <button type="button" class="button" onclick="IP_SearchCensysHost()">Censys Host</button>
+        <button type="button" class="button" onclick="IP_SearchDehashedIP()">Dehashed (IP)</button>
+        <button type="button" class="button" onclick="IP_SearchGreyNoise()">GreyNoise</button>
+        <button type="button" class="button" onclick="IP_SearchIKWYDTorrents()">IKWYD Torrents</button>
+        <button type="button" class="button" onclick="IP_SearchLeakIXHost()">LeakIX Host</button>
+        <button type="button" class="button" onclick="IP_SearchMaltiverse()">Maltiverse</button>
+        <button type="button" class="button" onclick="IP_SearchMXBlacklist()">MXTool Blacklist</button>
+        <button type="button" class="button" onclick="IP_SearchMXBlocklist()">MXTool Blocklist</button>
+        <button type="button" class="button" onclick="IP_SearchRiskIQ_IP()">RiskIQ IP</button>
+        <button type="button" class="button" onclick="IP_SearchSecurityTrails()">SecurityTrails</button>
+        <button type="button" class="button" onclick="IP_SearchStopForumSpam()">Stop Forum Spam</button>
+        <button type="button" class="button" onclick="IP_SearchThreatCrowd()">ThreatCrowd</button>
+        <button type="button" class="button" onclick="IP_SearchVirusTotalRelations()">VirusTotal Relations</button>
       </div>
-    </div>
-  </div>
 
-  <hr style="margin: 2rem 0;">
-
-  <div class="columns">
-    <div class="column">
-        <h2>Wigle</h2>
-        <section class="search-instructions">
-            <label for="wigleSsidInput">SSID:</label>
-            <div class="input-container">
-            <input type="text" id="wigleSsidInput" class="input-field" placeholder="SSID">
-            <button class="button" style="flex-grow: 0; width: auto; white-space: nowrap;" onclick="IpAddress14(getVal('wigleSsidInput'))">Wigle SSID</button>
-            </div>
-        </section>
-        <section class="search-instructions" style="margin-top:1rem;">
-            <label for="wiglePostalInput">Postal Code:</label>
-            <div class="input-container">
-            <input type="text" id="wiglePostalInput" class="input-field" placeholder="Postal Code">
-            <button class="button" style="flex-grow: 0; width: auto; white-space: nowrap;" onclick="IpAddress15(getVal('wiglePostalInput'))">Wigle Postal</button>
-            </div>
-        </section>
+      <h2>Shodan.io Tools</h2>
+      <div class="button-grid">
+        <button type="button" class="button" onclick="IP_SearchShodanHistory()">Shodan History</button>
+        <button type="button" class="button" onclick="IP_SearchShodanHost()">Shodan Host</button>
+        <button type="button" class="button" onclick="IP_SearchShodanRaw()">Shodan Raw</button>
+        <button type="button" class="button" onclick="IP_SearchShodan()">Shodan Search</button>
+      </div>
+      
+      <h2>Wigle (Wireless Networks)</h2>
+      <section class="search-instructions search-instructions-minimal">
+          <label for="wigleSsidInput">Search by SSID:</label>
+          <div class="input-button-line">
+          <input type="text" id="wigleSsidInput" class="input-field" placeholder="Enter SSID">
+          <button type="button" class="button" onclick="IP_SearchWigleBySSID()">Wigle SSID</button>
+          </div>
+      </section>
+      <section class="search-instructions search-instructions-minimal" style="margin-top:1rem;">
+          <label for="wiglePostalInput">Search by Postal Code:</label>
+          <div class="input-button-line">
+          <input type="text" id="wiglePostalInput" class="input-field" placeholder="Enter Postal Code">
+          <button type="button" class="button" onclick="IP_SearchWigleByPostal()">Wigle Postal</button>
+          </div>
+      </section>
     </div>
-    <div class="column">
-        </div>
   </div>
 </main>
     
 <footer>
-  Global Security Italy • Rome (IT) <a href="License.html">License</a>
+  <p>Global Security Italy • Rome (IT) <a href="license.html">License</a></p>
 </footer>
 
 <script>
-  document.querySelectorAll('.menu > li').forEach(el=>{
-    el.addEventListener('mouseover',()=>{const s=el.querySelector('.submenu');if(s) s.style.display='block';});
-    el.addEventListener('mouseout',()=>{const s=el.querySelector('.submenu');if(s) s.style.display='none';});
-  });
-  const getVal=id=>{ const el=document.getElementById(id); return el ? el.value.trim() : "";};
-
-  function getIpAddress() {
-    const ipVal = getVal('ipAddressInput'); 
-    if (ipVal === "") {
-      alert("Please enter an IP Address.");
-      return null;
+  // Standard navbar submenu script
+  document.querySelectorAll('.menu > li').forEach(item => {
+    const submenu = item.querySelector('.submenu');
+    if (submenu) { 
+      item.addEventListener('mouseenter', function() {
+        submenu.style.display = 'block';
+      });
+      item.addEventListener('mouseleave', function() {
+        submenu.style.display = 'none';
+      });
     }
-    return ipVal;
+  });
+
+  // Helper to get input value and check if empty
+  function IP_GetInputValue(elementId, fieldNameForAlert = "Input field") {
+    const inputElement = document.getElementById(elementId);
+    if (!inputElement) {
+        console.error("Input element not found:", elementId);
+        alert("Input field error. Please check page structure.");
+        return null;
+    }
+    const value = inputElement.value.trim();
+    if (value === "") {
+        alert(`${fieldNameForAlert} cannot be empty.`);
+        return null;
+    }
+    return value;
   }
 
-  function IpAddress01() { const ip = getIpAddress(); if(!ip) return; window.open('http://viewdns.info/reverseip/?host=' + encodeURIComponent(ip) + '&t=1', '_blank');}
-  function IpAddress02() { const ip = getIpAddress(); if(!ip) return; window.open('http://viewdns.info/iplocation/?ip=' + encodeURIComponent(ip), '_blank');}
-  function IpAddress03() { const ip = getIpAddress(); if(!ip) return; window.open('http://viewdns.info/portscan/?host=' + encodeURIComponent(ip), '_blank');}
-  function IpAddress04() { const ip = getIpAddress(); if(!ip) return; window.open('http://viewdns.info/whois/?domain=' + encodeURIComponent(ip), '_blank');}
-  function IpAddress05() { const ip = getIpAddress(); if(!ip) return; window.open('http://viewdns.info/traceroute/?domain=' + encodeURIComponent(ip), '_blank');}
-  function IpAddress06() { const ip = getIpAddress(); if(!ip) return; window.open('http://viewdns.info/reversedns/?ip=' + encodeURIComponent(ip), '_blank');}
-  function IpAddress07() { const ip = getIpAddress(); if(!ip) return; window.open('https://www.ipaddress.com/ipv4/' + ip, '_blank');}  
-  function IpAddress08() { const ip = getIpAddress(); if(!ip) return; window.open('https://dnschecker.org/ip-whois-lookup.php?query=' + encodeURIComponent(ip), '_blank');}
-  function IpAddress09() { const ip = getIpAddress(); if(!ip) return; window.open('https://www.ip-lookup.org/location/' + ip, '_blank');}  
-  function IpAddress10() { const ip = getIpAddress(); if(!ip) return; window.open('http://www.bing.com/search?q=ip%3A' + encodeURIComponent(ip), '_blank');}
-  function IpAddress11() { const ip = getIpAddress(); if(!ip) return; window.open('https://www.iplocation.net/ip-lookup?query=' + encodeURIComponent(ip) + '&submit=IP+Lookup', '_blank');}
-  function IpAddress12() { const ip = getIpAddress(); if(!ip) return; window.open('https://thatsthem.com/ip/' + ip, '_blank');}  
-  function IpAddress13() { const ip = getIpAddress(); if(!ip) return; window.open('http://iknowwhatyoudownload.com/en/peer/?ip=' + encodeURIComponent(ip), '_blank');}
+  // Function to validate IPv4 address format
+  function IP_IsValidIPv4Address(ipString) {
+    if (typeof ipString !== 'string') return false;
+    const ipv4Pattern = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+    return ipv4Pattern.test(ipString);
+  }
+
+  // Helper function specifically for the primary IP address input
+  function IP_GetPrimaryIpAddress() {
+    const ip = IP_GetInputValue('ipAddressInput', "IP Address");
+    if (ip === null) { 
+        return null;
+    }
+    if (!IP_IsValidIPv4Address(ip)) {
+        alert("Invalid IPv4 address format. Please enter a valid IP address (e.g., x.x.x.x).");
+        return null;
+    }
+    return ip; 
+  }
+
+  // --- Tool Functions ---
+  // Search Engines
+  function IP_SearchBaidu() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://www.baidu.com/s?wd=ip%3A' + encodeURIComponent(ip), '_blank');}
+  function IP_SearchBing() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://www.bing.com/search?q=ip%3A' + encodeURIComponent(ip), '_blank');}
+  function IP_SearchGoogle() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://www.google.com/search?q=ip%3A' + encodeURIComponent(ip), '_blank');}
+  function IP_SearchYandex() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://yandex.com/search/?text=ip%3A' + encodeURIComponent(ip), '_blank');}
+
+  // General IP Information & DNS
+  function IP_SearchDNSChecker() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://dnschecker.org/ip-whois-lookup.php?query=' + encodeURIComponent(ip), '_blank');}
+  function IP_SearchDomainToolsWhois() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://whois.domaintools.com/' + encodeURIComponent(ip), '_blank');}
+  function IP_SearchInfoByIp() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://www.infobyip.com/ip-' + encodeURIComponent(ip) + '.html', '_blank');}
+  function IP_OpenIpApiCoBulk() { window.open('https://app.ipapi.co/bulk/', '_blank');}
+  function IP_SearchIPAddressCom() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://www.ipaddress.com/ipv4/' + encodeURIComponent(ip), '_blank');}  
+  function IP_SearchIPLocationNet() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://www.iplocation.net/ip-lookup?query=' + encodeURIComponent(ip) + '&submit=IP+Lookup', '_blank');}
+  function IP_SearchIPLookupOrg() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://www.ip-lookup.org/location/' + encodeURIComponent(ip), '_blank');}  
+  function IP_OpenMaxMindDemo() { window.open('https://www.maxmind.com/en/geoip2-precision-demo/', '_blank');}
+  function IP_SearchMXToolARIN() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://mxtoolbox.com/SuperTool.aspx?action=arin%3a' + encodeURIComponent(ip) + '&run=toolpage', '_blank');}
+  function IP_SearchResolveRsGeo() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://resolve.rs/ip/geolocation.html?ip=' + encodeURIComponent(ip), '_blank');}
+  function IP_SearchRobtex() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://www.robtex.com/ip-lookup/' + encodeURIComponent(ip), '_blank');}
+  function IP_SearchThatsThemIP() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://thatsthem.com/ip/' + encodeURIComponent(ip), '_blank');}  
   
-  function IpAddress14(ssidValue) {  
-    if(!ssidValue) { alert("Please enter an SSID for Wigle search."); return; }
+  // ViewDNS.info Tools
+  function IP_SearchVDLocateIP() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('http://viewdns.info/iplocation/?ip=' + encodeURIComponent(ip), '_blank');}
+  function IP_SearchVDPortScan() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('http://viewdns.info/portscan/?host=' + encodeURIComponent(ip), '_blank');}
+  function IP_SearchVDReverseDNS() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('http://viewdns.info/reversedns/?ip=' + encodeURIComponent(ip), '_blank');}
+  function IP_SearchVDReverseIP() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('http://viewdns.info/reverseip/?host=' + encodeURIComponent(ip) + '&t=1', '_blank');}
+  function IP_SearchVDTraceRoute() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('http://viewdns.info/traceroute/?domain=' + encodeURIComponent(ip), '_blank');}
+  function IP_SearchVDWhois() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('http://viewdns.info/whois/?domain=' + encodeURIComponent(ip), '_blank');}
+  function IP_ViewDNS_AbuseContact() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('http://viewdns.info/abuselookup/?domain=' + encodeURIComponent(ip), '_blank');}
+  function IP_ViewDNS_ASNLookup() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('http://viewdns.info/asnlookup/?asn=' + encodeURIComponent(ip), '_blank');}
+  function IP_ViewDNS_ChineseFirewallTest() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('http://viewdns.info/chinesefirewall/?domain=' + encodeURIComponent(ip), '_blank');}
+  function IP_ViewDNS_DNSRecords() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('http://viewdns.info/dnsrecord/?domain=' + encodeURIComponent(ip), '_blank');}
+  function IP_ViewDNS_DNSReport() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('http://viewdns.info/dnsreport/?domain=' + encodeURIComponent(ip), '_blank');}
+  function IP_ViewDNS_DNSSECTest() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('http://viewdns.info/dnssec/?domain=' + encodeURIComponent(ip), '_blank');}
+  function IP_ViewDNS_GlobalPing() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('http://viewdns.info/ping/?domain=' + encodeURIComponent(ip), '_blank');}
+  function IP_ViewDNS_HTTPHeaders() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('http://viewdns.info/httpheaders/?domain=' + encodeURIComponent(ip), '_blank');}
+  function IP_ViewDNS_IPHistory() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('http://viewdns.info/iphistory/?domain=' + encodeURIComponent(ip), '_blank');}
+  function IP_ViewDNS_IranFirewallTest() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('http://viewdns.info/iranfirewall/?siteurl=' + encodeURIComponent(ip), '_blank');}
+  function IP_ViewDNS_IsMySiteDown() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('http://viewdns.info/ismysitedown/?domain=' + encodeURIComponent(ip), '_blank');}
+  function IP_ViewDNS_SpamDBLookup() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('http://viewdns.info/spamdblookup/?ip=' + encodeURIComponent(ip), '_blank');}
+
+  // NetworksDB.io Tools
+  function IP_SearchNetworksDB_Range() { 
+      const ipString = IP_GetPrimaryIpAddress(); 
+      if (!ipString) return; 
+      
+      const ipParts = ipString.split('.');
+      const networkBase = `${ipParts[0]}.${ipParts[1]}.${ipParts[2]}`;
+      const startIp = `${networkBase}.0`;
+      const endIp = `${networkBase}.255`;
+      const url = `https://networksdb.io/ips-in-network/${startIp}/${endIp}`;
+      window.open(url, '_blank');
+  }
+  function IP_NetworksDB_DomainsOnIP() {
+    const ip = IP_GetPrimaryIpAddress();
+    if (!ip) return;
+    window.open('https://networksdb.io/domains-on-ip/' + encodeURIComponent(ip), '_blank');
+  }
+  function IP_NetworksDB_IPDetails() {
+    const ip = IP_GetPrimaryIpAddress();
+    if (!ip) return;
+    window.open('https://networksdb.io/ip/' + encodeURIComponent(ip), '_blank');
+  }
+  function IP_NetworksDB_ASNSearch() {
+    const ip = IP_GetPrimaryIpAddress();
+    if (!ip) return;
+    window.open('https://networksdb.io/search/asn?q=' + encodeURIComponent(ip), '_blank');
+  }
+  function IP_NetworksDB_NetworkSearch() {
+    const ip = IP_GetPrimaryIpAddress();
+    if (!ip) return;
+    window.open('https://networksdb.io/search/network?q=' + encodeURIComponent(ip), '_blank');
+  }
+
+  // Security & Reputation (Moved Shodan tools to their own section)
+  function IP_SearchCensysHost() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://search.censys.io/hosts/' + encodeURIComponent(ip), '_blank');}  
+  function IP_SearchDehashedIP() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://dehashed.com/search?query=%22' + encodeURIComponent(ip) + '%22', '_blank');}
+  function IP_SearchGreyNoise() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://viz.greynoise.io/ip/' + encodeURIComponent(ip), '_blank');}
+  function IP_SearchIKWYDTorrents() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('http://iknowwhatyoudownload.com/en/peer/?ip=' + encodeURIComponent(ip), '_blank');}
+  function IP_SearchLeakIXHost() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://leakix.net/host/' + encodeURIComponent(ip), '_blank');}
+  function IP_SearchMaltiverse() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://maltiverse.com/search;query=' + encodeURIComponent(ip), '_blank');}
+  function IP_SearchMXBlacklist() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://mxtoolbox.com/SuperTool.aspx?action=blacklist%3a' + encodeURIComponent(ip) + '&run=toolpage', '_blank');}
+  function IP_SearchMXBlocklist() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://mxtoolbox.com/SuperTool.aspx?action=blocklist%3a' + encodeURIComponent(ip) + '&run=networktools', '_blank');}
+  function IP_SearchRiskIQ_IP() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://community.riskiq.com/search/' + encodeURIComponent(ip), '_blank');}
+  function IP_SearchSecurityTrails() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://securitytrails.com/list/ip/' + encodeURIComponent(ip), '_blank');}
+  function IP_SearchStopForumSpam() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://www.stopforumspam.com/search/' + encodeURIComponent(ip), '_blank');}
+  function IP_SearchThreatCrowd() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://ci-www.threatcrowd.org/ip.php?ip=' + encodeURIComponent(ip), '_blank');}
+  function IP_SearchVirusTotalRelations() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://www.virustotal.com/gui/ip-address/' + encodeURIComponent(ip) + '/relations', '_blank');}
+  
+  // Shodan.io Tools
+  function IP_SearchShodanHistory() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://beta.shodan.io/host/' + encodeURIComponent(ip) + '/history', '_blank');}  
+  function IP_SearchShodanHost() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://beta.shodan.io/host/' + encodeURIComponent(ip), '_blank');}  
+  function IP_SearchShodanRaw() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://beta.shodan.io/host/' + encodeURIComponent(ip) + '/raw', '_blank');}  
+  function IP_SearchShodan() { const ip = IP_GetPrimaryIpAddress(); if(!ip) return; window.open('https://www.shodan.io/search?query=' + encodeURIComponent(ip), '_blank');}
+
+  // Wigle Searches
+  function IP_SearchWigleBySSID() {  
+    const ssidValue = IP_GetInputValue('wigleSsidInput', "SSID for Wigle SSID search");
+    if(!ssidValue) return;
     window.open('https://wigle.net/search?ssid=' + encodeURIComponent(ssidValue), '_blank');
   }
-  function IpAddress15(postalValue) {  
-    if(!postalValue) { alert("Please enter a Postal Code for Wigle search."); return; }
+  function IP_SearchWigleByPostal() {    
+    const postalValue = IP_GetInputValue('wiglePostalInput', "Postal Code for Wigle Postal search");
+    if(!postalValue) return;
     window.open('https://wigle.net/search#fullSearch?postalCode=' + encodeURIComponent(postalValue), '_blank');
   }
-
-  function IpAddress16() { const ip = getIpAddress(); if(!ip) return; window.open('https://www.shodan.io/search?query=' + encodeURIComponent(ip), '_blank');}
-  function IpAddress17() { const ip = getIpAddress(); if(!ip) return; window.open('https://beta.shodan.io/host/' + ip, '_blank');}  
-  function IpAddress18() { const ip = getIpAddress(); if(!ip) return; window.open('https://beta.shodan.io/host/' + ip + '/raw', '_blank');}  
-  function IpAddress19() { const ip = getIpAddress(); if(!ip) return; window.open('https://beta.shodan.io/host/' + ip + '/history', '_blank');}  
-  function IpAddress20() { const ip = getIpAddress(); if(!ip) return; window.open('https://mxtoolbox.com/SuperTool.aspx?action=arin%3a' + encodeURIComponent(ip) + '&run=toolpage', '_blank');}
-  function IpAddress21() { const ip = getIpAddress(); if(!ip) return; window.open('https://ci-www.threatcrowd.org/ip.php?ip=' + encodeURIComponent(ip), '_blank');}
-  function IpAddress22() { const ip = getIpAddress(); if(!ip) return; window.open('https://search.censys.io/hosts/' + ip, '_blank');}  
-  function IpAddress23() { const ip = getIpAddress(); if(!ip) return; window.open('https://mxtoolbox.com/SuperTool.aspx?action=blacklist%3a' + encodeURIComponent(ip) + '&run=toolpage', '_blank');}
-  function IpAddress24() { const ip = getIpAddress(); if(!ip) return; window.open('https://mxtoolbox.com/SuperTool.aspx?action=blocklist%3a' + encodeURIComponent(ip) + '&run=networktools', '_blank');}
-  function IpAddress25() { const ip = getIpAddress(); if(!ip) return; window.open('https://dehashed.com/search?query=%22' + encodeURIComponent(ip) + '%22', '_blank');}
-  function IpAddress30() { const ip = getIpAddress(); if(!ip) return; window.open('https://leakix.net/host/' + ip, '_blank');}
 </script>
 </body>
 </html>
