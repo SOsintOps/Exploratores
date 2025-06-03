@@ -6,6 +6,7 @@
   <title>Currencies • Exploratores</title>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
 <body>
 
@@ -125,8 +126,8 @@
         <div class="search-instructions">
           <label for="unixTimestampInput">Enter Unix Timestamp:</label>
           <div class="input-button-line">
-              <input type='text' id='unixTimestampInput' class="input-field" placeholder='Unix Timestamp'>
-              <button type='button' class="button" onclick="Currencies_ConvertUnixTime()">Convert</button>
+            <input type='text' id='unixTimestampInput' class="input-field" placeholder='Unix Timestamp'>
+            <button type='button' class="button" onclick="Currencies_ConvertUnixTime()">Convert</button>
           </div>
         </div>
         <span id='datetime'></span> 
@@ -164,9 +165,9 @@
       <section>
         <h2>Other Cryptocurrency Lookups</h2>
         <div class="search-instructions">
-          <label for="otherCryptoAddressInput">Enter Address (e.g., ETH, SOL, BSC, Wallet ID):</label>
+          <label for="otherCryptoAddressInput">Enter Address, TxID, or Contract (e.g., ETH, TRX):</label>
           <div class="input-container">
-            <input type="text" id="otherCryptoAddressInput" class="input-field" placeholder="Address or Wallet ID"/>
+            <input type="text" id="otherCryptoAddressInput" class="input-field" placeholder="Address, TxID, Contract ID"/>
           </div>
         </div>
         <div class="button-grid button-grid-3col">
@@ -176,6 +177,7 @@
           <button type="button" class="button" onclick="Currencies_BlockchairDOGE()">BC Dogecoin</button>
           <button type="button" class="button" onclick="Currencies_BlockchairETH()">BC Ethereum</button>
           <button type="button" class="button" onclick="Currencies_BlockchairLTC()">BC Litecoin</button>
+          <button type="button" class="button" onclick="Currencies_BlockscanOtherAddress()">Blockscan Address</button>
           <button type="button" class="button" onclick="Currencies_EtherscanAddress()">Etherscan (ETH)</button>
           <button type="button" class="button" onclick="Currencies_MetaSleuthBSC()">MetaSleuth (BSC)</button>
           <button type="button" class="button" onclick="Currencies_MetaSleuthETH()">MetaSleuth (ETH)</button>
@@ -184,10 +186,20 @@
           <button type="button" class="button" onclick="Currencies_SolanaFMAddress()">SolanaFM</button>
           <button type="button" class="button" onclick="Currencies_WalletExplorerByID()">WalletExplorer (ID)</button>
         </div>
+        
+        <h3 style="margin-top: 1rem;">Tronscan</h3>
+        <div class="button-grid button-grid-3col">
+          <button type="button" class="button" onclick="Currencies_Tronscan_Address()">Address</button>
+          <button type="button" class="button" onclick="Currencies_Tronscan_Contract()">Contract</button>
+          <button type="button" class="button" onclick="Currencies_Tronscan_Transaction()">Transaction</button>
+        </div>
       </section>
 
       <section style="margin-top: 2rem;">
         <h2>Blockchain Analysis & Intelligence</h2>
+        <div class="note">
+          <strong>NOTE:</strong> Use OKLink services (listed below) with caution due to potential data routing and operational security risks.
+        </div>
         <div class="search-instructions">
           <label for="genericCryptoQueryInput">Enter Crypto Address, TxHash, or Entity ID:</label>
           <div class="input-container">
@@ -201,10 +213,11 @@
           <button type="button" class="button" onclick="Currencies_BreadcrumbsReport()">Breadcrumbs</button>
           <button type="button" class="button" onclick="Currencies_CrystalExplorer()">Crystal Explorer</button>
           <button type="button" class="button" onclick="Currencies_CrystalVisualizer()">Crystal Visualizer</button>
+          <button type="button" class="button" onclick="Currencies_DebankProfile()">Debank (Profile)</button>
           <button type="button" class="button" onclick="Currencies_GoogleSearchAddress()">Google (Search Address)</button>
           <button type="button" class="button" onclick="Currencies_MetaSleuthBTC()">MetaSleuth (BTC)</button>
-          <button type="button" class="button" onclick="Currencies_OKLinkExplorer()">OKLink Explorer **CAUTION: Chinese**</button>
-          <button type="button" class="button" onclick="Currencies_OKLinkVisualisation()">OKLink Visualisation **CAUTION: Chinese**</button>
+          <button type="button" class="button" onclick="Currencies_OKLinkExplorer()">OKLink Explorer</button>
+          <button type="button" class="button" onclick="Currencies_OKLinkVisualisation()">OKLink Visualisation</button>
           <button type="button" class="button" onclick="Currencies_PhalconExplorerETH()">Phalcon Explorer (ETH)</button>
           <button type="button" class="button" onclick="Currencies_ZapperAccount()">Zapper (DeFi/NFT)</button>
         </div>
@@ -265,10 +278,11 @@
   // --- Blockchain Analysis & Intelligence (Uses 'genericCryptoQueryInput') ---
   function Currencies_ArkhamExplorer() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address or Entity ID'); if(!val)return; window.open('https://platform.arkhamintelligence.com/explorer/address/' + encodeURIComponent(val), '_blank'); }
   function Currencies_ArkhamVisualizer() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address or Entity ID'); if(!val)return; window.open('https://platform.arkhamintelligence.com/visualizer/entity/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_BlockscanLookup() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address'); if(!val)return; window.open('https://blockscan.com/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_BlockscanLookup() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address'); if(!val)return; window.open('https://blockscan.com/address/' + encodeURIComponent(val), '_blank'); } 
   function Currencies_BreadcrumbsReport() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address'); if(!val)return; window.open('https://www.breadcrumbs.app/reports/' + encodeURIComponent(val), '_blank'); }
   function Currencies_CrystalExplorer() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address'); if(!val)return; window.open('https://explorer.crystalblockchain.com/address/' + encodeURIComponent(val), '_blank'); }
   function Currencies_CrystalVisualizer() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address or Entity ID'); if(!val)return; window.open('https://explorer.crystalblockchain.com/visualization/new/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_DebankProfile() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address or ENS'); if(!val)return; window.open('https://debank.com/profile/' + encodeURIComponent(val), '_blank');}
   function Currencies_GoogleSearchAddress() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address'); if(!val)return; window.open('https://www.google.com/search?q=%22' + encodeURIComponent(val) + '%22', '_blank'); }
   function Currencies_MetaSleuthBTC() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a BTC Address'); if(!val)return; window.open('https://metasleuth.io/result/btc/' + encodeURIComponent(val), '_blank'); }
   function Currencies_OKLinkExplorer() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address or TxID'); if(!val)return; window.open('https://www.oklink.com/middle/multi-search#key=' + encodeURIComponent(val), '_blank'); }
@@ -291,7 +305,8 @@
   function Currencies_BlockchairBSV() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Bitcoin-SV Address'); if(!val)return; window.open('https://blockchair.com/bitcoin-sv/address/' + encodeURIComponent(val), '_blank'); }
   function Currencies_BlockchairDOGE() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Dogecoin Address'); if(!val)return; window.open('https://blockchair.com/dogecoin/address/' + encodeURIComponent(val), '_blank'); }
   function Currencies_BlockchairDASH() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Dash Address'); if(!val)return; window.open('https://blockchair.com/dash/address/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_WalletExplorerByID() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Wallet ID or Address'); if(!val)return; window.open('https://www.walletexplorer.com/address/' + encodeURIComponent(val), '_blank'); } 
+  function Currencies_BlockscanOtherAddress() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'an Address'); if(!val)return; window.open('https://blockscan.com/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_WalletExplorerByID() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Wallet ID or Address'); if(!val)return; window.open('https://www.walletexplorer.com/address/' + encodeURIComponent(val), '_blank'); }  
   function Currencies_EtherscanAddress() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'an Ethereum Address'); if(!val)return; window.open('https://etherscan.io/address/' + encodeURIComponent(val), '_blank'); }
   function Currencies_MetaSleuthBSC() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a BSC Address'); if(!val)return; window.open('https://metasleuth.io/result/bsc/' + encodeURIComponent(val), '_blank'); }
   function Currencies_MetaSleuthETH() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'an ETH Address'); if(!val)return; window.open('https://metasleuth.io/result/eth/' + encodeURIComponent(val), '_blank'); }
@@ -299,17 +314,21 @@
   function Currencies_PolygonScanAddress() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Polygon Address'); if(!val)return; window.open('https://polygonscan.com/address/' + encodeURIComponent(val), '_blank'); }
   function Currencies_SolanaFMAddress() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Solana Address'); if(!val)return; window.open('https://solana.fm/address/' + encodeURIComponent(val), '_blank'); }
   
+  function Currencies_Tronscan_Address() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Tron Address'); if(!val)return; window.open('https://tronscan.org/#/address/' + encodeURIComponent(val), '_blank'); }
+  function Currencies_Tronscan_Contract() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Tron Contract Address'); if(!val)return; window.open('https://tronscan.org/#/contract/' + encodeURIComponent(val) + '/code', '_blank'); }
+  function Currencies_Tronscan_Transaction() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Tron Transaction ID'); if(!val)return; window.open('https://tronscan.org/#/transaction/' + encodeURIComponent(val), '_blank'); }
+  
   // --- Security Tools (Uses 'securityQueryInput') ---
   function Currencies_ScamSearchAddress() { const val = Currencies_GetAndValidateInput('securityQueryInput', 'a Virtual Currency Address or Term'); if(!val)return; window.open('https://scamsearch.io/search_report?searchoption=all&search=' + encodeURIComponent(val), '_blank'); }
-  function Currencies_OFACSanctionsHomepage() { /* Input 'securityQueryInput' is available but not used by this function */ window.open('https://sanctionssearch.ofac.treas.gov/', '_blank'); }
+  function Currencies_OFACSanctionsHomepage() { window.open('https://sanctionssearch.ofac.treas.gov/', '_blank'); }
   function Currencies_RiskIQByAddress() { const val = Currencies_GetAndValidateInput('securityQueryInput', 'a Crypto Address (as query)'); if(!val)return; window.open('https://community.riskiq.com/search/trackers?query=' + encodeURIComponent(val), '_blank'); }
 
   // --- Unix Time Converter (Uses 'unixTimestampInput') ---
   function Currencies_ConvertUnixTime() {
     const unixtimestampStr = Currencies_GetAndValidateInput('unixTimestampInput', 'a Unix Timestamp', true);
     if (unixtimestampStr === null) {
-        document.getElementById('datetime').innerHTML = "Please enter a valid Unix timestamp.";
-        return;
+      document.getElementById('datetime').innerHTML = "Please enter a valid Unix timestamp.";
+      return;
     }
     const timestampNumber = parseInt(unixtimestampStr, 10); 
     const months_arr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];

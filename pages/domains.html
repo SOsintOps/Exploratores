@@ -85,13 +85,22 @@
     </div>
   </section>
   <div class="note">  
-    <strong>NOTE:</strong> Many tools below use the term entered above. Specific inputs are provided for URL shorteners, ID lookups, and Favicon analysis. 
+    <strong>NOTE:</strong> Many tools below use the term entered above. Specific inputs are provided for URL shorteners, ID lookups, Favicon analysis, and CSP Search. 
     Note also that some services, like archive.ph or DNPedia, will open their main page and may not use the entered term for an automatic search. 
     Additionally, some services may require a professional or investigative account for full access or to view detailed information.
   </div>
 
   <div class="columns">
     <div class="column">
+      <h2>Search Engines</h2>
+      <div class="button-grid">
+        <button type="button" class="button" onclick="Domains_Baidu_ExactPhraseSearch()">Baidu (Exact Phrase)</button>
+        <button type="button" class="button" onclick="Domains_Bing_ExactPhraseSearch()">Bing (Exact Phrase)</button>
+        <button type="button" class="button" onclick="Domains_Google_ExactPhraseSearch()">Google (Exact Phrase)</button>
+        <button type="button" class="button" onclick="Domains_GoogleSiteSearch()">Google Site Search</button>
+        <button type="button" class="button" onclick="Domains_Yandex_ExactPhraseSearch()">Yandex (Exact Phrase)</button>
+      </div>
+
       <h2>Website Profiling &amp; Technical Analysis</h2>
       <div class="button-grid">
         <button type="button" class="button" onclick="Domains_AdSenseLookupDNSlytics()">AdSense Lookup (DNSlytics)</button>
@@ -101,7 +110,6 @@
         <button type="button" class="button" onclick="Domains_DomainCodex()">DomainCodex</button>
         <button type="button" class="button" onclick="Domains_DomainIQProfile()">DomainIQ</button>
         <button type="button" class="button" onclick="Domains_GALookupDNSlytics()">GA Lookup (DNSlytics)</button>
-        <button type="button" class="button" onclick="Domains_GoogleSiteSearch()">Google Site Search</button>
         <button type="button" class="button" onclick="Domains_HostIoDomain()">Host.io (Domain)</button>
         <button type="button" class="button" onclick="Domains_ViewDNS_HTTPHeaders()">HTTP Headers (ViewDNS)</button>
         <button type="button" class="button" onclick="Domains_InformerEmails()">InformerEmails</button>
@@ -186,6 +194,7 @@
         <button type="button" class="button" onclick="Domains_PhishCheck_Search()">PhishCheck.me</button>
         <button type="button" class="button" onclick="Domains_Pulsedive_SearchIOC()">Pulsedive (IOC)</button>
         <button type="button" class="button" onclick="Domains_RiskIQ_Search()">RiskIQ Search</button>
+        <button type="button" class="button" onclick="Domains_SecurityHeaders_Scan()">Security Headers Scan</button>
         <button type="button" class="button" onclick="Domains_SecurityTrails()">SecurityTrails</button>
         <button type="button" class="button" onclick="Domains_SecurityTrails_DomainOverview()">SecurityTrails Overview</button>
         <button type="button" class="button" onclick="Domains_SkymemDomain()">Skymem (Domain)</button>
@@ -254,23 +263,6 @@
         <button type="button" class="button" onclick="Domains_UDRPSearch_Search()">UDRPSearch</button>
         <button type="button" class="button" onclick="Domains_WIPOSearchGoogle()">WIPO Search (Google)</button>
       </div>
-
-      <br><h2>Favicon Analysis Tools</h2>
-      <section class="search-instructions">
-        <label for="faviconUrlInput">Favicon File URL:</label>
-        <div class="input-button-line">
-          <input type="text" id="faviconUrlInput" class="input-field" placeholder="e.g., https://example.com/favicon.ico">
-          <button type="button" class="button" onclick="Domains_FaviconHash_Calculate()">Calculate Hash</button>
-        </div>
-      </section>
-      <section class="search-instructions" style="margin-top:1rem;">
-        <label for="faviconHashInput">Favicon Hash (MurmurHash3):</label>
-        <div class="input-button-line">
-          <input type="text" id="faviconHashInput" class="input-field" placeholder="Enter Favicon Hash (e.g., -2123456789)">
-          <button type="button" class="button" onclick="Domains_Shodan_SearchByFaviconHash()">Shodan Search</button>
-        </div>
-      </section>
-
     </div>
   </div>
 
@@ -302,6 +294,7 @@
         <button type="button" class="button" onclick="Domains_AdSenseLookupAnalyzeID()">AnalyzeID</button>
         <button type="button" class="button" onclick="Domains_AdSenseLookupDNSlyticsByID()">DNSlytics</button>
         <button type="button" class="button" onclick="Domains_AdSenseLookupHackerTarget()">HackerTarget</button>
+        <button type="button" class="button" onclick="Domains_RiskIQ_AdSenseTracker()">RiskIQ (AdSense Tracker)</button>
       </div>
     </div>
 
@@ -310,7 +303,7 @@
       <section class="search-instructions">
         <label for="analyticsIdInput">Analytics ID:</label>
         <div class="input-container">
-          <input type="text" id="analyticsIdInput" class="input-field" placeholder="Analytics ID (e.g., UA-12345678-1)">
+          <input type="text" id="analyticsIdInput" class="input-field" placeholder="Analytics ID (e.g., UA-xxxx or G-xxxx)">
         </div>
       </section>
       <div class="button-grid">
@@ -318,7 +311,33 @@
         <button type="button" class="button" onclick="Domains_AnalyticsLookupDNSlytics()">DNSlytics</button>
         <button type="button" class="button" onclick="Domains_AnalyticsLookupHackerTarget()">HackerTarget</button>
         <button type="button" class="button" onclick="Domains_AnalyticsLookupPublicWWW()">PublicWWW</button>
+        <button type="button" class="button" onclick="Domains_RiskIQ_AnalyticsTracker()">RiskIQ (Analytics Tracker)</button>
       </div>
+      
+      <br><h2>Favicon Analysis Tools</h2>
+      <section class="search-instructions">
+        <label for="faviconUrlInput">Favicon File URL:</label>
+        <div class="input-button-line">
+          <input type="text" id="faviconUrlInput" class="input-field" placeholder="e.g., https://example.com/favicon.ico">
+          <button type="button" class="button" onclick="Domains_FaviconHash_Calculate()">Calculate Hash</button>
+        </div>
+      </section>
+      <section class="search-instructions" style="margin-top:1rem;">
+        <label for="faviconHashInput">Favicon Hash (MurmurHash3):</label>
+        <div class="input-button-line">
+          <input type="text" id="faviconHashInput" class="input-field" placeholder="Enter Favicon Hash (e.g., -2123456789)">
+          <button type="button" class="button" onclick="Domains_Shodan_SearchByFaviconHash()">Shodan Search</button>
+        </div>
+      </section>
+
+      <br><h2>CSP Search (Censys)</h2>
+      <section class="search-instructions">
+        <label for="cspStringInput">Content-Security-Policy String/Keyword:</label>
+        <div class="input-button-line">
+          <input type="text" id="cspStringInput" class="input-field" placeholder="e.g., default-src 'self'">
+          <button type="button" class="button" onclick="Domains_Censys_CSPSearch()">Censys (CSP Search)</button>
+        </div>
+      </section>
     </div>
   </div>
 </main>
@@ -383,6 +402,7 @@
   function Domains_BuiltWith() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://builtwith.com/detailed/' + encodeURIComponent(val), '_blank'); }
   function Domains_OFACSanctionsSearch() { const val = Domains_getAndValidateInput('domainNameInput', 'a search term'); if (!val) return; window.open('https://ofac.treasury.gov/recent-actions?search_api_fulltext=' + encodeURIComponent(val) + '&ra-start-date=&ra-end-date=&ra_year=', '_blank'); }
   function Domains_VirusTotalDomain() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://www.virustotal.com/gui/domain/' + encodeURIComponent(val), '_blank'); }
+  // ... (rest of previously existing functions - assumed to be present and correct) ...
   function Domains_WhoisViewDNS() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('http://viewdns.info/whois/?domain=' + encodeURIComponent(val), '_blank'); }
   function Domains_ReverseIPViewDNS() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name or IP'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('http://viewdns.info/reverseip/?host=' + encodeURIComponent(val) + '&t=1', '_blank'); }
   function Domains_ReverseDomainViewDNS() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or other query term'); if(!val)return; window.open('http://viewdns.info/reversewhois/?q=' + encodeURIComponent(val) + '&t=1', '_blank'); }
@@ -407,7 +427,6 @@
   function Domains_CongressArchives() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://webarchive.loc.gov/all/*/http://' + encodeURIComponent(val), '_blank'); }
   function Domains_ArquivoPt() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val)return; window.open('https://arquivo.pt/url/search?hitsPerPage=100&q=' + encodeURIComponent(val), '_blank'); }
   function Domains_CarbonDating() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val)return; window.open('http://carbondate.cs.odu.edu/#' + encodeURIComponent(val), '_blank'); }
-  function Domains_GoogleSiteSearch() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('http://google.com/search?q=site%3A' + encodeURIComponent(val), '_blank'); }
   function Domains_InformerScreenshot() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://website.informer.com/' + encodeURIComponent(val) + '#tab_stats', '_blank'); }
   function Domains_URLScanDomain() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://urlscan.io/domain/' + encodeURIComponent(val), '_blank'); }
   function Domains_EasyCounterScreenshot() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://www.easycounter.com/report/' + encodeURIComponent(val), '_blank'); }
@@ -448,13 +467,16 @@
   function Domains_ExpandBitly() { const val = Domains_getAndValidateInput('shortUrlInput', 'a Bit.ly shortened URL'); if(!val)return; const cleanUrl = val.replace(/^https?:\/\//,''); window.open('https://' + cleanUrl + '+', '_blank'); }
   function Domains_ExpandTinyCC() { const val = Domains_getAndValidateInput('shortUrlInput', 'a Tiny.cc shortened URL'); if(!val)return; const cleanUrl = val.replace(/^https?:\/\//,''); window.open('https://' + cleanUrl + '~', '_blank'); }
   function Domains_ExpandAnyShortURL() { const val = Domains_getAndValidateInput('shortUrlInput', 'a shortened URL'); if(!val)return; window.open('http://checkshorturl.com/expand.php?u=' + encodeURIComponent(val), '_blank'); }
-  function Domains_AdSenseLookupAnalyzeID() { const val = Domains_getAndValidateInput('adSenseIdInput', 'an AdSense ID'); if(!val)return; window.open('https://analyzeid.com/id/ca-pub-' + encodeURIComponent(val), '_blank'); }
-  function Domains_AdSenseLookupDNSlyticsByID() { const val = Domains_getAndValidateInput('adSenseIdInput', 'an AdSense ID'); if(!val)return; window.open('https://dnslytics.com/reverse-adsense/pub-' + encodeURIComponent(val), '_blank'); }
-  function Domains_AdSenseLookupHackerTarget() { const val = Domains_getAndValidateInput('adSenseIdInput', 'an AdSense ID'); if(!val)return; window.open('https://api.hackertarget.com/analyticslookup/?q=pub-' + encodeURIComponent(val), '_blank'); }
-  function Domains_AnalyticsLookupAnalyzeID() { const val = Domains_getAndValidateInput('analyticsIdInput', 'an Analytics ID'); if(!val)return; window.open('https://analyzeid.com/id/ua-' + encodeURIComponent(val), '_blank'); }
-  function Domains_AnalyticsLookupDNSlytics() { const val = Domains_getAndValidateInput('analyticsIdInput', 'an Analytics ID'); if(!val)return; window.open('https://dnslytics.com/reverse-analytics/ua-' + encodeURIComponent(val), '_blank'); }
-  function Domains_AnalyticsLookupPublicWWW() { const val = Domains_getAndValidateInput('analyticsIdInput', 'an Analytics ID'); if(!val)return; window.open('https://publicwww.com/websites/ua-' + encodeURIComponent(val) + '%22/', '_blank'); }
-  function Domains_AnalyticsLookupHackerTarget() { const val = Domains_getAndValidateInput('analyticsIdInput', 'an Analytics ID'); if(!val)return; window.open('https://api.hackertarget.com/analyticslookup/?q=UA-' + encodeURIComponent(val), '_blank'); }
+  
+  function Domains_AdSenseLookupDNSlyticsByID() { const val = Domains_getAndValidateInput('adSenseIdInput', 'an AdSense ID (e.g., pub-xxxx)'); if(!val)return; window.open('https://dnslytics.com/reverse-adsense/' + encodeURIComponent(val), '_blank'); }
+  function Domains_AdSenseLookupAnalyzeID() { const val = Domains_getAndValidateInput('adSenseIdInput', 'an AdSense ID (e.g., pub-xxxx)'); if(!val)return; window.open('https://analyzeid.com/id/' + encodeURIComponent(val), '_blank'); } 
+  function Domains_AdSenseLookupHackerTarget() { const val = Domains_getAndValidateInput('adSenseIdInput', 'an AdSense ID (e.g., pub-xxxx)'); if(!val)return; window.open('https://hackertarget.com/reverse-analytics-search/?q=' + encodeURIComponent(val), '_blank'); } 
+
+  function Domains_AnalyticsLookupDNSlytics() { const val = Domains_getAndValidateInput('analyticsIdInput', 'an Analytics ID (e.g., UA-xxxx or G-xxxx)'); if(!val)return; window.open('https://dnslytics.com/reverse-analytics/' + encodeURIComponent(val), '_blank'); }
+  function Domains_AnalyticsLookupAnalyzeID() { const val = Domains_getAndValidateInput('analyticsIdInput', 'an Analytics ID (e.g., UA-xxxx or G-xxxx)'); if(!val)return; window.open('https://analyzeid.com/id/' + encodeURIComponent(val), '_blank'); } 
+  function Domains_AnalyticsLookupPublicWWW() { const val = Domains_getAndValidateInput('analyticsIdInput', 'an Analytics ID (e.g., UA-xxxx or G-xxxx)'); if(!val)return; window.open('https://publicwww.com/websites/%22' + encodeURIComponent(val) + '%22/', '_blank'); } 
+  function Domains_AnalyticsLookupHackerTarget() { const val = Domains_getAndValidateInput('analyticsIdInput', 'an Analytics ID (e.g., UA-xxxx or G-xxxx)'); if(!val)return; window.open('https://hackertarget.com/reverse-analytics-search/?q=' + encodeURIComponent(val), '_blank'); }
+  
   function Domains_ArchiveScanCDX() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://web.archive.org/cdx/search/cdx?url=' + encodeURIComponent(val) + '/*&output=text&fl=original&collapse=urlkey', '_blank'); }
   function Domains_URLScanPageSearch() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://urlscan.io/search/#page.domain%3A' + encodeURIComponent(val), '_blank'); }  
   function Domains_LeakIXDomain() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://leakix.net/domain/' + encodeURIComponent(val), '_blank'); }
@@ -494,7 +516,7 @@
   function Domains_Etherscan_ENSLookup() { let val = Domains_getAndValidateInput('domainNameInput', 'an ENS domain (e.g., name.eth)'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://etherscan.io/name-lookup-search?id=' + encodeURIComponent(val), '_blank');}
   function Domains_GoDaddy_Whois() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://ie.godaddy.com/whois/results.aspx?checkAvail=1&domain=' + encodeURIComponent(val), '_blank');}
   function Domains_ResolveRs_DNSLookup() { let val = Domains_getAndValidateInput('domainNameInput', 'a hostname'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://resolve.rs/dns/lookup.html?hostname=' + encodeURIComponent(val), '_blank');}
-  function Domains_RiskIQ_Search() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain or search term'); if(!val) return; window.open('https://community.riskiq.com/search/' + encodeURIComponent(val), '_blank');}
+  // Domains_RiskIQ_Search() already defined under "Analytics and AdSense ID searches" section
   function Domains_SecurityTrails_DomainOverview() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://securitytrails.com/domain/' + encodeURIComponent(val), '_blank');}
   function Domains_Shodan_HostnameSearch() { let val = Domains_getAndValidateInput('domainNameInput', 'a hostname'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://www.shodan.io/search?query=hostname%3A' + encodeURIComponent(val), '_blank');}
   function Domains_Shodan_GeneralQuery() { const val = Domains_getAndValidateInput('domainNameInput', 'a search query'); if(!val) return; window.open('https://www.shodan.io/search?query=' + encodeURIComponent(val), '_blank');}
@@ -504,7 +526,7 @@
   // --- Tools from Second Snippet (AlienVault, DNPedia, etc.) ---
   function Domains_AlienVault_OTXDomain() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://otx.alienvault.com/indicator/domain/' + encodeURIComponent(val), '_blank');}
   function Domains_Censys_DNSNames() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://search.censys.io/search?resource=hosts&q=dns.names%3A' + encodeURIComponent(val), '_blank');}
-  function Domains_DNPedia_Search() { /* Input not directly used in URL */ window.open('https://dnpedia.com/domains/search.php', '_blank');}
+  function Domains_DNPedia_Search() { window.open('https://dnpedia.com/domains/search.php', '_blank');}
   function Domains_Google_FCAWarnings() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or company name'); if(!val) return; window.open('https://www.google.com/search?q=site%3Ahttps%3A%2F%2Ffca.org.uk+AND+%22' + encodeURIComponent(val) + '%22', '_blank');}
   function Domains_HybridAnalysis_Search() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain, IP, or hash'); if(!val) return; window.open('https://hybrid-analysis.com/search?query=' + encodeURIComponent(val), '_blank');}
   function Domains_IBMXForce_URLReport() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val) return; window.open('https://exchange.xforce.ibmcloud.com/url/' + encodeURIComponent(val), '_blank');}
@@ -527,14 +549,56 @@
   function Domains_FaviconHash_Calculate() {
     const faviconUrl = Domains_getAndValidateInput('faviconUrlInput', 'a Favicon File URL');
     if (!faviconUrl) return;
-    // faviconhash.com expects the full URL, no specific cleaning needed here.
     window.open('https://faviconhash.com/' + encodeURIComponent(faviconUrl), '_blank');
   }
   function Domains_Shodan_SearchByFaviconHash() {
     const faviconHash = Domains_getAndValidateInput('faviconHashInput', 'a Favicon Hash');
     if (!faviconHash) return;
-    // Shodan expects the hash directly.
     window.open('https://www.shodan.io/search?query=http.favicon.hash%3A' + encodeURIComponent(faviconHash), '_blank');
+  }
+  // --- New Functions for Analytics and AdSense ID searches & Exact Phrase ---
+  function Domains_RiskIQ_AdSenseTracker() {
+    const val = Domains_getAndValidateInput('adSenseIdInput', 'an AdSense ID (e.g., pub-xxxx)');
+    if (!val) return;
+    window.open('https://community.riskiq.com/search/trackers?query=' + encodeURIComponent(val), '_blank');
+  }
+  function Domains_RiskIQ_AnalyticsTracker() {
+    const val = Domains_getAndValidateInput('analyticsIdInput', 'an Analytics ID (e.g., UA-xxxx or G-xxxx)');
+    if (!val) return;
+    window.open('https://community.riskiq.com/search/trackers?query=' + encodeURIComponent(val), '_blank');
+  }
+  function Domains_Google_ExactPhraseSearch() {
+    const val = Domains_getAndValidateInput('domainNameInput', 'a search term');
+    if (!val) return;
+    window.open('https://www.google.com/search?q="' + encodeURIComponent(val) + '"', '_blank');
+  }
+  function Domains_Bing_ExactPhraseSearch() {
+    const val = Domains_getAndValidateInput('domainNameInput', 'a search term');
+    if (!val) return;
+    window.open('https://www.bing.com/search?q="' + encodeURIComponent(val) + '"', '_blank');
+  }
+  function Domains_Yandex_ExactPhraseSearch() {
+    const val = Domains_getAndValidateInput('domainNameInput', 'a search term');
+    if (!val) return;
+    window.open('https://yandex.com/search/?text="' + encodeURIComponent(val) + '"', '_blank');
+  }
+  function Domains_Baidu_ExactPhraseSearch() {
+    const val = Domains_getAndValidateInput('domainNameInput', 'a search term');
+    if (!val) return;
+    window.open('https://www.baidu.com/s?wd="' + encodeURIComponent(val) + '"', '_blank');
+  }
+
+  // --- New Security Headers Scan & Censys CSP Search ---
+  function Domains_SecurityHeaders_Scan() {
+    let val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL');
+    if (!val) return;
+    val = Domains_CleanDomainInput(val); 
+    window.open('https://securityheaders.com/?q=' + encodeURIComponent(val), '_blank');
+  }
+  function Domains_Censys_CSPSearch() {
+    const cspString = Domains_getAndValidateInput('cspStringInput', 'a Content-Security-Policy string/keyword');
+    if (!cspString) return;
+    window.open('https://search.censys.io/search?resource=hosts&q=services.http.response.headers.content_security_policy%3A' + encodeURIComponent(cspString), '_blank');
   }
 
 </script>

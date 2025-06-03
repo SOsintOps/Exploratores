@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Keybase • Exploratores</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+</head>
+<body>
+
+<nav>
+  <ul class="menu">
+    <li><span>HOME</span>
+      <ul class="submenu">
+        <li><a href="../launchme.html">Index</a></li>
+      </ul>
+    </li>
+    <li><span>Search<br>Engines</span>
+      <ul class="submenu">
+        <li><a href="Searchengines.html">Search Engines</a></li>
+      </ul>
+    </li>
+    <li><span>People &<br>Identities</span>
+      <ul class="submenu">
+        <li><a href="Names.html">Names</a></li>
+        <li><a href="phoneus.html">US Phones</a></li>
+        <li><a href="phoneint.html">International Phones</a></li>
+        <li><a href="Address.html">Addresses</a></li>
+        <li><a href="vehicles.html">Vehicles</a></li>
+        <li><a href="usernames.html">Usernames</a></li>
+        <li><a href="Email.html">Email Addresses</a></li>
+        <li><a href="Communities.html">Communities</a></li>
+        </ul>
+    </li>
+    <li><span>Social<br>Media</span>
+      <ul class="submenu">
+        <li><a href="Facebook.html">Facebook</a></li>
+        <li><a href="Instagram.html">Instagram</a></li>
+        <li><a href="Keybase.html" class="active">Keybase</a></li> 
+        <li><a href="LinkedIn.html">LinkedIn</a></li>
+        <li><a href="X.html">X (Twitter)</a></li>
+      </ul>
+    </li>
+    <li><span>Websites</span>
+      <ul class="submenu">
+        <li><a href="Domains.html">Domains</a></li>
+        <li><a href="IP.html">IP Addresses</a></li>
+      </ul>
+    </li>
+    <li><span>GeoInt</span>
+      <ul class="submenu">
+        <li><a href="Maps.html">Maps</a></li>
+      </ul>
+    </li>
+    <li><span>Media<br>Analysis</span>
+      <ul class="submenu">
+        <li><a href="Images.html">Images</a></li>
+        <li><a href="Videos.html">Videos</a></li>
+        <li><a href="docs.html">Documents</a></li>
+      </ul>
+    </li>
+    <li><span>Business<br>Intelligence</span>
+      <ul class="submenu">
+        <li><a href="PublicCompanyRecords.html">Company Public Records</a></li>
+        <li><a href="Currencies.html">Virtual Currencies</a></li>
+      </ul>
+    </li>
+    <li><span>Tools</span>
+      <ul class="submenu">
+        <li><a href="Guidelines.html">Guidelines</a></li>  
+        <li><a href="CyberChef.html">CyberChef</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<main>
+  <h1 class="page-title">Keybase Tools</h1>
+  
+  <section class="search-instructions">
+    <label for="keybaseQueryInput">Enter Keybase Username, Team Name, or Query:</label>
+    <div class="input-container">
+      <input type="text" id="keybaseQueryInput" class="input-field" placeholder="e.g., enigma, stellar.public">
+    </div>
+  </section>
+  
+  <div class="note">
+    <strong>NOTE:</strong> Enter the username, team name, or other query above, then click a button. For "User Stellar Info", the page will open the user's profile; scroll to find Stellar details if present.
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <h2>Keybase Lookups</h2>
+      <div class="button-grid button-grid-3col">
+        <button type="button" class="button" onclick="Keybase_TeamProfile()">Team Profile</button>
+        <button type="button" class="button" onclick="Keybase_UserDevices()">User Devices</button>
+        <button type="button" class="button" onclick="Keybase_UserGraph()">User Graph</button>
+        <button type="button" class="button" onclick="Keybase_UserProfile()">User Profile</button>
+        <button type="button" class="button" onclick="Keybase_UserSigchain()">User Sigchain</button>
+        <button type="button" class="button" onclick="Keybase_UserStellar()">User Stellar Info</button>
+      </div>
+    </div>
+    <div class="column">
+      </div>
+  </div>
+</main>
+
+<footer>
+  <p>Global Security Italy • Rome (IT) <a href="license.html">License</a></p>
+</footer>
+
+<script>
+  // Standard navbar submenu script
+  document.querySelectorAll('.menu > li').forEach(item => {
+    const submenu = item.querySelector('.submenu');
+    if (submenu) { 
+      item.addEventListener('mouseenter', function() {
+        submenu.style.display = 'block';
+      });
+      item.addEventListener('mouseleave', function() {
+        submenu.style.display = 'none';
+      });
+    }
+  });
+
+  // Helper function to get and validate input for Keybase page
+  function Keybase_GetAndValidateInput(inputId, placeholderForAlert = "a value") {
+    const inputElement = document.getElementById(inputId);
+    if (!inputElement) {
+      alert("Error: Input field '" + inputId + "' not found.");
+      return null;
+    }
+    const value = inputElement.value.trim();
+    if (!value) {
+      alert("Please enter " + placeholderForAlert + ".");
+      return null;
+    }
+    return value;
+  }
+
+  // Keybase Tool Functions
+  function Keybase_UserProfile() {
+    const query = Keybase_GetAndValidateInput('keybaseQueryInput', 'a Keybase username');
+    if (!query) return;
+    window.open('https://keybase.io/' + encodeURIComponent(query), '_blank');
+  }
+
+  function Keybase_UserDevices() {
+    const query = Keybase_GetAndValidateInput('keybaseQueryInput', 'a Keybase username');
+    if (!query) return;
+    window.open('https://keybase.io/' + encodeURIComponent(query) + '/devices', '_blank');
+  }
+
+  function Keybase_UserGraph() {
+    const query = Keybase_GetAndValidateInput('keybaseQueryInput', 'a Keybase username');
+    if (!query) return;
+    window.open('https://keybase.io/' + encodeURIComponent(query) + '/graph', '_blank');
+  }
+
+  function Keybase_TeamProfile() {
+    const query = Keybase_GetAndValidateInput('keybaseQueryInput', 'a Keybase team name');
+    if (!query) return;
+    window.open('https://keybase.io/team/' + encodeURIComponent(query), '_blank');
+  }
+
+  function Keybase_UserSigchain() {
+    const query = Keybase_GetAndValidateInput('keybaseQueryInput', 'a Keybase username');
+    if (!query) return;
+    window.open('https://keybase.io/' + encodeURIComponent(query) + '/sigchain', '_blank');
+  }
+
+  function Keybase_UserStellar() {
+    const query = Keybase_GetAndValidateInput('keybaseQueryInput', 'a Keybase username or Stellar address');
+    if (!query) return;
+    window.open('https://keybase.io/' + encodeURIComponent(query) + '#_', '_blank');
+  }
+</script>
+
+</body>
+</html>

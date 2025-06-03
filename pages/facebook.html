@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Exploratores Facebook Tool</title>
+  <title>Facebook • Exploratores</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
 <body>
 
@@ -81,166 +82,177 @@
   <div class="columns">
     <div class="column">
       <h2>Username Lookup</h2>
-      <div class="input-container">
-        <input type="text" id="PopAll" class="input-field" placeholder="Enter FB Username or User ID"/>
-      </div>
+      <section class="search-instructions">
+        <label for="FBInput">Enter FB Username or User ID:</label>
+        <div class="input-container">
+          <input type="text" id="FBInput" class="input-field" placeholder="Enter FB Username or User ID"/>
+        </div>
+      </section>
       <div class="button-grid">
-        <button type="button" class="button" onclick="Facebook01(PopAll.value)">Timeline</button>
-        <button type="button" class="button" onclick="Facebook02(PopAll.value)">About</button>
-        <button type="button" class="button" onclick="Facebook03(PopAll.value)">Employment</button>
-        <button type="button" class="button" onclick="Facebook04(PopAll.value)">Education</button>
-        <button type="button" class="button" onclick="Facebook05(PopAll.value)">Locations</button>
-        <button type="button" class="button" onclick="Facebook06(PopAll.value)">Contact Info</button>
-        <button type="button" class="button" onclick="Facebook07(PopAll.value)">Basic Info</button>
-        <button type="button" class="button" onclick="Facebook08(PopAll.value)">Relationships</button>
-        <button type="button" class="button" onclick="Facebook09(PopAll.value)">Family</button>
-        <button type="button" class="button" onclick="Facebook10(PopAll.value)">Biography</button>
-        <button type="button" class="button" onclick="Facebook11(PopAll.value)">Life Events</button>
-        <button type="button" class="button" onclick="Facebook12(PopAll.value)">Friends</button>
-        <button type="button" class="button" onclick="Facebook41(PopAll.value)">Following</button>
-        <button type="button" class="button" onclick="Facebook13(PopAll.value)">Photos</button>
-        <button type="button" class="button" onclick="Facebook14(PopAll.value)">Photo Albums</button>
-        <button type="button" class="button" onclick="Facebook15(PopAll.value)">Videos</button>
-        <button type="button" class="button" onclick="Facebook42(PopAll.value)">Reels</button>
-        <button type="button" class="button" onclick="Facebook16(PopAll.value)">Check-ins</button>
-        <button type="button" class="button" onclick="Facebook43(PopAll.value)">Visits (Map)</button>
-        <button type="button" class="button" onclick="Facebook17(PopAll.value)">Recent Check-ins</button>
-        <button type="button" class="button" onclick="Facebook18(PopAll.value)">Sports</button>
-        <button type="button" class="button" onclick="Facebook19(PopAll.value)">Music</button>
-        <button type="button" class="button" onclick="Facebook20(PopAll.value)">Movies</button>
-        <button type="button" class="button" onclick="Facebook21(PopAll.value)">TV Shows</button>
-        <button type="button" class="button" onclick="Facebook22(PopAll.value)">Books</button>
-        <button type="button" class="button" onclick="Facebook23(PopAll.value)">Apps & Games</button>
-        <button type="button" class="button" onclick="Facebook24(PopAll.value)">Likes</button>
-        <button type="button" class="button" onclick="Facebook25(PopAll.value)">Events</button>
-        <button type="button" class="button" onclick="Facebook26(PopAll.value)">Facts</button>
-        <button type="button" class="button" onclick="Facebook27(PopAll.value)">Reviews</button>
-        <button type="button" class="button" onclick="Facebook44(PopAll.value)">Reviews Given</button>
-        <button type="button" class="button" onclick="Facebook45(PopAll.value)">Reviews Written</button>
-        <button type="button" class="button" onclick="Facebook28(PopAll.value)">Notes</button>
+        <button type="button" class="button" onclick="Facebook_OpenTimeline(FBInput.value)">Timeline</button>
+        <button type="button" class="button" onclick="Facebook_OpenAbout(FBInput.value)">About</button>
+        <button type="button" class="button" onclick="Facebook_OpenAboutWork(FBInput.value)">Employment</button>
+        <button type="button" class="button" onclick="Facebook_OpenAboutEducation(FBInput.value)">Education</button>
+        <button type="button" class="button" onclick="Facebook_OpenAboutLiving(FBInput.value)">Locations</button>
+        <button type="button" class="button" onclick="Facebook_OpenAboutContactInfo(FBInput.value)">Contact Info</button>
+        <button type="button" class="button" onclick="Facebook_OpenAboutBasicInfo(FBInput.value)">Basic Info</button>
+        <button type="button" class="button" onclick="Facebook_OpenAboutRelationship(FBInput.value)">Relationships</button>
+        <button type="button" class="button" onclick="Facebook_OpenAboutFamily(FBInput.value)">Family</button>
+        <button type="button" class="button" onclick="Facebook_OpenAboutBio(FBInput.value)">Biography</button>
+        <button type="button" class="button" onclick="Facebook_OpenAboutLifeEvents(FBInput.value)">Life Events</button>
+        <button type="button" class="button" onclick="Facebook_OpenFriends(FBInput.value)">Friends</button>
+        <button type="button" class="button" onclick="Facebook_OpenFollowing(FBInput.value)">Following</button>
+        <button type="button" class="button" onclick="Facebook_OpenPhotosBy(FBInput.value)">Photos</button>
+        <button type="button" class="button" onclick="Facebook_OpenPhotoAlbums(FBInput.value)">Photo Albums</button>
+        <button type="button" class="button" onclick="Facebook_OpenVideosBy(FBInput.value)">Videos</button>
+        <button type="button" class="button" onclick="Facebook_OpenReels(FBInput.value)">Reels</button>
+        <button type="button" class="button" onclick="Facebook_OpenPlacesVisited(FBInput.value)">Check-ins</button>
+        <button type="button" class="button" onclick="Facebook_OpenMapVisits(FBInput.value)">Visits (Map)</button>
+        <button type="button" class="button" onclick="Facebook_OpenPlacesRecent(FBInput.value)">Recent Check-ins</button>
+        <button type="button" class="button" onclick="Facebook_OpenSports(FBInput.value)">Sports</button>
+        <button type="button" class="button" onclick="Facebook_OpenMusic(FBInput.value)">Music</button>
+        <button type="button" class="button" onclick="Facebook_OpenMovies(FBInput.value)">Movies</button>
+        <button type="button" class="button" onclick="Facebook_OpenTVShows(FBInput.value)">TV Shows</button>
+        <button type="button" class="button" onclick="Facebook_OpenBooks(FBInput.value)">Books</button>
+        <button type="button" class="button" onclick="Facebook_OpenGames(FBInput.value)">Apps & Games</button>
+        <button type="button" class="button" onclick="Facebook_OpenLikes(FBInput.value)">Likes</button>
+        <button type="button" class="button" onclick="Facebook_OpenEvents(FBInput.value)">Events</button>
+        <button type="button" class="button" onclick="Facebook_OpenAboutDetails(FBInput.value)">Facts</button>
+        <button type="button" class="button" onclick="Facebook_OpenReviews(FBInput.value)">Reviews</button>
+        <button type="button" class="button" onclick="Facebook_OpenReviewsGiven(FBInput.value)">Reviews Given</button>
+        <button type="button" class="button" onclick="Facebook_OpenReviewsWritten(FBInput.value)">Reviews Written</button>
+        <button type="button" class="button" onclick="Facebook_OpenNotes(FBInput.value)">Notes</button>
       </div>
     </div>
 
     <div class="column">
       <h2>FB User Number Lookup</h2>
-      <div class="input-container">
-        <input type="text" id="userNumberInput" class="input-field" placeholder="Enter FB User Number (ID)"/>
-      </div>
-      <button type="button" class="button" onclick="Facebook28a(userNumberInput.value)">Go to Profile</button>
+      <section class="search-instructions">
+        <label for="userNumberInput">Enter FB User Number (ID):</label>
+        <div class="input-container">
+          <input type="text" id="userNumberInput" class="input-field" placeholder="Enter FB User Number (ID)"/>
+        </div>
+      </section>
+      <button type="button" class="button" onclick="Facebook_OpenProfileByNumber(userNumberInput.value)">Go to Profile</button>
 
-      <h2 style="margin-top: 1.5rem;">General Search Terms</h2>
-      <div class="input-container">
-        <input type="text" id="generalSearchTermsInput" class="input-field" placeholder="Enter Search Terms"/>
-      </div>
+      <h2>General Search Terms</h2>
+      <section class="search-instructions">
+        <label for="generalSearchTermsInput">Enter Search Terms:</label>
+        <div class="input-container">
+          <input type="text" id="generalSearchTermsInput" class="input-field" placeholder="Enter Search Terms"/>
+        </div>
+      </section>
       <div class="button-grid">
-        <button type="button" class="button" onclick="Facebook30(generalSearchTermsInput.value)">Posts</button>
-        <button type="button" class="button" onclick="Facebook31(generalSearchTermsInput.value)">People</button>
-        <button type="button" class="button" onclick="Facebook32(generalSearchTermsInput.value)">Photos</button>
-        <button type="button" class="button" onclick="Facebook33(generalSearchTermsInput.value)">Videos</button>
-        <button type="button" class="button" onclick="Facebook34(generalSearchTermsInput.value)">Marketplace</button>
-        <button type="button" class="button" onclick="Facebook35(generalSearchTermsInput.value)">Pages</button>
-        <button type="button" class="button" onclick="Facebook36(generalSearchTermsInput.value)">Places</button>
-        <button type="button" class="button" onclick="Facebook37(generalSearchTermsInput.value)">Groups</button>
-        <button type="button" class="button" onclick="Facebook38(generalSearchTermsInput.value)">Apps</button>
-        <button type="button" class="button" onclick="Facebook39(generalSearchTermsInput.value)">Events</button>
-        <button type="button" class="button" onclick="Facebook40(generalSearchTermsInput.value)">Links</button>
-        <button type="button" class="button" onclick="Facebook46(generalSearchTermsInput.value)">Watch</button>
+        <button type="button" class="button" onclick="Facebook_SearchPostsByTerm(generalSearchTermsInput.value)">Posts</button>
+        <button type="button" class="button" onclick="Facebook_SearchPeopleByTerm(generalSearchTermsInput.value)">People</button>
+        <button type="button" class="button" onclick="Facebook_SearchPhotosByTerm(generalSearchTermsInput.value)">Photos</button>
+        <button type="button" class="button" onclick="Facebook_SearchVideosByTerm(generalSearchTermsInput.value)">Videos</button>
+        <button type="button" class="button" onclick="Facebook_SearchMarketplaceByTerm(generalSearchTermsInput.value)">Marketplace</button>
+        <button type="button" class="button" onclick="Facebook_SearchPagesByTerm(generalSearchTermsInput.value)">Pages</button>
+        <button type="button" class="button" onclick="Facebook_SearchPlacesByTerm(generalSearchTermsInput.value)">Places</button>
+        <button type="button" class="button" onclick="Facebook_SearchGroupsByTerm(generalSearchTermsInput.value)">Groups</button>
+        <button type="button" class="button" onclick="Facebook_SearchAppsByTerm(generalSearchTermsInput.value)">Apps</button>
+        <button type="button" class="button" onclick="Facebook_SearchEventsByTerm(generalSearchTermsInput.value)">Events</button>
+        <button type="button" class="button" onclick="Facebook_SearchLinksByTerm(generalSearchTermsInput.value)">Links</button>
+        <button type="button" class="button" onclick="Facebook_SearchWatchByTerm(generalSearchTermsInput.value)">Watch</button>
       </div>
     </div>
   </div>
 </main>
 
 <footer>
-  <p>Global Security Italy • Rome (IT)</p>
+  <p>Global Security Italy • Rome (IT) <a href="license.html">License</a></p>
 </footer>
 
 <script>
-// Show/hide submenu for fixed nav
+// Standard navbar submenu script
 document.querySelectorAll('.menu > li').forEach(item => {
   const submenu = item.querySelector('.submenu');
   if (submenu) {
-    item.addEventListener('mouseover', () => submenu.style.display = 'block');
-    item.addEventListener('mouseout', () => submenu.style.display = 'none');
+    item.addEventListener('mouseenter', function() {
+      submenu.style.display = 'block';
+    });
+    item.addEventListener('mouseleave', function() {
+      submenu.style.display = 'none';
+    });
   }
 });
 
 // Helper per le ricerche
 function executeSearch(baseUrl, term, suffix = '', queryParam = '', noEncoding = false) {
-    term = term.trim();
-    if (!term && queryParam !== 'q=') {
-        if (!baseUrl.includes("facebook.com/search")) {
-            alert("Please enter a search term.");
-            return;
-        }
+  term = term.trim();
+  if (!term && queryParam !== 'q=') { 
+    if (!baseUrl.includes("facebook.com/search")) { 
+        alert("Please enter a search term.");
+        return;
     }
-    if (!term) {
-        term = '';
-    }
+  }
+  if (!term) { 
+    term = ''; 
+  }
 
-    let url;
-    const encodedTerm = noEncoding ? term : encodeURIComponent(term);
+  let url;
+  const encodedTerm = noEncoding ? term : encodeURIComponent(term);
 
-    if (queryParam) {
-        url = baseUrl + '?' + queryParam + encodedTerm + suffix;
-    } else {
-        url = baseUrl + encodedTerm + suffix;
-    }
-    window.open(url, '_blank');
+  if (queryParam) {
+    url = baseUrl + '?' + queryParam + encodedTerm + suffix;
+  } else {
+    url = baseUrl + encodedTerm + suffix;
+  }
+  window.open(url, '_blank');
 }
 
-// --- Funzioni Ripristinate ---
-
-// Username Lookup functions
-function Facebook01(term) { executeSearch('https://www.facebook.com/', term); }
-function Facebook02(term) { executeSearch('https://www.facebook.com/', term, '/about'); }
-function Facebook03(term) { executeSearch('https://www.facebook.com/', term, '/about/section/work'); }
-function Facebook04(term) { executeSearch('https://www.facebook.com/', term, '/about/section/education'); }
-function Facebook05(term) { executeSearch('https://www.facebook.com/', term, '/about/section/living'); }
-function Facebook06(term) { executeSearch('https://www.facebook.com/', term, '/about/section/contact-info'); }
-function Facebook07(term) { executeSearch('https://www.facebook.com/', term, '/about/section/basic-info'); }
-function Facebook08(term) { executeSearch('https://www.facebook.com/', term, '/about/section/relationship'); }
-function Facebook09(term) { executeSearch('https://www.facebook.com/', term, '/about/section/family'); }
-function Facebook10(term) { executeSearch('https://www.facebook.com/', term, '/about/section/bio'); }
-function Facebook11(term) { executeSearch('https://www.facebook.com/', term, '/about/section/year-overviews'); }
-function Facebook12(term) { executeSearch('https://www.facebook.com/', term, '/friends'); }
-function Facebook13(term) { executeSearch('https://www.facebook.com/', term, '/photos_by'); }
-function Facebook14(term) { executeSearch('https://www.facebook.com/', term, '/photos_albums'); }
-function Facebook15(term) { executeSearch('https://www.facebook.com/', term, '/videos_by'); }
-function Facebook16(term) { executeSearch('https://www.facebook.com/', term, '/places_visited'); }
-function Facebook17(term) { executeSearch('https://www.facebook.com/', term, '/places_recent'); }
-function Facebook18(term) { executeSearch('https://www.facebook.com/', term, '/sports'); }
-function Facebook19(term) { executeSearch('https://www.facebook.com/', term, '/music'); }
-function Facebook20(term) { executeSearch('https://www.facebook.com/', term, '/movies'); }
-function Facebook21(term) { executeSearch('https://www.facebook.com/', term, '/tv'); }
-function Facebook22(term) { executeSearch('https://www.facebook.com/', term, '/books'); }
-function Facebook23(term) { executeSearch('https://www.facebook.com/', term, '/games'); }
-function Facebook24(term) { executeSearch('https://www.facebook.com/', term, '/likes'); }
-function Facebook25(term) { executeSearch('https://www.facebook.com/', term, '/events'); }
-function Facebook26(term) { executeSearch('https://www.facebook.com/', term, '/about_details'); }
-function Facebook27(term) { executeSearch('https://www.facebook.com/', term, '/reviews'); }
-function Facebook28(term) { executeSearch('https://www.facebook.com/', term, '/notes'); }
-function Facebook41(term) { executeSearch('https://www.facebook.com/', term, '/following'); }
-function Facebook42(term) { executeSearch('https://www.facebook.com/', term, '/reels'); }
-function Facebook43(term) { executeSearch('https://www.facebook.com/', term, '/map'); }
-function Facebook44(term) { executeSearch('https://www.facebook.com/', term, '/reviews_given'); }
-function Facebook45(term) { executeSearch('https://www.facebook.com/', term, '/reviews_written'); }
+// --- Facebook Profile Functions ---
+function Facebook_OpenTimeline(term) { executeSearch('https://www.facebook.com/', term); }
+function Facebook_OpenAbout(term) { executeSearch('https://www.facebook.com/', term, '/about'); }
+function Facebook_OpenAboutWork(term) { executeSearch('https://www.facebook.com/', term, '/about/section/work'); }
+function Facebook_OpenAboutEducation(term) { executeSearch('https://www.facebook.com/', term, '/about/section/education'); }
+function Facebook_OpenAboutLiving(term) { executeSearch('https://www.facebook.com/', term, '/about/section/living'); }
+function Facebook_OpenAboutContactInfo(term) { executeSearch('https://www.facebook.com/', term, '/about/section/contact-info'); }
+function Facebook_OpenAboutBasicInfo(term) { executeSearch('https://www.facebook.com/', term, '/about/section/basic-info'); }
+function Facebook_OpenAboutRelationship(term) { executeSearch('https://www.facebook.com/', term, '/about/section/relationship'); }
+function Facebook_OpenAboutFamily(term) { executeSearch('https://www.facebook.com/', term, '/about/section/family'); }
+function Facebook_OpenAboutBio(term) { executeSearch('https://www.facebook.com/', term, '/about/section/bio'); }
+function Facebook_OpenAboutLifeEvents(term) { executeSearch('https://www.facebook.com/', term, '/about/section/year-overviews'); }
+function Facebook_OpenFriends(term) { executeSearch('https://www.facebook.com/', term, '/friends'); }
+function Facebook_OpenFollowing(term) { executeSearch('https://www.facebook.com/', term, '/following'); }
+function Facebook_OpenPhotosBy(term) { executeSearch('https://www.facebook.com/', term, '/photos_by'); }
+function Facebook_OpenPhotoAlbums(term) { executeSearch('https://www.facebook.com/', term, '/photos_albums'); }
+function Facebook_OpenVideosBy(term) { executeSearch('https://www.facebook.com/', term, '/videos_by'); }
+function Facebook_OpenReels(term) { executeSearch('https://www.facebook.com/', term, '/reels'); }
+function Facebook_OpenPlacesVisited(term) { executeSearch('https://www.facebook.com/', term, '/places_visited'); }
+function Facebook_OpenMapVisits(term) { executeSearch('https://www.facebook.com/', term, '/map'); }
+function Facebook_OpenPlacesRecent(term) { executeSearch('https://www.facebook.com/', term, '/places_recent'); }
+function Facebook_OpenSports(term) { executeSearch('https://www.facebook.com/', term, '/sports'); }
+function Facebook_OpenMusic(term) { executeSearch('https://www.facebook.com/', term, '/music'); }
+function Facebook_OpenMovies(term) { executeSearch('https://www.facebook.com/', term, '/movies'); }
+function Facebook_OpenTVShows(term) { executeSearch('https://www.facebook.com/', term, '/tv'); }
+function Facebook_OpenBooks(term) { executeSearch('https://www.facebook.com/', term, '/books'); }
+function Facebook_OpenGames(term) { executeSearch('https://www.facebook.com/', term, '/games'); }
+function Facebook_OpenLikes(term) { executeSearch('https://www.facebook.com/', term, '/likes'); }
+function Facebook_OpenEvents(term) { executeSearch('https://www.facebook.com/', term, '/events'); }
+function Facebook_OpenAboutDetails(term) { executeSearch('https://www.facebook.com/', term, '/about_details'); } // Facts
+function Facebook_OpenReviews(term) { executeSearch('https://www.facebook.com/', term, '/reviews'); }
+function Facebook_OpenReviewsGiven(term) { executeSearch('https://www.facebook.com/', term, '/reviews_given'); }
+function Facebook_OpenReviewsWritten(term) { executeSearch('https://www.facebook.com/', term, '/reviews_written'); }
+function Facebook_OpenNotes(term) { executeSearch('https://www.facebook.com/', term, '/notes'); }
 
 // FB User Number Lookup
-function Facebook28a(term) { executeSearch('https://www.facebook.com/', term); }
+function Facebook_OpenProfileByNumber(term) { executeSearch('https://www.facebook.com/', term); }
 
-// Search Terms functions
-function Facebook30(term) { executeSearch('https://www.facebook.com/search/posts/', term, '', 'q='); }
-function Facebook31(term) { executeSearch('https://www.facebook.com/search/people/', term, '', 'q='); }
-function Facebook32(term) { executeSearch('https://www.facebook.com/search/photos/', term, '', 'q='); }
-function Facebook33(term) { executeSearch('https://www.facebook.com/search/videos/', term, '', 'q='); }
-function Facebook34(term) { executeSearch('https://www.facebook.com/search/marketplace/', term, '', 'q='); }
-function Facebook35(term) { executeSearch('https://www.facebook.com/search/pages/', term, '', 'q='); }
-function Facebook36(term) { executeSearch('https://www.facebook.com/search/places/', term, '', 'q='); }
-function Facebook37(term) { executeSearch('https://www.facebook.com/search/groups/', term, '', 'q='); }
-function Facebook38(term) { executeSearch('https://www.facebook.com/search/apps/', term, '', 'q='); }
-function Facebook39(term) { executeSearch('https://www.facebook.com/search/events/', term, '', 'q='); }
-function Facebook40(term) { executeSearch('https://www.facebook.com/search/links/', term, '', 'q='); }
-function Facebook46(term) { executeSearch('https://www.facebook.com/watch/search/', term, '', 'q='); }
+// General Search Terms functions
+function Facebook_SearchPostsByTerm(term) { executeSearch('https://www.facebook.com/search/posts/', term, '', 'q='); }
+function Facebook_SearchPeopleByTerm(term) { executeSearch('https://www.facebook.com/search/people/', term, '', 'q='); }
+function Facebook_SearchPhotosByTerm(term) { executeSearch('https://www.facebook.com/search/photos/', term, '', 'q='); }
+function Facebook_SearchVideosByTerm(term) { executeSearch('https://www.facebook.com/search/videos/', term, '', 'q='); }
+function Facebook_SearchMarketplaceByTerm(term) { executeSearch('https://www.facebook.com/search/marketplace/', term, '', 'q='); }
+function Facebook_SearchPagesByTerm(term) { executeSearch('https://www.facebook.com/search/pages/', term, '', 'q='); }
+function Facebook_SearchPlacesByTerm(term) { executeSearch('https://www.facebook.com/search/places/', term, '', 'q='); }
+function Facebook_SearchGroupsByTerm(term) { executeSearch('https://www.facebook.com/search/groups/', term, '', 'q='); }
+function Facebook_SearchAppsByTerm(term) { executeSearch('https://www.facebook.com/search/apps/', term, '', 'q='); }
+function Facebook_SearchEventsByTerm(term) { executeSearch('https://www.facebook.com/search/events/', term, '', 'q='); }
+function Facebook_SearchLinksByTerm(term) { executeSearch('https://www.facebook.com/search/links/', term, '', 'q='); }
+function Facebook_SearchWatchByTerm(term) { executeSearch('https://www.facebook.com/watch/search/', term, '', 'q='); }
 
 </script>
 </body>
