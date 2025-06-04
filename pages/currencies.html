@@ -177,7 +177,7 @@
           <button type="button" class="button" onclick="Currencies_BlockchairDOGE()">BC Dogecoin</button>
           <button type="button" class="button" onclick="Currencies_BlockchairETH()">BC Ethereum</button>
           <button type="button" class="button" onclick="Currencies_BlockchairLTC()">BC Litecoin</button>
-          <button type="button" class="button" onclick="Currencies_BlockscanOtherAddress()">Blockscan Address</button>
+          <button type="button" class="button" onclick="Currencies_BlockscanOtherAddress()">Blockscan multichain</button>
           <button type="button" class="button" onclick="Currencies_EtherscanAddress()">Etherscan (ETH)</button>
           <button type="button" class="button" onclick="Currencies_MetaSleuthBSC()">MetaSleuth (BSC)</button>
           <button type="button" class="button" onclick="Currencies_MetaSleuthETH()">MetaSleuth (ETH)</button>
@@ -209,7 +209,7 @@
         <div class="button-grid button-grid-3col">
           <button type="button" class="button" onclick="Currencies_ArkhamExplorer()">Arkham (Explorer)</button>
           <button type="button" class="button" onclick="Currencies_ArkhamVisualizer()">Arkham (Visualizer)</button>
-          <button type="button" class="button" onclick="Currencies_BlockscanLookup()">Blockscan</button>
+          <button type="button" class="button" onclick="Currencies_BlockscanLookup()">Blockscan Token</button>
           <button type="button" class="button" onclick="Currencies_BreadcrumbsReport()">Breadcrumbs</button>
           <button type="button" class="button" onclick="Currencies_CrystalExplorer()">Crystal Explorer</button>
           <button type="button" class="button" onclick="Currencies_CrystalVisualizer()">Crystal Visualizer</button>
@@ -278,7 +278,7 @@
   // --- Blockchain Analysis & Intelligence (Uses 'genericCryptoQueryInput') ---
   function Currencies_ArkhamExplorer() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address or Entity ID'); if(!val)return; window.open('https://platform.arkhamintelligence.com/explorer/address/' + encodeURIComponent(val), '_blank'); }
   function Currencies_ArkhamVisualizer() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address or Entity ID'); if(!val)return; window.open('https://platform.arkhamintelligence.com/visualizer/entity/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_BlockscanLookup() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address'); if(!val)return; window.open('https://blockscan.com/address/' + encodeURIComponent(val), '_blank'); } 
+  function Currencies_BlockscanLookup() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address'); if(!val)return; window.open('https://blockscan.com/Home/SearchAddress?searchAddress=' + encodeURIComponent(val), '_blank'); } 
   function Currencies_BreadcrumbsReport() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address'); if(!val)return; window.open('https://www.breadcrumbs.app/reports/' + encodeURIComponent(val), '_blank'); }
   function Currencies_CrystalExplorer() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address'); if(!val)return; window.open('https://explorer.crystalblockchain.com/address/' + encodeURIComponent(val), '_blank'); }
   function Currencies_CrystalVisualizer() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address or Entity ID'); if(!val)return; window.open('https://explorer.crystalblockchain.com/visualization/new/' + encodeURIComponent(val), '_blank'); }
