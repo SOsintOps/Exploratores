@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Search • Exploratores</title>
+  <title>Search Engines • Exploratores</title>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
 <body>
 
@@ -86,135 +87,139 @@
   </section>
 
   <div class="columns">
-    <div class="column">
+    <div class="column" id="section-searchengines-clearweb">
       <h2>Clear Web</h2>
-      <div class="button-grid">
-        <button class="button" onclick="makeOsint01()">Google</button>
-        <button class="button" onclick="makeOsint02()">Google Date</button>
-        <button class="button" onclick="makeOsint03()">Google News</button>
-        <button class="button" onclick="makeOsint05()">Google FTP</button>
-        <button class="button" onclick="makeOsint06()">Google Index</button>
-        <button class="button" onclick="makeOsint07()">Google Scholar</button>
-        <button class="button" onclick="makeOsint08()">Google Patents</button>
-        <button class="button" onclick="makeOsint09()">Bing</button>
-        <button class="button" onclick="makeOsint10()">Bing News</button>
-        <button class="button" onclick="makeOsint11()">Yahoo</button>
-        <button class="button" onclick="makeOsint12()">Yandex</button>
-        <button class="button" onclick="makeOsint13()">Baidu</button>
-        <button class="button" onclick="makeOsint14()">Searx</button>
-        <button class="button" onclick="makeOsint16()">DuckDuckGo</button>
-        <button class="button" onclick="makeOsint17()">StartPage</button>
-        <button class="button" onclick="makeOsint18()">Qwant</button>
-        <button class="button" onclick="makeOsint19()">Brave</button>
-        <button class="button" onclick="makeOsint20()">Wayback</button>
-        <button class="button" onclick="makeOsint21()">Ahmia</button>
-      </div>
+      
+      <section id="subsection-searchengines-google">
+        <h3>Google</h3>
+        <div class="button-grid">
+          <button id="btn-searchengines-google" class="button" onclick="SearchEngines_Google()">Google</button>
+          <button id="btn-searchengines-googledate" class="button" onclick="SearchEngines_GoogleDate()">Google Date</button>
+          <button id="btn-searchengines-googlenews" class="button" onclick="SearchEngines_GoogleNews()">Google News</button>
+          <button id="btn-searchengines-googleftp" class="button" onclick="SearchEngines_GoogleFTP()">Google FTP</button>
+          <button id="btn-searchengines-googleindex" class="button" onclick="SearchEngines_GoogleIndex()">Google Index</button>
+          <button id="btn-searchengines-googlescholar" class="button" onclick="SearchEngines_GoogleScholar()">Google Scholar</button>
+          <button id="btn-searchengines-googlepatents" class="button" onclick="SearchEngines_GooglePatents()">Google Patents</button>
+        </div>
+      </section>
+      
+      <section id="subsection-searchengines-bing" style="margin-top: 1rem;">
+        <h3>Bing</h3>
+        <div class="button-grid">
+          <button id="btn-searchengines-bing" class="button" onclick="SearchEngines_Bing()">Bing</button>
+          <button id="btn-searchengines-bingnews" class="button" onclick="SearchEngines_BingNews()">Bing News</button>
+        </div>
+      </section>
+      
+      <section id="subsection-searchengines-otherengines" style="margin-top: 1rem;">
+        <h3>Altri Motori</h3>
+        <div class="button-grid">
+          <button id="btn-searchengines-yahoo" class="button" onclick="SearchEngines_Yahoo()">Yahoo</button>
+          <button id="btn-searchengines-yandex" class="button" onclick="SearchEngines_Yandex()">Yandex</button>
+          <button id="btn-searchengines-baidu" class="button" onclick="SearchEngines_Baidu()">Baidu</button>
+          <button id="btn-searchengines-searx" class="button" onclick="SearchEngines_Searx()">Searx</button>
+          <button id="btn-searchengines-duckduckgo" class="button" onclick="SearchEngines_DuckDuckGo()">DuckDuckGo</button>
+          <button id="btn-searchengines-startpage" class="button" onclick="SearchEngines_StartPage()">StartPage</button>
+          <button id="btn-searchengines-qwant" class="button" onclick="SearchEngines_Qwant()">Qwant</button>
+          <button id="btn-searchengines-brave" class="button" onclick="SearchEngines_Brave()">Brave</button>
+        </div>
+      </section>
+
+      <section id="subsection-searchengines-archives" style="margin-top: 1rem;">
+        <h3>Archivi e Cache</h3>
+        <div class="button-grid">
+          <button id="btn-searchengines-wayback" class="button" onclick="SearchEngines_Wayback()">Wayback</button>
+          <button id="btn-searchengines-ahmia" class="button" onclick="SearchEngines_Ahmia()">Ahmia (Clear)</button>
+        </div>
+      </section>
     </div>
 
     <div class="column">
-      <h2>Tor Network</h2>
-      <div class="button-grid">
-        <button class="button" onclick="makeOsint24()">Tor66</button>
-        <button class="button" onclick="makeOsint26()">Ahmia (Onion)</button>
-        <button class="button" onclick="makeOsint29()">GDark</button>
-        <button class="button" onclick="makeOsint30()">Hidden Reviews</button>
-        <button class="button" onclick="makeOsint31()">OnionLand</button>
-        <button class="button" onclick="makeOsint33()">Submarine</button>
-        <button class="button" onclick="makeOsint34()">DeepSearch</button>
-        <button class="button" onclick="makeOsint35()">OnionCenter</button>
-        <button class="button" onclick="makeOsint36()">FreshOnion</button>
-      </div>
-      <div class="note">
-        <strong>NOTE:</strong> You must use the Tor browser to access these functionalities.
-      </div>
+      <section class="section-tor-network" id="section-searchengines-tor">
+        <h2>Tor Network</h2>
+        <div class="button-grid">
+          <button id="btn-searchengines-tor66" class="button" onclick="SearchEngines_Tor66()">Tor66</button>
+          <button id="btn-searchengines-ahmiaonion" class="button" onclick="SearchEngines_AhmiaOnion()">Ahmia (Onion)</button>
+          <button id="btn-searchengines-gdark" class="button" onclick="SearchEngines_GDark()">GDark</button>
+          <button id="btn-searchengines-hiddenreviews" class="button" onclick="SearchEngines_HiddenReviews()">Hidden Reviews</button>
+          <button id="btn-searchengines-onionland" class="button" onclick="SearchEngines_OnionLand()">OnionLand</button>
+          <button id="btn-searchengines-submarine" class="button" onclick="SearchEngines_Submarine()">Submarine</button>
+          <button id="btn-searchengines-deepsearch" class="button" onclick="SearchEngines_DeepSearch()">DeepSearch</button>
+          <button id="btn-searchengines-onioncenter" class="button" onclick="SearchEngines_OnionCenter()">OnionCenter</button>
+          <button id="btn-searchengines-freshonion" class="button" onclick="SearchEngines_FreshOnion()">FreshOnion</button>
+        </div>
+        <div class="note">
+          <strong>NOTE:</strong> You must use the Tor browser to access these functionalities. The availability of .onion sites is not guaranteed.
+        </div>
+      </section>
     </div>
   </div>
 </main>
 
 <footer>
-  Global Security Italy • Rome (IT)
-  <a href="license.html">License</a>
+  <p>Global Security Italy • Rome (IT) <a href="license.html">License</a></p>
 </footer>
 
 <script>
-  function getOsintValue() {
-    const inputElement = document.getElementById('searchInput');
-    if (inputElement) {
-      return inputElement.value.trim();
-    }
-    return "";
-  }
-
-  // Helper function (non utilizzata attivamente ma definita)
-  function openSearchWindow(baseUrl, queryParameterOrPath, isPath = false) {
-    var val = getOsintValue();
-    if (val === "") {
-      return; 
-    }
-    let finalUrl;
-    if (isPath) { 
-      finalUrl = baseUrl + val; 
-    } else { 
-      finalUrl = baseUrl + encodeURIComponent(val);
-    }
-    // Per semplicità, usiamo un nome generico, dato che la funzione helper era stata rimossa
-    // dalla logica attiva delle funzioni makeOsintXX nel codice precedente.
-    // Se si decidesse di usare questo helper, il windowName andrebbe gestito.
-    window.open(finalUrl, queryParameterOrPath.replace(/\W/g, '') + 'window');
-  }
-  
-  function openSearchWindowWithSuffix(baseUrl, queryParameter, suffix, newWindowName) {
-    var val = getOsintValue();
-    if (val === "") return;
-    let url = baseUrl + encodeURIComponent(val) + suffix;
-    window.open(url, newWindowName);
-  }
-
-  // CLEAR WEB
-  function makeOsint01() { var val = getOsintValue(); if (val === "") return; window.open('http://google.com/search?q=' + encodeURIComponent(val), 'Search01window'); }
-  function makeOsint02() { var val = getOsintValue(); if (val === "") return; window.open('http://google.com/search?q=' + encodeURIComponent(val) + '&tbs=cdr:1,cd_min:1/1/0,sbd:1', 'Search02window'); }
-  function makeOsint03() { var val = getOsintValue(); if (val === "") return; window.open('http://www.google.com/search?tbm=nws&q=' + encodeURIComponent(val), 'Search03window'); }
-  function makeOsint05() { var val = getOsintValue(); if (val === "") return; window.open('https://www.google.com/search?q=inurl%3Aftp%20-inurl%3A(http|https)%20' + encodeURIComponent(val), 'Search05window'); }
-  function makeOsint06() { var val = getOsintValue(); if (val === "") return; window.open('https://www.google.com/search?q=intitle%3Aindex.of+' + encodeURIComponent(val), 'Search06window'); }
-  function makeOsint07() { var val = getOsintValue(); if (val === "") return; window.open('http://scholar.google.com/scholar?&q=' + encodeURIComponent(val), 'Search07window'); }
-  function makeOsint08() { var val = getOsintValue(); if (val === "") return; window.open('https://patents.google.com/?q=' + encodeURIComponent(val), 'Search08window'); }
-  function makeOsint09() { var val = getOsintValue(); if (val === "") return; window.open('http://bing.com/search?q="' + encodeURIComponent(val) + '"', 'Search09window'); }
-  function makeOsint10() { var val = getOsintValue(); if (val === "") return; window.open('http://bing.com/news/search?q="' + encodeURIComponent(val) + '"', 'Search10window'); }
-  function makeOsint11() { var val = getOsintValue(); if (val === "") return; window.open('http://search.yahoo.com/search?p=' + encodeURIComponent(val), 'Search11window'); }
-  function makeOsint12() { var val = getOsintValue(); if (val === "") return; window.open('http://www.yandex.com/yandsearch?text=' + encodeURIComponent(val), 'Search12window'); }
-  function makeOsint13() { var val = getOsintValue(); if (val === "") return; window.open('http://baidu.com/s?wd=' + encodeURIComponent(val), 'Search13window'); }
-  function makeOsint14() { var val = getOsintValue(); if (val === "") return; window.open('https://baresearch.org/?q=' + encodeURIComponent(val), 'Search14window'); }
-  function makeOsint16() { var val = getOsintValue(); if (val === "") return; window.open('https://duckduckgo.com/?q=' + encodeURIComponent(val), 'Search16window'); }
-  function makeOsint17() { var val = getOsintValue(); if (val === "") return; window.open('https://startpage.com/do/search?q=' + encodeURIComponent(val), 'Search17window'); }
-  function makeOsint18() { var val = getOsintValue(); if (val === "") return; window.open('https://www.qwant.com/?q=' + encodeURIComponent(val), 'Search18window'); }
-  function makeOsint19() { var val = getOsintValue(); if (val === "") return; window.open('https://search.brave.com/search?q=' + encodeURIComponent(val), 'Search19window'); }
-  function makeOsint20() { var val = getOsintValue(); if (val === "") return; window.open('https://web.archive.org/web/*/' + val, 'Search20window'); }
-  function makeOsint21() { var val = getOsintValue(); if (val === "") return; window.open('https://ahmia.fi/search/?q=' + encodeURIComponent(val), 'Search21window'); }
-
-  // TOR NETWORK 
-  // Funzioni rimosse: makeOsint37 (Tor.link), makeOsint23 (Torch), makeOsint25 (Haystack)
-  // makeOsint27 (SearchDemon), makeOsint28 (Excavator), makeOsint32 (Phobos)
-  function makeOsint24() { var val = getOsintValue(); if (val === "") return; window.open('http://www.tor66sewebgixwhcqfnp5inzp5x5uohhdy3kvtnyfxc2e5mxiuh34iid.onion/search?q=' + encodeURIComponent(val), 'Search24window');}
-  function makeOsint26() { var val = getOsintValue(); if (val === "") return; window.open('http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/search/?q=' + encodeURIComponent(val) + '&action=search', 'Search26window');}
-  function makeOsint29() { var val = getOsintValue(); if (val === "") return; window.open('http://zb2jtkhnbvhkya3d46twv3g7lkobi4s62tjffqmafjibixk6pmq75did.onion/gdark/search.php?query=' + encodeURIComponent(val) + '&search=1', 'Search29window');}
-  function makeOsint30() { var val = getOsintValue(); if (val === "") return; window.open('http://u5lyidiw4lpkonoctpqzxgyk6xop7w7w3oho4dzzsi272rwnjhyx7ayd.onion/?s=' + encodeURIComponent(val), 'Search30window');}
-  function makeOsint31() { var val = getOsintValue(); if (val === "") return; window.open('http://3bbad7fauom4d6sgppalyqddsqbf5u5p56b5k5uk2zxsy3d6ey2jobad.onion/search?q=' + encodeURIComponent(val), 'Search31window');}
-  function makeOsint33() { var val = getOsintValue(); if (val === "") return; window.open('http://no6m4wzdexe3auiupv2zwif7rm6qwxcyhslkcnzisxgeiw6pvjsgafad.onion/search.php?term=' + encodeURIComponent(val), 'Search33window');}
-  function makeOsint34() { var val = getOsintValue(); if (val === "") return; window.open('http://searchgf7gdtauh7bhnbyed4ivxqmuoat3nm6zfrg3ymkq6mtnpye3ad.onion/search?q=' + encodeURIComponent(val), 'Search34window');}
-  function makeOsint35() { var val = getOsintValue(); if (val === "") return; window.open('http://5qqrlc7hw3tsgokkqifb33p3mrlpnleka2bjg7n46vih2synghb6ycid.onion/index.php?a=search&q=' + encodeURIComponent(val), 'Search35window'); } // Suffix era vuoto, corretto per usare openSearchWindow
-  function makeOsint36() { var val = getOsintValue(); if (val === "") return; window.open('http://freshonifyfe4rmuh6qwpsexfhdrww7wnt5qmkoertwxmcuvm4woo4ad.onion/?query=' + encodeURIComponent(val), 'Search36window');}
-
-  // Script per mostra/nascondi submenu al passaggio del mouse (navbar script)
+  // Standard navbar submenu script
   document.querySelectorAll('.menu > li').forEach(item => {
-    item.addEventListener('mouseover', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'block';
-    });
-    item.addEventListener('mouseout', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'none';
-    });
+    const submenu = item.querySelector('.submenu');
+    if (submenu) { 
+      item.addEventListener('mouseenter', function() {
+        submenu.style.display = 'block';
+      });
+      item.addEventListener('mouseleave', function() {
+        submenu.style.display = 'none';
+      });
+    }
   });
+
+  // Helper functions
+  function SearchEngines_Input() {
+    const inputElement = document.getElementById('searchInput');
+    const value = inputElement ? inputElement.value.trim() : "";
+    if (!value) {
+      alert("Please enter search term(s).");
+      return null;
+    }
+    return value;
+  }
+
+  function SearchEngines_ExecuteSearch(url) {
+    window.open(url, '_blank');
+  }
+
+  // --- Clear Web Functions ---
+  function SearchEngines_Google() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('https://google.com/search?q=' + encodeURIComponent(q)); }
+  function SearchEngines_GoogleDate() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('https://google.com/search?q=' + encodeURIComponent(q) + '&tbs=cdr:1,cd_min:1/1/0,sbd:1'); }
+  function SearchEngines_GoogleNews() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('https://www.google.com/search?tbm=nws&q=' + encodeURIComponent(q)); }
+  function SearchEngines_GoogleFTP() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('https://www.google.com/search?q=inurl%3Aftp%20-inurl%3A(http|https)%20' + encodeURIComponent(q)); }
+  function SearchEngines_GoogleIndex() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('https://www.google.com/search?q=intitle%3Aindex.of+' + encodeURIComponent(q)); }
+  function SearchEngines_GoogleScholar() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('https://scholar.google.com/scholar?&q=' + encodeURIComponent(q)); }
+  function SearchEngines_GooglePatents() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('https://patents.google.com/?q=' + encodeURIComponent(q)); }
+  function SearchEngines_Bing() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('https://bing.com/search?q="' + encodeURIComponent(q) + '"'); }
+  function SearchEngines_BingNews() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('https://bing.com/news/search?q="' + encodeURIComponent(q) + '"'); }
+  function SearchEngines_Yahoo() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('https://search.yahoo.com/search?p=' + encodeURIComponent(q)); }
+  function SearchEngines_Yandex() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('https://www.yandex.com/yandsearch?text=' + encodeURIComponent(q)); }
+  function SearchEngines_Baidu() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('https://baidu.com/s?wd=' + encodeURIComponent(q)); }
+  function SearchEngines_Searx() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('https://baresearch.org/?q=' + encodeURIComponent(q)); }
+  function SearchEngines_DuckDuckGo() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('https://duckduckgo.com/?q=' + encodeURIComponent(q)); }
+  function SearchEngines_StartPage() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('https://startpage.com/do/search?q=' + encodeURIComponent(q)); }
+  function SearchEngines_Qwant() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('https://www.qwant.com/?q=' + encodeURIComponent(q)); }
+  function SearchEngines_Brave() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('https://search.brave.com/search?q=' + encodeURIComponent(q)); }
+  function SearchEngines_Wayback() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('https://web.archive.org/web/*/' + encodeURIComponent(q)); }
+  function SearchEngines_Ahmia() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('https://ahmia.fi/search/?q=' + encodeURIComponent(q)); }
+
+  // --- Tor Network Functions ---
+  function SearchEngines_Tor66() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('http://www.tor66sewebgixwhcqfnp5inzp5x5uohhdy3kvtnyfxc2e5mxiuh34iid.onion/search?q=' + encodeURIComponent(q));}
+  function SearchEngines_AhmiaOnion() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/search/?q=' + encodeURIComponent(q) + '&action=search');}
+  function SearchEngines_GDark() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('http://zb2jtkhnbvhkya3d46twv3g7lkobi4s62tjffqmafjibixk6pmq75did.onion/gdark/search.php?query=' + encodeURIComponent(q) + '&search=1');}
+  function SearchEngines_HiddenReviews() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('http://u5lyidiw4lpkonoctpqzxgyk6xop7w7w3oho4dzzsi272rwnjhyx7ayd.onion/?s=' + encodeURIComponent(q));}
+  function SearchEngines_OnionLand() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('http://3bbad7fauom4d6sgppalyqddsqbf5u5p56b5k5uk2zxsy3d6ey2jobad.onion/search?q=' + encodeURIComponent(q));}
+  function SearchEngines_Submarine() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('http://no6m4wzdexe3auiupv2zwif7rm6qwxcyhslkcnzisxgeiw6pvjsgafad.onion/search.php?term=' + encodeURIComponent(q));}
+  function SearchEngines_DeepSearch() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('http://searchgf7gdtauh7bhnbyed4ivxqmuoat3nm6zfrg3ymkq6mtnpye3ad.onion/search?q=' + encodeURIComponent(q));}
+  function SearchEngines_OnionCenter() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('http://5qqrlc7hw3tsgokkqifb33p3mrlpnleka2bjg7n46vih2synghb6ycid.onion/index.php?a=search&q=' + encodeURIComponent(q)); }
+  function SearchEngines_FreshOnion() { const q = SearchEngines_Input(); if (q) SearchEngines_ExecuteSearch('http://freshonifyfe4rmuh6qwpsexfhdrww7wnt5qmkoertwxmcuvm4woo4ad.onion/?query=' + encodeURIComponent(q));}
 </script>
 
 <script src="../assets/js/config.js"></script>
