@@ -543,3 +543,16 @@ footer a {
     margin-bottom: 0.5rem; 
   }
 }
+/*
+  --- Light Version Visibility ---
+  This class is added automatically by JavaScript based on the config.js file.
+  It hides elements for the "light" version of the toolkit.
+*/
+/*
+  --- Light Version Visibility ---
+  This class is added automatically by JavaScript based on the config.js file.
+  It hides elements for the "light" version of the toolkit.
+*/
+.hidden-in-light {
+  display: none !important;
+}

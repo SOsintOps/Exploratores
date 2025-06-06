@@ -255,5 +255,21 @@ function Facebook_SearchLinksByTerm(term) { executeSearch('https://www.facebook.
 function Facebook_SearchWatchByTerm(term) { executeSearch('https://www.facebook.com/watch/search/', term, '', 'q='); }
 
 </script>
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
+</script>
+
 </body>
 </html>

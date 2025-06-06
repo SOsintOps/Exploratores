@@ -202,5 +202,21 @@
     function Instagram16(tag){if(!tag)return; window.open('https://dumpor.com/t/'+encodeURIComponent(tag),'_blank');}
     function Instagram18(u){if(!u)return; window.open('https://www.threads.net/@'+encodeURIComponent(u),'_blank');}
   </script>
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
