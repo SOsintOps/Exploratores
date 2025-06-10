@@ -40,6 +40,20 @@ pre.code-guide-block code {
   line-height: 1.6; /* Improves readability */
   color: #2c3e50; /* A dark color for the code text */
 }
+/* Styling for inline validation feedback messages */
+.feedback-message {
+  min-height: 1.2em; /* Prevents layout shifts when message appears/disappears */
+  font-size: 0.9em;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+.feedback-error {
+  color: #d9534f; /* A standard red for errors */
+  font-weight: bold;
+}
+.feedback-info {
+  color: #5cb85c; /* A standard green for success/info */
+}
 
 /* TYPOGRAPHY */
 /* General heading styles */
@@ -512,7 +526,10 @@ footer a {
   margin-left: auto;
   margin-right: auto;
 }
-
+.button.text-active {
+  color: var(--primary-color);
+  font-weight: bold;
+}
 /* Adjustments for small screens (e.g., mobile phones) */
 @media (max-width: 768px) {
   /* Reduce font size in the main menu */
