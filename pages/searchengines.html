@@ -78,76 +78,76 @@
 <main>
   <h1 class="page-title">SEARCH ENGINES</h1>
 
-  <section class="search-instructions">
+  <section class="search-instructions" id="section-searchengines-main-search">
     <label for="searchInput">Insert search terms here:</label>
     <div class="input-container">
-      <input type="text" id="searchInput" class="input-field" placeholder="Keyword(s)">
+      <input type="text" id="searchInput" class="input-field" placeholder="Keyword(s)" autocomplete="off">
     </div>
     <div id="search-feedback" class="feedback-message"></div>
     <div class="note"> <strong>NOTE:</strong> Enter search terms in the box above. The buttons will become active once input is provided.</div>
   </section>
 
   <div class="columns">
-    <div class="column" id="section-searchengines-clearweb">
+    <div class="column" id="column-searchengines-clearweb">
       <h2>Clear Web</h2>
       
       <section id="subsection-searchengines-google">
         <h3>Google</h3>
         <div class="button-grid">
-          <button data-search-id="google-standard" class="button">Google</button>
-          <button data-search-id="google-date" class="button">Google Date</button>
-          <button data-search-id="google-news" class="button">Google News</button>
-          <button data-search-id="google-ftp" class="button">Google FTP</button>
-          <button data-search-id="google-index" class="button">Google Index</button>
-          <button data-search-id="google-scholar" class="button">Google Scholar</button>
-          <button data-search-id="google-patents" class="button">Google Patents</button>
+          <button id="btn-searchengines-google-standard" data-search-id="google-standard" class="button">Google</button>
+          <button id="btn-searchengines-google-date" data-search-id="google-date" class="button">Google Date</button>
+          <button id="btn-searchengines-google-news" data-search-id="google-news" class="button">Google News</button>
+          <button id="btn-searchengines-google-ftp" data-search-id="google-ftp" class="button">Google FTP</button>
+          <button id="btn-searchengines-google-index" data-search-id="google-index" class="button">Google Index</button>
+          <button id="btn-searchengines-google-scholar" data-search-id="google-scholar" class="button">Google Scholar</button>
+          <button id="btn-searchengines-google-patents" data-search-id="google-patents" class="button">Google Patents</button>
         </div>
       </section>
       
       <section id="subsection-searchengines-bing" style="margin-top: 1rem;">
         <h3>Bing</h3>
         <div class="button-grid">
-          <button data-search-id="bing-standard" class="button">Bing</button>
-          <button data-search-id="bing-news" class="button">Bing News</button>
+          <button id="btn-searchengines-bing-standard" data-search-id="bing-standard" class="button">Bing</button>
+          <button id="btn-searchengines-bing-news" data-search-id="bing-news" class="button">Bing News</button>
         </div>
       </section>
       
       <section id="subsection-searchengines-otherengines" style="margin-top: 1rem;">
         <h3>Other Engines</h3>
         <div class="button-grid">
-          <button data-search-id="yahoo" class="button">Yahoo</button>
-          <button data-search-id="yandex" class="button">Yandex</button>
-          <button data-search-id="baidu" class="button">Baidu</button>
-          <button data-search-id="searx" class="button">Searx</button>
-          <button data-search-id="duckduckgo" class="button">DuckDuckGo</button>
-          <button data-search-id="startpage" class="button">StartPage</button>
-          <button data-search-id="qwant" class="button">Qwant</button>
-          <button data-search-id="brave" class="button">Brave</button>
+          <button id="btn-searchengines-yahoo" data-search-id="yahoo" class="button">Yahoo</button>
+          <button id="btn-searchengines-yandex" data-search-id="yandex" class="button">Yandex</button>
+          <button id="btn-searchengines-baidu" data-search-id="baidu" class="button">Baidu</button>
+          <button id="btn-searchengines-searx" data-search-id="searx" class="button">Searx</button>
+          <button id="btn-searchengines-duckduckgo" data-search-id="duckduckgo" class="button">DuckDuckGo</button>
+          <button id="btn-searchengines-startpage" data-search-id="startpage" class="button">StartPage</button>
+          <button id="btn-searchengines-qwant" data-search-id="qwant" class="button">Qwant</button>
+          <button id="btn-searchengines-brave" data-search-id="brave" class="button">Brave</button>
         </div>
       </section>
 
       <section id="subsection-searchengines-archives" style="margin-top: 1rem;">
         <h3>Archives & Caches</h3>
         <div class="button-grid">
-          <button data-search-id="wayback" class="button">Wayback</button>
-          <button data-search-id="ahmia-clear" class="button">Ahmia (Clear)</button>
+          <button id="btn-searchengines-wayback" data-search-id="wayback" class="button">Wayback</button>
+          <button id="btn-searchengines-ahmia-clear" data-search-id="ahmia-clear" class="button">Ahmia (Clear)</button>
         </div>
       </section>
     </div>
 
-    <div class="column">
+    <div class="column" id="column-searchengines-tor">
       <section class="section-tor-network" id="section-searchengines-tor">
         <h2>Tor Network</h2>
         <div class="button-grid">
-          <button data-search-id="tor-tor66" class="button">Tor66</button>
-          <button data-search-id="tor-ahmia" class="button">Ahmia (Onion)</button>
-          <button data-search-id="tor-gdark" class="button">GDark</button>
-          <button data-search-id="tor-hiddenreviews" class="button">Hidden Reviews</button>
-          <button data-search-id="tor-onionland" class="button">OnionLand</button>
-          <button data-search-id="tor-submarine" class="button">Submarine</button>
-          <button data-search-id="tor-deepsearch" class="button">DeepSearch</button>
-          <button data-search-id="tor-onioncenter" class="button">OnionCenter</button>
-          <button data-search-id="tor-freshonion" class="button">FreshOnion</button>
+          <button id="btn-searchengines-tor-tor66" data-search-id="tor-tor66" class="button">Tor66</button>
+          <button id="btn-searchengines-tor-ahmia" data-search-id="tor-ahmia" class="button">Ahmia (Onion)</button>
+          <button id="btn-searchengines-tor-gdark" data-search-id="tor-gdark" class="button">GDark</button>
+          <button id="btn-searchengines-tor-hiddenreviews" data-search-id="tor-hiddenreviews" class="button">Hidden Reviews</button>
+          <button id="btn-searchengines-tor-onionland" data-search-id="tor-onionland" class="button">OnionLand</button>
+          <button id="btn-searchengines-tor-submarine" data-search-id="tor-submarine" class="button">Submarine</button>
+          <button id="btn-searchengines-tor-deepsearch" data-search-id="tor-deepsearch" class="button">DeepSearch</button>
+          <button id="btn-searchengines-tor-onioncenter" data-search-id="tor-onioncenter" class="button">OnionCenter</button>
+          <button id="btn-searchengines-tor-freshonion" data-search-id="tor-freshonion" class="button">FreshOnion</button>
         </div>
         <div class="note">
           <strong>NOTE:</strong> You must use the Tor browser to access these functionalities. The availability of .onion sites is not guaranteed.
@@ -178,11 +178,11 @@
     const isValid = !!getAndValidateSearchTerm();
 
     if (document.getElementById('searchInput')?.value.trim() === '') {
-      feedbackEl.textContent = "";
-      feedbackEl.className = 'feedback-message';
+        feedbackEl.textContent = "";
+        feedbackEl.className = 'feedback-message';
     } else {
-      feedbackEl.textContent = "Ready for search.";
-      feedbackEl.className = 'feedback-message feedback-info';
+        feedbackEl.textContent = "Ready for search.";
+        feedbackEl.className = 'feedback-message feedback-info';
     }
     
     document.querySelectorAll('button[data-search-id]').forEach(button => {
@@ -193,30 +193,26 @@
     });
   }
 
-  // --- NUOVA FUNZIONE: Imposta lo stato iniziale della pagina in modo forzato ---
+  // --- Funzione per impostare lo stato iniziale della pagina ---
   function setInitialPageState() {
     const searchInput = document.getElementById('searchInput');
     if (searchInput) {
-      searchInput.value = ''; // Pulisce il campo
+      searchInput.value = '';
     }
-    // Disabilita forzatamente tutti i pulsanti e rimuove la classe 'text-active'
     document.querySelectorAll('button[data-search-id]').forEach(button => {
       button.disabled = true;
       button.classList.remove('text-active');
     });
-    // Pulisce il messaggio di feedback
     const feedbackEl = document.getElementById('search-feedback');
     if (feedbackEl) {
       feedbackEl.textContent = '';
     }
   }
 
-  // --- Event Listener modificato ---
+  // --- Event Listener per questa pagina ---
   document.addEventListener('DOMContentLoaded', () => {
-    // Imposta lo stato iniziale in modo diretto e incondizionato
     setInitialPageState();
 
-    // Aggiunge il listener per le modifiche successive
     const searchInput = document.getElementById('searchInput');
     if (searchInput) {
       searchInput.addEventListener('input', updatePageState);

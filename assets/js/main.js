@@ -6,7 +6,6 @@ const Exploratores = {
     this.initNavbar();
     this.initSearchHandler();
     this.initLightMode();
-    // La logica di feedback e validazione live viene chiamata dalla pagina specifica
   },
 
   // Gestisce i sottomenu della navbar
@@ -20,7 +19,7 @@ const Exploratores = {
     });
   },
 
-  // Applica la configurazione "light version"
+  // Applica la configurazione "light version" dal file config.js
   initLightMode: function() {
     if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
       exploratoresConfig.selectorsToHide.forEach(selector => {
@@ -49,7 +48,7 @@ const Exploratores = {
       }
 
       // Altrimenti, esegue la validazione
-      // Cerca la funzione di validazione nello scope globale (definita nella pagina)
+      // Cerca la funzione di validazione nello scope globale (definita nella pagina HTML)
       const validatorFunction = window[config.validator];
       if (typeof validatorFunction !== 'function') {
         console.error(`Funzione validatore non trovata: ${config.validator}`);
@@ -59,8 +58,15 @@ const Exploratores = {
       const parts = validatorFunction();
       if (parts) {
         let url = config.urlTemplate;
+        
+        // Logica migliorata per la sostituzione dei placeholder
         for (const key in parts) {
-          url = url.replace(`{${key}}`, encodeURIComponent(parts[key]));
+          // Cerca sia {key} che {key_RAW}
+          const regex = new RegExp(`{${key}(_RAW)?}`, 'g');
+          url = url.replace(regex, (match, isRaw) => {
+            // Se trova _RAW, non codifica il valore. Altrimenti, lo codifica.
+            return isRaw ? parts[key] : encodeURIComponent(parts[key]);
+          });
         }
         window.open(url, '_blank');
       }

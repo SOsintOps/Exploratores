@@ -1,5 +1,3 @@
-// assets/js/search-library.js
-
 const SearchLibrary = {
     //
     // --- SEARCH ENGINES ---
@@ -34,38 +32,70 @@ const SearchLibrary = {
     'tor-freshonion': { urlTemplate: 'http://freshonifyfe4rmuh6qwpsexfhdrww7wnt5qmkoertwxmcuvm4woo4ad.onion/?query={term}', validator: 'getAndValidateSearchTerm' },
 
     //
-    // --- US ADDRESSES ---
+    // --- NAMES ---
     //
-    'us-addr-addresses': { urlTemplate: 'https://www.addresses.com/addr/{num-plus-street}/{city-plus-state}/', validator: 'getAndValidateUS' },
-    'us-addr-advbackground': { urlTemplate: 'https://www.advancedbackgroundchecks.com/address/{num-dash-street}_{city-dash-state-zip}', validator: 'getAndValidateUS' },
-    'us-addr-cyberbackground': { urlTemplate: 'https://www.cyberbackgroundchecks.com/address/{num-dash-street}/{city}/{state}', validator: 'getAndValidateUS' },
-    'us-addr-fastpeople': { urlTemplate: 'https://www.fastpeoplesearch.com/address/{num-dash-street}_{city-dash-state-zip}', validator: 'getAndValidateUS' },
-    'us-addr-gisgraphy': { urlTemplate: 'https://services.gisgraphy.com/geocoding/geocode?address={full-plus-address}&format=json', validator: 'getAndValidateUS' },
-    'us-addr-google': { urlTemplate: 'https://www.google.com/search?q={full-plus-address}', validator: 'getAndValidateUS' },
-    'us-addr-whitepages': { urlTemplate: 'https://www.whitepages.com/address/{num-dash-street}/{city-dash-state}', validator: 'getAndValidateUS' },
-    // ... Aggiungi le altre 9 ricerche US qui con lo stesso pattern ...
+    // General & Social Presence
+    'names-9jabook': { urlTemplate: 'https://9jabook.com/main/search/search?q={fullName}', validator: 'getAndValidateName' },
+    'names-facebook-direct': { urlTemplate: 'https://www.facebook.com/search/top?q={fullName}', validator: 'getAndValidateName' },
+    'names-facebook-google': { urlTemplate: 'https://www.google.com/search?q=site%3Afacebook.com+"{fullName}"', validator: 'getAndValidateName' },
+    'names-google-maps': { urlTemplate: 'https://www.google.com/maps/search/FULL_NAME_ENC{fullName}', validator: 'getAndValidateName' },
+    'names-google-search': { urlTemplate: 'https://www.google.com/search?q="{fullName}"', validator: 'getAndValidateName' },
+    'names-idcrawl': { urlTemplate: 'https://www.idcrawl.com/{fullNameDash}', validator: 'getAndValidateName' },
+    'names-instagram-google': { urlTemplate: 'https://www.google.com/search?q=site%3Ainstagram.com+"{fullName}"', validator: 'getAndValidateName' },
+    'names-socialsearcher': { urlTemplate: 'https://www.social-searcher.com/search-users/?q6={fullName}', validator: 'getAndValidateName' },
+    'names-thatsthem-name': { urlTemplate: 'https://thatsthem.com/name/{fullNameDash}', validator: 'getAndValidateName' },
+    'names-twitter-direct': { urlTemplate: 'https://twitter.com/search?q=({fullName})&src=typed_query&f=user', validator: 'getAndValidateName' },
+    'names-twitter-google': { urlTemplate: 'https://www.google.com/search?q=site%3Atwitter.com+"{fullName}"', validator: 'getAndValidateName' },
+    'names-webmii': { urlTemplate: 'https://webmii.com/people?n={fullName}', validator: 'getAndValidateName' },
 
-    //
-    // --- INTERNATIONAL ADDRESSES ---
-    //
-    'intl-addr-fastpeople': { urlTemplate: 'https://www.fastpeoplesearch.com/address/-_{city-dash-country}', validator: 'getAndValidateIntl' },
-    'intl-addr-gisgraphy': { urlTemplate: 'https://services.gisgraphy.com/geocoding/geocode?address={full-plus-address}&format=json', validator: 'getAndValidateIntl' },
-    'intl-addr-google': { urlTemplate: 'https://www.google.com/search?q={full-plus-address}', validator: 'getAndValidateIntl' },
-    
-    //
-    // --- ITALY ADDRESSES ---
-    //
-    'it-addr-companies': { urlTemplate: 'https://www.paginebianche.it/aziende?qs={name}&dv={city}', validator: 'getAndValidateItCompanies' },
-    'it-addr-people': { urlTemplate: 'https://www.paginebianche.it/persone?qs={name}&dv={city}', validator: 'getAndValidateItPeople' },
-    'it-addr-yellow': { urlTemplate: 'https://www.paginegialle.it/ricerca/{activity}/{location}', validator: 'getAndValidateItYellow' },
+    // Sanctions & Legal Records
+    'names-asa': { urlTemplate: 'https://www.asa.org.uk/search.html?q={fullName}', validator: 'getAndValidateName' },
+    'names-occrp': { urlTemplate: 'https://aleph.occrp.org/search?limit=30&q={fullName}', validator: 'getAndValidateName' },
+    'names-ofac-recent': { urlTemplate: 'https://ofac.treasury.gov/recent-actions?search_api_fulltext={fullName}&ra-start-date=&ra-end-date=&ra_year=', validator: 'getAndValidateName' },
+    'names-opensanctions': { urlTemplate: 'https://www.opensanctions.org/search/?q={fullName}', validator: 'getAndValidateName' },
+    'names-udrp': { urlTemplate: 'https://www.udrpsearch.com/search?query={fullName}&search=parties', validator: 'getAndValidateName' },
+    'names-interpol': { urlTemplate: 'https://www.interpol.int/en/How-we-work/Notices/View-Red-Notices', no_input: true },
+    'names-ofac-search': { urlTemplate: 'https://sanctionssearch.ofac.treas.gov/', no_input: true },
 
-    //
-    // --- GENERIC INTERNATIONAL TOOLS ---
-    //
-    'intl-tool-googlesearch': { urlTemplate: 'https://www.google.com/search?q="{term}"', validator: 'getAndValidateIntlTools' },
-    'intl-tool-occrp': { urlTemplate: 'https://aleph.occrp.org/search?limit=30&q={term}', validator: 'getAndValidateIntlTools' },
-    'intl-tool-riskiq': { urlTemplate: 'https://community.riskiq.com/search/whois/address?query={term}', validator: 'getAndValidateIntlTools' },
-    'intl-tool-192': { urlTemplate: 'https://www.192.com/places/search/', no_input: true },
-    'intl-tool-canada411': { urlTemplate: 'https://www.canada411.ca/search/address.html', no_input: true }
-    // ... Aggiungi gli altri tool qui ...
+    // Corporate & Technical Footprints
+    'names-censys-cert': { urlTemplate: 'https://search.censys.io/search?resource=certificates&sort=RELEVANCE&per_page=25&virtual_hosts=EXCLUDE&q={fullName}', validator: 'getAndValidateName' },
+    'names-crunchbase': { urlTemplate: 'https://www.crunchbase.com/discover/people/{fullNameDashLower}', validator: 'getAndValidateName' },
+    'names-domaintools-whois': { urlTemplate: 'https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B"whois","2","{fullName}"%5D%5D%5D&historical=1', validator: 'getAndValidateName' },
+    'names-opencorporates': { urlTemplate: 'https://opencorporates.com/officers?q={fullName}', validator: 'getAndValidateName' },
+    'names-riskiq': { urlTemplate: 'https://community.riskiq.com/search/trackers?query={fullName}', validator: 'getAndValidateName' },
+
+    // National Registers
+    'names-canada411': { urlTemplate: 'https://www.canada411.ca/search/address.html', no_input: true },
+    'names-zaubacorp': { urlTemplate: 'https://www.zaubacorp.com/directorsearchresults/{fullName}', validator: 'getAndValidateName' },
+    'names-paginebianche': { urlTemplate: 'https://www.paginebianche.it/persone?qs={fullNameDash}', validator: 'getAndValidateName' },
+    'names-paginegialle': { urlTemplate: 'https://www.paginegialle.it/ricerca/{fullNameDash}', validator: 'getAndValidateName' },
+    'names-checkoru': { urlTemplate: 'https://checko.ru/search?query={fullName}', validator: 'getAndValidateName' },
+    'names-rusfinder': { urlTemplate: 'https://rusfinder.pro/search/', no_input: true },
+    'names-ukphonebook-name': { urlTemplate: 'https://www.ukphonebook.com/find-a-person/by-fullname/{fullName}', validator: 'getAndValidateName' },
+    'names-ukphonebook-resi': { urlTemplate: 'https://www.ukphonebook.com/residential-telephone-directory/', no_input: true },
+
+    // UNITED STATES
+    'names-us-addresses': { urlTemplate: 'https://www.addresses.com/people/{fullNameDash}', validator: 'getAndValidateName' },
+    'names-us-advbackground': { urlTemplate: 'https://www.advancedbackgroundchecks.com/names/{firstName}-{lastName}', validator: 'getAndValidateName' },
+    'names-us-classmates': { urlTemplate: 'https://www.classmates.com/siteui/ybsearch/results?q={fullName}', validator: 'getAndValidateName' },
+    'names-us-cyberbackground': { urlTemplate: 'https://www.cyberbackgroundchecks.com/people/{firstName}-{lastName}', validator: 'getAndValidateName' },
+    'names-us-familytreenow': { urlTemplate: 'https://www.familytreenow.com/search/genealogy/results?first={firstName}&last={lastName}', validator: 'getAndValidateName' },
+    'names-us-fastpeople': { urlTemplate: 'https://www.fastpeoplesearch.com/name/{firstName}-{lastName}', validator: 'getAndValidateName' },
+    'names-us-idcrawl-us': { urlTemplate: 'https://www.idcrawl.com/{firstName}-{lastName}', validator: 'getAndValidateName' },
+    'names-us-intelius': { urlTemplate: 'https://www.intelius.com/people-search/{firstName}-{lastName}', validator: 'getAndValidateName' },
+    'names-us-nuwber': { urlTemplate: 'https://nuwber.com/search?name={fullName}', validator: 'getAndValidateName' },
+    'names-us-peoplebyname': { urlTemplate: 'https://www.peoplebyname.com/people/{lastName_RAW}/{firstName_RAW}', validator: 'getAndValidateName' },
+    'names-us-peoplesearchnow': { urlTemplate: 'https://www.peoplesearchnow.com/person/{firstName}-{lastName}', validator: 'getAndValidateName' },
+    'names-us-radaris': { urlTemplate: 'https://radaris.com/p/{firstName_RAW}/{lastName_RAW}', validator: 'getAndValidateName' },
+    'names-us-rocketreach': { urlTemplate: 'https://google.com/search?q=site:rocketreach.co+"{fullName}"', validator: 'getAndValidateName' },
+    'names-us-searchpeoplefree': { urlTemplate: 'https://www.searchpeoplefree.com/find/{firstName}-{lastName}', validator: 'getAndValidateName' },
+    'names-us-searchsystems': { urlTemplate: 'https://publicrecords.searchsystems.net/', no_input: true },
+    'names-us-spokeo': { urlTemplate: 'https://www.spokeo.com/{firstName}-{lastName}?loaded=1', validator: 'getAndValidateName' },
+    'names-us-thatsthem': { urlTemplate: 'https://thatsthem.com/name/{fullNameDash}', validator: 'getAndValidateName' },
+    'names-us-truepeople': { urlTemplate: 'https://www.truepeoplesearch.com/results?name={fullName}', validator: 'getAndValidateName' },
+    'names-us-truthfinder': { urlTemplate: 'https://www.truthfinder.com/results/?firstName={firstName}&lastName={lastName}&state=ALL', validator: 'getAndValidateName' },
+    'names-us-usaofficial': { urlTemplate: 'https://usa-official.com/{firstName}-{lastName}', validator: 'getAndValidateName' },
+    'names-us-whitepages': { urlTemplate: 'https://www.whitepages.com/name/{fullNameDash}', validator: 'getAndValidateName' },
+    'names-us-yasni': { urlTemplate: 'https://www.yasni.com/{fullName}/check+people?sh', validator: 'getAndValidateName' },
+    'names-us-zabasearch': { urlTemplate: 'https://www.zabasearch.com/people/{fullName}', validator: 'getAndValidateName' }
 };
