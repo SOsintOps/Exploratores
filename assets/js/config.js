@@ -7,7 +7,7 @@
 const exploratoresConfig = {
 
   // Set to 'true' to enable the light version and hide the elements listed below.
-  lightVersionEnabled: true, 
+  lightVersionEnabled: false, 
 
   // This is the list of elements to hide.
   // Use CSS selectors to identify them.
