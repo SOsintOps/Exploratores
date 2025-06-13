@@ -6,317 +6,157 @@
   <title>Customise Page • Exploratores</title>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
 <body>
 
 <nav>
   <ul class="menu">
-    <li><span>HOME</span>
-      <ul class="submenu">
-        <li><a href="../launchme.html">Index</a></li>
-      </ul>
-    </li>
-    <li><span>Search<br>Engines</span>
-      <ul class="submenu">
-        <li><a href="Searchengines.html">Search Engines</a></li>
-      </ul>
-    </li>
-    <li><span>People &<br>Identities</span>
-      <ul class="submenu">
-        <li><a href="Names.html">Names</a></li>
-        <li><a href="phoneus.html">US Phones</a></li>
-        <li><a href="phoneint.html">International Phones</a></li>
-        <li><a href="Address.html">Addresses</a></li>
-        <li><a href="vehicles.html">Vehicles</a></li>
-        <li><a href="usernames.html">Usernames</a></li>
-        <li><a href="Email.html">Email Addresses</a></li>
-        <li><a href="Communities.html">Communities</a></li>
-      </ul>
-    </li>
-    <li><span>Social<br>Media</span>
-      <ul class="submenu">
-        <li><a href="X.html">X</a></li>
-        <li><a href="facebook.html">Facebook</a></li>
-        <li><a href="instagram.html">Instagram</a></li>
-        <li><a href="linkedin.html">LinkedIn</a></li>
-      </ul>
-    </li>
-    <li><span>Websites</span>
-      <ul class="submenu">
-        <li><a href="Domains.html">Domains</a></li>
-        <li><a href="IP.html">IP Addresses</a></li>
-      </ul>
-    </li>
-    <li><span>GeoInt</span>
-      <ul class="submenu">
-        <li><a href="Maps.html">Maps</a></li>
-      </ul>
-    </li>
-    <li><span>Media<br>Analysis</span>
-      <ul class="submenu">
-        <li><a href="Images.html">Images</a></li>
-        <li><a href="Videos.html">Videos</a></li>
-        <li><a href="docs.html">Documents</a></li>
-      </ul>
-    </li>
-    <li><span>Business<br>Intelligence</span>
-      <ul class="submenu">
-        <li><a href="PublicCompanyRecords.html">Company Public Records</a></li>
-        <li><a href="Currencies.html">Virtual Currencies</a></li>
-      </ul>
-    </li>
-    <li><span>Tools</span>
-      <ul class="submenu">
-        <li><a href="Guidelines.html">Guidelines</a></li>  
-        <li><a href="CyberChef.html">CyberChef</a></li>
-        <li><a href="Customise.html" class="active">Customise Page</a></li>
-      </ul>
-    </li>
+    <li><span>HOME</span><ul class="submenu"><li><a href="../launchme.html">Index</a></li></ul></li>
+    <li><span>Search<br>Engines</span><ul class="submenu"><li><a href="Searchengines.html">Search Engines</a></li></ul></li>
+    <li><span>People &<br>Identities</span><ul class="submenu"><li><a href="Names.html">Names</a></li><li><a href="phoneus.html">US Phones</a></li><li><a href="phoneint.html">International Phones</a></li><li><a href="Address.html">Addresses</a></li><li><a href="vehicles.html">Vehicles</a></li><li><a href="usernames.html">Usernames</a></li><li><a href="Email.html">Email Addresses</a></li><li><a href="Communities.html">Communities</a></li></ul></li>
+    <li><span>Social<br>Media</span><ul class="submenu"><li><a href="X.html">X</a></li><li><a href="facebook.html">Facebook</a></li><li><a href="instagram.html">Instagram</a></li><li><a href="linkedin.html">LinkedIn</a></li></ul></li>
+    <li><span>Websites</span><ul class="submenu"><li><a href="Domains.html">Domains</a></li><li><a href="IP.html">IP Addresses</a></li></ul></li>
+    <li><span>GeoInt</span><ul class="submenu"><li><a href="Maps.html">Maps</a></li></ul></li>
+    <li><span>Media<br>Analysis</span><ul class="submenu"><li><a href="Images.html">Images</a></li><li><a href="Videos.html">Videos</a></li><li><a href="docs.html">Documents</a></li></ul></li>
+    <li><span>Business<br>Intelligence</span><ul class="submenu"><li><a href="PublicCompanyRecords.html">Company Public Records</a></li><li><a href="Currencies.html">Virtual Currencies</a></li></ul></li>
+    <li><span>Tools</span><ul class="submenu"><li><a href="Guidelines.html">Guidelines</a></li><li><a href="CyberChef.html">CyberChef</a></li><li><a href="Customise.html" class="active">Customise Page</a></li></ul></li>
   </ul>
 </nav>
     
 <main>
   <h1 class="page-title">Customising Exploratores Pages</h1>
 
-  <section>
-    <h2>Page Structure Overview</h2>
-    <p>Exploratores OSINT Toolkit pages follow a consistent HTML structure to ensure maintainability and a uniform user experience. All styling is handled by an external CSS file linked in the <code>&lt;head&gt;</code>.</p>
+  <section id="section-project-structure">
+    <h2>Project Structure and Standards</h2>
+    <p>This section outlines the fundamental organization of the toolkit's files and pages, ensuring consistency and maintainability.</p>
     
-    <h3>Key HTML Components:</h3>
+    <h3>Directory Structure</h3>
+    <p>The project is organized into a simple and clear directory structure to separate content from assets.</p>
+    <pre class="code-guide-block"><code>Exploratores/
+├── assets/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   ├── main.js
+│   │   ├── search-library.js
+│   │   └── config.js
+│   └── images/
+│       └── roman-helmet.ico
+├── pages/
+│   ├── Names.html
+│   ├── Searchengines.html
+│   └── ... (all other tool pages)
+└── launchme.html</code></pre>
     <ul>
-      <li><strong><code>&lt;!DOCTYPE html&gt;</code> and <code>&lt;html lang="en"&gt;</code></strong>: Standard document declaration.</li>
-      <li><strong><code>&lt;head&gt;</code></strong>: Contains:
-        <ul>
-          <li><code>&lt;meta charset="UTF-8" /&gt;</code></li>
-          <li><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&gt;</code></li>
-          <li><code>&lt;title&gt;Page Name • Exploratores&lt;/title&gt;</code> (Replace "Page Name" accordingly).</li>
-          <li>Link to Google Fonts (IBM Plex Sans).</li>
-          <li>Link to the external stylesheet: <code>&lt;link rel="stylesheet" href="../assets/css/style.css"&gt;</code> (path may vary based on page location).</li>
-        </ul>
-      </li>
-      <li><strong><code>&lt;body&gt;</code></strong>: Contains the visible page content, structured into:
-        <ul>
-          <li><code>&lt;nav&gt;...&lt;/nav&gt;</code>: The main navigation bar.</li>
-          <li><code>&lt;main&gt;...&lt;/main&gt;</code>: The primary content of the page.</li>
-          <li><code>&lt;footer&gt;...&lt;/footer&gt;</code>: The page footer.</li>
-          <li><code>&lt;script&gt;...&lt;/script&gt;</code>: A single block for JavaScript before the closing <code>&lt;/body&gt;</code> tag.</li>
-        </ul>
-      </li>
+      <li><strong><code>assets/</code></strong>: Contains all shared resources. This includes the single CSS file, all centralized JavaScript files, and all images like the favicon.</li>
+      <li><strong><code>pages/</code></strong>: Contains all the individual HTML files that make up the toolkit's tools and content pages.</li>
+      <li><strong><code>launchme.html</code></strong>: The main entry point or index page of the toolkit, located at the project root.</li>
     </ul>
 
-    <h3>Navbar (<code>&lt;nav&gt;</code>) Structure:</h3>
-    <p>The navigation bar uses a specific nested list structure:</p>
-    <pre class="code-guide-block"><code>&lt;ul class="menu"&gt;
-  &lt;li&gt;
-    &lt;span&gt;MENU TITLE&lt;/span&gt; 
-    &lt;!-- or &lt;a href="..."&gt;MENU TITLE&lt;/a&gt; if it's a direct link --&gt;
-    &lt;ul class="submenu"&gt;
-      &lt;li&gt;&lt;a href="page.html"&gt;Submenu Item&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="currentpage.html" class="active"&gt;Active Submenu Item&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;!-- More LIs for other menu items --&gt;
-&lt;/ul&gt;</code></pre>
-    <p>The <code>class="active"</code> should be on the <code>&lt;a&gt;</code> tag of the current page.</p>
-
-    <h3>Main Content (<code>&lt;main&gt;</code>) Structure:</h3>
-    <p>The <code>&lt;main&gt;</code> section typically starts with:</p>
-    <ul>
-      <li><code>&lt;h1 class="page-title"&gt;Page Title&lt;/h1&gt;</code></li>
-    </ul>
-    <p>It then uses various semantic elements and global CSS classes for layout and styling, such as:</p>
-    <ul>
-      <li><code>&lt;div class="columns"&gt;</code> and <code>&lt;div class="column"&gt;</code>: For creating multi-column layouts.</li>
-      <li><code>&lt;section class="search-instructions"&gt;</code>: Wraps primary input areas. Often contains a <code>&lt;label&gt;</code>, input fields, and sometimes a <code>&lt;div class="note"&gt;</code>.</li>
-      <li><code>&lt;div class="input-container"&gt;</code>: Groups one or more input fields.</li>
-      <li><code>&lt;div class="input-button-line"&gt;</code>: For aligning a single input field and a button on the same line.</li>
-      <li><code>&lt;input type="text" class="input-field"&gt;</code>: Standard text input.</li>
-      <li><code>&lt;div class="button-grid"&gt;</code>: For creating responsive grids of buttons. Specific column counts can be forced (e.g., <code>button-grid-3col</code>).</li>
-      <li><code>&lt;button type="button" class="button"&gt;Button Text&lt;/button&gt;</code>: Standard button.</li>
-      <li><code>&lt;div class="note"&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Text...&lt;/div&gt;</code>: For advisory notes.</li>
-      <li>Category titles within <code>&lt;main&gt;</code> usually use <code>&lt;h2&gt;</code>.</li>
-    </ul>
-
-    <h3>Footer (<code>&lt;footer&gt;</code>) Structure:</h3>
-    <p>The footer has a standard text format:</p>
-    <pre class="code-guide-block"><code>&lt;footer&gt;
-  &lt;p&gt;Global Security Italy • Rome (IT) &lt;a href="path/to/license.html"&gt;License&lt;/a&gt;&lt;/p&gt;
-&lt;/footer&gt;</code></pre>
-    <p>Adapt the path to <code>license.html</code> as needed.</p>
-
-    <h3>JavaScript:</h3>
-    <p>All custom JavaScript for the page, including event handlers and helper functions, resides in a single <code>&lt;script&gt;</code> block placed just before the closing <code>&lt;/body&gt;</code> tag. This includes the standard navbar submenu script.</p>
-  </section>
-
-  <hr>
-
-  <section>
-    <h2>Adding a New Input Field</h2>
-    <p>To add a new input field to a page, follow these steps:</p>
+    <h3>Standard Page Organization</h3>
+    <p>Every HTML page in the <code>pages/</code> directory must follow a standard block structure to maintain consistency and ensure all scripts function correctly.</p>
     <ol>
-      <li>
-        <strong>Locate the Target Area:</strong> Decide where the new input field should appear. This is often within an existing <code>&lt;section class="search-instructions"&gt;</code> or a new one if it's for a distinct tool. You might also place it within a <code>&lt;div class="column"&gt;</code> if using a columnar layout.
-      </li>
-      <li>
-        <strong>Add HTML for the Input Field:</strong>
-        <p>Use a structure similar to this, adapting as necessary:</p>
-        <pre class="code-guide-block"><code>&lt;!-- Example within a search-instructions section --&gt;
-&lt;section class="search-instructions"&gt;
-  &lt;label for="newInputId"&gt;Your New Input Label:&lt;/label&gt;
-  &lt;div class="input-container"&gt;
-    &lt;input type="text" id="newInputId" class="input-field" placeholder="Enter data here"&gt;
-  &lt;/div&gt;
-  &lt;!-- Optionally, add a note related to this input --&gt;
-  &lt;div class="note"&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Specific instructions for this input.&lt;/div&gt;
-&lt;/section&gt;</code></pre>
-        <ul>
-          <li>Ensure the <code>&lt;label&gt;</code>'s <code>for</code> attribute matches the <code>&lt;input&gt;</code>'s <code>id</code> attribute.</li>
-          <li>Use a **unique <code>id</code>** for your new input field. This ID will be used by JavaScript to retrieve its value.</li>
-          <li>Use the class <code>input-field</code> for consistent styling.</li>
-        </ul>
-      </li>
-      <li>
-        <strong>Consider Grouping:</strong> If the input field is part of a line with a button, use <code>&lt;div class="input-button-line"&gt;</code> to group them.
-        <pre class="code-guide-block"><code>&lt;div class="input-button-line"&gt;
-  &lt;label for="newInputWithButton" class="sr-only"&gt;Input:&lt;/label&gt; &lt;!-- Screen-reader only label if context is clear --&gt;
-  &lt;input type="text" id="newInputWithButton" class="input-field" placeholder="Enter data"&gt;
-  &lt;button type="button" class="button" onclick="PageName_ProcessNewInput()"&gt;Process&lt;/button&gt;
-&lt;/div&gt;</code></pre>
-      </li>
+      <li><strong><code>&lt;head&gt;</code></strong>: The head section must contain all standard metadata, including charset, viewport, a descriptive title, and links to the Google Fonts file, the main `style.css` file, and the site's favicon.</li>
+      <li><strong><code>&lt;nav&gt;</code></strong>: The main navigation bar, which must be identical across all pages. The only difference should be the presence of the <code>class="active"</code> on the link corresponding to the current page.</li>
+      <li><strong><code>&lt;main&gt;</code></strong>: This tag contains the primary, unique content for the page. All forms, inputs, buttons, and text specific to the page's function reside here.</li>
+      <li><strong><code>&lt;footer&gt;</code></strong>: The standard site footer, which should also be identical across all pages.</li>
+      <li><strong><code>&lt;script&gt;</code> includes</strong>: At the very end of the body, before the closing <code>&lt;/body&gt;</code> tag, links to the centralized JavaScript files are placed. This is followed by an optional page-specific script block if the page has interactive elements.</li>
     </ol>
+    
+    <h3>Centralized CSS File: `style.css`</h3>
+    <p>All visual styling for the entire toolkit is controlled by the single file located at <strong><code>assets/css/style.css</code></strong>. This approach ensures a consistent look and feel, and makes site-wide visual changes (like modifying the color theme) easy to implement by editing just one file. No inline <code>style="..."</code> attributes or page-specific <code>&lt;style&gt;</code> blocks should be used. The file is organized with clear comment blocks (e.g., `/* NAVBAR */`, `/* BUTTONS */`) and uses CSS variables (defined in <code>:root</code>) for theming.</p>
   </section>
-  
-  <hr>
 
-  <section>
-    <h2>Adding a New Function with a Button</h2>
-    <p>To add a new tool or functionality triggered by a button:</p>
+  <section id="section-js-architecture">
+    <h2>JavaScript Architecture in Detail</h2>
+    <p>The toolkit's logic is primarily handled by two centralized JavaScript files, which work together with a small, page-specific script.</p>
+    <h4>1. `assets/js/search-library.js` (The "Catalog")</h4>
+    <p>This file's only purpose is to act as a central database of search configurations. It contains a single large object, <code>SearchLibrary</code>, which maps a search ID to a "recipe" for how to perform that search. It contains the <strong>"what"</strong> of a search, not the "how".</p>
+    <p><strong>Anatomy of a Configuration Entry:</strong></p>
+    <pre class="code-guide-block"><code>'names-us-radaris': { 
+  urlTemplate: 'https://radaris.com/p/{firstName_RAW}/{lastName_RAW}',
+  validator: 'getAndValidateName' 
+},
+'names-interpol': {
+  urlTemplate: 'https://www.interpol.int/en/How-we-work/Notices/View-Red-Notices',
+  no_input: true
+}</code></pre>
+    <ul>
+      <li><strong>Key</strong> (e.g., <code>'names-us-radaris'</code>): A unique string that must match the <code>data-search-id</code> on a button in the HTML.</li>
+      <li><code>urlTemplate</code>: The destination URL. Values in curly braces <code>{...}</code> are placeholders that will be replaced with user input. The suffix <code>_RAW</code> (e.g., <code>{firstName_RAW}</code>) is a special flag that tells the engine *not* to URL-encode the value.</li>
+      <li><code>validator</code>: The name (as a string) of the validation function that must exist on the specific HTML page. This function is responsible for gathering and validating the inputs for this search.</li>
+      <li><code>no_input</code>: An optional property. If set to <code>true</code>, the button will be active immediately and will simply open the <code>urlTemplate</code> link without requiring any user input.</li>
+    </ul>
+    <h4>2. `assets/js/main.js` (The "Engine")</h4>
+    <p>This file contains the core, reusable logic that powers every page. It initializes common features and handles all search events. It contains the <strong>"how"</strong> of the application.</p>
+    <p><strong>Key Functions within the <code>Exploratores</code> object:</strong></p>
+    <ul>
+      <li><code>init()</code>: The main entry point called when a page loads. It orchestrates the other initialization functions.</li>
+      <li><code>initNavbar()</code>: Attaches the necessary event listeners to the main navigation menu to handle the dropdown hover effect.</li>
+      <li><code>initLightMode()</code>: Reads the <code>config.js</code> file and applies the <code>.hidden-in-light</code> class to any elements listed in the <code>selectorsToHide</code> array.</li>
+      <li><code>initSearchHandler()</code>: This is the most important function. It attaches a single click listener to the page and performs a series of steps to handle search button clicks based on the data-driven architecture.</li>
+    </ul>
+  </section>
+
+  <section id="section-add-button-guide">
+    <h2>Adding a New Search Button</h2>
+    <p>To add a new search tool to an existing page, you must modify the search library and add the button to the HTML, without writing a new JavaScript function for each button.</p>
     <ol>
       <li>
-        <strong>Add the HTML Button:</strong>
-        <ul>
-          <li>Place the button in an appropriate location, often within a <code>&lt;div class="button-grid"&gt;</code> for a collection of tools, or a <code>&lt;div class="input-button-line"&gt;</code> if it's paired with an input.</li>
-          <li>Use the standard button markup:
-            <pre class="code-guide-block"><code>&lt;button type="button" class="button" onclick="PageName_YourNewFunction()"&gt;New Tool Button&lt;/button&gt;</code></pre>
-          </li>
-          <li>Replace <code>PageName_YourNewFunction</code> with the actual name of your JavaScript function, following the <code>PageName_ActionDescription</code> convention.</li>
-          <li>Replace "New Tool Button" with the desired button text.</li>
-          <li>Ensure buttons within a <code>button-grid</code> are alphabetized by their label if it makes sense for the group.</li>
-        </ul>
+        <strong>Step 1: Add a Configuration to `search-library.js`</strong>
+        <p>Open the file <code>assets/js/search-library.js</code> and add a new entry to the <code>SearchLibrary</code> object. This entry is the "recipe" for your search, defining its unique ID, its target URL with placeholders, and the name of the function that will validate its input.</p>
       </li>
       <li>
-        <strong>Write the JavaScript Function:</strong>
-        <ul>
-          <li>Add your new JavaScript function within the single <code>&lt;script&gt;</code> block at the end of the page.</li>
-          <li>Follow this general structure:
-            <pre class="code-guide-block"><code>function PageName_YourNewFunction() {
-  // 1. Get and validate input value(s)
-  // Example: using a helper function (you might need to create or adapt one)
-  const inputValue = PageName_GetAndValidateInput('yourInputId', 'descriptive name for alert');
-  
-  // If validation fails (e.g., input is empty), the helper might return null or an alert might be shown.
-  if (!inputValue) {
-    return; // Stop execution if input is not valid
-  }
-
-  // 2. (Optional) Process the input value if needed
-  // const processedValue = inputValue.toLowerCase(); // Example processing
-
-  // 3. Construct the target URL
-  const baseUrl = "https://targetservice.com/search?query=";
-  // Always URI encode parameters taken from user input
-  const targetUrl = baseUrl + encodeURIComponent(inputValue); 
-
-  // 4. Open the URL in a new tab
-  window.open(targetUrl, '_blank');
-}</code></pre>
-          </li>
-          <li>**Key JavaScript Practices:**
-            <ul>
-              <li>**Function Naming:** Use the <code>PageName_ActionDescription</code> convention (e.g., <code>Domains_SearchWhois</code>, <code>Usernames_CheckAvailability</code>).</li>
-              <li>**Input Retrieval:** Use <code>document.getElementById('yourInputId').value</code> to get input values.
-              <li>**Input Trimming:** Always use <code>.trim()</code> on input values to remove leading/trailing whitespace: <code>value.trim()</code>.</li>
-              <li>**Input Validation:** Check if essential input fields are empty. Provide an <code>alert()</code> to the user if input is missing. Consider creating a helper function for this, for example:
-                <pre class="code-guide-block"><code>function PageName_GetAndValidateInput(inputId, fieldDescriptionForAlert) {
-  const inputElement = document.getElementById(inputId);
-  if (!inputElement) {
-    // This should not happen if IDs are correct
-    alert("Error: Input field '" + inputId + "' not found.");
-    return null;
-  }
-  const value = inputElement.value.trim();
-  if (!value) {
-    alert("Please enter " + fieldDescriptionForAlert + ".");
-    return null;
-  }
-  return value;
-}</code></pre>
-              </li>
-              <li>**URL Encoding:** Always use <code>encodeURIComponent()</code> for any user-provided values that are inserted into URL query parameters or path segments to prevent errors or security issues.</li>
-              <li>**Opening Links:** Use <code>window.open(url, '_blank')</code> to open links in a new browser tab.</li>
-            </ul>
-          </li>
-        </ul>
+        <strong>Step 2: Add the Button to the HTML Page</strong>
+        <p>In your HTML page, place the button in a <code>.button-grid</code>. The button must have a unique `id` attribute (for the hide/show system) and a `data-search-id` attribute that exactly matches the key you created in `search-library.js`.</p>
       </li>
       <li>
-        <strong>Test Thoroughly:</strong> After adding the HTML and JavaScript, test the new functionality with various inputs, including empty and special characters, to ensure it works as expected.
+        <strong>Step 3: Ensure a Validator Function Exists</strong>
+        <p>In the page-specific script at the bottom of the HTML file, ensure the validation function named in the library exists. This function is responsible for reading the values from the page's input fields, checking if they are valid, and returning an object of parts for the URL template.</p>
       </li>
     </ol>
   </section>
 
+  <section id="section-new-page">
+    <h2>Creating a New Tool Page from Scratch</h2>
+    <p>This guide outlines the complete process for building a new, fully functional tool page that integrates correctly with the project's architecture.</p>
+    <ol>
+      <li>
+        <strong>Step 1: Create the HTML File</strong>
+        <p>The easiest method is to duplicate an existing tool page (e.g., `Names.html`) in the <code>pages/</code> directory and rename it. This ensures the new file already contains the correct document structure, head content, nav, footer, and script includes. Immediately open the new file and update the <code>&lt;title&gt;</code> tag and the main <code>&lt;h1&gt;</code> to reflect the new page's purpose.</p>
+      </li>
+      <li>
+        <strong>Step 2: Define the Page's HTML Structure</strong>
+        <p>Inside the <code>&lt;main&gt;</code> tag, remove the old content and build the new interface. Use the project's standard CSS classes (<code>.columns</code>, <code>.search-instructions</code>, <code>.button-grid</code>) to maintain visual consistency. Assign a unique <code>id</code> to every input field, button, section, or column that may need to be configured by the `hidden-in-light` system. All buttons must have a `data-search-id` attribute.</p>
+      </li>
+      <li>
+        <strong>Step 3: Add New Configurations to `search-library.js`</strong>
+        <p>For each new search button you added in the HTML, create a corresponding entry in the `SearchLibrary` object within `assets/js/search-library.js`. Define its `urlTemplate` and specify the name of the validation function that will be used on this new page (e.g., <code>validator: 'getAndValidateNewPageInput'</code>).</p>
+      </li>
+      <li>
+        <strong>Step 4: Write the Page-Specific JavaScript</strong>
+        <p>At the bottom of your new HTML file, write the necessary page-specific script. This must include: the validation function(s) you named in the library, the `updatePageState` function to manage live feedback and button states, and the `setInitialPageState` function to ensure the page loads correctly. Finally, add the `DOMContentLoaded` listener to wire up the events for your page's inputs.</p>
+      </li>
+      <li>
+        <strong>Step 5: Update the Navigation Bar</strong>
+        <p>This is a critical manual step. You must edit **every other existing HTML file** to add the link to your new page in the appropriate `&lt;nav&gt;` submenu. Forgetting this step will make your new page an "orphan" that cannot be reached from the rest of the toolkit.</p>
+      </li>
+      <li>
+        <strong>Step 6: Test Thoroughly</strong>
+        <p>Open your new page in a browser. Open the Developer Console (F12) and check for any errors. Test the input validation, ensure buttons enable and disable correctly, and verify that each button click opens the correct, fully-formed URL in a new tab.</p>
+      </li>
+    </ol>
+  </section>
 </main>
 
 <footer>
-  <p>Global Security Italy • Rome (IT) <a href="license.html">License</a></p>
+  <p>Prototype Closed Beta <a href="../license.html">License</a></p>
 </footer>
 
-<script>
-  // Standard Navbar script
-  document.querySelectorAll('.menu > li').forEach(item => {
-    item.addEventListener('mouseover', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'block';
-    });
-    item.addEventListener('mouseout', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'none';
-    });
-  });
-
-  // Example Helper Function (as described in the text above)
-  /*
-  function PageName_GetAndValidateInput(inputId, fieldDescriptionForAlert) {
-    const inputElement = document.getElementById(inputId);
-    if (!inputElement) {
-      // This should not happen if IDs are correct
-      alert("Error: Input field '" + inputId + "' not found.");
-      return null;
-    }
-    const value = inputElement.value.trim();
-    if (!value) {
-      alert("Please enter " + fieldDescriptionForAlert + ".");
-      return null;
-    }
-    return value;
-  }
-  */
-</script>
-
 <script src="../assets/js/config.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
-      exploratoresConfig.selectorsToHide.forEach(selector => {
-        try {
-          const elements = document.querySelectorAll(selector);
-          elements.forEach(el => el.classList.add('hidden-in-light'));
-        } catch (e) {
-          console.error("Invalid selector in config.js:", selector);
-        }
-      });
-    }
-  });
-</script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/search-library.js"></script>
 
 </body>
 </html>

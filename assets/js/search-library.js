@@ -97,5 +97,102 @@ const SearchLibrary = {
     'names-us-usaofficial': { urlTemplate: 'https://usa-official.com/{firstName}-{lastName}', validator: 'getAndValidateName' },
     'names-us-whitepages': { urlTemplate: 'https://www.whitepages.com/name/{fullNameDash}', validator: 'getAndValidateName' },
     'names-us-yasni': { urlTemplate: 'https://www.yasni.com/{fullName}/check+people?sh', validator: 'getAndValidateName' },
-    'names-us-zabasearch': { urlTemplate: 'https://www.zabasearch.com/people/{fullName}', validator: 'getAndValidateName' }
+    'names-us-zabasearch': { urlTemplate: 'https://www.zabasearch.com/people/{fullName}', validator: 'getAndValidateName' },
+
+    //
+    // --- Entries for Address Page ---
+    //
+    // US Addresses
+    'address-us-addressescom': {
+        urlTemplate: 'https://www.addresses.com/addr/{usNum}+{usStreet}/{usCity}+{usState}/',
+        validator: 'getAndValidateUsAddress'
+    },
+    'address-us-advbackground': {
+        urlTemplate: 'https://www.advancedbackgroundchecks.com/address/{usNum}-{usStreet}_{usCity}-{usState}-{usZip}',
+        validator: 'getAndValidateUsAddress'
+    },
+    'address-us-cyberbackground': {
+        urlTemplate: 'https://www.cyberbackgroundchecks.com/address/{usNum}-{usStreet}/{usCity}/{usState}',
+        validator: 'getAndValidateUsAddress'
+    },
+    'address-us-fastpeople': {
+        urlTemplate: 'https://www.fastpeoplesearch.com/address/{usNum}-{usStreet}_{usCity}-{usState}-{usZip}',
+        validator: 'getAndValidateUsAddress'
+    },
+    'address-us-gisgraphy': {
+        urlTemplate: 'https://services.gisgraphy.com/geocoding/geocode?address={usNum}+{usStreet}+{usCity}+{usState}+{usZip}&format=json',
+        validator: 'getAndValidateUsAddress'
+    },
+    'address-us-google': {
+        urlTemplate: 'https://www.google.com/search?q={usNum}+{usStreet}+{usCity}+{usState}+{usZip}',
+        validator: 'getAndValidateUsAddress'
+    },
+    'address-us-hudway': {
+        urlTemplate: 'https://hudwayglass.com/house/{usNum}+{usStreet},+{usCity}+{usState}',
+        validator: 'getAndValidateUsAddress'
+    },
+    'address-us-peoplefinders': {
+        urlTemplate: 'https://www.peoplefinders.com/people/search/address?address={usNum}%20{usStreet}&city={usCity}&state={usState}',
+        validator: 'getAndValidateUsAddress'
+    },
+    'address-us-rehold': {
+        urlTemplate: 'https://rehold.com/{usCity}+{usState}/{usStreet}/{usNum}',
+        validator: 'getAndValidateUsAddress'
+    },
+    'address-us-searchpeoplefree': {
+        urlTemplate: 'https://www.searchpeoplefree.com/address/{usState}/{usCity}/{usStreet}/{usNum}',
+        validator: 'getAndValidateUsAddress'
+    },
+    'address-us-smartbackground': {
+        urlTemplate: 'https://www.smartbackgroundchecks.com/address-search/{usNum}-{usStreet}/{usCity}/{usState}',
+        validator: 'getAndValidateUsAddress'
+    },
+    'address-us-spokeo': {
+        urlTemplate: 'https://www.spokeo.com/{usState}/{usCity}/{usNum}-{usStreet}',
+        validator: 'getAndValidateUsAddress'
+    },
+    'address-us-truepeople': {
+        urlTemplate: 'https://www.truepeoplesearch.com/resultaddress?streetaddress={usNum}%20{usStreet}&citystatezip={usCity}%20{usState}%20{usZip}',
+        validator: 'getAndValidateUsAddress'
+    },
+    'address-us-usapeople': {
+        urlTemplate: 'https://www.usa-people-search.com/address/{usNum}-{usStreet}/{usCity}-{usState}',
+        validator: 'getAndValidateUsAddress'
+    },
+    'address-us-whitepages': {
+        urlTemplate: 'https://www.whitepages.com/address/{usNum}-{usStreet}/{usCity}-{usState}',
+        validator: 'getAndValidateUsAddress'
+    },
+    'address-us-zillow': {
+        urlTemplate: 'https://www.zillow.com/homes/{usNum}-{usStreet}-{usCity}-{usState}-{usZip}_rb/',
+        validator: 'getAndValidateUsAddress'
+    },
+
+    // International Addresses
+    'address-intl-fastpeople': {
+        urlTemplate: 'https://www.fastpeoplesearch.com/address/{intlNum}-{intlStreet}_{intlCity}-{intlRegion}-{intlZip}',
+        validator: 'getAndValidateIntlAddress'
+    },
+    'address-intl-gisgraphy': {
+        urlTemplate: 'https://services.gisgraphy.com/geocoding/geocode?address={intlStreet}+{intlNum}+{intlZip}+{intlCity}+{intlRegion}&format=json',
+        validator: 'getAndValidateIntlAddress'
+    },
+    'address-intl-google': {
+        urlTemplate: 'https://www.google.com/search?q={intlStreet}+{intlNum}+{intlZip}+{intlCity}+{intlRegion}',
+        validator: 'getAndValidateIntlAddress'
+    },
+
+    // Italy Addresses
+    'address-it-paginebianche-companies': {
+        urlTemplate: 'https://www.paginebianche.it/aziende?qs={itCompany}&dv={itCity}%20({itProv})',
+        validator: 'getAndValidateItCompanies'
+    },
+    'address-it-paginebianche-people': {
+        urlTemplate: 'https://www.paginebianche.it/persone?qs={itFirst}%20{itLast}&dv={itCityP}%20({itProvP})',
+        validator: 'getAndValidateItPeople'
+    },
+    'address-it-paginegialle': {
+        urlTemplate: 'https://www.paginegialle.it/ricerca/{itAct}/{itLoc}',
+        validator: 'getAndValidateItYellow'
+    }
 };

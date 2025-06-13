@@ -55,7 +55,10 @@ pre.code-guide-block code {
 .feedback-info {
   color: #5cb85c; /* A standard green for success/info */
 }
-
+.feedback-message.ready {
+    color: #5cb85c; /* A standard green for success/info */
+    font-weight: bold;
+}
 /* TYPOGRAPHY */
 /* General heading styles */
 h1 {
@@ -552,6 +555,64 @@ footer a {
   .input-button-line .input-field {
     margin-bottom: 0.5rem; 
   }
+}
+
+/* --- Easter Egg: Matrix Mode --- */
+body.matrix-mode {
+  background-color: #000000;
+  color: #00FF41; /* Verde Matrix */
+}
+
+body.matrix-mode .page-title,
+body.matrix-mode h2,
+body.matrix-mode h3 {
+  color: #00FF41;
+}
+
+body.matrix-mode nav .menu > li > span,
+body.matrix-mode nav .menu > li > a {
+  color: #00FF41;
+}
+
+body.matrix-mode nav .submenu {
+  background-color: #050505;
+  border: 1px solid #00FF41;
+}
+
+body.matrix-mode .input-field {
+  background-color: #080808;
+  color: #00FF41;
+  border-color: #00FF41;
+}
+
+body.matrix-mode .input-field::placeholder {
+  color: #009F29;
+}
+
+body.matrix-mode .button {
+  background-color: transparent;
+  color: #00FF41;
+  border: 1px solid #00FF41;
+}
+
+body.matrix-mode .button:hover {
+  background-color: #00FF41;
+  color: #000000;
+}
+
+body.matrix-mode .button.text-active {
+  color: #8CFFAD; /* Verde più chiaro per il testo attivo */
+  font-weight: bold;
+}
+
+body.matrix-mode .note {
+  background-color: #0a0a0a;
+  border-left-color: #00FF41;
+}
+
+body.matrix-mode footer,
+body.matrix-mode footer a {
+  color: #00FF41;
 }
 
 /* --- Light Version Visibility ---
