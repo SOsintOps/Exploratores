@@ -34,7 +34,6 @@ const SearchLibrary = {
     //
     // --- NAMES ---
     //
-    // General & Social Presence
     'names-9jabook': { urlTemplate: 'https://9jabook.com/main/search/search?q={fullName}', validator: 'getAndValidateName' },
     'names-facebook-direct': { urlTemplate: 'https://www.facebook.com/search/top?q={fullName}', validator: 'getAndValidateName' },
     'names-facebook-google': { urlTemplate: 'https://www.google.com/search?q=site%3Afacebook.com+"{fullName}"', validator: 'getAndValidateName' },
@@ -47,8 +46,6 @@ const SearchLibrary = {
     'names-twitter-direct': { urlTemplate: 'https://twitter.com/search?q=({fullName})&src=typed_query&f=user', validator: 'getAndValidateName' },
     'names-twitter-google': { urlTemplate: 'https://www.google.com/search?q=site%3Atwitter.com+"{fullName}"', validator: 'getAndValidateName' },
     'names-webmii': { urlTemplate: 'https://webmii.com/people?n={fullName}', validator: 'getAndValidateName' },
-
-    // Sanctions & Legal Records
     'names-asa': { urlTemplate: 'https://www.asa.org.uk/search.html?q={fullName}', validator: 'getAndValidateName' },
     'names-occrp': { urlTemplate: 'https://aleph.occrp.org/search?limit=30&q={fullName}', validator: 'getAndValidateName' },
     'names-ofac-recent': { urlTemplate: 'https://ofac.treasury.gov/recent-actions?search_api_fulltext={fullName}&ra-start-date=&ra-end-date=&ra_year=', validator: 'getAndValidateName' },
@@ -56,15 +53,11 @@ const SearchLibrary = {
     'names-udrp': { urlTemplate: 'https://www.udrpsearch.com/search?query={fullName}&search=parties', validator: 'getAndValidateName' },
     'names-interpol': { urlTemplate: 'https://www.interpol.int/en/How-we-work/Notices/View-Red-Notices', no_input: true },
     'names-ofac-search': { urlTemplate: 'https://sanctionssearch.ofac.treas.gov/', no_input: true },
-
-    // Corporate & Technical Footprints
     'names-censys-cert': { urlTemplate: 'https://search.censys.io/search?resource=certificates&sort=RELEVANCE&per_page=25&virtual_hosts=EXCLUDE&q={fullName}', validator: 'getAndValidateName' },
     'names-crunchbase': { urlTemplate: 'https://www.crunchbase.com/discover/people/{fullNameDashLower}', validator: 'getAndValidateName' },
     'names-domaintools-whois': { urlTemplate: 'https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B"whois","2","{fullName}"%5D%5D%5D&historical=1', validator: 'getAndValidateName' },
     'names-opencorporates': { urlTemplate: 'https://opencorporates.com/officers?q={fullName}', validator: 'getAndValidateName' },
     'names-riskiq': { urlTemplate: 'https://community.riskiq.com/search/trackers?query={fullName}', validator: 'getAndValidateName' },
-
-    // National Registers
     'names-canada411': { urlTemplate: 'https://www.canada411.ca/search/address.html', no_input: true },
     'names-zaubacorp': { urlTemplate: 'https://www.zaubacorp.com/directorsearchresults/{fullName}', validator: 'getAndValidateName' },
     'names-paginebianche': { urlTemplate: 'https://www.paginebianche.it/persone?qs={fullNameDash}', validator: 'getAndValidateName' },
@@ -73,8 +66,6 @@ const SearchLibrary = {
     'names-rusfinder': { urlTemplate: 'https://rusfinder.pro/search/', no_input: true },
     'names-ukphonebook-name': { urlTemplate: 'https://www.ukphonebook.com/find-a-person/by-fullname/{fullName}', validator: 'getAndValidateName' },
     'names-ukphonebook-resi': { urlTemplate: 'https://www.ukphonebook.com/residential-telephone-directory/', no_input: true },
-
-    // UNITED STATES
     'names-us-addresses': { urlTemplate: 'https://www.addresses.com/people/{fullNameDash}', validator: 'getAndValidateName' },
     'names-us-advbackground': { urlTemplate: 'https://www.advancedbackgroundchecks.com/names/{firstName}-{lastName}', validator: 'getAndValidateName' },
     'names-us-classmates': { urlTemplate: 'https://www.classmates.com/siteui/ybsearch/results?q={fullName}', validator: 'getAndValidateName' },
@@ -102,97 +93,62 @@ const SearchLibrary = {
     //
     // --- Entries for Address Page ---
     //
-    // US Addresses
-    'address-us-addressescom': {
-        urlTemplate: 'https://www.addresses.com/addr/{usNum}+{usStreet}/{usCity}+{usState}/',
-        validator: 'getAndValidateUsAddress'
-    },
-    'address-us-advbackground': {
-        urlTemplate: 'https://www.advancedbackgroundchecks.com/address/{usNum}-{usStreet}_{usCity}-{usState}-{usZip}',
-        validator: 'getAndValidateUsAddress'
-    },
-    'address-us-cyberbackground': {
-        urlTemplate: 'https://www.cyberbackgroundchecks.com/address/{usNum}-{usStreet}/{usCity}/{usState}',
-        validator: 'getAndValidateUsAddress'
-    },
-    'address-us-fastpeople': {
-        urlTemplate: 'https://www.fastpeoplesearch.com/address/{usNum}-{usStreet}_{usCity}-{usState}-{usZip}',
-        validator: 'getAndValidateUsAddress'
-    },
-    'address-us-gisgraphy': {
-        urlTemplate: 'https://services.gisgraphy.com/geocoding/geocode?address={usNum}+{usStreet}+{usCity}+{usState}+{usZip}&format=json',
-        validator: 'getAndValidateUsAddress'
-    },
-    'address-us-google': {
-        urlTemplate: 'https://www.google.com/search?q={usNum}+{usStreet}+{usCity}+{usState}+{usZip}',
-        validator: 'getAndValidateUsAddress'
-    },
-    'address-us-hudway': {
-        urlTemplate: 'https://hudwayglass.com/house/{usNum}+{usStreet},+{usCity}+{usState}',
-        validator: 'getAndValidateUsAddress'
-    },
-    'address-us-peoplefinders': {
-        urlTemplate: 'https://www.peoplefinders.com/people/search/address?address={usNum}%20{usStreet}&city={usCity}&state={usState}',
-        validator: 'getAndValidateUsAddress'
-    },
-    'address-us-rehold': {
-        urlTemplate: 'https://rehold.com/{usCity}+{usState}/{usStreet}/{usNum}',
-        validator: 'getAndValidateUsAddress'
-    },
-    'address-us-searchpeoplefree': {
-        urlTemplate: 'https://www.searchpeoplefree.com/address/{usState}/{usCity}/{usStreet}/{usNum}',
-        validator: 'getAndValidateUsAddress'
-    },
-    'address-us-smartbackground': {
-        urlTemplate: 'https://www.smartbackgroundchecks.com/address-search/{usNum}-{usStreet}/{usCity}/{usState}',
-        validator: 'getAndValidateUsAddress'
-    },
-    'address-us-spokeo': {
-        urlTemplate: 'https://www.spokeo.com/{usState}/{usCity}/{usNum}-{usStreet}',
-        validator: 'getAndValidateUsAddress'
-    },
-    'address-us-truepeople': {
-        urlTemplate: 'https://www.truepeoplesearch.com/resultaddress?streetaddress={usNum}%20{usStreet}&citystatezip={usCity}%20{usState}%20{usZip}',
-        validator: 'getAndValidateUsAddress'
-    },
-    'address-us-usapeople': {
-        urlTemplate: 'https://www.usa-people-search.com/address/{usNum}-{usStreet}/{usCity}-{usState}',
-        validator: 'getAndValidateUsAddress'
-    },
-    'address-us-whitepages': {
-        urlTemplate: 'https://www.whitepages.com/address/{usNum}-{usStreet}/{usCity}-{usState}',
-        validator: 'getAndValidateUsAddress'
-    },
-    'address-us-zillow': {
-        urlTemplate: 'https://www.zillow.com/homes/{usNum}-{usStreet}-{usCity}-{usState}-{usZip}_rb/',
-        validator: 'getAndValidateUsAddress'
-    },
+    'address-us-addressescom': { urlTemplate: 'https://www.addresses.com/addr/{usNum}+{usStreet}/{usCity}+{usState}/', validator: 'getAndValidateUsAddress' },
+    'address-us-advbackground': { urlTemplate: 'https://www.advancedbackgroundchecks.com/address/{usNum}-{usStreet}_{usCity}-{usState}-{usZip}', validator: 'getAndValidateUsAddress' },
+    'address-us-cyberbackground': { urlTemplate: 'https://www.cyberbackgroundchecks.com/address/{usNum}-{usStreet}/{usCity}/{usState}', validator: 'getAndValidateUsAddress' },
+    'address-us-fastpeople': { urlTemplate: 'https://www.fastpeoplesearch.com/address/{usNum}-{usStreet}_{usCity}-{usState}-{usZip}', validator: 'getAndValidateUsAddress' },
+    'address-us-gisgraphy': { urlTemplate: 'https://services.gisgraphy.com/geocoding/geocode?address={usNum}+{usStreet}+{usCity}+{usState}+{usZip}&format=json', validator: 'getAndValidateUsAddress' },
+    'address-us-google': { urlTemplate: 'https://www.google.com/search?q={usNum}+{usStreet}+{usCity}+{usState}+{usZip}', validator: 'getAndValidateUsAddress' },
+    'address-us-hudway': { urlTemplate: 'https://hudwayglass.com/house/{usNum}+{usStreet},+{usCity}+{usState}', validator: 'getAndValidateUsAddress' },
+    'address-us-peoplefinders': { urlTemplate: 'https://www.peoplefinders.com/people/search/address?address={usNum}%20{usStreet}&city={usCity}&state={usState}', validator: 'getAndValidateUsAddress' },
+    'address-us-rehold': { urlTemplate: 'https://rehold.com/{usCity}+{usState}/{usStreet}/{usNum}', validator: 'getAndValidateUsAddress' },
+    'address-us-searchpeoplefree': { urlTemplate: 'https://www.searchpeoplefree.com/address/{usState}/{usCity}/{usStreet}/{usNum}', validator: 'getAndValidateUsAddress' },
+    'address-us-smartbackground': { urlTemplate: 'https://www.smartbackgroundchecks.com/address-search/{usNum}-{usStreet}/{usCity}/{usState}', validator: 'getAndValidateUsAddress' },
+    'address-us-spokeo': { urlTemplate: 'https://www.spokeo.com/{usState}/{usCity}/{usNum}-{usStreet}', validator: 'getAndValidateUsAddress' },
+    'address-us-truepeople': { urlTemplate: 'https://www.truepeoplesearch.com/resultaddress?streetaddress={usNum}%20{usStreet}&citystatezip={usCity}%20{usState}%20{usZip}', validator: 'getAndValidateUsAddress' },
+    'address-us-usapeople': { urlTemplate: 'https://www.usa-people-search.com/address/{usNum}-{usStreet}/{usCity}-{usState}', validator: 'getAndValidateUsAddress' },
+    'address-us-whitepages': { urlTemplate: 'https://www.whitepages.com/address/{usNum}-{usStreet}/{usCity}-{usState}', validator: 'getAndValidateUsAddress' },
+    'address-us-zillow': { urlTemplate: 'https://www.zillow.com/homes/{usNum}-{usStreet}-{usCity}-{usState}-{usZip}_rb/', validator: 'getAndValidateUsAddress' },
+    'address-intl-fastpeople': { urlTemplate: 'https://www.fastpeoplesearch.com/address/{intlNum}-{intlStreet}_{intlCity}-{intlRegion}-{intlZip}', validator: 'getAndValidateIntlAddress' },
+    'address-intl-gisgraphy': { urlTemplate: 'https://services.gisgraphy.com/geocoding/geocode?address={intlStreet}+{intlNum}+{intlZip}+{intlCity}+{intlRegion}&format=json', validator: 'getAndValidateIntlAddress' },
+    'address-intl-google': { urlTemplate: 'https://www.google.com/search?q={intlStreet}+{intlNum}+{intlZip}+{intlCity}+{intlRegion}', validator: 'getAndValidateIntlAddress' },
+    'address-it-paginebianche-companies': { urlTemplate: 'https://www.paginebianche.it/aziende?qs={itCompany}&dv={itCity}%20({itProv})', validator: 'getAndValidateItCompanies' },
+    'address-it-paginebianche-people': { urlTemplate: 'https://www.paginebianche.it/persone?qs={itFirst}%20{itLast}&dv={itCityP}%20({itProvP})', validator: 'getAndValidateItPeople' },
+    'address-it-paginegialle': { urlTemplate: 'https://www.paginegialle.it/ricerca/{itAct}/{itLoc}', validator: 'getAndValidateItYellow' },
 
-    // International Addresses
-    'address-intl-fastpeople': {
-        urlTemplate: 'https://www.fastpeoplesearch.com/address/{intlNum}-{intlStreet}_{intlCity}-{intlRegion}-{intlZip}',
-        validator: 'getAndValidateIntlAddress'
-    },
-    'address-intl-gisgraphy': {
-        urlTemplate: 'https://services.gisgraphy.com/geocoding/geocode?address={intlStreet}+{intlNum}+{intlZip}+{intlCity}+{intlRegion}&format=json',
-        validator: 'getAndValidateIntlAddress'
-    },
-    'address-intl-google': {
-        urlTemplate: 'https://www.google.com/search?q={intlStreet}+{intlNum}+{intlZip}+{intlCity}+{intlRegion}',
-        validator: 'getAndValidateIntlAddress'
-    },
-
-    // Italy Addresses
-    'address-it-paginebianche-companies': {
-        urlTemplate: 'https://www.paginebianche.it/aziende?qs={itCompany}&dv={itCity}%20({itProv})',
-        validator: 'getAndValidateItCompanies'
-    },
-    'address-it-paginebianche-people': {
-        urlTemplate: 'https://www.paginebianche.it/persone?qs={itFirst}%20{itLast}&dv={itCityP}%20({itProvP})',
-        validator: 'getAndValidateItPeople'
-    },
-    'address-it-paginegialle': {
-        urlTemplate: 'https://www.paginegialle.it/ricerca/{itAct}/{itLoc}',
-        validator: 'getAndValidateItYellow'
-    }
+    //
+    // --- Entries for Communities Page ---
+    //
+    'communities-reddit-keyword': { urlTemplate: 'https://old.reddit.com/search?q={term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-redditTerm' },
+    'communities-reddit-title': { urlTemplate: 'https://old.reddit.com/search?q=title:{term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-redditTerm' },
+    'communities-reddit-pullpush-asc': { urlTemplate: 'https://api.pullpush.io/reddit/search/comment/?q={term}&sort=asc&size=100', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-redditTerm' },
+    'communities-reddit-pullpush-desc': { urlTemplate: 'https://api.pullpush.io/reddit/search/comment/?q={term}&sort=desc&size=100', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-redditTerm' },
+    'communities-reddit-profile': { urlTemplate: 'https://old.reddit.com/user/{term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-redditUser' },
+    'communities-reddit-submissions': { urlTemplate: 'https://old.reddit.com/user/{term}/submitted', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-redditUser' },
+    'communities-reddit-comments': { urlTemplate: 'https://old.reddit.com/user/{term}/comments/', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-redditUser' },
+    'communities-reddit-archive': { urlTemplate: 'https://web.archive.org/*/https://www.reddit.com/user/{term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-redditUser' },
+    'communities-reddit-api-asc': { urlTemplate: 'https://api.pullpush.io/reddit/search/comment/?author={term}&sort=asc&size=100', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-redditUser' },
+    'communities-reddit-api-desc': { urlTemplate: 'https://api.pullpush.io/reddit/search/comment/?author={term}&sort=desc&size=100', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-redditUser' },
+    'communities-hn-search': { urlTemplate: 'https://hn.algolia.com/?query={term}&sort=byDate&page=0', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-hnTerm' },
+    'communities-hn-google': { urlTemplate: 'https://www.google.com/search?q=site:news.ycombinator.com+{term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-hnTerm' },
+    'communities-hn-profile': { urlTemplate: 'https://news.ycombinator.com/user?id={term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-hnUser' },
+    'communities-hn-submissions': { urlTemplate: 'https://news.ycombinator.com/submitted?id={term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-hnUser' },
+    'communities-hn-threads': { urlTemplate: 'https://news.ycombinator.com/threads?id={term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-hnUser' },
+    'communities-hn-favorites': { urlTemplate: 'https://news.ycombinator.com/favorites?id={term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-hnUser' },
+    'communities-4chan-boards': { urlTemplate: 'http://4chansearch.com/?q={term}&s=4', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-4chanTerm' },
+    'communities-4chan-threads': { urlTemplate: 'http://4chansearch.com/?q={term}&s=7', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-4chanTerm' },
+    'communities-4chan-archive': { urlTemplate: 'https://archive.4plebs.org/_/search/text/{term}/order/asc/', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-4chanTerm' },
+    'communities-4chan-google': { urlTemplate: 'https://www.google.com/search?q=site:4chan.org+{term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-4chanTerm' },
+    'communities-discord-invite': { urlTemplate: 'https://discord.gg/{term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-discordTerm' },
+    'communities-discord-disboard': { urlTemplate: 'https://disboard.org/search?keyword={term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-discordTerm' },
+    'communities-discord-me': { urlTemplate: 'https://discord.me/servers?search={term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-discordTerm' },
+    'communities-discord-servers': { urlTemplate: 'https://discordservers.com/search/{term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-discordTerm' },
+    'communities-discord-bee': { urlTemplate: 'https://discordbee.com/servers?q={term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-discordTerm' },
+    'communities-discord-google': { urlTemplate: 'https://www.google.com/search?q=site:discord.com+{term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-discordTerm' },
+    'communities-tg-profile': { urlTemplate: 'https://t.me/{term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-tgUser' },
+    'communities-tg-preview': { urlTemplate: 'https://telegram.me/s/{term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-tgUser' },
+    'communities-tg-telescope': { urlTemplate: 'https://telesco.pe/{term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-tgUser' },
+    'communities-tg-telemetrio': { urlTemplate: 'https://telemetr.io/en/channels?channel={term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-tgUser' },
+    'communities-tg-groupsearch': { urlTemplate: 'https://www.telegram-group.com/en?s={term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-tgKey' },
+    'communities-tg-channelsearch': { urlTemplate: 'https://telegramchannels.me/search?type=all&search={term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-tgKey' }
 };

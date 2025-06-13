@@ -1,80 +1,71 @@
 // assets/js/main.js
 
 const Exploratores = {
-  // Inizializza le funzionalità comuni a tutte le pagine
-  init: function() {
-    this.initNavbar();
-    this.initSearchHandler();
-    this.initLightMode();
-  },
+    /**
+     * Initializes the core functionalities for all pages.
+     */
+    init: function() {
+        this.initSearchHandler();
+    },
 
-  // Gestisce i sottomenu della navbar
-  initNavbar: function() {
-    document.querySelectorAll('.menu > li').forEach(item => {
-      const submenu = item.querySelector('.submenu');
-      if (submenu) {
-        item.addEventListener('mouseenter', () => { submenu.style.display = 'block'; });
-        item.addEventListener('mouseleave', () => { submenu.style.display = 'none'; });
-      }
-    });
-  },
+    /**
+     * Initializes the global, data-driven search handler for the entire application.
+     * It uses a single event listener on the body to handle clicks on all search buttons.
+     */
+    initSearchHandler: function() {
+        document.body.addEventListener('click', function(event) {
+            // Find the closest button with a data-search-id that was clicked
+            const button = event.target.closest('button[data-search-id]');
+            if (!button) {
+                return; // Exit if the click was not on a search button
+            }
 
-  // Applica la configurazione "light version" dal file config.js
-  initLightMode: function() {
-    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
-      exploratoresConfig.selectorsToHide.forEach(selector => {
-        document.querySelectorAll(selector).forEach(el => el.classList.add('hidden-in-light'));
-      });
+            const searchId = button.dataset.searchId;
+            const config = SearchLibrary[searchId];
+
+            if (!config) {
+                console.error(`Search configuration not found for id: ${searchId}`);
+                return;
+            }
+
+            // Handle searches that don't require any input
+            if (config.no_input) {
+                window.open(config.urlTemplate, '_blank');
+                return;
+            }
+
+            // Get the name of the validator function from the config
+            const validatorName = config.validator;
+            const validatorFn = window[validatorName];
+
+            if (typeof validatorFn !== 'function') {
+                console.error(`Validator function "${validatorName}" not found on the page.`);
+                return;
+            }
+
+            // Get the ID of the target input field from the config
+            const targetInputId = config.targetInput;
+            
+            // Call the validator function, passing the target input ID if it exists.
+            const data = validatorFn(targetInputId);
+
+            if (data) {
+                let finalUrl = config.urlTemplate;
+                // Replace all placeholders in the URL template with data from the validator
+                for (const key in data) {
+                    const encodedValue = encodeURIComponent(data[key]);
+                    const rawValue = data[key]; // For placeholders that shouldn't be encoded
+                    
+                    finalUrl = finalUrl.replace(new RegExp(`{${key}}`, 'g'), encodedValue);
+                    finalUrl = finalUrl.replace(new RegExp(`{${key}_RAW}`, 'g'), rawValue);
+                }
+                window.open(finalUrl, '_blank');
+            }
+        });
     }
-  },
-
-  // Gestore generico per tutti i pulsanti di ricerca data-driven
-  initSearchHandler: function() {
-    document.body.addEventListener('click', function(event) {
-      const searchButton = event.target.closest('button[data-search-id]');
-      if (!searchButton) return;
-
-      const searchId = searchButton.dataset.searchId;
-      const config = SearchLibrary[searchId];
-      if (!config) {
-        console.error(`Configurazione non trovata per: ${searchId}`);
-        return;
-      }
-      
-      // Se il pulsante non richiede input, apre subito l'URL
-      if (config.no_input) {
-        window.open(config.urlTemplate, '_blank');
-        return;
-      }
-
-      // Altrimenti, esegue la validazione
-      // Cerca la funzione di validazione nello scope globale (definita nella pagina HTML)
-      const validatorFunction = window[config.validator];
-      if (typeof validatorFunction !== 'function') {
-        console.error(`Funzione validatore non trovata: ${config.validator}`);
-        return;
-      }
-      
-      const parts = validatorFunction();
-      if (parts) {
-        let url = config.urlTemplate;
-        
-        // Logica migliorata per la sostituzione dei placeholder
-        for (const key in parts) {
-          // Cerca sia {key} che {key_RAW}
-          const regex = new RegExp(`{${key}(_RAW)?}`, 'g');
-          url = url.replace(regex, (match, isRaw) => {
-            // Se trova _RAW, non codifica il valore. Altrimenti, lo codifica.
-            return isRaw ? parts[key] : encodeURIComponent(parts[key]);
-          });
-        }
-        window.open(url, '_blank');
-      }
-    });
-  }
 };
 
-// Avvia il motore al caricamento della pagina
+// Initialize the engine when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-  Exploratores.init();
+    Exploratores.init();
 });
