@@ -9,17 +9,13 @@
 </head>
 <body>
 
-<nav>
+<nav aria-label="Navigazione principale">
   <ul class="menu">
     <li><span>HOME</span>
-      <ul class="submenu">
-        <li><a href="../launchme.html">Index</a></li>
-      </ul>
+      <ul class="submenu"><li><a href="../launchme.html">Index</a></li></ul>
     </li>
     <li><span>Search<br>Engines</span>
-      <ul class="submenu">
-        <li><a href="Searchengines.html">Search Engines</a></li>
-      </ul>
+      <ul class="submenu"><li><a href="Searchengines.html">Search Engines</a></li></ul>
     </li>
     <li><span>People &<br>Identities</span>
       <ul class="submenu">
@@ -48,9 +44,7 @@
       </ul>
     </li>
     <li><span>GeoInt</span>
-      <ul class="submenu">
-        <li><a href="Maps.html">Maps</a></li>
-      </ul>
+      <ul class="submenu"><li><a href="Maps.html">Maps</a></li></ul>
     </li>
     <li><span>Media<br>Analysis</span>
       <ul class="submenu">
@@ -76,41 +70,68 @@
     
 <main>
   <h1 class="page-title">CyberChef</h1>
-  <iframe src="../tools/cc/CyberChef_v10.19.4.html" title="CyberChef" class="cyberchef-iframe"></iframe>
+  
+  <div tabindex="0" id="focus-trap-start" aria-hidden="true"></div>
+  
+  <iframe
+    id="cyberchefFrame"
+    src="../tools/cc/CyberChef_v10.19.4.html"
+    title="CyberChef"
+    class="cyberchef-iframe"
+    loading="lazy"
+    sandbox="allow-scripts allow-same-origin"
+    role="application"
+  ></iframe>
+  
+  <div tabindex="0" id="focus-trap-end" aria-hidden="true"></div>
 </main>
 
 <footer>
   <p>Global Security Italy • Rome (IT) <a href="license.html">License</a></p>
 </footer>
 
-<script>
-  // Standard Navbar script
-  document.querySelectorAll('.menu > li').forEach(item => {
-    item.addEventListener('mouseover', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'block';
-    });
-    item.addEventListener('mouseout', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'none';
-    });
-  });
-</script>
-
 <script src="../assets/js/config.js"></script>
 <script>
+  // menu interactions
+  document.querySelectorAll('.menu > li').forEach(item => {
+    const submenu = item.querySelector('.submenu');
+    if (submenu) {
+      item.addEventListener('mouseenter', () => submenu.style.display = 'block');
+      item.addEventListener('mouseleave', () => submenu.style.display = 'none');
+    }
+  });
+
+  // light mode configuration
   document.addEventListener('DOMContentLoaded', () => {
     if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
       exploratoresConfig.selectorsToHide.forEach(selector => {
         try {
-          const elements = document.querySelectorAll(selector);
-          elements.forEach(el => el.classList.add('hidden-in-light'));
+          document.querySelectorAll(selector).forEach(el => el.classList.add('hidden-in-light'));
         } catch (e) {
           console.error("Invalid selector in config.js:", selector);
         }
       });
     }
   });
+
+  // focus trap for iframe
+  function setupFocusTrap() {
+    const iframe = document.getElementById('cyberchefFrame');
+    const doc = iframe.contentDocument || iframe.contentWindow.document;
+    const focusable = [...doc.querySelectorAll('a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])')]
+      .filter(el => !el.hasAttribute('disabled'));
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    document.getElementById('focus-trap-start')
+      .addEventListener('focus', () => last.focus());
+    document.getElementById('focus-trap-end')
+      .addEventListener('focus', () => first.focus());
+  }
+
+  document.getElementById('cyberchefFrame')
+    .addEventListener('load', setupFocusTrap);
 </script>
 
 </body>

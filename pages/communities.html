@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Communities • Exploratores</title>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
@@ -77,7 +77,6 @@
 
 <main>
     <h1 class="page-title">Communities Tool</h1>
-		<!-- Vox populi, vox Dei -->
     <div class="note">
         For proper function of some features, an active investigative profile may be required on the target platform.
     </div>
@@ -206,33 +205,21 @@
 
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/search-library.js"></script>
+<script src="../assets/js/validators.js"></script>
 <script src="../assets/js/main.js"></script>
 <script src="../assets/js/externaeven.js"></script>
 <script>
-    // --- Generic Validator for this page ---
-    // Takes the ID of an input element and checks if it's non-empty.
-    function getAndValidateSingleInput(elementId) {
-        const inputElement = document.getElementById(elementId);
-        if (!inputElement) return null;
-
-        const value = inputElement.value.trim();
-        if (value) {
-            return { term: value }; // Use a generic 'term' placeholder
-        }
-        return null;
-    }
-
     // --- UI Update Function ---
     function updatePageState() {
-        // Find all inputs on the page that are part of a group
         const inputs = document.querySelectorAll('input[data-input-group]');
 
         inputs.forEach(input => {
             const groupName = input.dataset.inputGroup;
             const feedbackDiv = document.getElementById(`feedback-communities-${groupName}`);
             const buttons = document.querySelectorAll(`button[data-input-group="${groupName}"]`);
-
-            const isValid = input.value.trim() !== '';
+            
+            // Use the global validator, passing the specific input's ID
+            const isValid = ExploratoresValidators.getAndValidateSingleInput(input.id) !== null;
 
             if (feedbackDiv) {
                 feedbackDiv.textContent = isValid ? 'Ready.' : 'Requires input.';
@@ -249,7 +236,7 @@
     // --- Initial Page State Function ---
     function setInitialPageState() {
         document.querySelectorAll('.input-field').forEach(input => input.value = '');
-        updatePageState(); // Run once to set initial disabled state
+        updatePageState();
     }
 
     // --- Event Listeners ---

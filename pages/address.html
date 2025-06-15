@@ -77,7 +77,6 @@
 
 <main>
     <h1 class="page-title">Address Search Tool</h1>
-	<!-- Ubi est, non potest celari -->
     <div class="note">
         <strong>Note:</strong> Address formats vary by country. Use the appropriate fields for US, International, or Italy.
     </div>
@@ -145,9 +144,9 @@
                         <input type="text" id="input-address-itProv" class="input-field" placeholder="Province (e.g., RM)" autocomplete="off">
                     </div>
                     <div id="feedback-address-it-companies" class="feedback-message"></div>
-                    <div class="button-grid">
-                        <button id="btn-address-it-paginebianche-companies" class="button" data-search-id="address-it-paginebianche-companies">Search Companies</button>
-                    </div>
+                </div>
+                <div class="button-grid">
+                    <button id="btn-address-it-paginebianche-companies" class="button" data-search-id="address-it-paginebianche-companies">Search Companies</button>
                 </div>
 
                 <div id="container-it-people" class="search-instructions">
@@ -161,9 +160,9 @@
                         <input type="text" id="input-address-itProvP" class="input-field" placeholder="Province (e.g., MI)" autocomplete="off">
                     </div>
                     <div id="feedback-address-it-people" class="feedback-message"></div>
-                    <div class="button-grid">
-                        <button id="btn-address-it-paginebianche-people" class="button" data-search-id="address-it-paginebianche-people">Search People</button>
-                    </div>
+                </div>
+                <div class="button-grid">
+                    <button id="btn-address-it-paginebianche-people" class="button" data-search-id="address-it-paginebianche-people">Search People</button>
                 </div>
 
                 <div id="container-it-yellow" class="search-instructions">
@@ -173,9 +172,9 @@
                         <input type="text" id="input-address-itLoc" class="input-field" placeholder="Location (e.g., Rome)" autocomplete="off">
                     </div>
                     <div id="feedback-address-it-yellow" class="feedback-message"></div>
-                    <div class="button-grid">
-                        <button id="btn-address-it-paginegialle" class="button" data-search-id="address-it-paginegialle">Search Pagine Gialle</button>
-                    </div>
+                </div>
+                <div class="button-grid">
+                    <button id="btn-address-it-paginegialle" class="button" data-search-id="address-it-paginegialle">Search Pagine Gialle</button>
                 </div>
             </section>
         </div>
@@ -188,125 +187,47 @@
 
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/search-library.js"></script>
+<script src="../assets/js/validators.js"></script>
 <script src="../assets/js/main.js"></script>
 <script src="../assets/js/externaeven.js"></script>
 <script>
-    // --- Data & Validation Logic ---
-    const italianProvinces = new Set([
-        'AG', 'AL', 'AN', 'AO', 'AR', 'AP', 'AT', 'AV', 'BA', 'BT', 'BL', 'BN',
-        'BG', 'BI', 'BO', 'BZ', 'BS', 'BR', 'CA', 'CL', 'CB', 'CE', 'CT', 'CZ',
-        'CH', 'CO', 'CS', 'CR', 'KR', 'CN', 'EN', 'FM', 'FE', 'FI', 'FG', 'FC',
-        'FR', 'GE', 'GO', 'GR', 'IM', 'IS', 'SP', 'AQ', 'LT', 'LE', 'LC', 'LI',
-        'LO', 'LU', 'MC', 'MN', 'MS', 'MT', 'ME', 'MI', 'MO', 'MB', 'NA', 'NO',
-        'NU', 'OR', 'PD', 'PA', 'PR', 'PV', 'PG', 'PU', 'PE', 'PC', 'PI', 'PT',
-        'PN', 'PZ', 'PO', 'RG', 'RA', 'RC', 'RE', 'RI', 'RN', 'RM', 'RO', 'SA',
-        'SS', 'SV', 'SI', 'SR', 'SO', 'TA', 'TE', 'TR', 'TO', 'TP', 'TN', 'TV',
-        'TS', 'UD', 'VA', 'VE', 'VB', 'VC', 'VR', 'VV', 'VI', 'VT'
-    ]);
-
-    function getAndValidateUsAddress() {
-        const values = {
-            usNum: document.getElementById('input-address-usNum').value.trim(),
-            usStreet: document.getElementById('input-address-usStreet').value.trim(),
-            usCity: document.getElementById('input-address-usCity').value.trim(),
-            usState: document.getElementById('input-address-usState').value.trim(),
-            usZip: document.getElementById('input-address-usZip').value.trim()
-        };
-        if (values.usStreet && (values.usCity || values.usZip)) {
-            return values;
-        }
-        return null;
-    }
-
-    function getAndValidateIntlAddress() {
-        const values = {
-            intlNum: document.getElementById('input-address-intlNum').value.trim(),
-            intlStreet: document.getElementById('input-address-intlStreet').value.trim(),
-            intlCity: document.getElementById('input-address-intlCity').value.trim(),
-            intlZip: document.getElementById('input-address-intlZip').value.trim(),
-            intlRegion: document.getElementById('input-address-intlRegion').value.trim()
-        };
-        if (values.intlStreet && values.intlCity && values.intlZip) {
-            return values;
-        }
-        return null;
-    }
-
-    function getAndValidateItCompanies() {
-        const values = {
-            itCompany: document.getElementById('input-address-itCompany').value.trim(),
-            itCity: document.getElementById('input-address-itCity').value.trim(),
-            itProv: document.getElementById('input-address-itProv').value.trim()
-        };
-        const provinceIsValid = italianProvinces.has(values.itProv.toUpperCase());
-        if (values.itCompany && values.itCity && provinceIsValid) {
-            return values;
-        }
-        return null;
-    }
-
-    function getAndValidateItPeople() {
-        const values = {
-            itFirst: document.getElementById('input-address-itFirst').value.trim(),
-            itLast: document.getElementById('input-address-itLast').value.trim(),
-            itCityP: document.getElementById('input-address-itCityP').value.trim(),
-            itProvP: document.getElementById('input-address-itProvP').value.trim()
-        };
-        const provinceIsValid = italianProvinces.has(values.itProvP.toUpperCase());
-        if ((values.itFirst || values.itLast) && values.itCityP && provinceIsValid) {
-            return values;
-        }
-        return null;
-    }
-
-    function getAndValidateItYellow() {
-        const values = {
-            itAct: document.getElementById('input-address-itAct').value.trim(),
-            itLoc: document.getElementById('input-address-itLoc').value.trim()
-        };
-        if (values.itAct && values.itLoc) {
-            return values;
-        }
-        return null;
-    }
-
     // --- UI Update Function ---
     function updatePageState() {
         const validationMap = [
-            { validator: getAndValidateUsAddress, feedbackId: 'feedback-address-us', buttonsSelector: '#grid-address-us .button', message: 'Requires Street and (City or ZIP).' },
-            { validator: getAndValidateIntlAddress, feedbackId: 'feedback-address-intl', buttonsSelector: '#grid-address-intl .button', message: 'Requires Street, City, and Postal Code.' },
-            { validator: getAndValidateItCompanies, feedbackId: 'feedback-address-it-companies', buttonsSelector: '#btn-address-it-paginebianche-companies', message: 'Requires Company, City, and a valid Province (e.g., RM).' },
-            { validator: getAndValidateItPeople, feedbackId: 'feedback-address-it-people', buttonsSelector: '#btn-address-it-paginebianche-people', message: 'Requires Name/Surname, City, and a valid Province (e.g., MI).' },
-            { validator: getAndValidateItYellow, feedbackId: 'feedback-address-it-yellow', buttonsSelector: '#btn-address-it-paginegialle', message: 'Requires Activity and Location.' }
+            { validator: ExploratoresValidators.getAndValidateUsAddress, feedbackId: 'feedback-address-us', buttonsSelector: '#grid-address-us .button', message: 'Requires Street and (City or ZIP).' },
+            { validator: ExploratoresValidators.getAndValidateIntlAddress, feedbackId: 'feedback-address-intl', buttonsSelector: '#grid-address-intl .button', message: 'Requires Street, City, and Postal Code.' },
+            { validator: ExploratoresValidators.getAndValidateItCompanies, feedbackId: 'feedback-address-it-companies', buttonsSelector: '#btn-address-it-paginebianche-companies', message: 'Requires Company, City, and a valid Province (e.g., RM).' },
+            { validator: ExploratoresValidators.getAndValidateItPeople, feedbackId: 'feedback-address-it-people', buttonsSelector: '#btn-address-it-paginebianche-people', message: 'Requires Name/Surname, City, and a valid Province (e.g., MI).' },
+            { validator: ExploratoresValidators.getAndValidateItYellow, feedbackId: 'feedback-address-it-yellow', buttonsSelector: '#btn-address-it-paginegialle', message: 'Requires Activity and Location.' }
         ];
 
         validationMap.forEach(group => {
-            const isValid = group.validator() !== null;
-            const feedbackDiv = document.getElementById(group.feedbackId);
-            const buttons = document.querySelectorAll(group.buttonsSelector);
+            if (typeof group.validator === 'function') {
+                const isValid = group.validator() !== null;
+                const feedbackDiv = document.getElementById(group.feedbackId);
+                const buttons = document.querySelectorAll(group.buttonsSelector);
 
-            if (isValid) {
-                feedbackDiv.textContent = 'Ready to search.';
-                feedbackDiv.className = 'feedback-message ready';
-            } else {
-                feedbackDiv.textContent = group.message;
-                feedbackDiv.className = 'feedback-message';
+                if (feedbackDiv) {
+                    if (isValid) {
+                        feedbackDiv.textContent = 'Ready to search.';
+                        feedbackDiv.className = 'feedback-message ready';
+                    } else {
+                        feedbackDiv.textContent = group.message;
+                        feedbackDiv.className = 'feedback-message';
+                    }
+                }
+
+                buttons.forEach(button => {
+                    button.disabled = !isValid;
+                    button.classList.toggle('text-active', isValid);
+                });
             }
-
-            buttons.forEach(button => {
-                button.disabled = !isValid;
-                button.classList.toggle('text-active', isValid);
-            });
         });
     }
 
     // --- Initial Page State Function ---
     function setInitialPageState() {
         document.querySelectorAll('.input-field').forEach(input => input.value = '');
-        document.querySelectorAll('.button').forEach(button => {
-            button.disabled = true;
-            button.classList.remove('text-active');
-        });
         updatePageState();
     }
 
