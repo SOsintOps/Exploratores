@@ -7,7 +7,7 @@
 const exploratoresConfig = {
 
   // Set to 'true' to enable the light version and hide the elements listed below.
-  lightVersionEnabled: false, 
+  lightVersionEnabled: true, 
 
   // This is the list of elements to hide.
   // Use CSS selectors to identify them.
@@ -16,7 +16,7 @@ const exploratoresConfig = {
     // --- Searchengines.html ---
 
     // Hide the entire Tor Network section
-    '#section-searchengines-tor',
+    '#column-searchengines-tor',
 
     
   ]
