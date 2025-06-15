@@ -150,5 +150,40 @@ const SearchLibrary = {
     'communities-tg-telescope': { urlTemplate: 'https://telesco.pe/{term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-tgUser' },
     'communities-tg-telemetrio': { urlTemplate: 'https://telemetr.io/en/channels?channel={term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-tgUser' },
     'communities-tg-groupsearch': { urlTemplate: 'https://www.telegram-group.com/en?s={term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-tgKey' },
-    'communities-tg-channelsearch': { urlTemplate: 'https://telegramchannels.me/search?type=all&search={term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-tgKey' }
+    'communities-tg-channelsearch': { urlTemplate: 'https://telegramchannels.me/search?type=all&search={term}', validator: 'getAndValidateSingleInput', targetInput: 'input-communities-tgKey' },
+
+    //
+    // --- Entries for X (Twitter) Page ---
+    //
+    'x-account-profile': { urlTemplate: 'https://x.com/{term}', validator: 'getAndValidateUsername', targetInput: 'input-x-account' },
+    'x-account-outgoing': { urlTemplate: 'https://x.com/search?q=from%3A{term}&f=live', validator: 'getAndValidateUsername', targetInput: 'input-x-account' },
+    'x-account-incoming': { urlTemplate: 'https://x.com/search?q=to%3A{term}&f=live', validator: 'getAndValidateUsername', targetInput: 'input-x-account' },
+    'x-account-only-replies': { urlTemplate: 'https://x.com/search?q=from%3A{term}%20filter%3Areplies&f=live', validator: 'getAndValidateUsername', targetInput: 'input-x-account' },
+    'x-account-no-replies': { urlTemplate: 'https://x.com/search?q=from%3A{term}%20-filter%3Areplies&f=live', validator: 'getAndValidateUsername', targetInput: 'input-x-account' },
+    'x-account-media': { urlTemplate: 'https://x.com/{term}/media', validator: 'getAndValidateUsername', targetInput: 'input-x-account' },
+    'x-account-highlights': { urlTemplate: 'https://x.com/{term}/highlights', validator: 'getAndValidateUsername', targetInput: 'input-x-account' },
+    'x-account-lists-created': { urlTemplate: 'https://x.com/{term}/lists', validator: 'getAndValidateUsername', targetInput: 'input-x-account' },
+    'x-account-lists-included': { urlTemplate: 'https://x.com/{term}/lists/memberships', validator: 'getAndValidateUsername', targetInput: 'input-x-account' },
+    'x-account-topics': { urlTemplate: 'https://x.com/{term}/topics', validator: 'getAndValidateUsername', targetInput: 'input-x-account' },
+    'x-account-links': { urlTemplate: 'https://x.com/search?q=from%3A{term}%20filter%3Alinks&f=live', validator: 'getAndValidateUsername', targetInput: 'input-x-account' },
+    'x-account-followers': { urlTemplate: 'https://x.com/{term}/followers', validator: 'getAndValidateUsername', targetInput: 'input-x-account' },
+    'x-account-following': { urlTemplate: 'https://x.com/{term}/following', validator: 'getAndValidateUsername', targetInput: 'input-x-account' },
+    'x-list-view': { urlTemplate: 'https://x.com/i/lists/{term}', validator: 'getAndValidateNumeric', targetInput: 'input-x-listId' },
+    'x-list-members': { urlTemplate: 'https://x.com/i/lists/{term}/members', validator: 'getAndValidateNumeric', targetInput: 'input-x-listId' },
+    'x-list-followers': { urlTemplate: 'https://x.com/i/lists/{term}/followers', validator: 'getAndValidateNumeric', targetInput: 'input-x-listId' },
+    'x-other-profilename': { urlTemplate: 'https://x.com/search?q={term}&f=user', validator: 'getAndValidateUsername', targetInput: 'input-x-realName' },
+    'x-year-outgoing': { urlTemplate: 'https://x.com/search?q=from%3A{term}%20since%3A{year}-01-01%20until%3A{year}-12-31&f=live', validator: 'getAndValidateYearSearch' },
+    'x-year-incoming': { urlTemplate: 'https://x.com/search?q=to%3A{term}%20since%3A{year}-01-01%20until%3A{year}-12-31&f=live', validator: 'getAndValidateYearSearch' },
+    'x-year-media': { urlTemplate: 'https://x.com/search?q=from%3A{term}%20since%3A{year}-01-01%20until%3A{year}-12-31%20filter%3Amedia&f=live', validator: 'getAndValidateYearSearch' },
+    'x-year-term': { urlTemplate: 'https://x.com/search?q={term}%20since%3A{year}-01-01%20until%3A{year}-12-31&f=live', validator: 'getAndValidateYearSearch' },
+    'x-year-no-replies': { urlTemplate: 'https://x.com/search?q=from%3A{term}%20since%3A{year}-01-01%20until%3A{year}-12-31%20-filter%3Areplies&f=live', validator: 'getAndValidateYearSearch' },
+    'x-year-only-replies': { urlTemplate: 'https://x.com/search?q=from%3A{term}%20since%3A{year}-01-01%20until%3A{year}-12-31%20filter%3Areplies&f=live', validator: 'getAndValidateYearSearch' },
+    'x-archive-google-site': { urlTemplate: 'https://www.google.com/search?q=site:x.com/{term}', validator: 'getAndValidateUsername', targetInput: 'input-x-archiveUser' },
+    'x-archive-google-tweets': { urlTemplate: 'https://www.google.com/search?q=site:x.com/{term}/status/', validator: 'getAndValidateUsername', targetInput: 'input-x-archiveUser' },
+    'x-archive-bing': { urlTemplate: 'https://www.bing.com/search?q=x.com/{term}', validator: 'getAndValidateUsername', targetInput: 'input-x-archiveUser' },
+    'x-archive-yandex': { urlTemplate: 'https://www.yandex.com/search/?text=https%3A%2F%2Fx.com%2F{term}', validator: 'getAndValidateUsername', targetInput: 'input-x-archiveUser' },
+    'x-archive-wayback': { urlTemplate: 'https://web.archive.org/web/*/x.com/{term}', validator: 'getAndValidateUsername', targetInput: 'input-x-archiveUser' },
+    'x-archive-memorylol': { urlTemplate: 'https://api.memory.lol/v1/tw/{term}', validator: 'getAndValidateUsername', targetInput: 'input-x-archiveUser' },
+    'x-archive-audit': { urlTemplate: 'https://www.twitteraudit.com/{term}', validator: 'getAndValidateUsername', targetInput: 'input-x-archiveUser' },
+    'x-archive-memorylol-id': { urlTemplate: 'https://api.memory.lol/v1/tw/id/{term}', validator: 'getAndValidateNumeric', targetInput: 'input-x-memoryId' }
 };
