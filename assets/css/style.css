@@ -15,7 +15,7 @@
 
 /* Default body styling */
 body {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: var(--bg-color);
   color: var(--secondary-color); /* Default text color for the body */
   padding-top: 60px;     /* Space for fixed navbar */
@@ -278,10 +278,12 @@ main {
 /* SEARCH/INDEX CONTENT & INPUT CONTAINERS */
 /* Styling for instructional sections, often containing input fields */
 .search-instructions {
-  margin-bottom: 1.5rem;
-  padding: 1rem;
-  background-color: #f0f0f0;
-  border-radius: 4px;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #f0f0f0; 
+    border: 1px solid #1a1a1a;   
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
 }
 
 /* Styling for labels within search-instructions sections */
