@@ -144,5 +144,15 @@ const ExploratoresValidators = {
             return values;
         }
         return null;
+    },
+	/**
+     * Validates the main search term input on the Search Engines page.
+     */
+    getAndValidateSearchTerm: function() {
+        const inputElement = document.getElementById('input-searchengines-term');
+        if (!inputElement) return null;
+        
+        const value = inputElement.value.trim();
+        return value ? { term: value } : null;
     }
 };
