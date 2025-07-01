@@ -39,6 +39,33 @@ const ExploratoresValidators = {
     },
 
     /**
+     * Validates first and last name inputs.
+     * @returns {object|null} An object with multiple name formats if valid, otherwise null.
+     */
+    getAndValidateName: function() {
+        const firstName = document.getElementById('input-names-first').value.trim();
+        const lastName = document.getElementById('input-names-last').value.trim();
+
+        if (!firstName && !lastName) {
+            return null;
+        }
+
+        const fullName = [firstName, lastName].filter(Boolean).join(' ');
+        const fullNameDash = [firstName, lastName].filter(Boolean).join('-');
+        const fullNameDashLower = fullNameDash.toLowerCase();
+
+        return {
+            firstName: firstName,
+            lastName: lastName,
+            firstName_RAW: firstName,
+            lastName_RAW: lastName,
+            fullName: fullName,
+            fullNameDash: fullNameDash,
+            fullNameDashLower: fullNameDashLower
+        };
+    },
+
+    /**
      * Gets and cleans a domain name, removing http/https/www prefixes and trailing slashes.
      */
     getAndValidateDomain: function(elementId) {
@@ -105,11 +132,11 @@ const ExploratoresValidators = {
     getAndValidateItCompanies: function() {
         const values = {
             itCompany: document.getElementById('input-address-itCompany').value.trim(),
-            itCity: document.getElementById('input-address-itCity').value.trim(),
-            itProv: document.getElementById('input-address-itProv').value.trim()
+            itCompanyCity: document.getElementById('input-address-itCompanyCity').value.trim(),
+            itCompanyProv: document.getElementById('input-address-itCompanyProv').value.trim()
         };
-        const provinceIsValid = typeof italianProvinces !== 'undefined' && italianProvinces.has(values.itProv.toUpperCase());
-        if (values.itCompany && values.itCity && provinceIsValid) {
+        const provinceIsValid = typeof italianProvinces !== 'undefined' && italianProvinces.has(values.itCompanyProv.toUpperCase());
+        if (values.itCompany && values.itCompanyCity && provinceIsValid) {
             return values;
         }
         return null;
@@ -122,11 +149,11 @@ const ExploratoresValidators = {
         const values = {
             itFirst: document.getElementById('input-address-itFirst').value.trim(),
             itLast: document.getElementById('input-address-itLast').value.trim(),
-            itCityP: document.getElementById('input-address-itCityP').value.trim(),
-            itProvP: document.getElementById('input-address-itProvP').value.trim()
+            itPeopleCity: document.getElementById('input-address-itPeopleCity').value.trim(),
+            itPeopleProv: document.getElementById('input-address-itPeopleProv').value.trim()
         };
-        const provinceIsValid = typeof italianProvinces !== 'undefined' && italianProvinces.has(values.itProvP.toUpperCase());
-        if ((values.itFirst || values.itLast) && values.itCityP && provinceIsValid) {
+        const provinceIsValid = typeof italianProvinces !== 'undefined' && italianProvinces.has(values.itPeopleProv.toUpperCase());
+        if ((values.itFirst || values.itLast) && values.itPeopleCity && provinceIsValid) {
             return values;
         }
         return null;
@@ -144,15 +171,5 @@ const ExploratoresValidators = {
             return values;
         }
         return null;
-    },
-	/**
-     * Validates the main search term input on the Search Engines page.
-     */
-    getAndValidateSearchTerm: function() {
-        const inputElement = document.getElementById('input-searchengines-term');
-        if (!inputElement) return null;
-        
-        const value = inputElement.value.trim();
-        return value ? { term: value } : null;
     }
 };
