@@ -70,7 +70,7 @@ function generateNavHTML() {
             <li><a href="${pagesPath}customise.html">Customise</a></li>
             <li><a href="${pagesPath}faq.html">FAQ</a></li>
             <li><a href="${pagesPath}cyberchef.html">CyberChef (Pages)</a></li>
-            <li><a href="${toolsPath}cc/CyberChef_v10.19.4.html">CyberChef (Tool)</a></li>
+            
           </ul>
         </li>
       </ul>
