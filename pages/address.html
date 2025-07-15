@@ -1,133 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Addresses • Exploratores</title>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Addresses • Exploratores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
 <body>
 
+<<<<<<< HEAD
 <div id="navbar-placeholder"></div>
 
 <script src="../assets/menu/navigation.js"></script>
+=======
+<nav>
+    <ul class="menu">
+        <li><span>HOME</span>
+            <ul class="submenu">
+                <li><a href="../launchme.html">Index</a></li>
+            </ul>
+        </li>
+        <li><span>Search<br>Engines</span>
+            <ul class="submenu">
+                <li><a href="searchengines.html">Search Engines</a></li>
+            </ul>
+        </li>
+        <li><span>People &<br>Identities</span>
+            <ul class="submenu">
+                <li><a href="names.html">Names</a></li>
+                <li><a href="phoneus.html">US Phones</a></li>
+                <li><a href="phoneint.html">International Phones</a></li>
+                <li><a href="address.html" class="active">Addresses</a></li>
+                <li><a href="vehicles.html">Vehicles</a></li>
+                <li><a href="usernames.html">Usernames</a></li>
+                <li><a href="email.html">Email Addresses</a></li>
+                <li><a href="communities.html">Communities</a></li>
+            </ul>
+        </li>
+        <li><span>Social<br>Media</span>
+            <ul class="submenu">
+                <li><a href="x.html">X (Twitter)</a></li>
+                <li><a href="facebook.html">Facebook</a></li>
+                <li><a href="instagram.html">Instagram</a></li>
+                <li><a href="linkedin.html">LinkedIn</a></li>
+            </ul>
+        </li>
+        <li><span>Websites</span>
+            <ul class="submenu">
+                <li><a href="domains.html">Domains</a></li>
+                <li><a href="ip.html">IP Addresses</a></li>
+            </ul>
+        </li>
+        <li><span>GeoInt</span>
+            <ul class="submenu">
+                <li><a href="maps.html">Maps</a></li>
+            </ul>
+        </li>
+        <li><span>Media<br>Analysis</span>
+            <ul class="submenu">
+                <li><a href="images.html">Images</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="docs.html">Documents</a></li>
+            </ul>
+        </li>
+        <li><span>Business<br>Intelligence</span>
+            <ul class="submenu">
+                <li><a href="publiccompanyrecords.html">Company Public Records</a></li>
+                <li><a href="currencies.html">Virtual Currencies</a></li>
+            </ul>
+        </li>
+        <li><span>Tools</span>
+            <ul class="submenu">
+                <li><a href="guidelines.html">Guidelines</a></li>
+                <li><a href="cyberchef.html">CyberChef</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
 
-  <main>
+<main>
     <h1 class="page-title">Address Search Tool</h1>
     <div class="note">
-      <strong>NOTE:</strong> Address formats vary by country. Use the appropriate fields for US, International, or Italy.
+        <strong>Note:</strong> Address formats vary by country. Use the appropriate fields for US, International, or Italy.
     </div>
 
     <div class="columns">
-      <div class="column" id="section-addresses-us-column">
-        <section id="section-addresses-us" class="search-instructions">
-          <h2>US ADDRESSES</h2>
-          <div class="input-container">
-            <input class="input-field" type="text" id="usNum"    placeholder="Number">
-            <input class="input-field" type="text" id="usStreet" placeholder="Street">
-            <input class="input-field" type="text" id="usCity"   placeholder="City">
-            <input class="input-field" type="text" id="usState"  placeholder="State">
-            <input class="input-field" type="text" id="usZip"    placeholder="ZIP">
-          </div>
-        </section>
-        <div class="button-grid" id="grid-addresses-us">
-          <button id="btn-addresses-us-addressescom" class="button" onclick="Addresses_SearchAddressesCom()">Addresses.com</button>
-          <button id="btn-addresses-us-advbackground" class="button" onclick="Addresses_SearchAdvBackground()">AdvBackgChk</button>
-          <button id="btn-addresses-us-cyberbackground" class="button" onclick="Addresses_SearchCyberBackground()">CyberBkgChk</button>
-          <button id="btn-addresses-us-fastpeople" class="button" onclick="Addresses_SearchFastPeople()">FastPeople</button>
-          <button id="btn-addresses-us-gisgraphy" class="button" onclick="Addresses_SearchGisgraphyUS()">GISGraphy</button>
-          <button id="btn-addresses-us-google" class="button" onclick="Addresses_SearchGoogleUS()">Google</button>
-          <button id="btn-addresses-us-hudway" class="button" onclick="Addresses_SearchHudway()">Hudway</button>
-          <button id="btn-addresses-us-peoplefinders" class="button" onclick="Addresses_SearchPeopleFinders()">PeopleFinders</button>
-          <button id="btn-addresses-us-rehold" class="button" onclick="Addresses_SearchRehold()">Rehold</button>
-          <button id="btn-addresses-us-searchpeoplefree" class="button" onclick="Addresses_SearchSearchPeopleFree()">SearchPplFree</button>
-          <button id="btn-addresses-us-smartbackground" class="button" onclick="Addresses_SearchSmartBackground()">SmartBkgChk</button>
-          <button id="btn-addresses-us-spokeo" class="button" onclick="Addresses_SearchSpokeo()">Spokeo</button>
-          <button id="btn-addresses-us-truepeople" class="button" onclick="Addresses_SearchTruePeople()">TruePeople</button>
-          <button id="btn-addresses-us-usapeople" class="button" onclick="Addresses_SearchUsaPeople()">USA People</button>
-          <button id="btn-addresses-us-whitepages" class="button" onclick="Addresses_SearchWhitePages()">WhitePages</button>
-          <button id="btn-addresses-us-zillow" class="button" onclick="Addresses_SearchZillow()">Zillow</button>
-        </div>
-      </div>
-
-      <div class="column" id="section-addresses-intl-column">
-        <section id="section-addresses-intl" class="search-instructions">
-          <h2>INTERNATIONAL ADDRESSES</h2>
-          <div class="input-container">
-            <input class="input-field" type="text" id="euStreet" placeholder="Street">
-            <input class="input-field" type="text" id="euNum"    placeholder="Number">
-            <input class="input-field" type="text" id="euCity"   placeholder="City">
-            <input class="input-field" type="text" id="euZip"    placeholder="Postal">
-            <input class="input-field" type="text" id="euRegion" placeholder="Region/Country">
-          </div>
-        </section>
-        <div class="button-grid" id="grid-addresses-intl">
-          <button id="btn-addresses-eu-fastpeople" class="button" onclick="Addresses_SearchFastPeopleEU()">FastPeople EU</button>
-          <button id="btn-addresses-eu-gisgraphy" class="button" onclick="Addresses_SearchGisgraphyEU()">GISGraphy</button>
-          <button id="btn-addresses-eu-google" class="button" onclick="Addresses_SearchGoogleEU()">Google</button>
-        </div>
-        
-        <section id="subsection-addresses-intl-tools" style="margin-top:1.5rem">
-          <h3>Additional International Tools</h3>
-          <div class="search-instructions">
-            <label for="additionalIntlSearchInput">Enter International Address, Name, or Term:</label>
-            <div class="input-container">
-              <input type="text" id="additionalIntlSearchInput" class="input-field" placeholder="Address, name, keyword..."/>
+        <div id="column-address-us" class="column">
+            <section id="section-address-us" class="search-instructions">
+                <h2>US ADDRESSES</h2>
+                <div class="input-container">
+                    <input type="text" id="input-address-usNum" class="input-field" placeholder="Number" autocomplete="off">
+                    <input type="text" id="input-address-usStreet" class="input-field" placeholder="Street" autocomplete="off">
+                    <input type="text" id="input-address-usCity" class="input-field" placeholder="City" autocomplete="off">
+                    <input type="text" id="input-address-usState" class="input-field" placeholder="State" autocomplete="off">
+                    <input type="text" id="input-address-usZip" class="input-field" placeholder="ZIP" autocomplete="off">
+                </div>
+                <div id="feedback-address-us" class="feedback-message"></div>
+            </section>
+            <div id="grid-address-us" class="button-grid">
+                <button id="btn-address-us-addressescom" class="button" data-search-id="address-us-addressescom">Addresses.com</button>
+                <button id="btn-address-us-advbackground" class="button" data-search-id="address-us-advbackground">AdvBackgChk</button>
+                <button id="btn-address-us-cyberbackground" class="button" data-search-id="address-us-cyberbackground">CyberBkgChk</button>
+                <button id="btn-address-us-fastpeople" class="button" data-search-id="address-us-fastpeople">FastPeople</button>
+                <button id="btn-address-us-gisgraphy" class="button" data-search-id="address-us-gisgraphy">GISGraphy</button>
+                <button id="btn-address-us-google" class="button" data-search-id="address-us-google">Google</button>
+                <button id="btn-address-us-hudway" class="button" data-search-id="address-us-hudway">Hudway</button>
+                <button id="btn-address-us-peoplefinders" class="button" data-search-id="address-us-peoplefinders">PeopleFinders</button>
+                <button id="btn-address-us-rehold" class="button" data-search-id="address-us-rehold">Rehold</button>
+                <button id="btn-address-us-searchpeoplefree" class="button" data-search-id="address-us-searchpeoplefree">SearchPplFree</button>
+                <button id="btn-address-us-smartbackground" class="button" data-search-id="address-us-smartbackground">SmartBkgChk</button>
+                <button id="btn-address-us-spokeo" class="button" data-search-id="address-us-spokeo">Spokeo</button>
+                <button id="btn-address-us-truepeople" class="button" data-search-id="address-us-truepeople">TruePeople</button>
+                <button id="btn-address-us-usapeople" class="button" data-search-id="address-us-usapeople">USA People</button>
+                <button id="btn-address-us-whitepages" class="button" data-search-id="address-us-whitepages">WhitePages</button>
+                <button id="btn-address-us-zillow" class="button" data-search-id="address-us-zillow">Zillow</button>
             </div>
-            <div class="note"><strong>NOTE:</strong> Use the term above with the tools below. Some tools may perform a general site search if the input is not directly applicable.</div>
-          </div>
-          <div class="button-grid" id="grid-addresses-intl-tools">
-            <button id="btn-addresses-tool-192com" type="button" class="button" onclick="Addresses_Tool192Com()">192.com (UK)</button>
-            <button id="btn-addresses-tool-411" type="button" class="button" onclick="Addresses_Tool411()">411.com (US)</button>
-            <button id="btn-addresses-tool-canada411" type="button" class="button" onclick="Addresses_ToolCanada411()">Canada411</button>
-            <button id="btn-addresses-tool-domaintools" type="button" class="button" onclick="Addresses_ToolDomainTools()">DomainTools - WHOIS</button>
-            <button id="btn-addresses-tool-googlemaps" type="button" class="button" onclick="Addresses_ToolGoogleMaps()">Google Maps</button>
-            <button id="btn-addresses-tool-googlesearch" type="button" class="button" onclick="Addresses_ToolGoogleSearch()">Google Search</button>
-            <button id="btn-addresses-tool-occrp" type="button" class="button" onclick="Addresses_ToolOCCRP()">OCCRP Aleph</button>
-            <button id="btn-addresses-tool-riskiq" type="button" class="button" onclick="Addresses_ToolRiskIQ()">RiskIQ - Address</button>
-            <button id="btn-addresses-tool-thatsthem" type="button" class="button" onclick="Addresses_ToolThatsThem()">ThatsThem</button>
-            <button id="btn-addresses-tool-truepeople" type="button" class="button" onclick="Addresses_ToolTruePeople()">TruePeopleSearch (US)</button>
-          </div>
-        </section>
-        
-        <section id="section-addresses-italy" class="search-instructions" style="margin-top:1.5rem">
-          <h2>Italy Addresses</h2>
-          <h3 id="subsection-addresses-it-companies">Pagine Bianche – Aziende</h3>
-          <div class="input-container">
-            <input class="input-field" type="text" id="itCompany" placeholder="Company name">
-            <input class="input-field" type="text" id="itCity"    placeholder="City">
-            <input class="input-field" type="text" id="itProv"    placeholder="Province">
-          </div>
-          <div class="button-grid">
-            <button id="btn-addresses-it-paginebianche-companies" class="button" onclick="Addresses_SearchPagineBiancheCompanies()">Search Companies</button>
-          </div>
+        </div>
 
-          <h3 id="subsection-addresses-it-people">Pagine Bianche – Persone</h3>
-          <div class="input-container">
-            <input class="input-field" type="text" id="itFirst" placeholder="First Name">
-            <input class="input-field" type="text" id="itLast"  placeholder="Last Name">
-            <input class="input-field" type="text" id="itCityP" placeholder="City">
-            <input class="input-field" type="text" id="itProvP" placeholder="Province">
-          </div>
-          <div class="button-grid">
-            <button id="btn-addresses-it-paginebianche-people" class="button" onclick="Addresses_SearchPagineBianchePeople()">Search People</button>
-          </div>
+        <div id="column-address-intl" class="column">
+            <section id="section-address-intl" class="search-instructions">
+                <h2>INTERNATIONAL ADDRESSES</h2>
+                <div class="input-container">
+                    <input type="text" id="input-address-intlStreet" class="input-field" placeholder="Street" autocomplete="off">
+                    <input type="text" id="input-address-intlNum" class="input-field" placeholder="Number" autocomplete="off">
+                    <input type="text" id="input-address-intlCity" class="input-field" placeholder="City" autocomplete="off">
+                    <input type="text" id="input-address-intlZip" class="input-field" placeholder="Postal" autocomplete="off">
+                    <input type="text" id="input-address-intlRegion" class="input-field" placeholder="Region/Country" autocomplete="off">
+                </div>
+                <div id="feedback-address-intl" class="feedback-message"></div>
+            </section>
+            <div id="grid-address-intl" class="button-grid">
+                <button id="btn-address-intl-fastpeople" class="button" data-search-id="address-intl-fastpeople">FastPeople EU</button>
+                <button id="btn-address-intl-gisgraphy" class="button" data-search-id="address-intl-gisgraphy">GISGraphy</button>
+                <button id="btn-address-intl-google" class="button" data-search-id="address-intl-google">Google</button>
+            </div>
 
-          <h3 id="subsection-addresses-it-yellowpages">Pagine Gialle</h3>
-          <div class="input-container">
-            <input class="input-field" type="text" id="itAct" placeholder="Activity">
-            <input class="input-field" type="text" id="itLoc" placeholder="Location">
-          </div>
-          <div class="button-grid">
-            <button id="btn-addresses-it-paginegialle" class="button" onclick="Addresses_SearchPagineGialle()">Pagine Gialle</button>
-          </div>
-        </section>
-      </div>
+            <section id="section-address-it-group">
+                <h2>Italy Addresses</h2>
+                <div id="container-it-companies" class="search-instructions">
+                    <h3>Pagine Bianche – Companies</h3>
+                    <div class="input-container">
+                        <input type="text" id="input-address-itCompany" class="input-field" placeholder="Company name" autocomplete="off">
+                    </div>
+                    <div class="input-container">
+                        <input type="text" id="input-address-itCity" class="input-field" placeholder="City" autocomplete="off">
+                        <input type="text" id="input-address-itProv" class="input-field" placeholder="Province (e.g., RM)" autocomplete="off">
+                    </div>
+                    <div id="feedback-address-it-companies" class="feedback-message"></div>
+                </div>
+                <div class="button-grid">
+                    <button id="btn-address-it-paginebianche-companies" class="button" data-search-id="address-it-paginebianche-companies">Search Companies</button>
+                </div>
+
+                <div id="container-it-people" class="search-instructions">
+                    <h3>Pagine Bianche – People</h3>
+                    <div class="input-container">
+                        <input type="text" id="input-address-itFirst" class="input-field" placeholder="First Name" autocomplete="off">
+                        <input type="text" id="input-address-itLast" class="input-field" placeholder="Last Name" autocomplete="off">
+                    </div>
+                    <div class="input-container">
+                        <input type="text" id="input-address-itCityP" class="input-field" placeholder="City" autocomplete="off">
+                        <input type="text" id="input-address-itProvP" class="input-field" placeholder="Province (e.g., MI)" autocomplete="off">
+                    </div>
+                    <div id="feedback-address-it-people" class="feedback-message"></div>
+                </div>
+                <div class="button-grid">
+                    <button id="btn-address-it-paginebianche-people" class="button" data-search-id="address-it-paginebianche-people">Search People</button>
+                </div>
+
+                <div id="container-it-yellow" class="search-instructions">
+                    <h3>Pagine Gialle</h3>
+                    <div class="input-container">
+                        <input type="text" id="input-address-itAct" class="input-field" placeholder="Activity (e.g., restaurant)" autocomplete="off">
+                        <input type="text" id="input-address-itLoc" class="input-field" placeholder="Location (e.g., Rome)" autocomplete="off">
+                    </div>
+                    <div id="feedback-address-it-yellow" class="feedback-message"></div>
+                </div>
+                <div class="button-grid">
+                    <button id="btn-address-it-paginegialle" class="button" data-search-id="address-it-paginegialle">Search Pagine Gialle</button>
+                </div>
+            </section>
+        </div>
     </div>
-  </main>
+</main>
 
+<<<<<<< HEAD
   <footer>
     <p>Exploratores 2.5 prototype <a href="license.html">License</a></p>
   </footer>
@@ -266,21 +326,65 @@
         window.open('https://www.paginegialle.it/ricerca/' + encodeURIComponent(act) + '/' + encodeURIComponent(loc), '_blank');
     }
   </script>
+=======
+<footer>
+    <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
+</footer>
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
 
 <script src="../assets/js/config.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/externaeven.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
-      exploratoresConfig.selectorsToHide.forEach(selector => {
-        try {
-          const elements = document.querySelectorAll(selector);
-          elements.forEach(el => el.classList.add('hidden-in-light'));
-        } catch (e) {
-          console.error("Invalid selector in config.js:", selector);
-        }
-      });
+    // --- UI Update Function ---
+    function updatePageState() {
+        const validationMap = [
+            { validator: ExploratoresValidators.getAndValidateUsAddress, feedbackId: 'feedback-address-us', buttonsSelector: '#grid-address-us .button', message: 'Requires Street and (City or ZIP).' },
+            { validator: ExploratoresValidators.getAndValidateIntlAddress, feedbackId: 'feedback-address-intl', buttonsSelector: '#grid-address-intl .button', message: 'Requires Street, City, and Postal Code.' },
+            { validator: ExploratoresValidators.getAndValidateItCompanies, feedbackId: 'feedback-address-it-companies', buttonsSelector: '#btn-address-it-paginebianche-companies', message: 'Requires Company, City, and a valid Province (e.g., RM).' },
+            { validator: ExploratoresValidators.getAndValidateItPeople, feedbackId: 'feedback-address-it-people', buttonsSelector: '#btn-address-it-paginebianche-people', message: 'Requires Name/Surname, City, and a valid Province (e.g., MI).' },
+            { validator: ExploratoresValidators.getAndValidateItYellow, feedbackId: 'feedback-address-it-yellow', buttonsSelector: '#btn-address-it-paginegialle', message: 'Requires Activity and Location.' }
+        ];
+
+        validationMap.forEach(group => {
+            if (typeof group.validator === 'function') {
+                const isValid = group.validator() !== null;
+                const feedbackDiv = document.getElementById(group.feedbackId);
+                const buttons = document.querySelectorAll(group.buttonsSelector);
+
+                if (feedbackDiv) {
+                    if (isValid) {
+                        feedbackDiv.textContent = 'Ready to search.';
+                        feedbackDiv.className = 'feedback-message ready';
+                    } else {
+                        feedbackDiv.textContent = group.message;
+                        feedbackDiv.className = 'feedback-message';
+                    }
+                }
+
+                buttons.forEach(button => {
+                    button.disabled = !isValid;
+                    button.classList.toggle('text-active', isValid);
+                });
+            }
+        });
     }
-  });
+
+    // --- Initial Page State Function ---
+    function setInitialPageState() {
+        document.querySelectorAll('.input-field').forEach(input => input.value = '');
+        updatePageState();
+    }
+
+    // --- Event Listeners ---
+    document.addEventListener('DOMContentLoaded', () => {
+        setInitialPageState();
+        document.querySelectorAll('.input-field').forEach(input => {
+            input.addEventListener('input', updatePageState);
+        });
+    });
 </script>
 
 </body>

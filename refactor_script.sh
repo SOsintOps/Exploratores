@@ -1,3 +1,106 @@
+#!/bin/bash
+
+# 1. Crea il file main.js
+gemini files create --path "assets/js/main.js" --content-from-stdin <<'EOF'
+const Exploratores = {
+    init: function() {
+        this.initSearchHandler();
+    },
+
+    initSearchHandler: function() {
+        document.body.addEventListener('click', (event) => {
+            const button = event.target.closest('[data-search-id]');
+            if (!button) return;
+            
+            event.preventDefault();
+            const searchId = button.getAttribute('data-search-id');
+            const config = SearchLibrary[searchId];
+
+            if (!config) {
+                console.error(`Search configuration for "${searchId}" not found in SearchLibrary.`);
+                return;
+            }
+
+            const validator = ExploratoresValidators[config.validator];
+            if (typeof validator !== 'function') {
+                console.error(`Validator function "${config.validator}" not found.`);
+                return;
+            }
+
+            const params = validator(config.inputId);
+            if (!params) return;
+
+            let url = config.urlTemplate;
+            for (const key in params) {
+                const placeholder = key.toUpperCase();
+                url = url.replace(new RegExp(placeholder, 'g'), encodeURIComponent(params[key]));
+            }
+            
+            window.open(url, '_blank');
+        });
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    Exploratores.init();
+});
+EOF
+
+# 2. Crea il file validators.js
+gemini files create --path "assets/js/validators.js" --content-from-stdin <<'EOF'
+const ExploratoresValidators = {
+    getAndValidateSearchTerm: function(inputId) {
+        const inputElement = document.getElementById(inputId);
+        const feedbackElement = document.getElementById('page-feedback');
+        const value = inputElement ? inputElement.value.trim() : "";
+
+        if (!value) {
+            if (feedbackElement) feedbackElement.textContent = "Please enter a search term.";
+            return null;
+        }
+
+        if (feedbackElement) feedbackElement.textContent = "";
+        return { term: value };
+    }
+};
+EOF
+
+# 3. Crea il file search-library.js
+gemini files create --path "assets/js/search-library.js" --content-from-stdin <<'EOF'
+const SearchLibrary = {
+    "searchengines-google": { urlTemplate: "https://google.com/search?q=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-googledate": { urlTemplate: "https://google.com/search?q=TERM&tbs=cdr:1,cd_min:1/1/0,sbd:1", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-googlenews": { urlTemplate: "https://www.google.com/search?tbm=nws&q=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-googleftp": { urlTemplate: "https://www.google.com/search?q=inurl%3Aftp%20-inurl%3A(http|https)%20TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-googleindex": { urlTemplate: "https://www.google.com/search?q=intitle%3Aindex.of+TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-googlescholar": { urlTemplate: "https://scholar.google.com/scholar?&q=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-googlepatents": { urlTemplate: "https://patents.google.com/?q=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-bing": { urlTemplate: 'https://bing.com/search?q="TERM"', validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-bingnews": { urlTemplate: 'https://bing.com/news/search?q="TERM"', validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-yahoo": { urlTemplate: "https://search.yahoo.com/search?p=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-yandex": { urlTemplate: "https://www.yandex.com/yandsearch?text=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-baidu": { urlTemplate: "https://baidu.com/s?wd=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-searx": { urlTemplate: "https://baresearch.org/?q=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-duckduckgo": { urlTemplate: "https://duckduckgo.com/?q=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-startpage": { urlTemplate: "https://startpage.com/do/search?q=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-qwant": { urlTemplate: "https://www.qwant.com/?q=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-brave": { urlTemplate: "https://search.brave.com/search?q=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-wayback": { urlTemplate: "https://web.archive.org/web/*/TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-ahmia": { urlTemplate: "https://ahmia.fi/search/?q=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-tor66": { urlTemplate: "http://www.tor66sewebgixwhcqfnp5inzp5x5uohhdy3kvtnyfxc2e5mxiuh34iid.onion/search?q=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-ahmiaonion": { urlTemplate: "http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/search/?q=TERM&action=search", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-gdark": { urlTemplate: "http://zb2jtkhnbvhkya3d46twv3g7lkobi4s62tjffqmafjibixk6pmq75did.onion/gdark/search.php?query=TERM&search=1", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-hiddenreviews": { urlTemplate: "http://u5lyidiw4lpkonoctpqzxgyk6xop7w7w3oho4dzzsi272rwnjhyx7ayd.onion/?s=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-onionland": { urlTemplate: "http://3bbad7fauom4d6sgppalyqddsqbf5u5p56b5k5uk2zxsy3d6ey2jobad.onion/search?q=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-submarine": { urlTemplate: "http://no6m4wzdexe3auiupv2zwif7rm6qwxcyhslkcnzisxgeiw6pvjsgafad.onion/search.php?term=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-deepsearch": { urlTemplate: "http://searchgf7gdtauh7bhnbyed4ivxqmuoat3nm6zfrg3ymkq6mtnpye3ad.onion/search?q=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-onioncenter": { urlTemplate: "http://5qqrlc7hw3tsgokkqifb33p3mrlpnleka2bjg7n46vih2synghb6ycid.onion/index.php?a=search&q=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" },
+    "searchengines-freshonion": { urlTemplate: "http://freshonifyfe4rmuh6qwpsexfhdrww7wnt5qmkoertwxmcuvm4woo4ad.onion/?query=TERM", validator: "getAndValidateSearchTerm", inputId: "searchInput" }
+};
+EOF
+
+# 4. Sovrascrivi searchengines.html con la versione refattorizzata
+gemini files create --path "pages/searchengines.html" --overwrite --content-from-stdin <<'EOF'
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -142,3 +245,6 @@
 
 </body>
 </html>
+EOF
+
+echo "Processo di refactoring completato."

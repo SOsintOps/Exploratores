@@ -1,346 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Exploratores – Communities Tool</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Font IBM Plex Sans -->
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Communities • Exploratores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
 <body>
 
+<<<<<<< HEAD
   <!-- NAVBAR -->
 <div id="navbar-placeholder"></div>
 
 <script src="../assets/menu/navigation.js"></script>
+=======
+<nav>
+    <ul class="menu">
+        <li><span>HOME</span>
+            <ul class="submenu">
+                <li><a href="../launchme.html">Index</a></li>
+            </ul>
+        </li>
+        <li><span>Search<br>Engines</span>
+            <ul class="submenu">
+                <li><a href="searchengines.html">Search Engines</a></li>
+            </ul>
+        </li>
+        <li><span>People &<br>Identities</span>
+            <ul class="submenu">
+                <li><a href="names.html">Names</a></li>
+                <li><a href="phoneus.html">US Phones</a></li>
+                <li><a href="phoneint.html">International Phones</a></li>
+                <li><a href="address.html">Addresses</a></li>
+                <li><a href="vehicles.html">Vehicles</a></li>
+                <li><a href="usernames.html">Usernames</a></li>
+                <li><a href="email.html">Email Addresses</a></li>
+                <li><a href="communities.html" class="active">Communities</a></li>
+            </ul>
+        </li>
+        <li><span>Social<br>Media</span>
+            <ul class="submenu">
+                <li><a href="x.html">X (Twitter)</a></li>
+                <li><a href="facebook.html">Facebook</a></li>
+                <li><a href="instagram.html">Instagram</a></li>
+                <li><a href="linkedin.html">LinkedIn</a></li>
+            </ul>
+        </li>
+        <li><span>Websites</span>
+            <ul class="submenu">
+                <li><a href="domains.html">Domains</a></li>
+                <li><a href="ip.html">IP Addresses</a></li>
+            </ul>
+        </li>
+        <li><span>GeoInt</span>
+            <ul class="submenu">
+                <li><a href="maps.html">Maps</a></li>
+            </ul>
+        </li>
+        <li><span>Media<br>Analysis</span>
+            <ul class="submenu">
+                <li><a href="images.html">Images</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="docs.html">Documents</a></li>
+            </ul>
+        </li>
+        <li><span>Business<br>Intelligence</span>
+            <ul class="submenu">
+                <li><a href="publiccompanyrecords.html">Company Public Records</a></li>
+                <li><a href="currencies.html">Virtual Currencies</a></li>
+            </ul>
+        </li>
+        <li><span>Tools</span>
+            <ul class="submenu">
+                <li><a href="guidelines.html">Guidelines</a></li>
+                <li><a href="cyberchef.html">CyberChef</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
 
-  <main>
+<main>
     <h1 class="page-title">Communities Tool</h1>
-
     <div class="note">
-      For proper function of these features, an active investigative profile is required.
+        For proper function of some features, an active investigative profile may be required on the target platform.
     </div>
 
     <div class="columns">
-      <!-- Left column -->
-      <div class="column">
-        <!-- Reddit -->
-        <div class="form-section">
-          <h2>Reddit</h2>
-          <section class="search-instructions">
-            <label for="redditTerm">Search term:</label>
-            <div class="input-container">
-              <input type="text" id="redditTerm" class="input-field" placeholder="Search term">
-            </div>
-          </section>
-          <div class="button-grid">
-            <button class="button" onclick="makeOsint01(redditTerm.value)">Keyword</button>
-            <button class="button" onclick="makeOsint02(redditTerm.value)">Title</button>
-            <button class="button" onclick="makeOsint10a(redditTerm.value)">PullPush Asc</button>
-            <button class="button" onclick="makeOsint10b(redditTerm.value)">PullPush Desc</button>
-          </div>
+        <div id="column-communities-left" class="column">
+            <section id="section-communities-reddit" class="search-instructions">
+                <h2>Reddit</h2>
+                <label for="input-communities-redditTerm">Search Term</label>
+                <div class="input-container">
+                    <input type="text" id="input-communities-redditTerm" class="input-field" placeholder="Enter search term..." data-input-group="redditTerm" autocomplete="off">
+                </div>
+                <div id="feedback-communities-redditTerm" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="communities-reddit-keyword" data-input-group="redditTerm">Keyword</button>
+                    <button class="button" data-search-id="communities-reddit-title" data-input-group="redditTerm">Title</button>
+                    <button class="button" data-search-id="communities-reddit-pullpush-asc" data-input-group="redditTerm">PullPush Asc</button>
+                    <button class="button" data-search-id="communities-reddit-pullpush-desc" data-input-group="redditTerm">PullPush Desc</button>
+                </div>
+                <hr>
+                <label for="input-communities-redditUser">Username</label>
+                <div class="input-container">
+                    <input type="text" id="input-communities-redditUser" class="input-field" placeholder="Enter username..." data-input-group="redditUser" autocomplete="off">
+                </div>
+                <div id="feedback-communities-redditUser" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="communities-reddit-profile" data-input-group="redditUser">Profile</button>
+                    <button class="button" data-search-id="communities-reddit-submissions" data-input-group="redditUser">Submissions</button>
+                    <button class="button" data-search-id="communities-reddit-comments" data-input-group="redditUser">Comments</button>
+                    <button class="button" data-search-id="communities-reddit-archive" data-input-group="redditUser">Archive</button>
+                    <button class="button" data-search-id="communities-reddit-api-asc" data-input-group="redditUser">API Asc</button>
+                    <button class="button" data-search-id="communities-reddit-api-desc" data-input-group="redditUser">API Desc</button>
+                </div>
+            </section>
 
-          <section class="search-instructions">
-            <label for="redditUser">Username:</label>
-            <div class="input-container">
-              <input type="text" id="redditUser" class="input-field" placeholder="Username">
-            </div>
-          </section>
-          <div class="button-grid">
-            <button class="button" onclick="makeOsint03(redditUser.value)">Profile</button>
-            <button class="button" onclick="makeOsint04(redditUser.value)">Submissions</button>
-            <button class="button" onclick="makeOsint05(redditUser.value)">Comments</button>
-            <button class="button" onclick="makeOsint06(redditUser.value)">Archive</button>
-            <button class="button" onclick="makeOsint08(redditUser.value)">API Asc</button>
-            <button class="button" onclick="makeOsint09(redditUser.value)">API Desc</button>
-          </div>
+            <section id="section-communities-hackernews" class="search-instructions">
+                <h2>Hacker News</h2>
+                <label for="input-communities-hnTerm">Search Term</label>
+                <div class="input-container">
+                    <input type="text" id="input-communities-hnTerm" class="input-field" placeholder="Enter search term..." data-input-group="hnTerm" autocomplete="off">
+                </div>
+                <div id="feedback-communities-hnTerm" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="communities-hn-search" data-input-group="hnTerm">Search</button>
+                    <button class="button" data-search-id="communities-hn-google" data-input-group="hnTerm">Google Site</button>
+                </div>
+                <hr>
+                <label for="input-communities-hnUser">Username</label>
+                <div class="input-container">
+                    <input type="text" id="input-communities-hnUser" class="input-field" placeholder="Enter username..." data-input-group="hnUser" autocomplete="off">
+                </div>
+                <div id="feedback-communities-hnUser" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="communities-hn-profile" data-input-group="hnUser">Profile</button>
+                    <button class="button" data-search-id="communities-hn-submissions" data-input-group="hnUser">Submissions</button>
+                    <button class="button" data-search-id="communities-hn-threads" data-input-group="hnUser">Threads</button>
+                    <button class="button" data-search-id="communities-hn-favorites" data-input-group="hnUser">Favorites</button>
+                </div>
+            </section>
+
+            <section id="section-communities-4chan" class="search-instructions">
+                <h2>4chan</h2>
+                <label for="input-communities-4chanTerm">Search Term</label>
+                <div class="input-container">
+                    <input type="text" id="input-communities-4chanTerm" class="input-field" placeholder="Enter search term..." data-input-group="4chanTerm" autocomplete="off">
+                </div>
+                <div id="feedback-communities-4chanTerm" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="communities-4chan-boards" data-input-group="4chanTerm">Boards</button>
+                    <button class="button" data-search-id="communities-4chan-threads" data-input-group="4chanTerm">Threads</button>
+                    <button class="button" data-search-id="communities-4chan-archive" data-input-group="4chanTerm">Archive</button>
+                    <button class="button" data-search-id="communities-4chan-google" data-input-group="4chanTerm">Google</button>
+                </div>
+            </section>
         </div>
 
-        <!-- Hacker News -->
-        <div class="form-section">
-          <h2>Hacker News</h2>
-          <section class="search-instructions">
-            <label for="hnTerm">Search term:</label>
-            <div class="input-container">
-              <input type="text" id="hnTerm" class="input-field" placeholder="Search term">
-            </div>
-          </section>
-          <div class="button-grid">
-            <button class="button" onclick="makeOsint17(hnTerm.value)">Search</button>
-            <button class="button" onclick="makeOsint22(hnTerm.value)">Google Site</button>
-          </div>
+        <div id="column-communities-right" class="column">
+            <section id="section-communities-discord" class="search-instructions">
+                <h2>Discord</h2>
+                <label for="input-communities-discordTerm">Server Name/ID</label>
+                <div class="input-container">
+                    <input type="text" id="input-communities-discordTerm" class="input-field" placeholder="Enter server name or ID..." data-input-group="discordTerm" autocomplete="off">
+                </div>
+                <div id="feedback-communities-discordTerm" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="communities-discord-invite" data-input-group="discordTerm">Invite</button>
+                    <button class="button" data-search-id="communities-discord-disboard" data-input-group="discordTerm">Disboard</button>
+                    <button class="button" data-search-id="communities-discord-me" data-input-group="discordTerm">Discord.me</button>
+                    <button class="button" data-search-id="communities-discord-servers" data-input-group="discordTerm">Servers</button>
+                    <button class="button" data-search-id="communities-discord-bee" data-input-group="discordTerm">Bee</button>
+                    <button class="button" data-search-id="communities-discord-google" data-input-group="discordTerm">Google</button>
+                </div>
+            </section>
 
-          <section class="search-instructions">
-            <label for="hnUser">Username:</label>
-            <div class="input-container">
-              <input type="text" id="hnUser" class="input-field" placeholder="Username">
-            </div>
-          </section>
-          <div class="button-grid">
-            <button class="button" onclick="makeOsint18(hnUser.value)">Profile</button>
-            <button class="button" onclick="makeOsint19(hnUser.value)">Submissions</button>
-            <button class="button" onclick="makeOsint20(hnUser.value)">Threads</button>
-            <button class="button" onclick="makeOsint21(hnUser.value)">Favorites</button>
-          </div>
+            <section id="section-communities-telegram" class="search-instructions">
+                <h2>Telegram</h2>
+                <label for="input-communities-tgUser">User/Channel Name</label>
+                <div class="input-container">
+                    <input type="text" id="input-communities-tgUser" class="input-field" placeholder="Enter user or channel name..." data-input-group="tgUser" autocomplete="off">
+                </div>
+                <div id="feedback-communities-tgUser" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="communities-tg-profile" data-input-group="tgUser">Profile/Channel</button>
+                    <button class="button" data-search-id="communities-tg-preview" data-input-group="tgUser">Channel Preview</button>
+                    <button class="button" data-search-id="communities-tg-telescope" data-input-group="tgUser">Telesco.pe</button>
+                    <button class="button" data-search-id="communities-tg-telemetrio" data-input-group="tgUser">Telemetr.io</button>
+                </div>
+                <hr>
+                <label for="input-communities-tgKey">Keyword</label>
+                <div class="input-container">
+                    <input type="text" id="input-communities-tgKey" class="input-field" placeholder="Enter keyword..." data-input-group="tgKey" autocomplete="off">
+                </div>
+                <div id="feedback-communities-tgKey" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="communities-tg-groupsearch" data-input-group="tgKey">Group Search</button>
+                    <button class="button" data-search-id="communities-tg-channelsearch" data-input-group="tgKey">Channel Search</button>
+                </div>
+            </section>
         </div>
-
-        <!-- 4chan -->
-        <div class="form-section">
-          <h2>4chan</h2>
-          <section class="search-instructions">
-            <label for="chanTerm">Search term:</label>
-            <div class="input-container">
-              <input type="text" id="chanTerm" class="input-field" placeholder="Search term">
-            </div>
-          </section>
-          <div class="button-grid">
-            <button class="button" onclick="makeOsint23(chanTerm.value)">Boards</button>
-            <button class="button" onclick="makeOsint24(chanTerm.value)">Threads</button>
-            <button class="button" onclick="makeOsint25(chanTerm.value)">Archive</button>
-            <button class="button" onclick="makeOsint26(chanTerm.value)">Google</button>
-          </div>
-        </div>
-
-        <!-- TikTok -->
-        <div class="form-section">
-          <h2>TikTok</h2>
-          <section class="search-instructions">
-            <label for="ttUser">Username:</label>
-            <div class="input-container">
-              <input type="text" id="ttUser" class="input-field" placeholder="Username">
-            </div>
-          </section>
-          <div class="button-grid">
-            <button class="button" onclick="makeOsint27(ttUser.value)">Profile</button>
-            <button class="button" onclick="makeOsint28(ttUser.value)">Users</button>
-          </div>
-
-          <section class="search-instructions">
-            <label for="ttKey">Keyword:</label>
-            <div class="input-container">
-              <input type="text" id="ttKey" class="input-field" placeholder="Keyword">
-            </div>
-          </section>
-          <div class="button-grid">
-            <button class="button" onclick="makeOsint29(ttKey.value)">Tags</button>
-            <button class="button" onclick="makeOsint30(ttKey.value)">Search</button>
-            <button class="button" onclick="makeOsint31(ttKey.value)">Videos</button>
-            <button class="button" onclick="makeOsint32(ttKey.value)">Google</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right column -->
-      <div class="column">
-        <!-- Discord -->
-        <div class="form-section">
-          <h2>Discord</h2>
-          <section class="search-instructions">
-            <label for="dcTerm">Server name/ID:</label>
-            <div class="input-container">
-              <input type="text" id="dcTerm" class="input-field" placeholder="Server name/ID">
-            </div>
-          </section>
-          <div class="button-grid">
-            <button class="button" onclick="makeOsint57(dcTerm.value)">Invite</button>
-            <button class="button" onclick="makeOsint58(dcTerm.value)">Disboard</button>
-            <button class="button" onclick="makeOsint60(dcTerm.value)">Discord.me</button>
-            <button class="button" onclick="makeOsint61(dcTerm.value)">Servers</button>
-            <button class="button" onclick="makeOsint62(dcTerm.value)">Bee</button>
-            <button class="button" onclick="makeOsint63(dcTerm.value)">Google</button>
-          </div>
-        </div>
-
-        <!-- Parler -->
-        <div class="form-section">
-          <h2>Parler</h2>
-          <section class="search-instructions">
-            <label for="parUser">Username:</label>
-            <div class="input-container">
-              <input type="text" id="parUser" class="input-field" placeholder="Username">
-            </div>
-          </section>
-          <div class="button-grid">
-            <button class="button" onclick="makeOsint64(parUser.value)">Profile</button>
-            <button class="button" onclick="makeOsint64a(parUser.value)">Submissions</button>
-            <button class="button" onclick="makeOsint64b(parUser.value)">Comments</button>
-          </div>
-        </div>
-
-        <!-- Gab -->
-        <div class="form-section">
-          <h2>Gab</h2>
-          <section class="search-instructions">
-            <label for="gabUser">Username:</label>
-            <div class="input-container">
-              <input type="text" id="gabUser" class="input-field" placeholder="Username">
-            </div>
-          </section>
-          <div class="button-grid">
-            <button class="button" onclick="makeOsint65(gabUser.value)">Profile</button>
-            <button class="button" onclick="makeOsint66(gabUser.value)">Groups</button>
-          </div>
-        </div>
-
-        <!-- Gettr -->
-        <div class="form-section">
-          <h2>Gettr</h2>
-          <section class="search-instructions">
-            <label for="gettrUser">Username:</label>
-            <div class="input-container">
-              <input type="text" id="gettrUser" class="input-field" placeholder="Username">
-            </div>
-          </section>
-          <div class="button-grid">
-            <button class="button" onclick="makeOsint65c(gettrUser.value)">Profile</button>
-            <button class="button" onclick="makeOsint66c(gettrUser.value)">Comments</button>
-            <button class="button" onclick="makeOsint67c(gettrUser.value)">Media</button>
-            <button class="button" onclick="makeOsint68c(gettrUser.value)">Likes</button>
-          </div>
-        </div>
-
-        <!-- Mastodon -->
-        <div class="form-section">
-          <h2>Mastodon</h2>
-          <section class="search-instructions">
-            <label for="mastodonTerm">Search term:</label>
-            <div class="input-container">
-              <input type="text" id="mastodonTerm" class="input-field" placeholder="Search term">
-            </div>
-          </section>
-          <div class="button-grid">
-            <button class="button" onclick="makeOsint65d(mastodonTerm.value)">Accounts</button>
-            <button class="button" onclick="makeOsint66d(mastodonTerm.value)">Hashtags</button>
-          </div>
-        </div>
-
-        <!-- Telegram -->
-        <div class="form-section">
-          <h2>Telegram</h2>
-          <section class="search-instructions">
-            <label for="tgUser">User/Channel Name:</label>
-            <div class="input-container">
-              <input type="text" id="tgUser" class="input-field" placeholder="User/Channel Name">
-            </div>
-          </section>
-          <div class="button-grid">
-            <button class="button" onclick="makeOsint67(tgUser.value)">Profile/Channel</button>
-            <button class="button" onclick="makeOsint68(tgUser.value)">Channel Preview</button>
-            <button class="button" onclick="makeOsint69(tgUser.value)">Telegra.ph</button>
-            <button class="button" onclick="makeOsint72(tgUser.value)">Telemetr.io</button>
-          </div>
-
-          <section class="search-instructions">
-            <label for="tgKey">Keyword:</label>
-            <div class="input-container">
-              <input type="text" id="tgKey" class="input-field" placeholder="Keyword">
-            </div>
-          </section>
-          <div class="button-grid">
-            <button class="button" onclick="makeOsint70(tgKey.value)">Group Search</button>
-            <button class="button" onclick="makeOsint71(tgKey.value)">Channel Search</button>
-          </div>
-        </div>
-      </div>
     </div>
-  </main>
+</main>
 
+<<<<<<< HEAD
   <footer>
     Exploratores 2.5 prototype
     <a href="license.html">License</a>
   </footer>
+=======
+<footer>
+    <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
+</footer>
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
 
-  <script>
-    // Navbar submenu show/hide
-    document.querySelectorAll('.menu > li').forEach(item => {
-      item.addEventListener('mouseover', () => item.querySelector('.submenu')?.style.setProperty('display','block'));
-      item.addEventListener('mouseout',  () => item.querySelector('.submenu')?.style.setProperty('display','none'));
-    });
-
-    // Reddit
-    function makeOsint01(v){window.open('https://old.reddit.com/search?q='+encodeURIComponent(v),'_blank');}
-    function makeOsint02(v){window.open('https://old.reddit.com/search?q=title:'+encodeURIComponent(v),'_blank');}
-    function makeOsint03(v){window.open('https://old.reddit.com/user/'+encodeURIComponent(v),'_blank');}
-    function makeOsint04(v){window.open('https://old.reddit.com/user/'+encodeURIComponent(v)+'/submitted','_blank');}
-    function makeOsint05(v){window.open('https://old.reddit.com/user/'+encodeURIComponent(v)+'/comments/','_blank');}
-    function makeOsint06(v){window.open('https://web.archive.org/*/https://www.reddit.com/user/'+encodeURIComponent(v),'_blank');}
-    function makeOsint08(v){window.open('https://api.pullpush.io/reddit/search/comment/?author='+encodeURIComponent(v)+'&sort=asc&size=100','_blank');}
-    function makeOsint09(v){window.open('https://api.pullpush.io/reddit/search/comment/?author='+encodeURIComponent(v)+'&sort=desc&size=100','_blank');}
-    function makeOsint10a(v){window.open('https://api.pullpush.io/reddit/search/comment/?q='+encodeURIComponent(v)+'&sort=asc&size=100','_blank');}
-    function makeOsint10b(v){window.open('https://api.pullpush.io/reddit/search/comment/?q='+encodeURIComponent(v)+'&sort=desc&size=100','_blank');}
-
-    // Hacker News
-    function makeOsint17(v){window.open('https://hn.algolia.com/?query='+encodeURIComponent(v)+'&sort=byDate&page=0','_blank');}
-    function makeOsint18(v){window.open('https://news.ycombinator.com/user?id='+encodeURIComponent(v),'_blank');}
-    function makeOsint19(v){window.open('https://news.ycombinator.com/submitted?id='+encodeURIComponent(v),'_blank');}
-    function makeOsint20(v){window.open('https://news.ycombinator.com/threads?id='+encodeURIComponent(v),'_blank');}
-    function makeOsint21(v){window.open('https://news.ycombinator.com/favorites?id='+encodeURIComponent(v),'_blank');}
-    function makeOsint22(v){window.open('https://www.google.com/search?q=site:news.ycombinator.com+'+encodeURIComponent(v),'_blank');}
-
-    // 4chan
-    function makeOsint23(v){window.open('http://4chansearch.com/?q='+encodeURIComponent(v)+'&s=4','_blank');}
-    function makeOsint24(v){window.open('http://4chansearch.com/?q='+encodeURIComponent(v)+'&s=7','_blank');}
-    function makeOsint25(v){window.open('https://archive.4plebs.org/_/search/text/'+encodeURIComponent(v)+'/order/asc/','_blank');}
-    function makeOsint26(v){window.open('https://www.google.com/search?q=site:4chan.org+'+encodeURIComponent(v),'_blank');}
-
-    // TikTok
-    function makeOsint27(v){window.open('https://www.tiktok.com/@'+encodeURIComponent(v),'_blank');}
-    function makeOsint28(v){window.open('https://www.tiktok.com/search/user?q='+encodeURIComponent(v),'_blank');}
-    function makeOsint29(v){window.open('https://www.tiktok.com/tag/'+encodeURIComponent(v),'_blank');}
-    function makeOsint30(v){window.open('https://www.tiktok.com/search?q='+encodeURIComponent(v),'_blank');}
-    function makeOsint31(v){window.open('https://www.tiktok.com/search/video?q='+encodeURIComponent(v),'_blank');}
-    function makeOsint32(v){window.open('https://www.google.com/search?q=site:tiktok.com+'+encodeURIComponent(v),'_blank');}
-
-    // Discord
-    function makeOsint57(v){window.open('https://discord.gg/'+encodeURIComponent(v),'_blank');}
-    function makeOsint58(v){window.open('https://disboard.org/search?keyword='+encodeURIComponent(v),'_blank');}
-    function makeOsint60(v){window.open('https://discord.me/servers?search='+encodeURIComponent(v),'_blank');}
-    function makeOsint61(v){window.open('https://discordservers.com/search/'+encodeURIComponent(v),'_blank');}
-    function makeOsint62(v){window.open('https://discordbee.com/servers?q='+encodeURIComponent(v),'_blank');}
-    function makeOsint63(v){window.open('https://www.google.com/search?q=site:discord.com+'+encodeURIComponent(v),'_blank');}
-
-    // Parler
-    function makeOsint64(v){window.open('https://parler.com/profile/'+encodeURIComponent(v),'_blank');}
-    function makeOsint64a(v){window.open('https://parler.com/profile/'+encodeURIComponent(v)+'/posts','_blank');}
-    function makeOsint64b(v){window.open('https://parler.com/profile/'+encodeURIComponent(v)+'/comments','_blank');}
-
-    // Gab
-    function makeOsint65(v){window.open('https://gab.com/'+encodeURIComponent(v),'_blank');}
-    function makeOsint66(v){window.open('https://gab.com/groups/'+encodeURIComponent(v),'_blank');}
-
-    // Gettr
-    function makeOsint65c(v){window.open('https://www.gettr.com/user/'+encodeURIComponent(v),'_blank');}
-    function makeOsint66c(v){window.open('https://www.gettr.com/user/'+encodeURIComponent(v)+'/comments','_blank');}
-    function makeOsint67c(v){window.open('https://www.gettr.com/user/'+encodeURIComponent(v)+'/medias','_blank');}
-    function makeOsint68c(v){window.open('https://www.gettr.com/user/'+encodeURIComponent(v)+'/likes','_blank');}
-
-    // Mastodon
-    function makeOsint65d(v){window.open('https://mastodon.social/api/v2/search?q='+encodeURIComponent(v)+'&limit=40&type=accounts','_blank');}
-    function makeOsint66d(v){window.open('https://mastodon.social/api/v2/search?q='+encodeURIComponent(v)+'&limit=40&type=hashtags','_blank');}
-
-    // Telegram
-    function makeOsint67(v){window.open('https://t.me/'+encodeURIComponent(v),'_blank');}
-    function makeOsint68(v){window.open('https://telegram.me/s/'+encodeURIComponent(v),'_blank');}
-    function makeOsint69(v){window.open('https://telesco.pe/'+encodeURIComponent(v),'_blank');}
-    function makeOsint70(v){window.open('https://www.telegram-group.com/en?s='+encodeURIComponent(v),'_blank');}
-    function makeOsint71(v){window.open('https://telegramchannels.me/search?type=all&search='+encodeURIComponent(v),'_blank');}
-    function makeOsint72(v){window.open('https://telemetr.io/en/channels?channel='+encodeURIComponent(v),'_blank');}
-  </script>
 <script src="../assets/js/config.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/externaeven.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
-      exploratoresConfig.selectorsToHide.forEach(selector => {
-        try {
-          const elements = document.querySelectorAll(selector);
-          elements.forEach(el => el.classList.add('hidden-in-light'));
-        } catch (e) {
-          console.error("Invalid selector in config.js:", selector);
-        }
-      });
+    // --- UI Update Function ---
+    function updatePageState() {
+        const inputs = document.querySelectorAll('input[data-input-group]');
+
+        inputs.forEach(input => {
+            const groupName = input.dataset.inputGroup;
+            const feedbackDiv = document.getElementById(`feedback-communities-${groupName}`);
+            const buttons = document.querySelectorAll(`button[data-input-group="${groupName}"]`);
+            
+            // Use the global validator, passing the specific input's ID
+            const isValid = ExploratoresValidators.getAndValidateSingleInput(input.id) !== null;
+
+            if (feedbackDiv) {
+                feedbackDiv.textContent = isValid ? 'Ready.' : 'Requires input.';
+                feedbackDiv.className = isValid ? 'feedback-message ready' : 'feedback-message';
+            }
+
+            buttons.forEach(button => {
+                button.disabled = !isValid;
+                button.classList.toggle('text-active', isValid);
+            });
+        });
     }
-  });
+
+    // --- Initial Page State Function ---
+    function setInitialPageState() {
+        document.querySelectorAll('.input-field').forEach(input => input.value = '');
+        updatePageState();
+    }
+
+    // --- Event Listeners ---
+    document.addEventListener('DOMContentLoaded', () => {
+        setInitialPageState();
+        document.querySelectorAll('input[data-input-group]').forEach(input => {
+            input.addEventListener('input', updatePageState);
+        });
+    });
 </script>
 
 </body>

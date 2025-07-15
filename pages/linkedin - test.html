@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinkedIn Graphical Interface (Full Test) • Exploratores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f4f4f9; margin: 0; padding: 1rem; }
+        h1, p { text-align: center; color: #333; }
+        .main-input-container { text-align: center; margin: 1rem 0 2rem 0; }
+        .main-input-container label { font-weight: bold; font-size: 1.2rem; margin-right: 1rem; }
+        #input-linkedin-main-username { padding: 0.75rem; width: 400px; max-width: 80%; border: 2px solid #007bff; border-radius: 8px; font-size: 1.1rem; }
+        .svg-container { background-color: #fff; border: 1px solid #ccc; border-radius: 8px; padding: 1rem; margin: auto; max-width: 1200px; text-align: center; }
+        
+        .interactive-box { cursor: pointer; }
+        .interactive-box rect { fill: #f8f9fa; stroke: #6c757d; stroke-width: 1.5; transition: all 0.2s ease; }
+        .interactive-box:hover rect { fill: #e0e8f0; stroke: #007bff; }
+        .interactive-box text { font-size: 12px; user-select: none; pointer-events: none; text-anchor: middle; fill: #212529; }
+        
+        /* Stile per le caselle disabilitate */
+        .disabled-box { cursor: not-allowed; }
+        .disabled-box rect { fill: #e9ecef; stroke: #ced4da; }
+        .disabled-box text { fill: #adb5bd; }
+
+        /* Stili per la finestra modale */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; }
+        .modal-content { background-color: #fff; padding: 2rem; border-radius: 8px; width: 90%; max-width: 400px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .modal-content h3 { margin-top: 0; }
+        .input-field { width: 100%; padding: 0.5rem; margin-top: 0.5rem; margin-bottom: 1rem; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .button-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+        .button-grid button { padding: 0.75rem; border-radius: 4px; border: 1px solid #ccc; background-color: #e9ecef; cursor: pointer; }
+        .button-grid button:hover { background-color: #ced4da; }
+    </style>
+</head>
+<body>
+
+    <h1>LinkedIn Graphical Interface</h1>
+    <p>Inserisci uno username di profilo nel campo centrale, poi clicca sulle funzioni circostanti.</p>
+
+    <div class="main-input-container">
+        <label for="input-linkedin-main-username">LinkedIn Username:</label>
+        <input type="text" id="input-linkedin-main-username" placeholder="e.g., johndoe-profile-123ab">
+    </div>
+
+    <div class="svg-container">
+        <svg id="linkedin-diagram-svg" width="1150" height="750" viewBox="0 0 1150 750">
+            <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#555" />
+                </marker>
+            </defs>
+            
+            <g data-search-id="linkedin-profile-url" class="interactive-box"><rect x="10" y="130" width="150" height="30" rx="5"/><text x="85" y="150">URL</text></g>
+            <g data-search-id="linkedin-search-by-name" class="interactive-box"><rect x="10" y="170" width="150" height="30" rx="5"/><text x="85" y="190">Name</text></g>
+            <g data-search-id="linkedin-search-by-headline" class="interactive-box"><rect x="10" y="210" width="150" height="30" rx="5"/><text x="85" y="230">Headline</text></g>
+            <g data-search-id="linkedin-profile-connections" class="interactive-box"><rect x="10" y="250" width="150" height="30" rx="5"/><text x="85" y="270">Connections</text></g>
+            <g data-search-id="linkedin-search-in-about" class="interactive-box"><rect x="10" y="290" width="150" height="30" rx="5"/><text x="85" y="310">About</text></g>
+            <g data-search-id="linkedin-search-by-skill" class="interactive-box"><rect x="10" y="330" width="150" height="30" rx="5"/><text x="85" y="350">Skills</text></g>
+
+            <g data-search-id="linkedin-profile-work-exp" class="interactive-box"><rect x="10" y="550" width="150" height="40" rx="5"/><text x="85" y="575">Work Experience</text></g>
+            <g data-search-id="linkedin-search-by-title" class="interactive-box"><rect x="200" y="510" width="150" height="30" rx="5"/><text x="275" y="530">Title</text></g>
+            <g data-search-id="linkedin-search-companies" class="interactive-box"><rect x="200" y="550" width="150" height="30" rx="5"/><text x="275" y="570">Organization</text></g>
+            <g data-search-id="linkedin-profile-education" class="interactive-box"><rect x="430" y="500" width="150" height="40" rx="5"/><text x="505" y="525">Education</text></g>
+            <g data-search-id="linkedin-search-schools" class="interactive-box"><rect x="400" y="630" width="150" height="30" rx="5"/><text x="475" y="650">School</text></g>
+            
+            <g data-search-id="linkedin-profile-posts" class="interactive-box"><rect x="300" y="10" width="120" height="30" rx="5"/><text x="360" y="30">Posts</text></g>
+            <g data-search-id="linkedin-profile-articles" class="interactive-box"><rect x="560" y="10" width="120" height="30" rx="5"/><text x="620" y="30">Articles</text></g>
+            <g data-search-id="linkedin-profile-recommendations" class="interactive-box"><rect x="430" y="130" width="150" height="40" rx="5"/><text x="505" y="155">Recommendations</text></g>
+            <g data-search-id="linkedin-profile-accomplishments" class="interactive-box"><rect x="620" y="130" width="150" height="40" rx="5"/><text x="695" y="155">Accomplishments</text></g>
+            <g data-search-id="linkedin-search-projects" class="interactive-box"><rect x="850" y="130" width="150" height="30" rx="5"/><text x="925" y="150">Projects</text></g>
+            <g data-search-id="linkedin-search-languages" class="interactive-box"><rect x="850" y="250" width="150" height="30" rx="5"/><text x="925" y="270">Languages</text></g>
+            
+            <g id="box-start"><rect x="430" y="330" width="150" height="50" rx="25" fill="#e9ecef" stroke="#343a40" stroke-width="2"/><text x="505" y="360" font-weight="bold">LinkedIn Account</text></g>
+            
+            <path d="M 430 355 L 160 355 L 160 230" stroke="#555" fill="none" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <path d="M 580 355 L 770 355 L 770 170" stroke="#555" fill="none" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <path d="M 505 330 L 505 170" stroke="#555" fill="none" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <path d="M 430 355 Q 250 355 85 550" stroke="#555" fill="none" stroke-width="1.5" marker-end="url(#arrow)"/>
+            <path d="M 505 380 L 505 500" stroke="#555" fill="none" stroke-width="1.5" marker-end="url(#arrow)"/>
+        </svg>
+    </div>
+
+    <div id="div-modal-input" class="modal-overlay">
+        <div class="modal-content">
+            <h3 id="modal-title"></h3>
+            <label id="modal-label" for="modal-input"></label>
+            <input type="text" id="modal-input" class="input-field">
+            <div class="button-grid">
+                <button id="btn-modal-search">Search</button>
+                <button id="btn-modal-close">Close</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // Libreria di ricerca locale con tutte le funzioni previste dal diagramma
+    const SearchLibrary = {
+        // --- Funzioni che usano lo USERNAME CENTRALE ---
+        'linkedin-profile-url':           { name: 'Open Profile URL', urlTemplate: 'https://www.linkedin.com/in/{term}', inputType: 'centralUsername' },
+        'linkedin-profile-connections':   { name: 'User Connections', urlTemplate: 'https://www.linkedin.com/search/results/people/?network=%5B"F"%5D&origin=MEMBER_PROFILE_CANNED_SEARCH&sid=!~A&facetConnectionOf=%5B"ACoAA...%5D', inputType: 'centralUsername' }, // Nota: URL complesso, richiede ID numerico
+        'linkedin-profile-posts':         { name: 'User Posts', urlTemplate: 'https://www.linkedin.com/in/{term}/recent-activity/shares/', inputType: 'centralUsername' },
+        'linkedin-profile-articles':      { name: 'User Articles', urlTemplate: 'https://www.linkedin.com/in/{term}/recent-activity/articles/', inputType: 'centralUsername' },
+        'linkedin-profile-recommendations':{ name: 'User Recommendations', urlTemplate: 'https://www.linkedin.com/in/{term}/details/recommendations/', inputType: 'centralUsername' },
+        'linkedin-profile-accomplishments':{ name: 'User Accomplishments', urlTemplate: 'https://www.linkedin.com/in/{term}/details/accomplishments/', inputType: 'centralUsername' },
+        'linkedin-profile-work-exp':      { name: 'User Work Experience', urlTemplate: 'https://www.linkedin.com/in/{term}/details/experience/', inputType: 'centralUsername' },
+        'linkedin-profile-education':     { name: 'User Education', urlTemplate: 'https://www.linkedin.com/in/{term}/details/education/', inputType: 'centralUsername' },
+
+        // --- Funzioni che richiedono un INPUT SPECIFICO (modale) ---
+        'linkedin-search-by-name':      { name: 'Name Search (Google)', urlTemplate: 'https://www.google.com/search?q=site:linkedin.com/in/ "{term}"', inputType: 'modalKeyword', prompt: 'Enter full name to search:' },
+        'linkedin-search-by-headline':  { name: 'Headline Search (Google)', urlTemplate: 'https://www.google.com/search?q=site:linkedin.com/in/ intitle:"{term}"', inputType: 'modalKeyword', prompt: 'Enter Headline to search:' },
+        'linkedin-search-in-about':     { name: 'Keyword in "About"', urlTemplate: 'https://www.google.com/search?q=site:linkedin.com/in/ inurl:in -inurl:dir "about" "{term}"', inputType: 'modalKeyword', prompt: 'Enter keyword for "About" sections:' },
+        'linkedin-search-by-skill':     { name: 'Search by Skill', urlTemplate: 'https://www.linkedin.com/search/results/people/?keywords="{term}"', inputType: 'modalKeyword', prompt: 'Enter skill to search for:' },
+        'linkedin-search-by-title':     { name: 'Search by Title', urlTemplate: 'https://www.linkedin.com/search/results/people/?title="{term}"', inputType: 'modalKeyword', prompt: 'Enter job title to search for:' },
+        'linkedin-search-companies':    { name: 'Company Search', urlTemplate: 'https://www.linkedin.com/search/results/companies/?keywords={term}', inputType: 'modalKeyword', prompt: 'Enter company name:' },
+        'linkedin-search-schools':      { name: 'School Search', urlTemplate: 'https://www.linkedin.com/search/results/schools/?keywords={term}', inputType: 'modalKeyword', prompt: 'Enter school name:' },
+        'linkedin-search-projects':     { name: 'Project Search', urlTemplate: 'https://www.google.com/search?q=site:linkedin.com/in/ "{term} project"', inputType: 'modalKeyword', prompt: 'Enter keywords for project search:' },
+        'linkedin-search-languages':    { name: 'Language Search', urlTemplate: 'https://www.google.com/search?q=site:linkedin.com/in/ "{term} language"', inputType: 'modalKeyword', prompt: 'Enter language to search for:' }
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const mainUsernameInput = document.getElementById('input-linkedin-main-username');
+        const svgElement = document.getElementById('linkedin-diagram-svg');
+        const modal = document.getElementById('div-modal-input');
+        const allBoxes = svgElement.querySelectorAll('[data-search-id]');
+        
+        let currentSearchConfig = null;
+
+        function updateBoxStates() {
+            const hasUsername = mainUsernameInput.value.trim() !== '';
+            allBoxes.forEach(box => {
+                const config = SearchLibrary[box.dataset.searchId];
+                if (config && config.inputType === 'centralUsername') {
+                    box.classList.toggle('disabled-box', !hasUsername);
+                }
+            });
+        }
+        
+        mainUsernameInput.addEventListener('input', updateBoxStates);
+
+        svgElement.addEventListener('click', function(event) {
+            const clickedBox = event.target.closest('[data-search-id]');
+            if (!clickedBox || clickedBox.classList.contains('disabled-box')) return;
+
+            const searchId = clickedBox.dataset.searchId;
+            const config = SearchLibrary[searchId];
+            if (!config) {
+                alert(`Funzionalità non ancora definita per: ${searchId}`);
+                return;
+            }
+
+            if (config.inputType === 'centralUsername') {
+                const username = mainUsernameInput.value.trim();
+                const finalUrl = config.urlTemplate.replace('{term}', encodeURIComponent(username));
+                window.open(finalUrl, '_blank');
+            } else if (config.inputType === 'modalKeyword') {
+                currentSearchConfig = config;
+                document.getElementById('modal-title').textContent = config.name;
+                document.getElementById('modal-label').textContent = config.prompt;
+                modal.style.display = 'flex';
+                document.getElementById('modal-input').value = '';
+                document.getElementById('modal-input').focus();
+            }
+        });
+        
+        const modalInput = document.getElementById('modal-input');
+        const modalSearchBtn = document.getElementById('btn-modal-search');
+        const modalCloseBtn = document.getElementById('btn-modal-close');
+
+        function executeModalSearch() {
+            const inputValue = modalInput.value.trim();
+            if (!inputValue || !currentSearchConfig) return;
+            
+            const finalUrl = currentSearchConfig.urlTemplate.replace('{term}', encodeURIComponent(inputValue));
+            window.open(finalUrl, '_blank');
+            closeModal();
+        }
+
+        modalSearchBtn.addEventListener('click', executeModalSearch);
+        modalInput.addEventListener('keydown', event => { if (event.key === 'Enter') executeModalSearch(); });
+        modalCloseBtn.addEventListener('click', closeModal);
+        
+        function closeModal() {
+            modal.style.display = 'none';
+            currentSearchConfig = null;
+        }
+
+        // Stato iniziale
+        updateBoxStates();
+    });
+</script>
+
+</body>
+</html>

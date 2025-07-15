@@ -1,560 +1,440 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Domain Tools • Exploratores</title>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Domains • Exploratores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
 <body>
 
+<<<<<<< HEAD
 <div id="navbar-placeholder"></div>
 
 <script src="../assets/menu/navigation.js"></script>
     
+=======
+<nav>
+    <ul class="menu">
+        <li><span>HOME</span>
+            <ul class="submenu">
+                <li><a href="../launchme.html">Index</a></li>
+            </ul>
+        </li>
+        <li><span>Search<br>Engines</span>
+            <ul class="submenu">
+                <li><a href="searchengines.html">Search Engines</a></li>
+            </ul>
+        </li>
+        <li><span>People &<br>Identities</span>
+            <ul class="submenu">
+                <li><a href="names.html">Names</a></li>
+                <li><a href="phoneus.html">US Phones</a></li>
+                <li><a href="phoneint.html">International Phones</a></li>
+                <li><a href="address.html">Addresses</a></li>
+                <li><a href="vehicles.html">Vehicles</a></li>
+                <li><a href="usernames.html">Usernames</a></li>
+                <li><a href="email.html">Email Addresses</a></li>
+                <li><a href="communities.html">Communities</a></li>
+            </ul>
+        </li>
+        <li><span>Social<br>Media</span>
+            <ul class="submenu">
+                <li><a href="x.html">X (Twitter)</a></li>
+                <li><a href="facebook.html">Facebook</a></li>
+                <li><a href="instagram.html">Instagram</a></li>
+                <li><a href="linkedin.html">LinkedIn</a></li>
+            </ul>
+        </li>
+        <li><span>Websites</span>
+            <ul class="submenu">
+                <li><a href="domains.html" class="active">Domains</a></li>
+                <li><a href="ip.html">IP Addresses</a></li>
+            </ul>
+        </li>
+        <li><span>GeoInt</span>
+            <ul class="submenu">
+                <li><a href="maps.html">Maps</a></li>
+            </ul>
+        </li>
+        <li><span>Media<br>Analysis</span>
+            <ul class="submenu">
+                <li><a href="images.html">Images</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="docs.html">Documents</a></li>
+            </ul>
+        </li>
+        <li><span>Business<br>Intelligence</span>
+            <ul class="submenu">
+                <li><a href="publiccompanyrecords.html">Company Public Records</a></li>
+                <li><a href="currencies.html">Virtual Currencies</a></li>
+            </ul>
+        </li>
+        <li><span>Tools</span>
+            <ul class="submenu">
+                <li><a href="guidelines.html">Guidelines</a></li>
+                <li><a href="cyberchef.html">CyberChef</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
 <main>
-  <h1 class="page-title">Domain Tools</h1>
-  
-  <section class="search-instructions">
-    <label for="domainNameInput">Enter Domain Name or Keyword:</label>
-    <div class="input-container">
-      <input type="text" id="domainNameInput" class="input-field" placeholder="example.com or search term">
-    </div>
-  </section>
-  <div class="note">  
-    <strong>NOTE:</strong> Many tools below use the term entered above. Specific inputs are provided for URL shorteners, ID lookups, Favicon analysis, and CSP Search. 
-    Note also that some services, like archive.ph or DNPedia, will open their main page and may not use the entered term for an automatic search. 
-    Additionally, some services may require a professional or investigative account for full access or to view detailed information.
-  </div>
+    <h1 class="page-title">Domain Tools</h1>
 
-  <div class="columns">
-    <div class="column">
-      <h2>Search Engines</h2>
-      <div class="button-grid">
-        <button type="button" class="button" onclick="Domains_Baidu_ExactPhraseSearch()">Baidu (Exact Phrase)</button>
-        <button type="button" class="button" onclick="Domains_Bing_ExactPhraseSearch()">Bing (Exact Phrase)</button>
-        <button type="button" class="button" onclick="Domains_Google_ExactPhraseSearch()">Google (Exact Phrase)</button>
-        <button type="button" class="button" onclick="Domains_GoogleSiteSearch()">Google Site Search</button>
-        <button type="button" class="button" onclick="Domains_Yandex_ExactPhraseSearch()">Yandex (Exact Phrase)</button>
-      </div>
-
-      <h2>Website Profiling &amp; Technical Analysis</h2>
-      <div class="button-grid">
-        <button type="button" class="button" onclick="Domains_AdSenseLookupDNSlytics()">AdSense Lookup (DNSlytics)</button>
-        <button type="button" class="button" onclick="Domains_AnalyzeIDDomain()">AnalyzeID (Domain)</button>
-        <button type="button" class="button" onclick="Domains_BuiltWith()">BuiltWith</button>
-        <button type="button" class="button" onclick="Domains_CentralOps_DomainDossier()">CentralOps Dossier</button>
-        <button type="button" class="button" onclick="Domains_DomainCodex()">DomainCodex</button>
-        <button type="button" class="button" onclick="Domains_DomainIQProfile()">DomainIQ</button>
-        <button type="button" class="button" onclick="Domains_GALookupDNSlytics()">GA Lookup (DNSlytics)</button>
-        <button type="button" class="button" onclick="Domains_HostIoDomain()">Host.io (Domain)</button>
-        <button type="button" class="button" onclick="Domains_ViewDNS_HTTPHeaders()">HTTP Headers (ViewDNS)</button>
-        <button type="button" class="button" onclick="Domains_InformerEmails()">InformerEmails</button>
-        <button type="button" class="button" onclick="Domains_ViewDNS_IsMySiteDown()">Is My Site Down (ViewDNS)</button>
-        <button type="button" class="button" onclick="Domains_Netcraft_SiteReport()">Netcraft (Site Report)</button>
-        <button type="button" class="button" onclick="Domains_NerdyData()">NerdyData</button>
-        <button type="button" class="button" onclick="Domains_PublicWWW_Search()">PublicWWW (General)</button>
-        <button type="button" class="button" onclick="Domains_RobotsTxt()">Robots.txt</button>
-        <button type="button" class="button" onclick="Domains_SpyOnWeb()">SpyOnWeb</button>
-        <button type="button" class="button" onclick="Domains_WMTips()">WMTips</button>
-        <button type="button" class="button" onclick="Domains_Webscout()">Webscout</button>
-      </div>
-
-      <br><h4>Service Screenshots</h4><br>
-      <div class="button-grid">
-        <button type="button" class="button" onclick="Domains_DMNsAppScreenshot()">DMNs.app</button>
-        <button type="button" class="button" onclick="Domains_DomainIQSnapshot()">DomainIQ</button>
-        <button type="button" class="button" onclick="Domains_DomainToolsWhois()">DomainTools</button> 
-        <button type="button" class="button" onclick="Domains_EasyCounterScreenshot()">EasyCounter</button>
-        <button type="button" class="button" onclick="Domains_HypeStatScreenshot()">HypeStat</button>
-        <button type="button" class="button" onclick="Domains_InformerScreenshot()">Informer</button>
-        <button type="button" class="button" onclick="Domains_URLScanDomain()">URLScan</button>
-      </div>
-
-      <br><h2>Website Archives &amp; History</h2>
-      <div class="button-grid">
-        <button type="button" class="button" onclick="Domains_ArchiveITDeepWebCrawl()">Archive-IT (DeepWebCrawl)</button>
-        <button type="button" class="button" onclick="Domains_ArchiveMd()">Archive.md</button>
-        <button type="button" class="button" onclick="Domains_ArchiveOrg()">Archive.org (View Snapshots)</button>
-        <button type="button" class="button" onclick="Domains_ArchivePhHomepage()">archive.ph (Homepage)</button>
-        <button type="button" class="button" onclick="Domains_ArchiveScanCDX()">Archive Scan (CDX)</button>
-        <button type="button" class="button" onclick="Domains_ArchiveURLWildcard()">Archive URL Wildcard</button>
-        <button type="button" class="button" onclick="Domains_ArquivoPt()">Arquivo.pt</button>
-        <button type="button" class="button" onclick="Domains_CarbonDating()">CarbonDating</button>
-        <button type="button" class="button" onclick="Domains_CongressArchives()">Congress Archives</button>
-        <button type="button" class="button" onclick="Domains_DomainToolsScreenshotHistory()">DomainTools (Screenshot History)</button>
-        <button type="button" class="button" onclick="Domains_ElephindSearch()">Elephind (Newspaper Archives)</button>
-        <button type="button" class="button" onclick="Domains_GoogleCacheSearch()">Google Cache</button>
-        <button type="button" class="button" onclick="Domains_Mementoweb()">Mementoweb</button>
-        <button type="button" class="button" onclick="Domains_WayBackGeneralSearch()">WayBackMachine (Keyword Search)</button>
-        <button type="button" class="button" onclick="Domains_WhoIsDomainHistory()">Who.Is History</button>
-        <button type="button" class="button" onclick="Domains_WhoisArchive1()">Whois Archive (who.is)</button>
-        <button type="button" class="button" onclick="Domains_WhoisArchive2()">Whois Archive (DomainTools)</button>
-        <button type="button" class="button" onclick="Domains_WhoisArchive3()">Whois Archive (Whoxy)</button>
-        <button type="button" class="button" onclick="Domains_WhoisArchive4()">Whois Archive (DomainBigData)</button>
-        <button type="button" class="button" onclick="Domains_WhoisArchive5()">Whois Archive (Whoisology)</button>
-      </div>
-
-      <br><h2>SEO, Traffic &amp; Links</h2>
-      <div class="button-grid">
-        <button type="button" class="button" onclick="Domains_BacklinksLinkody()">Backlinks (Linkody)</button>
-        <button type="button" class="button" onclick="Domains_CopyScape()">CopyScape</button>
-        <button type="button" class="button" onclick="Domains_HostIoBacklinks()">Host.io Backlinks</button>
-        <button type="button" class="button" onclick="Domains_HostIoRedirects()">Host.io Redirects</button>
-        <button type="button" class="button" onclick="Domains_Moz()">Moz</button>
-        <button type="button" class="button" onclick="Domains_RedditDomainMentions()">Reddit (Domain Mentions)</button>
-        <button type="button" class="button" onclick="Domains_Reddit_URLSearchOld()">Reddit (URL Search - Old)</button>
-        <button type="button" class="button" onclick="Domains_SharedCount()">SharedCount</button>
-        <button type="button" class="button" onclick="Domains_SimilarWeb()">SimilarWeb</button>
-        <button type="button" class="button" onclick="Domains_SiteMapper()">SiteMapper</button>
-        <button type="button" class="button" onclick="Domains_SpyFu()">SpyFu</button>
-      </div>
-    </div>  
+    <section id="section-domains-main" class="search-instructions">
+        <label for="input-domains-main">Enter Domain Name or Keyword:</label>
+        <div class="input-container">
+            <input type="text" id="input-domains-main" class="input-field" placeholder="example.com or search term" autocomplete="off">
+        </div>
+        <div id="feedback-domains-main" class="feedback-message"></div>
+    </section>
     
-    <div class="column">
-      <br><h2>Security &amp; Reputation</h2>
-      <div class="button-grid">
-        <button type="button" class="button" onclick="Domains_AlienVault_OTXDomain()">AlienVault OTX (Domain)</button>
-        <button type="button" class="button" onclick="Domains_Blacklight()">Blacklight</button>
-        <button type="button" class="button" onclick="Domains_ViewDNS_ChineseFirewallTest()">Chinese Firewall Test (ViewDNS)</button>
-        <button type="button" class="button" onclick="Domains_DehashedDomain()">Dehashed (Domain)</button>
-        <button type="button" class="button" onclick="Domains_HudsonRockDomain()">HudsonRock (Domain)</button>
-        <button type="button" class="button" onclick="Domains_HybridAnalysis_Search()">Hybrid Analysis Search</button>
-        <button type="button" class="button" onclick="Domains_IBMXForce_URLReport()">IBM X-Force (URL/Domain)</button>
-        <button type="button" class="button" onclick="Domains_IntelligenceXDomain()">IntelligenceX (Domain)</button>
-        <button type="button" class="button" onclick="Domains_ViewDNS_IranFirewallTest()">Iran Firewall Test (ViewDNS)</button>
-        <button type="button" class="button" onclick="Domains_JoeSandbox_Search()">Joe Sandbox Search</button>
-        <button type="button" class="button" onclick="Domains_LeakIXDomain()">LeakIX Domain</button>
-        <button type="button" class="button" onclick="Domains_LeakIXSearchDomain()">LeakIX Search (Domain)</button>
-        <button type="button" class="button" onclick="Domains_Maltiverse_Search()">Maltiverse (Domain)</button>
-        <button type="button" class="button" onclick="Domains_MyWOT()">MyWOT</button>
-        <button type="button" class="button" onclick="Domains_PhishCheck_Search()">PhishCheck.me</button>
-        <button type="button" class="button" onclick="Domains_Pulsedive_SearchIOC()">Pulsedive (IOC)</button>
-        <button type="button" class="button" onclick="Domains_RiskIQ_Search()">RiskIQ Search</button>
-        <button type="button" class="button" onclick="Domains_SecurityHeaders_Scan()">Security Headers Scan</button>
-        <button type="button" class="button" onclick="Domains_SecurityTrails()">SecurityTrails</button>
-        <button type="button" class="button" onclick="Domains_SecurityTrails_DomainOverview()">SecurityTrails Overview</button>
-        <button type="button" class="button" onclick="Domains_SkymemDomain()">Skymem (Domain)</button>
-        <button type="button" class="button" onclick="Domains_SpamOrg()">Spam.org</button>
-        <button type="button" class="button" onclick="Domains_Spamhaus_Check()">Spamhaus Check</button>
-        <button type="button" class="button" onclick="Domains_StopForumSpam_Search()">Stop Forum Spam (Domain)</button>
-        <button type="button" class="button" onclick="Domains_ThreatCrowd()">ThreatCrowd</button>
-        <button type="button" class="button" onclick="Domains_ThreatIntelPlatform()">ThreatIntel</button>
-        <button type="button" class="button" onclick="Domains_Triage_SMTPSearch()">Triage (SMTP)</button>
-        <button type="button" class="button" onclick="Domains_Triage_URLSearch()">Triage (URL)</button>
-        <button type="button" class="button" onclick="Domains_URLScanPageSearch()">URLScan (Page Search)</button>
-        <button type="button" class="button" onclick="Domains_UrlScanGeneralSearch()">urlscan.io (General Search)</button>
-        <button type="button" class="button" onclick="Domains_VirusTotalDomain()">VirusTotal</button>
-      </div>
-
-      <br><h2>Whois &amp; DNS Lookup</h2>
-      <div class="button-grid">
-        <button type="button" class="button" onclick="Domains_ViewDNS_AbuseContact()">Abuse Contact (ViewDNS)</button>
-        <button type="button" class="button" onclick="Domains_Censys_DNSNames()">Censys (DNS Names)</button>
-        <button type="button" class="button" onclick="Domains_CrtSh()">CRT.sh</button>
-        <button type="button" class="button" onclick="Domains_ViewDNS_DNSRecords()">DNS Records (ViewDNS)</button>
-        <button type="button" class="button" onclick="Domains_DNSReportViewDNS()">DNS Report (ViewDNS)</button>
-        <button type="button" class="button" onclick="Domains_ViewDNS_DNSSECTest()">DNSSEC Test (ViewDNS)</button>
-        <button type="button" class="button" onclick="Domains_DNSDump()">DNSDump</button>
-        <button type="button" class="button" onclick="Domains_DNSlyticsDomain()">DNSlytics (Domain)</button>
-        <button type="button" class="button" onclick="Domains_DomainAppDNS()">DomainApp DNS</button>
-        <button type="button" class="button" onclick="Domains_DomainTools_DirectWhois()">DomainTools WHOIS</button>
-        <button type="button" class="button" onclick="Domains_EURid_Whois()">EURid WHOIS (.eu)</button>
-        <button type="button" class="button" onclick="Domains_Etherscan_ENSLookup()">Etherscan (ENS)</button>
-        <button type="button" class="button" onclick="Domains_GoDaddy_Whois()">GoDaddy WHOIS</button>
-        <button type="button" class="button" onclick="Domains_Netcraft_SubdomainSearch()">Netcraft (Subdomains)</button>
-        <button type="button" class="button" onclick="Domains_ResolveRs_DNSLookup()">Resolve.rs DNS</button>
-        <button type="button" class="button" onclick="Domains_ReverseDomainViewDNS()">Reverse Domain (ViewDNS)</button>
-        <button type="button" class="button" onclick="Domains_Robtex()">Robtex</button>
-        <button type="button" class="button" onclick="Domains_SubdomainsColumbus()">Subdomains (Columbus)</button>
-        <button type="button" class="button" onclick="Domains_WhoIs()">Who.Is</button>
-        <button type="button" class="button" onclick="Domains_WhoIsDNS()">Who.Is DNS</button>
-        <button type="button" class="button" onclick="Domains_WhoisCom_Whois()">Whois.com</button>
-        <button type="button" class="button" onclick="Domains_WhoisViewDNS()">Whois (ViewDNS)</button>
-        <button type="button" class="button" onclick="Domains_Whoisology()">Whoisology</button>
-        <button type="button" class="button" onclick="Domains_Whoxy()">Whoxy</button>
-      </div>
-
-      <br><h2>IP &amp; Network Info</h2>
-      <div class="button-grid">
-        <button type="button" class="button" onclick="Domains_CensysDomain()">Censys (Domain)</button>
-        <button type="button" class="button" onclick="Domains_NetworksDB_DomainToIPs()">Domain to IPs (NetworksDB)</button>
-        <button type="button" class="button" onclick="Domains_IPHistoryViewDNS()">IP History (ViewDNS)</button>
-        <button type="button" class="button" onclick="Domains_PortScanViewDNS()">Port Scan (ViewDNS)</button>
-        <button type="button" class="button" onclick="Domains_ReverseIPViewDNS()">Reverse IP (ViewDNS)</button>
-        <button type="button" class="button" onclick="Domains_ShodanDomain()">Shodan (Domain)</button>
-        <button type="button" class="button" onclick="Domains_Shodan_HostnameSearch()">Shodan (Hostname)</button>
-        <button type="button" class="button" onclick="Domains_Shodan_GeneralQuery()">Shodan (Query)</button>
-        <button type="button" class="button" onclick="Domains_TraceRouteViewDNS()">TraceRoute (ViewDNS)</button>
-      </div>
-
-      <br><h2>Public Records & Domain Research</h2>
-      <div class="button-grid">
-        <button type="button" class="button" onclick="Domains_ASASearch()">ASA Search</button>
-        <button type="button" class="button" onclick="Domains_DNPedia_Search()">DNPedia Search</button>
-        <button type="button" class="button" onclick="Domains_Google_FCAWarnings()">FCA Warnings (UK)</button>
-        <button type="button" class="button" onclick="Domains_GoogleGroupsSearch()">Google Groups Search</button>
-        <button type="button" class="button" onclick="Domains_OCCRPalephSearch()">OCCRP Aleph Search</button>
-        <button type="button" class="button" onclick="Domains_OFACSanctionsSearch()">OFAC Sanctions Search</button>
-        <button type="button" class="button" onclick="Domains_SRA_Search()">SRA Search (UK Solicitors)</button>
-        <button type="button" class="button" onclick="Domains_UDRPSearch_Search()">UDRPSearch</button>
-        <button type="button" class="button" onclick="Domains_WIPOSearchGoogle()">WIPO Search (Google)</button>
-      </div>
-    </div>
-  </div>
-
-  <hr style="margin: 2rem 0;">
-
-  <div class="columns">
-    <div class="column">
-      <br><h2>URL Shortener Expanders</h2>
-      <section class="search-instructions">
-        <label for="shortUrlInput">Enter Full Shortened URL:</label>
-        <div class="input-container">
-          <input type="text" id="shortUrlInput" class="input-field" placeholder="Entire Short URL (e.g., https://bit.ly/xxxx)">
-        </div>
-      </section>
-      <div class="button-grid">
-        <button type="button" class="button" onclick="Domains_ExpandBitly()">Bit.ly Expand</button>
-        <button type="button" class="button" onclick="Domains_ExpandAnyShortURL()">Expand Any Short URL</button>
-        <button type="button" class="button" onclick="Domains_ExpandTinyCC()">Tiny.cc Expand</button>
-      </div>
-
-      <br><h2>AdSense ID Lookup</h2>
-      <section class="search-instructions">
-        <label for="adSenseIdInput">AdSense ID:</label>
-        <div class="input-container">
-          <input type="text" id="adSenseIdInput" class="input-field" placeholder="AdSense ID (e.g., pub-1234567890123456)">
-        </div>
-      </section>
-      <div class="button-grid">
-        <button type="button" class="button" onclick="Domains_AdSenseLookupAnalyzeID()">AnalyzeID</button>
-        <button type="button" class="button" onclick="Domains_AdSenseLookupDNSlyticsByID()">DNSlytics</button>
-        <button type="button" class="button" onclick="Domains_AdSenseLookupHackerTarget()">HackerTarget</button>
-        <button type="button" class="button" onclick="Domains_RiskIQ_AdSenseTracker()">RiskIQ (AdSense Tracker)</button>
-      </div>
+    <div class="note">
+        <strong>NOTE:</strong> Many tools below use the term entered above. Specific inputs are provided for other specialized tools further down the page.
     </div>
 
-    <div class="column">
-      <br><h2>Analytics ID Lookup</h2>
-      <section class="search-instructions">
-        <label for="analyticsIdInput">Analytics ID:</label>
-        <div class="input-container">
-          <input type="text" id="analyticsIdInput" class="input-field" placeholder="Analytics ID (e.g., UA-xxxx or G-xxxx)">
-        </div>
-      </section>
-      <div class="button-grid">
-        <button type="button" class="button" onclick="Domains_AnalyticsLookupAnalyzeID()">AnalyzeID</button>
-        <button type="button" class="button" onclick="Domains_AnalyticsLookupDNSlytics()">DNSlytics</button>
-        <button type="button" class="button" onclick="Domains_AnalyticsLookupHackerTarget()">HackerTarget</button>
-        <button type="button" class="button" onclick="Domains_AnalyticsLookupPublicWWW()">PublicWWW</button>
-        <button type="button" class="button" onclick="Domains_RiskIQ_AnalyticsTracker()">RiskIQ (Analytics Tracker)</button>
-      </div>
-      
-      <br><h2>Favicon Analysis Tools</h2>
-      <section class="search-instructions">
-        <label for="faviconUrlInput">Favicon File URL:</label>
-        <div class="input-button-line">
-          <input type="text" id="faviconUrlInput" class="input-field" placeholder="e.g., https://example.com/favicon.ico">
-          <button type="button" class="button" onclick="Domains_FaviconHash_Calculate()">Calculate Hash</button>
-        </div>
-      </section>
-      <section class="search-instructions" style="margin-top:1rem;">
-        <label for="faviconHashInput">Favicon Hash (MurmurHash3):</label>
-        <div class="input-button-line">
-          <input type="text" id="faviconHashInput" class="input-field" placeholder="Enter Favicon Hash (e.g., -2123456789)">
-          <button type="button" class="button" onclick="Domains_Shodan_SearchByFaviconHash()">Shodan Search</button>
-        </div>
-      </section>
+    <div class="columns">
+        <div id="column-domains-left" class="column">
+            <section id="section-domains-searchengines">
+                <h2>Search Engines</h2>
+                <div class="button-grid">
+                    <button class="button" data-search-id="domains-search-baidu">Baidu (Exact)</button>
+                    <button class="button" data-search-id="domains-search-bing">Bing (Exact)</button>
+                    <button class="button" data-search-id="domains-search-google">Google (Exact)</button>
+                    <button class="button" data-search-id="domains-search-googlesite">Google Site Search</button>
+                    <button class="button" data-search-id="domains-search-yandex">Yandex (Exact)</button>
+                </div>
+            </section>
 
-      <br><h2>CSP Search (Censys)</h2>
-      <section class="search-instructions">
-        <label for="cspStringInput">Content-Security-Policy String/Keyword:</label>
-        <div class="input-button-line">
-          <input type="text" id="cspStringInput" class="input-field" placeholder="e.g., default-src 'self'">
-          <button type="button" class="button" onclick="Domains_Censys_CSPSearch()">Censys (CSP Search)</button>
+            <section id="section-domains-profiling">
+                <h2>Website Profiling &amp; Technical Analysis</h2>
+                <div class="button-grid">
+                    <button class="button" data-search-id="domains-profile-adsense-dnslytics">AdSense Lookup</button>
+                    <button class="button" data-search-id="domains-profile-analyzeid">AnalyzeID</button>
+                    <button class="button" data-search-id="domains-profile-builtwith">BuiltWith</button>
+                    <button class="button" data-search-id="domains-profile-centralops">CentralOps Dossier</button>
+                    <button class="button" data-search-id="domains-profile-domaincodex">DomainCodex</button>
+                    <button class="button" data-search-id="domains-profile-domainiq">DomainIQ</button>
+                    <button class="button" data-search-id="domains-profile-ga-dnslytics">GA Lookup</button>
+                    <button class="button" data-search-id="domains-profile-hostio">Host.io</button>
+                    <button class="button" data-search-id="domains-profile-httpheaders">HTTP Headers</button>
+                    <button class="button" data-search-id="domains-profile-informeremails">InformerEmails</button>
+                    <button class="button" data-search-id="domains-profile-ismysitedown">Is My Site Down</button>
+                    <button class="button" data-search-id="domains-profile-netcraft-report">Netcraft Report</button>
+                    <button class="button" data-search-id="domains-profile-nerdydata">NerdyData</button>
+                    <button class="button" data-search-id="domains-profile-publicwww">PublicWWW</button>
+                    <button class="button" data-search-id="domains-profile-robotstxt">Robots.txt</button>
+                    <button class="button" data-search-id="domains-profile-spyonweb">SpyOnWeb</button>
+                    <button class="button" data-search-id="domains-profile-wmtips">WMTips</button>
+                    <button class="button" data-search-id="domains-profile-webscout">Webscout</button>
+                </div>
+                <h3>Service Screenshots</h3>
+                <div class="button-grid">
+                    <button class="button" data-search-id="domains-screenshot-dmnsapp">DMNs.app</button>
+                    <button class="button" data-search-id="domains-screenshot-domainiq">DomainIQ</button>
+                    <button class="button" data-search-id="domains-screenshot-domaintools">DomainTools</button>
+                    <button class="button" data-search-id="domains-screenshot-easycounter">EasyCounter</button>
+                    <button class="button" data-search-id="domains-screenshot-hypestat">HypeStat</button>
+                    <button class="button" data-search-id="domains-screenshot-informer">Informer</button>
+                    <button class="button" data-search-id="domains-screenshot-urlscan">URLScan</button>
+                </div>
+            </section>
+
+            <section id="section-domains-archives">
+                <h2>Website Archives &amp; History</h2>
+                <div class="button-grid">
+                    <button class="button" data-search-id="domains-archive-archiveit">Archive-IT</button>
+                    <button class="button" data-search-id="domains-archive-archivemd">Archive.md</button>
+                    <button class="button" data-search-id="domains-archive-archiveorg">Archive.org</button>
+                    <button class="button" data-search-id="domains-archive-archiveph">archive.ph</button>
+                    <button class="button" data-search-id="domains-archive-archivescan">Archive Scan (CDX)</button>
+                    <button class="button" data-search-id="domains-archive-wildcard">Archive URL Wildcard</button>
+                    <button class="button" data-search-id="domains-archive-arquivopt">Arquivo.pt</button>
+                    <button class="button" data-search-id="domains-archive-carbondating">CarbonDating</button>
+                    <button class="button" data-search-id="domains-archive-congress">Congress Archives</button>
+                    <button class="button" data-search-id="domains-archive-dthistory">DomainTools History</button>
+                    <button class="button" data-search-id="domains-archive-elephind">Elephind</button>
+                    <button class="button" data-search-id="domains-archive-googlecache">Google Cache</button>
+                    <button class="button" data-search-id="domains-archive-mementoweb">Mementoweb</button>
+                    <button class="button" data-search-id="domains-archive-wayback-keyword">WayBack Keyword</button>
+                    <button class="button" data-search-id="domains-archive-whoishistory">Who.Is History</button>
+                    <button class="button" data-search-id="domains-archive-whois-whois">Whois Archive (who.is)</button>
+                    <button class="button" data-search-id="domains-archive-whois-dt">Whois Archive (DT)</button>
+                    <button class="button" data-search-id="domains-archive-whois-whoxy">Whois Archive (Whoxy)</button>
+                </div>
+            </section>
+
+            <section id="section-domains-seo">
+                <h2>SEO, Traffic &amp; Links</h2>
+                <div class="button-grid">
+                    <button class="button" data-search-id="domains-seo-linkody">Backlinks (Linkody)</button>
+                    <button class="button" data-search-id="domains-seo-copyscape">CopyScape</button>
+                    <button class="button" data-search-id="domains-seo-hostio-backlinks">Host.io Backlinks</button>
+                    <button class="button" data-search-id="domains-seo-hostio-redirects">Host.io Redirects</button>
+                    <button class="button" data-search-id="domains-seo-moz">Moz</button>
+                    <button class="button" data-search-id="domains-seo-reddit-mentions">Reddit Mentions</button>
+                    <button class="button" data-search-id="domains-seo-reddit-url">Reddit URL Search</button>
+                    <button class="button" data-search-id="domains-seo-sharedcount">SharedCount</button>
+                    <button class="button" data-search-id="domains-seo-similarweb">SimilarWeb</button>
+                    <button class="button" data-search-id="domains-seo-sitemapper">SiteMapper</button>
+                    <button class="button" data-search-id="domains-seo-spyfu">SpyFu</button>
+                </div>
+            </section>
         </div>
-      </section>
+        
+        <div id="column-domains-right" class="column">
+            <section id="section-domains-security">
+                <h2>Security &amp; Reputation</h2>
+                <div class="button-grid">
+                    <button class="button" data-search-id="domains-sec-alienvault">AlienVault OTX</button>
+                    <button class="button" data-search-id="domains-sec-blacklight">Blacklight</button>
+                    <button class="button" data-search-id="domains-sec-chinatest">Chinese Firewall Test</button>
+                    <button class="button" data-search-id="domains-sec-dehashed">Dehashed</button>
+                    <button class="button" data-search-id="domains-sec-hudsonrock">HudsonRock</button>
+                    <button class="button" data-search-id="domains-sec-hybridanalysis">Hybrid Analysis</button>
+                    <button class="button" data-search-id="domains-sec-ibmxforce">IBM X-Force</button>
+                    <button class="button" data-search-id="domains-sec-intelx">IntelligenceX</button>
+                    <button class="button" data-search-id="domains-sec-irantest">Iran Firewall Test</button>
+                    <button class="button" data-search-id="domains-sec-joesandbox">Joe Sandbox</button>
+                    <button class="button" data-search-id="domains-sec-leakix">LeakIX Domain</button>
+                    <button class="button" data-search-id="domains-sec-leakix-search">LeakIX Search</button>
+                    <button class="button" data-search-id="domains-sec-maltiverse">Maltiverse</button>
+                    <button class="button" data-search-id="domains-sec-mywot">MyWOT</button>
+                    <button class="button" data-search-id="domains-sec-phishcheck">PhishCheck.me</button>
+                    <button class="button" data-search-id="domains-sec-pulsedive">Pulsedive</button>
+                    <button class="button" data-search-id="domains-sec-riskiq">RiskIQ Search</button>
+                    <button class="button" data-search-id="domains-sec-securityheaders">Security Headers</button>
+                    <button class="button" data-search-id="domains-sec-securitytrails">SecurityTrails</button>
+                    <button class="button" data-search-id="domains-sec-securitytrails-overview">SecurityTrails Overview</button>
+                    <button class="button" data-search-id="domains-sec-skymem">Skymem</button>
+                    <button class="button" data-search-id="domains-sec-spamorg">Spam.org</button>
+                    <button class="button" data-search-id="domains-sec-spamhaus">Spamhaus Check</button>
+                    <button class="button" data-search-id="domains-sec-stopforumspam">Stop Forum Spam</button>
+                    <button class="button" data-search-id="domains-sec-threatcrowd">ThreatCrowd</button>
+                    <button class="button" data-search-id="domains-sec-threatintel">ThreatIntel</button>
+                    <button class="button" data-search-id="domains-sec-triage-smtp">Triage (SMTP)</button>
+                    <button class="button" data-search-id="domains-sec-triage-url">Triage (URL)</button>
+                    <button class="button" data-search-id="domains-sec-urlscan-page">URLScan Page Search</button>
+                    <button class="button" data-search-id="domains-sec-urlscan-general">urlscan.io General</button>
+                    <button class="button" data-search-id="domains-sec-virustotal">VirusTotal</button>
+                </div>
+            </section>
+            
+            <section id="section-domains-dns">
+                <h2>Whois &amp; DNS Lookup</h2>
+                <div class="button-grid">
+                    <button class="button" data-search-id="domains-dns-abusecontact">Abuse Contact</button>
+                    <button class="button" data-search-id="domains-dns-censys">Censys DNS</button>
+                    <button class="button" data-search-id="domains-dns-crtsh">CRT.sh</button>
+                    <button class="button" data-search-id="domains-dns-records">DNS Records</button>
+                    <button class="button" data-search-id="domains-dns-report">DNS Report</button>
+                    <button class="button" data-search-id="domains-dns-dnssec">DNSSEC Test</button>
+                    <button class="button" data-search-id="domains-dns-dnsdump">DNSDumpster</button>
+                    <button class="button" data-search-id="domains-dns-dnslytics">DNSlytics</button>
+                    <button class="button" data-search-id="domains-dns-domainapp">DomainApp DNS</button>
+                    <button class="button" data-search-id="domains-dns-domaintools">DomainTools WHOIS</button>
+                    <button class="button" data-search-id="domains-dns-eurid">EURid WHOIS</button>
+                    <button class="button" data-search-id="domains-dns-etherscan-ens">Etherscan (ENS)</button>
+                    <button class="button" data-search-id="domains-dns-godaddy">GoDaddy WHOIS</button>
+                    <button class="button" data-search-id="domains-dns-netcraft-subdomain">Netcraft Subdomains</button>
+                    <button class="button" data-search-id="domains-dns-resolvers">Resolve.rs DNS</button>
+                    <button class="button" data-search-id="domains-dns-reversedns">Reverse DNS</button>
+                    <button class="button" data-search-id="domains-dns-robtex">Robtex</button>
+                    <button class="button" data-search-id="domains-dns-subdomains-columbus">Columbus Subdomains</button>
+                    <button class="button" data-search-id="domains-dns-whois">Who.Is</button>
+                    <button class="button" data-search-id="domains-dns-whois-dns">Who.Is DNS</button>
+                    <button class="button" data-search-id="domains-dns-whoiscom">Whois.com</button>
+                    <button class="button" data-search-id="domains-dns-whois-viewdns">ViewDNS WHOIS</button>
+                    <button class="button" data-search-id="domains-dns-whoisology">Whoisology</button>
+                    <button class="button" data-search-id="domains-dns-whoxy">Whoxy</button>
+                </div>
+            </section>
+            
+            <section id="section-domains-ip-network">
+                <h2>IP &amp; Network Info</h2>
+                <div class="button-grid">
+                    <button class="button" data-search-id="domains-ip-censys">Censys IP Search</button>
+                    <button class="button" data-search-id="domains-ip-networksdb">NetworksDB IPs</button>
+                    <button class="button" data-search-id="domains-ip-history">IP History</button>
+                    <button class="button" data-search-id="domains-ip-portscan">Port Scan</button>
+                    <button class="button" data-search-id="domains-ip-reverseip">Reverse IP Lookup</button>
+                    <button class="button" data-search-id="domains-ip-shodan-domain">Shodan Domain</button>
+                    <button class="button" data-search-id="domains-ip-shodan-hostname">Shodan Hostname</button>
+                    <button class="button" data-search-id="domains-ip-shodan-query">Shodan Query</button>
+                    <button class="button" data-search-id="domains-ip-traceroute">Traceroute</button>
+                </div>
+            </section>
+
+            <section id="section-domains-records">
+                <h2>Public Records &amp; Domain Research</h2>
+                <div class="button-grid">
+                    <button class="button" data-search-id="domains-records-asa">ASA Search</button>
+                    <button class="button" data-search-id="domains-records-dnpedia">DNPedia</button>
+                    <button class="button" data-search-id="domains-records-fca">FCA Warnings</button>
+                    <button class="button" data-search-id="domains-records-googlegroups">Google Groups</button>
+                    <button class="button" data-search-id="domains-records-occrp">OCCRP Aleph</button>
+                    <button class="button" data-search-id="domains-records-ofac">OFAC Sanctions</button>
+                    <button class="button" data-search-id="domains-records-sra">SRA Search</button>
+                    <button class="button" data-search-id="domains-records-udrp">UDRPSearch</button>
+                    <button class="button" data-search-id="domains-records-wipo">WIPO Search</button>
+                </div>
+            </section>
+        </div>
     </div>
-  </div>
+    
+    <hr>
+
+    <div class="columns">
+        <div id="column-domains-special-left" class="column">
+            <section id="section-domains-shorturl">
+                <h2>URL Shortener Expanders</h2>
+                <div class="search-instructions">
+                    <label for="input-domains-shortUrl">Enter Full Shortened URL:</label>
+                    <div class="input-container">
+                        <input type="text" id="input-domains-shortUrl" class="input-field" placeholder="e.g., https://bit.ly/xxxx" autocomplete="off">
+                    </div>
+                    <div id="feedback-domains-shortUrl" class="feedback-message"></div>
+                </div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="domains-shorturl-bitly">Bit.ly Expand</button>
+                    <button class="button" data-search-id="domains-shorturl-any">Expand Any URL</button>
+                    <button class="button" data-search-id="domains-shorturl-tinycc">Tiny.cc Expand</button>
+                </div>
+            </section>
+
+            <section id="section-domains-adsense">
+                <h2>AdSense ID Lookup</h2>
+                <div class="search-instructions">
+                    <label for="input-domains-adsenseId">AdSense ID:</label>
+                    <div class="input-container">
+                        <input type="text" id="input-domains-adsenseId" class="input-field" placeholder="e.g., pub-1234567890123456" autocomplete="off">
+                    </div>
+                    <div id="feedback-domains-adsenseId" class="feedback-message"></div>
+                </div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="domains-adsense-analyzeid">AnalyzeID</button>
+                    <button class="button" data-search-id="domains-adsense-dnslytics">DNSlytics</button>
+                    <button class="button" data-search-id="domains-adsense-hackertarget">HackerTarget</button>
+                    <button class="button" data-search-id="domains-adsense-riskiq">RiskIQ</button>
+                </div>
+            </section>
+        </div>
+
+        <div id="column-domains-special-right" class="column">
+            <section id="section-domains-analytics">
+                <h2>Analytics ID Lookup</h2>
+                <div class="search-instructions">
+                    <label for="input-domains-analyticsId">Analytics ID:</label>
+                    <div class="input-container">
+                        <input type="text" id="input-domains-analyticsId" class="input-field" placeholder="e.g., UA-xxxx or G-xxxx" autocomplete="off">
+                    </div>
+                    <div id="feedback-domains-analyticsId" class="feedback-message"></div>
+                </div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="domains-analytics-analyzeid">AnalyzeID</button>
+                    <button class="button" data-search-id="domains-analytics-dnslytics">DNSlytics</button>
+                    <button class="button" data-search-id="domains-analytics-hackertarget">HackerTarget</button>
+                    <button class="button" data-search-id="domains-analytics-publicwww">PublicWWW</button>
+                    <button class="button" data-search-id="domains-analytics-riskiq">RiskIQ</button>
+                </div>
+            </section>
+            
+            <section id="section-domains-favicon">
+                <h2>Favicon Analysis Tools</h2>
+                <div class="search-instructions">
+                    <label for="input-domains-faviconUrl">Favicon File URL:</label>
+                    <div class="input-button-line">
+                        <input type="text" id="input-domains-faviconUrl" class="input-field" placeholder="e.g., https://example.com/favicon.ico" autocomplete="off">
+                        <button class="button" data-search-id="domains-favicon-hash">Calculate Hash</button>
+                    </div>
+                    <div id="feedback-domains-faviconUrl" class="feedback-message"></div>
+                </div>
+                <div class="search-instructions">
+                    <label for="input-domains-faviconHash">Favicon Hash (MurmurHash3):</label>
+                    <div class="input-button-line">
+                        <input type="text" id="input-domains-faviconHash" class="input-field" placeholder="e.g., -2123456789" autocomplete="off">
+                        <button class="button" data-search-id="domains-favicon-shodan">Shodan Search</button>
+                    </div>
+                    <div id="feedback-domains-faviconHash" class="feedback-message"></div>
+                </div>
+            </section>
+
+            <section id="section-domains-csp">
+                <h2>CSP Search (Censys)</h2>
+                <div class="search-instructions">
+                    <label for="input-domains-csp">Content-Security-Policy String:</label>
+                    <div class="input-button-line">
+                        <input type="text" id="input-domains-csp" class="input-field" placeholder="e.g., default-src 'self'" autocomplete="off">
+                        <button class="button" data-search-id="domains-csp-censys">Censys CSP Search</button>
+                    </div>
+                    <div id="feedback-domains-csp" class="feedback-message"></div>
+                </div>
+            </section>
+        </div>
+    </div>
 </main>
 
 <footer>
+<<<<<<< HEAD
   <p>Exploratores 2.5 prototype <a href="license.html">License</a></p>
+=======
+    <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
 </footer>
 
-<script>
-  // Standard navbar submenu script
-  document.querySelectorAll('.menu > li').forEach(item => {
-    const submenu = item.querySelector('.submenu');
-    if (submenu) { 
-      item.addEventListener('mouseenter', function() {
-        submenu.style.display = 'block';
-      });
-      item.addEventListener('mouseleave', function() {
-        submenu.style.display = 'none';
-      });
-    }
-  });
-
-  // Helper function to get and trim input value
-  function Domains_getInputValue(id) {
-    const el = document.getElementById(id);
-    return el ? el.value.trim() : "";
-  }
-
-  // Helper function to clean domain input
-  function Domains_CleanDomainInput(rawInput) {
-    if (typeof rawInput !== 'string') return rawInput;
-    let cleaned = rawInput.replace(/^(?:https?:\/\/)?(?:www\.)?/i, '');
-    cleaned = cleaned.replace(/\/$/, '');
-    return cleaned;
-  }
-
-  // Helper function to get, validate input, and show alert
-  function Domains_getAndValidateInput(inputId, placeholderForAlert = "a value") {
-    const value = Domains_getInputValue(inputId);
-    if (!value) {
-      alert("Please enter " + placeholderForAlert + " in the designated field.");
-      return null;
-    }
-    return value; 
-  }
-  
-  function constructQuery(params) {
-    let query = "";
-    if (params.k && Domains_getInputValue('eeKeyword')) query += encodeURIComponent(params.k) + '+';
-    if (params.f && Domains_getInputValue('eeFName')) query += encodeURIComponent(params.f) + '+';
-    if (params.l && Domains_getInputValue('eeLName')) query += encodeURIComponent(params.l) + '+';
-    if (params.t && Domains_getInputValue('eeTitle')) query += encodeURIComponent(params.t) + '+';
-    if (params.c && Domains_getInputValue('eeCompany')) query += encodeURIComponent(params.c) + '+';
-    if (params.s && Domains_getInputValue('eeSchool')) query += encodeURIComponent(params.s) + '+';
-    if (query.endsWith('+')) {
-      query = query.slice(0, -1);
-    }
-    return query;
-  }
-
-  // --- Domain Tool Functions (Existing & Updated) ---
-  function Domains_BuiltWith() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://builtwith.com/detailed/' + encodeURIComponent(val), '_blank'); }
-  function Domains_OFACSanctionsSearch() { const val = Domains_getAndValidateInput('domainNameInput', 'a search term'); if (!val) return; window.open('https://ofac.treasury.gov/recent-actions?search_api_fulltext=' + encodeURIComponent(val) + '&ra-start-date=&ra-end-date=&ra_year=', '_blank'); }
-  function Domains_VirusTotalDomain() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://www.virustotal.com/gui/domain/' + encodeURIComponent(val), '_blank'); }
-  // ... (rest of previously existing functions - assumed to be present and correct) ...
-  function Domains_WhoisViewDNS() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('http://viewdns.info/whois/?domain=' + encodeURIComponent(val), '_blank'); }
-  function Domains_ReverseIPViewDNS() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name or IP'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('http://viewdns.info/reverseip/?host=' + encodeURIComponent(val) + '&t=1', '_blank'); }
-  function Domains_ReverseDomainViewDNS() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or other query term'); if(!val)return; window.open('http://viewdns.info/reversewhois/?q=' + encodeURIComponent(val) + '&t=1', '_blank'); }
-  function Domains_PortScanViewDNS() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name or IP'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('http://viewdns.info/portscan/?host=' + encodeURIComponent(val), '_blank'); }
-  function Domains_IPHistoryViewDNS() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name or IP'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('http://viewdns.info/iphistory/?domain=' + encodeURIComponent(val), '_blank'); }
-  function Domains_DNSReportViewDNS() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('http://viewdns.info/dnsreport/?domain=' + encodeURIComponent(val), '_blank'); }
-  function Domains_TraceRouteViewDNS() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name or IP'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('http://viewdns.info/traceroute/?domain=' + encodeURIComponent(val), '_blank'); }
-  function Domains_WhoIs() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('http://who.is/whois/' + encodeURIComponent(val), '_blank'); }
-  function Domains_WhoIsDNS() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('http://who.is/dns/' + encodeURIComponent(val), '_blank'); }
-  function Domains_WhoIsDomainHistory() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('http://who.is/domain-history/' + encodeURIComponent(val), '_blank'); }
-  function Domains_DomainAppDNS() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://dmns.app/domains?q=' + encodeURIComponent(val), '_blank'); }
-  function Domains_Whoxy() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://www.whoxy.com/' + encodeURIComponent(val), '_blank'); }
-  function Domains_Whoisology() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://whoisology.com/' + encodeURIComponent(val), '_blank'); }
-  function Domains_WhoisArchive1() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://web.archive.org/web/http://www.who.is/whois/' + encodeURIComponent(val), '_blank'); }
-  function Domains_WhoisArchive2() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://web.archive.org/web/https://whois.domaintools.com/' + encodeURIComponent(val), '_blank'); }
-  function Domains_WhoisArchive3() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://web.archive.org/web/https://www.whoxy.com/' + encodeURIComponent(val), '_blank'); }
-  function Domains_WhoisArchive4() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://web.archive.org/web/https://domainbigdata.com/' + encodeURIComponent(val), '_blank'); }
-  function Domains_WhoisArchive5() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://web.archive.org/web/https://whoisology.com/' + encodeURIComponent(val), '_blank'); }
-  function Domains_ArchiveOrg() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val)return; window.open('http://web.archive.org/web/*/' + encodeURIComponent(val), '_blank'); }
-  function Domains_ArchiveMd() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val)return; window.open('http://archive.md/' + encodeURIComponent(val), '_blank'); }
-  function Domains_Mementoweb() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('http://timetravel.mementoweb.org/list/19991212110000/http://' + encodeURIComponent(val), '_blank'); }
-  function Domains_CongressArchives() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://webarchive.loc.gov/all/*/http://' + encodeURIComponent(val), '_blank'); }
-  function Domains_ArquivoPt() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val)return; window.open('https://arquivo.pt/url/search?hitsPerPage=100&q=' + encodeURIComponent(val), '_blank'); }
-  function Domains_CarbonDating() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val)return; window.open('http://carbondate.cs.odu.edu/#' + encodeURIComponent(val), '_blank'); }
-  function Domains_InformerScreenshot() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://website.informer.com/' + encodeURIComponent(val) + '#tab_stats', '_blank'); }
-  function Domains_URLScanDomain() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://urlscan.io/domain/' + encodeURIComponent(val), '_blank'); }
-  function Domains_EasyCounterScreenshot() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://www.easycounter.com/report/' + encodeURIComponent(val), '_blank'); }
-  function Domains_DomainIQSnapshot() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://www.domainiq.com/snapshot_history#' + encodeURIComponent(val), '_blank'); }
-  function Domains_DMNsAppScreenshot() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://files.dmns.app/screenshots/' + encodeURIComponent(val) + '.jpg', '_blank'); }
-  function Domains_SpyOnWeb() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or tracking ID'); if(!val)return; window.open('http://spyonweb.com/' + encodeURIComponent(val), '_blank'); }
-  function Domains_AnalyzeIDDomain() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('http://analyzeid.com/?domain=' + encodeURIComponent(val), '_blank'); }
-  function Domains_GALookupDNSlytics() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://dnslytics.com/reverse-analytics/' + encodeURIComponent(val), '_blank'); }
-  function Domains_AdSenseLookupDNSlytics() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://dnslytics.com/reverse-adsense/' + encodeURIComponent(val), '_blank'); }
-  function Domains_DomainIQProfile() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://www.domainiq.com/snapshot_history?data=' + encodeURIComponent(val) + '#' + encodeURIComponent(val), '_blank'); }
-  function Domains_NerdyData() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or code snippet'); if(!val)return; window.open('https://www.nerdydata.com/reports/new?search=%7B%22all%22%3A%5B%7B%22type%22%3A%22code%22,%22value%22%3A%22' + encodeURIComponent(val) + '%22%7D%5D,%22any%22%3A%5B%5D,%22none%22%3A%5B%5D%7D', '_blank'); }
-  function Domains_RobotsTxt() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('http://' + encodeURIComponent(val) + '/robots.txt', '_blank'); }
-  function Domains_HostIoDomain() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://host.io/' + encodeURIComponent(val), '_blank'); }
-  function Domains_HostIoBacklinks() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://host.io/backlinks/' + encodeURIComponent(val), '_blank'); }
-  function Domains_HostIoRedirects() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://host.io/redirects/' + encodeURIComponent(val), '_blank'); }
-  function Domains_DNSlyticsDomain() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://dnslytics.com/domain/' + encodeURIComponent(val), '_blank'); }
-  function Domains_WMTips() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://www.wmtips.com/tools/info/' + encodeURIComponent(val), '_blank'); }
-  function Domains_Robtex() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://www.robtex.com/dns-lookup/' + encodeURIComponent(val), '_blank'); }
-  function Domains_DomainCodex() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://www.domaincodex.com/search.php?q=' + encodeURIComponent(val), '_blank'); }
-  function Domains_SimilarWeb() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('http://www.similarweb.com/website/' + encodeURIComponent(val), '_blank'); }
-  function Domains_Moz() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://moz.com/domain-analysis?site=' + encodeURIComponent(val), '_blank'); }
-  function Domains_SpyFu() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://www.spyfu.com/overview/domain?query=' + encodeURIComponent(val), '_blank'); }
-  function Domains_SharedCount() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://api.sharedcount.com/v1.0/?url=https%3A%2F%2F' + encodeURIComponent(val) + '&apikey=1934f519a63e142e0d3c893e59cc37fe0172e98a', '_blank'); }
-  function Domains_RedditDomainMentions() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://www.reddit.com/search?q=site:' + encodeURIComponent(val), '_blank'); }
-  function Domains_BacklinksLinkody() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('http://bc.linkody.com/en/seo-tools/free-backlink-checker/' + encodeURIComponent(val), '_blank'); }
-  function Domains_CopyScape() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://www.copyscape.com/?q=http%3A%2F%2F' + encodeURIComponent(val), '_blank'); }
-  function Domains_SiteMapper() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('http://www.visualsitemapper.com/map/' + encodeURIComponent(val), '_blank'); }
-  function Domains_ThreatIntelPlatform() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://threatintelligenceplatform.com/report/' + encodeURIComponent(val), '_blank'); }
-  function Domains_CensysDomain() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://search.censys.io/search?resource=hosts&sort=RELEVANCE&per_page=100&virtual_hosts=INCLUDE&q=' + encodeURIComponent(val), '_blank'); }
-  function Domains_SecurityTrails() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://securitytrails.com/list/apex_domain/' + encodeURIComponent(val), '_blank'); }
-  function Domains_ThreatCrowd() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://ci-www.threatcrowd.org/domain.php?domain=' + encodeURIComponent(val), '_blank'); }
-  function Domains_Blacklight() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val)return; window.open('https://themarkup.org/blacklight?url=' + encodeURIComponent(val), '_blank'); }
-  function Domains_CrtSh() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://crt.sh/?q=' + encodeURIComponent(val), '_blank'); }
-  function Domains_DehashedDomain() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://dehashed.com/search?query=%22' + encodeURIComponent(val) + '%22', '_blank'); }
-  function Domains_HudsonRockDomain() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://www.hudsonrock.com/search?domain=' + encodeURIComponent(val), '_blank'); }
-  function Domains_IntelligenceXDomain() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://intelx.io/?s=' + encodeURIComponent(val), '_blank'); }
-  function Domains_SkymemDomain() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://www.skymem.info/srch?q=' + encodeURIComponent(val), '_blank'); }
-  function Domains_ExpandBitly() { const val = Domains_getAndValidateInput('shortUrlInput', 'a Bit.ly shortened URL'); if(!val)return; const cleanUrl = val.replace(/^https?:\/\//,''); window.open('https://' + cleanUrl + '+', '_blank'); }
-  function Domains_ExpandTinyCC() { const val = Domains_getAndValidateInput('shortUrlInput', 'a Tiny.cc shortened URL'); if(!val)return; const cleanUrl = val.replace(/^https?:\/\//,''); window.open('https://' + cleanUrl + '~', '_blank'); }
-  function Domains_ExpandAnyShortURL() { const val = Domains_getAndValidateInput('shortUrlInput', 'a shortened URL'); if(!val)return; window.open('http://checkshorturl.com/expand.php?u=' + encodeURIComponent(val), '_blank'); }
-  
-  function Domains_AdSenseLookupDNSlyticsByID() { const val = Domains_getAndValidateInput('adSenseIdInput', 'an AdSense ID (e.g., pub-xxxx)'); if(!val)return; window.open('https://dnslytics.com/reverse-adsense/' + encodeURIComponent(val), '_blank'); }
-  function Domains_AdSenseLookupAnalyzeID() { const val = Domains_getAndValidateInput('adSenseIdInput', 'an AdSense ID (e.g., pub-xxxx)'); if(!val)return; window.open('https://analyzeid.com/id/' + encodeURIComponent(val), '_blank'); } 
-  function Domains_AdSenseLookupHackerTarget() { const val = Domains_getAndValidateInput('adSenseIdInput', 'an AdSense ID (e.g., pub-xxxx)'); if(!val)return; window.open('https://hackertarget.com/reverse-analytics-search/?q=' + encodeURIComponent(val), '_blank'); } 
-
-  function Domains_AnalyticsLookupDNSlytics() { const val = Domains_getAndValidateInput('analyticsIdInput', 'an Analytics ID (e.g., UA-xxxx or G-xxxx)'); if(!val)return; window.open('https://dnslytics.com/reverse-analytics/' + encodeURIComponent(val), '_blank'); }
-  function Domains_AnalyticsLookupAnalyzeID() { const val = Domains_getAndValidateInput('analyticsIdInput', 'an Analytics ID (e.g., UA-xxxx or G-xxxx)'); if(!val)return; window.open('https://analyzeid.com/id/' + encodeURIComponent(val), '_blank'); } 
-  function Domains_AnalyticsLookupPublicWWW() { const val = Domains_getAndValidateInput('analyticsIdInput', 'an Analytics ID (e.g., UA-xxxx or G-xxxx)'); if(!val)return; window.open('https://publicwww.com/websites/%22' + encodeURIComponent(val) + '%22/', '_blank'); } 
-  function Domains_AnalyticsLookupHackerTarget() { const val = Domains_getAndValidateInput('analyticsIdInput', 'an Analytics ID (e.g., UA-xxxx or G-xxxx)'); if(!val)return; window.open('https://hackertarget.com/reverse-analytics-search/?q=' + encodeURIComponent(val), '_blank'); }
-  
-  function Domains_ArchiveScanCDX() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://web.archive.org/cdx/search/cdx?url=' + encodeURIComponent(val) + '/*&output=text&fl=original&collapse=urlkey', '_blank'); }
-  function Domains_URLScanPageSearch() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://urlscan.io/search/#page.domain%3A' + encodeURIComponent(val), '_blank'); }  
-  function Domains_LeakIXDomain() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://leakix.net/domain/' + encodeURIComponent(val), '_blank'); }
-  function Domains_LeakIXSearchDomain() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://leakix.net/search?scope=leak&q=' + encodeURIComponent(val), '_blank'); }
-  function Domains_HypeStatScreenshot() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://hypestat.com/info/' + encodeURIComponent(val), '_blank'); }
-  function Domains_InformerEmails() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://website.informer.com/' + encodeURIComponent(val) + '/emails', '_blank'); }
-  function Domains_SpamOrg() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://www.spam.org/search?type=domain&convert_block=1&group_ips=1&data=' + encodeURIComponent(val), '_blank'); }
-  function Domains_MyWOT() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val)return; window.open('https://www.mywot.com/en/scorecard/' + encodeURIComponent(val), '_blank'); }
-  function Domains_ShodanDomain() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://www.shodan.io/domain/' + encodeURIComponent(val), '_blank'); }
-  function Domains_SubdomainsColumbus() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://columbus.elmasy.com/lookup/' + encodeURIComponent(val), '_blank'); }
-  function Domains_ArchiveURLWildcard() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('http://web.archive.org/web/*/' + encodeURIComponent(val) + '/*', '_blank'); }
-  function Domains_Webscout() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val)return; val = Domains_CleanDomainInput(val); window.open('https://webscout.io/lookup/' + encodeURIComponent(val), '_blank'); }
-  function Domains_ArchiveITDeepWebCrawl() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or keyword'); if (!val) return; window.open('https://archive-it.org/collections/11718?q=' + encodeURIComponent(val), '_blank'); }
-  function Domains_ArchivePhHomepage() { window.open('https://archive.ph/', '_blank'); } 
-  function Domains_DomainToolsScreenshotHistory() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if (!val) return; val = Domains_CleanDomainInput(val); window.open('https://research.domaintools.com/research/screenshot-history/' + encodeURIComponent(val), '_blank'); }
-  function Domains_ElephindSearch() { const val = Domains_getAndValidateInput('domainNameInput', 'a keyword'); if (!val) return; window.open('https://elephind.com/?a=q&hs=1&r=1&results=1&txq=' + encodeURIComponent(val), '_blank'); }
-  function Domains_GoogleCacheSearch() { let val = Domains_getAndValidateInput('domainNameInput', 'a URL or domain name'); if (!val) return; val = Domains_CleanDomainInput(val); window.open('http://webcache.googleusercontent.com/search?q=cache:' + encodeURIComponent(val), '_blank'); }
-  function Domains_UrlScanGeneralSearch() { const val = Domains_getAndValidateInput('domainNameInput', 'a search term'); if (!val) return; window.open('https://urlscan.io/search/#' + encodeURIComponent(val), '_blank'); }
-  function Domains_WayBackGeneralSearch() { const val = Domains_getAndValidateInput('domainNameInput', 'a keyword or domain name'); if (!val) return; window.open('https://archive.org/search.php?query=' + encodeURIComponent(val), '_blank'); }
-  function Domains_WIPOSearchGoogle() { const val = Domains_getAndValidateInput('domainNameInput', 'a keyword or domain name'); if (!val) return; window.open('https://www.google.com/search?q=site%3Ahttps://www.wipo.int/ AND %22' + encodeURIComponent(val) + '%22', '_blank'); }
-
-  // --- ViewDNS.info Functions ---
-  function Domains_ViewDNS_HTTPHeaders() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if (!val) return; val = Domains_CleanDomainInput(val); window.open('http://viewdns.info/httpheaders/?domain=' + encodeURIComponent(val), '_blank'); }
-  function Domains_ViewDNS_DNSRecords() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if (!val) return; val = Domains_CleanDomainInput(val); window.open('http://viewdns.info/dnsrecord/?domain=' + encodeURIComponent(val), '_blank'); }
-  function Domains_ViewDNS_DNSSECTest() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if (!val) return; val = Domains_CleanDomainInput(val); window.open('http://viewdns.info/dnssec/?domain=' + encodeURIComponent(val), '_blank'); }
-  function Domains_ViewDNS_AbuseContact() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if (!val) return; val = Domains_CleanDomainInput(val); window.open('http://viewdns.info/abuselookup/?domain=' + encodeURIComponent(val), '_blank'); }
-  function Domains_ViewDNS_ChineseFirewallTest() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if (!val) return; val = Domains_CleanDomainInput(val); window.open('http://viewdns.info/chinesefirewall/?domain=' + encodeURIComponent(val), '_blank'); }
-  function Domains_ViewDNS_IranFirewallTest() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if (!val) return; window.open('http://viewdns.info/iranfirewall/?siteurl=' + encodeURIComponent(val), '_blank'); }
-  function Domains_ViewDNS_IsMySiteDown() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if (!val) return; val = Domains_CleanDomainInput(val); window.open('http://viewdns.info/ismysitedown/?domain=' + encodeURIComponent(val), '_blank'); }
-
-  // --- NetworksDB.io Function ---
-  function Domains_NetworksDB_DomainToIPs() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if (!val) return; val = Domains_CleanDomainInput(val); window.open('https://networksdb.io/search/domain-to-ips?q=' + encodeURIComponent(val), '_blank'); }
-
-  // --- Tools from First Snippet (CentralOps, DomainTools, Etherscan, etc.) ---
-  function Domains_CentralOps_DomainDossier() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://centralops.net/co/DomainDossier.aspx?addr=' + encodeURIComponent(val), '_blank');}
-  function Domains_DomainTools_DirectWhois() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://whois.domaintools.com/' + encodeURIComponent(val), '_blank');}
-  function Domains_Etherscan_ENSLookup() { let val = Domains_getAndValidateInput('domainNameInput', 'an ENS domain (e.g., name.eth)'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://etherscan.io/name-lookup-search?id=' + encodeURIComponent(val), '_blank');}
-  function Domains_GoDaddy_Whois() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://ie.godaddy.com/whois/results.aspx?checkAvail=1&domain=' + encodeURIComponent(val), '_blank');}
-  function Domains_ResolveRs_DNSLookup() { let val = Domains_getAndValidateInput('domainNameInput', 'a hostname'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://resolve.rs/dns/lookup.html?hostname=' + encodeURIComponent(val), '_blank');}
-  // Domains_RiskIQ_Search() already defined under "Analytics and AdSense ID searches" section
-  function Domains_SecurityTrails_DomainOverview() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://securitytrails.com/domain/' + encodeURIComponent(val), '_blank');}
-  function Domains_Shodan_HostnameSearch() { let val = Domains_getAndValidateInput('domainNameInput', 'a hostname'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://www.shodan.io/search?query=hostname%3A' + encodeURIComponent(val), '_blank');}
-  function Domains_Shodan_GeneralQuery() { const val = Domains_getAndValidateInput('domainNameInput', 'a search query'); if(!val) return; window.open('https://www.shodan.io/search?query=' + encodeURIComponent(val), '_blank');}
-  function Domains_WhoisCom_Whois() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://www.whois.com/whois/' + encodeURIComponent(val), '_blank');}
-  function Domains_EURid_Whois() { let val = Domains_getAndValidateInput('domainNameInput', 'a .eu domain name'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://whois.eurid.eu/en/search/?domain=' + encodeURIComponent(val), '_blank');}
-  
-  // --- Tools from Second Snippet (AlienVault, DNPedia, etc.) ---
-  function Domains_AlienVault_OTXDomain() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://otx.alienvault.com/indicator/domain/' + encodeURIComponent(val), '_blank');}
-  function Domains_Censys_DNSNames() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://search.censys.io/search?resource=hosts&q=dns.names%3A' + encodeURIComponent(val), '_blank');}
-  function Domains_DNPedia_Search() { window.open('https://dnpedia.com/domains/search.php', '_blank');}
-  function Domains_Google_FCAWarnings() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or company name'); if(!val) return; window.open('https://www.google.com/search?q=site%3Ahttps%3A%2F%2Ffca.org.uk+AND+%22' + encodeURIComponent(val) + '%22', '_blank');}
-  function Domains_HybridAnalysis_Search() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain, IP, or hash'); if(!val) return; window.open('https://hybrid-analysis.com/search?query=' + encodeURIComponent(val), '_blank');}
-  function Domains_IBMXForce_URLReport() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val) return; window.open('https://exchange.xforce.ibmcloud.com/url/' + encodeURIComponent(val), '_blank');}
-  function Domains_JoeSandbox_Search() { const val = Domains_getAndValidateInput('domainNameInput', 'a search term'); if(!val) return; window.open('https://www.joesandbox.com/search?q=' + encodeURIComponent(val), '_blank');}
-  function Domains_Maltiverse_Search() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://maltiverse.com/search;query=' + encodeURIComponent(val), '_blank');}
-  function Domains_Netcraft_SubdomainSearch() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://searchdns.netcraft.com/?restriction=site+contains&host=' + encodeURIComponent(val), '_blank');}
-  function Domains_Netcraft_SiteReport() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val) return; window.open('https://sitereport.netcraft.com/?url=' + encodeURIComponent(val), '_blank');}
-  function Domains_PhishCheck_Search() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val) return; window.open('https://phishcheck.me/search/' + encodeURIComponent(val), '_blank');}
-  function Domains_PublicWWW_Search() { const val = Domains_getAndValidateInput('domainNameInput', 'a search term or code snippet'); if(!val) return; window.open('https://publicwww.com/websites/' + encodeURIComponent(val), '_blank');}
-  function Domains_Pulsedive_SearchIOC() { const val = Domains_getAndValidateInput('domainNameInput', 'an IOC (domain, IP, URL)'); if(!val) return; window.open('https://pulsedive.com/explore/?q=ioc%3D' + encodeURIComponent(val), '_blank');}
-  function Domains_Reddit_URLSearchOld() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL'); if(!val) return; window.open('https://old.reddit.com/search?q=url:' + encodeURIComponent(val), '_blank');}
-  function Domains_Spamhaus_Check() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain or IP'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://check.spamhaus.org/not_listed/?searchterm=' + encodeURIComponent(val), '_blank');}
-  function Domains_SRA_Search() { const val = Domains_getAndValidateInput('domainNameInput', 'a name or search term'); if(!val) return; window.open('https://www.sra.org.uk/search-results/?searchText=' + encodeURIComponent(val), '_blank');}
-  function Domains_StopForumSpam_Search() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain, email, or username'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://www.stopforumspam.com/search/' + encodeURIComponent(val), '_blank');}
-  function Domains_Triage_URLSearch() { const val = Domains_getAndValidateInput('domainNameInput', 'a domain or URL'); if(!val) return; window.open('https://tria.ge/s?q=url:' + encodeURIComponent(val), '_blank');}
-  function Domains_Triage_SMTPSearch() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://tria.ge/s?q=smtp.' + encodeURIComponent(val), '_blank');}
-  function Domains_UDRPSearch_Search() { let val = Domains_getAndValidateInput('domainNameInput', 'a domain name'); if(!val) return; val = Domains_CleanDomainInput(val); window.open('https://www.udrpsearch.com/search?query=' + encodeURIComponent(val) + '&search=domain', '_blank');}
-
-  // --- Favicon Analysis Tools ---
-  function Domains_FaviconHash_Calculate() {
-    const faviconUrl = Domains_getAndValidateInput('faviconUrlInput', 'a Favicon File URL');
-    if (!faviconUrl) return;
-    window.open('https://faviconhash.com/' + encodeURIComponent(faviconUrl), '_blank');
-  }
-  function Domains_Shodan_SearchByFaviconHash() {
-    const faviconHash = Domains_getAndValidateInput('faviconHashInput', 'a Favicon Hash');
-    if (!faviconHash) return;
-    window.open('https://www.shodan.io/search?query=http.favicon.hash%3A' + encodeURIComponent(faviconHash), '_blank');
-  }
-  // --- New Functions for Analytics and AdSense ID searches & Exact Phrase ---
-  function Domains_RiskIQ_AdSenseTracker() {
-    const val = Domains_getAndValidateInput('adSenseIdInput', 'an AdSense ID (e.g., pub-xxxx)');
-    if (!val) return;
-    window.open('https://community.riskiq.com/search/trackers?query=' + encodeURIComponent(val), '_blank');
-  }
-  function Domains_RiskIQ_AnalyticsTracker() {
-    const val = Domains_getAndValidateInput('analyticsIdInput', 'an Analytics ID (e.g., UA-xxxx or G-xxxx)');
-    if (!val) return;
-    window.open('https://community.riskiq.com/search/trackers?query=' + encodeURIComponent(val), '_blank');
-  }
-  function Domains_Google_ExactPhraseSearch() {
-    const val = Domains_getAndValidateInput('domainNameInput', 'a search term');
-    if (!val) return;
-    window.open('https://www.google.com/search?q="' + encodeURIComponent(val) + '"', '_blank');
-  }
-  function Domains_Bing_ExactPhraseSearch() {
-    const val = Domains_getAndValidateInput('domainNameInput', 'a search term');
-    if (!val) return;
-    window.open('https://www.bing.com/search?q="' + encodeURIComponent(val) + '"', '_blank');
-  }
-  function Domains_Yandex_ExactPhraseSearch() {
-    const val = Domains_getAndValidateInput('domainNameInput', 'a search term');
-    if (!val) return;
-    window.open('https://yandex.com/search/?text="' + encodeURIComponent(val) + '"', '_blank');
-  }
-  function Domains_Baidu_ExactPhraseSearch() {
-    const val = Domains_getAndValidateInput('domainNameInput', 'a search term');
-    if (!val) return;
-    window.open('https://www.baidu.com/s?wd="' + encodeURIComponent(val) + '"', '_blank');
-  }
-
-  // --- New Security Headers Scan & Censys CSP Search ---
-  function Domains_SecurityHeaders_Scan() {
-    let val = Domains_getAndValidateInput('domainNameInput', 'a domain name or URL');
-    if (!val) return;
-    val = Domains_CleanDomainInput(val); 
-    window.open('https://securityheaders.com/?q=' + encodeURIComponent(val), '_blank');
-  }
-  function Domains_Censys_CSPSearch() {
-    const cspString = Domains_getAndValidateInput('cspStringInput', 'a Content-Security-Policy string/keyword');
-    if (!cspString) return;
-    window.open('https://search.censys.io/search?resource=hosts&q=services.http.response.headers.content_security_policy%3A' + encodeURIComponent(cspString), '_blank');
-  }
-
-</script>
 <script src="../assets/js/config.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/externaeven.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
-      exploratoresConfig.selectorsToHide.forEach(selector => {
-        try {
-          const elements = document.querySelectorAll(selector);
-          elements.forEach(el => el.classList.add('hidden-in-light'));
-        } catch (e) {
-          console.error("Invalid selector in config.js:", selector);
-        }
-      });
+    // Page-specific UI logic
+    function updatePageState() {
+        const validationMap = [
+            { id: 'input-domains-main', validator: ExploratoresValidators.getAndValidateDomain, feedbackId: 'feedback-domains-main', buttonsSelector: '#column-domains-left .button, #column-domains-right .button', message: 'Requires a domain or keyword.' },
+            { id: 'input-domains-shortUrl', validator: ExploratoresValidators.getAndValidateUrl, feedbackId: 'feedback-domains-shortUrl', buttonsSelector: '#section-domains-shorturl .button', message: 'Requires a full short URL.' },
+            { id: 'input-domains-adsenseId', validator: ExploratoresValidators.getAndValidateSingleInput, feedbackId: 'feedback-domains-adsenseId', buttonsSelector: '#section-domains-adsense .button', message: 'Requires an AdSense ID.' },
+            { id: 'input-domains-analyticsId', validator: ExploratoresValidators.getAndValidateSingleInput, feedbackId: 'feedback-domains-analyticsId', buttonsSelector: '#section-domains-analytics .button', message: 'Requires an Analytics ID.' },
+            { id: 'input-domains-faviconUrl', validator: ExploratoresValidators.getAndValidateUrl, feedbackId: 'feedback-domains-faviconUrl', buttonsSelector: '[data-search-id="domains-favicon-hash"]', message: 'Requires a Favicon URL.' },
+            { id: 'input-domains-faviconHash', validator: ExploratoresValidators.getAndValidateNumeric, feedbackId: 'feedback-domains-faviconHash', buttonsSelector: '[data-search-id="domains-favicon-shodan"]', message: 'Requires a numeric hash.' },
+            { id: 'input-domains-csp', validator: ExploratoresValidators.getAndValidateSingleInput, feedbackId: 'feedback-domains-csp', buttonsSelector: '[data-search-id="domains-csp-censys"]', message: 'Requires a CSP string.' }
+        ];
+
+        validationMap.forEach(group => {
+            // A guard in case the element does not exist on the page
+            const inputElement = document.getElementById(group.id);
+            if (!inputElement) return;
+
+            const isValid = group.validator(group.id) !== null;
+            const feedbackDiv = document.getElementById(group.feedbackId);
+            const buttons = document.querySelectorAll(group.buttonsSelector);
+
+            if (feedbackDiv) {
+                feedbackDiv.textContent = isValid ? 'Ready.' : group.message;
+                feedbackDiv.className = isValid ? 'feedback-message ready' : 'feedback-message';
+            }
+            buttons.forEach(button => {
+                button.disabled = !isValid;
+                button.classList.toggle('text-active', isValid);
+            });
+        });
     }
-  });
+
+    function setInitialPageState() {
+        document.querySelectorAll('.input-field').forEach(input => input.value = '');
+        updatePageState();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setInitialPageState();
+        document.querySelectorAll('.input-field').forEach(input => {
+            input.addEventListener('input', updatePageState);
+        });
+    });
 </script>
 
 </body>

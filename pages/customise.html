@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Customise Page • Exploratores</title>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customise Page • Exploratores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
 <body>
 
+<<<<<<< HEAD
 <div id="navbar-placeholder"></div>
 
 <script src="../assets/menu/navigation.js"></script>
@@ -192,69 +194,228 @@
               </li>
               <li>**URL Encoding:** Always use <code>encodeURIComponent()</code> for any user-provided values that are inserted into URL query parameters or path segments to prevent errors or security issues.</li>
               <li>**Opening Links:** Use <code>window.open(url, '_blank')</code> to open links in a new browser tab.</li>
+=======
+<nav>
+    <ul class="menu">
+        <li><span>HOME</span>
+            <ul class="submenu">
+                <li><a href="../launchme.html">Index</a></li>
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
             </ul>
-          </li>
+        </li>
+        <li><span>Search<br>Engines</span>
+            <ul class="submenu">
+                <li><a href="searchengines.html">Search Engines</a></li>
+            </ul>
+        </li>
+        <li><span>People &<br>Identities</span>
+            <ul class="submenu">
+                <li><a href="names.html">Names</a></li>
+                <li><a href="phoneus.html">US Phones</a></li>
+                <li><a href="phoneint.html">International Phones</a></li>
+                <li><a href="address.html">Addresses</a></li>
+                <li><a href="vehicles.html">Vehicles</a></li>
+                <li><a href="usernames.html">Usernames</a></li>
+                <li><a href="email.html">Email Addresses</a></li>
+                <li><a href="communities.html">Communities</a></li>
+            </ul>
+        </li>
+        <li><span>Social<br>Media</span>
+            <ul class="submenu">
+                <li><a href="x.html">X (Twitter)</a></li>
+                <li><a href="facebook.html">Facebook</a></li>
+                <li><a href="instagram.html">Instagram</a></li>
+                <li><a href="linkedin.html">LinkedIn</a></li>
+            </ul>
+        </li>
+        <li><span>Websites</span>
+            <ul class="submenu">
+                <li><a href="domains.html">Domains</a></li>
+                <li><a href="ip.html">IP Addresses</a></li>
+            </ul>
+        </li>
+        <li><span>GeoInt</span>
+            <ul class="submenu">
+                <li><a href="maps.html">Maps</a></li>
+            </ul>
+        </li>
+        <li><span>Media<br>Analysis</span>
+            <ul class="submenu">
+                <li><a href="images.html">Images</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="docs.html">Documents</a></li>
+            </ul>
+        </li>
+        <li><span>Business<br>Intelligence</span>
+            <ul class="submenu">
+                <li><a href="publiccompanyrecords.html">Company Public Records</a></li>
+                <li><a href="currencies.html">Virtual Currencies</a></li>
+            </ul>
+        </li>
+        <li><span>Tools</span>
+            <ul class="submenu">
+                <li><a href="guidelines.html">Guidelines</a></li>
+                <li><a href="cyberchef.html">CyberChef</a></li>
+                <li><a href="customise.html" class="active">Customise Page</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<main>
+    <h1 class="page-title">Customising Exploratores Pages</h1>
+    <p class="center-text">This page serves as the technical documentation for understanding, modifying, and extending the Exploratores toolkit.</p>
+
+    <section id="section-architecture">
+        <h2>Project Architecture</h2>
+        <p>The toolkit is built on three fundamental principles: a Data-Driven Design, Centralized Logic, and a clear Separation of Concerns.</p>
+        
+        <h3>Directory and File Structure</h3>
+        <p>The file organization is designed to separate content (HTML pages) from shared resources (assets), ensuring order and ease of maintenance.</p>
+        <pre class="code-guide-block"><code>Exploratores/
+├── assets/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   ├── config.js
+│   │   ├── search-library.js
+│   │   ├── validators.js
+│   │   ├── main.js
+│   │   └── externaeven.js
+│   └── images/
+│       └── roman-helmet.ico
+├── pages/
+│   ├── address.html
+│   ├── communities.html
+│   └── ... (all other tool pages)
+└── launchme.html</code></pre>
+        <ul>
+            <li><strong><code>assets/css/style.css</code></strong>: The single stylesheet. It controls the appearance of the entire project.</li>
+            <li><strong><code>assets/js/</code></strong>: Contains all centralized JavaScript files, each with a specific role.</li>
+            <li><strong><code>assets/images/</code></strong>: Contains images, such as the favicon.</li>
+            <li><strong><code>pages/</code></strong>: Contains all the HTML files that constitute the tools themselves.</li>
+            <li><strong><code>launchme.html</code></strong>: The toolkit's startup page.</li>
         </ul>
-      </li>
-      <li>
-        <strong>Test Thoroughly:</strong> After adding the HTML and JavaScript, test the new functionality with various inputs, including empty and special characters, to ensure it works as expected.
-      </li>
-    </ol>
-  </section>
+    </section>
+
+    <section id="section-js-files">
+        <h2>The Role of the Main JavaScript Files</h2>
+        <p>The JavaScript architecture is the heart of the project. Here is the role of each file.</p>
+
+        <h3>1. `config.js` - The Settings</h3>
+        <p><strong>Role:</strong> This file holds global configuration data and flags, available to all pages. It is the first script to be loaded.</p>
+        <ul>
+            <li><strong><code>exploratoresConfig</code></strong>: An object containing options like `lightVersionEnabled` to activate the "light" mode and `selectorsToHide` to specify which elements to hide.</li>
+            <li><strong>Global Constants</strong>: This is the ideal place for shared data, such as the `italianProvinces` constant containing the list of Italian provinces.</li>
+        </ul>
+
+        <h3>2. `search-library.js` - The Catalog</h3>
+        <p><strong>Role:</strong> Acts as a database for all search functions in the toolkit. It contains a single large object, `SearchLibrary`, which defines the "what," not the "how."</p>
+        <p>Each entry in this file is a complete "recipe" for a search, associated with a unique `data-search-id` found on an HTML button.</p>
+        
+        <h3>3. `validators.js` - The Rulebook</h3>
+        <p><strong>Role:</strong> Contains the `ExploratoresValidators` object, a library of reusable functions for input validation. These functions are called by the main engine to check that the user has entered valid data before launching a search.</p>
+        
+        <h3>4. `main.js` - The Engine</h3>
+        <p><strong>Role:</strong> Contains the executive logic (`Exploratores.initSearchHandler`). This script is the "engine" that makes everything work. It listens for clicks on any search button, consults the "catalog" (`search-library.js`), applies the "rules" (`validators.js`), and, if everything is valid, executes the search.</p>
+
+        
+    </section>
+
+    <section id="section-guides">
+        <h2>Practical Guides</h2>
+        <p>The following guides show with practical examples how to modify and extend the toolkit.</p>
+
+        <h3>Example A: Adding a New Search Function</h3>
+        <p><strong>Scenario:</strong> We want to add a button to the `x.html` page to search for a user's profile on `threads.net`.</p>
+        
+        <ol>
+            <li><strong>Step 1: Analyze the Validator (in `validators.js`)</strong><br>The search requires a simple non-empty username. We can reuse the existing `getAndValidateUsername` validator already in `validators.js`. No new validation code is needed.</li>
+            
+            <li><strong>Step 2: Add the Configuration to `search-library.js`</strong><br>Open `assets/js/search-library.js` and add a new entry for our search. The `search-id` will be `x-account-threads`.
+            <pre class="code-guide-block"><code>// Inside the SearchLibrary object, after the other entries for the X page:
+'x-account-threads': {
+    name: 'Threads: Profile',
+    description: 'Searches for a user profile on Threads.net.',
+    urlTemplate: 'https://www.threads.net/@{term}',
+    validator: 'getAndValidateUsername',
+    targetInput: 'input-x-account'
+},</code></pre>
+            </li>
+
+            <li><strong>Step 3: Add the Button to `x.html`</strong><br>Open `pages/x.html` and add the new button inside the `.button-grid` of the "Account & Basic Searches" section.
+            <pre class="code-guide-block"><code>&lt;!-- In pages/x.html, inside the first .button-grid --&gt;
+<div class="button-grid">
+    <button class="button" data-search-id="x-account-profile">Profile</button>
+    <button class="button" data-search-id="x-account-threads">Threads</button> &lt;!-- NEW BUTTON --&gt;
+    <button class="button" data-search-id="x-account-outgoing">Outgoing</button>
+    ...
+</div></code></pre>
+            </li>
+        </ol>
+        <p>With these steps, the new "Threads" button will appear and work immediately, using the existing infrastructure.</p>
+
+        <h3>Example B: Modifying an Existing Function</h3>
+        <p><strong>Scenario:</strong> We want to modify the "Pagine Bianche – Companies" search on the `address.html` page to also allow searching by VAT Code (`vatCode`).</p>
+        <ol>
+            <li><strong>Step 1: Modify the HTML in `address.html`</strong><br>Add a new input field for the VAT Code.
+            <pre class="code-guide-block"><code>&lt;!-- In pages/address.html, in the #container-it-companies section --&gt;
+<div class="input-container">
+    <input type="text" id="input-address-itCity" class="input-field" placeholder="City" autocomplete="off">
+    <input type="text" id="input-address-itProv" class="input-field" placeholder="Province (e.g., RM)" autocomplete="off">
+</div>
+<div class="input-container"> &lt;!-- NEW CONTAINER --&gt;
+    <input type="text" id="input-address-itVatCode" class="input-field" placeholder="VAT Code (optional)" autocomplete="off">
+</div>
+</code></pre>
+            </li>
+
+            <li><strong>Step 2: Modify the Validator in `validators.js`</strong><br>Update the `getAndValidateItCompanies` function to read the new field and include it in the returned data.
+            <pre class="code-guide-block"><code>// In assets/js/validators.js
+getAndValidateItCompanies: function() {
+    const values = {
+        itCompany: document.getElementById('input-address-itCompany').value.trim(),
+        itCity: document.getElementById('input-address-itCity').value.trim(),
+        itProv: document.getElementById('input-address-itProv').value.trim(),
+        itVatCode: document.getElementById('input-address-itVatCode').value.trim() // NEW LINE
+    };
+    const provinceIsValid = typeof italianProvinces !== 'undefined' && italianProvinces.has(values.itProv.toUpperCase());
+    // The main validation logic does not change, we just return more data
+    if (values.itCompany && values.itCity && provinceIsValid) {
+        return values;
+    }
+    return null;
+},</code></pre>
+            </li>
+
+            <li><strong>Step 3: Modify the Configuration in `search-library.js`</strong><br>Update the `urlTemplate` to include the new `{itVatCode}` placeholder.
+            <pre class="code-guide-block"><code>// In assets/js/search-library.js
+'address-it-paginebianche-companies': {
+    name: 'Pagine Bianche: Companies (IT)',
+    description: 'Searches for companies in the Italian White Pages.',
+    // UPDATED URL WITH THE NEW 'piva' PARAMETER
+    urlTemplate: 'https://www.paginebianche.it/aziende?qs={itCompany}&dv={itCity}%20({itProv})&piva={itVatCode}',
+    validator: 'getAndValidateItCompanies'
+},</code></pre>
+            </li>
+        </ol>
+        <p>The engine in `main.js` will automatically handle the new `{itVatCode}` placeholder without requiring any changes.</p>
+    </section>
 
 </main>
 
 <footer>
+<<<<<<< HEAD
   <p>Exploratores 2.5 prototype <a href="license.html">License</a></p>
+=======
+    <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
 </footer>
 
-<script>
-  // Standard Navbar script
-  document.querySelectorAll('.menu > li').forEach(item => {
-    item.addEventListener('mouseover', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'block';
-    });
-    item.addEventListener('mouseout', function() {
-      const submenu = this.querySelector('.submenu');
-      if(submenu) submenu.style.display = 'none';
-    });
-  });
-
-  // Example Helper Function (as described in the text above)
-  /*
-  function PageName_GetAndValidateInput(inputId, fieldDescriptionForAlert) {
-    const inputElement = document.getElementById(inputId);
-    if (!inputElement) {
-      // This should not happen if IDs are correct
-      alert("Error: Input field '" + inputId + "' not found.");
-      return null;
-    }
-    const value = inputElement.value.trim();
-    if (!value) {
-      alert("Please enter " + fieldDescriptionForAlert + ".");
-      return null;
-    }
-    return value;
-  }
-  */
-</script>
-
 <script src="../assets/js/config.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
-      exploratoresConfig.selectorsToHide.forEach(selector => {
-        try {
-          const elements = document.querySelectorAll(selector);
-          elements.forEach(el => el.classList.add('hidden-in-light'));
-        } catch (e) {
-          console.error("Invalid selector in config.js:", selector);
-        }
-      });
-    }
-  });
-</script>
-
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/externaeven.js"></script>
 </body>
 </html>

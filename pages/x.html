@@ -1,196 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Exploratores X (Twitter) Tool</title>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>X (Twitter) • Exploratores</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
 <body>
 
+<<<<<<< HEAD
 <div id="navbar-placeholder"></div>
 
 <script src="../assets/menu/navigation.js"></script>
+=======
+<nav>
+    <ul class="menu">
+        <li><span>HOME</span>
+            <ul class="submenu">
+                <li><a href="../launchme.html">Index</a></li>
+            </ul>
+        </li>
+        <li><span>Search<br>Engines</span>
+            <ul class="submenu">
+                <li><a href="searchengines.html">Search Engines</a></li>
+            </ul>
+        </li>
+        <li><span>People &<br>Identities</span>
+            <ul class="submenu">
+                <li><a href="names.html">Names</a></li>
+                <li><a href="phoneus.html">US Phones</a></li>
+                <li><a href="phoneint.html">International Phones</a></li>
+                <li><a href="address.html">Addresses</a></li>
+                <li><a href="vehicles.html">Vehicles</a></li>
+                <li><a href="usernames.html">Usernames</a></li>
+                <li><a href="email.html">Email Addresses</a></li>
+                <li><a href="communities.html">Communities</a></li>
+            </ul>
+        </li>
+        <li><span>Social<br>Media</span>
+            <ul class="submenu">
+                <li><a href="x.html" class="active">X (Twitter)</a></li>
+                <li><a href="facebook.html">Facebook</a></li>
+                <li><a href="instagram.html">Instagram</a></li>
+                <li><a href="linkedin.html">LinkedIn</a></li>
+            </ul>
+        </li>
+        <li><span>Websites</span>
+            <ul class="submenu">
+                <li><a href="domains.html">Domains</a></li>
+                <li><a href="ip.html">IP Addresses</a></li>
+            </ul>
+        </li>
+        <li><span>GeoInt</span>
+            <ul class="submenu">
+                <li><a href="maps.html">Maps</a></li>
+            </ul>
+        </li>
+        <li><span>Media<br>Analysis</span>
+            <ul class="submenu">
+                <li><a href="images.html">Images</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="docs.html">Documents</a></li>
+            </ul>
+        </li>
+        <li><span>Business<br>Intelligence</span>
+            <ul class="submenu">
+                <li><a href="publiccompanyrecords.html">Company Public Records</a></li>
+                <li><a href="currencies.html">Virtual Currencies</a></li>
+            </ul>
+        </li>
+        <li><span>Tools</span>
+            <ul class="submenu">
+                <li><a href="guidelines.html">Guidelines</a></li>
+                <li><a href="cyberchef.html">CyberChef</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
 
-  <main>
+<main>
     <h1 class="page-title">X (Twitter) Tools</h1>
 
     <div class="columns">
-      
-      <div class="column">
-        <h2>Account &amp; Basic Searches</h2>
-        <section class="search-instructions">
-          <label for="accountInput">X (Twitter) Username:</label>
-          <div class="input-container">
-            <input type="text" id="accountInput" class="input-field" placeholder="Username">
-          </div>
-        </section>
-        <div class="note"><strong>NOTE:</strong> Enter the target's handle (without “@”).</div>
-		<div class="button-grid">
-          <button class="button" onclick="Twitter01(accountInput.value)">Profile</button>
-          <button class="button" onclick="Twitter02(accountInput.value)">Outgoing</button>
-          <button class="button" onclick="Twitter03(accountInput.value)">Incoming</button>
-          <button class="button" onclick="Twitter04(accountInput.value)">Only Replies</button>
-          <button class="button" onclick="Twitter05(accountInput.value)">No Replies</button>
-          <button class="button" onclick="Twitter06(accountInput.value)">Media</button>
-          <button class="button" onclick="Twitter40(accountInput.value)">Highlights</button>
-          <button class="button" onclick="Twitter41(accountInput.value)">Lists Created</button>
-          <button class="button" onclick="Twitter07(accountInput.value)">Lists Included</button>
-          <button class="button" onclick="Twitter09(accountInput.value)">Topics</button>
-          <button class="button" onclick="Twitter42(accountInput.value)">Links</button>
-          <button class="button" onclick="Twitter10(accountInput.value)">Followers</button>
-          <button class="button" onclick="Twitter11(accountInput.value)">Following</button>
-        </div>
- <br>
-        <h2>Lists</h2>
-        
-        <section class="search-instructions">
-          <label for="listsInput">List ID:</label>
-          <div class="input-container">
-            <input type="text" id="listsInput" class="input-field" placeholder="1234567890">
-          </div>
-        </section>
-        <div class="note"><strong>NOTE:</strong> Enter a numeric List ID.</div>
-		<div class="button-grid">
-          <button class="button" onclick="Twitter36a(listsInput.value)">List</button>
-          <button class="button" onclick="Twitter37a(listsInput.value)">Members</button>
-          <button class="button" onclick="Twitter38a(listsInput.value)">Followers</button>
-        </div>
- <br>
-        <h2>Other Searching</h2>
-        
-        <section class="search-instructions">
-          <label for="searchNameInput">Real Name:</label>
-          <div class="input-container">
-            <input type="text" id="searchNameInput" class="input-field" placeholder="John Doe">
-          </div>
-        </section>
-        <div class="note"><strong>NOTE:</strong> Enter a real name for the search.</div>
-		<div class="button-grid">
-          <button class="button" onclick="Twitter34a(searchNameInput.value)">Profile Search</button>
-        </div>
-      </div>
- <br>
-      <div class="column">
-        <h2>By Year (User or Terms)</h2>
-        
-        <section class="search-instructions">
-          <div class="input-container">
-            <div style="flex: 1;">
-              <label for="yearInputA">Term/Username:</label>
-              <input type="text" id="yearInputA" class="input-field" placeholder="username or keyword" style="width: 100%;">
-            </div>
-            <div style="flex: 1;">
-              <label for="yearInputB">Year:</label>
-              <input type="text" id="yearInputB" class="input-field" placeholder="2022" style="width: 100%;">
-            </div>
-          </div>
-      
-		</section>
-  <div class="note"><strong>NOTE:</strong> Username or keyword + year (4 digits).</div>      
-	  <div class="button-grid">
-          <button class="button" onclick="Twitter12(yearInputA.value, yearInputB.value)">Outgoing</button>
-          <button class="button" onclick="Twitter13(yearInputA.value, yearInputB.value)">Incoming</button>
-          <button class="button" onclick="Twitter14(yearInputA.value, yearInputB.value)">Media</button>
-          <button class="button" onclick="Twitter15(yearInputA.value, yearInputB.value)">Term</button>
-          <button class="button" onclick="Twitter16(yearInputA.value, yearInputB.value)">No Replies</button>
-          <button class="button" onclick="Twitter17(yearInputA.value, yearInputB.value)">Only Replies</button>
-        </div>
-         <br>
-        <h2>Web Archives &amp; Others</h2>
-        
-        <section class="search-instructions">
-          <label for="archivesInput">X (Twitter) Username:</label>
-          <div class="input-container">
-            <input type="text" id="archivesInput" class="input-field" placeholder="username123">
-          </div>
-        </section>
-        <div class="note"><strong>NOTE:</strong> Enter a handle to search archives.</div>
-		<div class="button-grid">
-          <button class="button" onclick="Twitter20(archivesInput.value)">Google Archives</button>
-          <button class="button" onclick="Twitter21(archivesInput.value)">Google Tweets</button>
-          <button class="button" onclick="Twitter22(archivesInput.value)">Bing Archives</button>
-          <button class="button" onclick="Twitter23(archivesInput.value)">Yandex Archives</button>
-          <button class="button" onclick="Twitter26(archivesInput.value)">Wayback</button>
-          <button class="button" onclick="Twitter27(archivesInput.value)">Memory.lol</button>
-          <button class="button" onclick="Twitter32(archivesInput.value)">TwitterAudit</button>
+        <div id="column-x-left" class="column">
+            <section id="section-x-account" class="search-instructions">
+                <h2>Account & Basic Searches</h2>
+                <label for="input-x-account">X (Twitter) Username (without @)</label>
+                <div class="input-container">
+                    <input type="text" id="input-x-account" class="input-field" placeholder="Enter username..." autocomplete="off">
+                </div>
+                <div id="feedback-x-account" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="x-account-profile">Profile</button>
+                    <button class="button" data-search-id="x-account-outgoing">Outgoing</button>
+                    <button class="button" data-search-id="x-account-incoming">Incoming</button>
+                    <button class="button" data-search-id="x-account-only-replies">Only Replies</button>
+                    <button class="button" data-search-id="x-account-no-replies">No Replies</button>
+                    <button class="button" data-search-id="x-account-media">Media</button>
+                    <button class="button" data-search-id="x-account-highlights">Highlights</button>
+                    <button class="button" data-search-id="x-account-lists-created">Lists Created</button>
+                    <button class="button" data-search-id="x-account-lists-included">Lists Included</button>
+                    <button class="button" data-search-id="x-account-topics">Topics</button>
+                    <button class="button" data-search-id="x-account-links">Links</button>
+                    <button class="button" data-search-id="x-account-followers">Followers</button>
+                    <button class="button" data-search-id="x-account-following">Following</button>
+                </div>
+            </section>
+
+            <section id="section-x-lists" class="search-instructions">
+                <h2>Lists</h2>
+                <label for="input-x-listId">List ID (numeric)</label>
+                <div class="input-container">
+                    <input type="text" id="input-x-listId" class="input-field" placeholder="Enter numeric list ID..." autocomplete="off">
+                </div>
+                <div id="feedback-x-listId" class="feedback-message"></div>
+                <div class="button-grid button-grid-3col">
+                    <button class="button" data-search-id="x-list-view">List</button>
+                    <button class="button" data-search-id="x-list-members">Members</button>
+                    <button class="button" data-search-id="x-list-followers">Followers</button>
+                </div>
+            </section>
+
+            <section id="section-x-other" class="search-instructions">
+                <h2>Other Searches</h2>
+                <label for="input-x-realName">Real Name</label>
+                <div class="input-container">
+                    <input type="text" id="input-x-realName" class="input-field" placeholder="Enter a real name..." autocomplete="off">
+                </div>
+                <div id="feedback-x-realName" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="x-other-profilename">Profile Search</button>
+                </div>
+            </section>
         </div>
 
- <br>
-        <section class="search-instructions">
-          <label for="memLolID">X (Twitter) User ID:</label>
-          <div class="input-container">
-            <input type="text" id="memLolID" class="input-field" placeholder="123456789">
-          </div>
-        </section>
-       <div class="note"><strong>NOTE:</strong> Enter a numeric User ID for memory.lol.</div> 
- <div class="button-grid">
-          <button class="button" onclick="Twitter28a(memLolID.value)">Memory.lol ID</button>
+        <div id="column-x-right" class="column">
+            <section id="section-x-by-year" class="search-instructions">
+                <h2>By Year (User or Term)</h2>
+                <div class="input-container">
+                    <input type="text" id="input-x-yearTerm" class="input-field" placeholder="Username or keyword..." autocomplete="off">
+                    <input type="text" id="input-x-yearNum" class="input-field" placeholder="Year (YYYY)..." autocomplete="off">
+                </div>
+                <div id="feedback-x-by-year" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="x-year-outgoing">Outgoing</button>
+                    <button class="button" data-search-id="x-year-incoming">Incoming</button>
+                    <button class="button" data-search-id="x-year-media">Media</button>
+                    <button class="button" data-search-id="x-year-term">Term</button>
+                    <button class="button" data-search-id="x-year-no-replies">No Replies</button>
+                    <button class="button" data-search-id="x-year-only-replies">Only Replies</button>
+                </div>
+            </section>
+
+            <section id="section-x-archives" class="search-instructions">
+                <h2>Web Archives & Others</h2>
+                <label for="input-x-archiveUser">X Username (without @)</label>
+                <div class="input-container">
+                    <input type="text" id="input-x-archiveUser" class="input-field" placeholder="Enter username..." autocomplete="off">
+                </div>
+                <div id="feedback-x-archiveUser" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="x-archive-google-site">Google Archives</button>
+                    <button class="button" data-search-id="x-archive-google-tweets">Google Tweets</button>
+                    <button class="button" data-search-id="x-archive-bing">Bing Archives</button>
+                    <button class="button" data-search-id="x-archive-yandex">Yandex Archives</button>
+                    <button class="button" data-search-id="x-archive-wayback">Wayback</button>
+                    <button class="button" data-search-id="x-archive-memorylol">Memory.lol</button>
+                    <button class="button" data-search-id="x-archive-audit">TwitterAudit</button>
+                </div>
+                 <hr>
+                <label for="input-x-memoryId">X User ID (numeric)</label>
+                <div class="input-container">
+                     <input type="text" id="input-x-memoryId" class="input-field" placeholder="Enter numeric user ID..." autocomplete="off">
+                </div>
+                <div id="feedback-x-memoryId" class="feedback-message"></div>
+                <div class="button-grid">
+                     <button class="button" data-search-id="x-archive-memorylol-id">Memory.lol ID</button>
+                </div>
+            </section>
         </div>
-      </div>
     </div>
-  </main>
+</main>
 
+<<<<<<< HEAD
   <footer>
     Exploratores 2.5 prototype
     <a href="license.html">License</a>
   </footer>
+=======
+<footer>
+    <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
+</footer>
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
 
-  <script>
-    document.querySelectorAll('.menu > li').forEach(item => {
-      item.addEventListener('mouseover', () => item.querySelector('.submenu')?.style.setProperty('display','block'));
-      item.addEventListener('mouseout',  () => item.querySelector('.submenu')?.style.setProperty('display','none'));
-    });
-  </script>
-
-  <script>
-    function Twitter01(v){ window.open('https://x.com/'+encodeURIComponent(v),'_blank'); }
-    function Twitter02(v){ window.open('https://x.com/search?q=from%3A'+encodeURIComponent(v)+'&f=live','_blank'); }
-    function Twitter03(v){ window.open('https://x.com/search?q=to%3A'+encodeURIComponent(v)+'&f=live','_blank'); }
-    function Twitter04(v){ window.open('https://x.com/search?q=from%3A'+encodeURIComponent(v)+'%20filter%3Areplies&f=live','_blank'); }
-    function Twitter05(v){ window.open('https://x.com/search?q=from%3A'+encodeURIComponent(v)+'%20-filter%3Areplies&f=live','_blank'); }
-    function Twitter06(v){ window.open('https://x.com/'+encodeURIComponent(v)+'/media','_blank'); }
-    function Twitter07(v){ window.open('https://x.com/'+encodeURIComponent(v)+'/lists/memberships','_blank'); }
-    function Twitter09(v){ window.open('https://x.com/'+encodeURIComponent(v)+'/topics','_blank'); }
-    function Twitter10(v){ window.open('https://x.com/'+encodeURIComponent(v)+'/followers','_blank'); }
-    function Twitter11(v){ window.open('https://x.com/'+encodeURIComponent(v)+'/following','_blank'); }
-    function Twitter12(u,y){ window.open('https://x.com/search?q=from%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31&f=live','_blank'); }
-    function Twitter13(u,y){ window.open('https://x.com/search?q=to%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31&f=live','_blank'); }
-    function Twitter14(u,y){ window.open('https://x.com/search?q=from%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31%20filter%3Amedia&f=live','_blank'); }
-    function Twitter15(t,y){ window.open('https://x.com/search?q='+encodeURIComponent(t)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31&f=live','_blank'); }
-    function Twitter16(u,y){ window.open('https://x.com/search?q=from%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31%20-filter%3Areplies&f=live','_blank'); }
-    function Twitter17(u,y){ window.open('https://x.com/search?q=from%3A'+encodeURIComponent(u)+'%20since%3A'+y+'-01-01%20until%3A'+y+'-12-31%20filter%3Areplies&f=live','_blank'); }
-    function Twitter20(v){ window.open('https://www.google.com/search?q=site:x.com/'+encodeURIComponent(v),'_blank'); }
-    function Twitter21(v){ window.open('https://www.google.com/search?q=site:x.com/'+encodeURIComponent(v)+'/status/','_blank'); }
-    function Twitter22(v){ window.open('https://www.bing.com/search?q=x.com/'+encodeURIComponent(v),'_blank'); }
-    function Twitter23(v){ window.open('https://www.yandex.com/search/?text=https%3A%2F%2Fx.com%2F'+encodeURIComponent(v),'_blank'); }
-    function Twitter26(v){ window.open('https://web.archive.org/web/*/x.com/'+encodeURIComponent(v),'_blank'); }
-    function Twitter27(v){ window.open('https://api.memory.lol/v1/tw/'+encodeURIComponent(v),'_blank'); }
-    function Twitter28a(v){ window.open('https://api.memory.lol/v1/tw/id/'+encodeURIComponent(v),'_blank'); }
-    function Twitter32(v){ window.open('https://www.twitteraudit.com/'+encodeURIComponent(v),'_blank'); }
-    function Twitter34a(v){ window.open('https://x.com/search?q='+encodeURIComponent(v)+'&f=user','_blank'); }
-    function Twitter36a(v){ window.open('https://x.com/i/lists/'+encodeURIComponent(v),'_blank'); }
-    function Twitter37a(v){ window.open('https://x.com/i/lists/'+encodeURIComponent(v)+'/members','_blank'); }
-    function Twitter38a(v){ window.open('https://x.com/i/lists/'+encodeURIComponent(v)+'/followers','_blank'); }
-    function Twitter40(v){ window.open('https://x.com/'+encodeURIComponent(v)+'/highlights/','_blank'); }
-    function Twitter41(v){ window.open('https://x.com/'+encodeURIComponent(v)+'/lists/','_blank'); }
-    function Twitter42(v){ window.open('https://x.com/search?q=from%3A'+encodeURIComponent(v)+'%20filter%3Alinks&f=live','_blank'); }
-  </script>
 <script src="../assets/js/config.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/externaeven.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
-      exploratoresConfig.selectorsToHide.forEach(selector => {
-        try {
-          const elements = document.querySelectorAll(selector);
-          elements.forEach(el => el.classList.add('hidden-in-light'));
-        } catch (e) {
-          console.error("Invalid selector in config.js:", selector);
-        }
-      });
+    // --- Validation Functions ---
+    function getAndValidateUsername(elementId) {
+        const input = document.getElementById(elementId);
+        const value = input ? input.value.trim() : '';
+        return value ? { term: value } : null;
     }
-  });
+
+    function getAndValidateNumeric(elementId) {
+        const input = document.getElementById(elementId);
+        const value = input ? input.value.trim() : '';
+        return /^\d+$/.test(value) ? { term: value } : null;
+    }
+    
+    function getAndValidateYearSearch() {
+        const term = document.getElementById('input-x-yearTerm').value.trim();
+        const year = document.getElementById('input-x-yearNum').value.trim();
+        if (term && /^\d{4}$/.test(year)) {
+            return { term: term, year: year };
+        }
+        return null;
+    }
+
+    // --- UI Update Function ---
+    function updatePageState() {
+        const validationMap = [
+            { validator: () => getAndValidateUsername('input-x-account'), feedbackId: 'feedback-x-account', buttonsSelector: '#section-x-account .button', message: 'Requires a username.'},
+            { validator: () => getAndValidateNumeric('input-x-listId'), feedbackId: 'feedback-x-listId', buttonsSelector: '#section-x-lists .button', message: 'Requires a numeric List ID.'},
+            { validator: () => getAndValidateUsername('input-x-realName'), feedbackId: 'feedback-x-realName', buttonsSelector: '#section-x-other .button', message: 'Requires a name.'},
+            { validator: getAndValidateYearSearch, feedbackId: 'feedback-x-by-year', buttonsSelector: '#section-x-by-year .button', message: 'Requires a term and a 4-digit year.'},
+            { validator: () => getAndValidateUsername('input-x-archiveUser'), feedbackId: 'feedback-x-archiveUser', buttonsSelector: '#section-x-archives .button-grid:first-of-type .button', message: 'Requires a username.'},
+            { validator: () => getAndValidateNumeric('input-x-memoryId'), feedbackId: 'feedback-x-memoryId', buttonsSelector: '#section-x-archives .button-grid:last-of-type .button', message: 'Requires a numeric User ID.'}
+        ];
+
+        validationMap.forEach(group => {
+            const isValid = group.validator() !== null;
+            const feedbackDiv = document.getElementById(group.feedbackId);
+            const buttons = document.querySelectorAll(group.buttonsSelector);
+
+            if (feedbackDiv) {
+                feedbackDiv.textContent = isValid ? 'Ready.' : group.message;
+                feedbackDiv.className = isValid ? 'feedback-message ready' : 'feedback-message';
+            }
+
+            buttons.forEach(button => {
+                button.disabled = !isValid;
+                button.classList.toggle('text-active', isValid);
+            });
+        });
+    }
+
+    // --- Initial Page State ---
+    function setInitialPageState() {
+        document.querySelectorAll('.input-field').forEach(input => input.value = '');
+        updatePageState();
+    }
+
+    // --- Event Listeners ---
+    document.addEventListener('DOMContentLoaded', () => {
+        setInitialPageState();
+        document.querySelectorAll('.input-field').forEach(input => {
+            input.addEventListener('input', updatePageState);
+        });
+    });
 </script>
 
 </body>

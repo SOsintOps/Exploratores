@@ -1,300 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Currencies • Exploratores</title>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currencies • Exploratores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
 <body>
 
+<<<<<<< HEAD
 <div id="navbar-placeholder"></div>
 
 <script src="../assets/menu/navigation.js"></script>
+=======
+<nav>
+    <ul class="menu">
+        <li><span>HOME</span>
+            <ul class="submenu">
+                <li><a href="../launchme.html">Index</a></li>
+            </ul>
+        </li>
+        <li><span>Search<br>Engines</span>
+            <ul class="submenu">
+                <li><a href="searchengines.html">Search Engines</a></li>
+            </ul>
+        </li>
+        <li><span>People &<br>Identities</span>
+            <ul class="submenu">
+                <li><a href="names.html">Names</a></li>
+                <li><a href="phoneus.html">US Phones</a></li>
+                <li><a href="phoneint.html">International Phones</a></li>
+                <li><a href="address.html">Addresses</a></li>
+                <li><a href="vehicles.html">Vehicles</a></li>
+                <li><a href="usernames.html">Usernames</a></li>
+                <li><a href="email.html">Email Addresses</a></li>
+                <li><a href="communities.html">Communities</a></li>
+            </ul>
+        </li>
+        <li><span>Social<br>Media</span>
+            <ul class="submenu">
+                <li><a href="x.html">X (Twitter)</a></li>
+                <li><a href="facebook.html">Facebook</a></li>
+                <li><a href="instagram.html">Instagram</a></li>
+                <li><a href="linkedin.html">LinkedIn</a></li>
+            </ul>
+        </li>
+        <li><span>Websites</span>
+            <ul class="submenu">
+                <li><a href="domains.html">Domains</a></li>
+                <li><a href="ip.html">IP Addresses</a></li>
+            </ul>
+        </li>
+        <li><span>GeoInt</span>
+            <ul class="submenu">
+                <li><a href="maps.html">Maps</a></li>
+            </ul>
+        </li>
+        <li><span>Media<br>Analysis</span>
+            <ul class="submenu">
+                <li><a href="images.html">Images</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="docs.html">Documents</a></li>
+            </ul>
+        </li>
+        <li><span>Business<br>Intelligence</span>
+            <ul class="submenu">
+                <li><a href="publiccompanyrecords.html">Company Public Records</a></li>
+                <li><a href="currencies.html" class="active">Virtual Currencies</a></li>
+            </ul>
+        </li>
+        <li><span>Tools</span>
+            <ul class="submenu">
+                <li><a href="guidelines.html">Guidelines</a></li>
+                <li><a href="cyberchef.html">CyberChef</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
 
 <main>
-  <h1 class="page-title">Virtual Currencies Tool</h1>
+    <h1 class="page-title">Virtual Currencies Tool</h1>
 
-  <div class="columns">
-    <div class="column">
-      <section>
-        <h2>Bitcoin Address Tools</h2>
-        <div class="search-instructions">
-          <label for="bitcoinAddressInput">Enter Bitcoin Address:</label>
-          <div class="input-container">
-            <input type="text" id="bitcoinAddressInput" class="input-field" placeholder="Bitcoin Address"/>
-          </div>
-        </div>
-        <div class="button-grid button-grid-3col">
-          <button type="button" class="button" onclick="Currencies_BlockchairBTC()">BC BTC</button>
-          <button type="button" class="button" onclick="Currencies_BitcoinWhosWho()">BitcoinWhosWho</button>
-          <button type="button" class="button" onclick="Currencies_BlockchainComBTC()">Blockchain.com</button>
-          <button type="button" class="button" onclick="Currencies_ValidateBTCAddress()">BTC Validation</button>
-          <button type="button" class="button" onclick="Currencies_ChainabuseBTC()">Chainabuse</button>
-          <button type="button" class="button" onclick="Currencies_CloverpoolSummary()">Summary (Cloverpool)</button>
-          <button type="button" class="button" onclick="Currencies_GetBTCFirstSeen()">Creation Date</button>
-          <button type="button" class="button" onclick="Currencies_OXTmeBTC()">OXT.me</button>
-          <button type="button" class="button" onclick="Currencies_GetBTCBalance()">Satoshi Balance</button>
-          <button type="button" class="button" onclick="Currencies_GetBTCReceived()">Satoshi Received</button>
-          <button type="button" class="button" onclick="Currencies_GetBTCSent()">Satoshi Sent</button>
-          <button type="button" class="button" onclick="Currencies_WalletExplorerAddress()">WalletExplorer (Addr)</button>
-        </div>
-      </section>
+    <div class="columns">
+        <div id="column-currencies-left" class="column">
+            <section id="section-currencies-btc">
+                <h2>Bitcoin Address Tools</h2>
+                <div class="search-instructions">
+                    <label for="input-currencies-btcAddress">Enter Bitcoin Address:</label>
+                    <div class="input-container">
+                        <input type="text" id="input-currencies-btcAddress" class="input-field" placeholder="Bitcoin Address..." autocomplete="off">
+                    </div>
+                    <div id="feedback-currencies-btcAddress" class="feedback-message"></div>
+                </div>
+                <div class="button-grid button-grid-3col">
+                    <button class="button" data-search-id="currencies-btc-blockchair">BC BTC</button>
+                    <button class="button" data-search-id="currencies-btc-whoswho">BitcoinWhosWho</button>
+                    <button class="button" data-search-id="currencies-btc-blockchaincom">Blockchain.com</button>
+                    <button class="button" data-search-id="currencies-btc-validation">BTC Validation</button>
+                    <button class="button" data-search-id="currencies-btc-chainabuse">Chainabuse</button>
+                    <button class="button" data-search-id="currencies-btc-cloverpool">Summary (Cloverpool)</button>
+                    <button class="button" data-search-id="currencies-btc-firstseen">Creation Date</button>
+                    <button class="button" data-search-id="currencies-btc-oxtme">OXT.me</button>
+                    <button class="button" data-search-id="currencies-btc-balance">Satoshi Balance</button>
+                    <button class="button" data-search-id="currencies-btc-received">Satoshi Received</button>
+                    <button class="button" data-search-id="currencies-btc-sent">Satoshi Sent</button>
+                    <button class="button" data-search-id="currencies-btc-walletexplorer">WalletExplorer</button>
+                </div>
+            </section>
 
-      <section style="margin-top: 2rem;">
-        <h2>Security Tools</h2>
-        <div class="search-instructions">
-          <label for="securityQueryInput">Enter Address or Term for Security Check:</label>
-          <div class="input-container">
-            <input type="text" id="securityQueryInput" class="input-field" placeholder="Crypto Address or Term"/>
-          </div>
-        </div>
-        <div class="button-grid">
-          <button type="button" class="button" onclick="Currencies_OFACSanctionsHomepage()">OFAC Sanctions (Homepage)</button>
-          <button type="button" class="button" onclick="Currencies_RiskIQByAddress()">RiskIQ Trackers (Address Query)</button>
-          <button type="button" class="button" onclick="Currencies_ScamSearchAddress()">ScamSearch</button>
-        </div>
-      </section>
-      
-      <section style="margin-top: 2rem;">
-        <h2>Unix Time Converter</h2>
-        <div class="search-instructions">
-          <label for="unixTimestampInput">Enter Unix Timestamp:</label>
-          <div class="input-button-line">
-            <input type='text' id='unixTimestampInput' class="input-field" placeholder='Unix Timestamp'>
-            <button type='button' class="button" onclick="Currencies_ConvertUnixTime()">Convert</button>
-          </div>
-        </div>
-        <span id='datetime'></span> 
-      </section>
+            <section id="section-currencies-unix">
+                <h2>Unix Time Converter</h2>
+                <div class="search-instructions">
+                    <label for="input-currencies-unixTimestamp">Enter Unix Timestamp:</label>
+                    <div class="input-button-line">
+                        <input type="text" id="input-currencies-unixTimestamp" class="input-field" placeholder="Unix Timestamp..." autocomplete="off">
+                        <button type="button" id="btn-currencies-unix-convert" class="button">Convert</button>
+                    </div>
+                    <div id="feedback-currencies-unixTimestamp" class="feedback-message"></div>
+                    <span id="span-currencies-datetime" class="datetime-output"></span>
+                </div>
+            </section>
 
-      <section style="margin-top: 2rem;">
-        <h2>Currency Converters</h2>
-        <div class="search-instructions" style="margin-bottom: 0.5rem;">
-          <label for="cryptoAmountToConvertInput">From Crypto Amount:</label>
-          <div class="input-container">
-            <input type="text" id="cryptoAmountToConvertInput" class="input-field" placeholder="e.g., 1.5 (BTC, Satoshi)">
-          </div>
-        </div>
-        <div class="button-grid button-grid-3col">
-          <button type="button" class="button" onclick="Currencies_ConvertBTCToEUR()">BTC &gt; EUR</button>
-          <button type="button" class="button" onclick="Currencies_ConvertBTCToUSD()">BTC &gt; USD</button>
-          <button type="button" class="button" onclick="Currencies_ConvertSatoshiToUSD()">Satoshi &gt; USD</button>
+            <section id="section-currencies-converter">
+                <h2>Currency Converters</h2>
+                <div class="search-instructions">
+                    <label for="input-currencies-cryptoAmount">From Crypto Amount:</label>
+                    <div class="input-container">
+                        <input type="text" id="input-currencies-cryptoAmount" class="input-field" placeholder="e.g., 1.5 (BTC, Satoshi)" autocomplete="off">
+                    </div>
+                    <div id="feedback-currencies-cryptoAmount" class="feedback-message"></div>
+                </div>
+                <div class="button-grid button-grid-3col">
+                    <button class="button" data-search-id="currencies-conv-btc-eur">BTC &gt; EUR</button>
+                    <button class="button" data-search-id="currencies-conv-btc-usd">BTC &gt; USD</button>
+                    <button class="button" data-search-id="currencies-conv-satoshi-usd">Satoshi &gt; USD</button>
+                </div>
+                <hr>
+                <div class="search-instructions">
+                    <label for="input-currencies-fiatAmount">From Fiat Amount:</label>
+                    <div class="input-container">
+                        <input type="text" id="input-currencies-fiatAmount" class="input-field" placeholder="e.g., 100 (EUR, USD)" autocomplete="off">
+                    </div>
+                    <div id="feedback-currencies-fiatAmount" class="feedback-message"></div>
+                </div>
+                <div class="button-grid button-grid-3col">
+                    <button class="button" data-search-id="currencies-conv-eur-btc">EUR &gt; BTC</button>
+                    <button class="button" data-search-id="currencies-conv-usd-btc">USD &gt; BTC</button>
+                    <button class="button" data-search-id="currencies-conv-usd-satoshi">USD &gt; Satoshi</button>
+                </div>
+            </section>
         </div>
 
-        <div class="search-instructions" style="margin-top: 1.5rem; margin-bottom: 0.5rem;">
-          <label for="fiatAmountToConvertInput">From Fiat Amount:</label>
-          <div class="input-container">
-            <input type="text" id="fiatAmountToConvertInput" class="input-field" placeholder="e.g., 100 (EUR, USD)">
-          </div>
+        <div id="column-currencies-right" class="column">
+            <section id="section-currencies-othercrypto">
+                <h2>Other Cryptocurrency Lookups</h2>
+                <div class="search-instructions">
+                    <label for="input-currencies-otherCryptoAddress">Enter Address, TxID, or Contract:</label>
+                    <div class="input-container">
+                        <input type="text" id="input-currencies-otherCryptoAddress" class="input-field" placeholder="e.g., ETH, TRX address..." autocomplete="off">
+                    </div>
+                    <div id="feedback-currencies-otherCryptoAddress" class="feedback-message"></div>
+                </div>
+                <div class="button-grid button-grid-3col">
+                    <button class="button" data-search-id="currencies-crypto-bch">BC Bitcoin-Cash</button>
+                    <button class="button" data-search-id="currencies-crypto-bsv">BC Bitcoin-SV</button>
+                    <button class="button" data-search-id="currencies-crypto-dash">BC Dash</button>
+                    <button class="button" data-search-id="currencies-crypto-doge">BC Dogecoin</button>
+                    <button class="button" data-search-id="currencies-crypto-eth">BC Ethereum</button>
+                    <button class="button" data-search-id="currencies-crypto-ltc">BC Litecoin</button>
+                    <button class="button" data-search-id="currencies-crypto-blockscan">Blockscan</button>
+                    <button class="button" data-search-id="currencies-crypto-etherscan">Etherscan (ETH)</button>
+                    <button class="button" data-search-id="currencies-crypto-metasleuth-bsc">MetaSleuth (BSC)</button>
+                    <button class="button" data-search-id="currencies-crypto-metasleuth-eth">MetaSleuth (ETH)</button>
+                    <button class="button" data-search-id="currencies-crypto-metasleuth-poly">MetaSleuth (Poly)</button>
+                    <button class="button" data-search-id="currencies-crypto-polygonscan">PolygonScan</button>
+                    <button class="button" data-search-id="currencies-crypto-solanafm">SolanaFM</button>
+                    <button class="button" data-search-id="currencies-crypto-walletexplorer">WalletExplorer</button>
+                </div>
+                <h3 style="margin-top: 1rem;">Tronscan</h3>
+                <div class="button-grid button-grid-3col">
+                    <button class="button" data-search-id="currencies-crypto-tron-address">Address</button>
+                    <button class="button" data-search-id="currencies-crypto-tron-contract">Contract</button>
+                    <button class="button" data-search-id="currencies-crypto-tron-tx">Transaction</button>
+                </div>
+            </section>
+
+            <section id="section-currencies-analysis">
+                <h2>Blockchain Analysis & Intelligence</h2>
+                <div class="note"><strong>NOTE:</strong> Use OKLink services with caution due to potential data routing and operational security risks.</div>
+                <div class="search-instructions">
+                    <label for="input-currencies-analysisQuery">Enter Address, TxHash, or Entity ID:</label>
+                    <div class="input-container">
+                        <input type="text" id="input-currencies-analysisQuery" class="input-field" placeholder="Address, TxHash..." autocomplete="off">
+                    </div>
+                    <div id="feedback-currencies-analysisQuery" class="feedback-message"></div>
+                </div>
+                <div class="button-grid button-grid-3col">
+                    <button class="button" data-search-id="currencies-analysis-arkham-exp">Arkham (Explorer)</button>
+                    <button class="button" data-search-id="currencies-analysis-arkham-viz">Arkham (Visualizer)</button>
+                    <button class="button" data-search-id="currencies-analysis-blockscan">Blockscan Token</button>
+                    <button class="button" data-search-id="currencies-analysis-breadcrumbs">Breadcrumbs</button>
+                    <button class="button" data-search-id="currencies-analysis-crystal-exp">Crystal Explorer</button>
+                    <button class="button" data-search-id="currencies-analysis-crystal-viz">Crystal Visualizer</button>
+                    <button class="button" data-search-id="currencies-analysis-debank">Debank (Profile)</button>
+                    <button class="button" data-search-id="currencies-analysis-google">Google Search</button>
+                    <button class="button" data-search-id="currencies-analysis-metasleuth-btc">MetaSleuth (BTC)</button>
+                    <button class="button" data-search-id="currencies-analysis-oklink-exp">OKLink Explorer</button>
+                    <button class="button" data-search-id="currencies-analysis-oklink-viz">OKLink Visualisation</button>
+                    <button class="button" data-search-id="currencies-analysis-phalcon">Phalcon Explorer</button>
+                    <button class="button" data-search-id="currencies-analysis-zapper">Zapper (DeFi/NFT)</button>
+                </div>
+            </section>
         </div>
-        <div class="button-grid button-grid-3col">
-          <button type="button" class="button" onclick="Currencies_ConvertEURToBTC()">EUR &gt; BTC</button>
-          <button type="button" class="button" onclick="Currencies_ConvertUSDToBTC()">USD &gt; BTC</button>
-          <button type="button" class="button" onclick="Currencies_ConvertUSDToSatoshi()">USD &gt; Satoshi</button>
-        </div>
-      </section>
     </div>
-
-    <div class="column">
-      <section>
-        <h2>Other Cryptocurrency Lookups</h2>
-        <div class="search-instructions">
-          <label for="otherCryptoAddressInput">Enter Address, TxID, or Contract (e.g., ETH, TRX):</label>
-          <div class="input-container">
-            <input type="text" id="otherCryptoAddressInput" class="input-field" placeholder="Address, TxID, Contract ID"/>
-          </div>
-        </div>
-        <div class="button-grid button-grid-3col">
-          <button type="button" class="button" onclick="Currencies_BlockchairBCH()">BC Bitcoin-Cash</button>
-          <button type="button" class="button" onclick="Currencies_BlockchairBSV()">BC Bitcoin-SV</button>
-          <button type="button" class="button" onclick="Currencies_BlockchairDASH()">BC Dash</button>
-          <button type="button" class="button" onclick="Currencies_BlockchairDOGE()">BC Dogecoin</button>
-          <button type="button" class="button" onclick="Currencies_BlockchairETH()">BC Ethereum</button>
-          <button type="button" class="button" onclick="Currencies_BlockchairLTC()">BC Litecoin</button>
-          <button type="button" class="button" onclick="Currencies_BlockscanOtherAddress()">Blockscan multichain</button>
-          <button type="button" class="button" onclick="Currencies_EtherscanAddress()">Etherscan (ETH)</button>
-          <button type="button" class="button" onclick="Currencies_MetaSleuthBSC()">MetaSleuth (BSC)</button>
-          <button type="button" class="button" onclick="Currencies_MetaSleuthETH()">MetaSleuth (ETH)</button>
-          <button type="button" class="button" onclick="Currencies_MetaSleuthPolygon()">MetaSleuth (Polygon)</button>
-          <button type="button" class="button" onclick="Currencies_PolygonScanAddress()">PolygonScan</button>
-          <button type="button" class="button" onclick="Currencies_SolanaFMAddress()">SolanaFM</button>
-          <button type="button" class="button" onclick="Currencies_WalletExplorerByID()">WalletExplorer (ID)</button>
-        </div>
-        
-        <h3 style="margin-top: 1rem;">Tronscan</h3>
-        <div class="button-grid button-grid-3col">
-          <button type="button" class="button" onclick="Currencies_Tronscan_Address()">Address</button>
-          <button type="button" class="button" onclick="Currencies_Tronscan_Contract()">Contract</button>
-          <button type="button" class="button" onclick="Currencies_Tronscan_Transaction()">Transaction</button>
-        </div>
-      </section>
-
-      <section style="margin-top: 2rem;">
-        <h2>Blockchain Analysis & Intelligence</h2>
-        <div class="note">
-          <strong>NOTE:</strong> Use OKLink services (listed below) with caution due to potential data routing and operational security risks.
-        </div>
-        <div class="search-instructions">
-          <label for="genericCryptoQueryInput">Enter Crypto Address, TxHash, or Entity ID:</label>
-          <div class="input-container">
-            <input type="text" id="genericCryptoQueryInput" class="input-field" placeholder="Address, TxHash, Entity ID"/>
-          </div>
-        </div>
-        <div class="button-grid button-grid-3col">
-          <button type="button" class="button" onclick="Currencies_ArkhamExplorer()">Arkham (Explorer)</button>
-          <button type="button" class="button" onclick="Currencies_ArkhamVisualizer()">Arkham (Visualizer)</button>
-          <button type="button" class="button" onclick="Currencies_BlockscanLookup()">Blockscan Token</button>
-          <button type="button" class="button" onclick="Currencies_BreadcrumbsReport()">Breadcrumbs</button>
-          <button type="button" class="button" onclick="Currencies_CrystalExplorer()">Crystal Explorer</button>
-          <button type="button" class="button" onclick="Currencies_CrystalVisualizer()">Crystal Visualizer</button>
-          <button type="button" class="button" onclick="Currencies_DebankProfile()">Debank (Profile)</button>
-          <button type="button" class="button" onclick="Currencies_GoogleSearchAddress()">Google (Search Address)</button>
-          <button type="button" class="button" onclick="Currencies_MetaSleuthBTC()">MetaSleuth (BTC)</button>
-          <button type="button" class="button" onclick="Currencies_OKLinkExplorer()">OKLink Explorer</button>
-          <button type="button" class="button" onclick="Currencies_OKLinkVisualisation()">OKLink Visualisation</button>
-          <button type="button" class="button" onclick="Currencies_PhalconExplorerETH()">Phalcon Explorer (ETH)</button>
-          <button type="button" class="button" onclick="Currencies_ZapperAccount()">Zapper (DeFi/NFT)</button>
-        </div>
-      </section>
-    </div>
-  </div>
 </main>
 
 <footer>
+<<<<<<< HEAD
   <p>Exploratores 2.5 prototype <a href="license.html">License</a></p>
+=======
+    <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
 </footer>
 
-<script>
-  document.querySelectorAll('.menu > li').forEach(item => {
-    const submenu = item.querySelector('.submenu');
-    if (submenu) {
-      item.addEventListener('mouseenter', function() {
-        submenu.style.display = 'block';
-      });
-      item.addEventListener('mouseleave', function() {
-        submenu.style.display = 'none';
-      });
-    }
-  });
-
-  function Currencies_GetAndValidateInput(inputId, placeholderForAlert = "value", requiresNumeric = false) {
-    const inputElement = document.getElementById(inputId);
-    if (!inputElement) {
-      alert("Error: Input field '" + inputId + "' not found.");
-      return null;
-    }
-    const value = inputElement.value.trim();
-    if (!value) {
-      alert("Please enter " + placeholderForAlert + ".");
-      return null;
-    }
-    if (requiresNumeric && isNaN(value)) {
-      alert("Please enter a valid number for " + placeholderForAlert + ".");
-      return null;
-    }
-    return value;
-  }
-
-  // --- Bitcoin Address Specific Searches (Uses 'bitcoinAddressInput') ---
-  function Currencies_ValidateBTCAddress() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://blockexplorer.com/api/addr/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_GetBTCReceived() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://blockchain.info/q/getreceivedbyaddress/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_GetBTCSent() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://blockchain.info/q/getsentbyaddress/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_GetBTCBalance() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://blockchain.info/q/addressbalance/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_CloverpoolSummary() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://explorer.cloverpool.com/btc/address/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_GetBTCFirstSeen() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://blockchain.info/q/addressfirstseen/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_BlockchainComBTC() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://www.blockchain.com/btc/address/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_ChainabuseBTC() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://www.chainabuse.com/address/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_BitcoinWhosWho() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://bitcoinwhoswho.com/address/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_OXTmeBTC() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://oxt.me/address/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_WalletExplorerAddress() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://www.walletexplorer.com/address/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_BlockchairBTC() { const val = Currencies_GetAndValidateInput('bitcoinAddressInput', 'a Bitcoin Address'); if(!val)return; window.open('https://blockchair.com/bitcoin/address/' + encodeURIComponent(val), '_blank'); }
-
-  // --- Blockchain Analysis & Intelligence (Uses 'genericCryptoQueryInput') ---
-  function Currencies_ArkhamExplorer() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address or Entity ID'); if(!val)return; window.open('https://platform.arkhamintelligence.com/explorer/address/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_ArkhamVisualizer() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address or Entity ID'); if(!val)return; window.open('https://platform.arkhamintelligence.com/visualizer/entity/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_BlockscanLookup() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address'); if(!val)return; window.open('https://blockscan.com/Home/SearchAddress?searchAddress=' + encodeURIComponent(val), '_blank'); } 
-  function Currencies_BreadcrumbsReport() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address'); if(!val)return; window.open('https://www.breadcrumbs.app/reports/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_CrystalExplorer() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address'); if(!val)return; window.open('https://explorer.crystalblockchain.com/address/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_CrystalVisualizer() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address or Entity ID'); if(!val)return; window.open('https://explorer.crystalblockchain.com/visualization/new/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_DebankProfile() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address or ENS'); if(!val)return; window.open('https://debank.com/profile/' + encodeURIComponent(val), '_blank');}
-  function Currencies_GoogleSearchAddress() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address'); if(!val)return; window.open('https://www.google.com/search?q=%22' + encodeURIComponent(val) + '%22', '_blank'); }
-  function Currencies_MetaSleuthBTC() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a BTC Address'); if(!val)return; window.open('https://metasleuth.io/result/btc/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_OKLinkExplorer() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address or TxID'); if(!val)return; window.open('https://www.oklink.com/middle/multi-search#key=' + encodeURIComponent(val), '_blank'); }
-  function Currencies_OKLinkVisualisation() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'a Crypto Address or TxID'); if(!val)return; window.open('https://www.oklink.com/en/tianyan/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_PhalconExplorerETH() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'an ETH Address or TxHash'); if(!val)return; window.open('https://phalcon.xyz/tx/eth/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_ZapperAccount() { const val = Currencies_GetAndValidateInput('genericCryptoQueryInput', 'an ETH Address or ENS'); if(!val)return; window.open('https://zapper.fi/account/' + encodeURIComponent(val), '_blank'); }
-
-  // --- Currency Converters ---
-  function Currencies_ConvertBTCToUSD() { const val = Currencies_GetAndValidateInput('cryptoAmountToConvertInput', 'a Bitcoin Amount', true); if(!val)return; window.open('https://api.coinconvert.net/convert/btc/usd?amount=' + encodeURIComponent(val), '_blank'); }
-  function Currencies_ConvertBTCToEUR() { const val = Currencies_GetAndValidateInput('cryptoAmountToConvertInput', 'a Bitcoin Amount', true); if(!val)return; window.open('https://api.coinconvert.net/convert/btc/eur?amount=' + encodeURIComponent(val), '_blank'); }
-  function Currencies_ConvertSatoshiToUSD() { const val = Currencies_GetAndValidateInput('cryptoAmountToConvertInput', 'a Satoshi Amount', true); if(!val)return; window.open('https://api.exchangerate.host/convert?from=SAT&to=USD&amount=' + encodeURIComponent(val), '_blank'); }
-  function Currencies_ConvertUSDToBTC() { const val = Currencies_GetAndValidateInput('fiatAmountToConvertInput', 'a Dollar Amount', true); if(!val)return; window.open('https://blockchain.info/tobtc?currency=USD&value=' + encodeURIComponent(val), '_blank'); }
-  function Currencies_ConvertEURToBTC() { const val = Currencies_GetAndValidateInput('fiatAmountToConvertInput', 'an Euro Amount', true); if(!val)return; window.open('https://blockchain.info/tobtc?currency=EUR&value=' + encodeURIComponent(val), '_blank'); }
-  function Currencies_ConvertUSDToSatoshi() { const val = Currencies_GetAndValidateInput('fiatAmountToConvertInput', 'a Dollar Amount', true); if(!val)return; window.open('https://api.exchangerate.host/convert?from=USD&to=SAT&amount=' + encodeURIComponent(val), '_blank'); }
-
-  // --- Other Cryptocurrency Lookups (Uses 'otherCryptoAddressInput') ---
-  function Currencies_BlockchairETH() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'an Ethereum Address'); if(!val)return; window.open('https://blockchair.com/ethereum/address/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_BlockchairBCH() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Bitcoin Cash Address'); if(!val)return; window.open('https://blockchair.com/bitcoin-cash/address/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_BlockchairLTC() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Litecoin Address'); if(!val)return; window.open('https://blockchair.com/litecoin/address/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_BlockchairBSV() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Bitcoin-SV Address'); if(!val)return; window.open('https://blockchair.com/bitcoin-sv/address/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_BlockchairDOGE() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Dogecoin Address'); if(!val)return; window.open('https://blockchair.com/dogecoin/address/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_BlockchairDASH() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Dash Address'); if(!val)return; window.open('https://blockchair.com/dash/address/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_BlockscanOtherAddress() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'an Address'); if(!val)return; window.open('https://blockscan.com/address/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_WalletExplorerByID() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Wallet ID or Address'); if(!val)return; window.open('https://www.walletexplorer.com/address/' + encodeURIComponent(val), '_blank'); }  
-  function Currencies_EtherscanAddress() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'an Ethereum Address'); if(!val)return; window.open('https://etherscan.io/address/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_MetaSleuthBSC() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a BSC Address'); if(!val)return; window.open('https://metasleuth.io/result/bsc/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_MetaSleuthETH() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'an ETH Address'); if(!val)return; window.open('https://metasleuth.io/result/eth/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_MetaSleuthPolygon() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Polygon Address'); if(!val)return; window.open('https://metasleuth.io/result/polygon/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_PolygonScanAddress() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Polygon Address'); if(!val)return; window.open('https://polygonscan.com/address/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_SolanaFMAddress() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Solana Address'); if(!val)return; window.open('https://solana.fm/address/' + encodeURIComponent(val), '_blank'); }
-  
-  function Currencies_Tronscan_Address() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Tron Address'); if(!val)return; window.open('https://tronscan.org/#/address/' + encodeURIComponent(val), '_blank'); }
-  function Currencies_Tronscan_Contract() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Tron Contract Address'); if(!val)return; window.open('https://tronscan.org/#/contract/' + encodeURIComponent(val) + '/code', '_blank'); }
-  function Currencies_Tronscan_Transaction() { const val = Currencies_GetAndValidateInput('otherCryptoAddressInput', 'a Tron Transaction ID'); if(!val)return; window.open('https://tronscan.org/#/transaction/' + encodeURIComponent(val), '_blank'); }
-  
-  // --- Security Tools (Uses 'securityQueryInput') ---
-  function Currencies_ScamSearchAddress() { const val = Currencies_GetAndValidateInput('securityQueryInput', 'a Virtual Currency Address or Term'); if(!val)return; window.open('https://scamsearch.io/search_report?searchoption=all&search=' + encodeURIComponent(val), '_blank'); }
-  function Currencies_OFACSanctionsHomepage() { window.open('https://sanctionssearch.ofac.treas.gov/', '_blank'); }
-  function Currencies_RiskIQByAddress() { const val = Currencies_GetAndValidateInput('securityQueryInput', 'a Crypto Address (as query)'); if(!val)return; window.open('https://community.riskiq.com/search/trackers?query=' + encodeURIComponent(val), '_blank'); }
-
-  // --- Unix Time Converter (Uses 'unixTimestampInput') ---
-  function Currencies_ConvertUnixTime() {
-    const unixtimestampStr = Currencies_GetAndValidateInput('unixTimestampInput', 'a Unix Timestamp', true);
-    if (unixtimestampStr === null) {
-      document.getElementById('datetime').innerHTML = "Please enter a valid Unix timestamp.";
-      return;
-    }
-    const timestampNumber = parseInt(unixtimestampStr, 10); 
-    const months_arr = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    const date = new Date(timestampNumber * 1000);
-    const hours = date.getHours();
-    let minutes = "0" + date.getMinutes();
-    let seconds = "0" + date.getSeconds();
-    const year = date.getFullYear();
-    const month = months_arr[date.getMonth()];
-    const day = date.getDate();
-    const convdataTime = month + '-' + day + '-' + year + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-    document.getElementById('datetime').innerHTML = convdataTime;
-  }
-</script>
-
 <script src="../assets/js/config.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/externaeven.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
-      exploratoresConfig.selectorsToHide.forEach(selector => {
-        try {
-          const elements = document.querySelectorAll(selector);
-          elements.forEach(el => el.classList.add('hidden-in-light'));
-        } catch (e) {
-          console.error("Invalid selector in config.js:", selector);
+    // --- Custom On-Page Tool Logic (Unix Time Converter) ---
+    function handleUnixConversion() {
+        const inputElement = document.getElementById('input-currencies-unixTimestamp');
+        const outputElement = document.getElementById('span-currencies-datetime');
+        const feedbackDiv = document.getElementById('feedback-currencies-unixTimestamp');
+        
+        const timestampStr = inputElement.value.trim();
+
+        if (!/^\d+$/.test(timestampStr) && timestampStr !== '') {
+            feedbackDiv.textContent = 'Invalid format. Please enter only numbers.';
+            feedbackDiv.className = 'feedback-message';
+            outputElement.textContent = '';
+            return;
         }
-      });
+
+        if (timestampStr === '') {
+            feedbackDiv.textContent = '';
+            outputElement.textContent = '';
+            return;
+        }
+
+        const timestampMs = parseInt(timestampStr, 10) * 1000;
+        const date = new Date(timestampMs);
+
+        if (isNaN(date.getTime())) {
+            feedbackDiv.textContent = 'Invalid timestamp value.';
+            feedbackDiv.className = 'feedback-message';
+            outputElement.textContent = '';
+            return;
+        }
+
+        feedbackDiv.textContent = 'Conversion successful.';
+        feedbackDiv.className = 'feedback-message ready';
+        outputElement.textContent = date.toUTCString();
     }
-  });
+
+    // --- Standard Page UI Logic ---
+    function updatePageState() {
+        const validationMap = [
+            { id: 'input-currencies-btcAddress', validator: ExploratoresValidators.getAndValidateSingleInput, feedbackId: 'feedback-currencies-btcAddress', buttonsSelector: '#section-currencies-btc .button-grid .button', message: 'Requires a Bitcoin address.' },
+            { id: 'input-currencies-cryptoAmount', validator: ExploratoresValidators.getAndValidateNumeric, feedbackId: 'feedback-currencies-cryptoAmount', buttonsSelector: '#section-currencies-converter .button-grid:nth-of-type(1) .button', message: 'Requires a numeric amount.' },
+            { id: 'input-currencies-fiatAmount', validator: ExploratoresValidators.getAndValidateNumeric, feedbackId: 'feedback-currencies-fiatAmount', buttonsSelector: '#section-currencies-converter .button-grid:nth-of-type(2) .button', message: 'Requires a numeric amount.' },
+            { id: 'input-currencies-otherCryptoAddress', validator: ExploratoresValidators.getAndValidateSingleInput, feedbackId: 'feedback-currencies-otherCryptoAddress', buttonsSelector: '#section-currencies-othercrypto .button-grid .button', message: 'Requires an address, TxID, or contract.' },
+            { id: 'input-currencies-analysisQuery', validator: ExploratoresValidators.getAndValidateSingleInput, feedbackId: 'feedback-currencies-analysisQuery', buttonsSelector: '#section-currencies-analysis .button-grid .button', message: 'Requires an address, TxHash, or entity.' }
+        ];
+
+        validationMap.forEach(group => {
+            const isValid = group.validator(group.id) !== null;
+            const feedbackDiv = document.getElementById(group.feedbackId);
+            const buttons = document.querySelectorAll(group.buttonsSelector);
+
+            if (feedbackDiv) {
+                feedbackDiv.textContent = isValid ? 'Ready.' : group.message;
+                feedbackDiv.className = isValid ? 'feedback-message ready' : 'feedback-message';
+            }
+
+            buttons.forEach(button => {
+                button.disabled = !isValid;
+                button.classList.toggle('text-active', isValid);
+            });
+        });
+    }
+
+    // --- Initial Page State Function ---
+    function setInitialPageState() {
+        document.querySelectorAll('.input-field').forEach(input => input.value = '');
+        document.getElementById('span-currencies-datetime').textContent = '';
+        updatePageState();
+    }
+
+    // --- Event Listeners ---
+    document.addEventListener('DOMContentLoaded', () => {
+        setInitialPageState();
+        
+        const searchInputs = [
+            'input-currencies-btcAddress', 'input-currencies-cryptoAmount', 
+            'input-currencies-fiatAmount', 'input-currencies-otherCryptoAddress', 
+            'input-currencies-analysisQuery'
+        ];
+        searchInputs.forEach(id => {
+            const input = document.getElementById(id);
+            if (input) input.addEventListener('input', updatePageState);
+        });
+        
+        const convertBtn = document.getElementById('btn-currencies-unix-convert');
+        const unixInput = document.getElementById('input-currencies-unixTimestamp');
+        
+        if (convertBtn && unixInput) {
+            convertBtn.addEventListener('click', handleUnixConversion);
+            unixInput.addEventListener('keyup', (event) => {
+                if (event.key === 'Enter') {
+                    handleUnixConversion();
+                }
+            });
+        }
+    });
 </script>
 
 </body>
