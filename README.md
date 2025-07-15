@@ -44,16 +44,16 @@ The toolkit is organized into the following sections, accessible from the main n
 * **GeoInt**: Mapping and geolocation tools.
 * **Media Analysis**: Image, video, and document analysis tools.
 * **Company Public Records**: Corporate and virtual currency investigation tools.
-* **Tools**: Internal utilities like project guidelines and CyberChef.
+* **Tools**: Internal utilities and documentation.
 
 ---
 
 ## 📚 Documentation
 
-For detailed information on the project, customization, and frequently asked questions, refer to the following:
-* [Customising Exploratores Pages](docs/customise.md)
-* [Frequently Asked Questions (FAQ)](docs/faq.md)
-* [Project Guidelines](docs/guidelines.md)
+For detailed information on the project, customization, and frequently asked questions, refer to the files in the `/docs` directory:
+* `customise.md`
+* `faq.md`
+* `guidelines.md`
 
 ---
 
