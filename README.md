@@ -1,93 +1,72 @@
-# Exploratores OSINT Toolkit v2.0
+# Exploratores OSINT Toolkit v2.5
 
-**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows across various domains. Version 2.0 introduces a complete structural refactoring, enhanced usability, and a unified UI experience, ideal for OSINT Team.
+[GitHub Repository](https://github.com/SOsintOps/Exploratores)
+
+**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows. Version 2.5 introduces a centralized, data-driven JavaScript architecture, making the toolkit more robust, maintainable, and easier to extend.
 
 ---
 
 ## ✨ Key Features
 
-- ✅ Clean and fully responsive layout with semantic HTML5
-- ✅ Top navigation bar with organized thematic dropdowns
-- ✅ IBM Plex Sans as default font for enhanced readability
-- ✅ Modular pages with scoped focus (Search, Social, Business, etc.)
-- ✅ Dedicated assets folder for CSS, JS, and media
-- ✅ Usable entirely offline for OPSEC-conscious environments
+- ✅ Clean and fully responsive layout with semantic HTML5.
+- ✅ Dynamically loaded navigation bar for easy site-wide updates.
+- ✅ Centralized, data-driven JavaScript architecture for maintainability.
+- ✅ Modular pages with scoped focus (Names, Phones, Domains, etc.).
+- ✅ Toolkit UI is fully functional offline (via `file://` protocol); external tools require internet.
+- ✅ No server or backend dependencies required for the toolkit itself.
 
 ---
 
-## 📁 Project Structure
-
-```
-exploratores/
-├── index.html
-├── pages/
-│   ├── search.html
-│   ├── email.html
-│   ├── name.html
-│   ├── video/
-│   │   ├── CNN.html
-│   │   ├── NewYork.html
-│   └── ...
-├── assets/
-│   ├── css/
-│   │   └── style.css
-│   ├── js/
-│   │   └── main.js
-│   └── images/
-│       └── exploratores.jpg
-├── README.md
-├── LICENSE
-├── changelog.md
-└── .gitignore
-```
-
-![version](https://img.shields.io/badge/version-2.0.0-blue)
+![version](https://img.shields.io/badge/version-2.5-blue)
 
 ## 🔧 Requirements
 
-- Any modern web browser (Chrome, Firefox, Edge, Brave)
-- No server or backend required
-- **Internet access is mandatory for most search features** (e.g., Google, Facebook, LinkedIn)
+- Any modern web browser (Chrome, Firefox, Edge, Brave).
+- No server or backend required to run the toolkit.
+- **Internet access is mandatory** for the external search features to work.
 
 ## 📦 Installation
 
-1. Clone or download the repository:
-   ```bash
-   git clone https://github.com/tuo-utente/exploratores.git
-   ```
-2. Open `index.html` in your browser
-3. Start using the toolkit
+1.  Clone or download the repository.
+    ```bash
+    git clone [https://github.com/SOsintOps/Exploratores.git](https://github.com/SOsintOps/Exploratores.git)
+    ```
+2.  Open **`launchme.html`** in your browser.
+3.  Start using the toolkit.
 
-## 📂 Modules
+## 📂 Toolkit Sections
 
-- `Search`: Clear Web, Tor Search Engines
-- `Email`: Address analysis, leaks, reputation
-- `Business`: Companies, public registers
-- `Social`: Facebook, Instagram, LinkedIn, X
-- `GeoInt`: Location, IP, Maps
-- `Media`: Images, Videos, Documents
-- `Security`: Breaches, Pastes, Credentials
+The toolkit is organized into the following sections, accessible from the main navigation menu:
+* **Search Engines**: Clear Web and Tor search capabilities.
+* **People & Identities**: Tools for investigating names, phone numbers, addresses, and more.
+* **Social Media**: Search functions for major platforms like X (Twitter), Facebook, etc.
+* **Websites**: Tools for domain and IP address analysis.
+* **GeoInt**: Mapping and geolocation tools.
+* **Media Analysis**: Image, video, and document analysis tools.
+* **Company Public Records**: Corporate and virtual currency investigation tools.
+* **Tools**: Internal utilities like project guidelines and CyberChef.
 
 ---
 
 ## 🧭 How to Use Exploratores
 
-1. Open `index.html` in a web browser.
-2. Use the navigation bar to access OSINT modules grouped by category.
-3. Populate inputs or use predefined queries to investigate.
-4. Some tools (e.g., Facebook, LinkedIn) may require logged-in sessions.
-5. Always apply OPSEC principles while conducting investigations.
+1.  Open **`launchme.html`** in a web browser.
+2.  Use the navigation bar to access OSINT tools grouped by category.
+3.  Enter your search terms in the input fields on a given page.
+4.  Click the buttons to launch searches on various external services.
+5.  Some tools may require you to be logged into the respective service (e.g., Facebook, LinkedIn).
+6.  Always apply OPSEC principles while conducting investigations.
 
 ---
 
 ## 📚 References
 
-- *Open Source Intelligence Techniques – 11th edition* by Michael Bazzell
-- Community feedback and field experience from OSINT & Cybercrime analysts
+- *Open Source Intelligence Techniques* by Michael Bazzell
+- Community feedback from OSINT & Cybercrime analysts
 
 ---
 
 ## 🛠️ Credits
 
-Project developed and maintained by Ramingo.  
-For contributions, suggestions, or bug reports: please open an issue or contact directly.
+Project developed and maintained by Ramingo.
+For contributions, suggestions, or bug reports, please open an issue or contact directly.
