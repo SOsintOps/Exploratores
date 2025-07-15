@@ -42,5 +42,35 @@ const ExploratoresValidators = {
             fullnamedash: fullNameDash,
             fullnamedashlower: fullNameDash.toLowerCase()
         };
+    },
+
+    getAndValidateUsPhone: function() {
+        const area = document.getElementById('areaCode')?.value.trim();
+        const prefix = document.getElementById('prefixCode')?.value.trim();
+        const line = document.getElementById('lineNumber')?.value.trim();
+        const feedbackEl = document.getElementById('phoneIntelDisplay');
+
+        if (!area || !prefix || !line || area.length !== 3 || prefix.length !== 3 || line.length !== 4) {
+            if (feedbackEl) feedbackEl.textContent = "";
+            return null;
+        }
+
+        const queryVariations = [
+            `"${area}${prefix}${line}"`,
+            `"${area}-${prefix}-${line}"`,
+            `"(${area}) ${prefix}-${line}"`,
+            `"${area}.${prefix}.${line}"`,
+            `"${area} ${prefix} ${line}"`
+        ];
+        
+        return {
+            area: area,
+            prefix: prefix,
+            line: line,
+            full: `${area}${prefix}${line}`,
+            full_dash: `${area}-${prefix}-${line}`,
+            e164: `1${area}${prefix}${line}`,
+            google_query: queryVariations.join(" OR ")
+        };
     }
 };

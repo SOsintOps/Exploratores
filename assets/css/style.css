@@ -607,6 +607,21 @@ body.matrix-mode .button.text-active {
   font-weight: bold;
 }
 
+/* Styles for Phone Number Intel Display */
+.phone-intel-display {
+  margin-top: 0.75rem; 
+  font-style: italic;
+  color: #333; 
+  min-height: 1.2em;
+  text-align: left;
+}
+
+.input-section-description {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 0.75rem;
+}
+
 body.matrix-mode .note {
   background-color: #0a0a0a;
   border-left-color: #00FF41;
