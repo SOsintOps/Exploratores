@@ -23,7 +23,6 @@ function generateNavHTML() {
             <li><a href="${pagesPath}names.html">Names</a></li>
             <li><a href="${pagesPath}phoneus.html">US Phones</a></li>
             <li><a href="${pagesPath}phoneint.html">International Phones</a></li>
-            <li><a href="${pagesPath}address.html">Addresses</a></li>
             <li><a href="${pagesPath}vehicles.html">Vehicles</a></li>
             <li><a href="${pagesPath}usernames.html">Usernames</a></li>
             <li><a href="${pagesPath}email.html">Email Addresses</a></li>
@@ -36,6 +35,8 @@ function generateNavHTML() {
             <li><a href="${pagesPath}facebook.html">Facebook</a></li>
             <li><a href="${pagesPath}instagram.html">Instagram</a></li>
             <li><a href="${pagesPath}linkedin.html">LinkedIn</a></li>
+            <li><a href="${pagesPath}vk.html">VK</a></li>
+            <li><a href="${pagesPath}keybase.html">Keybase</a></li>
           </ul>
         </li>
         <li><span>Websites</span>
@@ -47,6 +48,7 @@ function generateNavHTML() {
         <li><span>GeoInt</span>
           <ul class="submenu">
             <li><a href="${pagesPath}maps.html">Maps</a></li>
+            <li><a href="${pagesPath}address.html">Addresses</a></li>
           </ul>
         </li>
         <li><span>Media<br>Analysis</span>
@@ -65,7 +67,10 @@ function generateNavHTML() {
         <li><span>Tools</span>
           <ul class="submenu">
             <li><a href="${pagesPath}guidelines.html">Guidelines</a></li>
-            <li><a href="${toolsPath}CyberChef/cyberchef.html">CyberChef</a></li>
+            <li><a href="${pagesPath}customise.html">Customise</a></li>
+            <li><a href="${pagesPath}faq.html">FAQ</a></li>
+            <li><a href="${pagesPath}cyberchef.html">CyberChef (Pages)</a></li>
+            <li><a href="${toolsPath}cc/CyberChef_v10.19.4.html">CyberChef (Tool)</a></li>
           </ul>
         </li>
       </ul>
