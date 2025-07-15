@@ -1,5 +1,7 @@
 # Exploratores OSINT Toolkit v2.5
 
+![Exploratores Toolkit Logo](assets/images/exploratores.jpg)
+
 [GitHub Repository](https://github.com/SOsintOps/Exploratores)
 
 **Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows. Version 2.5 introduces a centralized, data-driven JavaScript architecture, making the toolkit more robust, maintainable, and easier to extend.
