@@ -1,0 +1,20 @@
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('../assets/menu/navigation.html')
+      .then(response => {
+        if (response.ok) return response.text();
+        throw new Error('Navigation menu not found.');
+      })
+      .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+        document.querySelectorAll('.menu > li').forEach(item => {
+          const submenu = item.querySelector('.submenu');
+          if (submenu) {
+            item.addEventListener('mouseover', () => { submenu.style.display = 'block'; });
+            item.addEventListener('mouseout', () => { submenu.style.display = 'none'; });
+          }
+        });
+      })
+      .catch(error => console.error('Error loading navigation menu:', error));
+  });
+</script>

@@ -1,6 +1,6 @@
 # Exploratores OSINT Toolkit v2.0
 
-**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows across various domains. Version 2.0 introduces a complete structural refactoring, enhanced usability, and a unified UI experience, ideal for Global Security Teams.
+**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows across various domains. Version 2.0 introduces a complete structural refactoring, enhanced usability, and a unified UI experience, ideal for OSINT Team.
 
 ---
 
