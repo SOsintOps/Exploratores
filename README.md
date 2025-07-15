@@ -48,6 +48,15 @@ The toolkit is organized into the following sections, accessible from the main n
 
 ---
 
+## 📚 Documentation
+
+For detailed information on the project, customization, and frequently asked questions, refer to the following:
+* [Customising Exploratores Pages](docs/customise.md)
+* [Frequently Asked Questions (FAQ)](docs/faq.md)
+* [Project Guidelines](docs/guidelines.md)
+
+---
+
 ## 🧭 How to Use Exploratores
 
 1.  Open **`launchme.html`** in a web browser.
