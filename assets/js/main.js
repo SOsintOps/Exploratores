@@ -17,7 +17,6 @@ const Exploratores = {
                 return;
             }
 
-            // Non fare nulla se il bottone non richiede input validato
             if (config.no_input) {
                 window.open(config.urlTemplate, '_blank');
                 return;
@@ -29,15 +28,13 @@ const Exploratores = {
                 return;
             }
 
-            // La chiamata al validatore ora è generica
-            const params = validator();
+            const params = validator(config);
             if (!params) return;
 
             let url = config.urlTemplate;
             for (const key in params) {
-                // Sostituisce i placeholder come {key}
                 const placeholder = `{${key}}`;
-                url = url.replace(new RegExp(placeholder, 'g'), encodeURIComponent(params[key]));
+                url = url.replace(new RegExp(placeholder.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), encodeURIComponent(params[key]));
             }
             
             window.open(url, '_blank');
