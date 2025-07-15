@@ -4,15 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Names • Exploratores</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
 <body>
 
 <div id="navbar-placeholder"></div>
-
-<script src="../assets/menu/navigation.js"></script>
 
 <main>
   <h1 class="page-title">Names Tool</h1>
@@ -42,14 +40,13 @@
           <button id="btn-names-google-search" data-search-id="names-google-search" type="button" class="button">Google Search</button>
           <button id="btn-names-idcrawl" data-search-id="names-idcrawl" type="button" class="button">iD Crawl</button>
           <button id="btn-names-instagram-google" data-search-id="names-instagram-google" type="button" class="button">Instagram (Google)</button>
-          <button id="btn-names-socialsearcher-name" data-search-id="names-socialsearcher" type="button" class="button">Social Searcher (Name)</button>
+          <button id="btn-names-socialsearcher" data-search-id="names-socialsearcher" type="button" class="button">Social Searcher</button>
           <button id="btn-names-thatsthem-name" data-search-id="names-thatsthem-name" type="button" class="button">ThatsThem</button>
           <button id="btn-names-twitter-direct" data-search-id="names-twitter-direct" type="button" class="button">Twitter (Direct)</button>
           <button id="btn-names-twitter-google" data-search-id="names-twitter-google" type="button" class="button">Twitter (Google)</button>
           <button id="btn-names-webmii" data-search-id="names-webmii" type="button" class="button">WebMii</button>
         </div>
       </section>
-
       <section id="subsection-names-sanctions-legal" style="margin-top: 1rem;">
         <h3>Sanctions & Legal Records</h3>
         <div class="button-grid">
@@ -62,7 +59,6 @@
           <button id="btn-names-udrp" data-search-id="names-udrp" type="button" class="button">UDRPsearch</button>
         </div>
       </section>
-      
       <section id="subsection-names-corporate-technical" style="margin-top: 1rem;">
         <h3>Corporate & Technical Footprints</h3>
         <div class="button-grid">
@@ -73,7 +69,6 @@
           <button id="btn-names-riskiq" data-search-id="names-riskiq" type="button" class="button">RiskIQ - Address</button>
         </div>
       </section>
-
       <section id="subsection-names-national-registers" style="margin-top: 1rem;">
         <h2>National Registers</h2>
         <h3>Canada</h3>
@@ -101,7 +96,6 @@
         </div>
       </section>
     </div>
-
     <div class="column" id="column-names-usa">
       <h2>UNITED STATES</h2>
       <div class="button-grid">
@@ -134,87 +128,53 @@
 </main>
 
 <footer>
-<<<<<<< HEAD
   <p>Exploratores 2.5 prototype <a href="license.html">License</a></p>
-=======
-  <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
->>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
 </footer>
 
-<script src="../assets/js/config.js"></script>
-<script src="../assets/js/search-library.js"></script>
 <script src="../assets/js/main.js"></script>
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/menu/navigation.js"></script>
 
 <script>
-  // --- Funzione di validazione specifica per questa pagina ---
-  function getAndValidateName() {
-    const firstName = document.getElementById('firstName')?.value.trim();
-    const lastName = document.getElementById('lastName')?.value.trim();
-    
-    if (!firstName && !lastName) {
-      return null;
-    }
-    
-    const fullName = `${firstName} ${lastName}`.trim();
-    const fullNameDash = [firstName, lastName].filter(Boolean).join('-');
-
-    return {
-      firstName: firstName,
-      lastName: lastName,
-      fullName: fullName,
-      fullNameDash: fullNameDash,
-      fullNameDashLower: fullNameDash.toLowerCase()
-    };
-  }
-
-  // --- Funzione per feedback live e stato pulsanti ---
   function updatePageState() {
-    const feedbackEl = document.getElementById('name-feedback');
-    const isValid = !!getAndValidateName();
-
-    const firstNameEmpty = !document.getElementById('firstName')?.value.trim();
-    const lastNameEmpty = !document.getElementById('lastName')?.value.trim();
-
-    if (firstNameEmpty && lastNameEmpty) {
-        feedbackEl.textContent = "";
-        feedbackEl.className = 'feedback-message';
-    } else {
-        feedbackEl.textContent = "Ready for search.";
-        feedbackEl.className = 'feedback-message feedback-info';
-    }
-    
+    const nameData = ExploratoresValidators.getAndValidateNames();
     document.querySelectorAll('button[data-search-id]').forEach(button => {
-      const config = SearchLibrary[button.dataset.searchId] || {};
-      const shouldEnable = isValid || config.no_input;
-      button.disabled = !shouldEnable;
-      button.classList.toggle('text-active', shouldEnable);
+        const config = SearchLibrary[button.dataset.searchId] || {};
+        const isEnabled = nameData || config.no_input;
+        
+        button.disabled = !isEnabled;
+        button.classList.toggle('text-active', isEnabled);
     });
   }
 
-  // --- Funzione per impostare lo stato iniziale (versione corretta e diretta) ---
   function setInitialPageState() {
-    // Pulisce i campi di input
-    document.getElementById('firstName').value = '';
-    document.getElementById('lastName').value = '';
-    
-    // Disabilita forzatamente tutti i pulsanti
-    document.querySelectorAll('button[data-search-id]').forEach(button => {
-      button.disabled = true;
-      button.classList.remove('text-active');
+    const inputs = ['firstName', 'lastName'];
+    inputs.forEach(id => {
+        const inputElement = document.getElementById(id);
+        if (inputElement) {
+            inputElement.addEventListener('input', updatePageState);
+        }
     });
-
-    // Pulisce il messaggio di feedback
-    const feedbackEl = document.getElementById('name-feedback');
-    if (feedbackEl) {
-      feedbackEl.textContent = '';
-    }
+    updatePageState();
   }
 
-  // --- Event Listener per questa pagina ---
+  document.addEventListener('DOMContentLoaded', setInitialPageState);
+</script>
+
+<script src="../assets/js/config.js"></script>
+<script>
   document.addEventListener('DOMContentLoaded', () => {
-    setInitialPageState();
-    document.getElementById('firstName').addEventListener('input', updatePageState);
-    document.getElementById('lastName').addEventListener('input', updatePageState);
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
   });
 </script>
 

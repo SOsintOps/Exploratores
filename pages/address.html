@@ -10,11 +10,9 @@
 </head>
 <body>
 
-<<<<<<< HEAD
 <div id="navbar-placeholder"></div>
 
 <script src="../assets/menu/navigation.js"></script>
-=======
 <nav>
     <ul class="menu">
         <li><span>HOME</span>
@@ -79,7 +77,6 @@
         </li>
     </ul>
 </nav>
->>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
 
 <main>
     <h1 class="page-title">Address Search Tool</h1>
@@ -187,150 +184,9 @@
     </div>
 </main>
 
-<<<<<<< HEAD
-  <footer>
-    <p>Exploratores 2.5 prototype <a href="license.html">License</a></p>
-  </footer>
-
-  <script>
-    // Standard navbar submenu script
-    document.querySelectorAll('.menu > li').forEach(item => {
-      item.addEventListener('mouseover', () => {
-        const sm = item.querySelector('.submenu');
-        if (sm) sm.style.display = 'block';
-      });
-      item.addEventListener('mouseout', () => {
-        const sm = item.querySelector('.submenu');
-        if (sm) sm.style.display = 'none';
-      });
-    });
-
-    // --- Helper Functions ---
-    const buildUrl = (parts, charJoin) => parts.filter(part => part !== null && part !== undefined && part !== '').map(encodeURIComponent).join(charJoin);
-
-    function Addresses_GetUSInput() {
-      const n = v => document.getElementById(v).value.trim();
-      const addr = { number: n('usNum'), street: n('usStreet'), city: n('usCity'), state: n('usState'), zip: n('usZip') };
-      if (!addr.street || (!addr.city && !addr.zip)) { 
-        alert("For US Addresses, please provide Street AND (City OR ZIP Code)."); 
-        return null; 
-      }
-      return addr;
-    }
-    
-    function Addresses_GetEUInput() {
-      const n = v => document.getElementById(v).value.trim();
-      const addr = { number: n('euNum'), street: n('euStreet'), city: n('euCity'), region: n('euRegion'), zip: n('euZip') };
-      if (!addr.street || !addr.city || !addr.zip) { 
-        alert("For International Addresses, please provide Street, City, AND Postal Code."); 
-        return null; 
-      }
-      return addr;
-    }
-    
-    function Addresses_GetAdditionalIntlInput() {
-        const inputElement = document.getElementById('additionalIntlSearchInput');
-        if (!inputElement) return null;
-        const value = inputElement.value.trim();
-        if (!value) {
-            alert("Please enter a term in the 'Additional International Tools' field.");
-            return null;
-        }
-        return value;
-    }
-
-    // --- Master Handlers ---
-    function Addresses_LaunchUSSearch(urlBuilderCallback) {
-        const parts = Addresses_GetUSInput();
-        if (parts) {
-            const url = urlBuilderCallback(parts);
-            window.open(url, '_blank');
-        }
-    }
-
-    function Addresses_LaunchEUSearch(urlBuilderCallback) {
-        const parts = Addresses_GetEUInput();
-        if (parts) {
-            const url = urlBuilderCallback(parts);
-            window.open(url, '_blank');
-        }
-    }
-    
-    function Addresses_LaunchIntlTool(urlTemplate) {
-        if (!urlTemplate.includes('TERM')) { // For tools without input
-            window.open(urlTemplate, '_blank');
-            return;
-        }
-        const term = Addresses_GetAdditionalIntlInput();
-        if (term) {
-            const url = urlTemplate.replace('TERM_ENC', encodeURIComponent(term));
-            window.open(url, '_blank');
-        }
-    }
-    
-    // --- US Address Functions ---
-    function Addresses_SearchAddressesCom() { Addresses_LaunchUSSearch(a => `https://www.addresses.com/addr/${buildUrl([a.number, a.street], '+')}/${buildUrl([a.city, a.state], '+')}/`); }
-    function Addresses_SearchAdvBackground() { Addresses_LaunchUSSearch(a => `https://www.advancedbackgroundchecks.com/address/${buildUrl([a.number, a.street], '-')}_${buildUrl([a.city, a.state, a.zip], '-')}`); }
-    function Addresses_SearchCyberBackground() { Addresses_LaunchUSSearch(a => `https://www.cyberbackgroundchecks.com/address/${buildUrl([a.number, a.street], '-')}/${encodeURIComponent(a.city)}/${encodeURIComponent(a.state)}`); }
-    function Addresses_SearchFastPeople() { Addresses_LaunchUSSearch(a => `https://www.fastpeoplesearch.com/address/${buildUrl([a.number, a.street], '-')}_${buildUrl([a.city, a.state, a.zip], '-')}`); }
-    function Addresses_SearchGisgraphyUS() { Addresses_LaunchUSSearch(a => `https://services.gisgraphy.com/geocoding/geocode?address=${buildUrl([a.number, a.street, a.city, a.state, a.zip], '+')}&format=json`); }
-    function Addresses_SearchGoogleUS() { Addresses_LaunchUSSearch(a => `https://www.google.com/search?q=${buildUrl([a.number, a.street, a.city, a.state, a.zip], '+')}`); }
-    function Addresses_SearchHudway() { Addresses_LaunchUSSearch(a => `https://hudwayglass.com/house/${buildUrl([a.number, a.street], '+')},+${buildUrl([a.city, a.state], '+')}`); }
-    function Addresses_SearchPeopleFinders() { Addresses_LaunchUSSearch(a => `https://www.peoplefinders.com/people/search/address?address=${buildUrl([a.number, a.street], '%20')}&city=${encodeURIComponent(a.city)}&state=${encodeURIComponent(a.state)}`); }
-    function Addresses_SearchRehold() { Addresses_LaunchUSSearch(a => `https://rehold.com/${buildUrl([a.city, a.state], '+')}/${encodeURIComponent(a.street)}/${encodeURIComponent(a.number)}`); }
-    function Addresses_SearchSearchPeopleFree() { Addresses_LaunchUSSearch(a => `https://www.searchpeoplefree.com/address/${encodeURIComponent(a.state)}/${encodeURIComponent(a.city)}/${encodeURIComponent(a.street)}/${encodeURIComponent(a.number)}`); }
-    function Addresses_SearchSmartBackground() { Addresses_LaunchUSSearch(a => `https://www.smartbackgroundchecks.com/address-search/${buildUrl([a.number, a.street], '-')}/${encodeURIComponent(a.city)}/${encodeURIComponent(a.state)}`); }
-    function Addresses_SearchSpokeo() { Addresses_LaunchUSSearch(a => `https://www.spokeo.com/${encodeURIComponent(a.state)}/${encodeURIComponent(a.city)}/${buildUrl([a.number, a.street], '-')}`); }
-    function Addresses_SearchTruePeople() { Addresses_LaunchUSSearch(a => `https://www.truepeoplesearch.com/resultaddress?streetaddress=${buildUrl([a.number, a.street], '%20')}&citystatezip=${buildUrl([a.city, a.state, a.zip], '%20')}`); }
-    function Addresses_SearchUsaPeople() { Addresses_LaunchUSSearch(a => `https://www.usa-people-search.com/address/${buildUrl([a.number, a.street], '-')}/${buildUrl([a.city, a.state], '-')}`); }
-    function Addresses_SearchWhitePages() { Addresses_LaunchUSSearch(a => `https://www.whitepages.com/address/${buildUrl([a.number, a.street], '-')}/${buildUrl([a.city, a.state], '-')}`); }
-    function Addresses_SearchZillow() { Addresses_LaunchUSSearch(a => `https://www.zillow.com/homes/${buildUrl([a.number, a.street, a.city, a.state, a.zip], '-')}_rb/`); }
-
-    // --- EU Address Functions ---
-    function Addresses_SearchFastPeopleEU() { Addresses_LaunchEUSearch(a => `https://www.fastpeoplesearch.com/address/${buildUrl([a.number, a.street], '-')}_${buildUrl([a.city, a.region, a.zip], '-')}`); }
-    function Addresses_SearchGisgraphyEU() { Addresses_LaunchEUSearch(a => `https://services.gisgraphy.com/geocoding/geocode?address=${buildUrl([a.street, a.number, a.zip, a.city, a.region], '+')}&format=json`); }
-    function Addresses_SearchGoogleEU() { Addresses_LaunchEUSearch(a => `https://www.google.com/search?q=${buildUrl([a.street, a.number, a.zip, a.city, a.region], '+')}`); }
-
-    // --- Additional Intl Tools ---
-    function Addresses_Tool192Com() { Addresses_LaunchIntlTool('https://www.192.com/places/search/'); }
-    function Addresses_Tool411() { Addresses_LaunchIntlTool('https://www.411.com/reverse-address'); }
-    function Addresses_ToolCanada411() { Addresses_LaunchIntlTool('https://www.canada411.ca/search/address.html'); }
-    function Addresses_ToolDomainTools() { Addresses_LaunchIntlTool('https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22TERM_ENC%22%5D%5D%5D&historical=1'); }
-    function Addresses_ToolGoogleMaps() { Addresses_LaunchIntlTool('https://www.google.com/maps/search/?api=1&query=TERM_ENC'); }
-    function Addresses_ToolGoogleSearch() { Addresses_LaunchIntlTool('https://www.google.com/search?q=%22TERM_ENC%22'); }
-    function Addresses_ToolOCCRP() { Addresses_LaunchIntlTool('https://aleph.occrp.org/search?limit=30&q=%22TERM_ENC%22'); }
-    function Addresses_ToolRiskIQ() { Addresses_LaunchIntlTool('https://community.riskiq.com/search/whois/address?query=TERM_ENC'); }
-    function Addresses_ToolThatsThem() { Addresses_LaunchIntlTool('https://thatsthem.com/reverse-address-lookup'); }
-    function Addresses_ToolTruePeople() { Addresses_LaunchIntlTool('https://www.truepeoplesearch.com/'); }
-    
-    // --- Italy Address Functions ---
-    function Addresses_SearchPagineBiancheCompanies() {
-        const cn = document.getElementById('itCompany').value.trim();
-        const ci = document.getElementById('itCity').value.trim();
-        const pr = document.getElementById('itProv').value.trim();
-        if (!cn || !ci || !pr) { alert("For Italian Company Search, please provide Company Name, City, AND Province."); return; }
-        window.open('https://www.paginebianche.it/aziende?qs=' + encodeURIComponent(cn) + '&dv=' + encodeURIComponent(ci + ' (' + pr + ')'), '_blank');
-    }
-    function Addresses_SearchPagineBianchePeople() {
-        const fn = document.getElementById('itFirst').value.trim();
-        const ln = document.getElementById('itLast').value.trim();
-        const ci = document.getElementById('itCityP').value.trim();
-        const pr = document.getElementById('itProvP').value.trim();
-        if ((!fn && !ln) || !ci || !pr) { alert("For Italian People Search, please provide First OR Last Name, City, AND Province."); return; }
-        window.open('https://www.paginebianche.it/persone?qs=' + encodeURIComponent(fn + ' ' + ln).trim() + '&dv=' + encodeURIComponent(ci + ' (' + pr + ')'), '_blank');
-    }
-    function Addresses_SearchPagineGialle() {
-        const act = document.getElementById('itAct').value.trim();
-        const loc = document.getElementById('itLoc').value.trim();
-        if (!act || !loc) { alert("For Pagine Gialle, please provide Activity AND Location."); return; }
-        window.open('https://www.paginegialle.it/ricerca/' + encodeURIComponent(act) + '/' + encodeURIComponent(loc), '_blank');
-    }
-  </script>
-=======
 <footer>
     <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
 </footer>
->>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
 
 <script src="../assets/js/config.js"></script>
 <script src="../assets/js/search-library.js"></script>
@@ -338,52 +194,8 @@
 <script src="../assets/js/main.js"></script>
 <script src="../assets/js/externaeven.js"></script>
 <script>
-    // --- UI Update Function ---
-    function updatePageState() {
-        const validationMap = [
-            { validator: ExploratoresValidators.getAndValidateUsAddress, feedbackId: 'feedback-address-us', buttonsSelector: '#grid-address-us .button', message: 'Requires Street and (City or ZIP).' },
-            { validator: ExploratoresValidators.getAndValidateIntlAddress, feedbackId: 'feedback-address-intl', buttonsSelector: '#grid-address-intl .button', message: 'Requires Street, City, and Postal Code.' },
-            { validator: ExploratoresValidators.getAndValidateItCompanies, feedbackId: 'feedback-address-it-companies', buttonsSelector: '#btn-address-it-paginebianche-companies', message: 'Requires Company, City, and a valid Province (e.g., RM).' },
-            { validator: ExploratoresValidators.getAndValidateItPeople, feedbackId: 'feedback-address-it-people', buttonsSelector: '#btn-address-it-paginebianche-people', message: 'Requires Name/Surname, City, and a valid Province (e.g., MI).' },
-            { validator: ExploratoresValidators.getAndValidateItYellow, feedbackId: 'feedback-address-it-yellow', buttonsSelector: '#btn-address-it-paginegialle', message: 'Requires Activity and Location.' }
-        ];
-
-        validationMap.forEach(group => {
-            if (typeof group.validator === 'function') {
-                const isValid = group.validator() !== null;
-                const feedbackDiv = document.getElementById(group.feedbackId);
-                const buttons = document.querySelectorAll(group.buttonsSelector);
-
-                if (feedbackDiv) {
-                    if (isValid) {
-                        feedbackDiv.textContent = 'Ready to search.';
-                        feedbackDiv.className = 'feedback-message ready';
-                    } else {
-                        feedbackDiv.textContent = group.message;
-                        feedbackDiv.className = 'feedback-message';
-                    }
-                }
-
-                buttons.forEach(button => {
-                    button.disabled = !isValid;
-                    button.classList.toggle('text-active', isValid);
-                });
-            }
-        });
-    }
-
-    // --- Initial Page State Function ---
-    function setInitialPageState() {
-        document.querySelectorAll('.input-field').forEach(input => input.value = '');
-        updatePageState();
-    }
-
-    // --- Event Listeners ---
     document.addEventListener('DOMContentLoaded', () => {
-        setInitialPageState();
-        document.querySelectorAll('.input-field').forEach(input => {
-            input.addEventListener('input', updatePageState);
-        });
+        Exploratores.initializePage();
     });
 </script>
 
