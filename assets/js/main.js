@@ -1,6 +1,14 @@
 const Exploratores = {
     init: function() {
+        this.clearAllInputs();
         this.initSearchHandler();
+    },
+
+    clearAllInputs: function() {
+        const inputs = document.querySelectorAll('input.input-field[type="text"]');
+        inputs.forEach(input => {
+            input.value = '';
+        });
     },
 
     initSearchHandler: function() {

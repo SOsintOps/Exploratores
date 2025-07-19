@@ -12,17 +12,15 @@
 
 <div id="navbar-placeholder"></div>
 
-<script src="../assets/menu/navigation.js"></script>
-
-  <main>
+<main>
     <h1 class="page-title">Email Addresses</h1>
 
     <section class="search-instructions" id="section-email-main-input">
       <label for="emailInput">Insert email address here:</label>
       <div class="input-container">
-        <input type="text" id="emailInput" class="input-field" placeholder="Email Address">
+        <input type="text" id="emailInput" class="input-field" placeholder="Email Address" autocomplete="off">
       </div>
-      <div id="email-feedback" class="feedback-message"></div><br>
+      <div id="email-feedback" class="feedback-message"></div>
       <div class="note">
         <strong>NOTE:</strong> After entering the email, click one of the buttons below.
       </div>
@@ -33,33 +31,33 @@
         <section id="section-email-searchengines">
           <h2>Search Engines</h2>
           <div class="button-grid">
-            <button id="btn-email-google" class="button" onclick="Email_LaunchSearch('https://google.com/search?q=%22EMAIL_ENC%22')">Google</button>
-            <button id="btn-email-bing" class="button" onclick="Email_LaunchSearch('https://bing.com/search?q=%22EMAIL_ENC%22')">Bing</button>
-            <button id="btn-email-yandex" class="button" onclick="Email_LaunchSearch('https://yandex.com/search/?text=%22EMAIL_ENC%22')">Yandex</button>
+            <button id="btn-email-google" class="button" data-search-id="email-google">Google</button>
+            <button id="btn-email-bing" class="button" data-search-id="email-bing">Bing</button>
+            <button id="btn-email-yandex" class="button" data-search-id="email-yandex">Yandex</button>
           </div>
         </section>
 
         <section id="section-email-services" style="margin-top: 2rem;">
           <h2>Services</h2>
           <div class="button-grid">
-            <button id="btn-email-analyzeid" class="button" onclick="Email_LaunchSearch('http://analyzeid.com/?email=EMAIL_ENC')">AnalyzeID</button>
-            <button id="btn-email-cybernews" class="button" onclick="Email_LaunchSearch('https://check.cybernews.com/chk/?e=EMAIL_ENC')">Cybernews</button>
-            <button id="btn-email-emailrep" class="button" onclick="Email_LaunchSearch('https://emailrep.io/query/EMAIL_ENC')">Emailrep</button>
-            <button id="btn-email-ghunt" class="button" onclick="Email_SearchGhunt()">Ghunt (Google Account)</button>
-            <button id="btn-email-gravatar" class="button" onclick="Email_LaunchSearch('https://gravatar.com/site/check/EMAIL_ENC')">Gravatar</button>
-            <button id="btn-email-occrp" class="button" onclick="Email_LaunchSearch('https://data.occrp.org/search?q=EMAIL_ENC')">OCCRP</button>
-            <button id="btn-email-scamsearch" class="button" onclick="Email_LaunchSearch('https://scamsearch.io/search_report?search=EMAIL_ENC')">ScamSearch</button>
-            <button id="btn-email-spycloud" class="button" onclick="Email_LaunchSearch('https://portal.spycloud.com/endpoint/enriched-stats/EMAIL_ENC')">Spycloud</button>
-            <button id="btn-email-spytox" class="button" onclick="Email_LaunchSearch('https://spytox.com/people/search?email=EMAIL_ENC')">SpyTox</button>
-            <button id="btn-email-thatsthem" class="button" onclick="Email_LaunchSearch('https://thatsthem.com/email/EMAIL_ENC')">ThatsThem</button>
+            <button id="btn-email-analyzeid" class="button" data-search-id="email-analyzeid">AnalyzeID</button>
+            <button id="btn-email-cybernews" class="button" data-search-id="email-cybernews">Cybernews</button>
+            <button id="btn-email-emailrep" class="button" data-search-id="email-emailrep">Emailrep</button>
+            <button id="btn-email-ghunt" class="button" data-search-id="email-ghunt">Ghunt (Google Account)</button>
+            <button id="btn-email-gravatar" class="button" data-search-id="email-gravatar">Gravatar</button>
+            <button id="btn-email-occrp" class="button" data-search-id="email-occrp">OCCRP</button>
+            <button id="btn-email-scamsearch" class="button" data-search-id="email-scamsearch">ScamSearch</button>
+            <button id="btn-email-spycloud" class="button" data-search-id="email-spycloud">Spycloud</button>
+            <button id="btn-email-spytox" class="button" data-search-id="email-spytox">SpyTox</button>
+            <button id="btn-email-thatsthem" class="button" data-search-id="email-thatsthem">ThatsThem</button>
           </div>
         </section>
 
         <section id="section-email-whois" style="margin-top: 2rem;">
           <h2>WHOIS Data</h2>
           <div class="button-grid">
-            <button id="btn-email-whoxy" class="button" onclick="Email_LaunchSearch('https://whoxy.com/search.php?email=EMAIL_ENC')">Whoxy</button>
-            <button id="btn-email-whoisology" class="button" onclick="Email_LaunchSearch('https://whoisology.com/email/EMAIL_ENC')">Whoisology</button>
+            <button id="btn-email-whoxy" class="button" data-search-id="email-whoxy">Whoxy</button>
+            <button id="btn-email-whoisology" class="button" data-search-id="email-whoisology">Whoisology</button>
           </div>
         </section>
       </div>
@@ -68,120 +66,68 @@
         <section id="section-email-leaks">
           <h2>Leaks</h2>
           <div class="button-grid">
-            <button id="btn-email-cleantalk" class="button" onclick="Email_LaunchSearch('https://cleantalk.org/email-checker/EMAIL_ENC')">CleanTalk</button>
-            <button id="btn-email-dehashed" class="button" onclick="Email_LaunchSearch('https://dehashed.com/search?query=%22EMAIL_ENC%22')">Dehashed</button>
-            <button id="btn-email-hudsonrock" class="button" onclick="Email_LaunchSearch('https://cavalier.hudsonrock.com/api/json/v2/preview/search-by-login/osint-tools?email=EMAIL_ENC')">HudsonRock</button>
-            <button id="btn-email-hunterverify" class="button" onclick="Email_LaunchSearch('https://hunter.io/email-verifier/EMAIL_ENC')">HunterVerify</button>
-            <button id="btn-email-intelx" class="button" onclick="Email_LaunchSearch('https://intelx.io/?s=EMAIL_ENC')">IntelX</button>
-            <button id="btn-email-leakix" class="button" onclick="Email_LaunchSearch('https://leakix.net/search?scope=leak&q=%22EMAIL_ENC%22')">LeakIX</button>
-            <button id="btn-email-psbdmp" class="button" onclick="Email_LaunchSearch('https://psbdmp.ws/api/search/EMAIL_ENC')">PSBDMP</button>
+            <button id="btn-email-cleantalk" class="button" data-search-id="email-cleantalk">CleanTalk</button>
+            <button id="btn-email-dehashed" class="button" data-search-id="email-dehashed">Dehashed</button>
+            <button id="btn-email-hudsonrock" class="button" data-search-id="email-hudsonrock">HudsonRock</button>
+            <button id="btn-email-hunterverify" class="button" data-search-id="email-hunterverify">HunterVerify</button>
+            <button id="btn-email-intelx" class="button" data-search-id="email-intelx">IntelX</button>
+            <button id="btn-email-leakix" class="button" data-search-id="email-leakix">LeakIX</button>
+            <button id="btn-email-psbdmp" class="button" data-search-id="email-psbdmp">PSBDMP</button>
           </div>
         </section>
 
         <section id="section-email-social" style="margin-top: 2rem;">
           <h2>Social Networks</h2>
           <div class="button-grid">
-            <button id="btn-email-flickr" class="button" onclick="Email_LaunchSearch('https://flickr.com/search/people/?q=EMAIL_ENC')">Flickr</button>
-            <button id="btn-email-myspace" class="button" onclick="Email_LaunchSearch('https://myspace.com/search/people?q=EMAIL_ENC')">MySpace</button>
-            <button id="btn-email-protonmail" class="button" onclick="Email_LaunchSearch('https://api.protonmail.ch/pks/lookup?op=get&search=EMAIL_ENC')">Protonmail</button>
+            <button id="btn-email-flickr" class="button" data-search-id="email-flickr">Flickr</button>
+            <button id="btn-email-myspace" class="button" data-search-id="email-myspace">MySpace</button>
+            <button id="btn-email-protonmail" class="button" data-search-id="email-protonmail">Protonmail</button>
           </div>
         </section>
       </div>
     </div>
-  </main>
+</main>
 
-  <footer>
-<<<<<<< HEAD
-    <p>Exploratores 2.5 prototype <a href="license.html">License</a></p>
-=======
+<footer>
     <p>Exploratores 2.5 • Prototype <a href="license.html">License</a></p>
->>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
-  </footer>
+</footer>
 
-  <script>
-    // Standard navbar submenu script
-    document.querySelectorAll('.menu > li').forEach(item => {
-      const submenu = item.querySelector('.submenu');
-      if (submenu) {
-        item.addEventListener('mouseenter', function() {
-          submenu.style.display = 'block';
-        });
-        item.addEventListener('mouseleave', function() {
-          submenu.style.display = 'none';
-        });
-      }
-    });
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/menu/navigation.js"></script>
 
-    // Helper to get and validate the email input
-    function Email_GetAndValidateInput() {
-      const emailElement = document.getElementById('emailInput');
-      const email = emailElement ? emailElement.value.trim() : "";
-      
-      if (!email) {
-        alert("Please enter an email address.");
-        return null;
-      }
-      
-      const emailPattern = /\S+@\S+\.\S+/;
-      if (!emailPattern.test(email)) {
-        alert("Please enter a valid email address format.");
-        return null;
-      }
-      return email;
-    }
-    
-    // Live feedback function for email input
-    function Email_UpdateFeedback() {
-        const emailInput = document.getElementById('emailInput');
-        const feedbackElement = document.getElementById('email-feedback');
-        if (!emailInput || !feedbackElement) return;
-        const email = emailInput.value.trim();
+<script>
+  function updatePageState() {
+    const emailData = ExploratoresValidators.getAndValidateEmail();
+    const gmailData = ExploratoresValidators.getAndValidateGmail();
+
+    document.querySelectorAll('button[data-search-id]').forEach(button => {
+        const searchId = button.dataset.searchId;
+        const config = SearchLibrary[searchId] || {};
         
-        if (email === "") {
-            feedbackElement.textContent = "";
-            feedbackElement.className = 'feedback-message';
-            return; 
-        }
-
-        const emailPattern = /\S+@\S+\.\S+/;
-        if (!emailPattern.test(email)) {
-            feedbackElement.textContent = "Invalid email format. Expected: name@domain.com";
-            feedbackElement.className = 'feedback-message feedback-error';
+        let isEnabled = false;
+        if (config.validator === 'getAndValidateGmail') {
+            isEnabled = !!gmailData;
         } else {
-            feedbackElement.textContent = "Valid email format.";
-            feedbackElement.className = 'feedback-message feedback-info';
+            isEnabled = !!emailData;
         }
-    }
+        
+        button.disabled = !isEnabled;
+        button.classList.toggle('text-active', isEnabled);
+    });
+  }
 
-    // Master function to launch most searches
-    function Email_LaunchSearch(urlTemplate) {
-      const email = Email_GetAndValidateInput();
-      if (!email) return;
-      const url = urlTemplate.replace(/EMAIL_ENC/g, encodeURIComponent(email));
-      window.open(url, '_blank');
+  function setInitialPageState() {
+    const emailInput = document.getElementById('emailInput');
+    if (emailInput) {
+        emailInput.addEventListener('input', updatePageState);
     }
-    
-    // Specific function for Ghunt with domain check
-    function Email_SearchGhunt() {
-      const email = Email_GetAndValidateInput();
-      if (!email) return;
+    updatePageState();
+  }
 
-      const emailParts = email.split('@');
-      if (emailParts.length !== 2 || emailParts[1].toLowerCase() !== 'gmail.com') {
-        alert("This function requires a @gmail.com address for the Ghunt search.");
-        return;
-      }
-      
-      const localPart = emailParts[0];
-      window.open('https://gmail-osint.activetk.jp/' + encodeURIComponent(localPart), '_blank');
-    }
-    
-    // Attach event listener for live feedback
-    const emailInputElement = document.getElementById('emailInput');
-    if (emailInputElement) {
-        emailInputElement.addEventListener('input', Email_UpdateFeedback);
-    }
-  </script>
+  document.addEventListener('DOMContentLoaded', setInitialPageState);
+</script>
 
 <script src="../assets/js/config.js"></script>
 <script>

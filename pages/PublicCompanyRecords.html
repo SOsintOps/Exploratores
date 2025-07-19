@@ -190,70 +190,76 @@
 <script src="../assets/menu/navigation.js"></script>
 
 <script>
-  function updatePageState() {
-    // Group 1: Officer Name
-    const officerNameValid = ExploratoresValidators.getAndValidateOfficerName();
-    document.querySelectorAll('#grid-pcr-officers-intl .button, #grid-pcr-officers-uk .button, #grid-pcr-officers-nigeria .button, #grid-pcr-officers-usa .button').forEach(button => {
-        const config = SearchLibrary[button.dataset.searchId] || {};
-        const isEnabled = officerNameValid || config.no_input;
-        button.disabled = !isEnabled;
-        button.classList.toggle('text-active', isEnabled);
-    });
+    function setInitialPageState() {
+        const inputGroups = [
+            {
+                inputIds: ['officerNameInput'],
+                buttonSelector: '#grid-pcr-officers-intl .button, #grid-pcr-officers-uk .button, #grid-pcr-officers-nigeria .button, #grid-pcr-officers-usa .button',
+                validator: ExploratoresValidators.getAndValidateOfficerName
+            },
+            {
+                inputIds: ['officerSearchFirstName', 'officerSearchLastName'],
+                buttonSelector: '#grid-pcr-usofficers .button',
+                validator: ExploratoresValidators.getAndValidateUsOfficerName
+            },
+            {
+                inputIds: ['companyNameInput'],
+                buttonSelector: '#grid-pcr-companies-intl .button, #grid-pcr-companies-usa .button, #grid-pcr-companies-uk .button, #grid-pcr-companies-nigeria .button, #grid-pcr-companies-europe .button, #grid-pcr-companies-india .button',
+                validator: ExploratoresValidators.getAndValidateCompanyName
+            },
+            {
+                inputIds: ['companyEmailInput'],
+                buttonSelector: '#grid-pcr-contact-email .button',
+                validator: ExploratoresValidators.getAndValidateCompanyEmail
+            },
+            {
+                inputIds: ['companyPhoneInput'],
+                buttonSelector: '#grid-pcr-contact-phone .button',
+                validator: ExploratoresValidators.getAndValidateCompanyPhone
+            },
+            {
+                inputIds: ['ssnInput'],
+                buttonSelector: '#grid-pcr-ssdi .button',
+                validator: ExploratoresValidators.getAndValidateSsn
+            }
+        ];
 
-    // Group 2: US Officer Name (specific inputs)
-    const usOfficerNameValid = ExploratoresValidators.getAndValidateUsOfficerName();
-    document.querySelectorAll('#grid-pcr-usofficers .button').forEach(button => {
-        button.disabled = !usOfficerNameValid;
-        button.classList.toggle('text-active', !!usOfficerNameValid);
-    });
+        const updateButtons = (group) => {
+            const validationResult = group.validator();
+            document.querySelectorAll(group.buttonSelector).forEach(button => {
+                const config = SearchLibrary[button.dataset.searchId] || {};
+                const isEnabled = validationResult || config.no_input;
 
-    // Group 3: Company Name
-    const companyNameValid = ExploratoresValidators.getAndValidateCompanyName();
-    document.querySelectorAll('#grid-pcr-companies-intl .button, #grid-pcr-companies-usa .button, #grid-pcr-companies-uk .button, #grid-pcr-companies-nigeria .button, #grid-pcr-companies-europe .button, #grid-pcr-companies-india .button').forEach(button => {
-        const config = SearchLibrary[button.dataset.searchId] || {};
-        const isEnabled = companyNameValid || config.no_input;
-        button.disabled = !isEnabled;
-        button.classList.toggle('text-active', isEnabled);
-    });
+                button.disabled = !isEnabled;
+                button.classList.toggle('text-active', isEnabled);
+            });
+        };
 
-    // Group 4: Company Email
-    const companyEmailValid = ExploratoresValidators.getAndValidateCompanyEmail();
-    document.querySelectorAll('#grid-pcr-contact-email .button').forEach(button => {
-        button.disabled = !companyEmailValid;
-        button.classList.toggle('text-active', !!companyEmailValid);
-    });
+        inputGroups.forEach(group => {
+            // Set initial state for no_input buttons to be enabled but not active
+            document.querySelectorAll(group.buttonSelector).forEach(button => {
+                const config = SearchLibrary[button.dataset.searchId] || {};
+                if (config.no_input) {
+                    button.disabled = false;
+                    button.classList.remove('text-active');
+                } else {
+                    button.disabled = true;
+                    button.classList.remove('text-active');
+                }
+            });
+            
+            group.inputIds.forEach(inputId => {
+                const inputElement = document.getElementById(inputId);
+                if (inputElement) {
+                    inputElement.addEventListener('input', () => updateButtons(group));
+                }
+            });
+        });
+    }
 
-    // Group 5: Company Phone
-    const companyPhoneValid = ExploratoresValidators.getAndValidateCompanyPhone();
-    document.querySelectorAll('#grid-pcr-contact-phone .button').forEach(button => {
-        button.disabled = !companyPhoneValid;
-        button.classList.toggle('text-active', !!companyPhoneValid);
-    });
-    
-    // Group 6: SSDI
-    const ssnValid = ExploratoresValidators.getAndValidateSsn();
-    document.querySelectorAll('#grid-pcr-ssdi .button').forEach(button => {
-        button.disabled = !ssnValid;
-        button.classList.toggle('text-active', !!ssnValid);
-    });
-  }
-
-  function setInitialPageState() {
-    const inputs = [
-        'officerNameInput', 'officerSearchFirstName', 'officerSearchLastName',
-        'companyNameInput', 'companyEmailInput', 'companyPhoneInput', 'ssnInput'
-    ];
-    inputs.forEach(id => {
-        const inputElement = document.getElementById(id);
-        if (inputElement) {
-            inputElement.addEventListener('input', updatePageState);
-        }
-    });
-    updatePageState();
-  }
-
-  document.addEventListener('DOMContentLoaded', setInitialPageState);
+    document.addEventListener('DOMContentLoaded', setInitialPageState);
 </script>
+
 
 <script src="../assets/js/config.js"></script>
 <script>

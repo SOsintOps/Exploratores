@@ -219,5 +219,30 @@ const SearchLibrary = {
     "publiccompanyrecords-company-piva": {
         "urlTemplate": "https://www.google.com/search?q=site:ufficiocamerale.it {companyname}",
         "validator": "getAndValidateCompanyName"
-    }
+    },
+    "email-google": { "urlTemplate": "https://google.com/search?q=%22{email}%22", "validator": "getAndValidateEmail" },
+    "email-bing": { "urlTemplate": "https://bing.com/search?q=%22{email}%22", "validator": "getAndValidateEmail" },
+    "email-yandex": { "urlTemplate": "https://yandex.com/search/?text=%22{email}%22", "validator": "getAndValidateEmail" },
+    "email-analyzeid": { "urlTemplate": "http://analyzeid.com/?email={email}", "validator": "getAndValidateEmail" },
+    "email-cybernews": { "urlTemplate": "https://check.cybernews.com/chk/?e={email}", "validator": "getAndValidateEmail" },
+    "email-emailrep": { "urlTemplate": "https://emailrep.io/query/{email}", "validator": "getAndValidateEmail" },
+    "email-ghunt": { "urlTemplate": "https://gmail-osint.activetk.jp/{localpart}", "validator": "getAndValidateGmail" },
+    "email-gravatar": { "urlTemplate": "https://gravatar.com/site/check/{email}", "validator": "getAndValidateEmail" },
+    "email-occrp": { "urlTemplate": "https://data.occrp.org/search?q={email}", "validator": "getAndValidateEmail" },
+    "email-scamsearch": { "urlTemplate": "https://scamsearch.io/search_report?search={email}", "validator": "getAndValidateEmail" },
+    "email-spycloud": { "urlTemplate": "https://portal.spycloud.com/endpoint/enriched-stats/{email}", "validator": "getAndValidateEmail" },
+    "email-spytox": { "urlTemplate": "https://spytox.com/people/search?email={email}", "validator": "getAndValidateEmail" },
+    "email-thatsthem": { "urlTemplate": "https://thatsthem.com/email/{email}", "validator": "getAndValidateEmail" },
+    "email-whoxy": { "urlTemplate": "https://whoxy.com/search.php?email={email}", "validator": "getAndValidateEmail" },
+    "email-whoisology": { "urlTemplate": "https://whoisology.com/email/{email}", "validator": "getAndValidateEmail" },
+    "email-cleantalk": { "urlTemplate": "https://cleantalk.org/email-checker/{email}", "validator": "getAndValidateEmail" },
+    "email-dehashed": { "urlTemplate": "https://dehashed.com/search?query=%22{email}%22", "validator": "getAndValidateEmail" },
+    "email-hudsonrock": { "urlTemplate": "https://cavalier.hudsonrock.com/api/json/v2/preview/search-by-login/osint-tools?email={email}", "validator": "getAndValidateEmail" },
+    "email-hunterverify": { "urlTemplate": "https://hunter.io/email-verifier/{email}", "validator": "getAndValidateEmail" },
+    "email-intelx": { "urlTemplate": "https://intelx.io/?s={email}", "validator": "getAndValidateEmail" },
+    "email-leakix": { "urlTemplate": "https://leakix.net/search?scope=leak&q=%22{email}%22", "validator": "getAndValidateEmail" },
+    "email-psbdmp": { "urlTemplate": "https://psbdmp.ws/api/search/{email}", "validator": "getAndValidateEmail" },
+    "email-flickr": { "urlTemplate": "https://flickr.com/search/people/?q={email}", "validator": "getAndValidateEmail" },
+    "email-myspace": { "urlTemplate": "https://myspace.com/search/people?q={email}", "validator": "getAndValidateEmail" },
+    "email-protonmail": { "urlTemplate": "https://api.protonmail.ch/pks/lookup?op=get&search={email}", "validator": "getAndValidateEmail" }
 };
