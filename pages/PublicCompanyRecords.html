@@ -23,32 +23,54 @@
         <div class="input-container">
           <input type="text" id="officerNameInput" class="input-field" placeholder="Officer Name" autocomplete="off">
         </div>
-        <div class="button-grid" id="grid-pcr-officers">
-          <button id="btn-pcr-officer-aihit" type="button" class="button" data-search-id="publiccompanyrecords-officer-aihit">AIHIT</button>
-          <button id="btn-pcr-officer-fca" type="button" class="button" data-search-id="publiccompanyrecords-officer-fca">FCA (UK)</button>
-          <button id="btn-pcr-officer-foia" type="button" class="button" data-search-id="publiccompanyrecords-officer-foia">FOIA</button>
-          <button id="btn-pcr-officer-infobel" type="button" class="button" data-search-id="publiccompanyrecords-officer-infobel">Infobel</button>
-          <button id="btn-pcr-officer-iosco" type="button" class="button" data-search-id="publiccompanyrecords-officer-iosco">IOSCO Alerts</button>
-          <button id="btn-pcr-officer-judyrecords" type="button" class="button" data-search-id="publiccompanyrecords-officer-judyrecords">JudyRecords</button>
-          <button id="btn-pcr-officer-littlesis" type="button" class="button" data-search-id="publiccompanyrecords-officer-littlesis">LittleSis</button>
-          <button id="btn-pcr-officer-moneyline" type="button" class="button" data-search-id="publiccompanyrecords-officer-moneyline">MoneyLine</button>
-          <button id="btn-pcr-officer-muckrock" type="button" class="button" data-search-id="publiccompanyrecords-officer-muckrock">MuckrockFOIA</button>
-          <button id="btn-pcr-officer-nigeria24" type="button" class="button" data-search-id="publiccompanyrecords-officer-nigeria24">Nigeria24</button>
-          <button id="btn-pcr-officer-occrp" type="button" class="button" data-search-id="publiccompanyrecords-officer-occrp">OCCRP Aleph</button>
-          <button id="btn-pcr-officer-ofac" type="button" class="button" data-search-id="publiccompanyrecords-officer-ofac">OFAC Recent Actions</button>
-          <button id="btn-pcr-officer-opencorp" type="button" class="button" data-search-id="publiccompanyrecords-officer-opencorp">OpenCorporates</button>
-          <button id="btn-pcr-officer-opensanctions" type="button" class="button" data-search-id="publiccompanyrecords-officer-opensanctions">OpenSanctions</button>
-          <button id="btn-pcr-officer-opensecrets" type="button" class="button" data-search-id="publiccompanyrecords-officer-opensecrets">Open Secrets</button>
-          <button id="btn-pcr-officer-pacer" type="button" class="button" data-search-id="publiccompanyrecords-officer-pacer">Pacer</button>
-          <button id="btn-pcr-officer-recap" type="button" class="button" data-search-id="publiccompanyrecords-officer-recap">Recap (Courtlistener)</button>
-          <button id="btn-pcr-officer-sra" type="button" class="button" data-search-id="publiccompanyrecords-officer-sra">SRA (UK Solicitors)</button>
-          <button id="btn-pcr-officer-trellis" type="button" class="button" data-search-id="publiccompanyrecords-officer-trellis">Trellis</button>
-          <button id="btn-pcr-officer-unicourt" type="button" class="button" data-search-id="publiccompanyrecords-officer-unicourt">UniCourt</button>
-        </div>
+
+        <section id="subsection-pcr-officers-international">
+          <h3>International</h3>
+          <div class="button-grid" id="grid-pcr-officers-intl">
+            <button id="btn-pcr-officer-aihit" type="button" class="button" data-search-id="publiccompanyrecords-officer-aihit">AIHIT</button>
+            <button id="btn-pcr-officer-infobel" type="button" class="button" data-search-id="publiccompanyrecords-officer-infobel">Infobel</button>
+            <button id="btn-pcr-officer-iosco" type="button" class="button" data-search-id="publiccompanyrecords-officer-iosco">IOSCO Alerts</button>
+            <button id="btn-pcr-officer-littlesis" type="button" class="button" data-search-id="publiccompanyrecords-officer-littlesis">LittleSis</button>
+            <button id="btn-pcr-officer-occrp" type="button" class="button" data-search-id="publiccompanyrecords-officer-occrp">OCCRP Aleph</button>
+            <button id="btn-pcr-officer-opencorp" type="button" class="button" data-search-id="publiccompanyrecords-officer-opencorp">OpenCorporates</button>
+            <button id="btn-pcr-officer-opensanctions" type="button" class="button" data-search-id="publiccompanyrecords-officer-opensanctions">OpenSanctions</button>
+          </div>
+        </section>
+
+        <section id="subsection-pcr-officers-nigeria" style="margin-top: 1rem;">
+          <h3>Nigeria</h3>
+          <div class="button-grid" id="grid-pcr-officers-nigeria">
+            <button id="btn-pcr-officer-nigeria24" type="button" class="button" data-search-id="publiccompanyrecords-officer-nigeria24">Nigeria24</button>
+          </div>
+        </section>
+
+        <section id="subsection-pcr-officers-uk" style="margin-top: 1rem;">
+          <h3>United Kingdom</h3>
+          <div class="button-grid" id="grid-pcr-officers-uk">
+            <button id="btn-pcr-officer-fca" type="button" class="button" data-search-id="publiccompanyrecords-officer-fca">FCA (UK)</button>
+            <button id="btn-pcr-officer-sra" type="button" class="button" data-search-id="publiccompanyrecords-officer-sra">SRA (UK Solicitors)</button>
+          </div>
+        </section>
+
+        <section id="subsection-pcr-officers-usa" style="margin-top: 1rem;">
+          <h3>United States</h3>
+          <div class="button-grid" id="grid-pcr-officers-usa">
+            <button id="btn-pcr-officer-foia" type="button" class="button" data-search-id="publiccompanyrecords-officer-foia">FOIA</button>
+            <button id="btn-pcr-officer-judyrecords" type="button" class="button" data-search-id="publiccompanyrecords-officer-judyrecords">JudyRecords</button>
+            <button id="btn-pcr-officer-moneyline" type="button" class="button" data-search-id="publiccompanyrecords-officer-moneyline">MoneyLine</button>
+            <button id="btn-pcr-officer-muckrock" type="button" class="button" data-search-id="publiccompanyrecords-officer-muckrock">MuckrockFOIA</button>
+            <button id="btn-pcr-officer-ofac" type="button" class="button" data-search-id="publiccompanyrecords-officer-ofac">OFAC Recent Actions</button>
+            <button id="btn-pcr-officer-opensecrets" type="button" class="button" data-search-id="publiccompanyrecords-officer-opensecrets">Open Secrets</button>
+            <button id="btn-pcr-officer-pacer" type="button" class="button" data-search-id="publiccompanyrecords-officer-pacer">Pacer</button>
+            <button id="btn-pcr-officer-recap" type="button" class="button" data-search-id="publiccompanyrecords-officer-recap">Recap (Courtlistener)</button>
+            <button id="btn-pcr-officer-trellis" type="button" class="button" data-search-id="publiccompanyrecords-officer-trellis">Trellis</button>
+            <button id="btn-pcr-officer-unicourt" type="button" class="button" data-search-id="publiccompanyrecords-officer-unicourt">UniCourt</button>
+          </div>
+        </section>
       </section>
       
-      <section id="section-pcr-usofficers" class="search-instructions search-instructions-minimal">
-        <h3>US-Based Officers</h3>
+      <section id="section-pcr-usofficers" class="search-instructions" style="margin-top: 1rem;">
+        <h3>US-Based Officers (by Name)</h3>
         <div class="input-container"> 
           <input type="text" id="officerSearchFirstName" class="input-field" placeholder="First Name" autocomplete="off">
           <input type="text" id="officerSearchLastName" class="input-field" placeholder="Last Name" autocomplete="off">
@@ -56,6 +78,14 @@
         <div class="button-grid button-grid-3col" id="grid-pcr-usofficers"> 
           <button id="btn-pcr-usofficer-openpayrolls" type="button" class="button" data-search-id="publiccompanyrecords-usofficer-openpayrolls">Open Payrolls</button>
           <button id="btn-pcr-usofficer-voterrecords" type="button" class="button" data-search-id="publiccompanyrecords-usofficer-voterrecords">Voter Records</button>
+        </div>
+      </section>
+
+      <section id="section-pcr-ssdi" class="search-instructions search-instructions-minimal">
+        <h3>SSDI Search (United States)</h3>
+        <div class="input-button-line" id="grid-pcr-ssdi"> 
+          <input type="text" id="ssnInput" class="input-field" placeholder="SSN" autocomplete="off">
+          <button id="btn-pcr-ssdi" type="button" class="button" data-search-id="publiccompanyrecords-ssdi">SSDI</button>
         </div>
       </section>
     </div>
@@ -66,39 +96,73 @@
         <div class="input-container">
           <input type="text" id="companyNameInput" class="input-field" placeholder="Company Name" autocomplete="off">
         </div> 
-        <div class="button-grid" id="grid-pcr-companies">
-          <button id="btn-pcr-company-asa" type="button" class="button" data-search-id="publiccompanyrecords-company-asa">ASA (UK)</button>
-          <button id="btn-pcr-company-aihit" type="button" class="button" data-search-id="publiccompanyrecords-company-aihit">AIHIT</button>
-          <button id="btn-pcr-company-b2bhint" type="button" class="button" data-search-id="publiccompanyrecords-company-b2bhint">B2BHint</button>
-          <button id="btn-pcr-company-cac" type="button" class="button" data-search-id="publiccompanyrecords-company-cac">CAC (Nigeria)</button>
-          <button id="btn-pcr-company-censys" type="button" class="button" data-search-id="publiccompanyrecords-company-censys">Censys Certificates</button>
-          <button id="btn-pcr-company-clarifiedby" type="button" class="button" data-search-id="publiccompanyrecords-company-clarifiedby">Clarified By</button>
-          <button id="btn-pcr-company-companieshouse" type="button" class="button" data-search-id="publiccompanyrecords-company-companieshouse">Companies House (UK)</button>
-          <button id="btn-pcr-company-crunchbase" type="button" class="button" data-search-id="publiccompanyrecords-company-crunchbase">Crunchbase</button>
-          <button id="btn-pcr-company-ejustice" type="button" class="button" data-search-id="publiccompanyrecords-company-ejustice">European e-Justice</button>
-          <button id="btn-pcr-company-fca" type="button" class="button" data-search-id="publiccompanyrecords-company-fca">FCA (UK)</button>
-          <button id="btn-pcr-company-foia" type="button" class="button" data-search-id="publiccompanyrecords-company-foia">FOIA</button>
-          <button id="btn-pcr-company-infobel" type="button" class="button" data-search-id="publiccompanyrecords-company-infobel">Infobel</button>
-          <button id="btn-pcr-company-iosco" type="button" class="button" data-search-id="publiccompanyrecords-company-iosco">IOSCO Alerts</button>
-          <button id="btn-pcr-company-judyrecords" type="button" class="button" data-search-id="publiccompanyrecords-company-judyrecords">JudyRecords</button>
-          <button id="btn-pcr-company-littlesis" type="button" class="button" data-search-id="publiccompanyrecords-company-littlesis">LittleSis</button>
-          <button id="btn-pcr-company-muckrock" type="button" class="button" data-search-id="publiccompanyrecords-company-muckrock">MuckrockFOIA</button>
-          <button id="btn-pcr-company-ngcheck" type="button" class="button" data-search-id="publiccompanyrecords-company-ngcheck">NG-Check (Nigeria)</button>
-          <button id="btn-pcr-company-nigeria24" type="button" class="button" data-search-id="publiccompanyrecords-company-nigeria24">Nigeria24</button>
-          <button id="btn-pcr-company-occrp" type="button" class="button" data-search-id="publiccompanyrecords-company-occrp">OCCRP Aleph</button>
-          <button id="btn-pcr-company-ofac" type="button" class="button" data-search-id="publiccompanyrecords-company-ofac">OFAC Recent Actions</button>
-          <button id="btn-pcr-company-opencorp" type="button" class="button" data-search-id="publiccompanyrecords-company-opencorp">OpenCorporates</button>
-          <button id="btn-pcr-company-opencorp-al" type="button" class="button" data-search-id="publiccompanyrecords-company-opencorp-al">OpenCorporates (AL)</button>
-          <button id="btn-pcr-company-opensanctions" type="button" class="button" data-search-id="publiccompanyrecords-company-opensanctions">OpenSanctions</button>
-          <button id="btn-pcr-company-pacer" type="button" class="button" data-search-id="publiccompanyrecords-company-pacer">Pacer</button>
-          <button id="btn-pcr-company-recap" type="button" class="button" data-search-id="publiccompanyrecords-company-recap">Recap (Courtlistener)</button>
-          <button id="btn-pcr-company-trellis" type="button" class="button" data-search-id="publiccompanyrecords-company-trellis">Trellis</button>
-          <button id="btn-pcr-company-udrp" type="button" class="button" data-search-id="publiccompanyrecords-company-udrp">UDRP Search</button>
-          <button id="btn-pcr-company-unicourt" type="button" class="button" data-search-id="publiccompanyrecords-company-unicourt">UniCourt</button>
-          <button id="btn-pcr-company-wipo" type="button" class="button" data-search-id="publiccompanyrecords-company-wipo">WIPO (Google)</button>
-          <button id="btn-pcr-company-zaubacorp" type="button" class="button" data-search-id="publiccompanyrecords-company-zaubacorp">Zauba Corp (India)</button>
-          <button id="btn-pcr-company-piva" type="button" class="button" data-search-id="publiccompanyrecords-company-piva">P.IVA (Italy)</button>
-        </div>
+
+        <section id="subsection-pcr-companies-international">
+          <h3>International</h3>
+          <div class="button-grid" id="grid-pcr-companies-intl">
+            <button id="btn-pcr-company-aihit" type="button" class="button" data-search-id="publiccompanyrecords-company-aihit">AIHIT</button>
+            <button id="btn-pcr-company-b2bhint" type="button" class="button" data-search-id="publiccompanyrecords-company-b2bhint">B2BHint</button>
+            <button id="btn-pcr-company-censys" type="button" class="button" data-search-id="publiccompanyrecords-company-censys">Censys Certificates</button>
+            <button id="btn-pcr-company-clarifiedby" type="button" class="button" data-search-id="publiccompanyrecords-company-clarifiedby">Clarified By</button>
+            <button id="btn-pcr-company-crunchbase" type="button" class="button" data-search-id="publiccompanyrecords-company-crunchbase">Crunchbase</button>
+            <button id="btn-pcr-company-infobel" type="button" class="button" data-search-id="publiccompanyrecords-company-infobel">Infobel</button>
+            <button id="btn-pcr-company-iosco" type="button" class="button" data-search-id="publiccompanyrecords-company-iosco">IOSCO Alerts</button>
+            <button id="btn-pcr-company-littlesis" type="button" class="button" data-search-id="publiccompanyrecords-company-littlesis">LittleSis</button>
+            <button id="btn-pcr-company-occrp" type="button" class="button" data-search-id="publiccompanyrecords-company-occrp">OCCRP Aleph</button>
+            <button id="btn-pcr-company-opencorp" type="button" class="button" data-search-id="publiccompanyrecords-company-opencorp">OpenCorporates</button>
+            <button id="btn-pcr-company-opensanctions" type="button" class="button" data-search-id="publiccompanyrecords-company-opensanctions">OpenSanctions</button>
+            <button id="btn-pcr-company-udrp" type="button" class="button" data-search-id="publiccompanyrecords-company-udrp">UDRP Search</button>
+            <button id="btn-pcr-company-wipo" type="button" class="button" data-search-id="publiccompanyrecords-company-wipo">WIPO (Google)</button>
+          </div>
+        </section>
+
+        <section id="subsection-pcr-companies-europe" style="margin-top: 1rem;">
+            <h3>Europe</h3>
+            <div class="button-grid" id="grid-pcr-companies-europe">
+                <button id="btn-pcr-company-ejustice" type="button" class="button" data-search-id="publiccompanyrecords-company-ejustice">European e-Justice</button>
+                <button id="btn-pcr-company-opencorp-al" type="button" class="button" data-search-id="publiccompanyrecords-company-opencorp-al">OpenCorporates (AL)</button>
+                <button id="btn-pcr-company-piva" type="button" class="button" data-search-id="publiccompanyrecords-company-piva">P.IVA (Italy)</button>
+            </div>
+        </section>
+
+        <section id="subsection-pcr-companies-india" style="margin-top: 1rem;">
+            <h3>India</h3>
+            <div class="button-grid" id="grid-pcr-companies-india">
+                <button id="btn-pcr-company-zaubacorp" type="button" class="button" data-search-id="publiccompanyrecords-company-zaubacorp">Zauba Corp (India)</button>
+            </div>
+        </section>
+
+        <section id="subsection-pcr-companies-nigeria" style="margin-top: 1rem;">
+            <h3>Nigeria</h3>
+            <div class="button-grid" id="grid-pcr-companies-nigeria">
+                <button id="btn-pcr-company-cac" type="button" class="button" data-search-id="publiccompanyrecords-company-cac">CAC (Nigeria)</button>
+                <button id="btn-pcr-company-ngcheck" type="button" class="button" data-search-id="publiccompanyrecords-company-ngcheck">NG-Check (Nigeria)</button>
+                <button id="btn-pcr-company-nigeria24" type="button" class="button" data-search-id="publiccompanyrecords-company-nigeria24">Nigeria24</button>
+            </div>
+        </section>
+
+        <section id="subsection-pcr-companies-uk" style="margin-top: 1rem;">
+            <h3>United Kingdom</h3>
+            <div class="button-grid" id="grid-pcr-companies-uk">
+                <button id="btn-pcr-company-asa" type="button" class="button" data-search-id="publiccompanyrecords-company-asa">ASA (UK)</button>
+                <button id="btn-pcr-company-companieshouse" type="button" class="button" data-search-id="publiccompanyrecords-company-companieshouse">Companies House (UK)</button>
+                <button id="btn-pcr-company-fca" type="button" class="button" data-search-id="publiccompanyrecords-company-fca">FCA (UK)</button>
+            </div>
+        </section>
+
+        <section id="subsection-pcr-companies-usa" style="margin-top: 1rem;">
+          <h3>United States</h3>
+          <div class="button-grid" id="grid-pcr-companies-usa">
+            <button id="btn-pcr-company-foia" type="button" class="button" data-search-id="publiccompanyrecords-company-foia">FOIA</button>
+            <button id="btn-pcr-company-judyrecords" type="button" class="button" data-search-id="publiccompanyrecords-company-judyrecords">JudyRecords</button>
+            <button id="btn-pcr-company-muckrock" type="button" class="button" data-search-id="publiccompanyrecords-company-muckrock">MuckrockFOIA</button>
+            <button id="btn-pcr-company-ofac" type="button" class="button" data-search-id="publiccompanyrecords-company-ofac">OFAC Recent Actions</button>
+            <button id="btn-pcr-company-pacer" type="button" class="button" data-search-id="publiccompanyrecords-company-pacer">Pacer</button>
+            <button id="btn-pcr-company-recap" type="button" class="button" data-search-id="publiccompanyrecords-company-recap">Recap (Courtlistener)</button>
+            <button id="btn-pcr-company-trellis" type="button" class="button" data-search-id="publiccompanyrecords-company-trellis">Trellis</button>
+            <button id="btn-pcr-company-unicourt" type="button" class="button" data-search-id="publiccompanyrecords-company-unicourt">UniCourt</button>
+          </div>
+        </section>
       </section>
 
       <section id="section-pcr-contact" class="search-instructions search-instructions-minimal">
@@ -110,14 +174,6 @@
         <div class="input-button-line" id="grid-pcr-contact-phone"> 
           <input type="text" id="companyPhoneInput" class="input-field" placeholder="Telephone Number" autocomplete="off">
           <button id="btn-pcr-contact-aihit-phone" type="button" class="button" data-search-id="publiccompanyrecords-contact-aihit-phone">AIHIT (Phone)</button>
-        </div>
-      </section>
-      
-      <section id="section-pcr-ssdi" class="search-instructions search-instructions-minimal">
-        <h3>SSDI Search (Context: Company Research)</h3>
-        <div class="input-button-line" id="grid-pcr-ssdi"> 
-          <input type="text" id="ssnInput" class="input-field" placeholder="SSN" autocomplete="off">
-          <button id="btn-pcr-ssdi" type="button" class="button" data-search-id="publiccompanyrecords-ssdi">SSDI</button>
         </div>
       </section>
     </div>
@@ -137,14 +193,14 @@
   function updatePageState() {
     // Group 1: Officer Name
     const officerNameValid = ExploratoresValidators.getAndValidateOfficerName();
-    document.querySelectorAll('#grid-pcr-officers .button').forEach(button => {
+    document.querySelectorAll('#grid-pcr-officers-intl .button, #grid-pcr-officers-uk .button, #grid-pcr-officers-nigeria .button, #grid-pcr-officers-usa .button').forEach(button => {
         const config = SearchLibrary[button.dataset.searchId] || {};
         const isEnabled = officerNameValid || config.no_input;
         button.disabled = !isEnabled;
         button.classList.toggle('text-active', isEnabled);
     });
 
-    // Group 2: US Officer Name
+    // Group 2: US Officer Name (specific inputs)
     const usOfficerNameValid = ExploratoresValidators.getAndValidateUsOfficerName();
     document.querySelectorAll('#grid-pcr-usofficers .button').forEach(button => {
         button.disabled = !usOfficerNameValid;
@@ -153,7 +209,7 @@
 
     // Group 3: Company Name
     const companyNameValid = ExploratoresValidators.getAndValidateCompanyName();
-    document.querySelectorAll('#grid-pcr-companies .button').forEach(button => {
+    document.querySelectorAll('#grid-pcr-companies-intl .button, #grid-pcr-companies-usa .button, #grid-pcr-companies-uk .button, #grid-pcr-companies-nigeria .button, #grid-pcr-companies-europe .button, #grid-pcr-companies-india .button').forEach(button => {
         const config = SearchLibrary[button.dataset.searchId] || {};
         const isEnabled = companyNameValid || config.no_input;
         button.disabled = !isEnabled;
