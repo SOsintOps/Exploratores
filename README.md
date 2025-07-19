@@ -53,9 +53,9 @@ The toolkit is organized into the following sections, accessible from the main n
 ## 📚 Documentation
 
 For detailed information on the project, customization, and frequently asked questions, refer to the files in the `/docs` directory:
-* `customise.md`
-* `faq.md`
-* `guidelines.md`
+* [Customisation Guide](./docs/customise.md)
+* [Frequently Asked Questions (FAQ)](./docs/faq.md)
+* [Analytic & OPSEC Guidelines](./docs/guidelines.md)
 
 ---
 
