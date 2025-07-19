@@ -3,272 +3,201 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Company Public Report Tool • Exploratores</title>
+  <title>Company Public Records • Exploratores</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
 <body>
 
 <div id="navbar-placeholder"></div>
-
-<script src="../assets/menu/navigation.js"></script>
     
 <main>
-  <h1 class="page-title">Company Public Report Tool</h1>
+  <h1 class="page-title">Company Public Records Tool</h1>
   <div class="note"> <strong>NOTE:</strong> For proper function of one or more search features on this page, active profiles or accounts may be required. </div>
   
   <div class="columns">
     <div class="column" id="officers-column">
-      <div>
+      <section id="section-pcr-officers">
         <h2>OFFICERS</h2>
         <div class="input-container">
-          <input type="text" id="officerNameInput" class="input-field" placeholder="Officer Name">
+          <input type="text" id="officerNameInput" class="input-field" placeholder="Officer Name" autocomplete="off">
         </div>
-        <div class="button-grid">
-          <button type="button" class="button" onclick="Business_SearchOfficerAIHIT()">AIHIT</button>
-          <button type="button" class="button" onclick="Business_SearchFCAOfficer()">FCA (UK)</button>
-          <button type="button" class="button" onclick="Business_SearchOfficerFOIA()">FOIA</button>
-          <button type="button" class="button" onclick="Business_OpenInfobelOfficer()">Infobel</button>
-          <button type="button" class="button" onclick="Business_OpenIOSCOAlertsOfficer()">IOSCO Alerts</button>
-          <button type="button" class="button" onclick="Business_SearchOfficerJudyRecords()">JudyRecords</button>
-          <button type="button" class="button" onclick="Business_SearchOfficerLittleSis()">LittleSis</button>
-          <button type="button" class="button" onclick="Business_SearchOfficerMoneyLine()">MoneyLine</button>
-          <button type="button" class="button" onclick="Business_SearchOfficerMuckrockFOIA()">MuckrockFOIA</button>
-          <button type="button" class="button" onclick="Business_SearchNigeria24Officer()">Nigeria24</button>
-          <button type="button" class="button" onclick="Business_SearchOCCRPalephOfficer()">OCCRP Aleph</button>
-          <button type="button" class="button" onclick="Business_SearchOFACRecentActionsOfficer()">OFAC Recent Actions</button>
-          <button type="button" class="button" onclick="Business_SearchOfficerOpenCorporates()">OpenCorporates</button>
-          <button type="button" class="button" onclick="Business_SearchOpenSanctionsOfficer()">OpenSanctions</button>
-          <button type="button" class="button" onclick="Business_SearchOfficerOpenSecrets()">Open Secrets</button>
-          <button type="button" class="button" onclick="Business_SearchOfficerPacer()">Pacer</button>
-          <button type="button" class="button" onclick="Business_SearchOfficerRecap()">Recap (Courtlistener)</button>
-          <button type="button" class="button" onclick="Business_SearchSRA_UK()">SRA (UK Solicitors)</button>
-          <button type="button" class="button" onclick="Business_SearchOfficerTrellis()">Trellis</button>
-          <button type="button" class="button" onclick="Business_SearchOfficerUniCourt()">UniCourt</button>
+        <div class="button-grid" id="grid-pcr-officers">
+          <button id="btn-pcr-officer-aihit" type="button" class="button" data-search-id="publiccompanyrecords-officer-aihit">AIHIT</button>
+          <button id="btn-pcr-officer-fca" type="button" class="button" data-search-id="publiccompanyrecords-officer-fca">FCA (UK)</button>
+          <button id="btn-pcr-officer-foia" type="button" class="button" data-search-id="publiccompanyrecords-officer-foia">FOIA</button>
+          <button id="btn-pcr-officer-infobel" type="button" class="button" data-search-id="publiccompanyrecords-officer-infobel">Infobel</button>
+          <button id="btn-pcr-officer-iosco" type="button" class="button" data-search-id="publiccompanyrecords-officer-iosco">IOSCO Alerts</button>
+          <button id="btn-pcr-officer-judyrecords" type="button" class="button" data-search-id="publiccompanyrecords-officer-judyrecords">JudyRecords</button>
+          <button id="btn-pcr-officer-littlesis" type="button" class="button" data-search-id="publiccompanyrecords-officer-littlesis">LittleSis</button>
+          <button id="btn-pcr-officer-moneyline" type="button" class="button" data-search-id="publiccompanyrecords-officer-moneyline">MoneyLine</button>
+          <button id="btn-pcr-officer-muckrock" type="button" class="button" data-search-id="publiccompanyrecords-officer-muckrock">MuckrockFOIA</button>
+          <button id="btn-pcr-officer-nigeria24" type="button" class="button" data-search-id="publiccompanyrecords-officer-nigeria24">Nigeria24</button>
+          <button id="btn-pcr-officer-occrp" type="button" class="button" data-search-id="publiccompanyrecords-officer-occrp">OCCRP Aleph</button>
+          <button id="btn-pcr-officer-ofac" type="button" class="button" data-search-id="publiccompanyrecords-officer-ofac">OFAC Recent Actions</button>
+          <button id="btn-pcr-officer-opencorp" type="button" class="button" data-search-id="publiccompanyrecords-officer-opencorp">OpenCorporates</button>
+          <button id="btn-pcr-officer-opensanctions" type="button" class="button" data-search-id="publiccompanyrecords-officer-opensanctions">OpenSanctions</button>
+          <button id="btn-pcr-officer-opensecrets" type="button" class="button" data-search-id="publiccompanyrecords-officer-opensecrets">Open Secrets</button>
+          <button id="btn-pcr-officer-pacer" type="button" class="button" data-search-id="publiccompanyrecords-officer-pacer">Pacer</button>
+          <button id="btn-pcr-officer-recap" type="button" class="button" data-search-id="publiccompanyrecords-officer-recap">Recap (Courtlistener)</button>
+          <button id="btn-pcr-officer-sra" type="button" class="button" data-search-id="publiccompanyrecords-officer-sra">SRA (UK Solicitors)</button>
+          <button id="btn-pcr-officer-trellis" type="button" class="button" data-search-id="publiccompanyrecords-officer-trellis">Trellis</button>
+          <button id="btn-pcr-officer-unicourt" type="button" class="button" data-search-id="publiccompanyrecords-officer-unicourt">UniCourt</button>
         </div>
-      </div>
+      </section>
       
-      <div>
+      <section id="section-pcr-usofficers" class="search-instructions search-instructions-minimal">
         <h3>US-Based Officers</h3>
-        <div class="search-instructions" style="padding: 0; background-color: transparent; border-radius:0;">
-          <div class="input-container"> 
-            <input type="text" id="officerSearchFirstName" class="input-field" placeholder="First Name">
-            <input type="text" id="officerSearchLastName" class="input-field" placeholder="Last Name">
-          </div>
-          <div class="button-grid button-grid-2col" style="margin-top: 0.75rem;"> 
-            <button type="button" class="button" onclick="Business_SearchOpenPayrolls()">Open Payrolls</button>
-            <button type="button" class="button" onclick="Business_SearchVoterRecords()">Voter Records</button>
-          </div>
+        <div class="input-container"> 
+          <input type="text" id="officerSearchFirstName" class="input-field" placeholder="First Name" autocomplete="off">
+          <input type="text" id="officerSearchLastName" class="input-field" placeholder="Last Name" autocomplete="off">
         </div>
-      </div>
+        <div class="button-grid button-grid-3col" id="grid-pcr-usofficers"> 
+          <button id="btn-pcr-usofficer-openpayrolls" type="button" class="button" data-search-id="publiccompanyrecords-usofficer-openpayrolls">Open Payrolls</button>
+          <button id="btn-pcr-usofficer-voterrecords" type="button" class="button" data-search-id="publiccompanyrecords-usofficer-voterrecords">Voter Records</button>
+        </div>
+      </section>
     </div>
     
     <div class="column" id="companies-column">
-      <div>
+      <section id="section-pcr-companies">
         <h2>COMPANIES</h2>
         <div class="input-container">
-          <input type="text" id="companyNameInput" class="input-field" placeholder="Company Name">
+          <input type="text" id="companyNameInput" class="input-field" placeholder="Company Name" autocomplete="off">
         </div> 
-        <div class="button-grid">
-          <button type="button" class="button" onclick="Business_SearchASA()">ASA (UK)</button>
-          <button type="button" class="button" onclick="Business_SearchCompanyAIHIT()">AIHIT</button>
-          <button type="button" class="button" onclick="Business_SearchB2BHint()">B2BHint</button>
-          <button type="button" class="button" onclick="Business_OpenCACNigeria()">CAC (Nigeria)</button>
-          <button type="button" class="button" onclick="Business_SearchCensysCertificates()">Censys Certificates</button>
-          <button type="button" class="button" onclick="Business_OpenClarifiedBy()">Clarified By</button>
-          <button type="button" class="button" onclick="Business_SearchCompaniesHouseUK()">Companies House (UK)</button>
-          <button type="button" class="button" onclick="Business_OpenCrunchbaseSearch()">Crunchbase</button>
-          <button type="button" class="button" onclick="Business_OpenEJusticePortal()">European e-Justice</button>
-          <button type="button" class="button" onclick="Business_SearchFCACompany()">FCA (UK)</button>
-          <button type="button" class="button" onclick="Business_SearchCompanyFOIA()">FOIA</button>
-          <button type="button" class="button" onclick="Business_OpenInfobelCompany()">Infobel</button>
-          <button type="button" class="button" onclick="Business_OpenIOSCOAlertsCompany()">IOSCO Alerts</button>
-          <button type="button" class="button" onclick="Business_SearchCompanyJudyRecords()">JudyRecords</button>
-          <button type="button" class="button" onclick="Business_SearchCompanyLittleSis()">LittleSis</button>
-          <button type="button" class="button" onclick="Business_SearchCompanyMuckrockFOIA()">MuckrockFOIA</button>
-          <button type="button" class="button" onclick="Business_SearchNGCheck()">NG-Check (Nigeria)</button>
-          <button type="button" class="button" onclick="Business_SearchNigeria24Company()">Nigeria24</button>
-          <button type="button" class="button" onclick="Business_SearchOCCRPalephCompany()">OCCRP Aleph</button>
-          <button type="button" class="button" onclick="Business_SearchOFACRecentActionsCompany()">OFAC Recent Actions</button>
-          <button type="button" class="button" onclick="Business_SearchCompanyOpenCorporates()">OpenCorporates</button>
-          <button type="button" class="button" onclick="Business_SearchOpenCorporatesAlbania()">OpenCorporates (AL)</button>
-          <button type="button" class="button" onclick="Business_SearchOpenSanctionsCompany()">OpenSanctions</button>
-          <button type="button" class="button" onclick="Business_SearchCompanyPacer()">Pacer</button>
-          <button type="button" class="button" onclick="Business_SearchCompanyRecap()">Recap (Courtlistener)</button>
-          <button type="button" class="button" onclick="Business_SearchCompanyTrellis()">Trellis</button>
-          <button type="button" class="button" onclick="Business_SearchUDRP()">UDRP Search</button>
-          <button type="button" class="button" onclick="Business_SearchCompanyUniCourt()">UniCourt</button>
-          <button type="button" class="button" onclick="Business_SearchWIPO_Google()">WIPO (Google)</button>
-          <button type="button" class="button" onclick="Business_SearchZaubaCorp()">Zauba Corp (India)</button>
+        <div class="button-grid" id="grid-pcr-companies">
+          <button id="btn-pcr-company-asa" type="button" class="button" data-search-id="publiccompanyrecords-company-asa">ASA (UK)</button>
+          <button id="btn-pcr-company-aihit" type="button" class="button" data-search-id="publiccompanyrecords-company-aihit">AIHIT</button>
+          <button id="btn-pcr-company-b2bhint" type="button" class="button" data-search-id="publiccompanyrecords-company-b2bhint">B2BHint</button>
+          <button id="btn-pcr-company-cac" type="button" class="button" data-search-id="publiccompanyrecords-company-cac">CAC (Nigeria)</button>
+          <button id="btn-pcr-company-censys" type="button" class="button" data-search-id="publiccompanyrecords-company-censys">Censys Certificates</button>
+          <button id="btn-pcr-company-clarifiedby" type="button" class="button" data-search-id="publiccompanyrecords-company-clarifiedby">Clarified By</button>
+          <button id="btn-pcr-company-companieshouse" type="button" class="button" data-search-id="publiccompanyrecords-company-companieshouse">Companies House (UK)</button>
+          <button id="btn-pcr-company-crunchbase" type="button" class="button" data-search-id="publiccompanyrecords-company-crunchbase">Crunchbase</button>
+          <button id="btn-pcr-company-ejustice" type="button" class="button" data-search-id="publiccompanyrecords-company-ejustice">European e-Justice</button>
+          <button id="btn-pcr-company-fca" type="button" class="button" data-search-id="publiccompanyrecords-company-fca">FCA (UK)</button>
+          <button id="btn-pcr-company-foia" type="button" class="button" data-search-id="publiccompanyrecords-company-foia">FOIA</button>
+          <button id="btn-pcr-company-infobel" type="button" class="button" data-search-id="publiccompanyrecords-company-infobel">Infobel</button>
+          <button id="btn-pcr-company-iosco" type="button" class="button" data-search-id="publiccompanyrecords-company-iosco">IOSCO Alerts</button>
+          <button id="btn-pcr-company-judyrecords" type="button" class="button" data-search-id="publiccompanyrecords-company-judyrecords">JudyRecords</button>
+          <button id="btn-pcr-company-littlesis" type="button" class="button" data-search-id="publiccompanyrecords-company-littlesis">LittleSis</button>
+          <button id="btn-pcr-company-muckrock" type="button" class="button" data-search-id="publiccompanyrecords-company-muckrock">MuckrockFOIA</button>
+          <button id="btn-pcr-company-ngcheck" type="button" class="button" data-search-id="publiccompanyrecords-company-ngcheck">NG-Check (Nigeria)</button>
+          <button id="btn-pcr-company-nigeria24" type="button" class="button" data-search-id="publiccompanyrecords-company-nigeria24">Nigeria24</button>
+          <button id="btn-pcr-company-occrp" type="button" class="button" data-search-id="publiccompanyrecords-company-occrp">OCCRP Aleph</button>
+          <button id="btn-pcr-company-ofac" type="button" class="button" data-search-id="publiccompanyrecords-company-ofac">OFAC Recent Actions</button>
+          <button id="btn-pcr-company-opencorp" type="button" class="button" data-search-id="publiccompanyrecords-company-opencorp">OpenCorporates</button>
+          <button id="btn-pcr-company-opencorp-al" type="button" class="button" data-search-id="publiccompanyrecords-company-opencorp-al">OpenCorporates (AL)</button>
+          <button id="btn-pcr-company-opensanctions" type="button" class="button" data-search-id="publiccompanyrecords-company-opensanctions">OpenSanctions</button>
+          <button id="btn-pcr-company-pacer" type="button" class="button" data-search-id="publiccompanyrecords-company-pacer">Pacer</button>
+          <button id="btn-pcr-company-recap" type="button" class="button" data-search-id="publiccompanyrecords-company-recap">Recap (Courtlistener)</button>
+          <button id="btn-pcr-company-trellis" type="button" class="button" data-search-id="publiccompanyrecords-company-trellis">Trellis</button>
+          <button id="btn-pcr-company-udrp" type="button" class="button" data-search-id="publiccompanyrecords-company-udrp">UDRP Search</button>
+          <button id="btn-pcr-company-unicourt" type="button" class="button" data-search-id="publiccompanyrecords-company-unicourt">UniCourt</button>
+          <button id="btn-pcr-company-wipo" type="button" class="button" data-search-id="publiccompanyrecords-company-wipo">WIPO (Google)</button>
+          <button id="btn-pcr-company-zaubacorp" type="button" class="button" data-search-id="publiccompanyrecords-company-zaubacorp">Zauba Corp (India)</button>
+          <button id="btn-pcr-company-piva" type="button" class="button" data-search-id="publiccompanyrecords-company-piva">P.IVA (Italy)</button>
         </div>
-      </div>
+      </section>
 
-      <div>
+      <section id="section-pcr-contact" class="search-instructions search-instructions-minimal">
         <h3>Company Contact Info</h3>
-        <form onsubmit="event.preventDefault(); Business_SearchAIHITCompanyEmail(this.companyEmail.value);">
-          <div class="input-button-line"> 
-            <input type="text" name="companyEmail" class="input-field" placeholder="Email Address">
-            <button type="submit" class="button">AIHIT (Email)</button>
-          </div>
-        </form>
-        <form onsubmit="event.preventDefault(); Business_SearchAIHITCompanyPhone(this.companyPhone.value);">
-          <div class="input-button-line"> 
-            <input type="text" name="companyPhone" class="input-field" placeholder="Telephone Number">
-            <button type="submit" class="button">AIHIT (Phone)</button>
-          </div>
-        </form>
-      </div>
+        <div class="input-button-line" id="grid-pcr-contact-email"> 
+          <input type="text" id="companyEmailInput" class="input-field" placeholder="Email Address" autocomplete="off">
+          <button id="btn-pcr-contact-aihit-email" type="button" class="button" data-search-id="publiccompanyrecords-contact-aihit-email">AIHIT (Email)</button>
+        </div>
+        <div class="input-button-line" id="grid-pcr-contact-phone"> 
+          <input type="text" id="companyPhoneInput" class="input-field" placeholder="Telephone Number" autocomplete="off">
+          <button id="btn-pcr-contact-aihit-phone" type="button" class="button" data-search-id="publiccompanyrecords-contact-aihit-phone">AIHIT (Phone)</button>
+        </div>
+      </section>
       
-      <div>
+      <section id="section-pcr-ssdi" class="search-instructions search-instructions-minimal">
         <h3>SSDI Search (Context: Company Research)</h3>
-        <form onsubmit="event.preventDefault(); Business_SearchSSDIByCompanyContext(this.companySsn.value);">
-          <div class="input-button-line"> 
-            <input type="text" name="companySsn" class="input-field" placeholder="SSN">
-            <button type="submit" class="button">SSDI</button>
-          </div>
-        </form>
-      </div>
+        <div class="input-button-line" id="grid-pcr-ssdi"> 
+          <input type="text" id="ssnInput" class="input-field" placeholder="SSN" autocomplete="off">
+          <button id="btn-pcr-ssdi" type="button" class="button" data-search-id="publiccompanyrecords-ssdi">SSDI</button>
+        </div>
+      </section>
     </div>
   </div>
 </main>
     
-<script>
-  // Standard navbar submenu script
-  document.querySelectorAll('.menu > li').forEach(item => {
-    const submenu = item.querySelector('.submenu');
-    if (submenu) { 
-      item.addEventListener('mouseenter', function() {
-        submenu.style.display = 'block';
-      });
-      item.addEventListener('mouseleave', function() {
-        submenu.style.display = 'none';
-      });
-    }
-  });
-
-  // Helper to get and validate single input value
-  function Business_GetInput(inputId, errorMessage) {
-      const inputElement = document.getElementById(inputId);
-      if (!inputElement) {
-          console.error("Input element not found:", inputId);
-          alert("Input field error. Please check page structure.");
-          return null;
-      }
-      const term = inputElement.value.trim();
-      if (term === "") {
-          alert(errorMessage || "Input field cannot be empty.");
-          return null;
-      }
-      return term;
-  }
-
-  // --- Officer Search Functions ---
-  function Business_SearchOfficerAIHIT() { const term = Business_GetInput('officerNameInput', 'Officer Name is required.'); if(term) window.open('https://www.aihitdata.com/search/companies?t=' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchFCAOfficer() { const term = Business_GetInput('officerNameInput', 'Officer Name is required.'); if(term) window.open('https://www.fca.org.uk/search-results?search_term=' + encodeURIComponent(term), '_blank');}
-  function Business_SearchOfficerFOIA() { const term = Business_GetInput('officerNameInput', 'Officer Name is required.'); if(term) window.open('https://search.foia.gov/search?affiliate=foia.gov&query=' + encodeURIComponent(term), '_blank'); }
-  function Business_OpenInfobelOfficer() { window.open('https://www.infobel.com/', '_blank'); }
-  function Business_OpenIOSCOAlertsOfficer() { window.open('https://www.iosco.org/investor_protection/?subsection=investor_alerts_portal', '_blank'); }
-  function Business_SearchOfficerJudyRecords() { const term = Business_GetInput('officerNameInput', 'Officer Name is required.'); if(term) window.open('https://www.judyrecords.com/getSearchResults/?search=' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchOfficerLittleSis() { const term = Business_GetInput('officerNameInput', 'Officer Name is required.'); if(term) window.open('https://littlesis.org/search?q=' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchOfficerMoneyLine() { const term = Business_GetInput('officerNameInput', 'Officer Name is required.'); if(term) window.open('http://politicalmoneyline.com/tr/tr_MG_IndivDonor.aspx?sMP=1&sText=' + encodeURIComponent(term) + '&sCycle=2020', '_blank'); }
-  function Business_SearchOfficerMuckrockFOIA() { const term = Business_GetInput('officerNameInput', 'Officer Name is required.'); if(term) window.open('https://www.muckrock.com/foi/list/?q=' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchNigeria24Officer() { const term = Business_GetInput('officerNameInput', 'Officer Name is required.'); if(term) window.open('https://nigeria24.me/search/' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchOCCRPalephOfficer() { const term = Business_GetInput('officerNameInput', 'Officer Name is required.'); if(term) window.open('https://aleph.occrp.org/search?limit=30&q=' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchOFACRecentActionsOfficer() { const term = Business_GetInput('officerNameInput', 'Officer Name is required.'); if(term) window.open('https://ofac.treasury.gov/recent-actions?search_api_fulltext=' + encodeURIComponent(term) + '&ra-start-date=&ra-end-date=&ra_year=', '_blank');}
-  function Business_SearchOfficerOpenCorporates() { const term = Business_GetInput('officerNameInput', 'Officer Name is required.'); if(term) window.open('https://opencorporates.com/officers?q=' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchOpenSanctionsOfficer() { const term = Business_GetInput('officerNameInput', 'Officer Name is required.'); if(term) window.open('https://www.opensanctions.org/search/?q=' + encodeURIComponent(term), '_blank');}
-  function Business_SearchOfficerOpenSecrets() { const term = Business_GetInput('officerNameInput', 'Officer Name is required.'); if(term) window.open('https://www.opensecrets.org/search?q=' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchOfficerPacer() { const term = Business_GetInput('officerNameInput', 'Officer Name is required.'); if(term) window.open('https://search.uscourts.gov/search?affiliate=uscourts_pacer&locale=en&query=' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchOfficerRecap() { const term = Business_GetInput('officerNameInput', 'Officer Name is required.'); if(term) window.open('https://www.courtlistener.com/?type=r&q=' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchSRA_UK() { const term = Business_GetInput('officerNameInput', 'Officer Name or Solicitor Firm is required.'); if(term) window.open('https://www.sra.org.uk/search-results/?searchText=' + encodeURIComponent(term), '_blank');}
-  function Business_SearchOfficerTrellis() { const term = Business_GetInput('officerNameInput', 'Officer Name is required.'); if(term) window.open('https://trellis.law/rulings/"' + encodeURIComponent(term) + '"?state=az&state=ca&state=ct&state=de&state=fl&state=ga&state=il&state=ma&state=nv&state=nj&state=ny&state=oh&state=pa&state=ri&state=tx&state=wa', '_blank'); }
-  function Business_SearchOfficerUniCourt() { const term = Business_GetInput('officerNameInput', 'Officer Name is required.'); if(term) window.open('https://www.google.com/search?q=site:unicourt.com+' + encodeURIComponent(term), '_blank'); }
-  
-  function Business_SearchOpenPayrolls() {
-    const firstNameValue = document.getElementById('officerSearchFirstName').value.trim();
-    const lastNameValue = document.getElementById('officerSearchLastName').value.trim();
-    if (firstNameValue === "" || lastNameValue === "") {
-        alert("First Name and Last Name are required for Open Payrolls search.");
-        return;
-    }
-    window.open('https://openpayrolls.com/search/' + encodeURIComponent(firstNameValue) + '-' + encodeURIComponent(lastNameValue), '_blank');
-  }
-  function Business_SearchVoterRecords() {
-    const firstNameValue = document.getElementById('officerSearchFirstName').value.trim();
-    const lastNameValue = document.getElementById('officerSearchLastName').value.trim();
-    if (firstNameValue === "" || lastNameValue === "") {
-        alert("First Name and Last Name are required for Voter Records search.");
-        return;
-    }
-    window.open('https://voterrecords.com/voters/' + encodeURIComponent(firstNameValue) + '-' + encodeURIComponent(lastNameValue), '_blank');
-  }
-
-  // --- Company Search Functions ---
-  function Business_SearchASA() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://www.asa.org.uk/search.html?q=' + encodeURIComponent(term), '_blank');}
-  function Business_SearchCompanyAIHIT() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://www.aihitdata.com/search/companies?c=' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchB2BHint() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://b2bhint.com/en/search?type=companies&country=&q=' + encodeURIComponent(term), '_blank');}
-  function Business_OpenCACNigeria() { window.open('https://search.cac.gov.ng/home', '_blank');}
-  function Business_SearchCensysCertificates() { const term = Business_GetInput('companyNameInput', 'Company Name or Domain is required.'); if(term) window.open('https://search.censys.io/search?resource=certificates&sort=RELEVANCE&per_page=25&virtual_hosts=EXCLUDE&q=' + encodeURIComponent(term), '_blank');}
-  function Business_OpenClarifiedBy() { window.open('https://clarifiedby.diligenciagroup.com/', '_blank');}
-  function Business_SearchCompaniesHouseUK() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://find-and-update.company-information.service.gov.uk/search?q=' + encodeURIComponent(term), '_blank');}
-  function Business_OpenCrunchbaseSearch() { window.open('https://www.crunchbase.com/search/organization.companies', '_blank');}
-  function Business_OpenEJusticePortal() { window.open('https://e-justice.europa.eu/content_find_a_company-489-en.do?clang=en', '_blank');}
-  function Business_SearchFCACompany() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://www.fca.org.uk/search-results?search_term=' + encodeURIComponent(term), '_blank');}
-  function Business_SearchCompanyFOIA() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://search.foia.gov/search?affiliate=foia.gov&query=' + encodeURIComponent(term), '_blank'); }
-  function Business_OpenInfobelCompany() { window.open('https://www.infobel.com/', '_blank');}
-  function Business_OpenIOSCOAlertsCompany() { window.open('https://www.iosco.org/investor_protection/?subsection=investor_alerts_portal', '_blank');}
-  function Business_SearchCompanyJudyRecords() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://www.judyrecords.com/getSearchResults/?search=' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchCompanyLittleSis() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://littlesis.org/search?q=' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchCompanyMuckrockFOIA() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://www.muckrock.com/foi/list/?q=' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchNGCheck() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://ng-check.com/?query=' + encodeURIComponent(term), '_blank');}
-  function Business_SearchNigeria24Company() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://nigeria24.me/search/' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchOCCRPalephCompany() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://aleph.occrp.org/search?limit=30&q=' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchOFACRecentActionsCompany() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://ofac.treasury.gov/recent-actions?search_api_fulltext=' + encodeURIComponent(term) + '&ra-start-date=&ra-end-date=&ra_year=', '_blank');}
-  function Business_SearchCompanyOpenCorporates() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://opencorporates.com/companies?q=' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchOpenCorporatesAlbania() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://opencorporates.al/sq/search?name=' + encodeURIComponent(term), '_blank');}
-  function Business_SearchOpenSanctionsCompany() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://www.opensanctions.org/search/?q=' + encodeURIComponent(term), '_blank');}
-  function Business_SearchCompanyPacer() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://search.uscourts.gov/search?affiliate=uscourts_pacer&locale=en&query=' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchCompanyRecap() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://www.courtlistener.com/?type=r&q=' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchCompanyTrellis() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://trellis.law/rulings/"' + encodeURIComponent(term) + '"?state=az&state=ca&state=ct&state=de&state=fl&state=ga&state=il&state=ma&state=nv&state=nj&state=ny&state=oh&state=pa&state=ri&state=tx&state=wa', '_blank'); }
-  function Business_SearchUDRP() { const term = Business_GetInput('companyNameInput', 'Company Name or Domain is required.'); if(term) window.open('https://www.udrpsearch.com/search?query=' + encodeURIComponent(term), '_blank');}
-  function Business_SearchCompanyUniCourt() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://www.google.com/search?q=site:unicourt.com+' + encodeURIComponent(term), '_blank'); }
-  function Business_SearchWIPO_Google() { const term = Business_GetInput('companyNameInput', 'Company Name or Trademark is required.'); if(term) window.open('https://www.google.com/search?q=site:https://www.wipo.int/ AND %22' + encodeURIComponent(term) + '%22', '_blank');}
-  function Business_SearchZaubaCorp() { const term = Business_GetInput('companyNameInput', 'Company Name is required.'); if(term) window.open('https://www.zaubacorp.com/companysearchresults/' + encodeURIComponent(term), '_blank');}
-
-  // Company Contact Info & SSDI (using values from their specific forms)
-  function Business_SearchAIHITCompanyEmail(emailValue) {
-    const term = emailValue.trim();
-    if (term === "") {
-        alert("Email Address is required for AIHIT (Email) search.");
-        return;
-    }
-    window.open('https://www.aihitdata.com/search/companies?k=' + encodeURIComponent(term), '_blank');
-  }
-  function Business_SearchAIHITCompanyPhone(phoneValue) {
-    const term = phoneValue.trim();
-    if (term === "") {
-        alert("Telephone Number is required for AIHIT (Phone) search.");
-        return;
-    }
-    window.open('https://www.aihitdata.com/search/companies?k=' + encodeURIComponent(term), '_blank');
-  }
-  function Business_SearchSSDIByCompanyContext(ssnValue) { 
-    const term = ssnValue.trim();
-    if (term === "") {
-        alert("SSN is required for SSDI search.");
-        return;
-    }
-    window.open('https://www.genealogybank.com/explore/ssdi/all?fname=&minit=&lname=&kwinc=&kwexc=&birthy_0=&birthy_1=&deathy_0=&deathy_1=&ssnum=' + encodeURIComponent(term), '_blank');
-  }
-</script>
-    
 <footer>
-<<<<<<< HEAD
-  <p>Exploratores 2.5 prototype <a href="license.html">License</a></p>
-=======
-  <p>Exploratores 2.5 • Prototype <a href="license.html">License</a></p>
->>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
+  <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
 </footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/menu/navigation.js"></script>
+
+<script>
+  function updatePageState() {
+    // Group 1: Officer Name
+    const officerNameValid = ExploratoresValidators.getAndValidateOfficerName();
+    document.querySelectorAll('#grid-pcr-officers .button').forEach(button => {
+        const config = SearchLibrary[button.dataset.searchId] || {};
+        const isEnabled = officerNameValid || config.no_input;
+        button.disabled = !isEnabled;
+        button.classList.toggle('text-active', isEnabled);
+    });
+
+    // Group 2: US Officer Name
+    const usOfficerNameValid = ExploratoresValidators.getAndValidateUsOfficerName();
+    document.querySelectorAll('#grid-pcr-usofficers .button').forEach(button => {
+        button.disabled = !usOfficerNameValid;
+        button.classList.toggle('text-active', !!usOfficerNameValid);
+    });
+
+    // Group 3: Company Name
+    const companyNameValid = ExploratoresValidators.getAndValidateCompanyName();
+    document.querySelectorAll('#grid-pcr-companies .button').forEach(button => {
+        const config = SearchLibrary[button.dataset.searchId] || {};
+        const isEnabled = companyNameValid || config.no_input;
+        button.disabled = !isEnabled;
+        button.classList.toggle('text-active', isEnabled);
+    });
+
+    // Group 4: Company Email
+    const companyEmailValid = ExploratoresValidators.getAndValidateCompanyEmail();
+    document.querySelectorAll('#grid-pcr-contact-email .button').forEach(button => {
+        button.disabled = !companyEmailValid;
+        button.classList.toggle('text-active', !!companyEmailValid);
+    });
+
+    // Group 5: Company Phone
+    const companyPhoneValid = ExploratoresValidators.getAndValidateCompanyPhone();
+    document.querySelectorAll('#grid-pcr-contact-phone .button').forEach(button => {
+        button.disabled = !companyPhoneValid;
+        button.classList.toggle('text-active', !!companyPhoneValid);
+    });
+    
+    // Group 6: SSDI
+    const ssnValid = ExploratoresValidators.getAndValidateSsn();
+    document.querySelectorAll('#grid-pcr-ssdi .button').forEach(button => {
+        button.disabled = !ssnValid;
+        button.classList.toggle('text-active', !!ssnValid);
+    });
+  }
+
+  function setInitialPageState() {
+    const inputs = [
+        'officerNameInput', 'officerSearchFirstName', 'officerSearchLastName',
+        'companyNameInput', 'companyEmailInput', 'companyPhoneInput', 'ssnInput'
+    ];
+    inputs.forEach(id => {
+        const inputElement = document.getElementById(id);
+        if (inputElement) {
+            inputElement.addEventListener('input', updatePageState);
+        }
+    });
+    updatePageState();
+  }
+
+  document.addEventListener('DOMContentLoaded', setInitialPageState);
+</script>
 
 <script src="../assets/js/config.js"></script>
 <script>

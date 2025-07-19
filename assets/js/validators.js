@@ -90,5 +90,36 @@ const ExploratoresValidators = {
             dt_enum_generic: `e${nationalNum}`,
             dt_num_generic: nationalNum
         };
-    }
+    },
+getAndValidateOfficerName: function(config) {
+    const officerName = document.getElementById('officerNameInput')?.value.trim();
+    if (!officerName) return null;
+    return { officername: officerName };
+},
+getAndValidateUsOfficerName: function(config) {
+    const firstName = document.getElementById('officerSearchFirstName')?.value.trim();
+    const lastName = document.getElementById('officerSearchLastName')?.value.trim();
+    if (!firstName || !lastName) return null;
+    return { firstname: firstName, lastname: lastName };
+},
+getAndValidateCompanyName: function(config) {
+    const companyName = document.getElementById('companyNameInput')?.value.trim();
+    if (!companyName) return null;
+    return { companyname: companyName };
+},
+getAndValidateCompanyEmail: function(config) {
+    const email = document.getElementById('companyEmailInput')?.value.trim();
+    if (!email) return null;
+    return { email: email };
+},
+getAndValidateCompanyPhone: function(config) {
+    const phone = document.getElementById('companyPhoneInput')?.value.trim();
+    if (!phone) return null;
+    return { phone: phone };
+},
+getAndValidateSsn: function(config) {
+    const ssn = document.getElementById('ssnInput')?.value.trim();
+    if (!ssn) return null;
+    return { ssn: ssn };
+}
 };
