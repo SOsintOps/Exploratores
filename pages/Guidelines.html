@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Guidelines • Exploratores</title>
-  <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap)" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
@@ -13,61 +13,11 @@
 <div id="navbar-placeholder"></div>
 
 <main>
-  <h1 class="page-title">Project Guidelines</h1>
+  <h1 class="page-title">Intelligence Analysis Guidelines</h1>
   
   <section>
-    <h2>Exploratores Toolkit: User Guide</h2>
-    <p><strong>Welcome to Exploratores</strong>, an OSINT toolkit developed to support the Osint Team's investigations by providing a curated collection of direct search links and resources.</p>
-    
-    <h3>Getting Started</h3>
-    <p>To effectively utilize the Exploratores toolkit, please consider the following:</p>
-    <ul>
-      <li><strong>Prerequisites:</strong> For optimal functionality and access to certain resources, ensure you have Tor Browser installed and an active VPN connection. Investigative accounts for various platforms (e.g., Facebook, LinkedIn, Twitter/X) are necessary for many social media and people search tools.</li>
-      <li><strong>Ethical Use:</strong> All tools and resources within Exploratores must be used in accordance with applicable laws, regulations, and your company policies. Conduct all activities with the highest ethical standards.</li>
-    </ul>
-
-    <h3>How to Use Exploratores</h3>
-    <ul>
-      <li><strong>Navigate:</strong> Use the top navigation menu to explore thematic investigative areas.</li>
-      <li><strong>Input Data:</strong> On each tool page, enter your specific queries into the appropriate input fields.</li>
-      <li><strong>Select Tools:</strong> Click the buttons to query external resources. Searches will open in new browser tabs.</li>
-      <li><strong>Analyze & Correlate:</strong> Information obtained requires careful analysis, correlation, and critical verification.</li>
-      <li><strong>OPSEC (Operational Security):</strong> Always apply sound OPSEC precautions during your investigative activities.</li>
-    </ul>
-
-    <h3>Overview of Tool Categories</h3>
-    <p>The toolkit is organized into several key investigative areas. To add or customise any page, please refer to the <a href="customise.html">"Customising Exploratores Pages"</a> page.</p>
-
-    <div class="note">
-      <strong>NOTE:</strong> Information sources and online tools can change frequently. If a particular link or tool is broken or outdated, refer to internal documentation or team resources for alternatives.
-    </div>
-  </section>
-
-  <section>
-    <h2 id="s-developer-guidelines">Developer Guidelines</h2>
-    <p>This section outlines the technical standards for maintaining and extending the Exploratores toolkit.</p>
-    <ul>
-      <li><strong>Separation of Concerns:</strong> The project strictly separates structure (HTML), presentation (CSS), and logic (JavaScript). No inline styles or scripts are permitted in HTML files.</li>
-      <li><strong>JavaScript Architecture:</strong> All pages must adhere to the central, data-driven architecture powered by `main.js`, `validators.js`, and `search-library.js`.</li>
-      <li><strong>File Naming:</strong> All HTML files must use lowercase names (e.g., `new_page.html`).</li>
-      <li><strong>ID & Data Attribute Conventions:</strong>
-          <ul>
-              <li>Element `id` attributes must follow the `[type]-[page]-[name]` format (e.g., `btn-names-us-fastpeople`).</li>
-              <li>`data-search-id` attributes must follow the `[page]-[name]` format and match a key in `search-library.js`.</li>
-          </ul>
-      </li>
-      <li><strong>Contribution Workflow:</strong> All new features or pages must be developed in separate branches and submitted for review, ensuring they adhere to all established guidelines.</li>
-      <li><strong>Code Commenting:</strong> Do not add explanatory comments to the code. All explanations must be provided in documentation or commit messages.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Global Security Analytic Standards: THE DRAFT FRAMEWORK</h2>
-    <div class="note">
-        <strong>Important Disclaimer:</strong> The following standards are for internal Osint Team reference and are intended to complement, not replace, any company policies. In case of any conflict, company documentation takes precedence.
-    </div>
-
-    <p><strong>Bottom Line Up Front (BLUF):</strong> Adherence to the five Core Analytic Standards and nine Analytic Tradecraft Standards outlined below is mandatory for all Global Security intelligence products.</p>
+    <h2>Core Analytic Standards</h2>
+    <p>Adherence to the five Core Analytic Standards is mandatory for all intelligence products. These standards ensure the rigor and integrity of the analysis.</p>
     
     <h3>The Five Analytic Standards</h3>
     <p><strong>Objective:</strong> Analysts must perform their functions with objectivity, be aware of their own assumptions, and employ reasoning techniques to mitigate bias.</p>
@@ -78,8 +28,8 @@
 
     <h3>The Nine Analytic Tradecraft Standards</h3>
     <ol>
-      <li><strong>Properly describes quality and credibility of underlying sources, data, and methodologies.</strong></li>
-      <li><strong>Properly expresses and explains uncertainties associated with major analytic judgments.</strong> For expressions of likelihood, an analytic product must use standardized sets of terms, such as these:</li>
+      <li>Properly describes quality and credibility of underlying sources, data, and methodologies.</li>
+      <li>Properly expresses and explains uncertainties associated with major analytic judgments. For expressions of likelihood, an analytic product must use standardized sets of terms:</li>
     </ol>
     <table class="likelihood-table">
       <thead>
@@ -115,14 +65,109 @@
       </tbody>
     </table>
     <ol start="3">
-      <li><strong>Properly distinguishes between underlying intelligence information and analysts’ assumptions and judgments.</strong></li>
-      <li><strong>Incorporates analysis of alternatives</strong> by systematically evaluating differing hypotheses.</li>
-      <li><strong>Demonstrates stakeholder relevance and addresses implications</strong> for action.</li>
-      <li><strong>Uses clear and logical argumentation</strong> with a clear main message supported by coherent reasoning.</li>
-      <li><strong>Explicitly explains change to or consistency of analytic judgments</strong> compared to previous analysis.</li>
-      <li><strong>Makes accurate judgments and assessments</strong> based on available information and known gaps.</li>
-      <li><strong>Incorporates effective visual information where appropriate</strong> to clarify the analytic message.</li>
+      <li>Properly distinguishes between underlying intelligence information and analysts’ assumptions and judgments.</li>
+      <li>Incorporates analysis of alternatives by systematically evaluating differing hypotheses.</li>
+      <li>Demonstrates stakeholder relevance and addresses implications for action.</li>
+      <li>Uses clear and logical argumentation with a clear main message supported by coherent reasoning.</li>
+      <li>Explicitly explains change to or consistency of analytic judgments compared to previous analysis.</li>
+      <li>Makes accurate judgments and assessments based on available information and known gaps.</li>
+      <li>Incorporates effective visual information where appropriate to clarify the analytic message.</li>
     </ol>
+  </section>
+
+  <section>
+    <h2>The 5W1H Analytical Framework</h2>
+    <p>The 5W1H framework (Who, What, When, Where, Why, How) is a cognitive tool that imposes order on chaotic data streams, enhances analytical clarity, and provides a structured pathway for transforming raw open-source information into finished, actionable intelligence. It serves as a bulwark against common analytical pitfalls and cognitive biases, such as confirmation bias and tunnel vision.</p>
+
+    <h3>The Six Components</h3>
+    
+    <h4>Who: Identifying Actors and Networks</h4>
+    <p>This component focuses on identifying all individuals, companies, or entities connected to the investigation. It moves beyond simple identification to focus on the relationships, motivations, and structures of the individuals and groups involved.</p>
+    <ul>
+        <li><strong>Guiding Question:</strong> Who are the primary and secondary actors (individuals, groups, organizations)?</li>
+        <li><strong>Guiding Question:</strong> Who are the key nodes and influencers within the network?</li>
+        <li><strong>Guiding Question:</strong> Who provides financial, logistical, or ideological support?</li>
+    </ul>
+
+    <h4>What: Defining the Event and Assets</h4>
+    <p>This element involves understanding the core incident or event and setting the focus of the investigation. It seeks to clearly define the nature of the event, action, or capability being investigated.</p>
+    <ul>
+        <li><strong>Guiding Question:</strong> What specific event or activity is under investigation?</li>
+        <li><strong>Guiding Question:</strong> What capabilities or TTPs (Tactics, Techniques, and Procedures) were demonstrated?</li>
+        <li><strong>Guiding Question:</strong> What specific vulnerability was exploited?</li>
+    </ul>
+
+    <h4>When: Establishing the Temporal Dimension</h4>
+    <p>This dimension addresses timeline matters and temporal context. It is the foundation of timeline analysis, placing events in a chronological context to reveal patterns, triggers, and sequences.</p>
+    <ul>
+        <li><strong>Guiding Question:</strong> What is the precise start and end date/time of the event?</li>
+        <li><strong>Guiding Question:</strong> What is the full timeline of significant actions?</li>
+        <li><strong>GuД­Guiding Question:</strong> Is there a discernible pattern related to time-of-day, day-of-week, or season?</li>
+    </ul>
+
+    <h4>Where: Pinpointing Location and Jurisdiction</h4>
+    <p>This component encompasses both physical and digital locations relevant to the investigation. It is crucial for understanding the operational environment and applicable constraints.</p>
+    <ul>
+        <li><strong>Guiding Question:</strong> Where is the physical location (country, city, address, coordinates)?</li>
+        <li><strong>Guiding Question:</strong> Where is the digital location (website, IP address, social platform, forum)?</li>
+        <li><strong>Guiding Question:</strong> What legal or administrative jurisdictions apply to the location?</li>
+    </ul>
+
+    <h4>Why: Assessing Intent and Motivation</h4>
+    <p>This is often the most critical and challenging question, as it seeks to uncover the underlying purpose or motive behind an action. Answering "Why" is essential for assessing threats and predicting future behavior.</p>
+    <ul>
+        <li><strong>Guiding Question:</strong> What is the stated or inferred motive (e.g., financial, political, ideological, personal)?</li>
+        <li><strong>Guiding Question:</strong> Why was this specific target, timing, or method chosen over others?</li>
+        <li><strong>Guiding Question:</strong> What is the root cause of the problem or event?</li>
+    </ul>
+
+    <h4>How: Detailing the Modus Operandi</h4>
+    <p>This question focuses on the operational mechanics—the methods, tools, and procedures used to carry out an action, often referred to as Tactics, Techniques, and Procedures (TTPs).</p>
+    <ul>
+        <li><strong>Guiding Question:</strong> How were the actions executed (step-by-step process)?</li>
+        <li><strong>Guiding Question:</strong> What specific tools, software, or hardware were used?</li>
+        <li><strong>Guiding Question:</strong> How was detection avoided or security circumvented?</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Operational Security (OPSEC) Best Practices</h2>
+    <p>Effective OPSEC is not optional. It is a core discipline required to protect yourself, your investigations, and the organization from exposure and adversarial counter-intelligence. Conduct all activities with the highest ethical standards and in accordance with all applicable laws.</p>
+    <ul>
+        <li><strong>Identity Segregation:</strong> Never use personal accounts or equipment for investigative activities. Create and use dedicated, non-attributable online accounts and personas for your work. Do not link these personas to each other or to your real identity.</li>
+        <li><strong>Secure Infrastructure:</strong> Always use a trusted, no-log Virtual Private Network (VPN) to mask your true IP address. For sensitive investigations, conduct your work from within a dedicated Virtual Machine (VM) to sandbox your activities from your host machine. Consider using the Tor Browser for enhanced anonymization.</li>
+        <li><strong>Sterile Browse Environment:</strong> Use a dedicated web browser with separate profiles for each digital persona. Install privacy-enhancing extensions (e.g., ad blockers, script blockers, anti-tracking tools). Regularly clear cookies, cache, and history.</li>
+        <li><strong>Mindful Online Conduct:</strong> Be aware of your digital footprint. Avoid providing unnecessary personal information when registering for services. Use unique, strong passwords and email addresses for each persona. Be cautious about the information you "like," share, or post, as it can be used to profile your persona.</li>
+        <li><strong>Secure Data Handling:</strong> All information collected during an investigation must be stored securely. Use encrypted storage for your case files. Establish a clear data retention and destruction policy to securely delete information that is no longer needed.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Further Reading</h2>
+    <p>For a more in-depth analysis of the methodologies and practices discussed, the following foundational texts are recommended:</p>
+    <ul>
+      <li><strong>"Psychology of Intelligence Analysis"</strong> by Richards J. Heuer Jr. - A crucial text for understanding and mitigating the cognitive biases that affect analytical judgment.</li>
+      <li><strong>"Structured Analytic Techniques for Intelligence Analysis"</strong> by Richards J. Heuer Jr. and Randolph H. Pherson - A reference manual that presents dozens of structured analytical techniques to improve the rigor and quality of analysis.</li>
+      <li><strong>"Open Source Intelligence Techniques"</strong> by Michael Bazzell - A comprehensive, practical guide to the tools and techniques for gathering information from open sources.</li>
+      <li><strong>"Extreme Privacy: What It Takes to Disappear"</strong> by Michael Bazzell - An extensive guide on digital security and maintaining anonymity, which directly supports the OPSEC principles discussed.</li>
+      <li><strong>"Deep Dive: Exploring the Real-World Value of Open Source Intelligence"</strong> by Rae Baker - This book provides real-world case studies demonstrating the practical application and value of OSINT in various sectors.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 id="s-developer-guidelines">Technical & Contribution Guidelines</h2>
+    <p>This section outlines the technical standards for maintaining and extending the Exploratores toolkit.</p>
+    <ul>
+      <li><strong>Separation of Concerns:</strong> The project strictly separates structure (HTML), presentation (CSS), and logic (JavaScript). No inline styles or scripts are permitted in HTML files.</li>
+      <li><strong>JavaScript Architecture:</strong> All pages must adhere to the central, data-driven architecture powered by `main.js`, `validators.js`, and `search-library.js`.</li>
+      <li><strong>File Naming:</strong> All HTML files must use lowercase names (e.g., `new_page.html`).</li>
+      <li><strong>ID & Data Attribute Conventions:</strong>
+          <ul>
+              <li>Element `id` attributes must follow the `[type]-[page]-[name]` format (e.g., `btn-names-us-fastpeople`).</li>
+              <li>`data-search-id` attributes must follow the `[page]-[name]` format and match a key in `search-library.js`.</li>
+          </ul>
+      </li>
+    </ul>
   </section>
 </main>
 

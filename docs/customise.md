@@ -2,13 +2,27 @@
 
 This page serves as the technical documentation for understanding, modifying, and extending the Exploratores toolkit.
 
-## Project Architecture
-
-The toolkit is built on three fundamental principles: a Data-Driven Design, Centralized Logic, and a clear Separation of Concerns.
-
-### Directory and File Structure
-
-The file organization is designed to separate content (HTML pages) from shared resources (assets), ensuring order and ease of maintenance. The definitive structure is documented in the `gemini.md` file.
+<section id="section-architecture">
+    <h2>Project Architecture</h2>
+    <p>The toolkit is built on three fundamental principles: a Data-Driven Design, Centralized Logic, and a clear Separation of Concerns.</p>
+    
+    <h3>Directory and File Structure</h3>
+    <p>The file organization is designed to separate content (HTML pages) from shared resources (assets), ensuring order and ease of maintenance. The definitive structure is documented in the `gemini.md` file.</p>
+    
+    <h3>Technical & Contribution Guidelines</h3>
+    <p>This section outlines the technical standards for maintaining and extending the Exploratores toolkit.</p>
+    <ul>
+        <li><strong>Separation of Concerns:</strong> The project strictly separates structure (HTML), presentation (CSS), and logic (JavaScript). No inline styles or scripts are permitted in HTML files.</li>
+        <li><strong>JavaScript Architecture:</strong> All pages must adhere to the central, data-driven architecture powered by `main.js`, `validators.js`, and `search-library.js`.</li>
+        <li><strong>File Naming:</strong> All HTML files must use lowercase names (e.g., `new_page.html`).</li>
+        <li><strong>ID & Data Attribute Conventions:</strong>
+            <ul>
+                <li>Element `id` attributes must follow the `[type]-[page]-[name]` format (e.g., `btn-names-us-fastpeople`).</li>
+                <li>`data-search-id` attributes must follow the `[page]-[name]` format and match a key in `search-library.js`.</li>
+            </ul>
+        </li>
+    </ul>
+</section>
 
 ## The Role of the Main JavaScript Files
 
