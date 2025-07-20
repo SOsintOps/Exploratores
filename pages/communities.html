@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Communities • Exploratores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+</head>
+<body>
+
+<<<<<<< HEAD
+  <!-- NAVBAR -->
+<div id="navbar-placeholder"></div>
+
+<script src="../assets/menu/navigation.js"></script>
+=======
+<nav>
+    <ul class="menu">
+        <li><span>HOME</span>
+            <ul class="submenu">
+                <li><a href="../launchme.html">Index</a></li>
+            </ul>
+        </li>
+        <li><span>Search<br>Engines</span>
+            <ul class="submenu">
+                <li><a href="searchengines.html">Search Engines</a></li>
+            </ul>
+        </li>
+        <li><span>People &<br>Identities</span>
+            <ul class="submenu">
+                <li><a href="names.html">Names</a></li>
+                <li><a href="phoneus.html">US Phones</a></li>
+                <li><a href="phoneint.html">International Phones</a></li>
+                <li><a href="address.html">Addresses</a></li>
+                <li><a href="vehicles.html">Vehicles</a></li>
+                <li><a href="usernames.html">Usernames</a></li>
+                <li><a href="email.html">Email Addresses</a></li>
+                <li><a href="communities.html" class="active">Communities</a></li>
+            </ul>
+        </li>
+        <li><span>Social<br>Media</span>
+            <ul class="submenu">
+                <li><a href="x.html">X (Twitter)</a></li>
+                <li><a href="facebook.html">Facebook</a></li>
+                <li><a href="instagram.html">Instagram</a></li>
+                <li><a href="linkedin.html">LinkedIn</a></li>
+            </ul>
+        </li>
+        <li><span>Websites</span>
+            <ul class="submenu">
+                <li><a href="domains.html">Domains</a></li>
+                <li><a href="ip.html">IP Addresses</a></li>
+            </ul>
+        </li>
+        <li><span>GeoInt</span>
+            <ul class="submenu">
+                <li><a href="maps.html">Maps</a></li>
+            </ul>
+        </li>
+        <li><span>Media<br>Analysis</span>
+            <ul class="submenu">
+                <li><a href="images.html">Images</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="docs.html">Documents</a></li>
+            </ul>
+        </li>
+        <li><span>Business<br>Intelligence</span>
+            <ul class="submenu">
+                <li><a href="publiccompanyrecords.html">Company Public Records</a></li>
+                <li><a href="currencies.html">Virtual Currencies</a></li>
+            </ul>
+        </li>
+        <li><span>Tools</span>
+            <ul class="submenu">
+                <li><a href="guidelines.html">Guidelines</a></li>
+                <li><a href="cyberchef.html">CyberChef</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
+
+<main>
+    <h1 class="page-title">Communities Tool</h1>
+    <div class="note">
+        For proper function of some features, an active investigative profile may be required on the target platform.
+    </div>
+
+    <div class="columns">
+        <div id="column-communities-left" class="column">
+            <section id="section-communities-reddit" class="search-instructions">
+                <h2>Reddit</h2>
+                <label for="input-communities-redditTerm">Search Term</label>
+                <div class="input-container">
+                    <input type="text" id="input-communities-redditTerm" class="input-field" placeholder="Enter search term..." data-input-group="redditTerm" autocomplete="off">
+                </div>
+                <div id="feedback-communities-redditTerm" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="communities-reddit-keyword" data-input-group="redditTerm">Keyword</button>
+                    <button class="button" data-search-id="communities-reddit-title" data-input-group="redditTerm">Title</button>
+                    <button class="button" data-search-id="communities-reddit-pullpush-asc" data-input-group="redditTerm">PullPush Asc</button>
+                    <button class="button" data-search-id="communities-reddit-pullpush-desc" data-input-group="redditTerm">PullPush Desc</button>
+                </div>
+                <hr>
+                <label for="input-communities-redditUser">Username</label>
+                <div class="input-container">
+                    <input type="text" id="input-communities-redditUser" class="input-field" placeholder="Enter username..." data-input-group="redditUser" autocomplete="off">
+                </div>
+                <div id="feedback-communities-redditUser" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="communities-reddit-profile" data-input-group="redditUser">Profile</button>
+                    <button class="button" data-search-id="communities-reddit-submissions" data-input-group="redditUser">Submissions</button>
+                    <button class="button" data-search-id="communities-reddit-comments" data-input-group="redditUser">Comments</button>
+                    <button class="button" data-search-id="communities-reddit-archive" data-input-group="redditUser">Archive</button>
+                    <button class="button" data-search-id="communities-reddit-api-asc" data-input-group="redditUser">API Asc</button>
+                    <button class="button" data-search-id="communities-reddit-api-desc" data-input-group="redditUser">API Desc</button>
+                </div>
+            </section>
+
+            <section id="section-communities-hackernews" class="search-instructions">
+                <h2>Hacker News</h2>
+                <label for="input-communities-hnTerm">Search Term</label>
+                <div class="input-container">
+                    <input type="text" id="input-communities-hnTerm" class="input-field" placeholder="Enter search term..." data-input-group="hnTerm" autocomplete="off">
+                </div>
+                <div id="feedback-communities-hnTerm" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="communities-hn-search" data-input-group="hnTerm">Search</button>
+                    <button class="button" data-search-id="communities-hn-google" data-input-group="hnTerm">Google Site</button>
+                </div>
+                <hr>
+                <label for="input-communities-hnUser">Username</label>
+                <div class="input-container">
+                    <input type="text" id="input-communities-hnUser" class="input-field" placeholder="Enter username..." data-input-group="hnUser" autocomplete="off">
+                </div>
+                <div id="feedback-communities-hnUser" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="communities-hn-profile" data-input-group="hnUser">Profile</button>
+                    <button class="button" data-search-id="communities-hn-submissions" data-input-group="hnUser">Submissions</button>
+                    <button class="button" data-search-id="communities-hn-threads" data-input-group="hnUser">Threads</button>
+                    <button class="button" data-search-id="communities-hn-favorites" data-input-group="hnUser">Favorites</button>
+                </div>
+            </section>
+
+            <section id="section-communities-4chan" class="search-instructions">
+                <h2>4chan</h2>
+                <label for="input-communities-4chanTerm">Search Term</label>
+                <div class="input-container">
+                    <input type="text" id="input-communities-4chanTerm" class="input-field" placeholder="Enter search term..." data-input-group="4chanTerm" autocomplete="off">
+                </div>
+                <div id="feedback-communities-4chanTerm" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="communities-4chan-boards" data-input-group="4chanTerm">Boards</button>
+                    <button class="button" data-search-id="communities-4chan-threads" data-input-group="4chanTerm">Threads</button>
+                    <button class="button" data-search-id="communities-4chan-archive" data-input-group="4chanTerm">Archive</button>
+                    <button class="button" data-search-id="communities-4chan-google" data-input-group="4chanTerm">Google</button>
+                </div>
+            </section>
+        </div>
+
+        <div id="column-communities-right" class="column">
+            <section id="section-communities-discord" class="search-instructions">
+                <h2>Discord</h2>
+                <label for="input-communities-discordTerm">Server Name/ID</label>
+                <div class="input-container">
+                    <input type="text" id="input-communities-discordTerm" class="input-field" placeholder="Enter server name or ID..." data-input-group="discordTerm" autocomplete="off">
+                </div>
+                <div id="feedback-communities-discordTerm" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="communities-discord-invite" data-input-group="discordTerm">Invite</button>
+                    <button class="button" data-search-id="communities-discord-disboard" data-input-group="discordTerm">Disboard</button>
+                    <button class="button" data-search-id="communities-discord-me" data-input-group="discordTerm">Discord.me</button>
+                    <button class="button" data-search-id="communities-discord-servers" data-input-group="discordTerm">Servers</button>
+                    <button class="button" data-search-id="communities-discord-bee" data-input-group="discordTerm">Bee</button>
+                    <button class="button" data-search-id="communities-discord-google" data-input-group="discordTerm">Google</button>
+                </div>
+            </section>
+
+            <section id="section-communities-telegram" class="search-instructions">
+                <h2>Telegram</h2>
+                <label for="input-communities-tgUser">User/Channel Name</label>
+                <div class="input-container">
+                    <input type="text" id="input-communities-tgUser" class="input-field" placeholder="Enter user or channel name..." data-input-group="tgUser" autocomplete="off">
+                </div>
+                <div id="feedback-communities-tgUser" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="communities-tg-profile" data-input-group="tgUser">Profile/Channel</button>
+                    <button class="button" data-search-id="communities-tg-preview" data-input-group="tgUser">Channel Preview</button>
+                    <button class="button" data-search-id="communities-tg-telescope" data-input-group="tgUser">Telesco.pe</button>
+                    <button class="button" data-search-id="communities-tg-telemetrio" data-input-group="tgUser">Telemetr.io</button>
+                </div>
+                <hr>
+                <label for="input-communities-tgKey">Keyword</label>
+                <div class="input-container">
+                    <input type="text" id="input-communities-tgKey" class="input-field" placeholder="Enter keyword..." data-input-group="tgKey" autocomplete="off">
+                </div>
+                <div id="feedback-communities-tgKey" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button class="button" data-search-id="communities-tg-groupsearch" data-input-group="tgKey">Group Search</button>
+                    <button class="button" data-search-id="communities-tg-channelsearch" data-input-group="tgKey">Channel Search</button>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+
+<<<<<<< HEAD
+  <footer>
+    Exploratores 2.5 prototype
+    <a href="license.html">License</a>
+  </footer>
+=======
+<footer>
+    <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
+</footer>
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
+
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/externaeven.js"></script>
+<script>
+    // --- UI Update Function ---
+    function updatePageState() {
+        const inputs = document.querySelectorAll('input[data-input-group]');
+
+        inputs.forEach(input => {
+            const groupName = input.dataset.inputGroup;
+            const feedbackDiv = document.getElementById(`feedback-communities-${groupName}`);
+            const buttons = document.querySelectorAll(`button[data-input-group="${groupName}"]`);
+            
+            // Use the global validator, passing the specific input's ID
+            const isValid = ExploratoresValidators.getAndValidateSingleInput(input.id) !== null;
+
+            if (feedbackDiv) {
+                feedbackDiv.textContent = isValid ? 'Ready.' : 'Requires input.';
+                feedbackDiv.className = isValid ? 'feedback-message ready' : 'feedback-message';
+            }
+
+            buttons.forEach(button => {
+                button.disabled = !isValid;
+                button.classList.toggle('text-active', isValid);
+            });
+        });
+    }
+
+    // --- Initial Page State Function ---
+    function setInitialPageState() {
+        document.querySelectorAll('.input-field').forEach(input => input.value = '');
+        updatePageState();
+    }
+
+    // --- Event Listeners ---
+    document.addEventListener('DOMContentLoaded', () => {
+        setInitialPageState();
+        document.querySelectorAll('input[data-input-group]').forEach(input => {
+            input.addEventListener('input', updatePageState);
+        });
+    });
+</script>
+
+</body>
+</html>

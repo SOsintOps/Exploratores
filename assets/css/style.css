@@ -1,0 +1,641 @@
+/* CSS Custom Properties (Variables) for site-wide theming */
+:root {
+  --primary-color: #0066ff;
+  --secondary-color: #333; /* Default text color */
+  --neutral-color: #888;
+  --bg-color: #f9f9f9;
+}
+
+/* Basic CSS Reset for all elements */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Default body styling */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--secondary-color); /* Default text color for the body */
+  padding-top: 60px;     /* Space for fixed navbar */
+  padding-bottom: 60px; /* Space for fixed footer */
+  margin: 0;
+}
+
+/* Styling for code example blocks (used in customise.html) */
+pre.code-guide-block {
+  background-color: #f4f4f8; /* A slightly different background color for highlighting */
+  padding: 1em;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow-x: auto; /* Necessary if the code is wider than the container */
+}
+
+/* Styling for inline code within code example blocks */
+pre.code-guide-block code {
+  font-family: 'Courier New', Courier, monospace; /* Or another monospace font of your choice */
+  font-size: 1.1em; /* Makes the font slightly larger */
+  line-height: 1.6; /* Improves readability */
+  color: #2c3e50; /* A dark color for the code text */
+}
+
+/* Styling for inline validation feedback messages */
+.feedback-message {
+  min-height: 1.2em; /* Prevents layout shifts when message appears/disappears */
+  font-size: 0.9em;
+  margin-top: 0.5rem;
+  font-style: italic;
+  margin-bottom: 1rem; 
+}
+.feedback-error {
+  color: #d9534f; /* A standard red for errors */
+  font-weight: bold;
+}
+.feedback-info {
+  color: #5cb85c; /* A standard green for success/info */
+}
+.feedback-message.ready {
+    color: #5cb85c; /* A standard green for success/info */
+    font-weight: bold;
+}
+/* TYPOGRAPHY */
+/* General heading styles */
+h1 {
+  text-align: center;
+  margin: 16px 0;
+  font-size: 2rem;
+}
+
+h2 {
+  margin: 16px 0;
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+h3 {
+  margin: 16px 0;
+  font-size: 1.1rem;
+}
+
+.search-instructions-minimal {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 0; /* Removes the base class border-radius */
+  margin-bottom: 0;
+}
+
+/* Styling for the CyberChef iframe container */
+.cyberchef-iframe {
+  width: 100%;
+  height: 80vh; 
+  border: none;
+}
+
+/* Specific styling for main page titles (typically H1) */
+.page-title { 
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+/* Utility class for centering text */
+.center-text {
+  text-align: center;
+}
+
+/* LIST STYLING for content lists within the <main> element */
+main ul,
+main ol {
+  list-style-position: outside; 
+  padding-left: 20px;
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+main ul {
+  list-style-type: disc;
+}
+
+main ol {
+  list-style-type: decimal;
+}
+
+main ul li, 
+main ol li {
+  margin-bottom: 0.5em;
+  line-height: 1.6;
+}
+
+/* Removes extra bottom margin from the last list item in main content lists */
+main ul li:last-child,
+main ol li:last-child {
+  margin-bottom: 0;
+}
+
+
+/* NAVBAR */
+/* Main navigation bar container */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff; /* White background for navbar */
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Main menu list container */
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  justify-content: space-around;
+}
+
+/* Individual main menu items (<li>) */
+.menu > li {
+  position: relative;
+  height: 60px;
+  flex: 1 1 auto;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.85rem;
+  border-right: 1px solid #eee;
+  transition: background-color 0.2s ease-in, color 0.2s ease-in;
+}
+
+/* Removes border from the last main menu item */
+.menu > li:last-child {
+  border-right: none;
+}
+
+/* Styling for text/links (<a> or <span>) within main menu items */
+.menu > li a,
+.menu > li span {
+  display: block;
+  line-height: 1.2;
+  text-decoration: none; /* Remove underline from links */
+  color: var(--secondary-color); /* Default text color for menu items */
+  transition: color 0.2s ease-in;
+}
+
+/* Style for the active main menu link */
+.menu > li a.active {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* Hover state for the entire main menu item (<li>) */
+.menu > li:hover {
+  background-color: var(--primary-color);
+}
+
+/* Text of links and spans within .menu > li becomes white on <li> hover */
+.menu > li:hover > a,
+.menu > li:hover > span {
+  color: #fff;
+}
+
+/* SUBMENU */
+/* Submenu container styling (hidden by default) */
+.submenu {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ddd;
+  min-width: 200px;
+  z-index: 999;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Individual submenu items (<li>) */
+.submenu li {
+  padding: 0.5rem 1rem;
+  margin-bottom: 0;
+  line-height: 1.4;
+  border-bottom: 1px solid #eee;
+}
+
+/* Removes border from the last submenu item */
+.submenu li:last-child {
+  border-bottom: none;
+}
+
+/* Submenu links (<a>) styling */
+.submenu li a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  display: block;
+  transition: color 0.2s;
+}
+
+/* Hover state for individual submenu items (<li>) */
+.submenu li:hover {
+  background-color: var(--primary-color);
+}
+
+/* Submenu link (<a>) text color on <li> hover */
+.submenu li:hover a {
+  color: #ffffff;
+}
+
+/* Shows the submenu when the parent main menu item (<li>) is hovered */
+.menu > li:hover > .submenu {
+  display: block;
+}
+
+
+/* MAIN CONTENT */
+/* Styling for the main content container of each page */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+}
+
+
+/* SEARCH/INDEX CONTENT & INPUT CONTAINERS */
+/* Styling for instructional sections, often containing input fields */
+.search-instructions {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #f0f0f0; 
+    border: 1px solid #1a1a1a;   
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
+}
+
+/* Styling for labels within search-instructions sections */
+.search-instructions label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Container for multiple input fields, allows wrapping */
+.input-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Container for a single input field and a button on the same line */
+.input-button-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem; 
+}
+
+/* General styling for text input fields */
+.input-field { 
+  flex: 1;
+  min-width: 200px;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Specific behavior for .input-field within .input-button-line */
+.input-button-line .input-field {
+  flex-grow: 1;
+}
+
+
+/* COLUMN LAYOUT */
+/* Container for a two-column layout */
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Individual column styling */
+.column {
+  flex: 1;
+  min-width: 300px;
+  background-color: #fafafa;
+  padding: 1rem;
+  border: 1px solid #eee;
+  border-radius: 4px;
+}
+
+/* Grid layout for arranging forms (or other items) in typically 3 columns */
+.form-row-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem; 
+  margin-bottom: 1rem;
+}
+
+.form-row-grid > form {
+  /* Optional styling for forms within grid */
+}
+
+
+/* BUTTONS */
+/* Base style for all buttons */
+.button {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 3px;
+  text-align: center;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  color: var(--secondary-color);
+}
+
+/* Hover state for buttons */
+.button:hover {
+  background-color: var(--primary-color);
+  color: #FFFFFF;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/*
+ * 1. Styling for active (enabled) buttons - STATIC STATE
+ * Sets only the text color to primary, background remains default.
+*/
+.button.text-active {
+  color: var(--primary-color);
+  font-weight: bold;
+  /* NON impostiamo qui il colore di sfondo */
+}
+
+/*
+ * 2. Fix for text readability on ACTIVE + HOVER state
+ * This rule ensures the text becomes white when an active button is hovered.
+*/
+.button.text-active:hover {
+  color: #FFFFFF;
+}
+
+/* Buttons within .input-button-line should have automatic width */
+.input-button-line .button {
+  width: auto;
+  flex-shrink: 0;
+  min-width: 100px; 
+}
+
+
+/* BUTTON GRID */
+/* Container for a responsive grid of buttons */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Modifier class for a button grid strictly with 3 columns */
+.button-grid-3col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+
+/* NOTE BOX */
+/* Styling for notification/note boxes */
+.note {
+  font-size: 0.9rem;
+  background-color: #fff9d6;
+  border-left: 3px solid #ffc107;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 3px;
+}
+.note strong {
+  font-weight: bold;
+}
+
+
+/* MISCELLANEOUS STYLES */
+/* Styling for Unix timestamp output (used in Currencies.html) */
+#datetime {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* Container for standards display (for Guidelines.html) */
+.standards-container {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.standards-column {
+  flex: 1;
+  min-width: 300px;
+}
+.standards-list {
+  list-style: disc;
+}
+.standards-list > li {
+  position: relative;
+  cursor: help;
+}
+.standards-list > li .description-text {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #dedede;
+  padding: 12px;
+  margin-top: 6px;
+  width: 95%;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  border-radius: 6px;
+  line-height: 1.5;
+  color: var(--secondary-color);
+  z-index: 10;
+}
+.standards-list > li:hover .description-text {
+  display: block;
+}
+
+
+/* FOOTER */
+/* Footer styling, fixed at the bottom */
+footer {
+  background-color: #ffffff;
+  border-top: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #555;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+
+/* RESPONSIVE STYLES */
+/* Adjustments for medium-sized screens and smaller (e.g., tablets) */
+@media (max-width: 992px) {
+  .columns { 
+    flex-direction: column;
+  }
+  .form-row-grid { 
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+  }
+}
+
+/* Styling for the logo on the index page */
+.index-logo {
+  max-width: 500px;
+  height: auto;
+  margin-bottom: 1rem;
+  display: block; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Adjustments for small screens (e.g., mobile phones) */
+@media (max-width: 768px) {
+  .menu > li {
+    font-size: 0.75rem;
+    padding: 0 0.2rem;
+  }
+  .button-grid,
+  .button-grid-3col { 
+    grid-template-columns: 1fr;
+  }
+  .form-row-grid { 
+    grid-template-columns: 1fr;
+  }
+  .input-button-line { 
+    flex-wrap: wrap;
+  }
+  .input-button-line .input-field,
+  .input-button-line .button { 
+    width: 100%;
+  }
+  .input-button-line .input-field {
+    margin-bottom: 0.5rem; 
+  }
+}
+
+/* --- Easter Egg: Matrix Mode --- */
+body.matrix-mode {
+  background-color: #000000;
+  color: #00FF41; /* Verde Matrix */
+}
+
+body.matrix-mode .page-title,
+body.matrix-mode h2,
+body.matrix-mode h3 {
+  color: #00FF41;
+}
+
+body.matrix-mode nav .menu > li > span,
+body.matrix-mode nav .menu > li > a {
+  color: #00FF41;
+}
+
+body.matrix-mode nav .submenu {
+  background-color: #050505;
+  border: 1px solid #00FF41;
+}
+
+body.matrix-mode .input-field {
+  background-color: #080808;
+  color: #00FF41;
+  border-color: #00FF41;
+}
+
+body.matrix-mode .input-field::placeholder {
+  color: #009F29;
+}
+
+body.matrix-mode .button {
+  background-color: transparent;
+  color: #00FF41;
+  border: 1px solid #00FF41;
+}
+
+body.matrix-mode .button:hover {
+  background-color: #00FF41;
+  color: #000000;
+}
+
+body.matrix-mode .button.text-active {
+  color: #8CFFAD; /* Verde più chiaro per il testo attivo */
+  font-weight: bold;
+}
+
+/* Styles for Phone Number Intel Display */
+.phone-intel-display {
+  margin-top: 0.75rem; 
+  font-style: italic;
+  color: #333; 
+  min-height: 1.2em;
+  text-align: left;
+}
+
+.input-section-description {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 0.75rem;
+}
+
+body.matrix-mode .note {
+  background-color: #0a0a0a;
+  border-left-color: #00FF41;
+}
+
+body.matrix-mode footer,
+body.matrix-mode footer a {
+  color: #00FF41;
+}
+
+/* --- Light Version Visibility ---
+ * This class is added by JavaScript based on config.js
+ * to hide elements for the "light" version of the toolkit.
+*/
+.hidden-in-light {
+  display: none !important;
+}

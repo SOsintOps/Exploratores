@@ -1,0 +1,69 @@
+# System files
+desktop.ini
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+gemini.md
+promptdaeseguire.txt
+
+# Temporary and cache files
+*.tmp
+*.temp
+*.log
+*.cache
+*.swp
+.directory
+
+# Text editors and IDEs
+*.bak
+*.sublime-*
+.vscode/
+*.code-workspace
+.idea/
+
+# Virtual environments and dependencies
+venv/
+.venv/
+node_modules/
+__pycache__/
+.pytest_cache/
+
+# Compiled and executable files
+*.class
+*.exe
+*.dll
+*.o
+*.so
+
+# Sensitive files (API keys, credentials)
+.env
+*.pem
+*.key
+*.crt
+
+# Auto-generated archives
+*.zip
+*.tar.gz
+
+# Common backup and temp files
+*~
+*.orig
+
+# Test and coverage
+coverage/
+.nyc_output/
+
+# Design files
+*.psd
+*.ai
+*.xcf
+
+# Local server logs
+access.log
+error.log
+
+# GitHub Pages (Jekyll) generated folders
+_site/
+.sass-cache/
+.jekyll-cache/

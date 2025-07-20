@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customise Page • Exploratores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<main>
+    <h1 class="page-title">Customising Exploratores Pages</h1>
+    <p class="center-text">This page serves as the technical documentation for understanding, modifying, and extending the Exploratores toolkit.</p>
+
+    <section id="section-architecture">
+        <h2>Project Architecture</h2>
+        <p>The toolkit is built on three fundamental principles: a Data-Driven Design, Centralized Logic, and a clear Separation of Concerns.</p>
+        
+        <h3>Directory and File Structure</h3>
+        <p>The file organization is designed to separate content (HTML pages) from shared resources (assets), ensuring order and ease of maintenance. The definitive structure is documented in the `gemini.md` file.</p>
+        
+        <h3>Technical & Contribution Guidelines</h3>
+        <p>This section outlines the technical standards for maintaining and extending the Exploratores toolkit.</p>
+        <ul>
+            <li><strong>Separation of Concerns:</strong> The project strictly separates structure (HTML), presentation (CSS), and logic (JavaScript). No inline styles or scripts are permitted in HTML files.</li>
+            <li><strong>JavaScript Architecture:</strong> All pages must adhere to the central, data-driven architecture powered by `main.js`, `validators.js`, and `search-library.js`.</li>
+            <li><strong>File Naming:</strong> All HTML files must use lowercase names (e.g., `new_page.html`).</li>
+            <li><strong>ID & Data Attribute Conventions:</strong>
+                <ul>
+                    <li>Element `id` attributes must follow the `[type]-[page]-[name]` format (e.g., `btn-names-us-fastpeople`).</li>
+                    <li>`data-search-id` attributes must follow the `[page]-[name]` format and match a key in `search-library.js`.</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section id="section-js-files">
+        <h2>The Role of the Main JavaScript Files</h2>
+        <p>The JavaScript architecture is the heart of the project. Here is the role of each file located in `assets/js/`.</p>
+
+        <h3>1. `navigation.js` (in `assets/menu/`) - The Dynamic Menu</h3>
+        <p><strong>Role:</strong> This script dynamically generates the navigation bar on every page. It detects its location and adjusts all link paths accordingly, allowing for a single, centralized menu definition.</p>
+        
+        <h3>2. `search-library.js` - The Catalog</h3>
+        <p><strong>Role:</strong> Acts as a database for all search functions. It contains a single large object, `SearchLibrary`, that maps a button's `data-search-id` to a URL template and a validator function.</p>
+        
+        <h3>3. `validators.js` - The Rulebook</h3>
+        <p><strong>Role:</strong> Contains the `ExploratoresValidators` object, a library of reusable functions that check if user input is valid before launching a search.</p>
+        
+        <h3>4. `main.js` - The Engine</h3>
+        <p><strong>Role:</strong> Contains the `Exploratores` object, which holds the core logic. `initSearchHandler` listens for clicks and orchestrates the search process, while `clearAllInputs` resets form fields on page load for a clean state.</p>
+
+        <h3>5. `config.js` - The Settings</h3>
+        <p><strong>Role:</strong> This file holds global configuration data and flags, such as enabling the "Light Version" of the toolkit and specifying which UI elements to hide.</p>
+    </section>
+
+    <section id="section-guides">
+        <h2>Practical Guides</h2>
+        <p>The following guides show with practical examples how to modify and extend the toolkit.</p>
+
+        <h3>Guide A: Page State Management</h3>
+        <p><strong>Concept:</strong> To prevent searches with invalid data, buttons on a page are disabled until the user provides valid input. This is handled by a page-specific script.</p>
+        <p><strong>Standard Implementation:</strong> For pages with multiple, independent input groups (like `PublicCompanyRecords.html`), the standard method is to use an `inputGroups` array. Each object in the array defines a set of inputs, the buttons they control, and the validator to use.</p>
+        <pre class="code-guide-block"><code>// In a page-specific script, e.g., at the bottom of PublicCompanyRecords.html
+function setInitialPageState() {
+    const inputGroups = [
+        {
+            inputIds: ['officerNameInput'],
+            buttonSelector: '#grid-pcr-officers-intl .button, ...',
+            validator: ExploratoresValidators.getAndValidateOfficerName
+        },
+        {
+            inputIds: ['officerSearchFirstName', 'officerSearchLastName'],
+            buttonSelector: '#grid-pcr-usofficers .button',
+            validator: ExploratoresValidators.getAndValidateUsOfficerName
+        }
+        // ... more groups
+    ];
+
+    const updateButtons = (group) => {
+        const validationResult = group.validator();
+        document.querySelectorAll(group.buttonSelector).forEach(button => {
+            button.disabled = !validationResult;
+            button.classList.toggle('text-active', !!validationResult);
+        });
+    };
+
+    inputGroups.forEach(group => {
+        group.inputIds.forEach(inputId => {
+            document.getElementById(inputId)?.addEventListener('input', () => updateButtons(group));
+        });
+        updateButtons(group); // Set initial state
+    });
+}
+document.addEventListener('DOMContentLoaded', setInitialPageState);
+</code></pre>
+
+        <h3>Guide B: Adding a New Search Function</h3>
+        <p><strong>Scenario:</strong> Add a button to `names.html` to search "PersonaDB".</p>
+        <ol>
+            <li><strong>Step 1: Add to `search-library.js`</strong><br>Add a new entry with a unique key.
+            <pre class="code-guide-block"><code>// Inside SearchLibrary object
+"names-personadb": {
+    "urlTemplate": "https://personadb.com/search?name={fullname}",
+    "validator": "getAndValidateNames"
+},</code></pre>
+            </li>
+            <li><strong>Step 2: Add Button to `names.html`</strong><br>Add the HTML button, matching the `data-search-id` to the new key.
+            <pre class="code-guide-block"><code>&lt;!-- In pages/names.html --&gt;
+&lt;div class="button-grid"&gt;
+    ...
+    &lt;button id="btn-names-personadb" type="button" class="button" data-search-id="names-personadb"&gt;PersonaDB&lt;/button&gt; &lt;!-- NEW BUTTON --&gt;
+&lt;/div&gt;</code></pre>
+            </li>
+        </ol>
+
+        <h3>Guide C: Creating a New Validator</h3>
+        <p><strong>Scenario:</strong> Create a page `ip.html` that requires a valid IPv4 address.</p>
+        <ol>
+            <li><strong>Step 1: Create a New Function in `validators.js`</strong><br>Add a function to the `ExploratoresValidators` object that gets the input and validates it.
+            <pre class="code-guide-block"><code>// In assets/js/validators.js
+getAndValidateIpAddress: function(config) {
+    const ip = document.getElementById('ipAddressInput')?.value.trim();
+    const ipv4Regex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
+    if (ip && ipv4Regex.test(ip)) {
+        return { ip: ip };
+    }
+    return null; // Return null if invalid
+},</code></pre>
+            </li>
+            <li><strong>Step 2: Use the Validator in `search-library.js`</strong><br>Reference your new function in a search configuration.
+            <pre class="code-guide-block"><code>// In assets/js/search-library.js
+"ip-shodan-search": {
+    "urlTemplate": "https://www.shodan.io/host/{ip}",
+    "validator": "getAndValidateIpAddress" // Use the new validator
+},</code></pre>
+            </li>
+        </ol>
+    </section>
+</main>
+
+<footer>
+    <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
+</footer>
+
+<script src="../assets/menu/navigation.js"></script>
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

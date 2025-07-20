@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VK • Exploratores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<script src="../assets/menu/navigation.js"></script>
+
+<main>
+  <h1 class="page-title">VK Tools<br>WORK IN PROGRESS</h1>
+  
+  <section class="search-instructions">
+    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem;"> 
+      <div style="flex: 1; min-width: 280px;"> 
+        <label for="vkUsernameInput">Enter VK Username (Screen Name):</label>
+        <div class="input-container" style="margin-bottom:0;">
+           <input type="text" id="vkUsernameInput" class="input-field" placeholder="e.g., paveldurov, ap">
+        </div>
+      </div>
+      <div style="flex: 1; min-width: 280px;"> 
+        <label for="vkUserIdInput">Enter VK User ID (Numeric) or Group ID (Starts with '-'):</label>
+        <div class="input-container" style="margin-bottom:0;">
+          <input type="text" id="vkUserIdInput" class="input-field" placeholder="e.g., 1, -12345 (for group)">
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <div class="note">
+    <strong>NOTE:</strong> Please use the appropriate input field (Username or User ID) for the tool you select. 
+    Some tools may only become active (text becomes blue and button enabled) when their required input field is correctly filled. <br>
+    For example, tools like 'Friends', 'Profile (User ID)' and others require a valid numeric User ID to be entered in the 'VK User ID' field. <br>
+    Some VK features may also require an active account. Buttons marked (WIP) are Work in Progress.
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <h2>User Profile & Information</h2>
+      <div class="button-grid button-grid-2col">
+        <button type="button" class="button" onclick="VK_OpenAllPosts()" id="vkAllPostsButton">All Posts</button>
+        <button type="button" class="button" onclick="VK_OpenAudio()" id="vkOpenAudioButton">Audio</button>
+        <button type="button" class="button" onclick="VK_OpenFollowers()" id="vkFollowersButton">Followers</button>
+        <button type="button" class="button" onclick="VK_OpenFriends()" id="vkFriendsButton">Friends</button>
+        <button type="button" class="button" onclick="VK_OpenGifts()" id="vkOpenGiftsButton">Gifts</button>
+        <button type="button" class="button" onclick="VK_OpenNotes()" id="vkOpenNotesButton">Notes</button>
+        <button type="button" class="button" onclick="VK_OpenPhotoAlbums()" id="vkPhotoAlbumsButton">Photo Albums</button>
+        <button type="button" class="button" onclick="VK_OpenProfile()" id="vkOpenProfileUsernameButton">Profile (Username)</button>
+        <button type="button" class="button" onclick="VK_OpenProfileByID()" id="vkOpenProfileIDButton">Profile (User ID)</button>
+        <button type="button" class="button" onclick="VK_OpenProfileInfo()" id="vkOpenProfileInfoButton">Profile Info (About) (WIP)</button>
+        <button type="button" class="button" onclick="VK_OpenApps()" id="vkOpenAppsButton">User Apps (WIP)</button>
+        <button type="button" class="button" onclick="VK_OpenPhotos()" id="vkUserPhotosButton">User Photos</button>
+        <button type="button" class="button" onclick="VK_OpenGroups()" id="vkOpenUserGroupsButton">User's Groups</button>
+        <button type="button" class="button" onclick="VK_OpenMarket()" id="vkOpenMarketButton">User's Market Items (WIP)</button>
+        <button type="button" class="button" onclick="VK_OpenVideos()" id="vkOpenVideosButton">Videos</button>
+        <button type="button" class="button" onclick="VK_OpenProfileLink()" id="vkOpenProfileLinkButton">VK.me Profile</button>
+      </div>
+    </div>
+    <div class="column">
+      <h2>Content & Group Search</h2>
+      <div class="button-grid button-grid-2col">
+        <button type="button" class="button" onclick="VK_SearchAll()" id="vkSearchAllButton">Search All Content (WIP)</button>
+        <button type="button" class="button" onclick="VK_SearchAudio()" id="vkSearchAudioButton">Search Audio (WIP)</button>
+        <button type="button" class="button" onclick="VK_SearchCommunities()" id="vkSearchCommunitiesButton">Search Communities/Groups (WIP)</button>
+        <button type="button" class="button" onclick="VK_SearchDocuments()" id="vkSearchDocumentsButton">Search Documents (WIP)</button>
+        <button type="button" class="button" onclick="VK_SearchMarket()" id="vkSearchMarketButton">Search Market (WIP)</button>
+        <button type="button" class="button" onclick="VK_SearchNews()" id="vkSearchNewsButton">Search News/Posts (WIP)</button>
+        <button type="button" class="button" onclick="VK_SearchPeople()" id="vkSearchPeopleButton">Search People (WIP)</button>
+        <button type="button" class="button" onclick="VK_SearchPhotos()" id="vkSearchPhotosButton">Search Photos (WIP)</button>
+        <button type="button" class="button" onclick="VK_SearchVideos()" id="vkSearchVideosButton">Search Videos (WIP)</button>
+        <button type="button" class="button" onclick="VK_DirectSearchGeneral()" id="vkDirectSearchGeneralButton">VK Search (Direct - General Term) (WIP)</button>
+      </div>
+      
+      <br><h2>External & Related Searches</h2>
+      <div class="button-grid">
+        <button type="button" class="button" onclick="VK_CheckoSearch()" id="vkCheckoSearchButton">Checko.ru Search (RU Users) (WIP)</button>
+        <button type="button" class="button" onclick="VK_GoogleSearch()" id="vkGoogleSearchButton">VK Search (Google) (WIP)</button>
+        <button type="button" class="button" onclick="VK_MailRuSocialSearch()" id="vkMailRuSocialSearchButton">Mail.Ru Social Search (WIP)</button>
+        <button type="button" class="button" onclick="VK_SmatSearch()" id="vkSmatSearchButton">SMAT VK Search (WIP)</button>
+        <button type="button" class="button" onclick="VK_WebArchiveRuMediaSearch()" id="vkWebArchiveRuMediaSearchButton">WebArchive (RU Media) (WIP)</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+<<<<<<< HEAD
+  <p>Exploratores 2.5 prototype <a href="license.html">License</a></p>
+=======
+  <p>Exploratores 2.5 • Prototype <a href="license.html">License</a></p>
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
+</footer>
+
+<script>
+  // Standard navbar submenu script
+  document.querySelectorAll('.menu > li').forEach(item => {
+    const submenu = item.querySelector('.submenu');
+    if (submenu) { 
+      item.addEventListener('mouseenter', function() {
+        submenu.style.display = 'block';
+      });
+      item.addEventListener('mouseleave', function() {
+        submenu.style.display = 'none';
+      });
+    }
+  });
+
+  // Helper function to get and validate input for VK page
+  function VK_GetAndValidateInput(inputId, placeholderForAlert = "a value", requiresNumeric = false) {
+    const inputElement = document.getElementById(inputId);
+    if (!inputElement) {
+      alert("Error: Input field '" + inputId + "' not found.");
+      return null;
+    }
+    const value = inputElement.value.trim();
+    if (!value) {
+      alert("Please enter " + placeholderForAlert + ".");
+      return null; 
+    }
+    if (requiresNumeric && isNaN(value)) {
+      alert("Please enter a valid numeric ID for " + placeholderForAlert + " (e.g., 123 or -456 for groups).");
+      return null;
+    }
+    return value;
+  }
+  
+  // Generic search execution function for VK
+  function VK_ExecuteSearch(baseUrl, term, suffix = '', queryParam = '') {
+    if (term === null || term === undefined) return; 
+
+    let url;
+    const encodedTerm = encodeURIComponent(term);
+
+    if (queryParam) { 
+      url = baseUrl + '?' + queryParam + encodedTerm + suffix;
+    } else { 
+      url = baseUrl + encodedTerm + suffix;
+    }
+    window.open(url, '_blank');
+  }
+
+  // --- VK Tool Functions ---
+  function VK_OpenProfileLink() { 
+    const query = VK_GetAndValidateInput('vkUsernameInput', 'a VK Username'); 
+    if (!query) return;
+    VK_ExecuteSearch('https://vk.me/', query);
+  }
+
+  function VK_OpenProfile() { // For "Profile (Username)"
+    const query = VK_GetAndValidateInput('vkUsernameInput', 'a VK Username or Screen Name'); 
+    if (!query) return;
+    VK_ExecuteSearch('https://vk.com/', query); 
+  }
+
+  function VK_OpenProfileByID() { // For "Profile (User ID)"
+    const userId = VK_GetAndValidateInput('vkUserIdInput', 'a numeric VK User ID', true);
+    if (!userId) return;
+    VK_ExecuteSearch('https://vk.com/id', userId); 
+  }
+
+  function VK_OpenProfileInfo() { 
+    const query = VK_GetAndValidateInput('vkUsernameInput', 'a VK User ID or Screen Name for Profile Info'); 
+    if (!query) return;
+    VK_ExecuteSearch('https://vk.com/', query, '?w=summary'); 
+  }
+
+  function VK_OpenFriends() { 
+    const userId = VK_GetAndValidateInput('vkUserIdInput', 'a numeric VK User ID for Friends', true); 
+    if(!userId) return; 
+    VK_ExecuteSearch('https://vk.com/friends?id=', userId); 
+  }
+
+  function VK_OpenFollowers() { 
+    const userId = VK_GetAndValidateInput('vkUserIdInput', 'a numeric VK User ID for Followers', true); 
+    if(!userId) return; 
+    window.open('https://vk.com/friends?id=' + encodeURIComponent(userId) + '&section=followers', '_blank');
+  }
+
+  function VK_OpenGroups() { 
+    const userId = VK_GetAndValidateInput('vkUserIdInput', 'a numeric VK User ID for Groups', true); 
+    if(!userId) return; 
+    VK_ExecuteSearch('https://vk.com/groups?id=', userId); 
+  }
+
+  function VK_OpenPhotos() { 
+    const userId = VK_GetAndValidateInput('vkUserIdInput', 'a numeric VK User ID for Photos', true); 
+    if(!userId) return; 
+    VK_ExecuteSearch('https://vk.com/photos', userId); 
+  }
+  
+  function VK_OpenPhotoAlbums() { 
+    const userId = VK_GetAndValidateInput('vkUserIdInput', 'a numeric VK User ID for Photo Albums', true);
+    if(!userId) return;
+    VK_ExecuteSearch('https://vk.com/albums', userId);
+  }
+
+  function VK_OpenAllPosts() {
+    const userId = VK_GetAndValidateInput('vkUserIdInput', 'a numeric VK User ID for All Posts', true);
+    if (!userId) return;
+    VK_ExecuteSearch('https://vk.com/wall', userId);
+  }
+
+  function VK_OpenVideos() { 
+    const userId = VK_GetAndValidateInput('vkUserIdInput', 'a numeric VK User ID for Videos', true); 
+    if(!userId) return; 
+    VK_ExecuteSearch('https://vk.com/video/@id', userId); 
+  }
+
+  function VK_OpenAudio() { 
+    const userId = VK_GetAndValidateInput('vkUserIdInput', 'a numeric VK User ID for Audio', true); 
+    if(!userId) return; 
+    VK_ExecuteSearch('https://vk.com/audios', userId); 
+  }
+
+  function VK_OpenNotes() { 
+    const userId = VK_GetAndValidateInput('vkUserIdInput', 'a numeric VK User ID for Notes', true); 
+    if(!userId) return; 
+    VK_ExecuteSearch('https://vk.com/notes', userId); 
+  }
+
+  function VK_OpenGifts() { 
+    const userId = VK_GetAndValidateInput('vkUserIdInput', 'a numeric VK User ID for Gifts', true); 
+    if(!userId) return; 
+    VK_ExecuteSearch('https://vk.com/gifts?id=', userId); 
+  }
+  
+  function VK_OpenMarket() { 
+    const ownerId = VK_GetAndValidateInput('vkUserIdInput', 'a numeric VK User ID or Group ID for Market', true);
+    if(!ownerId) return;
+    VK_ExecuteSearch('https://vk.com/market?owner_id=', ownerId);
+  }
+
+  function VK_OpenApps() {
+    const userId = VK_GetAndValidateInput('vkUserIdInput', 'a numeric VK User ID for Apps', true);
+    if(!userId) return;
+    VK_ExecuteSearch('https://vk.com/apps?act=user_apps&id=', userId);
+  }
+
+  // --- VK Content Search Functions ---
+  function VK_SearchAll() { const query = VK_GetAndValidateInput('vkUsernameInput', 'a search term'); if (!query) return; VK_ExecuteSearch('https://vk.com/search', query, '', 'q'); }
+  function VK_SearchPeople() { const query = VK_GetAndValidateInput('vkUsernameInput', 'a search term'); if (!query) return; VK_ExecuteSearch('https://vk.com/search', query, '', 'c[section]=people&c[q]'); }
+  function VK_SearchCommunities() { const query = VK_GetAndValidateInput('vkUsernameInput', 'a search term'); if (!query) return; VK_ExecuteSearch('https://vk.com/search', query, '', 'c[section]=communities&c[q]'); }
+  function VK_SearchNews() { const query = VK_GetAndValidateInput('vkUsernameInput', 'a search term'); if (!query) return; VK_ExecuteSearch('https://vk.com/search', query, '', 'c[section]=news&c[q]'); }
+  function VK_SearchPhotos() { const query = VK_GetAndValidateInput('vkUsernameInput', 'a search term'); if (!query) return; VK_ExecuteSearch('https://vk.com/search', query, '', 'c[section]=photos&c[q]'); }
+  function VK_SearchVideos() { const query = VK_GetAndValidateInput('vkUsernameInput', 'a search term'); if (!query) return; VK_ExecuteSearch('https://vk.com/search', query, '', 'c[section]=videos&c[q]'); }
+  function VK_SearchAudio() { const query = VK_GetAndValidateInput('vkUsernameInput', 'a search term'); if (!query) return; VK_ExecuteSearch('https://vk.com/search', query, '', 'c[section]=audio&c[q]'); }
+  function VK_SearchDocuments() { const query = VK_GetAndValidateInput('vkUsernameInput', 'a search term'); if (!query) return; VK_ExecuteSearch('https://vk.com/search', query, '', 'c[section]=docs&c[q]'); }
+  function VK_SearchMarket() { const query = VK_GetAndValidateInput('vkUsernameInput', 'a search term'); if (!query) return; VK_ExecuteSearch('https://vk.com/search', query, '', 'c[section]=market&c[q]'); }
+  function VK_DirectSearchGeneral() { 
+    const query = VK_GetAndValidateInput('vkUsernameInput', 'a search term for VK');
+    if (!query) return;
+    window.open('https://vk.com/search?q=' + encodeURIComponent(query), '_blank');
+  }
+
+  // --- External & Related Searches ---
+  function VK_GoogleSearch() {
+    const query = VK_GetAndValidateInput('vkUsernameInput', 'a search term for VK via Google');
+    if (!query) return;
+    window.open('https://www.google.com/search?q=site%3Avk.com+%22' + encodeURIComponent(query) + '%22', '_blank');
+  }
+  function VK_SmatSearch() {
+    const query = VK_GetAndValidateInput('vkUsernameInput', 'a search term for SMAT VK');
+    if (!query) return;
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    const dynamicEndDate = `${year}-${month}-${day}`;
+    window.open('https://www.smat-app.com/search?searchTerm=' + encodeURIComponent(query) + '&startDate=2000-06-01&endDate=' + dynamicEndDate + '&websites=vk&numberOf=10&interval=day&limit=1000&changepoint=false', '_blank');
+  }
+  function VK_CheckoSearch() {
+    const query = VK_GetAndValidateInput('vkUsernameInput', 'a username for Checko.ru');
+    if (!query) return;
+    window.open('https://checko.ru/search?query=' + encodeURIComponent(query), '_blank');
+  }
+  function VK_MailRuSocialSearch() {
+    const query = VK_GetAndValidateInput('vkUsernameInput', 'a username for Mail.Ru Social Search');
+    if (!query) return;
+    window.open('https://go.mail.ru/search_social?q=' + encodeURIComponent(query), '_blank');
+  }
+  function VK_WebArchiveRuMediaSearch() {
+    const query = VK_GetAndValidateInput('vkUsernameInput', 'a search term for WebArchive RU Media');
+    if (!query) return;
+    window.open('https://web.archive.org/russian-independent-media/search/' + encodeURIComponent(query), '_blank');
+  }
+   
+  // --- Dynamic Button State Update ---
+  function VK_UpdateButtonStates() {
+    const usernameInputElement = document.getElementById('vkUsernameInput');
+    const usernameValue = usernameInputElement ? usernameInputElement.value.trim() : "";
+    const isUsernameValid = usernameValue !== "";
+
+    const userIdInputElement = document.getElementById('vkUserIdInput');
+    const userIdValue = userIdInputElement ? userIdInputElement.value.trim() : "";
+    const isUserIdNumeric = userIdValue !== "" && !isNaN(userIdValue);
+
+    const buttonsConfig = [
+      // UserID dependent (numeric)
+      { id: 'vkFriendsButton', dependsOn: 'userid', styleTarget: 'text' },
+      { id: 'vkFollowersButton', dependsOn: 'userid', styleTarget: 'text' },
+      { id: 'vkOpenUserGroupsButton', dependsOn: 'userid', styleTarget: 'text' },
+      { id: 'vkOpenGiftsButton', dependsOn: 'userid', styleTarget: 'text' },
+      { id: 'vkOpenMarketButton', dependsOn: 'userid', styleTarget: 'text' },
+      { id: 'vkOpenAppsButton', dependsOn: 'userid', styleTarget: 'text' },
+      { id: 'vkUserPhotosButton', dependsOn: 'userid', styleTarget: 'text' },
+      { id: 'vkPhotoAlbumsButton', dependsOn: 'userid', styleTarget: 'text' },
+      { id: 'vkAllPostsButton', dependsOn: 'userid', styleTarget: 'text' },
+      { id: 'vkOpenProfileIDButton', dependsOn: 'userid', styleTarget: 'text' },
+      { id: 'vkOpenVideosButton', dependsOn: 'userid', styleTarget: 'text' }, 
+      { id: 'vkOpenAudioButton', dependsOn: 'userid', styleTarget: 'text' },   
+      { id: 'vkOpenNotesButton', dependsOn: 'userid', styleTarget: 'text' },   
+      
+      // Username dependent
+      { id: 'vkOpenProfileUsernameButton', dependsOn: 'username', styleTarget: 'text' },
+      { id: 'vkOpenProfileInfoButton', dependsOn: 'username', styleTarget: 'text' },
+      
+      // Either username or numeric UserID
+      { id: 'vkOpenProfileLinkButton', dependsOn: 'either', styleTarget: 'text' }
+    ];
+
+    buttonsConfig.forEach(config => {
+      const button = document.getElementById(config.id);
+      if (button) {
+        let enable = false;
+        if (config.dependsOn === 'username') {
+          enable = isUsernameValid;
+        } else if (config.dependsOn === 'userid') {
+          enable = isUserIdNumeric;
+        } else if (config.dependsOn === 'either') {
+          enable = isUsernameValid || isUserIdNumeric;
+        }
+        
+        button.disabled = !enable;
+        if (enable) {
+          button.classList.add('text-active'); 
+        } else {
+          button.classList.remove('text-active');
+        }
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const vkUserIdInputElement = document.getElementById('vkUserIdInput');
+    const vkUsernameInputElement = document.getElementById('vkUsernameInput');
+
+    if (vkUserIdInputElement) {
+      vkUserIdInputElement.addEventListener('input', VK_UpdateButtonStates);
+    }
+    if (vkUsernameInputElement) {
+      vkUsernameInputElement.addEventListener('input', VK_UpdateButtonStates); 
+    }
+    VK_UpdateButtonStates(); 
+  });
+</script>
+
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

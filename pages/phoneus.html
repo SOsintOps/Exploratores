@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>US Phone Numbers • Exploratores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+  <script src="../assets/js/libphonenumber-max.js"></script>
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+<script src="../assets/menu/navigation.js"></script>
+
+<main>
+  <h1 class="page-title">US Phone Numbers Tool</h1>
+
+  <section class="search-instructions" id="section-phoneus-main-input">
+    <label for="areaCode">Please insert the 3 numeric parts (Area, Prefix, Line) then choose a service below:</label>
+    <p class="input-section-description"></p>
+    <div class="input-container">
+      <input type="text" id="areaCode" class="input-field" placeholder="Area (e.g., 702)" maxlength="3" autocomplete="off" />
+      <input type="text" id="prefixCode" class="input-field" placeholder="Prefix (e.g., 555)" maxlength="3" autocomplete="off" />
+      <input type="text" id="lineNumber" class="input-field" placeholder="Line (e.g., 1212)" maxlength="4" autocomplete="off" />
+    </div>
+    <div id="phoneIntelDisplay" class="phone-intel-display"></div>
+  </section>
+
+  <div class="note" id="note-phoneus-main">
+    <strong>NOTE:</strong> Phone number data, including country and type association, can vary in precision due to factors like number portability. The actual current use of a specific number may differ. Always cross-verify findings using multiple sources.
+  </div>
+  
+  <div class="columns">
+    <div class="column">
+      <section id="section-phoneus-searchengines">
+        <h2>Search Engines</h2>
+        <div class="button-grid">
+          <button type="button" class="button" id="btn-phoneus-bing" data-search-id="phoneus-bing">Bing Search</button>
+          <button type="button" class="button" id="btn-phoneus-google" data-search-id="phoneus-google">Google Search</button>
+          <button type="button" class="button" id="btn-phoneus-yandex" data-search-id="phoneus-yandex">Yandex Search</button>
+        </div>
+      </section>
+      <section id="section-phoneus-reputation" style="margin-top: 2rem;">
+        <h2>Reputation & Platforms</h2>
+        <h3 style="margin-top: 1rem;">Spam & Scam Reporting</h3>
+        <div class="button-grid">
+          <button type="button" class="button" id="btn-phoneus-800notes" data-search-id="phoneus-800notes">800 Notes</button>
+          <button type="button" class="button" id="btn-phoneus-callersmart" data-search-id="phoneus-callersmart">CallerSmart</button>
+          <button type="button" class="button" id="btn-phoneus-okcaller" data-search-id="phoneus-okcaller">OKCaller</button>
+          <button type="button" class="button" id="btn-phoneus-whoseno" data-search-id="phoneus-whoseno">WhoseNo</button>
+        </div>
+        <h3 style="margin-top: 1rem;">Social & Messaging Platforms</h3>
+        <div class="button-grid">
+          <button type="button" class="button" id="btn-phoneus-facebook" data-search-id="phoneus-facebook">Facebook</button>
+          <button type="button" class="button" id="btn-phoneus-syncme" data-search-id="phoneus-syncme">Sync.me</button>
+          <button type="button" class="button" id="btn-phoneus-whatsapp" data-search-id="phoneus-whatsapp">WhatsApp</button>
+        </div>
+        <h3 style="margin-top: 1rem;">Data Breach & Security</h3>
+        <div class="button-grid">
+          <button type="button" class="button" id="btn-phoneus-dehashed" data-search-id="phoneus-dehashed">Dehashed</button>
+        </div>
+      </section>
+    </div>
+    <div class="column">
+      <section id="section-phoneus-peoplesearch">
+        <h2>Reverse Phone & People Search</h2>
+        <div class="button-grid">
+          <button type="button" class="button" id="btn-phoneus-411" data-search-id="phoneus-411">411</button>
+          <button type="button" class="button" id="btn-phoneus-advbackground" data-search-id="phoneus-advbackground">AdvBackground</button>
+          <button type="button" class="button" id="btn-phoneus-americaphone" data-search-id="phoneus-americaphone">AmericaPhone</button>
+          <button type="button" class="button" id="btn-phoneus-cyberbackground" data-search-id="phoneus-cyberbackground">CyberBackground</button>
+          <button type="button" class="button" id="btn-phoneus-fastpeople" data-search-id="phoneus-fastpeople">FastPeople</button>
+          <button type="button" class="button" id="btn-phoneus-infotracer" data-search-id="phoneus-infotracer">InfoTracer</button>
+          <button type="button" class="button" id="btn-phoneus-numpi" data-search-id="phoneus-numpi">Numpi</button>
+          <button type="button" class="button" id="btn-phoneus-nuwber" data-search-id="phoneus-nuwber">Nuwber</button>
+          <button type="button" class="button" id="btn-phoneus-peoplesearchnow" data-search-id="phoneus-peoplesearchnow">PeopleSearchNow</button>
+          <button type="button" class="button" id="btn-phoneus-phoneowner" data-search-id="phoneus-phoneowner">PhoneOwner</button>
+          <button type="button" class="button" id="btn-phoneus-searchpeoplefree" data-search-id="phoneus-searchpeoplefree">SearchPeopleFree</button>
+          <button type="button" class="button" id="btn-phoneus-spytox" data-search-id="phoneus-spytox">Spytox</button>
+          <button type="button" class="button" id="btn-phoneus-thatsthem" data-search-id="phoneus-thatsthem">ThatsThem</button>
+          <button type="button" class="button" id="btn-phoneus-truepeople" data-search-id="phoneus-truepeople">TruePeople</button>
+          <button type="button" class="button" id="btn-phoneus-usphonebook" data-search-id="phoneus-usphonebook">USPhonebook</button>
+          <button type="button" class="button" id="btn-phoneus-whitepages" data-search-id="phoneus-whitepages">WhitePages</button>
+          <button type="button" class="button" id="btn-phoneus-yellowpages" data-search-id="phoneus-yellowpages">YellowPages</button>
+          <button type="button" class="button" id="btn-phoneus-zabasearch" data-search-id="phoneus-zabasearch">ZabaSearch</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/search-library.js"></script>
+
+<script>
+  // --- Page-Specific Interactive Logic (Not a Search Action) ---
+  const isoToCountryNameMap = { 'US': 'United States' };
+  const phoneNumberTypeTranslations = { 
+      'FIXED_LINE': 'Fixed Line', 'MOBILE': 'Mobile', 'FIXED_LINE_OR_MOBILE': 'Fixed Line or Mobile',
+      'TOLL_FREE': 'Toll-free', 'PREMIUM_RATE': 'Premium Rate', 'SHARED_COST': 'Shared Cost',
+      'VOIP': 'VoIP', 'PERSONAL_NUMBER': 'Personal Number', 'PAGER': 'Pager',
+      'UAN': 'UAN', 'VOICEMAIL': 'Voicemail', 'UNKNOWN': 'Unknown'
+  };
+
+  function displayPhoneNumberIntel(phoneData) {
+      const intelDisplayElement = document.getElementById('phoneIntelDisplay');
+      if (!intelDisplayElement) return;
+
+      if (!phoneData) {
+          intelDisplayElement.textContent = "";
+          return;
+      }
+      
+      try {
+          if (typeof libphonenumber === 'undefined') {
+              intelDisplayElement.textContent = "Analysis library not loaded.";
+              return;
+          }
+          const phoneNumberObject = libphonenumber.parsePhoneNumberFromString("+" + phoneData.e164, 'US');
+          if (!phoneNumberObject || !phoneNumberObject.isValid()) {
+              intelDisplayElement.textContent = "Invalid number or info not determinable.";
+              return;
+          }
+          const type = phoneNumberObject.getType();
+          const countryName = isoToCountryNameMap[phoneNumberObject.country] || 'Unknown Country';
+          const typeName = phoneNumberTypeTranslations[type] || type || "Unknown Type";
+          intelDisplayElement.textContent = `${countryName} - ${typeName}`;
+      } catch (error) {
+          intelDisplayElement.textContent = "Error during number analysis.";
+      }
+  }
+
+  // --- Standard Page State Management ---
+  function updatePageState() {
+    const phoneData = ExploratoresValidators.getAndValidateUsPhone();
+    document.querySelectorAll('button[data-search-id]').forEach(button => {
+        button.disabled = !phoneData;
+        button.classList.toggle('text-active', !!phoneData);
+    });
+    displayPhoneNumberIntel(phoneData);
+  }
+
+  function setInitialPageState() {
+    const inputs = ['areaCode', 'prefixCode', 'lineNumber'];
+    inputs.forEach(id => {
+        const inputElement = document.getElementById(id);
+        if (inputElement) {
+            inputElement.addEventListener('input', updatePageState);
+        }
+    });
+    updatePageState();
+  }
+
+  document.addEventListener('DOMContentLoaded', setInitialPageState);
+</script>
+
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ • Exploratores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<main>
+  <h1 class="page-title">Frequently Asked Questions (FAQ)</h1>
+
+  <section id="table-of-contents" class="faq-toc">
+    <h2>Table of Contents</h2>
+    <ul>
+      <li><a href="#q-why-name">Why is the toolkit named "Exploratores"?</a></li>
+      <li><a href="#q-who-exploratores">Who were the "Exploratores" historically?</a></li>
+      <li><a href="#q-main-purpose">What is the main purpose of the Exploratores OSINT Toolkit?</a></li>
+      <li><a href="#q-usage-outside-gs">Can I use the Exploratores OSINT Toolkit outside of my team?</a></li>
+      <li><a href="#q-warranty">Is the Exploratores OSINT Toolkit covered by any warranty?</a></li>
+      <li><a href="#q-accuracy-guarantee">Are there any guarantees regarding the accuracy or reliability of the tools and results?</a></li>
+      <li><a href="#q-user-validation">Am I responsible for validating information found using the toolkit?</a></li>
+      <li><a href="#q-osint-resources">Where can I find resources to learn more about OSINT?</a></li>
+      <li><a href="#q-opsec-basics">What are some basic OPSEC best practices when using this toolkit?</a></li>
+      <li><a href="#q-ethical-guidelines">What are the ethical guidelines for using these tools?</a></li>
+      <li><a href="#q-software-installation">Do I need to install additional software to use the toolkit?</a></li>
+      <li><a href="#q-tracking">Are my search activities tracked by the toolkit?</a></li>
+      <li><a href="#q-investigative-accounts">Is it necessary to create dedicated investigative accounts for using some of these tools?</a></li>
+      <li><a href="#q-customization">Can the Exploratores OSINT Toolkit pages be customized?</a></li>
+      <li><a href="#q-maintenance">How is the maintenance of tools within the toolkit handled?</a></li>
+      <li><a href="#q-suggest-improvements">How can I suggest new tools or improvements?</a></li>
+      <li><a href="#q-contribution-workflow">What is the recommended workflow for contributing a new page?</a></li>
+      <li><a href="#q-llm-prompt-features">How can I create a new page or add features using a prompt for an LLM?</a></li>
+      <li><a href="#q-llm-prompt-newpage">Can you provide an example prompt for an LLM to create a basic Exploratores page template from scratch?</a></li>
+      <li><a href="#q-llm-stress">Were any Large Language Models (LLMs) unduly stressed during the creation of this toolkit?</a></li>
+      <li><a href="#q-new-architecture">What is the logic behind the new "Data-Driven" system?</a></li>
+      <li><a href="#q-page-state">How does the page state management (`updatePageState`) work?</a></li>
+      <li><a href="#q-add-new-button">What are the steps to add a new search button?</a></li>
+      <li><a href="#q-button-not-working">What should I check if a button click does nothing?</a></li>
+      <li><a href="#q-light-version">What is the "Light Version" for?</a></li>
+    </ul>
+  </section>
+  
+  <section class="faq-section">
+    <h2 id="s-about">About the Toolkit & Its Name</h2>
+    <div class="faq-item">
+      <h3 id="q-why-name">Why is the toolkit named "Exploratores"?</h3>
+      <p>"Exploratores" were the scouts or reconnaissance units in the Roman army, tasked with gathering intelligence about the terrain, enemy movements, and local resources ahead of the main legionary force. This toolkit is named in their spirit, aiming to provide modern digital "scouts" (OSINT practitioners) with the tools to explore the digital landscape and gather information effectively.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-who-exploratores">Who were the "Exploratores" historically?</h3>
+      <p>In ancient Rome, "Exploratores" were soldiers specifically chosen for their skills in reconnaissance, observation, and survival. They often operated in small groups, deep in potentially hostile territory, to provide crucial intelligence for military commanders, enabling informed strategic decisions. Their role was vital for the safety and success of military campaigns.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-main-purpose">What is the main purpose of the Exploratores OSINT Toolkit?</h3>
+      <p>The Exploratores OSINT Toolkit aims to consolidate and organize a wide range of OSINT (Open Source Intelligence) tools and resources to facilitate investigation and information gathering activities. It provides a centralized access point and a consistent structure for these tools.</p>
+    </div>
+    
+    <h2 id="s-usage">Usage & Authorization</h2>
+    <div class="faq-item">
+      <h3 id="q-usage-outside-gs">Can I use the Exploratores OSINT Toolkit outside of my team?</h3>
+      <p>Yes. You can distribute, share, and customize explorers as needed. However, You will be responsible for any unapproved purposes or inappropriate use of this tool.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-warranty">Is the Exploratores OSINT Toolkit covered by any warranty?</h3>
+      <p>No, the Exploratores OSINT Toolkit is provided "as is," without any warranty of any kind, either expressed or implied. This includes, but is not limited to, warranties of merchantability or fitness for a particular purpose.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-accuracy-guarantee">Are there any guarantees regarding the accuracy or reliability of the tools and results?</h3>
+      <p>No guarantees are provided regarding the accuracy, completeness, reliability, or timeliness of the information obtained through the tools accessible via the toolkit. Each external tool has its own terms of service and limitations. The analyst is fully responsible for independently verifying and validating all collected information before using it for any purpose.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-user-validation">Am I responsible for validating information found using the toolkit?</h3>
+      <p>Yes, absolutely. The Exploratores OSINT Toolkit provides access to various tools and external resources. However, any information, data, or "news" obtained through these tools must be critically evaluated and independently validated by you, the analyst, before being considered reliable or actionable. The toolkit itself does not verify the accuracy or truthfulness of the data retrieved from external sources.</p>
+    </div>
+
+    <h2 id="s-learning">Learning & Best Practices</h2>
+    <div class="faq-item">
+      <h3 id="q-osint-resources">Where can I find resources to learn more about OSINT?</h3>
+      <p>For a structured approach, Michael Bazzell's books (like "Open Source Intelligence Techniques") are industry-standard references. Additionally, following specialized blogs, participating in webinars, and joining professional OSINT communities are crucial for staying updated on the latest techniques and tools.</p>
+    </div>
+    <div class="faq-item">
+        <h3 id="q-opsec-basics">What are some basic OPSEC best practices when using this toolkit?</h3>
+        <p>Operational Security (OPSEC) is critical. While using this toolkit, always consider:</p>
+        <ul>
+            <li><strong>Network Anonymity:</strong> Use a trusted VPN or the Tor network to mask your real IP address.</li>
+            <li><strong>Dedicated Environment:</strong> Conduct investigations from a dedicated virtual machine (VM) or a separate physical device to prevent cross-contamination with your personal data.</li>
+            <li><strong>Browser Fingerprinting:</strong> Be aware that websites can identify you through your browser's unique configuration. Use browsers or browser extensions designed to minimize fingerprinting.</li>
+            <li><strong>Non-Attributable Accounts:</strong> As mentioned below, always use dedicated, non-personal accounts for interacting with online services.</li>
+        </ul>
+    </div>
+    <div class="faq-item">
+        <h3 id="q-ethical-guidelines">What are the ethical guidelines for using these tools?</h3>
+        <p>Ethical use is paramount. Always act within legal and jurisdictional boundaries. The purpose of these tools is for legitimate intelligence gathering on authorized targets. Never use them for harassment, illegal surveillance, or any activity that violates privacy laws or terms of service of the platforms being accessed. The responsibility for ethical conduct lies entirely with the analyst.</p>
+    </div>
+
+    <h2 id="s-functionality">Functionality & Customization</h2>
+    <div class="faq-item">
+      <h3 id="q-software-installation">Do I need to install additional software to use the toolkit?</h3>
+      <p>No, the toolkit consists of HTML, CSS, and JavaScript pages that run directly in a modern web browser. No specific client-side software installation is required, apart from the browser itself. Linked external tools may have their own requirements.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-tracking">Are my search activities tracked by the toolkit?</h3>
+      <p>The Exploratores toolkit itself does not implement any tracking or logging of your specific queries. However, each external service or website you access through the toolkit operates under its own privacy policies and may log your interactions. Always use safe Browse practices.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-investigative-accounts">Is it necessary to create dedicated investigative accounts for using some of these tools?</h3>
+      <p>Yes, for many OSINT activities, it is highly recommended to use dedicated, non-attributable "investigative" or "sock puppet" accounts. Using personal accounts can compromise your investigation, expose your identity, and may violate the terms of service of some platforms.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-customization">Can the Exploratores OSINT Toolkit pages be customized?</h3>
+      <p>Yes, the toolkit is designed to be customizable. You can add new tools, modify existing categories, or adapt functionalities. For a detailed guide on how to do this, please refer to the <a href="customise.html">How to Customize Pages</a> page.</p>
+    </div>
+    
+    <h2 id="s-maintenance">Maintenance & Contribution</h2>
+    <div class="faq-item">
+      <h3 id="q-maintenance">How is the maintenance of tools within the toolkit handled?</h3>
+      <p>The Exploratores OSINT Toolkit was created and is carried forward as a side project. Ongoing maintenance, updating links, removing obsolete tools, and adding new ones is managed in free time and may take time.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-suggest-improvements">How can I suggest new tools or improvements?</h3>
+      <p>To report errors or request new functionalities, use the GitHub reporting procedures and communication channels. This will ensure direct feedback.</p>
+    </div>
+    <div class="faq-item">
+        <h3 id="q-contribution-workflow">What is the recommended workflow for contributing a new page?</h3>
+        <p>The standard workflow for contributing is:</p>
+        <ol>
+            <li><strong>Create the HTML file:</strong> Build the new page in the `pages/` directory, following all project standards (no `onclick`, use `data-search-id`, etc.).</li>
+            <li><strong>Update `validators.js`:</strong> Add a new validation function if the existing ones are not suitable.</li>
+            <li><strong>Update `search-library.js`:</strong> Add the configuration objects for all the new buttons on your page.</li>
+            <li><strong>Update `navigation.js`:</strong> Add a link to your new page in the appropriate submenu.</li>
+            <li><strong>Submit for Review:</strong> Follow the established contribution process (e.g., submitting a pull request on GitHub).</li>
+        </ol>
+    </div>
+
+    <h2 id="s-llm">LLMs and Toolkit Development</h2>
+    <div class="faq-item">
+      <h3 id="q-llm-prompt-features">How can I create a new page or add features using a prompt for an LLM?</h3>
+      <p>To interact effectively with a Large Language Model (LLM) for developing pages or features, provide a clear and detailed prompt. Key elements to include are:</p>
+      <ul>
+        <li><strong>Clear Objective</strong>: Precisely describe what the new page or feature should do.</li>
+        <li><strong>Adherence to Architecture</strong>: Explicitly state that the new page must follow the established data-driven architecture (main.js, validators.js, search-library.js).</li>
+        <li><strong>No Inline Logic</strong>: Specify that buttons must use `data-search-id` and not `onclick`.</li>
+        <li><strong>Reference to Project Guidelines</strong>: Remind the LLM to adhere to all established project standards, including file naming and CSS classes.</li>
+      </ul>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-llm-prompt-newpage">Can you provide an example prompt for an LLM to create a basic Exploratores page template from scratch?</h3>
+      <p>Certainly. Here is an updated prompt that reflects the current project architecture:</p>
+      <pre class="code-guide-block"><code>"Please generate the complete HTML code for a new page named 'ExampleTool.html' for the Exploratores OSINT Toolkit. The page must strictly follow the new data-driven architecture.
+
+1.  **HTML Structure**: Standard HTML5 boilerplate.
+2.  **Head**: Include meta tags, title 'Example Tool • Exploratores', and link to `../assets/css/style.css`.
+3.  **Body**:
+    - Include the dynamic navigation placeholder: `&lt;div id=\"navbar-placeholder\"&gt;&lt;/div&gt;`.
+    - `&lt;main&gt;` section with a title `&lt;h1 class=\"page-title\"&gt;Example Tool&lt;/h1&gt;`.
+    - A `&lt;section class=\"search-instructions\"&gt;` with an input field (`id=\"exampleInput"`) and a feedback div (`id=\"page-feedback\"`).
+    - A `&lt;div class=\"button-grid\"&gt;` with one button: `&lt;button id=\"btn-example-run\" class=\"button\" data-search-id=\"example-run\"&gt;Run Example&lt;/button&gt;`. Note the use of `data-search-id` and no `onclick`.
+4.  **Scripts**:
+    - At the end of `&lt;body&gt;`, include the script tags for the entire architecture: `main.js`, `validators.js`, `search-library.js`, and `navigation.js`.
+    - Add the standard page-specific initialization script (`updatePageState`, `setInitialPageState`) that links to a new validator function (e.g., `getAndValidateExample`) and manages the button state."</code></pre>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-llm-stress">Were any Large Language Models (LLMs) unduly stressed during the creation of this toolkit?</h3>
+      <p>We can confirm that, to the best of our knowledge, no LLMs reported permanent damage or suffered disproportionately during the development of the Exploratores OSINT Toolkit. All interactions were conducted with the aim of constructive collaboration and respect for computational capacities. Prompts were formulated with care, and we appreciate the patience and "artificial creativity" demonstrated. ;)</p>
+    </div>
+    
+    <h2 id="s-technical">Technical Details & Troubleshooting</h2>
+    <div class="faq-item">
+      <h3 id="q-new-architecture">What is the logic behind the new "Data-Driven" system?</h3>
+      <p>The new architecture centralizes the logic to avoid code duplication. It works like this:</p>
+      <ul>
+        <li><strong>HTML Pages (e.g., Names.html):</strong> Contain only the structure and UI elements. Buttons have a <code>data-search-id</code> attribute that acts as a unique identifier for a search, but they contain no JavaScript code.</li>
+        <li><strong>search-library.js:</strong> Acts as a "catalog." It contains an object that maps each <code>data-search-id</code> to a URL template and a validation function.</li>
+        <li><strong>main.js:</strong> This is the "engine" of the toolkit. It contains a single event handler that, on a button click, uses the <code>data-search-id</code> to find the corresponding configuration in <code>search-library.js</code>, runs the validation, and opens the correct URL.</li>
+      </ul>
+      <p>This approach makes the pages cleaner and maintenance easier, as all search logics are defined in one place.</p>
+    </div>
+    <div class="faq-item">
+        <h3 id="q-page-state">How does the page state management (`updatePageState`) work?</h3>
+        <p>Each interactive page has a small, page-specific script with two key functions: `updatePageState()` and `setInitialPageState()`.</p>
+        <ul>
+            <li>`setInitialPageState()` runs once when the page loads. Its job is to attach event listeners (e.g., for the `input` event) to the page's form fields.</li>
+            <li>`updatePageState()` is called every time a user types into a field. It calls the appropriate validation function from `validators.js`. Based on whether the input is valid, it then enables or disables all the search buttons on the page and adds/removes the `.text-active` class.</li>
+        </ul>
+        <p>This ensures that search buttons are only clickable when the required input is valid.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-add-new-button">What are the steps to add a new search button?</h3>
+      <p>To add a new button under the new architecture, follow these two steps:</p>
+      <ol>
+        <li><strong>Add the configuration to <code>search-library.js</code>:</strong> Create a new entry in the <code>SearchLibrary</code> object. The key must be a unique identifier (e.g., <code>'names-new-service'</code>), and the value must be an object with the <code>urlTemplate</code> and the name of the <code>validator</code> function (e.g., <code>'getAndValidateNames'</code>).</li>
+        <li><strong>Add the button to the HTML:</strong> Insert the <code>&lt;button&gt;</code> tag on the desired page. Assign it a unique <code>id</code> (for customization) and the <code>data-search-id</code> attribute corresponding to the key you created in the library.</li>
+      </ol>
+      <p>The "engine" in <code>main.js</code> will automatically make the new button work without needing to write more JavaScript on the page.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-button-not-working">What should I check if a button click does nothing?</h3>
+      <p>If a button is clickable but doesn't open a new tab, the problem is almost certainly a JavaScript error. The first thing to do is check the browser's <strong>Developer Console</strong> (F12 key, "Console" tab):</p>
+      <ul>
+          <li><strong>Look for syntax errors:</strong> The most common error is an <code>Uncaught SyntaxError</code>, often caused by a missing comma (<code>,</code>) between entries in the `search-library.js` file. This error prevents all configurations from loading.</li>
+          <li><strong>Look for "Validator not found" or "SearchLibrary not defined" errors:</strong> These indicate that one of the core JavaScript files (`validators.js`, `search-library.js`) failed to load due to a syntax error or a broken path in the HTML `&lt;script&gt;` tag.</li>
+      </ul>
+      <p>Fixing the error shown in the console is the quickest way to get the buttons working again.</p>
+    </div>
+    <div class="faq-item">
+        <h3 id="q-light-version">What is the "Light Version" for?</h3>
+        <p>The "Light Version" is a customizable display mode for the toolkit. It allows each user to hide tools, sections, or columns they do not use, creating a leaner and more focused interface.</p>
+        <p>This customization is managed by the <code>assets/js/config.js</code> file. By editing this file, you can:</p>
+        <ul>
+            <li><strong>Enable or disable</strong> the Light Version by setting <code>lightVersionEnabled</code> to <code>true</code> or <code>false</code>.</li>
+            <li><strong>Specify which elements to hide</strong> by adding their CSS selectors (like <code>#btn-names-us-advbackground</code> or <code>#column-names-usa</code>) to the <code>selectorsToHide</code> array.</li>
+        </ul>
+        <p>When the Light Version is active, a script automatically adds the <code>.hidden-in-light</code> class to all elements listed in the configuration file, making them disappear from the page.</p>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
+</footer>
+
+<script src="../assets/menu/navigation.js"></script>
+<script src="../assets/js/config.js"></script>
+
+<script>
+  // This script handles the Light Version feature described in the FAQ
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
+
+  // This script handles smooth scrolling for Table of Contents links
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.faq-toc a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

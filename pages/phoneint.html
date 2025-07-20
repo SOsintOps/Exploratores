@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>International Phone Numbers • Exploratores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+  <script src="../assets/js/libphonenumber-max.js"></script>
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<main>
+    <h1 class="page-title">International Phone Numbers Tool</h1>
+
+    <section class="search-instructions" id="section-phoneint-main-input">
+      <label>Enter phone number components:</label>
+      <div class="input-container">
+        <input type="text" id="countryCodeInput" class="input-field" placeholder="Country Code (e.g., +39)" autocomplete="off">
+        <input type="text" id="nationalNumberInput" class="input-field" placeholder="National Number (e.g., 3403011758)" autocomplete="off">
+        <input type="text" id="countryLettersInput" class="input-field" placeholder="Country ISO (2 letters, e.g., IT)" title="Usually auto-filled from Country Code. You can also type ISO to get Dial Code." autocomplete="off">
+      </div>
+      <div id="phoneIntelDisplay" class="phone-intel-display"></div> 
+    </section>
+
+    <div class="note" id="note-phoneint-main">
+      <strong>NOTE:</strong> Phone number data, including country and type association, can vary in precision due to factors like number portability. Always cross-verify findings using multiple sources.
+    </div>
+    
+    <div class="columns">
+      <div class="column">
+        <section id="section-phoneint-searchengines">
+          <h2>Search Engines</h2>
+          <div class="button-grid">
+            <button id="btn-phoneint-bing" type="button" class="button" data-search-id="phoneint-bing">Bing Search</button>
+            <button id="btn-phoneint-google" type="button" class="button" data-search-id="phoneint-google">Google Search</button>
+            <button id="btn-phoneint-yandex" type="button" class="button" data-search-id="phoneint-yandex">Yandex Search</button>
+          </div>
+        </section>
+    
+        <section id="section-phoneint-lookupservices" style="margin-top: 2rem;">
+          <h2>Phone Lookup Services</h2>
+            <h3 style="margin-top: 1rem;">General & Global Services</h3>
+            <div class="button-grid">
+                <button id="btn-phoneint-411" type="button" class="button" data-search-id="phoneint-411">411.com</button>
+                <button id="btn-phoneint-epieos" type="button" class="button" data-search-id="phoneint-epieos">EPIEOS</button>
+                <button id="btn-phoneint-syncme" type="button" class="button" data-search-id="phoneint-syncme">Sync.me</button>
+                <button id="btn-phoneint-thatsthem" type="button" class="button" data-search-id="phoneint-thatsthem">ThatsThem</button>
+                <button id="btn-phoneint-truecaller" type="button" class="button" data-search-id="phoneint-truecaller">Truecaller</button>
+            </div>
+            <h3 style="margin-top: 1rem;">Security & Reputation</h3>
+            <div class="button-grid">
+                <button id="btn-phoneint-facebookposts" type="button" class="button" data-search-id="phoneint-facebookposts">Facebook (Posts)</button>
+                <button id="btn-phoneint-ofac" type="button" class="button" data-search-id="phoneint-ofac">OFAC Sanctions</button>
+                <button id="btn-phoneint-riskiq" type="button" class="button" data-search-id="phoneint-riskiq">RiskIQ WHOIS</button>
+                <button id="btn-phoneint-whatsappleaks" type="button" class="button" data-search-id="phoneint-whatsappleaks">WhatsApp leaks</button>
+            </div>
+            <h3 style="margin-top: 1rem;">Country-Specific Services</h3>
+            <div class="button-grid">
+                <button id="btn-phoneint-aql" type="button" class="button" data-search-id="phoneint-aql">AQL Network (UK)</button>
+                <button id="btn-phoneint-mysmsbox" type="button" class="button" data-search-id="phoneint-mysmsbox">My SMS Box (Ru)</button>
+                <button id="btn-phoneint-nigeriaphonebook" type="button" class="button" data-search-id="phoneint-nigeriaphonebook">Nigeria Phonebook</button>
+            </div>
+            <h3 style="margin-top: 1rem;">Manual Lookup Services</h3>
+            <div class="button-grid">
+                <button id="btn-phoneint-emobiletracker" type="button" class="button" data-search-id="phoneint-emobiletracker">EmobileTracker (Manual)</button>
+                <button id="btn-phoneint-freecarrierlookup" type="button" class="button" data-search-id="phoneint-freecarrierlookup">FreeCarrierLookup (Manual)</button>
+                <button id="btn-phoneint-vedbex" type="button" class="button" data-search-id="phoneint-vedbex">Vedbex (Manual)</button>
+            </div>
+        </section>
+      </div>
+
+      <div class="column">
+        <section id="section-phoneint-domaintools-variants">
+          <h2>DomainTools Phone Variant Searches</h2>
+          <div class="button-grid">
+            <button id="btn-phoneint-dt-pluscc0num" type="button" class="button" data-search-id="phoneint-dt-pluscc0num">+CC.0Num</button>
+            <button id="btn-phoneint-dt-plusccnum" type="button" class="button" data-search-id="phoneint-dt-plusccnum">+CC.Num</button>
+            <button id="btn-phoneint-dt-0numonly" type="button" class="button" data-search-id="phoneint-dt-0numonly">0Num Only</button>
+            <button id="btn-phoneint-dt-enumgmail" type="button" class="button" data-search-id="phoneint-dt-enumgmail">eNum@gmail</button>
+            <button id="btn-phoneint-dt-enumhotmail" type="button" class="button" data-search-id="phoneint-dt-enumhotmail">eNum@hotmail.com</button>
+            <button id="btn-phoneint-dt-enummailru" type="button" class="button" data-search-id="phoneint-dt-enummailru">eNum@mail.ru</button>
+            <button id="btn-phoneint-dt-enumpmme" type="button" class="button" data-search-id="phoneint-dt-enumpmme">eNum@pm.me</button>
+            <button id="btn-phoneint-dt-enumprotonch" type="button" class="button" data-search-id="phoneint-dt-enumprotonch">eNum@proton.ch</button>
+            <button id="btn-phoneint-dt-enumprotonme" type="button" class="button" data-search-id="phoneint-dt-enumprotonme">eNum@proton.me</button>
+            <button id="btn-phoneint-dt-enumprotonmail" type="button" class="button" data-search-id="phoneint-dt-enumprotonmail">eNum@protonmail</button>
+            <button id="btn-phoneint-dt-enumyahoo" type="button" class="button" data-search-id="phoneint-dt-enumyahoo">eNum@yahoo.com</button>
+            <button id="btn-phoneint-dt-enumyandexcom" type="button" class="button" data-search-id="phoneint-dt-enumyandexcom">eNum@yandex.com</button>
+            <button id="btn-phoneint-dt-enumyandexru" type="button" class="button" data-search-id="phoneint-dt-enumyandexru">eNum@yandex.ru</button>
+            <button id="btn-phoneint-dt-numonly" type="button" class="button" data-search-id="phoneint-dt-numonly">Num Only</button>
+            <button id="btn-phoneint-dt-numgmail" type="button" class="button" data-search-id="phoneint-dt-numgmail">Num@gmail.com</button>
+            <button id="btn-phoneint-dt-numhotmail" type="button" class="button" data-search-id="phoneint-dt-numhotmail">Num@hotmail.com</button>
+            <button id="btn-phoneint-dt-nummailru" type="button" class="button" data-search-id="phoneint-dt-nummailru">Num@mail.ru</button>
+            <button id="btn-phoneint-dt-numpmme" type="button" class="button" data-search-id="phoneint-dt-numpmme">Num@pm.me</button>
+            <button id="btn-phoneint-dt-numprotonme" type="button" class="button" data-search-id="phoneint-dt-numprotonme">Num@proton.me</button>
+            <button id="btn-phoneint-dt-numprotonmailch" type="button" class="button" data-search-id="phoneint-dt-numprotonmailch">Num@protonmail.ch</button>
+            <button id="btn-phoneint-dt-numprotonmailcom" type="button" class="button" data-search-id="phoneint-dt-numprotonmailcom">Num@protonmail.com</button>
+            <button id="btn-phoneint-dt-numyahoo" type="button" class="button" data-search-id="phoneint-dt-numyahoo">Num@yahoo.com</button>
+            <button id="btn-phoneint-dt-numyandexcom" type="button" class="button" data-search-id="phoneint-dt-numyandexcom">Num@yandex.com</button>
+            <button id="btn-phoneint-dt-numyandexru" type="button" class="button" data-search-id="phoneint-dt-numyandexru">Num@yandex.ru</button>
+          </div>
+        </section>
+      </div>
+    </div>
+</main>
+
+<footer>
+    <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/menu/navigation.js"></script>
+
+<script>
+    // Correct and deduplicated mapping objects
+    const dialCodeToIsoMap = { '93': 'AF', '358': 'AX', '355': 'AL', '213': 'DZ', '1684': 'AS', '376': 'AD', '244': 'AO', '1264': 'AI', '672': 'AQ', '1268': 'AG', '54': 'AR', '374': 'AM', '297': 'AW', '61': 'AU', '43': 'AT', '994': 'AZ', '1242': 'BS', '973': 'BH', '880': 'BD', '1246': 'BB', '375': 'BY', '32': 'BE', '501': 'BZ', '229': 'BJ', '1441': 'BM', '975': 'BT', '591': 'BO', '387': 'BA', '267': 'BW', '55': 'BR', '246': 'IO', '673': 'BN', '359': 'BG', '226': 'BF', '257': 'BI', '855': 'KH', '237': 'CM', '1': 'CA', '238': 'CV', '345': 'KY', '236': 'CF', '235': 'TD', '56': 'CL', '86': 'CN', '57': 'CO', '269': 'KM', '242': 'CG', '243': 'CD', '682': 'CK', '506': 'CR', '225': 'CI', '385': 'HR', '53': 'CU', '599': 'CW', '357': 'CY', '420': 'CZ', '45': 'DK', '253': 'DJ', '1767': 'DM', '1809': 'DO', '593': 'EC', '20': 'EG', '503': 'SV', '240': 'GQ', '291': 'ER', '372': 'EE', '251': 'ET', '298': 'FO', '679': 'FJ', '358': 'FI', '33': 'FR', '594': 'GF', '689': 'PF', '241': 'GA', '220': 'GM', '995': 'GE', '49': 'DE', '233': 'GH', '350': 'GI', '30': 'GR', '299': 'GL', '1473': 'GD', '590': 'GP', '1671': 'GU', '502': 'GT', '44': 'GG', '224': 'GN', '245': 'GW', '592': 'GY', '509': 'HT', '379': 'VA', '504': 'HN', '852': 'HK', '36': 'HU', '354': 'IS', '91': 'IN', '62': 'ID', '98': 'IR', '964': 'IQ', '353': 'IE', '44': 'IM', '972': 'IL', '39': 'IT', '1876': 'JM', '81': 'JP', '44': 'JE', '962': 'JO', '7': 'KZ', '254': 'KE', '686': 'KI', '850': 'KP', '82': 'KR', '383': 'XK', '965': 'KW', '996': 'KG', '856': 'LA', '371': 'LV', '961': 'LB', '266': 'LS', '231': 'LR', '218': 'LY', '423': 'LI', '370': 'LT', '352': 'LU', '853': 'MO', '261': 'MG', '265': 'MW', '60': 'MY', '960': 'MV', '223': 'ML', '356': 'MT', '692': 'MH', '596': 'MQ', '222': 'MR', '230': 'MU', '262': 'YT', '52': 'MX', '691': 'FM', '373': 'MD', '377': 'MC', '976': 'MN', '382': 'ME', '1664': 'MS', '212': 'MA', '258': 'MZ', '95': 'MM', '264': 'NA', '674': 'NR', '977': 'NP', '31': 'NL', '687': 'NC', '64': 'NZ', '505': 'NI', '227': 'NE', '234': 'NG', '683': 'NU', '672': 'NF', '1670': 'MP', '47': 'NO', '968': 'OM', '92': 'PK', '680': 'PW', '970': 'PS', '507': 'PA', '675': 'PG', '595': 'PY', '51': 'PE', '63': 'PH', '870': 'PN', '48': 'PL', '351': 'PT', '1': 'PR', '974': 'QA', '262': 'RE', '40': 'RO', '7': 'RU', '250': 'RW', '590': 'BL', '290': 'SH', '1869': 'KN', '1758': 'LC', '590': 'MF', '508': 'PM', '1784': 'VC', '685': 'WS', '378': 'SM', '239': 'ST', '966': 'SA', '221': 'SN', '381': 'RS', '248': 'SC', '232': 'SL', '65': 'SG', '1721': 'SX', '421': 'SK', '386': 'SI', '677': 'SB', '252': 'SO', '27': 'ZA', '500': 'GS', '211': 'SS', '34': 'ES', '94': 'LK', '249': 'SD', '597': 'SR', '47': 'SJ', '268': 'SZ', '46': 'SE', '41': 'CH', '963': 'SY', '886': 'TW', '992': 'TJ', '255': 'TZ', '66': 'TH', '670': 'TL', '228': 'TG', '690': 'TK', '676': 'TO', '1868': 'TT', '216': 'TN', '90': 'TR', '993': 'TM', '1649': 'TC', '688': 'TV', '256': 'UG', '380': 'UA', '971': 'AE', '44': 'GB', '1': 'US', '598': 'UY', '998': 'UZ', '678': 'VU', '58': 'VE', '84': 'VN', '1284': 'VG', '1340': 'VI', '681': 'WF', '967': 'YE', '260': 'ZM', '263': 'ZW' };
+    const isoToDialCodeMap = { 'AF': '93', 'AX': '358', 'AL': '355', 'DZ': '213', 'AS': '1684', 'AD': '376', 'AO': '244', 'AI': '1264', 'AQ': '672', 'AG': '1268', 'AR': '54', 'AM': '374', 'AW': '297', 'AU': '61', 'AT': '43', 'AZ': '994', 'BS': '1242', 'BH': '973', 'BD': '880', 'BB': '1246', 'BY': '375', 'BE': '32', 'BZ': '501', 'BJ': '229', 'BM': '1441', 'BT': '975', 'BO': '591', 'BA': '387', 'BW': '267', 'BR': '55', 'IO': '246', 'BN': '673', 'BG': '359', 'BF': '226', 'BI': '257', 'KH': '855', 'CM': '237', 'CA': '1', 'CV': '238', 'KY': '345', 'CF': '236', 'TD': '235', 'CL': '56', 'CN': '86', 'CO': '57', 'KM': '269', 'CG': '242', 'CD': '243', 'CK': '682', 'CR': '506', 'CI': '225', 'HR': '385', 'CU': '53', 'CW': '599', 'CY': '357', 'CZ': '420', 'DK': '45', 'DJ': '253', 'DM': '1767', 'DO': '1809', 'EC': '593', 'EG': '20', 'SV': '503', 'GQ': '240', 'ER': '291', 'EE': '372', 'ET': '251', 'FK': '500', 'FO': '298', 'FJ': '679', 'FI': '358', 'FR': '33', 'GF': '594', 'PF': '689', 'GA': '241', 'GM': '220', 'GE': '995', 'DE': '49', 'GH': '233', 'GI': '350', 'GR': '30', 'GL': '299', 'GD': '1473', 'GP': '590', 'GU': '1671', 'GT': '502', 'GG': '44', 'GN': '224', 'GW': '245', 'GY': '592', 'HT': '509', 'VA': '379', 'HN': '504', 'HK': '852', 'HU': '36', 'IS': '354', 'IN': '91', 'ID': '62', 'IR': '98', 'IQ': '964', 'IE': '353', 'IM': '44', 'IL': '972', 'IT': '39', 'JM': '1876', 'JP': '81', 'JE': '44', 'JO': '962', 'KZ': '7', 'KE': '254', 'KI': '686', 'KP': '850', 'KR': '82', 'XK': '383', 'KW': '965', 'KG': '996', 'LA': '856', 'LV': '371', 'LB': '961', 'LS': '266', 'LR': '231', 'LY': '218', 'LI': '423', 'LT': '370', 'LU': '352', 'MO': '853', 'MG': '261', 'MW': '265', 'MY': '60', 'MV': '960', 'ML': '223', 'MT': '356', 'MH': '692', 'MQ': '596', 'MR': '222', 'MU': '230', 'YT': '262', 'MX': '52', 'FM': '691', 'MD': '373', 'MC': '377', 'MN': '976', 'ME': '382', 'MS': '1664', 'MA': '212', 'MZ': '258', 'MM': '95', 'NA': '264', 'NR': '674', 'NP': '977', 'NL': '31', 'NC': '687', 'NZ': '64', 'NI': '505', 'NE': '227', 'NG': '234', 'NU': '683', 'NF': '672', 'MP': '1670', 'NO': '47', 'OM': '968', 'PK': '92', 'PW': '680', 'PS': '970', 'PA': '507', 'PG': '675', 'PY': '595', 'PE': '51', 'PH': '63', 'PN': '870', 'PL': '48', 'PT': '351', 'PR': '1', 'QA': '974', 'RE': '262', 'RO': '40', 'RU': '7', 'RW': '250', 'BL': '590', 'SH': '290', 'KN': '1869', 'LC': '1758', 'MF': '590', 'PM': '508', 'VC': '1784', 'WS': '685', 'SM': '378', 'ST': '239', 'SA': '966', 'SN': '221', 'RS': '381', 'SC': '248', 'SL': '232', 'SG': '65', 'SX': '1721', 'SK': '421', 'SI': '386', 'SB': '677', 'SO': '252', 'ZA': '27', 'GS': '500', 'SS': '211', 'ES': '34', 'LK': '94', 'SD': '249', 'SR': '597', 'SJ': '47', 'SZ': '268', 'SE': '46', 'CH': '41', 'SY': '963', 'TW': '886', 'TJ': '992', 'TZ': '255', 'TH': '66', 'TL': '670', 'TG': '228', 'TK': '690', 'TO': '676', 'TT': '1868', 'TN': '216', 'TR': '90', 'TM': '993', 'TC': '1649', 'TV': '688', 'UG': '256', 'UA': '380', 'AE': '971', 'GB': '44', 'US': '1', 'UY': '598', 'UZ': '998', 'VU': '678', 'VE': '58', 'VN': '84', 'VG': '1284', 'VI': '1340', 'WF': '681', 'YE': '967', 'ZM': '260', 'ZW': '263' };
+    const phoneNumberTypeTranslations = { 'FIXED_LINE': 'Fixed Line', 'MOBILE': 'Mobile', 'FIXED_LINE_OR_MOBILE': 'Fixed Line or Mobile', 'TOLL_FREE': 'Toll-free', 'PREMIUM_RATE': 'Premium Rate', 'SHARED_COST': 'Shared Cost', 'VOIP': 'VoIP', 'PERSONAL_NUMBER': 'Personal Number', 'PAGER': 'Pager', 'UAN': 'UAN', 'VOICEMAIL': 'Voicemail', 'UNKNOWN': 'Unknown' };
+
+    let intelUpdateTimeout;
+
+    function handleIntelUpdate() {
+        clearTimeout(intelUpdateTimeout);
+        intelUpdateTimeout = setTimeout(() => {
+            const countryCodeInput = document.getElementById('countryCodeInput');
+            const nationalNumberInput = document.getElementById('nationalNumberInput');
+            const countryLettersInput = document.getElementById('countryLettersInput');
+            
+            const phoneData = ExploratoresValidators.getAndValidateIntlPhone({ validation_rules: {} });
+            displayPhoneNumberIntel(phoneData);
+
+            if (document.activeElement === countryCodeInput && countryCodeInput.value) {
+                const code = countryCodeInput.value.replace('+', '');
+                const iso = dialCodeToIsoMap[code];
+                if (iso) countryLettersInput.value = iso;
+            } else if (document.activeElement === countryLettersInput && countryLettersInput.value) {
+                const iso = countryLettersInput.value.toUpperCase();
+                const dialCode = isoToDialCodeMap[iso];
+                if (dialCode) countryCodeInput.value = `+${dialCode}`;
+            }
+        }, 300);
+    }
+    
+    function displayPhoneNumberIntel(phoneData) {
+        const intelDisplayElement = document.getElementById('phoneIntelDisplay');
+        if (!intelDisplayElement) return;
+
+        if (!phoneData || !phoneData.e164) {
+            intelDisplayElement.textContent = "";
+            return;
+        }
+        
+        try {
+            if (typeof libphonenumber === 'undefined') {
+                intelDisplayElement.textContent = "Analysis library not loaded.";
+                return;
+            }
+            
+            const phoneNumberObject = libphonenumber.parsePhoneNumberFromString("+" + phoneData.e164);
+            if (!phoneNumberObject || !phoneNumberObject.isValid()) {
+                intelDisplayElement.textContent = "Invalid or incomplete number.";
+                return;
+            }
+
+            const type = phoneNumberObject.getType();
+            const countryName = new Intl.DisplayNames(['en'], { type: 'region' }).of(phoneNumberObject.country);
+            const typeName = phoneNumberTypeTranslations[type] || type || "Unknown Type";
+            intelDisplayElement.textContent = `${countryName} - ${typeName}`;
+        } catch (error) {
+            intelDisplayElement.textContent = "";
+        }
+    }
+
+    function updatePageState() {
+        document.querySelectorAll('button[data-search-id]').forEach(button => {
+            const config = SearchLibrary[button.dataset.searchId];
+            if (!config) return;
+            
+            const validationResult = ExploratoresValidators.getAndValidateIntlPhone(config);
+            button.disabled = !validationResult;
+            button.classList.toggle('text-active', !!validationResult);
+        });
+        handleIntelUpdate();
+    }
+
+    function setInitialPageState() {
+        const inputs = ['countryCodeInput', 'nationalNumberInput', 'countryLettersInput'];
+        inputs.forEach(id => {
+            const el = document.getElementById(id);
+            if(el) el.addEventListener('input', updatePageState);
+        });
+        updatePageState();
+    }
+
+    document.addEventListener('DOMContentLoaded', setInitialPageState);
+</script>
+
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

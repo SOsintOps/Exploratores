@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exploratores Instagram Tool</title> 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<script src="../assets/menu/navigation.js"></script>
+
+  <main>
+    <h1 class="page-title">Instagram Tools</h1>
+
+    <div class="columns">
+      <div class="column">
+        <h2>User Profile &amp; Direct Info</h2>
+        <section class="search-instructions">
+          <label for="mainUsernameInput">Instagram Username:</label>
+          <div class="input-container">
+            <input type="text" id="mainUsernameInput" class="input-field" placeholder="Enter Username">
+          </div>
+        </section>
+        <div class="note"><strong>NOTE:</strong> Please enter an Instagram username.</div>      
+        <div class="button-grid">
+          <button class="button" onclick="Instagram01(getVal('mainUsernameInput'))">IG Profile</button>
+          <button class="button" onclick="Instagram02(getVal('mainUsernameInput'))">IG Channel</button>
+          <button class="button" onclick="Instagram03(getVal('mainUsernameInput'))">IG Tagged</button>
+        </div>
+
+        <h4>External &amp; Cross-Platform</h4><br>
+        
+        <div class="button-grid">
+          <button class="button" onclick="Instagram18(getVal('mainUsernameInput'))">Threads Profile</button>
+          <button class="button" onclick="Instagram04(getVal('mainUsernameInput'))">Google Outgoing</button>
+          <button class="button" onclick="Instagram05(getVal('mainUsernameInput'))">Google Incoming</button>
+          <button class="button" onclick="Instagram06(getVal('mainUsernameInput'))">Bing Search</button>
+          <button class="button" onclick="Instagram07(getVal('mainUsernameInput'))">Yandex Search</button>
+          <button class="button" onclick="Instagram08(getVal('mainUsernameInput'))">X/Twitter Posts</button>
+          <button class="button" onclick="Instagram09(getVal('mainUsernameInput'))">Dumpor Profile</button>
+          <button class="button" onclick="Instagram17(getVal('mainUsernameInput'))">Toolzu Profile</button>
+        </div>
+<br>
+        <h2>GraphQL Queries (User ID)</h2>
+        <section class="search-instructions">
+          <label for="igUserIdInput">Instagram User ID:</label>
+          <div class="input-container">
+            <input type="text" id="igUserIdInput" class="input-field" placeholder="IG User ID">
+          </div>
+        </section>
+        <div class="note"><strong>NOTE:</strong> Provide the numeric Instagram User ID.</div>
+        <div class="button-grid">
+          <button class="button" onclick="Instagram10a(getVal('igUserIdInput'))">Followers</button>
+          <button class="button" onclick="Instagram11a(getVal('igUserIdInput'))">Following</button>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2>Combined &amp; Term Searches</h2>
+        <section class="search-instructions">
+          <div class="input-container">
+            <div style="flex: 1;">
+              <label for="comboUser">Username:</label>
+              <input type="text" id="comboUser" class="input-field" placeholder="Username" style="width: 100%;">
+            </div>
+            <div style="flex: 1;">
+              <label for="comboTerm">Search Term/User B:</label>
+              <input type="text" id="comboTerm" class="input-field" placeholder="Term or Username B" style="width: 100%;">
+            </div>
+          </div>
+        </section>
+        <div class="button-grid">
+          <button class="button" onclick="Instagram12(getVal('comboUser'), getVal('comboTerm'))">User + Term (Google)</button>
+          <button class="button" onclick="Instagram13(getVal('comboUser'), getVal('comboTerm'))">Associations (Google)</button>
+        </div>
+<br>
+        <h2>Hashtag Searches</h2>
+        <section class="search-instructions">
+          <label for="tagTermInput">Hashtag or General Term:</label>
+          <div class="input-container">
+            <input type="text" id="tagTermInput" class="input-field" placeholder="Hashtag (no #) or Term">
+          </div>
+        </section>
+        <div class="button-grid">
+          <button class="button" onclick="Instagram14(getVal('tagTermInput'))">IG Hashtag</button>
+          <button class="button" onclick="Instagram15(getVal('tagTermInput'))">IG Terms (Google)</button>
+          <button class="button" onclick="Instagram16(getVal('tagTermInput'))">Dumpor Tag</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+<<<<<<< HEAD
+    Exploratores 2.5 prototype <a href="license.html">License</a>
+=======
+    Exploratores 2.5 • Prototype <a href="license.html">License</a>
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
+  </footer>
+
+  <script>
+    document.querySelectorAll('.menu > li').forEach(el=>{
+      el.addEventListener('mouseover',()=>{const s=el.querySelector('.submenu');if(s) s.style.display='block';});
+      el.addEventListener('mouseout',()=>{const s=el.querySelector('.submenu');if(s) s.style.display='none';});
+    });
+    const getVal=id=>{ const el=document.getElementById(id); return el ? el.value.trim() : "";};
+  </script>
+
+  <script>
+    function Instagram01(u){if(!u)return; window.open('https://instagram.com/'+encodeURIComponent(u),'_blank');}
+    function Instagram02(u){if(!u)return; window.open('https://instagram.com/'+encodeURIComponent(u)+'/channel/','_blank');}
+    function Instagram03(u){if(!u)return; window.open('https://instagram.com/'+encodeURIComponent(u)+'/tagged/','_blank');}
+    function Instagram04(u){if(!u)return; window.open('https://www.google.com/search?q=site%3Ainstagram.com+%22'+encodeURIComponent(u)+'%22','_blank');}
+    function Instagram05(u){if(!u)return; window.open('https://www.google.com/search?q=site%3Ainstagram.com+%22@'+encodeURIComponent(u)+'%22','_blank');}
+    function Instagram06(u){if(!u)return; window.open('https://www.bing.com/search?q=site%3Ainstagram.com+%22'+encodeURIComponent(u)+'%22','_blank');}
+    function Instagram07(u){if(!u)return; window.open('https://yandex.com/search/?text=site%3Ainstagram.com+%22'+encodeURIComponent(u)+'%22','_blank');}
+    function Instagram08(u){if(!u)return; window.open('https://www.google.com/search?q=site%3Ax.com+%22'+encodeURIComponent(u)+'%22+%22instagram.com%2Fp%22','_blank');}
+    function Instagram09(u){if(!u)return; window.open('https://dumpor.com/v/'+encodeURIComponent(u),'_blank');}
+    function Instagram17(u){if(!u)return; window.open('https://toolzu.com/profile-analyzer/instagram/?username='+encodeURIComponent(u),'_blank');}
+    function Instagram10a(id){if(!id)return; window.open('https://www.instagram.com/graphql/query/?query_hash=c76146de99bb02f6415203be841dd25a&variables={%22id%22:%22'+encodeURIComponent(id)+'%22,%22include_reel%22:true,%22fetch_mutual%22:true,%22first%22:50}','_blank');}
+    function Instagram11a(id){if(!id)return; window.open('https://www.instagram.com/graphql/query/?query_hash=d04b0a864b4b54837c0d870b0e77e076&variables={%22id%22:%22'+encodeURIComponent(id)+'%22,%22include_reel%22:true,%22fetch_mutual%22:false,%22first%22:50}','_blank');}
+    
+    function Instagram12(u, t) {
+      if (!u || !t) { 
+        alert("Please fill in both fields (Username and Search Term/User B) to continue.");
+        return;
+      }
+      window.open('https://www.google.com/search?q=site%3Ainstagram.com+%22'+encodeURIComponent(u)+'%22+%22'+encodeURIComponent(t)+'%22','_blank');
+    }
+    
+    function Instagram13(u1, u2) {
+      if (!u1 || !u2) { 
+        alert("Please fill in both fields (Username and Search Term/User B) to continue.");
+        return;
+      }
+      window.open('https://www.google.com/search?q=site%3Ainstagram.com+%22'+encodeURIComponent(u1)+'%22+%22'+encodeURIComponent(u2)+'%22','_blank');
+    }
+    
+    function Instagram14(tag){if(!tag)return; window.open('https://www.instagram.com/explore/tags/'+encodeURIComponent(tag),'_blank');}
+    function Instagram15(term){if(!term)return; window.open('https://www.google.com/search?q=site%3Ainstagram.com+'+encodeURIComponent(term),'_blank');}
+    function Instagram16(tag){if(!tag)return; window.open('https://dumpor.com/t/'+encodeURIComponent(tag),'_blank');}
+    function Instagram18(u){if(!u)return; window.open('https://www.threads.net/@'+encodeURIComponent(u),'_blank');}
+  </script>
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

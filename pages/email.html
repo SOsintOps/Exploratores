@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Email Addresses • Exploratores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<main>
+    <h1 class="page-title">Email Addresses</h1>
+
+    <section class="search-instructions" id="section-email-main-input">
+      <label for="emailInput">Insert email address here:</label>
+      <div class="input-container">
+        <input type="text" id="emailInput" class="input-field" placeholder="Email Address" autocomplete="off">
+      </div>
+      <div id="email-feedback" class="feedback-message"></div>
+      <div class="note">
+        <strong>NOTE:</strong> After entering the email, click one of the buttons below.
+      </div>
+    </section>
+
+    <div class="columns">
+      <div class="column">
+        <section id="section-email-searchengines">
+          <h2>Search Engines</h2>
+          <div class="button-grid">
+            <button id="btn-email-google" class="button" data-search-id="email-google">Google</button>
+            <button id="btn-email-bing" class="button" data-search-id="email-bing">Bing</button>
+            <button id="btn-email-yandex" class="button" data-search-id="email-yandex">Yandex</button>
+          </div>
+        </section>
+
+        <section id="section-email-services" style="margin-top: 2rem;">
+          <h2>Services</h2>
+          <div class="button-grid">
+            <button id="btn-email-analyzeid" class="button" data-search-id="email-analyzeid">AnalyzeID</button>
+            <button id="btn-email-cybernews" class="button" data-search-id="email-cybernews">Cybernews</button>
+            <button id="btn-email-emailrep" class="button" data-search-id="email-emailrep">Emailrep</button>
+            <button id="btn-email-ghunt" class="button" data-search-id="email-ghunt">Ghunt (Google Account)</button>
+            <button id="btn-email-gravatar" class="button" data-search-id="email-gravatar">Gravatar</button>
+            <button id="btn-email-occrp" class="button" data-search-id="email-occrp">OCCRP</button>
+            <button id="btn-email-scamsearch" class="button" data-search-id="email-scamsearch">ScamSearch</button>
+            <button id="btn-email-spycloud" class="button" data-search-id="email-spycloud">Spycloud</button>
+            <button id="btn-email-spytox" class="button" data-search-id="email-spytox">SpyTox</button>
+            <button id="btn-email-thatsthem" class="button" data-search-id="email-thatsthem">ThatsThem</button>
+          </div>
+        </section>
+
+        <section id="section-email-whois" style="margin-top: 2rem;">
+          <h2>WHOIS Data</h2>
+          <div class="button-grid">
+            <button id="btn-email-whoxy" class="button" data-search-id="email-whoxy">Whoxy</button>
+            <button id="btn-email-whoisology" class="button" data-search-id="email-whoisology">Whoisology</button>
+          </div>
+        </section>
+      </div>
+
+      <div class="column">
+        <section id="section-email-leaks">
+          <h2>Leaks</h2>
+          <div class="button-grid">
+            <button id="btn-email-cleantalk" class="button" data-search-id="email-cleantalk">CleanTalk</button>
+            <button id="btn-email-dehashed" class="button" data-search-id="email-dehashed">Dehashed</button>
+            <button id="btn-email-hudsonrock" class="button" data-search-id="email-hudsonrock">HudsonRock</button>
+            <button id="btn-email-hunterverify" class="button" data-search-id="email-hunterverify">HunterVerify</button>
+            <button id="btn-email-intelx" class="button" data-search-id="email-intelx">IntelX</button>
+            <button id="btn-email-leakix" class="button" data-search-id="email-leakix">LeakIX</button>
+            <button id="btn-email-psbdmp" class="button" data-search-id="email-psbdmp">PSBDMP</button>
+          </div>
+        </section>
+
+        <section id="section-email-social" style="margin-top: 2rem;">
+          <h2>Social Networks</h2>
+          <div class="button-grid">
+            <button id="btn-email-flickr" class="button" data-search-id="email-flickr">Flickr</button>
+            <button id="btn-email-myspace" class="button" data-search-id="email-myspace">MySpace</button>
+            <button id="btn-email-protonmail" class="button" data-search-id="email-protonmail">Protonmail</button>
+          </div>
+        </section>
+      </div>
+    </div>
+</main>
+
+<footer>
+    <p>Exploratores 2.5 • Prototype <a href="license.html">License</a></p>
+</footer>
+
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/menu/navigation.js"></script>
+
+<script>
+  function updatePageState() {
+    const emailData = ExploratoresValidators.getAndValidateEmail();
+    const gmailData = ExploratoresValidators.getAndValidateGmail();
+
+    document.querySelectorAll('button[data-search-id]').forEach(button => {
+        const searchId = button.dataset.searchId;
+        const config = SearchLibrary[searchId] || {};
+        
+        let isEnabled = false;
+        if (config.validator === 'getAndValidateGmail') {
+            isEnabled = !!gmailData;
+        } else {
+            isEnabled = !!emailData;
+        }
+        
+        button.disabled = !isEnabled;
+        button.classList.toggle('text-active', isEnabled);
+    });
+  }
+
+  function setInitialPageState() {
+    const emailInput = document.getElementById('emailInput');
+    if (emailInput) {
+        emailInput.addEventListener('input', updatePageState);
+    }
+    updatePageState();
+  }
+
+  document.addEventListener('DOMContentLoaded', setInitialPageState);
+</script>
+
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

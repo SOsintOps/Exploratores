@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploratores Images Tool</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<script src="../assets/menu/navigation.js"></script>
+    
+<main>
+  <h1 class="page-title">Images Tool</h1>
+
+  <div class="columns">
+    <div class="column" id="left-column">
+      <div>
+        <h2>Images Search by Terms</h2>
+        <section class="search-instructions">
+          <label for="imageSearchTermsInput">Enter keywords for image search:</label>
+          <div class="input-container">
+            <input type="text" id="imageSearchTermsInput" class="input-field" placeholder="Keywords..."/>
+          </div>
+          <div class="note">
+            <strong>NOTE:</strong> Searches will use these terms on various platforms. Results will open in new tabs.
+          </div>
+        </section>
+        <div class="button-grid">
+          <button type="button" class="button" onclick="ImagesTermSearch01(document.getElementById('imageSearchTermsInput').value)">Bing Images</button>
+          <button type="button" class="button" onclick="ImagesTermSearch02(document.getElementById('imageSearchTermsInput').value)">Facebook Images</button>
+          <button type="button" class="button" onclick="ImagesTermSearch03(document.getElementById('imageSearchTermsInput').value)">Flickr Images</button>
+          <button type="button" class="button" onclick="ImagesTermSearch04(document.getElementById('imageSearchTermsInput').value)">Google Images</button>
+          <button type="button" class="button" onclick="ImagesTermSearch05(document.getElementById('imageSearchTermsInput').value)">Instagram Images</button>
+          <button type="button" class="button" onclick="ImagesTermSearch06(document.getElementById('imageSearchTermsInput').value)">LinkedIn Images</button>
+          <button type="button" class="button" onclick="ImagesTermSearch07(document.getElementById('imageSearchTermsInput').value)">Tumblr Images</button>
+          <button type="button" class="button" onclick="ImagesTermSearch08(document.getElementById('imageSearchTermsInput').value)">Twitter Images</button>
+          <button type="button" class="button" onclick="ImagesTermSearch09(document.getElementById('imageSearchTermsInput').value)">Yandex Images</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="column" id="right-column">
+      <div>
+        <h2>Reverse Image Search by URL</h2>
+        <section class="search-instructions">
+          <label for="reverseImageUrlInput">Paste the direct URL of an image:</label>
+          <div class="input-container">
+            <input type="text" id="reverseImageUrlInput" class="input-field" placeholder="Image URL (e.g., https://...image.jpg)" />
+          </div>
+          <div class="note">
+            <strong>NOTE:</strong> Ensure the URL is a direct link to the image file. Results will open in new tabs.
+          </div>
+        </section>
+        <div class="button-grid">
+          <button type="button" class="button" onclick="ImagesReverseSearch01(document.getElementById('reverseImageUrlInput').value)">Bing</button>
+          <button type="button" class="button" onclick="ImagesReverseSearch02(document.getElementById('reverseImageUrlInput').value)">FaceCheck</button>
+          <button type="button" class="button" onclick="ImagesReverseSearch03(document.getElementById('reverseImageUrlInput').value)">Google Images</button>
+          <button type="button" class="button" onclick="ImagesReverseSearch04(document.getElementById('reverseImageUrlInput').value)">Google Lens</button>
+          <button type="button" class="button" onclick="ImagesReverseSearch05(document.getElementById('reverseImageUrlInput').value)">Repost Sleuth</button>
+          <button type="button" class="button" onclick="ImagesReverseSearch06(document.getElementById('reverseImageUrlInput').value)">TinEye</button>
+          <button type="button" class="button" onclick="ImagesReverseSearch07(document.getElementById('reverseImageUrlInput').value)">Yandex</button>
+        </div>
+      </div>
+      </div>
+  </div>
+</main>
+
+<script type="text/javascript">
+// Submenu mouseover/mouseout logic for nav
+document.querySelectorAll('.menu > li').forEach(item => {
+  const submenu = item.querySelector('.submenu');
+  if (submenu) {
+      item.addEventListener('mouseover', () => submenu.style.display = 'block');
+      item.addEventListener('mouseout', () => submenu.style.display = 'none');
+  }
+});
+
+// Images Search by Terms (Sorted Alphabetically by Button Text)
+function ImagesTermSearch01(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.bing.com/images/search?q=' + encodeURIComponent(term), '_blank');} // Bing Images
+function ImagesTermSearch02(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.facebook.com/search/photos/?q=' + encodeURIComponent(term), '_blank');} // Facebook Images
+function ImagesTermSearch03(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.flickr.com/search/?text=' + encodeURIComponent(term), '_blank');} // Flickr Images
+function ImagesTermSearch04(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.google.com/search?q=' + encodeURIComponent(term) + '&tbm=isch', '_blank');} // Google Images
+function ImagesTermSearch05(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.google.com/search?tbm=isch&q=site%3Ainstagram.com+' + encodeURIComponent(term), '_blank');} // Instagram Images
+function ImagesTermSearch06(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.google.com/search?tbm=isch&q=site%3Alinkedin.com+' + encodeURIComponent(term), '_blank');} // LinkedIn Images
+function ImagesTermSearch07(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.tumblr.com/search/' + encodeURIComponent(term), '_blank');} // Tumblr Images
+function ImagesTermSearch08(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://twitter.com/search?q=' + encodeURIComponent(term) + '&f=media', '_blank');} // Twitter Images
+function ImagesTermSearch09(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://yandex.com/images/search?text=' + encodeURIComponent(term), '_blank');} // Yandex Images
+
+// Reverse Image Search by URL (Sorted Alphabetically by Button Text)
+function ImagesReverseSearch01(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.bing.com/images/search?view=detailv2&iss=sbi&q=imgurl:' + encodeURIComponent(term), '_blank');} // Bing
+function ImagesReverseSearch02(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://facecheck.id/#url=' + encodeURIComponent(term), '_blank');} // FaceCheck
+function ImagesReverseSearch03(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.google.com/searchbyimage?image_url=' + encodeURIComponent(term) + '&client=app', '_blank');} // Google Images
+function ImagesReverseSearch04(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://lens.google.com/uploadbyurl?url=' + encodeURIComponent(term), '_blank');} // Google Lens
+function ImagesReverseSearch05(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://www.repostsleuth.com/search?url=' + encodeURIComponent(term), '_blank');} // Repost Sleuth
+function ImagesReverseSearch06(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('http://www.tineye.com/search/?url=' + encodeURIComponent(term), '_blank');} // TinEye
+function ImagesReverseSearch07(OsintValue) { const term = OsintValue.trim(); if (term === "") return; window.open('https://yandex.com/images/search?rpt=imageview&url=' + encodeURIComponent(term), '_blank');} // Yandex
+
+// Funzioni Flickr API rimosse: ImagesFlickrEmailSearch, ImagesFlickrUserNumberSearch, ImagesFlickrUsernameSearch
+
+// General form handler to prevent default submission
+document.querySelectorAll('form').forEach(form => {
+  // Gli onsubmit inline nei form di questa pagina non ci sono, ma questo è un fallback generico.
+  // Per i form aggiunti in futuro senza onsubmit inline, questo preverrà il reload.
+  if (!form.hasAttribute('onsubmit')) { 
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+    });
+  }
+});
+</script>
+
+<footer>
+<<<<<<< HEAD
+  <p>Exploratores 2.5 prototype <a href="license.html">License</a></p>
+=======
+  <p>Exploratores 2.5 • Prototype <a href="license.html">License</a></p>
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
+</footer>
+
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

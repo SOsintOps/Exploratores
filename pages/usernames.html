@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Usernames Tool • Exploratores</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<script src="../assets/menu/navigation.js"></script>
+
+<main>
+  <h1 class="page-title">Usernames Tool</h1>
+  <section class="search-instructions">
+    <label for="OsintInput">Insert username here:</label>
+    <div class="input-container">
+      <input type="text" id="OsintInput" class="input-field" placeholder="Username">
+    </div>
+  </section>
+  <div class="note">
+    <strong>NOTE:</strong> Please enter the username above, then click a button to perform the search. Some tools open specific platform pages and may not directly use the username if the platform doesn't support it via URL.
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <h2>Social Networks & Messaging</h2>
+      <div class="button-grid">
+        <button class="button" onclick="Usernames_FacebookSearchPosts()">Facebook Posts Search</button>
+        <button class="button" onclick="Usernames_SearchFacebookProfile()">Facebook Profile</button>
+        <button class="button" onclick="Usernames_FacebookSearchDirect()">Facebook Search (Direct)</button>
+        <button class="button" onclick="Usernames_FacebookSearchGoogle()">Facebook Search (Google)</button>
+        <button class="button" onclick="Usernames_SearchGhunt()">Ghunt (Google Account)</button>
+        <button class="button" onclick="Usernames_GitHubUser()">GitHub User</button>
+        <button class="button" onclick="Usernames_SearchGravatar()">Gravatar</button>
+        <button class="button" onclick="Usernames_SearchInstagramProfile()">Instagram Profile</button>
+        <button class="button" onclick="Usernames_InstagramSearchGoogle()">Instagram Search (Google)</button>
+        <button class="button" onclick="Usernames_InstagramUserDirect()">Instagram User (Direct)</button>
+        <button class="button" onclick="Usernames_KikUser()">Kik User</button>
+        <button class="button" onclick="Usernames_LinkedInKeywordSearch()">LinkedIn Keyword Search</button>
+        <button class="button" onclick="Usernames_SearchLinkTree()">LinkTree</button>
+        <button class="button" onclick="Usernames_SearchMedium()">Medium</button>
+        <button class="button" onclick="Usernames_MeWeUser()">MeWe User</button>
+        <button class="button" onclick="Usernames_NaijaPlanetUser()">NaijaPlanet User</button>
+        <button class="button" onclick="Usernames_SearchRedditProfile()">Reddit Profile</button>
+        <button class="button" onclick="Usernames_SearchSnapchat()">Snapchat</button>
+        <button class="button" onclick="Usernames_TelegagoSearch()">Telegago (Telegram Search)</button>
+        <button class="button" onclick="Usernames_TelegramUser()">Telegram User</button>
+        <button class="button" onclick="Usernames_SearchTikTokProfile()">TikTok Profile</button>
+        <button class="button" onclick="Usernames_SearchTinder()">Tinder</button>
+        <button class="button" onclick="Usernames_SearchTumblr()">Tumblr</button>
+        <button class="button" onclick="Usernames_SearchXProfile()">X Profile</button>
+        <button class="button" onclick="Usernames_XSearchGoogle()">X Search (Google)</button>
+        <button class="button" onclick="Usernames_XUserSearchDirect()">X User Search (Direct)</button>
+      </div>
+      <h2>Financial & Crypto</h2>
+      <div class="button-grid">
+        <button class="button" onclick="Usernames_ArkhamEntity()">Arkham Entity</button>
+        <button class="button" onclick="Usernames_CashAppUser()">CashApp User</button>
+        <button class="button" onclick="Usernames_PaypalMeUser()">PayPalMe User</button>
+        <button class="button" onclick="Usernames_RemitanoProfile()">Remitano Profile</button>
+        <button class="button" onclick="Usernames_VenmoUser()">Venmo User</button>
+      </div>
+      <h2>Gaming</h2>
+      <div class="button-grid">
+        <button class="button" onclick="Usernames_SteamCommunitySearch()">Steam Community Search</button>
+        <button class="button" onclick="Usernames_SteamIDLookupUrl()">SteamID Lookup</button>
+        <button class="button" onclick="Usernames_XboxGamertagSearch()">Xbox Gamertag Search</button>
+      </div>
+      <h2>Availability</h2>
+      <div class="button-grid">
+        <button class="button" onclick="Usernames_SearchCheckistan()">Checkistan</button>
+        <button class="button" onclick="Usernames_SearchInstantUsername()">InstantUser</button>
+        <button class="button" onclick="Usernames_SearchNameChck()">NameChck</button>
+        <button class="button" onclick="Usernames_SearchNameChecker()">NameChecker</button>
+        <button class="button" onclick="Usernames_SearchNameVine()">NameVine</button>
+      </div>
+    </div>
+    <div class="column">
+      <h2>General Web & Username Search</h2>
+      <div class="button-grid">
+        <button class="button" onclick="Usernames_SearchBing()">Bing</button>
+        <button class="button" onclick="Usernames_SearchEmailFromUsername()">Email Search (from Username)</button>
+        <button class="button" onclick="Usernames_SearchGoogleExact()">Google (Exact Username)</button>
+        <button class="button" onclick="Usernames_GoogleSearchPlusExact()">Google Search (Strict)</button>
+        <button class="button" onclick="Usernames_SearchIDCrawl()">ID Crawl</button>
+        <button class="button" onclick="Usernames_SearchProfileDiscover()">ProfileDiscover</button>
+        <button class="button" onclick="Usernames_SearchSocialSearcher()">SocialSearcher</button>
+        <button class="button" onclick="Usernames_SearchUserSearchOrg()">UserSearch.org</button>
+        <button class="button" onclick="Usernames_OpenWhatsMyNameApp()">WhatsMyName App Page</button>
+        <button class="button" onclick="Usernames_SearchYandex()">Yandex</button>
+      </div>
+      <h2>Security, Breaches & Pastes</h2>
+      <div class="button-grid">
+        <button class="button" onclick="Usernames_AlienVaultIndicator()">AlienVault Indicator</button>
+        <button class="button" onclick="Usernames_SearchDehashed()">Dehashed (Breaches)</button>
+        <button class="button" onclick="Usernames_SearchDehashedEmails()">Dehashed Emails (Breaches)</button>
+        <button class="button" onclick="Usernames_KrebsSecuritySearch()">Krebs Security Search</button>
+        <button class="button" onclick="Usernames_PastebinUser()">Pastebin User</button>
+        <button class="button" onclick="Usernames_SearchPSBDMP()">PSBDMP (Pastes)</button>
+        <button class="button" onclick="Usernames_RiskIQTrackersSearch()">RiskIQ Trackers Search</button>
+        <button class="button" onclick="Usernames_StopForumSpamSearch()">Stop Forum Spam Search</button>
+      </div>            
+      <h2>Public Records & Domain Research</h2>
+      <div class="button-grid">
+        <button class="button" onclick="Usernames_ASASearch()">ASA Search</button>
+        <button class="button" onclick="Usernames_DomainToolsWhois()">DomainTools WHOIS</button>
+        <button class="button" onclick="Usernames_GoogleGroupsSearch()">Google Groups Search</button>
+        <button class="button" onclick="Usernames_OCCRPalephSearch()">OCCRP Aleph Search</button>
+        <button class="button" onclick="Usernames_OFACSanctionsSearch()">OFAC Sanctions Search</button>
+      </div>            
+      <h2>Russia</h2>
+      <div class="button-grid">
+        <button class="button" onclick="Usernames_RussiaChecko()">Checko (RU) Search</button>
+        <button class="button" onclick="Usernames_RussiaMailRuSocialSearch()">Mail.Ru Social Search</button>
+        <button class="button" onclick="Usernames_RussiaSmatVK()">SMAT VK Search</button>
+        <button class="button" onclick="Usernames_RussiaVKDirectSearch()">VK (Direct Search)</button>
+        <button class="button" onclick="Usernames_RussiaVKGoogleSearch()">VK (Google Search)</button>
+        <button class="button" onclick="Usernames_VKmeProfile()">VK.me Profile</button>
+        <button class="button" onclick="Usernames_RussiaWebArchiveMediaSearch()">WebArchive (RU Media)</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+<<<<<<< HEAD
+  <p>Exploratores 2.5 prototype <a href="license.html">License</a></p>
+=======
+  <p>Exploratores 2.5 • Prototype <a href="license.html">License</a></p>
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
+</footer>
+
+<script>
+  // Standard navbar submenu script
+  document.querySelectorAll('.menu > li').forEach(item => {
+    const submenu = item.querySelector('.submenu');
+    if (submenu) { 
+      item.addEventListener('mouseenter', function() {
+        submenu.style.display = 'block';
+      });
+      item.addEventListener('mouseleave', function() {
+        submenu.style.display = 'none';
+      });
+    }
+  });
+
+  // Helper functions for Usernames page
+  function Usernames_getPrimaryInput() {
+    const el = document.getElementById('OsintInput');
+    return el ? el.value.trim() : "";
+  }
+
+  function Usernames_validateAndGetPrimaryInput() {
+    const username = Usernames_getPrimaryInput();
+    if (!username) {
+      alert("Please enter a username.");
+      return null;
+    }
+    return username;
+  }
+
+  // --- Username Search Functions ---
+  function Usernames_SearchBing() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.bing.com/search?q="' + encodeURIComponent(username) + '"', '_blank');
+  }
+  function Usernames_SearchCheckistan() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://usernamechecker.checkistan.com/#' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchDehashed() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://dehashed.com/search?query="' + encodeURIComponent(username) + '"', '_blank');
+  }
+  function Usernames_SearchDehashedEmails() { // Opens multiple tabs
+    const u = Usernames_validateAndGetPrimaryInput(); if (!u) return;
+    ['@gmail.com','@yahoo.com','@hotmail.com','@protonmail.com','@live.com','@outlook.com','@icloud.com','@yandex.com','@gmx.com','@mail.com','@mac.com','@me.com']
+      .forEach((d,i) => setTimeout(() => open(`https://dehashed.com/search?query="${encodeURIComponent(u + d)}"`, '_blank'), i*1000));
+  }
+  function Usernames_SearchEmailFromUsername() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.google.com/search?q="' + encodeURIComponent(username) + '@gmail.com" OR "' + encodeURIComponent(username) + '@yahoo.com"', '_blank');
+  }
+  function Usernames_SearchFacebookProfile() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://facebook.com/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchGhunt() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://gmail-osint.activetk.jp/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchGoogleExact() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.google.com/search?q="' + encodeURIComponent(username) + '"', '_blank');
+  }
+  function Usernames_SearchGravatar() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://en.gravatar.com/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchIDCrawl() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.idcrawl.com/u/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchInstantUsername() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://instantusername.com/?q=' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchInstagramProfile() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://instagram.com/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchLinkTree() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://linktr.ee/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchMedium() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://medium.com/@' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchNameChecker() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.namechecker.org/#' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchNameChck() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://namechk.com/namechk-plugin-search-results/?n=' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchNameVine() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://namevine.com/#/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchProfileDiscover() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://profilediscover.com/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchPSBDMP() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://psbdmp.ws/api/search/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchRedditProfile() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.reddit.com/user/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchSnapchat() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.snapchat.com/s/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchSocialSearcher() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.social-searcher.com/search-users/?q6=' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchTikTokProfile() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.tiktok.com/@' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchTinder() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://tinder.com/@' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchTumblr() {
+    const username = Usernames_validateAndGetPrimaryInput(); 
+    if (!username) return;
+    const cleanUsername = username.replace(/[^a-zA-Z0-9-]/g, ''); 
+    if (!cleanUsername) {
+        alert("Invalid username format for Tumblr.");
+        return;
+    }
+    open(`https://${cleanUsername}.tumblr.com`, '_blank');
+  }
+  function Usernames_SearchUserSearchOrg() { // Opens multiple tabs
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    ['results_normal','results_advanced','results_advanced1','results_advanced2','results_advanced4','results_advanced5','results_advanced6','results_advanced7','results_dating','results_forums','results_crypto']
+      .forEach(path => open(`https://usersearch.org/${path}.php?URL_username=${encodeURIComponent(username)}`, '_blank'));
+  }
+  function Usernames_SearchXProfile() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://x.com/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SearchYandex() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://yandex.com/search/?text="' + encodeURIComponent(username) + '"', '_blank');
+  }
+  function Usernames_SearchYouTube() { // Updated URL
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.youtube.com/@' + encodeURIComponent(username), '_blank');
+  }    
+
+  // --- Additional Search Engines & Profiles ---
+  function Usernames_ASASearch() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.asa.org.uk/search.html?q=' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_AlienVaultIndicator() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://otx.alienvault.com/browse/global/indicators?q=' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_ArkhamEntity() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://platform.arkhamintelligence.com/explorer/entity/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_CashAppUser() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://cash.app/$' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_DomainToolsWhois() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22' + encodeURIComponent(username) + '%22%5D%5D%5D&historical=1', '_blank');
+  }
+  function Usernames_FacebookSearchDirect() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.facebook.com/search/top?q=' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_FacebookSearchGoogle() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.google.com/search?q=site%3Afacebook.com+%22' + encodeURIComponent(username) + '%22', '_blank');
+  }
+  function Usernames_FacebookSearchPosts() { // Function for the re-added button
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.facebook.com/search/posts/?q=' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_GitHubUser() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://github.com/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_GoogleSearchPlusExact() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.google.com/search?q=+%22' + encodeURIComponent(username) + '%22', '_blank');
+  }
+  function Usernames_GoogleGroupsSearch() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://groups.google.com/search?q=' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_VKmeProfile() { 
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://vk.me/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_InstagramUserDirect() { 
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.instagram.com/' + encodeURIComponent(username) + '/', '_blank');
+  }
+  function Usernames_InstagramSearchGoogle() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.google.com/search?q=site%3Ainstagram.com+' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_KikUser() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://kik.me/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_KrebsSecuritySearch() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://krebsonsecurity.com/?s=' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_LinkedInKeywordSearch() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.linkedin.com/search/results/all/?keywords=' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_MeWeUser() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://mewe.com/i/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_NaijaPlanetUser() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://naijaplanet.com/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_OCCRPalephSearch() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://aleph.occrp.org/search?limit=30&q=' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_OFACSanctionsSearch() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://ofac.treasury.gov/recent-actions?search_api_fulltext=' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_PastebinUser() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://pastebin.com/u/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_PaypalMeUser() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.paypal.com/paypalme/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_RemitanoProfile() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://remitano.com/btc/ng/profile/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_RiskIQTrackersSearch() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://community.riskiq.com/search/trackers?query=' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SteamCommunitySearch() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://steamcommunity.com/search/users/#text=' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_SteamIDLookupUrl() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://steamid.uk/url/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_StopForumSpamSearch() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.stopforumspam.com/search/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_TelegagoSearch() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://cse.google.com/cse?&cx=006368593537057042503:efxu7xprihg#gsc.tab=0&gsc.q=' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_TelegramUser() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://t.me/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_XUserSearchDirect() { 
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://twitter.com/search?q=(' + encodeURIComponent(username) + ')&src=typed_query&f=user', '_blank');
+  }
+  function Usernames_XSearchGoogle() { 
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.google.com/search?q=site%3Atwitter.com+%22' + encodeURIComponent(username) + '%22', '_blank');
+  }
+  function Usernames_VenmoUser() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://account.venmo.com/u/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_OpenWhatsMyNameApp() {
+    open('https://whatsmyname.app/', '_blank');
+  }
+  function Usernames_XboxGamertagSearch() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://xboxgamertag.com/search/' + encodeURIComponent(username), '_blank');
+  }
+  // --- Russia Specific Searches ---
+  function Usernames_RussiaChecko() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://checko.ru/search?query=' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_RussiaMailRuSocialSearch() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://go.mail.ru/search_social?q=' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_RussiaSmatVK() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+    const day = String(today.getDate()).padStart(2, '0');
+    const dynamicEndDate = `${year}-${month}-${day}`;
+    open('https://www.smat-app.com/search?searchTerm=' + encodeURIComponent(username) + '&startDate=2000-06-01&endDate=' + dynamicEndDate + '&websites=vk&numberOf=10&interval=day&limit=1000&changepoint=false', '_blank');
+  }
+  function Usernames_RussiaVKDirectSearch() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://vk.com/search/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_RussiaVKGoogleSearch() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://www.google.com/search?q=site%3Avk.com+%22' + encodeURIComponent(username) + '%22', '_blank');
+  }
+  function Usernames_VKmeProfile() { // This was duplicated, corrected here to match its button.
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://vk.me/' + encodeURIComponent(username), '_blank');
+  }
+  function Usernames_RussiaWebArchiveMediaSearch() {
+    const username = Usernames_validateAndGetPrimaryInput(); if (!username) return;
+    open('https://web.archive.org/russian-independent-media/search/' + encodeURIComponent(username), '_blank');
+  }
+</script>
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

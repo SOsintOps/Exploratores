@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Keybase • Exploratores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<script src="../assets/menu/navigation.js"></script>
+
+<main>
+  <h1 class="page-title">Keybase Tools</h1>
+  
+  <section class="search-instructions">
+    <label for="keybaseQueryInput">Enter Keybase Username, Team Name, or Query:</label>
+    <div class="input-container">
+      <input type="text" id="keybaseQueryInput" class="input-field" placeholder="e.g., enigma, stellar.public">
+    </div>
+  </section>
+  
+  <div class="note">
+    <strong>NOTE:</strong> Enter the username, team name, or other query above, then click a button. For "User Stellar Info", the page will open the user's profile; scroll to find Stellar details if present.
+  </div>
+
+  <div class="columns">
+    <div class="column">
+      <h2>Keybase Lookups</h2>
+      <div class="button-grid button-grid-3col">
+        <button type="button" class="button" onclick="Keybase_TeamProfile()">Team Profile</button>
+        <button type="button" class="button" onclick="Keybase_UserDevices()">User Devices</button>
+        <button type="button" class="button" onclick="Keybase_UserGraph()">User Graph</button>
+        <button type="button" class="button" onclick="Keybase_UserProfile()">User Profile</button>
+        <button type="button" class="button" onclick="Keybase_UserSigchain()">User Sigchain</button>
+        <button type="button" class="button" onclick="Keybase_UserStellar()">User Stellar Info</button>
+      </div>
+    </div>
+    <div class="column">
+      </div>
+  </div>
+</main>
+
+<footer>
+<<<<<<< HEAD
+  <p>Exploratores 2.5 prototype <a href="license.html">License</a></p>
+=======
+  <p>Exploratores 2.5 • Prototype <a href="license.html">License</a></p>
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
+</footer>
+
+<script>
+  // Standard navbar submenu script
+  document.querySelectorAll('.menu > li').forEach(item => {
+    const submenu = item.querySelector('.submenu');
+    if (submenu) { 
+      item.addEventListener('mouseenter', function() {
+        submenu.style.display = 'block';
+      });
+      item.addEventListener('mouseleave', function() {
+        submenu.style.display = 'none';
+      });
+    }
+  });
+
+  // Helper function to get and validate input for Keybase page
+  function Keybase_GetAndValidateInput(inputId, placeholderForAlert = "a value") {
+    const inputElement = document.getElementById(inputId);
+    if (!inputElement) {
+      alert("Error: Input field '" + inputId + "' not found.");
+      return null;
+    }
+    const value = inputElement.value.trim();
+    if (!value) {
+      alert("Please enter " + placeholderForAlert + ".");
+      return null;
+    }
+    return value;
+  }
+
+  // Keybase Tool Functions
+  function Keybase_UserProfile() {
+    const query = Keybase_GetAndValidateInput('keybaseQueryInput', 'a Keybase username');
+    if (!query) return;
+    window.open('https://keybase.io/' + encodeURIComponent(query), '_blank');
+  }
+
+  function Keybase_UserDevices() {
+    const query = Keybase_GetAndValidateInput('keybaseQueryInput', 'a Keybase username');
+    if (!query) return;
+    window.open('https://keybase.io/' + encodeURIComponent(query) + '/devices', '_blank');
+  }
+
+  function Keybase_UserGraph() {
+    const query = Keybase_GetAndValidateInput('keybaseQueryInput', 'a Keybase username');
+    if (!query) return;
+    window.open('https://keybase.io/' + encodeURIComponent(query) + '/graph', '_blank');
+  }
+
+  function Keybase_TeamProfile() {
+    const query = Keybase_GetAndValidateInput('keybaseQueryInput', 'a Keybase team name');
+    if (!query) return;
+    window.open('https://keybase.io/team/' + encodeURIComponent(query), '_blank');
+  }
+
+  function Keybase_UserSigchain() {
+    const query = Keybase_GetAndValidateInput('keybaseQueryInput', 'a Keybase username');
+    if (!query) return;
+    window.open('https://keybase.io/' + encodeURIComponent(query) + '/sigchain', '_blank');
+  }
+
+  function Keybase_UserStellar() {
+    const query = Keybase_GetAndValidateInput('keybaseQueryInput', 'a Keybase username or Stellar address');
+    if (!query) return;
+    window.open('https://keybase.io/' + encodeURIComponent(query) + '#_', '_blank');
+  }
+</script>
+
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Addresses • Exploratores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<script src="../assets/menu/navigation.js"></script>
+<nav>
+    <ul class="menu">
+        <li><span>HOME</span>
+            <ul class="submenu">
+                <li><a href="../launchme.html">Index</a></li>
+            </ul>
+        </li>
+        <li><span>Search<br>Engines</span>
+            <ul class="submenu">
+                <li><a href="searchengines.html">Search Engines</a></li>
+            </ul>
+        </li>
+        <li><span>People &<br>Identities</span>
+            <ul class="submenu">
+                <li><a href="names.html">Names</a></li>
+                <li><a href="phoneus.html">US Phones</a></li>
+                <li><a href="phoneint.html">International Phones</a></li>
+                <li><a href="address.html" class="active">Addresses</a></li>
+                <li><a href="vehicles.html">Vehicles</a></li>
+                <li><a href="usernames.html">Usernames</a></li>
+                <li><a href="email.html">Email Addresses</a></li>
+                <li><a href="communities.html">Communities</a></li>
+            </ul>
+        </li>
+        <li><span>Social<br>Media</span>
+            <ul class="submenu">
+                <li><a href="x.html">X (Twitter)</a></li>
+                <li><a href="facebook.html">Facebook</a></li>
+                <li><a href="instagram.html">Instagram</a></li>
+                <li><a href="linkedin.html">LinkedIn</a></li>
+            </ul>
+        </li>
+        <li><span>Websites</span>
+            <ul class="submenu">
+                <li><a href="domains.html">Domains</a></li>
+                <li><a href="ip.html">IP Addresses</a></li>
+            </ul>
+        </li>
+        <li><span>GeoInt</span>
+            <ul class="submenu">
+                <li><a href="maps.html">Maps</a></li>
+            </ul>
+        </li>
+        <li><span>Media<br>Analysis</span>
+            <ul class="submenu">
+                <li><a href="images.html">Images</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="docs.html">Documents</a></li>
+            </ul>
+        </li>
+        <li><span>Business<br>Intelligence</span>
+            <ul class="submenu">
+                <li><a href="publiccompanyrecords.html">Company Public Records</a></li>
+                <li><a href="currencies.html">Virtual Currencies</a></li>
+            </ul>
+        </li>
+        <li><span>Tools</span>
+            <ul class="submenu">
+                <li><a href="guidelines.html">Guidelines</a></li>
+                <li><a href="cyberchef.html">CyberChef</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<main>
+    <h1 class="page-title">Address Search Tool</h1>
+    <div class="note">
+        <strong>Note:</strong> Address formats vary by country. Use the appropriate fields for US, International, or Italy.
+    </div>
+
+    <div class="columns">
+        <div id="column-address-us" class="column">
+            <section id="section-address-us" class="search-instructions">
+                <h2>US ADDRESSES</h2>
+                <div class="input-container">
+                    <input type="text" id="input-address-usNum" class="input-field" placeholder="Number" autocomplete="off">
+                    <input type="text" id="input-address-usStreet" class="input-field" placeholder="Street" autocomplete="off">
+                    <input type="text" id="input-address-usCity" class="input-field" placeholder="City" autocomplete="off">
+                    <input type="text" id="input-address-usState" class="input-field" placeholder="State" autocomplete="off">
+                    <input type="text" id="input-address-usZip" class="input-field" placeholder="ZIP" autocomplete="off">
+                </div>
+                <div id="feedback-address-us" class="feedback-message"></div>
+            </section>
+            <div id="grid-address-us" class="button-grid">
+                <button id="btn-address-us-addressescom" class="button" data-search-id="address-us-addressescom">Addresses.com</button>
+                <button id="btn-address-us-advbackground" class="button" data-search-id="address-us-advbackground">AdvBackgChk</button>
+                <button id="btn-address-us-cyberbackground" class="button" data-search-id="address-us-cyberbackground">CyberBkgChk</button>
+                <button id="btn-address-us-fastpeople" class="button" data-search-id="address-us-fastpeople">FastPeople</button>
+                <button id="btn-address-us-gisgraphy" class="button" data-search-id="address-us-gisgraphy">GISGraphy</button>
+                <button id="btn-address-us-google" class="button" data-search-id="address-us-google">Google</button>
+                <button id="btn-address-us-hudway" class="button" data-search-id="address-us-hudway">Hudway</button>
+                <button id="btn-address-us-peoplefinders" class="button" data-search-id="address-us-peoplefinders">PeopleFinders</button>
+                <button id="btn-address-us-rehold" class="button" data-search-id="address-us-rehold">Rehold</button>
+                <button id="btn-address-us-searchpeoplefree" class="button" data-search-id="address-us-searchpeoplefree">SearchPplFree</button>
+                <button id="btn-address-us-smartbackground" class="button" data-search-id="address-us-smartbackground">SmartBkgChk</button>
+                <button id="btn-address-us-spokeo" class="button" data-search-id="address-us-spokeo">Spokeo</button>
+                <button id="btn-address-us-truepeople" class="button" data-search-id="address-us-truepeople">TruePeople</button>
+                <button id="btn-address-us-usapeople" class="button" data-search-id="address-us-usapeople">USA People</button>
+                <button id="btn-address-us-whitepages" class="button" data-search-id="address-us-whitepages">WhitePages</button>
+                <button id="btn-address-us-zillow" class="button" data-search-id="address-us-zillow">Zillow</button>
+            </div>
+        </div>
+
+        <div id="column-address-intl" class="column">
+            <section id="section-address-intl" class="search-instructions">
+                <h2>INTERNATIONAL ADDRESSES</h2>
+                <div class="input-container">
+                    <input type="text" id="input-address-intlStreet" class="input-field" placeholder="Street" autocomplete="off">
+                    <input type="text" id="input-address-intlNum" class="input-field" placeholder="Number" autocomplete="off">
+                    <input type="text" id="input-address-intlCity" class="input-field" placeholder="City" autocomplete="off">
+                    <input type="text" id="input-address-intlZip" class="input-field" placeholder="Postal" autocomplete="off">
+                    <input type="text" id="input-address-intlRegion" class="input-field" placeholder="Region/Country" autocomplete="off">
+                </div>
+                <div id="feedback-address-intl" class="feedback-message"></div>
+            </section>
+            <div id="grid-address-intl" class="button-grid">
+                <button id="btn-address-intl-fastpeople" class="button" data-search-id="address-intl-fastpeople">FastPeople EU</button>
+                <button id="btn-address-intl-gisgraphy" class="button" data-search-id="address-intl-gisgraphy">GISGraphy</button>
+                <button id="btn-address-intl-google" class="button" data-search-id="address-intl-google">Google</button>
+            </div>
+
+            <section id="section-address-it-group">
+                <h2>Italy Addresses</h2>
+                <div id="container-it-companies" class="search-instructions">
+                    <h3>Pagine Bianche – Companies</h3>
+                    <div class="input-container">
+                        <input type="text" id="input-address-itCompany" class="input-field" placeholder="Company name" autocomplete="off">
+                    </div>
+                    <div class="input-container">
+                        <input type="text" id="input-address-itCity" class="input-field" placeholder="City" autocomplete="off">
+                        <input type="text" id="input-address-itProv" class="input-field" placeholder="Province (e.g., RM)" autocomplete="off">
+                    </div>
+                    <div id="feedback-address-it-companies" class="feedback-message"></div>
+                </div>
+                <div class="button-grid">
+                    <button id="btn-address-it-paginebianche-companies" class="button" data-search-id="address-it-paginebianche-companies">Search Companies</button>
+                </div>
+
+                <div id="container-it-people" class="search-instructions">
+                    <h3>Pagine Bianche – People</h3>
+                    <div class="input-container">
+                        <input type="text" id="input-address-itFirst" class="input-field" placeholder="First Name" autocomplete="off">
+                        <input type="text" id="input-address-itLast" class="input-field" placeholder="Last Name" autocomplete="off">
+                    </div>
+                    <div class="input-container">
+                        <input type="text" id="input-address-itCityP" class="input-field" placeholder="City" autocomplete="off">
+                        <input type="text" id="input-address-itProvP" class="input-field" placeholder="Province (e.g., MI)" autocomplete="off">
+                    </div>
+                    <div id="feedback-address-it-people" class="feedback-message"></div>
+                </div>
+                <div class="button-grid">
+                    <button id="btn-address-it-paginebianche-people" class="button" data-search-id="address-it-paginebianche-people">Search People</button>
+                </div>
+
+                <div id="container-it-yellow" class="search-instructions">
+                    <h3>Pagine Gialle</h3>
+                    <div class="input-container">
+                        <input type="text" id="input-address-itAct" class="input-field" placeholder="Activity (e.g., restaurant)" autocomplete="off">
+                        <input type="text" id="input-address-itLoc" class="input-field" placeholder="Location (e.g., Rome)" autocomplete="off">
+                    </div>
+                    <div id="feedback-address-it-yellow" class="feedback-message"></div>
+                </div>
+                <div class="button-grid">
+                    <button id="btn-address-it-paginegialle" class="button" data-search-id="address-it-paginegialle">Search Pagine Gialle</button>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
+</footer>
+
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/externaeven.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        Exploratores.initializePage();
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exploratores Videos Tool</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<script src="../assets/menu/navigation.js"></script>
+    
+<main>
+  <h1 class="page-title">Videos Tool</h1>
+  <div class="note">
+    <strong>NOTE:</strong> These feeds change often. If your desired feed is broken, please modify your custom tool included with the latest edition of OSINT Techniques to update your own feeds.
+  </div>
+
+  <div class="columns">
+    <div class="column" id="left-column">
+      <div>
+        <h2>YouTube Video ID Tools</h2>
+        <section class="search-instructions">
+          <label for="youtubeVideoIdInput">Enter YouTube Video ID:</label>
+          <div class="input-container">
+            <input type="text" id="youtubeVideoIdInput" class="input-field" placeholder="YouTube Video ID"/>
+          </div>
+          <div class="note">
+            <strong>NOTE:</strong> Use the Video ID (e.g., dQw4w9WgXcQ) with the tools below. Results open in new tabs.
+          </div>
+        </section>
+        <div class="button-grid">
+          <button type="button" class="button" onclick="VideosIDTool01(document.getElementById('youtubeVideoIdInput').value)">Age Bypass</button>
+          <button type="button" class="button" onclick="VideosIDTool02(document.getElementById('youtubeVideoIdInput').value)">Archives (Video)</button>
+          <button type="button" class="button" onclick="VideosIDTool03(document.getElementById('youtubeVideoIdInput').value)">Bing Reverse</button>
+          <button type="button" class="button" onclick="VideosIDTool04(document.getElementById('youtubeVideoIdInput').value)">Download</button>
+          <button type="button" class="button" onclick="VideosIDTool05(document.getElementById('youtubeVideoIdInput').value)">Full Screen</button>
+          <button type="button" class="button" onclick="VideosIDTool06(document.getElementById('youtubeVideoIdInput').value)">Google Reverse</button>
+          <button type="button" class="button" onclick="VideosIDTool07(document.getElementById('youtubeVideoIdInput').value)">Metadata (Video)</button>
+          <button type="button" class="button" onclick="VideosIDTool08(document.getElementById('youtubeVideoIdInput').value)">Restrictions I</button>
+          <button type="button" class="button" onclick="VideosIDTool09(document.getElementById('youtubeVideoIdInput').value)">Restrictions II</button>
+          <button type="button" class="button" onclick="VideosIDTool10(document.getElementById('youtubeVideoIdInput').value)">Thumbnail 2</button>
+          <button type="button" class="button" onclick="VideosIDTool11(document.getElementById('youtubeVideoIdInput').value)">Thumbnail 3</button>
+          <button type="button" class="button" onclick="VideosIDTool12(document.getElementById('youtubeVideoIdInput').value)">Thumbnail 4</button>
+          <button type="button" class="button" onclick="VideosIDTool13(document.getElementById('youtubeVideoIdInput').value)">Thumbnail HQ</button>
+          <button type="button" class="button" onclick="VideosIDTool14(document.getElementById('youtubeVideoIdInput').value)">TinEye Reverse</button>
+          <button type="button" class="button" onclick="VideosIDTool15(document.getElementById('youtubeVideoIdInput').value)">Yandex Reverse</button>
+        </div>
+      </div>
+      
+      <div>
+        <br><h3>YouTube Comments Search</h3>
+        <form onsubmit="event.preventDefault(); VideosCommentsSearch(document.getElementById('ytVideoIdForComments').value, document.getElementById('ytCommentSearchTerm').value);">
+          <div class="input-container">
+            <label for="ytVideoIdForComments">YouTube Video ID:</label>
+            <input type="text" id="ytVideoIdForComments" name="youtubeVideoIdForComments" class="input-field" placeholder="Video ID (or use from above)"/>
+          </div>
+          <div class="input-button-line">
+            <label for="ytCommentSearchTerm" class="sr-only">Comment Search Term:</label>
+            <input type="text" id="ytCommentSearchTerm" name="commentSearchTerm" class="input-field" placeholder="Search Term in Comments"/>
+            <button type="submit" class="button">Search Comments</button>
+          </div>
+        </form>
+      </div>
+
+      <div>
+        <br><h3>YouTube Channel & User Tools</h3>
+        <form onsubmit="event.preventDefault(); VideosChannelAccount(document.getElementById('ytUsernameAccountInput').value);">
+            <div class="input-button-line">
+                <label for="ytUsernameAccountInput" class="sr-only">YouTube Username:</label>
+                <input type="text" id="ytUsernameAccountInput" name="ytUsernameAccount" class="input-field" placeholder="YouTube Username"/>
+                <button type="submit" class="button">Account</button>
+            </div>
+        </form>
+        <form onsubmit="event.preventDefault(); VideosChannelMetadata(document.getElementById('ytChannelIdInput').value);">
+            <div class="input-button-line">
+                <label for="ytChannelIdInput" class="sr-only">YouTube Channel ID:</label>
+                <input type="text" id="ytChannelIdInput" name="ytChannelId" class="input-field" placeholder="YouTube Channel ID"/>
+                <button type="submit" class="button">Metadata (Channel)</button>
+            </div>
+        </form>
+        <form onsubmit="event.preventDefault(); VideosChannelProfile(document.getElementById('ytUsernameProfileInput').value);">
+            <div class="input-button-line">
+                <label for="ytUsernameProfileInput" class="sr-only">YouTube Username:</label>
+                <input type="text" id="ytUsernameProfileInput" name="ytUsernameProfile" class="input-field" placeholder="YouTube Username"/>
+                <button type="submit" class="button">Profile</button>
+            </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="column" id="right-column">
+      <div>
+        <h2>Video Search by Terms</h2>
+        <section class="search-instructions">
+          <label for="videoSearchTermsInput">Enter keywords for video search:</label>
+          <div class="input-container">
+            <input type="text" id="videoSearchTermsInput" class="input-field" placeholder="Keywords..."/>
+          </div>
+          <div class="note">
+            <strong>NOTE:</strong> Searches will use these terms on various video platforms. Results open in new tabs.
+          </div>
+        </section>
+        <div class="button-grid">
+          <button type="button" class="button" onclick="VideosTermSearch01(document.getElementById('videoSearchTermsInput').value)">Archives I (Movies)</button>
+          <button type="button" class="button" onclick="VideosTermSearch02(document.getElementById('videoSearchTermsInput').value)">Archives II (OpenSource)</button>
+          <button type="button" class="button" onclick="VideosTermSearch03(document.getElementById('videoSearchTermsInput').value)">Bing Videos</button>
+          <button type="button" class="button" onclick="VideosTermSearch04(document.getElementById('videoSearchTermsInput').value)">Facebook Videos</button>
+          <button type="button" class="button" onclick="VideosTermSearch05(document.getElementById('videoSearchTermsInput').value)">Google Videos</button>
+          <button type="button" class="button" onclick="VideosTermSearch06(document.getElementById('videoSearchTermsInput').value)">Reddit Videos</button>
+          <button type="button" class="button" onclick="VideosTermSearch07(document.getElementById('videoSearchTermsInput').value)">TV Archives</button>
+          <button type="button" class="button" onclick="VideosTermSearch08(document.getElementById('videoSearchTermsInput').value)">Twitter Videos</button>
+          <button type="button" class="button" onclick="VideosTermSearch09(document.getElementById('videoSearchTermsInput').value)">Yandex Videos</button>
+          <button type="button" class="button" onclick="VideosTermSearch10(document.getElementById('videoSearchTermsInput').value)">YouTube Videos</button>
+        </div>
+      </div>
+
+      <div>
+        <br><h3>TikTok Search</h3>
+        <form onsubmit="event.preventDefault(); VideosTikTokSearch(document.getElementById('tikTokHashtagInput').value);">
+          <div class="input-button-line">
+            <label for="tikTokHashtagInput" class="sr-only">TikTok Hashtag:</label>
+            <input type="text" id="tikTokHashtagInput" name="tikTokHashtag" class="input-field" placeholder="Hashtag (without #)"/>
+            <button type="submit" class="button">TikTok Videos</button>
+          </div>
+        </form>
+      </div>
+
+      <div>
+        <br><h3>Other Reverse Image Search</h3>
+        <form onsubmit="event.preventDefault(); VideosOtherReverse01(document.getElementById('generalImgUrlInput').value);">
+          <div class="input-button-line">
+              <label for="generalImgUrlInput" class="sr-only">Image URL:</label>
+              <input type="text" id="generalImgUrlInput" name="generalImgUrl" class="input-field" placeholder="Entire Image URL"/>
+              <button type="submit" class="button">General Reverse</button>
+          </div>
+        </form>
+        <form onsubmit="event.preventDefault(); VideosOtherReverse02(document.getElementById('vimeoImgUrlInput').value);">
+          <div class="input-button-line">
+              <label for="vimeoImgUrlInput" class="sr-only">Vimeo Image URL:</label>
+              <input type="text" id="vimeoImgUrlInput" name="vimeoImgUrl" class="input-field" placeholder="Vimeo Image URL"/>
+              <button type="submit" class="button">Vimeo Reverse</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script type="text/javascript">
+// Submenu mouseover/mouseout logic for nav
+document.querySelectorAll('.menu > li').forEach(item => {
+  const submenu = item.querySelector('.submenu');
+  if (submenu) {
+      item.addEventListener('mouseover', () => submenu.style.display = 'block');
+      item.addEventListener('mouseout', () => submenu.style.display = 'none');
+  }
+});
+
+// YouTube Video ID Tools
+function VideosIDTool01(videoId) { const term = videoId.trim(); if(term==="")return; window.open('https://www.nsfwyoutube.com/watch?v=' + encodeURIComponent(term), '_blank');}
+function VideosIDTool02(videoId) { const term = videoId.trim(); if(term==="")return; window.open('https://web.archive.org/web/https://www.youtube.com/watch?v=' + encodeURIComponent(term), '_blank');}
+function VideosIDTool03(videoId) { const term = videoId.trim(); if(term==="")return; window.open('https://www.bing.com/images/search?view=detailv2&iss=sbi&q=imgurl:https://i.ytimg.com/vi/' + encodeURIComponent(term) + '/maxresdefault.jpg', '_blank');}
+function VideosIDTool04(videoId) { const term = videoId.trim(); if(term==="")return; window.open('http://www.pwnyoutube.com/watch?v=' + encodeURIComponent(term), '_blank');}
+function VideosIDTool05(videoId) { const term = videoId.trim(); if(term==="")return; window.open('https://www.youtube.com/embed/' + encodeURIComponent(term), '_blank');}
+function VideosIDTool06(videoId) { const term = videoId.trim(); if(term==="")return; window.open('https://www.google.com/searchbyimage?site=search&sa=X&image_url=https://i.ytimg.com/vi/' + encodeURIComponent(term) + '/maxresdefault.jpg', '_blank');}
+function VideosIDTool07(videoId) { const term = videoId.trim(); if(term==="")return; window.open('https://www.googleapis.com/youtube/v3/videos?id=' + encodeURIComponent(term) + '&part=snippet,statistics,recordingDetails&key=YOUR_API_KEY', '_blank');}
+function VideosIDTool08(videoId) { const term = videoId.trim(); if(term==="")return; window.open('http://polsy.org.uk/stuff/ytrestrict.cgi?ytid=' + encodeURIComponent(term), '_blank');}
+function VideosIDTool09(videoId) { const term = videoId.trim(); if(term==="")return; window.open('https://watannetwork.com/tools/blocked/#url=' + encodeURIComponent(term), '_blank');}
+function VideosIDTool10(videoId) { const term = videoId.trim(); if(term==="")return; window.open('https://img.youtube.com/vi/' + encodeURIComponent(term) + '/1.jpg', '_blank');}
+function VideosIDTool11(videoId) { const term = videoId.trim(); if(term==="")return; window.open('https://img.youtube.com/vi/' + encodeURIComponent(term) + '/2.jpg', '_blank');}
+function VideosIDTool12(videoId) { const term = videoId.trim(); if(term==="")return; window.open('https://img.youtube.com/vi/' + encodeURIComponent(term) + '/3.jpg', '_blank');}
+function VideosIDTool13(videoId) { const term = videoId.trim(); if(term==="")return; window.open('https://i.ytimg.com/vi/' + encodeURIComponent(term) + '/maxresdefault.jpg', '_blank');}
+function VideosIDTool14(videoId) { const term = videoId.trim(); if(term==="")return; window.open('http://www.tineye.com/search/?url=https://i.ytimg.com/vi/' + encodeURIComponent(term) + '/maxresdefault.jpg', '_blank');}
+function VideosIDTool15(videoId) { const term = videoId.trim(); if(term==="")return; window.open('https://yandex.com/images/search?rpt=imageview&url=https://i.ytimg.com/vi/' + encodeURIComponent(term) + '/maxresdefault.jpg', '_blank');}
+
+// YouTube Comments Search
+function VideosCommentsSearch(videoId, commentTerm) {
+  const vid = videoId.trim();
+  const cTerm = commentTerm.trim();
+  if(vid==="" || cTerm==="")return;
+  window.open('https://www.googleapis.com/youtube/v3/commentThreads?part=id,snippet&videoId=' + encodeURIComponent(vid) + '&pageToken=&order=Relevance&maxResults=100&searchTerms=' + encodeURIComponent(cTerm) + '&textFormat=plainText&key=YOUR_API_KEY', '_blank');
+}
+
+// YouTube Channel & User Tools
+function VideosChannelAccount(username) { const term = username.trim(); if(term==="")return; window.open('https://www.youtube.com/feeds/videos.xml?user=' + encodeURIComponent(term), '_blank');}
+function VideosChannelMetadata(channelId) { const term = channelId.trim(); if(term==="")return; window.open('https://youtube.googleapis.com/youtube/v3/channels?part=snippet&id=' + encodeURIComponent(term) + '&key=YOUR_API_KEY', '_blank');}
+function VideosChannelProfile(username) { const term = username.trim(); if(term==="")return; window.open('https://www.youtube.com/user/' + encodeURIComponent(term), '_blank');}
+
+// Video Search by Terms
+function VideosTermSearch01(OsintValue) { const term = OsintValue.trim(); if(term==="")return; window.open('https://archive.org/details/movies?tab=collection&query=' + encodeURIComponent(term), '_blank');}
+function VideosTermSearch02(OsintValue) { const term = OsintValue.trim(); if(term==="")return; window.open('https://archive.org/details/opensource_movies?tab=collection&query=' + encodeURIComponent(term), '_blank');}
+function VideosTermSearch03(OsintValue) { const term = OsintValue.trim(); if(term==="")return; window.open('https://www.bing.com/videos/search?q=' + encodeURIComponent(term), '_blank');}
+function VideosTermSearch04(OsintValue) { const term = OsintValue.trim(); if(term==="")return; window.open('https://www.facebook.com/search/videos/?q=' + encodeURIComponent(term), '_blank');}
+function VideosTermSearch05(OsintValue) { const term = OsintValue.trim(); if(term==="")return; window.open('https://www.google.com/search?tbm=vid&q=' + encodeURIComponent(term), '_blank');}
+function VideosTermSearch06(OsintValue) { const term = OsintValue.trim(); if(term==="")return; window.open('https://www.reddit.com/search?q=site:v.redd.it%20AND%20' + encodeURIComponent(term), '_blank');}
+function VideosTermSearch07(OsintValue) { const term = OsintValue.trim(); if(term==="")return; window.open('https://archive.org/details/tv?q=' + encodeURIComponent(term), '_blank');}
+function VideosTermSearch08(OsintValue) { const term = OsintValue.trim(); if(term==="")return; window.open('https://twitter.com/search?q=' + encodeURIComponent(term) + '&f=media', '_blank');}
+function VideosTermSearch09(OsintValue) { const term = OsintValue.trim(); if(term==="")return; window.open('https://yandex.ru/video/search?text=' + encodeURIComponent(term) + '&rpt=imageview', '_blank');}
+function VideosTermSearch10(OsintValue) { const term = OsintValue.trim(); if(term==="")return; window.open('https://www.youtube.com/results?search_query=' + encodeURIComponent(term), '_blank');}
+
+// TikTok Search
+function VideosTikTokSearch(hashtag) { const term = hashtag.trim(); if(term==="")return; window.open('https://www.tiktok.com/tag/' + encodeURIComponent(term), '_blank');}
+
+// Other Reverse Image Search
+function VideosOtherReverse01(imageUrl) {
+  const term = imageUrl.trim(); if(term==="")return;
+  const encodedTerm = encodeURIComponent(term);
+  window.open('https://www.google.com/searchbyimage?site=search&sa=X&image_url=' + encodedTerm, '_blank');
+  window.open('http://www.bing.com/images/searchbyimage?FORM=IRSBIQ&cbir=sbi&imgurl=' + encodedTerm, '_blank');
+  window.open('http://www.tineye.com/search/?url=' + encodedTerm, '_blank');
+  window.open('https://yandex.com/images/search?url=' + encodedTerm + '&rpt=imageview', '_blank');
+  window.open('https://image.baidu.com/pcdutu?queryImageUrl=' + encodedTerm, '_blank');
+}
+function VideosOtherReverse02(imageUrl) {
+  const term = imageUrl.trim(); if(term==="")return;
+  const encodedTerm = encodeURIComponent(term);
+  window.open('https://www.google.com/searchbyimage?site=search&sa=X&image_url=' + encodedTerm, '_blank');
+  window.open('http://www.tineye.com/search/?url=' + encodedTerm, '_blank');
+  window.open('https://yandex.com/images/search?img_url=' + encodedTerm + '&rpt=imageview', '_blank');
+  window.open('http://www.bing.com/images/searchbyimage?FORM=IRSBIQ&cbir=sbi&imgurl=' + encodedTerm, '_blank');
+}
+
+// General form handler to prevent default submission
+document.querySelectorAll('form').forEach(form => {
+  if (!form.hasAttribute('onsubmit')) { 
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+    });
+  }
+});
+</script>
+
+<footer>
+<<<<<<< HEAD
+  <p>Exploratores 2.5 prototype <a href="license.html">License</a></p>
+=======
+  <p>Exploratores 2.5 • Prototype <a href="license.html">License</a></p>
+>>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
+</footer>
+
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
