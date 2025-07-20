@@ -245,5 +245,28 @@ const ExploratoresValidators = {
         const value = document.getElementById('input-communities-tgKey')?.value.trim();
         if (!value) return { isValid: false, message: "Please enter a keyword." };
         return { isValid: true, data: { keyword: value }, message: "Ready for search." };
+    },
+	
+    getAndValidateVin: function(config) {
+        const vin = document.getElementById('vinValue')?.value.trim();
+        if (!vin) {
+            return { isValid: false, message: "Please enter a VIN." };
+        }
+        if (vin.length !== 17) {
+            return { isValid: false, message: `A valid VIN must be 17 characters. Entered: ${vin.length}.` };
+        }
+        return { isValid: true, data: { vin: vin }, message: "Valid VIN format." };
+    },
+
+    getAndValidatePlate: function(config) {
+        const plate = document.getElementById('lpNumber')?.value.trim();
+        const state = document.getElementById('lpState')?.value.trim().toUpperCase();
+        if (!plate || !state) {
+            return { isValid: false, message: "Requires a License Plate and a 2-letter State." };
+        }
+        if (state.length !== 2) {
+            return { isValid: false, message: "State must be exactly 2 letters." };
+        }
+        return { isValid: true, data: { plate: plate, state: state }, message: "Valid format for search." };
     }
 };

@@ -349,6 +349,21 @@ const SearchLibrary = {
     "communities-tg-telescope": { "urlTemplate": "https://telesco.pe/{username}", "validator": "getAndValidateTgUser" },
     "communities-tg-telemetrio": { "urlTemplate": "https://telemetr.io/en/channels/search?q={username}", "validator": "getAndValidateTgUser" },
     "communities-tg-groupsearch": { "urlTemplate": "https://tgstat.com/en/search?q={keyword}", "validator": "getAndValidateTgKey" },
-    "communities-tg-channelsearch": { "urlTemplate": "https://lyzem.com/search?q={keyword}", "validator": "getAndValidateTgKey" }
+    "communities-tg-channelsearch": { "urlTemplate": "https://lyzem.com/search?q={keyword}", "validator": "getAndValidateTgKey" },
+	
+    // --- Voci per vehicles.html ---
+    "vehicles-vindecoderz": { "urlTemplate": "https://www.vindecoderz.com/EN/check-lookup/{vin}", "validator": "getAndValidateVin" },
+    "vehicles-faxvin": { "urlTemplate": "https://www.faxvin.com/order/decoding?vin={vin}", "validator": "getAndValidateVin" },
+    "vehicles-checkthatvin": { "urlTemplate": "https://checkthatvin.com/ctv/#/vin-search/{vin}", "validator": "getAndValidateVin" },
+    "vehicles-vincheckinfo": { "urlTemplate": "https://vincheck.info/check/report-summary.php?vin={vin}", "validator": "getAndValidateVin" },
+    "vehicles-searchquarry-vin": { "urlTemplate": "https://www.searchquarry.com/vin-decoder/search/{vin}", "validator": "getAndValidateVin" },
+    "vehicles-cyclevin": { "urlTemplate": "https://www.cyclevin.com/vin-report/?vin={vin}", "validator": "getAndValidateVin" },
+    "vehicles-recordfinder-vin": { "urlTemplate": "https://recordsfinder.com/search/vin-check/loader/?flow=vin-check&vin={vin}", "validator": "getAndValidateVin" },
+    "vehicles-canadavin": { "urlTemplate": "https://csps.con.rcmp-grc.gc.ca/queryVehicles?vin={vin}", "validator": "getAndValidateVin" },
+    "vehicles-carvana": { "urlTemplate": "https://www.carvana.com/sell-my-car/getoffer/vehicle?licensePlate={plate}&plateState={state}", "validator": "getAndValidatePlate" },
+    "vehicles-searchquarry-plate": { "urlTemplate": "https://www.searchquarry.com/vehicle_records/lregister?sqtb=license_plate&license_plates={plate}&state={state}", "validator": "getAndValidatePlate" },
+    "vehicles-recordfinder-plate": { "urlTemplate": "https://recordsfinder.com/search/plate/loader/?flow=plate&plateNumber={plate}&state={state}", "validator": "getAndValidatePlate" },
+    "vehicles-infotracer-plate": { "urlTemplate": "https://infotracer.com/loading/?type=plate-lookup&mercSubId=plate&plate={plate}&state={state}", "validator": "getAndValidatePlate" },
+    "vehicles-carnetai": { "urlTemplate": "https://carnet.ai/", "no_input": true }
 
 };
