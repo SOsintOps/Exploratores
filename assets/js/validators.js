@@ -268,5 +268,36 @@ const ExploratoresValidators = {
             return { isValid: false, message: "State must be exactly 2 letters." };
         }
         return { isValid: true, data: { plate: plate, state: state }, message: "Valid format for search." };
+    },
+	
+	// AGGIUNGI QUESTE FUNZIONI A validators.js
+
+    getAndValidateBtcAddress: function(config) {
+        const value = document.getElementById('input-currencies-btcAddress')?.value.trim();
+        // Regex di base per indirizzi P2PKH, P2SH e Bech32
+        const btcRegex = /^(1[a-km-zA-HJ-NP-Z1-9]{25,34})|(3[a-km-zA-HJ-NP-Z1-9]{25,34})|(bc1[a-zA-HJ-NP-Z0-9]{25,90})$/;
+        if (!value) return { isValid: false, message: "Please enter a Bitcoin address." };
+        if (!btcRegex.test(value)) return { isValid: false, message: "Invalid Bitcoin address format." };
+        return { isValid: true, data: { btc_address: value }, message: "Valid address format." };
+    },
+    getAndValidateCryptoAmount: function(config) {
+        const value = document.getElementById('input-currencies-cryptoAmount')?.value.trim();
+        if (!value || isNaN(parseFloat(value))) return { isValid: false, message: "Please enter a numeric amount." };
+        return { isValid: true, data: { amount: value }, message: "Ready for conversion." };
+    },
+    getAndValidateFiatAmount: function(config) {
+        const value = document.getElementById('input-currencies-fiatAmount')?.value.trim();
+        if (!value || isNaN(parseFloat(value))) return { isValid: false, message: "Please enter a numeric amount." };
+        return { isValid: true, data: { amount: value }, message: "Ready for conversion." };
+    },
+    getAndValidateOtherCryptoAddress: function(config) {
+        const value = document.getElementById('input-currencies-otherCryptoAddress')?.value.trim();
+        if (!value) return { isValid: false, message: "Please enter an address, TxID, or contract." };
+        return { isValid: true, data: { query: value }, message: "Ready for search." };
+    },
+    getAndValidateAnalysisQuery: function(config) {
+        const value = document.getElementById('input-currencies-analysisQuery')?.value.trim();
+        if (!value) return { isValid: false, message: "Please enter an address, TxHash, or entity." };
+        return { isValid: true, data: { query: value }, message: "Ready for search." };
     }
 };
