@@ -10,76 +10,7 @@
 </head>
 <body>
 
-<<<<<<< HEAD
 <div id="navbar-placeholder"></div>
-
-<script src="../assets/menu/navigation.js"></script>
-=======
-<nav>
-    <ul class="menu">
-        <li><span>HOME</span>
-            <ul class="submenu">
-                <li><a href="../launchme.html">Index</a></li>
-            </ul>
-        </li>
-        <li><span>Search<br>Engines</span>
-            <ul class="submenu">
-                <li><a href="searchengines.html">Search Engines</a></li>
-            </ul>
-        </li>
-        <li><span>People &<br>Identities</span>
-            <ul class="submenu">
-                <li><a href="names.html">Names</a></li>
-                <li><a href="phoneus.html">US Phones</a></li>
-                <li><a href="phoneint.html">International Phones</a></li>
-                <li><a href="address.html">Addresses</a></li>
-                <li><a href="vehicles.html">Vehicles</a></li>
-                <li><a href="usernames.html">Usernames</a></li>
-                <li><a href="email.html">Email Addresses</a></li>
-                <li><a href="communities.html">Communities</a></li>
-            </ul>
-        </li>
-        <li><span>Social<br>Media</span>
-            <ul class="submenu">
-                <li><a href="x.html">X (Twitter)</a></li>
-                <li><a href="facebook.html">Facebook</a></li>
-                <li><a href="instagram.html">Instagram</a></li>
-                <li><a href="linkedin.html">LinkedIn</a></li>
-            </ul>
-        </li>
-        <li><span>Websites</span>
-            <ul class="submenu">
-                <li><a href="domains.html">Domains</a></li>
-                <li><a href="ip.html">IP Addresses</a></li>
-            </ul>
-        </li>
-        <li><span>GeoInt</span>
-            <ul class="submenu">
-                <li><a href="maps.html">Maps</a></li>
-            </ul>
-        </li>
-        <li><span>Media<br>Analysis</span>
-            <ul class="submenu">
-                <li><a href="images.html">Images</a></li>
-                <li><a href="videos.html">Videos</a></li>
-                <li><a href="docs.html" class="active">Documents</a></li>
-            </ul>
-        </li>
-        <li><span>Business<br>Intelligence</span>
-            <ul class="submenu">
-                <li><a href="publiccompanyrecords.html">Company Public Records</a></li>
-                <li><a href="currencies.html">Virtual Currencies</a></li>
-            </ul>
-        </li>
-        <li><span>Tools</span>
-            <ul class="submenu">
-                <li><a href="guidelines.html">Guidelines</a></li>
-                <li><a href="cyberchef.html">CyberChef</a></li>
-            </ul>
-        </li>
-    </ul>
-</nav>
->>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
 
 <main>
     <h1 class="page-title">Documents Tool</h1>
@@ -155,49 +86,70 @@
 </main>
 
 <footer>
-<<<<<<< HEAD
-  <p>Exploratores 2.5 prototype <a href="license.html">License</a></p>
-=======
     <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
->>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
 </footer>
 
-<script src="../assets/js/config.js"></script>
-<script src="../assets/js/search-library.js"></script>
-<script src="../assets/js/validators.js"></script>
 <script src="../assets/js/main.js"></script>
-<script src="../assets/js/externaeven.js"></script>
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/menu/navigation.js"></script>
 <script>
-    // --- UI Update Function ---
-    function updatePageState() {
-        const input = document.getElementById('input-docs-term');
-        const feedbackDiv = document.getElementById('feedback-docs-term');
-        const allButtons = document.querySelectorAll('.button[data-search-id]');
-        
-        const isValid = ExploratoresValidators.getAndValidateSingleInput('input-docs-term') !== null;
+    function setInitialPageState() {
+        const inputGroups = [
+            {
+                inputIds: ['input-docs-term'],
+                buttonSelector: '#column-docs-services .button, #column-docs-filetypes .button',
+                validator: ExploratoresValidators.getAndValidateDocSearchTerm,
+                feedbackId: 'feedback-docs-term'
+            }
+        ];
 
-        if (feedbackDiv) {
-            feedbackDiv.textContent = isValid ? 'Ready.' : 'Requires input.';
-            feedbackDiv.className = isValid ? 'feedback-message ready' : 'feedback-message';
-        }
+        const updateUi = (group) => {
+            const validationResult = group.validator();
+            const feedbackEl = document.getElementById(group.feedbackId);
 
-        allButtons.forEach(button => {
-            button.disabled = !isValid;
-            button.classList.toggle('text-active', isValid);
+            document.querySelectorAll(group.buttonSelector).forEach(button => {
+                button.disabled = !validationResult.isValid;
+                button.classList.toggle('text-active', validationResult.isValid);
+            });
+
+            if (feedbackEl) {
+                const inputValue = document.getElementById(group.inputIds[0])?.value.trim();
+                if (!inputValue) {
+                    feedbackEl.textContent = '';
+                } else {
+                    feedbackEl.textContent = validationResult.message;
+                    feedbackEl.className = `feedback-message ${validationResult.isValid ? 'feedback-info' : 'feedback-error'}`;
+                }
+            }
+        };
+
+        inputGroups.forEach(group => {
+            group.inputIds.forEach(inputId => {
+                const inputElement = document.getElementById(inputId);
+                if (inputElement) inputElement.addEventListener('input', () => updateUi(group));
+            });
+            updateUi(group);
         });
     }
 
-    // --- Initial Page State Function ---
-    function setInitialPageState() {
-        document.getElementById('input-docs-term').value = '';
-        updatePageState();
-    }
+    document.addEventListener('DOMContentLoaded', setInitialPageState);
+</script>
 
-    // --- Event Listeners ---
-    document.addEventListener('DOMContentLoaded', () => {
-        setInitialPageState();
-        document.getElementById('input-docs-term').addEventListener('input', updatePageState);
-    });
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
 </script>
 
 </body>

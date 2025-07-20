@@ -502,6 +502,38 @@ const SearchLibrary = {
     "videos-reverse-img-yandex": { "urlTemplate": "https://yandex.com/images/search?url={url}&rpt=imageview", "validator": "getAndValidateImageUrl" },
     "videos-reverse-img-baidu": { "urlTemplate": "https://image.baidu.com/pcdutu?queryImageUrl={url}", "validator": "getAndValidateImageUrl" },
 	
+	// AGGIUNGI QUESTO BLOCCO DI VOCI A search-library.js
+
+    // --- Voci per docs.html (nuova versione) ---
+    "docs-google-api": { "urlTemplate": "https://www.google.com/search?q=inurl:docs.google.com/spreadsheets/u/0/d/ intitle:\"{term}\"", "validator": "getAndValidateDocSearchTerm" },
+    "docs-google-books": { "urlTemplate": "https://www.google.com/search?tbm=bks&q={term}", "validator": "getAndValidateDocSearchTerm" },
+    "docs-google-docs": { "urlTemplate": "https://www.google.com/search?q=site:docs.google.com intext:\"{term}\"", "validator": "getAndValidateDocSearchTerm" },
+    "docs-google-drive": { "urlTemplate": "https://www.google.com/search?q=site:drive.google.com intext:\"{term}\"", "validator": "getAndValidateDocSearchTerm" },
+    "docs-other-amazon": { "urlTemplate": "https://www.google.com/search?q=site:s3.amazonaws.com intext:\"{term}\"", "validator": "getAndValidateDocSearchTerm" },
+    "docs-other-archiveorg": { "urlTemplate": "https://archive.org/search?query={term}", "validator": "getAndValidateDocSearchTerm" },
+    "docs-other-cloudfront": { "urlTemplate": "https://www.google.com/search?q=site:d1.cloudfront.net intext:\"{term}\"", "validator": "getAndValidateDocSearchTerm" },
+    "docs-other-core": { "urlTemplate": "https://core.ac.uk/search?q={term}", "validator": "getAndValidateDocSearchTerm" },
+    "docs-other-grayhat": { "urlTemplate": "https://buckets.grayhatwarfare.com/results/{term}", "validator": "getAndValidateDocSearchTerm" },
+    "docs-other-issuu": { "urlTemplate": "https://issuu.com/search?q={term}", "validator": "getAndValidateDocSearchTerm" },
+    "docs-other-msdocs": { "urlTemplate": "https://learn.microsoft.com/en-us/search/?terms={term}", "validator": "getAndValidateDocSearchTerm" },
+    "docs-other-pdfdrive": { "urlTemplate": "https://www.pdfdrive.com/search?q={term}", "validator": "getAndValidateDocSearchTerm" },
+    "docs-other-powershow": { "urlTemplate": "https://www.powershow.com/search/presentations/query/{term}", "validator": "getAndValidateDocSearchTerm" },
+    "docs-other-prezi": { "urlTemplate": "https://prezi.com/search/?search={term}", "validator": "getAndValidateDocSearchTerm" },
+    "docs-other-refseek": { "urlTemplate": "https://www.refseek.com/search?q={term}", "validator": "getAndValidateDocSearchTerm" },
+    "docs-other-scribd": { "urlTemplate": "https://www.scribd.com/search?content_type=tops&page=1&query={term}&language=0", "validator": "getAndValidateDocSearchTerm" },
+    "docs-other-slidebean": { "urlTemplate": "https://slidebean.com/search?q={term}", "validator": "getAndValidateDocSearchTerm" },
+    "docs-other-slideshare": { "urlTemplate": "https://www.slideshare.net/search?q={term}", "validator": "getAndValidateDocSearchTerm" },
+    "docs-other-wikileaks": { "urlTemplate": "https://search.wikileaks.org/?q={term}", "validator": "getAndValidateDocSearchTerm" },
+    "docs-filetype-doc": { "urlTemplate": "https://www.google.com/search?q=filetype:doc OR filetype:docx \"{term}\"", "validator": "getAndValidateDocSearchTerm" },
+    "docs-filetype-odt": { "urlTemplate": "https://www.google.com/search?q=filetype:odt OR filetype:ods OR filetype:odp \"{term}\"", "validator": "getAndValidateDocSearchTerm" },
+    "docs-filetype-pdf": { "urlTemplate": "https://www.google.com/search?q=filetype:pdf \"{term}\"", "validator": "getAndValidateDocSearchTerm" },
+    "docs-filetype-ppt": { "urlTemplate": "https://www.google.com/search?q=filetype:ppt OR filetype:pptx OR filetype:key \"{term}\"", "validator": "getAndValidateDocSearchTerm" },
+    "docs-filetype-txt": { "urlTemplate": "https://www.google.com/search?q=filetype:txt OR filetype:rtf OR filetype:xml \"{term}\"", "validator": "getAndValidateDocSearchTerm" },
+    "docs-filetype-xls": { "urlTemplate": "https://www.google.com/search?q=filetype:xls OR filetype:xlsx OR filetype:csv \"{term}\"", "validator": "getAndValidateDocSearchTerm" },
+    "docs-filetype-jpg": { "urlTemplate": "https://www.google.com/search?q=filetype:jpg OR filetype:jpeg OR filetype:png \"{term}\"", "validator": "getAndValidateDocSearchTerm" },
+    "docs-filetype-mp3": { "urlTemplate": "https://www.google.com/search?q=filetype:mp3 OR filetype:wav \"{term}\"", "validator": "getAndValidateDocSearchTerm" },
+    "docs-filetype-mpg": { "urlTemplate": "https://www.google.com/search?q=filetype:mpg OR filetype:mp4 \"{term}\"", "validator": "getAndValidateDocSearchTerm" },
+    "docs-filetype-zip": { "urlTemplate": "https://www.google.com/search?q=filetype:zip OR filetype:rar OR filetype:7z \"{term}\"", "validator": "getAndValidateDocSearchTerm" },
 	
     // --- Voci per images.html ---
     "images-term-bing": { "urlTemplate": "https://www.bing.com/images/search?q={term}", "validator": "getAndValidateImageTerm" },
