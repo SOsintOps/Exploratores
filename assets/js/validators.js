@@ -337,7 +337,43 @@ const ExploratoresValidators = {
         return { isValid: true, data: { plate: plate, state: state }, message: "Valid format for search." };
     },
 	
-	// AGGIUNGI QUESTE FUNZIONI A validators.js
+// AGGIUNGI QUESTE FUNZIONI A validators.js
+
+    getAndValidateIpAddress: function(config) {
+        const ip = document.getElementById('ipAddressInput')?.value.trim();
+        const ipv4Regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+        if (!ip) {
+            return { isValid: false, message: "Please enter an IP address." };
+        }
+        if (!ipv4Regex.test(ip)) {
+            return { isValid: false, message: "Invalid IPv4 address format." };
+        }
+        return { isValid: true, data: { ip: ip }, message: "Valid IP address format." };
+    },
+    getAndValidateNetworksDbRange: function(config) {
+        const validation = ExploratoresValidators.getAndValidateIpAddress(config);
+        if (validation.isValid) {
+            const ipParts = validation.data.ip.split('.');
+            const networkBase = `${ipParts[0]}.${ipParts[1]}.${ipParts[2]}`;
+            validation.data.start_ip = `${networkBase}.0`;
+            validation.data.end_ip = `${networkBase}.255`;
+        }
+        return validation;
+    },
+    getAndValidateSsid: function(config) {
+        const ssid = document.getElementById('wigleSsidInput')?.value.trim();
+        if (!ssid) {
+            return { isValid: false, message: "Please enter an SSID." };
+        }
+        return { isValid: true, data: { ssid: ssid }, message: "Ready for search." };
+    },
+    getAndValidatePostalCode: function(config) {
+        const postal = document.getElementById('wiglePostalInput')?.value.trim();
+        if (!postal) {
+            return { isValid: false, message: "Please enter a Postal Code." };
+        }
+        return { isValid: true, data: { postalcode: postal }, message: "Ready for search." };
+    },
 
     getAndValidateBtcAddress: function(config) {
         const value = document.getElementById('input-currencies-btcAddress')?.value.trim();
