@@ -167,5 +167,42 @@ const ExploratoresValidators = {
             return { isValid: false, message: "This function requires a @gmail.com address." };
         }
         return { isValid: true, data: { localpart: emailParts[0] }, message: "Valid Gmail address." };
+    },
+	// AGGIUNGI QUESTE FUNZIONI A validators.js
+
+    getAndValidateUsername: function(config) {
+        const username = document.getElementById('usernameInput')?.value.trim();
+        if (!username) {
+            return { isValid: false, message: "Please enter a username." };
+        }
+        return { isValid: true, data: { username: username }, message: "Ready for search." };
+    },
+
+    getAndValidateTumblrUsername: function(config) {
+        const validation = ExploratoresValidators.getAndValidateUsername(config);
+        if (!validation.isValid) {
+            return validation;
+        }
+        // Tumblr URLs non ammettono caratteri speciali tranne il trattino
+        const cleanUsername = validation.data.username.replace(/[^a-zA-Z0-9-]/g, '');
+        if (!cleanUsername) {
+            return { isValid: false, message: "Invalid username format for Tumblr." };
+        }
+        validation.data.username = cleanUsername;
+        return validation;
+    },
+
+    getAndValidateSmatVkUsername: function(config) {
+        const validation = ExploratoresValidators.getAndValidateUsername(config);
+        if (!validation.isValid) {
+            return validation;
+        }
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        
+        validation.data.enddate = `${year}-${month}-${day}`;
+        return validation;
     }
 };
