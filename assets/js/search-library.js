@@ -459,6 +459,24 @@ const SearchLibrary = {
     "currencies-analysis-phalcon": { "urlTemplate": "https://phalcon.blocksec.com/explorer/address/{query}", "validator": "getAndValidateAnalysisQuery" },
     "currencies-analysis-zapper": { "urlTemplate": "https://zapper.fi/account/{query}", "validator": "getAndValidateAnalysisQuery" },
 	
+    // --- Voci per images.html ---
+    "images-term-bing": { "urlTemplate": "https://www.bing.com/images/search?q={term}", "validator": "getAndValidateImageTerm" },
+    "images-term-facebook": { "urlTemplate": "https://www.facebook.com/search/photos/?q={term}", "validator": "getAndValidateImageTerm" },
+    "images-term-flickr": { "urlTemplate": "https://www.flickr.com/search/?text={term}", "validator": "getAndValidateImageTerm" },
+    "images-term-google": { "urlTemplate": "https://www.google.com/search?q={term}&tbm=isch", "validator": "getAndValidateImageTerm" },
+    "images-term-instagram": { "urlTemplate": "https://www.google.com/search?tbm=isch&q=site%3Ainstagram.com+{term}", "validator": "getAndValidateImageTerm" },
+    "images-term-linkedin": { "urlTemplate": "https://www.google.com/search?tbm=isch&q=site%3Alinkedin.com+{term}", "validator": "getAndValidateImageTerm" },
+    "images-term-tumblr": { "urlTemplate": "https://www.tumblr.com/search/{term}", "validator": "getAndValidateImageTerm" },
+    "images-term-twitter": { "urlTemplate": "https://twitter.com/search?q={term}&f=media", "validator": "getAndValidateImageTerm" },
+    "images-term-yandex": { "urlTemplate": "https://yandex.com/images/search?text={term}", "validator": "getAndValidateImageTerm" },
+    "images-reverse-bing": { "urlTemplate": "https://www.bing.com/images/search?view=detailv2&iss=sbi&q=imgurl:{url}", "validator": "getAndValidateImageUrl" },
+    "images-reverse-facecheck": { "urlTemplate": "https://facecheck.id/#url={url}", "validator": "getAndValidateImageUrl" },
+    "images-reverse-google": { "urlTemplate": "https://www.google.com/searchbyimage?image_url={url}&client=app", "validator": "getAndValidateImageUrl" },
+    "images-reverse-lens": { "urlTemplate": "https://lens.google.com/uploadbyurl?url={url}", "validator": "getAndValidateImageUrl" },
+    "images-reverse-repostsleuth": { "urlTemplate": "https://www.repostsleuth.com/search?url={url}", "validator": "getAndValidateImageUrl" },
+    "images-reverse-tineye": { "urlTemplate": "http://www.tineye.com/search/?url={url}", "validator": "getAndValidateImageUrl" },
+    "images-reverse-yandex": { "urlTemplate": "https://yandex.com/images/search?rpt=imageview&url={url}", "validator": "getAndValidateImageUrl" },
+	
     // --- Voci per vehicles.html ---
     "vehicles-vindecoderz": { "urlTemplate": "https://www.vindecoderz.com/EN/check-lookup/{vin}", "validator": "getAndValidateVin" },
     "vehicles-faxvin": { "urlTemplate": "https://www.faxvin.com/order/decoding?vin={vin}", "validator": "getAndValidateVin" },
