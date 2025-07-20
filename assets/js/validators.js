@@ -386,6 +386,15 @@ const ExploratoresValidators = {
         if (!value) return { isValid: false, message: "Please enter a YouTube Username." };
         return { isValid: true, data: { username: value }, message: "Ready for search." };
     },
+	
+	getAndValidateDocSearchTerm: function(config) {
+        const value = document.getElementById('input-docs-term')?.value.trim();
+        if (!value) {
+            return { isValid: false, message: "Please enter a search term." };
+        }
+        return { isValid: true, data: { term: value }, message: "Ready for search." };
+    },
+	
     getAndValidateYoutubeChannelId: function(config) {
         const value = document.getElementById('ytChannelIdInput')?.value.trim();
         if (!value) return { isValid: false, message: "Please enter a YouTube Channel ID." };
