@@ -204,5 +204,46 @@ const ExploratoresValidators = {
         
         validation.data.enddate = `${year}-${month}-${day}`;
         return validation;
+    },
+
+    getAndValidateRedditTerm: function(config) {
+        const value = document.getElementById('input-communities-redditTerm')?.value.trim();
+        if (!value) return { isValid: false, message: "Please enter a search term." };
+        return { isValid: true, data: { term: value }, message: "Ready for search." };
+    },
+    getAndValidateRedditUser: function(config) {
+        const value = document.getElementById('input-communities-redditUser')?.value.trim();
+        if (!value) return { isValid: false, message: "Please enter a username." };
+        return { isValid: true, data: { username: value }, message: "Ready for search." };
+    },
+    getAndValidateHnTerm: function(config) {
+        const value = document.getElementById('input-communities-hnTerm')?.value.trim();
+        if (!value) return { isValid: false, message: "Please enter a search term." };
+        return { isValid: true, data: { term: value }, message: "Ready for search." };
+    },
+    getAndValidateHnUser: function(config) {
+        const value = document.getElementById('input-communities-hnUser')?.value.trim();
+        if (!value) return { isValid: false, message: "Please enter a username." };
+        return { isValid: true, data: { username: value }, message: "Ready for search." };
+    },
+    getAndValidate4chanTerm: function(config) {
+        const value = document.getElementById('input-communities-4chanTerm')?.value.trim();
+        if (!value) return { isValid: false, message: "Please enter a search term." };
+        return { isValid: true, data: { term: value }, message: "Ready for search." };
+    },
+    getAndValidateDiscordTerm: function(config) {
+        const value = document.getElementById('input-communities-discordTerm')?.value.trim();
+        if (!value) return { isValid: false, message: "Please enter a server name or ID." };
+        return { isValid: true, data: { term: value }, message: "Ready for search." };
+    },
+    getAndValidateTgUser: function(config) {
+        const value = document.getElementById('input-communities-tgUser')?.value.trim();
+        if (!value) return { isValid: false, message: "Please enter a user or channel name." };
+        return { isValid: true, data: { username: value }, message: "Ready for search." };
+    },
+    getAndValidateTgKey: function(config) {
+        const value = document.getElementById('input-communities-tgKey')?.value.trim();
+        if (!value) return { isValid: false, message: "Please enter a keyword." };
+        return { isValid: true, data: { keyword: value }, message: "Ready for search." };
     }
 };
