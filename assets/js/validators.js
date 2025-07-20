@@ -156,7 +156,9 @@ const ExploratoresValidators = {
     },
 
     getAndValidateGmail: function(config) {
-        const emailValidation = this.getAndValidateEmail(config);
+        // CORREZIONE: Usa il riferimento diretto all'oggetto invece di 'this'
+        const emailValidation = ExploratoresValidators.getAndValidateEmail(config);
+        
         if (!emailValidation.isValid) {
             return emailValidation;
         }

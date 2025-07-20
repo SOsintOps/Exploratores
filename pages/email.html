@@ -89,7 +89,7 @@
 </main>
 
 <footer>
-    <p>Exploratores 2.5 • Prototype <a href="license.html">License</a></p>
+    <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
 </footer>
 
 <script src="../assets/js/validators.js"></script>
@@ -98,32 +98,51 @@
 <script src="../assets/menu/navigation.js"></script>
 
 <script>
-  function updatePageState() {
-    const emailData = ExploratoresValidators.getAndValidateEmail();
-    const gmailData = ExploratoresValidators.getAndValidateGmail();
-
-    document.querySelectorAll('button[data-search-id]').forEach(button => {
-        const searchId = button.dataset.searchId;
-        const config = SearchLibrary[searchId] || {};
-        
-        let isEnabled = false;
-        if (config.validator === 'getAndValidateGmail') {
-            isEnabled = !!gmailData;
-        } else {
-            isEnabled = !!emailData;
-        }
-        
-        button.disabled = !isEnabled;
-        button.classList.toggle('text-active', isEnabled);
-    });
-  }
-
   function setInitialPageState() {
     const emailInput = document.getElementById('emailInput');
+    const feedbackEl = document.getElementById('email-feedback');
+
+    const updateUi = () => {
+        const emailValidation = ExploratoresValidators.getAndValidateEmail();
+        const gmailValidation = ExploratoresValidators.getAndValidateGmail();
+
+        document.querySelectorAll('button[data-search-id]').forEach(button => {
+            const config = SearchLibrary[button.dataset.searchId] || {};
+            let isEnabled = false;
+
+            if (config.validator === 'getAndValidateGmail') {
+                isEnabled = gmailValidation.isValid;
+            } else {
+                isEnabled = emailValidation.isValid;
+            }
+
+            button.disabled = !isEnabled;
+            button.classList.toggle('text-active', isEnabled);
+        });
+
+        if (feedbackEl) {
+            let message = '';
+            let messageType = 'feedback-error';
+
+            if (gmailValidation.isValid) {
+                message = gmailValidation.message;
+                messageType = 'feedback-info';
+            } else if (emailValidation.isValid) {
+                message = emailValidation.message;
+                messageType = 'feedback-info';
+            } else {
+                message = emailValidation.message;
+            }
+            
+            feedbackEl.textContent = message;
+            feedbackEl.className = `feedback-message ${messageType}`;
+        }
+    };
+
     if (emailInput) {
-        emailInput.addEventListener('input', updatePageState);
+        emailInput.addEventListener('input', updateUi);
     }
-    updatePageState();
+    updateUi();
   }
 
   document.addEventListener('DOMContentLoaded', setInitialPageState);

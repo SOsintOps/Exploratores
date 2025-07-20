@@ -36,7 +36,6 @@ const Exploratores = {
                 return;
             }
 
-            // *** INIZIO CODICE CORRETTO ***
             const validationResult = validator(config);
             if (!validationResult.isValid) return;
 
@@ -46,10 +45,8 @@ const Exploratores = {
             for (const key in params) {
                 const placeholder = `{${key}}`;
                 const value = encodeURIComponent(params[key]);
-                // Usa una RegEx globale per sostituire tutte le occorrenze
                 url = url.replace(new RegExp(placeholder.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), value);
             }
-            // *** FINE CODICE CORRETTO ***
             
             window.open(url, '_blank');
         });
