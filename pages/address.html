@@ -12,72 +12,6 @@
 
 <div id="navbar-placeholder"></div>
 
-<script src="../assets/menu/navigation.js"></script>
-<nav>
-    <ul class="menu">
-        <li><span>HOME</span>
-            <ul class="submenu">
-                <li><a href="../launchme.html">Index</a></li>
-            </ul>
-        </li>
-        <li><span>Search<br>Engines</span>
-            <ul class="submenu">
-                <li><a href="searchengines.html">Search Engines</a></li>
-            </ul>
-        </li>
-        <li><span>People &<br>Identities</span>
-            <ul class="submenu">
-                <li><a href="names.html">Names</a></li>
-                <li><a href="phoneus.html">US Phones</a></li>
-                <li><a href="phoneint.html">International Phones</a></li>
-                <li><a href="address.html" class="active">Addresses</a></li>
-                <li><a href="vehicles.html">Vehicles</a></li>
-                <li><a href="usernames.html">Usernames</a></li>
-                <li><a href="email.html">Email Addresses</a></li>
-                <li><a href="communities.html">Communities</a></li>
-            </ul>
-        </li>
-        <li><span>Social<br>Media</span>
-            <ul class="submenu">
-                <li><a href="x.html">X (Twitter)</a></li>
-                <li><a href="facebook.html">Facebook</a></li>
-                <li><a href="instagram.html">Instagram</a></li>
-                <li><a href="linkedin.html">LinkedIn</a></li>
-            </ul>
-        </li>
-        <li><span>Websites</span>
-            <ul class="submenu">
-                <li><a href="domains.html">Domains</a></li>
-                <li><a href="ip.html">IP Addresses</a></li>
-            </ul>
-        </li>
-        <li><span>GeoInt</span>
-            <ul class="submenu">
-                <li><a href="maps.html">Maps</a></li>
-            </ul>
-        </li>
-        <li><span>Media<br>Analysis</span>
-            <ul class="submenu">
-                <li><a href="images.html">Images</a></li>
-                <li><a href="videos.html">Videos</a></li>
-                <li><a href="docs.html">Documents</a></li>
-            </ul>
-        </li>
-        <li><span>Business<br>Intelligence</span>
-            <ul class="submenu">
-                <li><a href="publiccompanyrecords.html">Company Public Records</a></li>
-                <li><a href="currencies.html">Virtual Currencies</a></li>
-            </ul>
-        </li>
-        <li><span>Tools</span>
-            <ul class="submenu">
-                <li><a href="guidelines.html">Guidelines</a></li>
-                <li><a href="cyberchef.html">CyberChef</a></li>
-            </ul>
-        </li>
-    </ul>
-</nav>
-
 <main>
     <h1 class="page-title">Address Search Tool</h1>
     <div class="note">
@@ -136,7 +70,7 @@
             </div>
 
             <section id="section-address-it-group">
-                <h2>Italy Addresses</h2>
+                <h2>Italy</h2>
                 <div id="container-it-companies" class="search-instructions">
                     <h3>Pagine Bianche – Companies</h3>
                     <div class="input-container">
@@ -147,9 +81,9 @@
                         <input type="text" id="input-address-itProv" class="input-field" placeholder="Province (e.g., RM)" autocomplete="off">
                     </div>
                     <div id="feedback-address-it-companies" class="feedback-message"></div>
-                </div>
-                <div class="button-grid">
-                    <button id="btn-address-it-paginebianche-companies" class="button" data-search-id="address-it-paginebianche-companies">Search Companies</button>
+                    <div class="button-grid">
+                        <button id="btn-address-it-paginebianche-companies" class="button" data-search-id="address-it-paginebianche-companies">Search Companies</button>
+                    </div>
                 </div>
 
                 <div id="container-it-people" class="search-instructions">
@@ -163,9 +97,9 @@
                         <input type="text" id="input-address-itProvP" class="input-field" placeholder="Province (e.g., MI)" autocomplete="off">
                     </div>
                     <div id="feedback-address-it-people" class="feedback-message"></div>
-                </div>
-                <div class="button-grid">
-                    <button id="btn-address-it-paginebianche-people" class="button" data-search-id="address-it-paginebianche-people">Search People</button>
+                    <div class="button-grid">
+                        <button id="btn-address-it-paginebianche-people" class="button" data-search-id="address-it-paginebianche-people">Search People</button>
+                    </div>
                 </div>
 
                 <div id="container-it-yellow" class="search-instructions">
@@ -175,9 +109,9 @@
                         <input type="text" id="input-address-itLoc" class="input-field" placeholder="Location (e.g., Rome)" autocomplete="off">
                     </div>
                     <div id="feedback-address-it-yellow" class="feedback-message"></div>
-                </div>
-                <div class="button-grid">
-                    <button id="btn-address-it-paginegialle" class="button" data-search-id="address-it-paginegialle">Search Pagine Gialle</button>
+                    <div class="button-grid">
+                        <button id="btn-address-it-paginegialle" class="button" data-search-id="address-it-paginegialle">Search Pagine Gialle</button>
+                    </div>
                 </div>
             </section>
         </div>
@@ -188,15 +122,92 @@
     <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
 </footer>
 
-<script src="../assets/js/config.js"></script>
-<script src="../assets/js/search-library.js"></script>
-<script src="../assets/js/validators.js"></script>
 <script src="../assets/js/main.js"></script>
-<script src="../assets/js/externaeven.js"></script>
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/menu/navigation.js"></script>
+
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        Exploratores.initializePage();
-    });
+    function setInitialPageState() {
+        const inputGroups = [
+            {
+                inputIds: ['input-address-usNum', 'input-address-usStreet', 'input-address-usCity', 'input-address-usState', 'input-address-usZip'],
+                buttonSelector: '#grid-address-us .button',
+                validator: ExploratoresValidators.getAndValidateUsAddress,
+                feedbackId: 'feedback-address-us'
+            },
+            {
+                inputIds: ['input-address-intlStreet', 'input-address-intlNum', 'input-address-intlCity', 'input-address-intlZip', 'input-address-intlRegion'],
+                buttonSelector: '#grid-address-intl .button',
+                validator: ExploratoresValidators.getAndValidateIntlAddress,
+                feedbackId: 'feedback-address-intl'
+            },
+            {
+                inputIds: ['input-address-itCompany', 'input-address-itCity', 'input-address-itProv'],
+                buttonSelector: '#btn-address-it-paginebianche-companies',
+                validator: ExploratoresValidators.getAndValidateItCompany,
+                feedbackId: 'feedback-address-it-companies'
+            },
+            {
+                inputIds: ['input-address-itFirst', 'input-address-itLast', 'input-address-itCityP', 'input-address-itProvP'],
+                buttonSelector: '#btn-address-it-paginebianche-people',
+                validator: ExploratoresValidators.getAndValidateItPeople,
+                feedbackId: 'feedback-address-it-people'
+            },
+            {
+                inputIds: ['input-address-itAct', 'input-address-itLoc'],
+                buttonSelector: '#btn-address-it-paginegialle',
+                validator: ExploratoresValidators.getAndValidateItYellow,
+                feedbackId: 'feedback-address-it-yellow'
+            }
+        ];
+
+        const updateUi = (group) => {
+            const validationResult = group.validator();
+            const feedbackEl = document.getElementById(group.feedbackId);
+
+            document.querySelectorAll(group.buttonSelector).forEach(button => {
+                button.disabled = !validationResult.isValid;
+                button.classList.toggle('text-active', validationResult.isValid);
+            });
+
+            if (feedbackEl) {
+                const inputValue = group.inputIds.map(id => document.getElementById(id)?.value.trim()).join('');
+                if (!inputValue) {
+                    feedbackEl.textContent = '';
+                } else {
+                    feedbackEl.textContent = validationResult.message;
+                    feedbackEl.className = `feedback-message ${validationResult.isValid ? 'feedback-info' : 'feedback-error'}`;
+                }
+            }
+        };
+
+        inputGroups.forEach(group => {
+            group.inputIds.forEach(inputId => {
+                const inputElement = document.getElementById(inputId);
+                if (inputElement) inputElement.addEventListener('input', () => updateUi(group));
+            });
+            updateUi(group);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', setInitialPageState);
+</script>
+
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
 </script>
 
 </body>

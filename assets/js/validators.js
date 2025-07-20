@@ -168,6 +168,73 @@ const ExploratoresValidators = {
         }
         return { isValid: true, data: { localpart: emailParts[0] }, message: "Valid Gmail address." };
     },
+	
+	// AGGIUNGI QUESTE FUNZIONI A validators.js
+
+    getAndValidateUsAddress: function(config) {
+        const number = document.getElementById('input-address-usNum')?.value.trim();
+        const street = document.getElementById('input-address-usStreet')?.value.trim();
+        const city = document.getElementById('input-address-usCity')?.value.trim();
+        const state = document.getElementById('input-address-usState')?.value.trim();
+        const zip = document.getElementById('input-address-usZip')?.value.trim();
+
+        if (!number && !street && !city && !state && !zip) {
+            return { isValid: false, message: "Please enter at least one address field." };
+        }
+        const fullAddress = [number, street, city, state, zip].filter(Boolean).join(' ');
+        return { 
+            isValid: true, 
+            data: { 
+                number: number,
+                street: street,
+                city: city,
+                state: state,
+                zip: zip,
+                full_address: fullAddress
+            }, 
+            message: "Ready for search." 
+        };
+    },
+    getAndValidateIntlAddress: function(config) {
+        const street = document.getElementById('input-address-intlStreet')?.value.trim();
+        const number = document.getElementById('input-address-intlNum')?.value.trim();
+        const city = document.getElementById('input-address-intlCity')?.value.trim();
+        const zip = document.getElementById('input-address-intlZip')?.value.trim();
+        const region = document.getElementById('input-address-intlRegion')?.value.trim();
+
+        if (!street && !city && !region) {
+            return { isValid: false, message: "Street, City, and Region/Country are required." };
+        }
+        const fullAddress = [street, number, city, zip, region].filter(Boolean).join(' ');
+        return { isValid: true, data: { full_address: fullAddress }, message: "Ready for search." };
+    },
+    getAndValidateItCompany: function(config) {
+        const company = document.getElementById('input-address-itCompany')?.value.trim();
+        const city = document.getElementById('input-address-itCity')?.value.trim();
+        if (!company && !city) {
+            return { isValid: false, message: "Company name and City are required." };
+        }
+        return { isValid: true, data: { company: company, city: city }, message: "Ready for search." };
+    },
+    getAndValidateItPeople: function(config) {
+        const first = document.getElementById('input-address-itFirst')?.value.trim();
+        const last = document.getElementById('input-address-itLast')?.value.trim();
+        const city = document.getElementById('input-address-itCityP')?.value.trim();
+        if ((!first && !last) || !city) {
+            return { isValid: false, message: "Last name (or first) and City are required." };
+        }
+        return { isValid: true, data: { first: first, last: last, city: city }, message: "Ready for search." };
+    },
+    getAndValidateItYellow: function(config) {
+        const activity = document.getElementById('input-address-itAct')?.value.trim();
+        const location = document.getElementById('input-address-itLoc')?.value.trim();
+        if (!activity || !location) {
+            return { isValid: false, message: "Activity and Location are required." };
+        }
+        return { isValid: true, data: { activity: activity, location: location }, message: "Ready for search." };
+    },
+	
+	
 	// AGGIUNGI QUESTE FUNZIONI A validators.js
 
     getAndValidateUsername: function(config) {
