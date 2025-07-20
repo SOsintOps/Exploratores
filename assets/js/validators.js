@@ -370,6 +370,44 @@ const ExploratoresValidators = {
 	
 	// AGGIUNGI QUESTE FUNZIONI A validators.js
 
+    getAndValidateYoutubeId: function(config) {
+        const value = document.getElementById('youtubeVideoIdInput')?.value.trim();
+        if (!value) return { isValid: false, message: "Please enter a YouTube Video ID." };
+        return { isValid: true, data: { videoid: value }, message: "Ready for search." };
+    },
+    getAndValidateYoutubeComments: function(config) {
+        const videoId = document.getElementById('ytVideoIdForComments')?.value.trim();
+        const searchTerm = document.getElementById('ytCommentSearchTerm')?.value.trim();
+        if (!videoId || !searchTerm) return { isValid: false, message: "Video ID and Search Term are required." };
+        return { isValid: true, data: { videoid: videoId, term: searchTerm }, message: "Ready for search." };
+    },
+    getAndValidateYoutubeUsername: function(config) {
+        const value = document.getElementById('ytUsernameInput')?.value.trim();
+        if (!value) return { isValid: false, message: "Please enter a YouTube Username." };
+        return { isValid: true, data: { username: value }, message: "Ready for search." };
+    },
+    getAndValidateYoutubeChannelId: function(config) {
+        const value = document.getElementById('ytChannelIdInput')?.value.trim();
+        if (!value) return { isValid: false, message: "Please enter a YouTube Channel ID." };
+        return { isValid: true, data: { channelid: value }, message: "Ready for search." };
+    },
+    getAndValidateVideoTerm: function(config) {
+        const value = document.getElementById('videoSearchTermsInput')?.value.trim();
+        if (!value) return { isValid: false, message: "Please enter keywords to search." };
+        return { isValid: true, data: { term: value }, message: "Ready for search." };
+    },
+    getAndValidateTikTokHashtag: function(config) {
+        const value = document.getElementById('tikTokHashtagInput')?.value.trim();
+        if (!value) return { isValid: false, message: "Please enter a hashtag (without #)." };
+        return { isValid: true, data: { hashtag: value }, message: "Ready for search." };
+    },
+    getAndValidateVimeoImageUrl: function(config) {
+        const value = document.getElementById('vimeoImgUrlInput')?.value.trim();
+        if (!value) return { isValid: false, message: "Please enter a Vimeo Image URL." };
+        if (!value.startsWith('http')) return { isValid: false, message: "Please enter a valid URL." };
+        return { isValid: true, data: { url: value }, message: "URL is valid." };
+    },
+
     getAndValidateImageTerm: function(config) {
         const value = document.getElementById('imageSearchTermsInput')?.value.trim();
         if (!value) {
