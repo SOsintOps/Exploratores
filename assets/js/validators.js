@@ -299,5 +299,76 @@ const ExploratoresValidators = {
         const value = document.getElementById('input-currencies-analysisQuery')?.value.trim();
         if (!value) return { isValid: false, message: "Please enter an address, TxHash, or entity." };
         return { isValid: true, data: { query: value }, message: "Ready for search." };
-    }
+    },
+	
+	// AGGIUNGI QUESTE FUNZIONI A validators.js
+
+    getAndValidateCoordinates: function(config) {
+        const lat = document.getElementById('latitudeInput')?.value.trim();
+        const lon = document.getElementById('longitudeInput')?.value.trim();
+        if (!lat || !lon) {
+            return { isValid: false, message: "Please enter both Latitude and Longitude." };
+        }
+        if (isNaN(parseFloat(lat)) || isNaN(parseFloat(lon))) {
+            return { isValid: false, message: "Coordinates must be valid numbers." };
+        }
+        return { isValid: true, data: { lat: lat, lon: lon }, message: "Coordinates are valid." };
+    },
+
+    getAndValidateZillowCoords: function(config) {
+        const validation = ExploratoresValidators.getAndValidateCoordinates(config);
+        if (!validation.isValid) {
+            return validation;
+        }
+        const lat = parseFloat(validation.data.lat);
+        const lon = parseFloat(validation.data.lon);
+        const mapBounds = `"west":${lon - 0.01},"east":${lon + 0.01},"south":${lat - 0.01},"north":${lat + 0.01}`;
+        const searchQueryState = `{"isMapVisible":true,"mapBounds":{${mapBounds}},"filterState":{"sort":{"value":"globalrelevanceex"},"ah":{"value":true}},"isListVisible":true,"mapZoom":15}`;
+        
+        validation.data.searchQueryState = searchQueryState;
+        return validation;
+    },
+
+     getAndValidateUsaAddress: function(config) {
+        const number = document.getElementById('usa_number')?.value.trim();
+        const street = document.getElementById('usa_street')?.value.trim();
+        const city = document.getElementById('usa_city')?.value.trim();
+        const state = document.getElementById('usa_state')?.value.trim();
+        const zip = document.getElementById('usa_zip')?.value.trim();
+
+        // La validazione ora richiede che almeno un campo sia compilato
+        if (!number && !street && !city && !state && !zip) {
+            return { isValid: false, message: "Please enter at least one address field." };
+        }
+        
+        const addressQuery = [number, street, city, state, zip].filter(Boolean).join('+');
+        return { isValid: true, data: { usa_address_query: addressQuery }, message: "Ready for geocoding." };
+    },
+
+    getAndValidateItalyAddress: function(config) {
+        const number = document.getElementById('italy_number')?.value.trim();
+        const street = document.getElementById('italy_street')?.value.trim();
+        const city = document.getElementById('italy_city')?.value.trim();
+        const nation = document.getElementById('italy_nation')?.value.trim();
+        const zip = document.getElementById('italy_zip')?.value.trim();
+        
+        if (!number && !street && !city && !nation && !zip) {
+            return { isValid: false, message: "Please enter at least one address field." };
+        }
+
+        // Combina via e numero civico per il parametro 'street'
+        const streetAndNumber = [street, number].filter(Boolean).join(' ');
+
+        return { 
+            isValid: true, 
+            data: { 
+                street: streetAndNumber,
+                city: city,
+                country: nation,
+                postalcode: zip
+            }, 
+            message: "Ready for geocoding." 
+        };
+    },
+	
 };

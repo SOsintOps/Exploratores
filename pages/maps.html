@@ -2,82 +2,82 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Exploratores Maps Tool</title>
+  <title>Maps • Exploratores</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
 <body>
 
 <div id="navbar-placeholder"></div>
-
-<script src="../assets/menu/navigation.js"></script>
     
 <main>
   <h1 class="page-title">Maps Tools</h1>
 
-  <section class="search-instructions">
+  <section class="search-instructions" id="section-maps-coords">
     <div class="input-container">
       <div style="flex: 1;">
         <label for="latitudeInput">Latitude:</label>
-        <input type="text" id="latitudeInput" class="input-field" placeholder="e.g., 40.7128" style="width: 100%;">
+        <input type="text" id="latitudeInput" class="input-field" placeholder="e.g., 40.7128" autocomplete="off" style="width: 100%;">
       </div>
       <div style="flex: 1;">
         <label for="longitudeInput">Longitude:</label>
-        <input type="text" id="longitudeInput" class="input-field" placeholder="e.g., -74.0060" style="width: 100%;">
+        <input type="text" id="longitudeInput" class="input-field" placeholder="e.g., -74.0060" autocomplete="off" style="width: 100%;">
       </div>
     </div>
+    <div id="coords-feedback" class="feedback-message"></div>
   </section>
   <div class="note"> <strong>NOTE:</strong> For coordinates, use decimal degrees. Latitude: N positive, S negative. Longitude: E positive, W negative.</div>
 
   <div class="columns">
     <div class="column">
       <h2>Google Maps</h2>
-      <div class="button-grid">
-        <button class="button" onclick="Maps01()">Google Map</button>
-        <button class="button" onclick="Maps02()">Google Sat</button>
-        <button class="button" onclick="Maps03()">Google Street</button>
-        <button class="button" onclick="Maps05()">Google Street (E)</button>
-        <button class="button" onclick="Maps04()">Google Street (N)</button>
-        <button class="button" onclick="Maps06()">Google Street (S)</button>
-        <button class="button" onclick="Maps07()">Google Street (W)</button>
+      <div class="button-grid" id="grid-maps-google">
+        <button type="button" class="button" data-search-id="maps-google-map">Google Map</button>
+        <button type="button" class="button" data-search-id="maps-google-sat">Google Sat</button>
+        <button type="button" class="button" data-search-id="maps-google-street">Google Street</button>
+        <button type="button" class="button" data-search-id="maps-google-street-e">Google Street (E)</button>
+        <button type="button" class="button" data-search-id="maps-google-street-n">Google Street (N)</button>
+        <button type="button" class="button" data-search-id="maps-google-street-s">Google Street (S)</button>
+        <button type="button" class="button" data-search-id="maps-google-street-w">Google Street (W)</button>
       </div>
       
       <h2>Bing Maps</h2>
-      <div class="button-grid">
-        <button class="button" onclick="Maps08()">Bing Map</button>
-        <button class="button" onclick="Maps09()">Bing Sat</button>
-        <button class="button" onclick="Maps11()">Bing Sat (E)</button>
-        <button class="button" onclick="Maps10()">Bing Sat (N)</button>
-        <button class="button" onclick="Maps12()">Bing Sat (S)</button>
-        <button class="button" onclick="Maps13()">Bing Sat (W)</button>
-        <button class="button" onclick="Maps15()">Bing Street (E)</button>
-        <button class="button" onclick="Maps14()">Bing Street (N)</button>
-        <button class="button" onclick="Maps16()">Bing Street (S)</button>
-        <button class="button" onclick="Maps17()">Bing Street (W)</button>
+      <div class="button-grid" id="grid-maps-bing">
+        <button type="button" class="button" data-search-id="maps-bing-map">Bing Map</button>
+        <button type="button" class="button" data-search-id="maps-bing-sat">Bing Sat</button>
+        <button type="button" class="button" data-search-id="maps-bing-sat-e">Bing Sat (E)</button>
+        <button type="button" class="button" data-search-id="maps-bing-sat-n">Bing Sat (N)</button>
+        <button type="button" class="button" data-search-id="maps-bing-sat-s">Bing Sat (S)</button>
+        <button type="button" class="button" data-search-id="maps-bing-sat-w">Bing Sat (W)</button>
+        <button type="button" class="button" data-search-id="maps-bing-street-e">Bing Street (E)</button>
+        <button type="button" class="button" data-search-id="maps-bing-street-n">Bing Street (N)</button>
+        <button type="button" class="button" data-search-id="maps-bing-street-s">Bing Street (S)</button>
+        <button type="button" class="button" data-search-id="maps-bing-street-w">Bing Street (W)</button>
       </div>
     </div>
 
     <div class="column">
       <h2>Other Map Services</h2>
-      <div class="button-grid">
-        <button class="button" onclick="Maps22()">Apple Maps</button>
-        <button class="button" onclick="Maps28()">Apple Maps Alt</button>
-        <button class="button" onclick="Maps20()">Here Sat</button>
-        <button class="button" onclick="Maps26()">KartaView</button>
-        <button class="button" onclick="Maps27()">Land Viewer</button>
-        <button class="button" onclick="Maps25()">Mapillary</button>
-        <button class="button" onclick="Maps23()">World Imagery</button>
-        <button class="button" onclick="Maps21()">Yandex Sat</button>
-        <button class="button" onclick="Maps18()">Zoom Earth</button>
+      <div class="button-grid" id="grid-maps-other">
+        <button type="button" class="button" data-search-id="maps-apple">Apple Maps</button>
+        <button type="button" class="button" data-search-id="maps-apple-alt">Apple Maps Alt</button>
+        <button type="button" class="button" data-search-id="maps-here-sat">Here Sat</button>
+        <button type="button" class="button" data-search-id="maps-kartaview">KartaView</button>
+        <button type="button" class="button" data-search-id="maps-landviewer">Land Viewer</button>
+        <button type="button" class="button" data-search-id="maps-mapillary">Mapillary</button>
+        <button type="button" class="button" data-search-id="maps-world-imagery">World Imagery</button>
+        <button type="button" class="button" data-search-id="maps-yandex-sat">Yandex Sat</button>
+        <button type="button" class="button" data-search-id="maps-zoom-earth">Zoom Earth</button>
       </div>
 
       <h2>Real Estate Maps</h2>
-      <div class="button-grid">
-        <button class="button" onclick="Maps29()">AcreValue</button>
-        <button class="button" onclick="Maps33()">Realtor</button>
-        <button class="button" onclick="Maps31()">Trulia</button>
-        <button class="button" onclick="Maps30()">Zillow</button>
+      <div class="button-grid" id="grid-maps-realestate">
+        <button type="button" class="button" data-search-id="maps-acrevalue">AcreValue</button>
+        <button type="button" class="button" data-search-id="maps-realtor">Realtor</button>
+        <button type="button" class="button" data-search-id="maps-trulia">Trulia</button>
+        <button type="button" class="button" data-search-id="maps-zillow">Zillow</button>
       </div>
     </div>
   </div> 
@@ -88,57 +88,39 @@
   <div class="columns">
     <div class="column">
       <h3>USA</h3>
-      <section class="search-instructions">
+      <section class="search-instructions" id="section-geocode-usa">
         <label for="usa_number">Number:</label>
-        <div class="input-container">
-          <input type="text" id="usa_number" class="input-field" placeholder="Nr.">
-        </div>
+        <div class="input-container"><input type="text" id="usa_number" class="input-field" placeholder="Nr."></div>
         <label for="usa_street">Street:</label>
-        <div class="input-container">
-          <input type="text" id="usa_street" class="input-field" placeholder="Street">
-        </div>
+        <div class="input-container"><input type="text" id="usa_street" class="input-field" placeholder="Street"></div>
         <label for="usa_city">City:</label>
-        <div class="input-container">
-          <input type="text" id="usa_city" class="input-field" placeholder="City">
-        </div>
+        <div class="input-container"><input type="text" id="usa_city" class="input-field" placeholder="City"></div>
         <label for="usa_state">State:</label>
-        <div class="input-container">
-          <input type="text" id="usa_state" class="input-field" placeholder="State">
-        </div>
+        <div class="input-container"><input type="text" id="usa_state" class="input-field" placeholder="State"></div>
         <label for="usa_zip">Zip Code:</label>
-        <div class="input-container">
-          <input type="text" id="usa_zip" class="input-field" placeholder="Zip">
-        </div>
+        <div class="input-container"><input type="text" id="usa_zip" class="input-field" placeholder="Zip"></div>
+        <div id="usa-address-feedback" class="feedback-message"></div>
         <div class="button-grid" style="margin-top: 1rem;">
-          <button class="button" style="width:100%;" onclick="geocodeUSA()">Convert Address</button>
+          <button type="button" class="button" style="width:100%;" data-search-id="maps-geocode-usa">Convert Address</button>
         </div>
       </section>
     </div>
     <div class="column">
       <h3>ITALY</h3>
-      <section class="search-instructions">
+      <section class="search-instructions" id="section-geocode-italy">
         <label for="italy_street">Street/Square (Via/Piazza):</label>
-        <div class="input-container">
-          <input type="text" id="italy_street" class="input-field" placeholder="Via/Piazza">
-        </div>
+        <div class="input-container"><input type="text" id="italy_street" class="input-field" placeholder="Via/Piazza"></div>
         <label for="italy_number">Number (Nr.):</label>
-        <div class="input-container">
-          <input type="text" id="italy_number" class="input-field" placeholder="Nr.">
-        </div>
+        <div class="input-container"><input type="text" id="italy_number" class="input-field" placeholder="Nr."></div>
         <label for="italy_zip">Postal Code (CAP):</label>
-        <div class="input-container">
-          <input type="text" id="italy_zip" class="input-field" placeholder="CAP">
-        </div>
+        <div class="input-container"><input type="text" id="italy_zip" class="input-field" placeholder="CAP"></div>
         <label for="italy_city">City (Città):</label>
-        <div class="input-container">
-          <input type="text" id="italy_city" class="input-field" placeholder="Città">
-        </div>
+        <div class="input-container"><input type="text" id="italy_city" class="input-field" placeholder="Città"></div>
         <label for="italy_nation">Nation (Nazione):</label>
-        <div class="input-container">
-          <input type="text" id="italy_nation" class="input-field" placeholder="Nazione (e.g., Italia)">
-        </div>
+        <div class="input-container"><input type="text" id="italy_nation" class="input-field" placeholder="Nazione (e.g., Italia)"></div>
+        <div id="italy-address-feedback" class="feedback-message"></div>
         <div class="button-grid" style="margin-top: 1rem;">
-          <button class="button" style="width:100%;" onclick="geocodeITALY()">Convert Address</button>
+          <button type="button" class="button" style="width:100%;" data-search-id="maps-geocode-italy">Convert Address</button>
         </div>
       </section>
     </div>
@@ -146,125 +128,81 @@
 </main>
     
 <footer>
-<<<<<<< HEAD
-  Exploratores 2.5 prototype <a href="license.html">License</a>
-=======
-  Exploratores 2.5 • Prototype <a href="license.html">License</a>
->>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
+  <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
 </footer>
 
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/menu/navigation.js"></script>
+
 <script>
-  document.querySelectorAll('.menu > li').forEach(el=>{
-    el.addEventListener('mouseover',()=>{const s=el.querySelector('.submenu');if(s) s.style.display='block';});
-    el.addEventListener('mouseout',()=>{const s=el.querySelector('.submenu');if(s) s.style.display='none';});
-  });
-  const getVal=id=>{ const el=document.getElementById(id); return el ? el.value.trim() : "";};
+    function setInitialPageState() {
+        const inputGroups = [
+            {
+                inputIds: ['latitudeInput', 'longitudeInput'],
+                buttonSelector: '#grid-maps-google .button, #grid-maps-bing .button, #grid-maps-other .button, #grid-maps-realestate .button',
+                validator: ExploratoresValidators.getAndValidateCoordinates,
+                feedbackId: 'coords-feedback'
+            },
+            {
+                inputIds: ['usa_number', 'usa_street', 'usa_city', 'usa_state', 'usa_zip'],
+                buttonSelector: '#section-geocode-usa .button',
+                validator: ExploratoresValidators.getAndValidateUsaAddress,
+                feedbackId: 'usa-address-feedback'
+            },
+            {
+                inputIds: ['italy_street', 'italy_number', 'italy_zip', 'italy_city', 'italy_nation'],
+                buttonSelector: '#section-geocode-italy .button',
+                validator: ExploratoresValidators.getAndValidateItalyAddress,
+                feedbackId: 'italy-address-feedback'
+            }
+        ];
 
-  function getCoords() {
-    const lat = getVal('latitudeInput');
-    const lon = getVal('longitudeInput');
-    
-    if (lat === "" || lon === "") {
-      alert("Please enter both Latitude and Longitude values.");
-      return null;
+        const updateUi = (group) => {
+            const validationResult = group.validator();
+            const feedbackEl = document.getElementById(group.feedbackId);
+
+            // Special handling for Zillow button
+            if (group.validator === ExploratoresValidators.getAndValidateCoordinates) {
+                const zillowButton = document.querySelector('[data-search-id="maps-zillow"]');
+                const zillowValidation = ExploratoresValidators.getAndValidateZillowCoords();
+                if (zillowButton) {
+                    zillowButton.disabled = !zillowValidation.isValid;
+                    zillowButton.classList.toggle('text-active', zillowValidation.isValid);
+                }
+            }
+
+            document.querySelectorAll(group.buttonSelector).forEach(button => {
+                if (button.dataset.searchId !== 'maps-zillow') { // Avoid re-handling zillow
+                    button.disabled = !validationResult.isValid;
+                    button.classList.toggle('text-active', validationResult.isValid);
+                }
+            });
+
+            if (feedbackEl) {
+                const inputValue = group.inputIds.map(id => document.getElementById(id)?.value.trim()).join('');
+                if (!inputValue) {
+                    feedbackEl.textContent = '';
+                } else {
+                    feedbackEl.textContent = validationResult.message;
+                    feedbackEl.className = `feedback-message ${validationResult.isValid ? 'feedback-info' : 'feedback-error'}`;
+                }
+            }
+        };
+
+        inputGroups.forEach(group => {
+            group.inputIds.forEach(inputId => {
+                const inputElement = document.getElementById(inputId);
+                if (inputElement) inputElement.addEventListener('input', () => updateUi(group));
+            });
+            updateUi(group);
+        });
     }
-    if (isNaN(parseFloat(lat)) || isNaN(parseFloat(lon))) {
-      alert("Latitude and Longitude must be valid numbers.");
-      return null;
-    }
-    return { lat: lat, lon: lon };
-  }
 
-  function geocodeAddress(number, street, city, state, zip) {
-    if (!street || !city || !state) { // Street, City, State are generally core requirements
-      alert("Street, City, and Nation/State are required for geocoding.");
-      return;
-    }
-    let addressParts = [];
-    if (number) addressParts.push(encodeURIComponent(number));
-    if (street) addressParts.push(encodeURIComponent(street));
-    if (city) addressParts.push(encodeURIComponent(city));
-    if (state) addressParts.push(encodeURIComponent(state));
-    if (zip) addressParts.push(encodeURIComponent(zip));
-    const addressQuery = addressParts.join('+');
-    // Consider making the geocoding URL/service configurable or a constant
-    window.open('https://nominatim.openstreetmap.org/search?q=' + addressQuery + '&format=json&limit=1', '_blank'); 
-    // Changed to Nominatim as gisgraphy.com might have restrictions or be down. Nominatim is more open.
-  }
-
-  function geocodeUSA() {
-    geocodeAddress(
-      getVal('usa_number'), 
-      getVal('usa_street'), 
-      getVal('usa_city'), 
-      getVal('usa_state'), 
-      getVal('usa_zip')
-    );
-  }
-
-  function geocodeITALY() {
-    // For Italy, the 'state' field is used for 'Nation', and 'zip' for 'CAP'.
-    // The order of parameters for geocodeAddress is: number, street, city, state(nation), zip(cap)
-    geocodeAddress(
-      getVal('italy_number'),    // number
-      getVal('italy_street'),   // street
-      getVal('italy_city'),     // city
-      getVal('italy_nation'),   // state (using nation field)
-      getVal('italy_zip')       // zip (using cap field)
-    );
-  }
-
-  // Google Maps
-  function Maps01() { const coords = getCoords(); if(!coords) return; window.open('https://www.google.com/maps?q='+coords.lat+','+coords.lon+'&ll='+coords.lat+','+coords.lon+'&z=18', '_blank');}
-  function Maps02() { const coords = getCoords(); if(!coords) return; window.open('https://www.google.com/maps?q='+coords.lat+','+coords.lon+'&ll='+coords.lat+','+coords.lon+'&z=18&t=k', '_blank');}  
-  function Maps03() { const coords = getCoords(); if(!coords) return; window.open('https://www.google.com/maps?layer=c&cbll='+coords.lat+','+coords.lon+'&cbp=12,0,0,0,0', '_blank');}  
-  function Maps04() { const coords = getCoords(); if(!coords) return; window.open('https://www.google.com/maps?layer=c&cbll='+coords.lat+','+coords.lon+'&cbp=12,0,0,0,0', '_blank');}  // N (Default 0)
-  function Maps05() { const coords = getCoords(); if(!coords) return; window.open('https://www.google.com/maps?layer=c&cbll='+coords.lat+','+coords.lon+'&cbp=12,90,0,0,0', '_blank');} // E
-  function Maps06() { const coords = getCoords(); if(!coords) return; window.open('https://www.google.com/maps?layer=c&cbll='+coords.lat+','+coords.lon+'&cbp=12,180,0,0,0', '_blank');} // S
-  function Maps07() { const coords = getCoords(); if(!coords) return; window.open('https://www.google.com/maps?layer=c&cbll='+coords.lat+','+coords.lon+'&cbp=12,270,0,0,0', '_blank');} // W
-
-  // Bing Maps
-  function Maps08() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20', '_blank');}
-  function Maps09() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&sty=a', '_blank');}
-  function Maps10() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&sty=h&dir=0', '_blank');}
-  function Maps11() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&sty=h&dir=90', '_blank');}
-  function Maps12() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&sty=h&dir=180', '_blank');}
-  function Maps13() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&sty=h&dir=270', '_blank');}
-  function Maps14() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&dir=0&style=x', '_blank');}
-  function Maps15() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&dir=90&style=x', '_blank');}
-  function Maps16() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&dir=180&style=x', '_blank');}
-  function Maps17() { const coords = getCoords(); if(!coords) return; window.open('https://www.bing.com/maps?cp=' + coords.lat + '~' + coords.lon + '&lvl=20&dir=270&style=x', '_blank');}
-
-  // Other Map Services
-  function Maps18() { const coords = getCoords(); if(!coords) return; window.open('https://zoom.earth/#view=' + coords.lat + ',' + coords.lon + ',20z', '_blank');}
-  function Maps20() { const coords = getCoords(); if(!coords) return; window.open('https://wego.here.com/?map=' + coords.lat + ',' + coords.lon + ',20,satellite', '_blank');}
-  function Maps21() { const coords = getCoords(); if(!coords) return; window.open('https://yandex.com/maps/?l=sat&ll=' + coords.lon + '%2C' + coords.lat + '&z=18', '_blank');}
-  function Maps22() { const coords = getCoords(); if(!coords) return; window.open('https://beta.maps.apple.com/?t=k&z=18&ll=' + coords.lat + '%2C' + coords.lon, '_blank');}
-  function Maps23() { const coords = getCoords(); if(!coords) return; window.open('https://livingatlas.arcgis.com/wayback/#active=20337&mapCenter=' + coords.lon + '%2C' + coords.lat + '%2C18', '_blank');}
-  function Maps25() { const coords = getCoords(); if(!coords) return; window.open('https://www.mapillary.com/app/?lat=' + coords.lat + '&lng=' + coords.lon + '&z=18', '_blank');}
-  function Maps26() { const coords = getCoords(); if(!coords) return; window.open('http://kartaview.org/map/@' + coords.lat + ',' + coords.lon + ',18z', '_blank');}
-  function Maps27() { const coords = getCoords(); if(!coords) return; window.open('https://eos.com/landviewer/?lat=' + coords.lat + '&lng=' + coords.lon + '&z=18', '_blank');}
-  function Maps28() { const coords = getCoords(); if(!coords) return; window.open('https://satellites.pro/USA_map#' + coords.lat + ',' + coords.lon + ',18', '_blank');}
-
-  // Real Estate Maps
-  function Maps29() { const coords = getCoords(); if(!coords) return; window.open('https://www.acrevalue.com/map/?lat=' + coords.lat + '&lng=' + coords.lon + '&zoom=17', '_blank');}
-  function Maps30() { 
-    const coords = getCoords(); if(!coords) return;
-    const lat = parseFloat(coords.lat);
-    const lon = parseFloat(coords.lon);
-    const mapBounds = `"west":${lon-0.01},"east":${lon+0.01},"south":${lat-0.01},"north":${lat+0.01}`;
-    const searchQueryState = `{"isMapVisible":true,"mapBounds":{${mapBounds}},"filterState":{"sort":{"value":"globalrelevanceex"},"ah":{"value":true}},"isListVisible":true,"mapZoom":15}`;
-    window.open('https://www.zillow.com/homes/for_sale/?searchQueryState=' + encodeURIComponent(searchQueryState), '_blank');
-  }
-  function Maps31() { 
-    const coords = getCoords(); if(!coords) return;
-    window.open('https://www.trulia.com/map/?location=' + encodeURIComponent(coords.lat + "," + coords.lon) + '&zoom=17', '_blank');
-  }
-  function Maps33() { 
-    const coords = getCoords(); if(!coords) return;
-    window.open('https://www.realtor.com/realestateandhomes-search?map=true#lat=' + coords.lat + ';lng=' + coords.lon + ';zoom=17', '_blank');
-  }
+    document.addEventListener('DOMContentLoaded', setInitialPageState);
 </script>
+
 <script src="../assets/js/config.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
