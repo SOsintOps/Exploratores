@@ -12,9 +12,7 @@
 
 <div id="navbar-placeholder"></div>
 
-<script src="../assets/menu/navigation.js"></script>
-
-  <main>
+<main>
     <h1 class="page-title">Vehicles Tool</h1>
     <div class="note">
       <strong>NOTE:</strong> Please enter the VIN or license plate data in the boxes below. The relevant search buttons will become active only when the required data is correctly entered.
@@ -24,18 +22,18 @@
         <section class="form-section" id="section-vehicles-vin">
           <h2>VIN Finder</h2>
           <div class="input-container">
-            <input type="text" id="vinValue" class="input-field" placeholder="VIN (17 chars)" />
+            <input type="text" id="vinValue" class="input-field" placeholder="VIN (17 chars)" autocomplete="off" />
           </div>
           <div id="vin-feedback" class="feedback-message"></div><br>
           <div class="button-grid">
-            <button id="btn-vehicles-vindecoderz" class="button" onclick="Vehicles_SearchVINDecoderz()">VINDecoderz</button>
-            <button id="btn-vehicles-faxvin" class="button" onclick="Vehicles_SearchFaxVIN()">FaxVIN</button>
-            <button id="btn-vehicles-checkthatvin" class="button" onclick="Vehicles_SearchCheckThatVIN()">CheckThatVIN</button>
-            <button id="btn-vehicles-vincheckinfo" class="button" onclick="Vehicles_SearchVINCheckInfo()">VINCheck.info</button>
-            <button id="btn-vehicles-searchquarry-vin" class="button" onclick="Vehicles_SearchSearchQuarryVIN()">SearchQuarry</button>
-            <button id="btn-vehicles-cyclevin" class="button" onclick="Vehicles_SearchCycleVIN()">CycleVIN</button>
-            <button id="btn-vehicles-recordfinder-vin" class="button" onclick="Vehicles_SearchRecordFinderVIN()">RecordFinder</button>
-            <button id="btn-vehicles-canadavin" class="button" onclick="Vehicles_SearchCanadaVIN()">CanadaVIN</button>
+            <button id="btn-vehicles-vindecoderz" class="button" data-search-id="vehicles-vindecoderz">VINDecoderz</button>
+            <button id="btn-vehicles-faxvin" class="button" data-search-id="vehicles-faxvin">FaxVIN</button>
+            <button id="btn-vehicles-checkthatvin" class="button" data-search-id="vehicles-checkthatvin">CheckThatVIN</button>
+            <button id="btn-vehicles-vincheckinfo" class="button" data-search-id="vehicles-vincheckinfo">VINCheck.info</button>
+            <button id="btn-vehicles-searchquarry-vin" class="button" data-search-id="vehicles-searchquarry-vin">SearchQuarry</button>
+            <button id="btn-vehicles-cyclevin" class="button" data-search-id="vehicles-cyclevin">CycleVIN</button>
+            <button id="btn-vehicles-recordfinder-vin" class="button" data-search-id="vehicles-recordfinder-vin">RecordFinder</button>
+            <button id="btn-vehicles-canadavin" class="button" data-search-id="vehicles-canadavin">CanadaVIN</button>
           </div>
         </section>
       </div>
@@ -44,15 +42,15 @@
         <section class="form-section" id="section-vehicles-plate">
           <h2>License Plates (USA)</h2>
           <div class="input-container">
-            <input type="text" id="lpNumber" class="input-field" placeholder="License Plate" />
-            <input type="text" id="lpState"  class="input-field" placeholder="2-Letter State" />
+            <input type="text" id="lpNumber" class="input-field" placeholder="License Plate" autocomplete="off" />
+            <input type="text" id="lpState"  class="input-field" placeholder="2-Letter State" autocomplete="off" />
           </div>
           <div id="plate-feedback" class="feedback-message"></div>
           <div class="button-grid">
-            <button id="btn-vehicles-carvana" class="button" onclick="Vehicles_SearchCarvana()">Carvana</button>
-            <button id="btn-vehicles-searchquarry-plate" class="button" onclick="Vehicles_SearchSearchQuarryPlate()">SearchQuarry</button>
-            <button id="btn-vehicles-recordfinder-plate" class="button" onclick="Vehicles_SearchRecordFinderPlate()">RecordFinder</button>
-            <button id="btn-vehicles-infotracer-plate" class="button" onclick="Vehicles_SearchInfoTracerPlate()">InfoTracer</button>
+            <button id="btn-vehicles-carvana" class="button" data-search-id="vehicles-carvana">Carvana</button>
+            <button id="btn-vehicles-searchquarry-plate" class="button" data-search-id="vehicles-searchquarry-plate">SearchQuarry</button>
+            <button id="btn-vehicles-recordfinder-plate" class="button" data-search-id="vehicles-recordfinder-plate">RecordFinder</button>
+            <button id="btn-vehicles-infotracer-plate" class="button" data-search-id="vehicles-infotracer-plate">InfoTracer</button>
           </div>
         </section>
 
@@ -60,191 +58,89 @@
           <h2>Car Identifier</h2>
           <h3>Visual Identification</h3>
           <p class="input-section-description">(via Carnet.ai)</p>
-          <button id="btn-vehicles-carnetai" class="button" style="width:100%; max-width:280px;"
-                  onclick="window.open('https://carnet.ai/', '_blank')">
+          <button id="btn-vehicles-carnetai" class="button" style="width:100%; max-width:280px;" data-search-id="vehicles-carnetai">
             Launch Carnet.ai
           </button>
         </section>
       </div>
     </div>
-  </main>
+</main>
 
-  <footer>
-<<<<<<< HEAD
-    <p>Exploratores 2.5 prototype <a href="license.html">License</a></p>
-=======
-    <p>Exploratores 2.5 • Prototype <a href="license.html">License</a></p>
->>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
-  </footer>
+<footer>
+    <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
+</footer>
 
-  <script>
-    // Standard navbar submenu script
-    document.querySelectorAll('.menu > li').forEach(item => {
-      const submenu = item.querySelector('.submenu');
-      if (submenu) { 
-        item.addEventListener('mouseenter', function() {
-          submenu.style.display = 'block';
-        });
-        item.addEventListener('mouseleave', function() {
-          submenu.style.display = 'none';
-        });
-      }
-    });
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/menu/navigation.js"></script>
 
-    // --- Helper Functions ---
-    function Vehicles_GetAndValidateVIN() {
-      const vinElement = document.getElementById('vinValue');
-      const vin = vinElement ? vinElement.value.trim() : "";
-      if (!vin) { alert("Please enter a VIN."); return null; }
-      if (vin.length !== 17) { alert("A valid VIN must be 17 characters long."); return null; }
-      return vin;
-    }
+<script>
+    function setInitialPageState() {
+        const inputGroups = [
+            {
+                inputIds: ['vinValue'],
+                buttonSelector: '#section-vehicles-vin .button',
+                validator: ExploratoresValidators.getAndValidateVin,
+                feedbackId: 'vin-feedback'
+            },
+            {
+                inputIds: ['lpNumber', 'lpState'],
+                buttonSelector: '#section-vehicles-plate .button',
+                validator: ExploratoresValidators.getAndValidatePlate,
+                feedbackId: 'plate-feedback'
+            }
+        ];
 
-    function Vehicles_GetAndValidatePlate() {
-      const plateElement = document.getElementById('lpNumber');
-      const stateElement = document.getElementById('lpState');
-      const plate = plateElement ? plateElement.value.trim() : "";
-      const state = stateElement ? stateElement.value.trim().toUpperCase() : "";
-      if (!plate || !state) { alert("Please enter both a license plate and a state."); return null; }
-      if (state.length !== 2) { alert("Please enter a 2-letter state abbreviation."); return null; }
-      return { plate, state };
-    }
+        const updateUi = (group) => {
+            const validationResult = group.validator();
+            const feedbackEl = document.getElementById(group.feedbackId);
 
-    // --- Master Handlers ---
-    function Vehicles_LaunchVINSearch(urlBuilderCallback) {
-        const vin = Vehicles_GetAndValidateVIN();
-        if (vin) { const url = urlBuilderCallback(vin); window.open(url, '_blank'); }
-    }
+            document.querySelectorAll(group.buttonSelector).forEach(button => {
+                button.disabled = !validationResult.isValid;
+                button.classList.toggle('text-active', validationResult.isValid);
+            });
 
-    function Vehicles_LaunchPlateSearch(urlBuilderCallback) {
-        const parts = Vehicles_GetAndValidatePlate();
-        if (parts) { const url = urlBuilderCallback(parts); window.open(url, '_blank'); }
-    }
-    
-    // --- License Plate Search Functions ---
-    function Vehicles_SearchCarvana() { Vehicles_LaunchPlateSearch(p => `https://www.carvana.com/sell-my-car/getoffer/vehicle?licensePlate=${encodeURIComponent(p.plate)}&plateState=${encodeURIComponent(p.state)}`); }
-    function Vehicles_SearchSearchQuarryPlate() { Vehicles_LaunchPlateSearch(p => `https://www.searchquarry.com/vehicle_records/lregister?sqtb=license_plate&license_plates=${encodeURIComponent(p.plate)}&state=${encodeURIComponent(p.state)}`); }
-    function Vehicles_SearchRecordFinderPlate() { Vehicles_LaunchPlateSearch(p => `https://recordsfinder.com/search/plate/loader/?flow=plate&plateNumber=${encodeURIComponent(p.plate)}&state=${encodeURIComponent(p.state)}`); }
-    function Vehicles_SearchInfoTracerPlate() { Vehicles_LaunchPlateSearch(p => `https://infotracer.com/loading/?type=plate-lookup&mercSubId=plate&plate=${encodeURIComponent(p.plate)}&state=${encodeURIComponent(p.state)}`); }
-    
-    // --- VIN Search Functions ---
-    function Vehicles_SearchVINDecoderz() { Vehicles_LaunchVINSearch(vin => `https://www.vindecoderz.com/EN/check-lookup/${encodeURIComponent(vin)}`); }
-    function Vehicles_SearchFaxVIN() { Vehicles_LaunchVINSearch(vin => `https://www.faxvin.com/order/decoding?vin=${encodeURIComponent(vin)}`); }
-    function Vehicles_SearchCheckThatVIN() { Vehicles_LaunchVINSearch(vin => `https://checkthatvin.com/ctv/#/vin-search/${encodeURIComponent(vin)}`); }
-    function Vehicles_SearchVINCheckInfo() { Vehicles_LaunchVINSearch(vin => `https://vincheck.info/check/report-summary.php?vin=${encodeURIComponent(vin)}`); }
-    function Vehicles_SearchSearchQuarryVIN() { Vehicles_LaunchVINSearch(vin => `https://www.searchquarry.com/vin-decoder/search/${encodeURIComponent(vin)}`); }
-    function Vehicles_SearchCycleVIN() { Vehicles_LaunchVINSearch(vin => `https://www.cyclevin.com/vin-report/?vin=${encodeURIComponent(vin)}`); }
-    function Vehicles_SearchRecordFinderVIN() { Vehicles_LaunchVINSearch(vin => `https://recordsfinder.com/search/vin-check/loader/?flow=vin-check&vin=${encodeURIComponent(vin)}`); }
-    function Vehicles_SearchCanadaVIN() { Vehicles_LaunchVINSearch(vin => `https://csps.con.rcmp-grc.gc.ca/queryVehicles?vin=${encodeURIComponent(vin)}`); }
+            if (feedbackEl) {
+                const inputValue = group.inputIds.map(id => document.getElementById(id)?.value.trim()).join('');
+                if (!inputValue) {
+                    feedbackEl.textContent = '';
+                } else {
+                    feedbackEl.textContent = validationResult.message;
+                    feedbackEl.className = `feedback-message ${validationResult.isValid ? 'feedback-info' : 'feedback-error'}`;
+                }
+            }
+        };
 
-    // --- Live Feedback & Button State Update Functions ---
-    function Vehicles_UpdateVINFeedback() {
-        const vinInput = document.getElementById('vinValue');
-        const feedbackElement = document.getElementById('vin-feedback');
-        if (!vinInput || !feedbackElement) return;
-        const vin = vinInput.value.trim();
-        
-        if (vin === "") {
-            feedbackElement.textContent = "";
-            feedbackElement.className = 'feedback-message';
-            return;
-        }
-
-        if (vin.length !== 17) {
-            feedbackElement.textContent = `A valid VIN must be 17 characters. Entered: ${vin.length}.`;
-            feedbackElement.className = 'feedback-message feedback-error';
-        } else {
-            feedbackElement.textContent = "Valid VIN format.";
-            feedbackElement.className = 'feedback-message feedback-info';
-        }
-    }
-
-    function Vehicles_UpdatePlateFeedback() {
-        const plateInput = document.getElementById('lpNumber');
-        const stateInput = document.getElementById('lpState');
-        const feedbackElement = document.getElementById('plate-feedback');
-        if (!plateInput || !stateInput || !feedbackElement) return;
-        const plate = plateInput.value.trim();
-        const state = stateInput.value.trim();
-        
-        if (plate === "" && state === "") {
-            feedbackElement.textContent = "";
-            feedbackElement.className = 'feedback-message';
-            return;
-        }
-
-        if (plate !== "" && state.length === 2) {
-            feedbackElement.textContent = "Valid format for search.";
-            feedbackElement.className = 'feedback-message feedback-info';
-        } else {
-            let errorMsg = "Requires a License Plate and a 2-letter State.";
-            if (plate === "") errorMsg = "License Plate is required.";
-            else if (state === "") errorMsg = "A 2-letter State is required.";
-            else if (state.length !== 2) errorMsg = "State must be exactly 2 letters.";
-            
-            feedbackElement.textContent = errorMsg;
-            feedbackElement.className = 'feedback-message feedback-error';
-        }
-    }
-    
-    function Vehicles_UpdateButtonStates() {
-        // VIN validation
-        const vinInput = document.getElementById('vinValue');
-        const isVinValid = vinInput ? vinInput.value.trim().length === 17 : false;
-        document.querySelectorAll('#section-vehicles-vin .button').forEach(button => {
-            button.disabled = !isVinValid;
-            button.classList.toggle('text-active', isVinValid);
-        });
-
-        // License Plate validation
-        const plateInput = document.getElementById('lpNumber');
-        const stateInput = document.getElementById('lpState');
-        const isPlateValid = (plateInput ? plateInput.value.trim() !== "" : false) && 
-                             (stateInput ? stateInput.value.trim().length === 2 : false);
-        document.querySelectorAll('#section-vehicles-plate .button').forEach(button => {
-            button.disabled = !isPlateValid;
-            button.classList.toggle('text-active', isPlateValid);
-        });
-    }
-
-    // --- Event Listeners and Initial Setup ---
-    document.addEventListener('DOMContentLoaded', () => {
-        // Attach listeners for dynamic feedback and button states
-        const vinInput = document.getElementById('vinValue');
-        const lpNumberInput = document.getElementById('lpNumber');
-        const lpStateInput = document.getElementById('lpState');
-
-        if (vinInput) vinInput.addEventListener('input', () => {
-            Vehicles_UpdateButtonStates();
-            Vehicles_UpdateVINFeedback();
-        });
-        if (lpNumberInput) lpNumberInput.addEventListener('input', () => {
-            Vehicles_UpdateButtonStates();
-            Vehicles_UpdatePlateFeedback();
-        });
-        if (lpStateInput) lpStateInput.addEventListener('input', () => {
-            Vehicles_UpdateButtonStates();
-            Vehicles_UpdatePlateFeedback();
-        });
-
-        // Run the light version controller
-        if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
-            exploratoresConfig.selectorsToHide.forEach(selector => {
-                try {
-                    const elements = document.querySelectorAll(selector);
-                    elements.forEach(el => el.classList.add('hidden-in-light'));
-                } catch (e) {
-                    console.error("Invalid selector in config.js:", selector);
+        inputGroups.forEach(group => {
+            group.inputIds.forEach(inputId => {
+                const inputElement = document.getElementById(inputId);
+                if (inputElement) {
+                    inputElement.addEventListener('input', () => updateUi(group));
                 }
             });
+            updateUi(group); // Set initial state
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', setInitialPageState);
+</script>
+
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
         }
-        
-        // Set initial button and feedback states on page load
-        Vehicles_UpdateButtonStates();
-        Vehicles_UpdateVINFeedback();
-        Vehicles_UpdatePlateFeedback();
-    });
-  </script>
+      });
+    }
+  });
+</script>
 
 </body>
 </html>
