@@ -370,6 +370,26 @@ const ExploratoresValidators = {
 	
 	// AGGIUNGI QUESTE FUNZIONI A validators.js
 
+    getAndValidateImageTerm: function(config) {
+        const value = document.getElementById('imageSearchTermsInput')?.value.trim();
+        if (!value) {
+            return { isValid: false, message: "Please enter keywords to search." };
+        }
+        return { isValid: true, data: { term: value }, message: "Ready for search." };
+    },
+
+    getAndValidateImageUrl: function(config) {
+        const value = document.getElementById('reverseImageUrlInput')?.value.trim();
+        if (!value) {
+            return { isValid: false, message: "Please enter an image URL." };
+        }
+        // Validazione di base per un URL
+        if (!value.startsWith('http://') && !value.startsWith('https://')) {
+            return { isValid: false, message: "Please enter a valid URL (starting with http/https)." };
+        }
+        return { isValid: true, data: { url: value }, message: "URL is valid." };
+    },
+
     getAndValidateCoordinates: function(config) {
         const lat = document.getElementById('latitudeInput')?.value.trim();
         const lon = document.getElementById('longitudeInput')?.value.trim();
