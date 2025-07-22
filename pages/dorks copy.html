@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dorks Builder - Exploratores OSINT Toolkit</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+    <header>
+        <div id="navbar-placeholder"></div>
+    </header>
+
+    <main>
+        <h1>Dorks Builder</h1>
+        <p>Construct advanced search queries for various search engines.</p>
+
+        <section class="tool-section">
+            <h2>Query Components</h2>
+            <div class="input-grid">
+                <div class="input-group">
+                    <label for="dork-main-query">Main Query</label>
+                    <input type="text" id="dork-main-query" class="input-field" placeholder="e.g., confidential report" autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <label for="dork-exact-phrase">Exact Phrase</label>
+                    <input type="text" id="dork-exact-phrase" class="input-field" placeholder="e.g., project hydra" autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <label for="dork-site">Site or Domain</label>
+                    <input type="text" id="dork-site" class="input-field" placeholder="e.g., example.com" autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <label for="dork-filetype">Filetype</label>
+                    <input type="text" id="dork-filetype" class="input-field" placeholder="e.g., pdf, xlsx, docx" autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <label for="dork-inurl">In URL</label>
+                    <input type="text" id="dork-inurl" class="input-field" placeholder="e.g., admin, login" autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <label for="dork-intitle">In Title</label>
+                    <input type="text" id="dork-intitle" class="input-field" placeholder="e.g., index of" autocomplete="off">
+                </div>
+            </div>
+        </section>
+
+        <section class="tool-section">
+            <h2>Constructed Dork</h2>
+            <textarea id="dork-constructed-query" class="output-field" readonly placeholder="Your constructed dork will appear here..."></textarea>
+            <p id="dork-feedback" class="feedback-message feedback-info">Enter terms above to construct a dork.</p>
+        </section>
+
+        <section class="tool-section">
+            <h2>Execute Search</h2>
+            <div class="button-container">
+                <button id="btn-dorks-google" data-search-id="dorks-google" class="btn" disabled>Search on Google</button>
+                <button id="btn-dorks-bing" data-search-id="dorks-bing" class="btn" disabled>Search on Bing</button>
+                <button id="btn-dorks-yandex" data-search-id="dorks-yandex" class="btn" disabled>Search on Yandex</button>
+                <button id="btn-dorks-baidu" data-search-id="dorks-baidu" class="btn" disabled>Search on Baidu</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="../assets/menu/navigation.js"></script>
+    <script src="../assets/js/validators.js"></script>
+    <script src="../assets/js/search-library.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+    <script>
+        // Page-specific script for dorks.html
+        function getDorkComponents() {
+            // Collects values from all input fields.
+            return {
+                mainQuery: document.getElementById('dork-main-query')?.value.trim(),
+                exactPhrase: document.getElementById('dork-exact-phrase')?.value.trim(),
+                site: document.getElementById('dork-site')?.value.trim(),
+                filetype: document.getElementById('dork-filetype')?.value.trim(),
+                inurl: document.getElementById('dork-inurl')?.value.trim(),
+                intitle: document.getElementById('dork-intitle')?.value.trim()
+            };
+        }
+
+        function constructDorkQuery() {
+            // Builds the dork string from components.
+            const components = getDorkComponents();
+            let queryParts = [];
+
+            if (components.mainQuery) {
+                queryParts.push(components.mainQuery);
+            }
+            if (components.exactPhrase) {
+                queryParts.push(`"${components.exactPhrase}"`);
+            }
+            if (components.site) {
+                queryParts.push(`site:${components.site}`);
+            }
+            if (components.filetype) {
+                queryParts.push(`filetype:${components.filetype}`);
+            }
+            if (components.inurl) {
+                queryParts.push(`inurl:${components.inurl}`);
+            }
+            if (components.intitle) {
+                queryParts.push(`intitle:${components.intitle}`);
+            }
+
+            return queryParts.join(' ');
+        }
+        
+        function updatePageState() {
+            // Updates the UI based on the current input values.
+            const constructedQuery = constructDorkQuery();
+            const outputField = document.getElementById('dork-constructed-query');
+            const feedbackEl = document.getElementById('dork-feedback');
+            const searchButtons = document.querySelectorAll('[data-search-id^="dorks-"]');
+
+            outputField.value = constructedQuery;
+
+            const isQueryEmpty = constructedQuery.length === 0;
+            
+            searchButtons.forEach(button => {
+                button.disabled = isQueryEmpty;
+            });
+
+            if (isQueryEmpty) {
+                feedbackEl.textContent = 'Enter at least one term to build a dork.';
+                feedbackEl.className = 'feedback-message feedback-info';
+            } else {
+                feedbackEl.textContent = 'Ready to search.';
+                feedbackEl.className = 'feedback-message feedback-ready';
+            }
+        }
+
+        function setInitialPageState() {
+            // Adds event listeners to input fields to trigger UI updates.
+            const inputIds = ['dork-main-query', 'dork-exact-phrase', 'dork-site', 'dork-filetype', 'dork-inurl', 'dork-intitle'];
+            inputIds.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.addEventListener('input', updatePageState);
+                }
+            });
+            // Set initial state on page load.
+            updatePageState();
+        }
+
+        document.addEventListener('DOMContentLoaded', setInitialPageState);
+    </script>
+
+</body>
+</html>
