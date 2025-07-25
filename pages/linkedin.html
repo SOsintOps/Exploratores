@@ -1,223 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Exploratores – LinkedIn Tool</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LinkedIn • Exploratores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
 <body>
+
 <div id="navbar-placeholder"></div>
 
-<script src="../assets/menu/navigation.js"></script>
-
 <main>
-  <h1 class="page-title">LinkedIn Tool</h1>
-  <div class="note">
-    For proper function of these features, an active investigative profile is required.
-  </div>
-
-  <div class="columns">
-    <div class="column">
-      <h2>Profile & Media</h2>
-      <section class="search-instructions">
-        <label for="pfUser">Username (Profile Path):</label>
-        <div class="input-container">
-          <input type="text" id="pfUser" class="input-field" placeholder="e.g., johndoe or pub/johndoe/12/345/678">
-        </div>
-      </section>
-      <div class="button-grid">
-        <button class="button" onclick="Linkedin11(getVal('pfUser'))">Profile</button>
-      </div>
-
-      <section class="search-instructions">
-        <label for="imgUser">Image Search (Name/Keyword):</label>
-        <div class="input-container">
-          <input type="text" id="imgUser" class="input-field" placeholder="Username or real name">
-        </div>
-      </section>
-      <div class="button-grid">
-        <button class="button" onclick="Linkedin13(getVal('imgUser'))">Google Images</button>
-        <button class="button" onclick="Linkedin14(getVal('imgUser'))">Bing Images</button>
-      </div>
-
-      <section class="search-instructions">
-        <label for="vidKey">Video Search (Keyword):</label>
-        <div class="input-container">
-          <input type="text" id="vidKey" class="input-field" placeholder="Search term for videos">
-        </div>
-      </section>
-      <div class="button-grid">
-        <button class="button" onclick="Linkedin15(getVal('vidKey'))">Video Search</button>
-      </div>
-
-      <h2>Timestamp Decoder</h2>
-      <section class="search-instructions">
-        <label for="url">Post URL or URN:</label>
-        <div class="input-container">
-          <input type="text" id="url" class="input-field" placeholder="LinkedIn Post URL or URN (e.g., urn:li:activity:123...)">
-        </div>
-      </section>
-      <div class="button-grid">
-        <button class="button" onclick="decodeTimestamp()">Decode Timestamp</button>
-      </div>
-      <div class="input-container" style="margin-top:0.5rem;">
-        <strong style="margin-right: 0.5rem;">Decoded Date (UTC):</strong><span id="date"></span>
-      </div>
+    <h1 class="page-title">LinkedIn Tool</h1>
+    <div class="note">
+        For proper function of these features, an active investigative profile is required on the platform.
     </div>
 
-    <div class="column">
-      <h2>Company, Group & More</h2>
-      <section class="search-instructions">
-        <label for="cgKeyword">Keyword:</label>
-        <div class="input-container">
-          <input type="text" id="cgKeyword" class="input-field" placeholder="Keyword">
-        </div>
-      </section>
-      <div class="button-grid">
-        <button class="button" onclick="Linkedin06(getVal('cgKeyword'))">Companies</button>
-        <button class="button" onclick="Linkedin07(getVal('cgKeyword'))">Groups</button>
-        <button class="button" onclick="Linkedin08(getVal('cgKeyword'))">Schools</button>
-        <button class="button" onclick="Linkedin09(getVal('cgKeyword'))">Events</button>
-      </div>
+    <div class="columns">
+        <div class="column">
+            <section id="section-linkedin-profile" class="search-instructions">
+                <h2>Profile</h2>
+                <label for="input-linkedin-profile-user">Username (Profile Path):</label>
+                <div class="input-container">
+                    <input type="text" id="input-linkedin-profile-user" class="input-field" placeholder="e.g., johndoe or pub/johndoe/12/345/678" autocomplete="off">
+                </div>
+                <div id="feedback-linkedin-profile" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button id="btn-linkedin-profile" class="button" data-search-id="linkedin-profile">Profile</button>
+                </div>
+            </section>
 
-      <h2>External Engine Searches</h2>
-      <section class="search-instructions">
-        <label for="eeKeyword">Keywords & Names:</label>
-        <div class="input-container">
-          <input type="text" id="eeKeyword" class="input-field" placeholder="Keyword">
-          <input type="text" id="eeFName" class="input-field" placeholder="First Name">
-          <input type="text" id="eeLName" class="input-field" placeholder="Last Name">
-          <input type="text" id="eeTitle" class="input-field" placeholder="Title">
-          <input type="text" id="eeCompany" class="input-field" placeholder="Company">
-          <input type="text" id="eeSchool" class="input-field" placeholder="School">
+            <section id="section-linkedin-media" class="search-instructions">
+                <h2>Media Search</h2>
+                <label for="input-linkedin-media-keyword">Image Search (Name/Keyword):</label>
+                <div class="input-container">
+                    <input type="text" id="input-linkedin-media-keyword" class="input-field" placeholder="Username or real name" autocomplete="off">
+                </div>
+                <div id="feedback-linkedin-media" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button id="btn-linkedin-images-google" class="button" data-search-id="linkedin-images-google">Google Images</button>
+                    <button id="btn-linkedin-images-bing" class="button" data-search-id="linkedin-images-bing">Bing Images</button>
+                </div>
+                <hr>
+                <label for="input-linkedin-video-keyword">Video Search (Keyword):</label>
+                <div class="input-container">
+                    <input type="text" id="input-linkedin-video-keyword" class="input-field" placeholder="Search term for videos" autocomplete="off">
+                </div>
+                 <div id="feedback-linkedin-video" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button id="btn-linkedin-video-search" class="button" data-search-id="linkedin-video-search">Video Search</button>
+                </div>
+            </section>
+
+            <section id="section-linkedin-timestamp" class="search-instructions">
+                <h2>Timestamp Decoder</h2>
+                <label for="input-linkedin-timestamp-url">Post URL or URN:</label>
+                <div class="input-container">
+                    <input type="text" id="input-linkedin-timestamp-url" class="input-field" placeholder="LinkedIn Post URL or URN (e.g., urn:li:activity:...)" autocomplete="off">
+                </div>
+                <div class="button-grid">
+                    <button id="btn-linkedin-timestamp-decode" class="button">Decode Timestamp</button>
+                </div>
+                <div class="input-container" style="margin-top:0.5rem;">
+                    <strong style="margin-right: 0.5rem;">Decoded Date (UTC):</strong><span id="span-linkedin-timestamp-result"></span>
+                </div>
+            </section>
+
         </div>
-      </section>
-      <div class="button-grid" style="grid-template-columns:repeat(3,1fr);">
-        <button class="button" onclick="Linkedin03(getVal('eeKeyword'), getVal('eeFName'), getVal('eeLName'), getVal('eeTitle'), getVal('eeCompany'), getVal('eeSchool'))">Google People</button>
-        <button class="button" onclick="Linkedin04(getVal('eeKeyword'), getVal('eeFName'), getVal('eeLName'), getVal('eeTitle'), getVal('eeCompany'), getVal('eeSchool'))">Bing People</button>
-        <button class="button" onclick="Linkedin05(getVal('eeKeyword'), getVal('eeFName'), getVal('eeLName'), getVal('eeTitle'), getVal('eeCompany'), getVal('eeSchool'))">Yandex People</button>
-      </div>
+
+        <div class="column">
+            <section id="section-linkedin-cgs" class="search-instructions">
+                <h2>Company, Group, School & Events</h2>
+                <label for="input-linkedin-cgs-keyword">Keyword:</label>
+                <div class="input-container">
+                    <input type="text" id="input-linkedin-cgs-keyword" class="input-field" placeholder="Enter a keyword..." autocomplete="off">
+                </div>
+                <div id="feedback-linkedin-cgs" class="feedback-message"></div>
+                <div class="button-grid">
+                    <button id="btn-linkedin-search-companies" class="button" data-search-id="linkedin-search-companies">Companies</button>
+                    <button id="btn-linkedin-search-groups" class="button" data-search-id="linkedin-search-groups">Groups</button>
+                    <button id="btn-linkedin-search-schools" class="button" data-search-id="linkedin-search-schools">Schools</button>
+                    <button id="btn-linkedin-search-events" class="button" data-search-id="linkedin-search-events">Events</button>
+                </div>
+            </section>
+
+            <section id="section-linkedin-external" class="search-instructions">
+                <h2>External Engine Searches</h2>
+                <label>Keywords & Names:</label>
+                <div class="input-container">
+                    <input type="text" id="input-linkedin-ext-keyword" class="input-field" placeholder="Keyword" autocomplete="off">
+                    <input type="text" id="input-linkedin-ext-fname" class="input-field" placeholder="First Name" autocomplete="off">
+                    <input type="text" id="input-linkedin-ext-lname" class="input-field" placeholder="Last Name" autocomplete="off">
+                    <input type="text" id="input-linkedin-ext-title" class="input-field" placeholder="Title" autocomplete="off">
+                    <input type="text" id="input-linkedin-ext-company" class="input-field" placeholder="Company" autocomplete="off">
+                    <input type="text" id="input-linkedin-ext-school" class="input-field" placeholder="School" autocomplete="off">
+                </div>
+                <div id="feedback-linkedin-external" class="feedback-message"></div>
+                <div class="button-grid button-grid-3col">
+                    <button id="btn-linkedin-ext-google" class="button" data-search-id="linkedin-ext-google">Google People</button>
+                    <button id="btn-linkedin-ext-bing" class="button" data-search-id="linkedin-ext-bing">Bing People</button>
+                    <button id="btn-linkedin-ext-yandex" class="button" data-search-id="linkedin-ext-yandex">Yandex People</button>
+                </div>
+            </section>
+        </div>
     </div>
-  </div>
 </main>
 
 <footer>
-<<<<<<< HEAD
-  Exploratores 2.5 prototype
-=======
-  Exploratores 2.5 • Prototype
->>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
-  <a href="license.html">License</a>
+    <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
 </footer>
 
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/menu/navigation.js"></script>
+
 <script>
-  document.querySelectorAll('.menu > li').forEach(el=>{
-    el.addEventListener('mouseover',()=>{const s=el.querySelector('.submenu');if(s) s.style.display='block';});
-    el.addEventListener('mouseout',()=>{const s=el.querySelector('.submenu');if(s) s.style.display='none';});
-  });
-  const getVal=id=>{ const el=document.getElementById(id); return el ? el.value.trim() : "";};
+    // --- Timestamp Decoder Logic ---
+    function setupTimestampDecoder() {
+        const decodeButton = document.getElementById('btn-linkedin-timestamp-decode');
+        const urlInput = document.getElementById('input-linkedin-timestamp-url');
+        const resultSpan = document.getElementById('span-linkedin-timestamp-result');
 
-  function constructQuery(params) {
-    let query = "";
-    if (params.k && getVal('eeKeyword')) query += encodeURIComponent(params.k) + '+';
-    if (params.f && getVal('eeFName')) query += encodeURIComponent(params.f) + '+';
-    if (params.l && getVal('eeLName')) query += encodeURIComponent(params.l) + '+';
-    if (params.t && getVal('eeTitle')) query += encodeURIComponent(params.t) + '+';
-    if (params.c && getVal('eeCompany')) query += encodeURIComponent(params.c) + '+';
-    if (params.s && getVal('eeSchool')) query += encodeURIComponent(params.s) + '+';
-    
-    if (query.endsWith('+')) {
-      query = query.slice(0, -1);
-    }
-    return query;
-  }
+        const getPostIdFromUrlOrUrn = (urlOrUrnStr) => {
+            const patterns = [
+                /urn:li:(?:activity|comment|share|article|document):([0-9]{19})/,
+                /linkedin\.com\/feed\/update\/urn:li:(?:activity|share):([0-9]{19})/,
+                /linkedin\.com\/posts\/.*activity-([0-9]{19})-/,
+                /linkedin\.com\/pulse\/[^/]+\/.*-([0-9]{19})(?:-\w+)?\/?$/,
+                /^([0-9]{19})$/
+            ];
+            for (const pattern of patterns) {
+                const match = urlOrUrnStr.match(pattern);
+                if (match && match[1]) return match[1];
+            }
+            return null;
+        };
 
-  function Linkedin06(v){if(!v)return; window.open('https://www.linkedin.com/search/results/companies/?keywords='+encodeURIComponent(v),'_blank'); }
-  function Linkedin07(v){if(!v)return; window.open('https://www.linkedin.com/search/results/groups/?keywords='+encodeURIComponent(v),'_blank'); }
-  function Linkedin08(v){if(!v)return; window.open('https://www.linkedin.com/search/results/schools/?keywords='+encodeURIComponent(v),'_blank'); }
-  function Linkedin09(v){if(!v)return; window.open('https://www.linkedin.com/search/results/events/?keywords='+encodeURIComponent(v),'_blank'); }
+        const extractUnixTimestamp = (linkedinId) => {
+            if (!linkedinId || linkedinId.length !== 19) return null;
+            try {
+                const binaryRepresentation = BigInt(linkedinId).toString(2).padStart(63, '0');
+                const timestampBinary = binaryRepresentation.substring(0, 41);
+                return parseInt(timestampBinary, 2);
+            } catch (e) {
+                return null;
+            }
+        };
 
-  function Linkedin03(k,f,l,t,c,s){
-    const query = constructQuery({k,f,l,t,c,s});
-    if(!query) { alert("Please enter at least one search term for External Engine Searches."); return; }
-    window.open('https://www.google.com/search?q=site:linkedin.com+'+query,'_blank');
-  }
-  function Linkedin04(k,f,l,t,c,s){
-    const query = constructQuery({k,f,l,t,c,s});
-    if(!query) { alert("Please enter at least one search term for External Engine Searches."); return; }
-    window.open('https://www.bing.com/search?q=site:linkedin.com+'+query,'_blank');
-  }
-  function Linkedin05(k,f,l,t,c,s){
-    const query = constructQuery({k,f,l,t,c,s});
-    if(!query) { alert("Please enter at least one search term for External Engine Searches."); return; }
-    window.open('https://www.yandex.com/search/?text=site:linkedin.com+'+query,'_blank');
-  }
+        const unixTimestampToHumanDate = (unixTimestamp) => {
+            if (unixTimestamp === null || typeof unixTimestamp === 'undefined') return 'Invalid ID or URN.';
+            const date = new Date(unixTimestamp);
+            if (isNaN(date.getTime())) return 'Invalid date derived from timestamp.';
+            return date.toUTCString();
+        };
+        
+        urlInput.addEventListener('input', () => {
+            decodeButton.disabled = urlInput.value.trim() === '';
+            decodeButton.classList.toggle('text-active', urlInput.value.trim() !== '');
+        });
 
-  function Linkedin11(u){if(!u)return; window.open('https://www.linkedin.com/in/'+encodeURIComponent(u),'_blank'); }
-  function Linkedin13(t){if(!t)return; window.open('https://www.google.com/search?q=site:linkedin.com+'+encodeURIComponent(t)+'&tbm=isch','_blank'); }
-  function Linkedin14(t){if(!t)return; window.open('https://www.bing.com/images/search?q=site:linkedin.com+'+encodeURIComponent(t),'_blank'); }
-  function Linkedin15(t){if(!t)return; window.open('https://www.google.com/search?q=site:linkedin.com+'+encodeURIComponent(t)+'&tbm=vid','_blank'); }
+        decodeButton.addEventListener('click', () => {
+            const urlOrUrn = urlInput.value.trim();
+            if (!urlOrUrn) {
+                resultSpan.textContent = 'Please enter a URL or URN.';
+                return;
+            }
+            const postId = getPostIdFromUrlOrUrn(urlOrUrn);
+            if (!postId) {
+                resultSpan.textContent = 'Could not extract a valid LinkedIn ID/URN.';
+                return;
+            }
+            const unixTs = extractUnixTimestamp(postId);
+            resultSpan.textContent = unixTimestampToHumanDate(unixTs);
+        });
+        
+        decodeButton.disabled = true; // Initial state
+    }
 
-  function getPostIdFromUrlOrUrn(urlOrUrnStr){
-    const urnMatch = urlOrUrnStr.match(/urn:li:(?:activity|comment|share|article|document):([0-9]{19})/);
-    if (urnMatch && urnMatch[1]) {
-        return urnMatch[1];
-    }
-    const urlMatch = urlOrUrnStr.match(/linkedin\.com\/feed\/update\/urn:li:(?:activity|share):([0-9]{19})/);
-    if (urlMatch && urlMatch[1]) {
-        return urlMatch[1];
-    }
-    const shortUrlMatch = urlOrUrnStr.match(/linkedin\.com\/posts\/.*activity-([0-9]{19})-/);
-    if (shortUrlMatch && shortUrlMatch[1]) {
-        return shortUrlMatch[1];
-    }
-    const pulseUrlMatch = urlOrUrnStr.match(/linkedin\.com\/pulse\/[^/]+\/.*-([0-9]{19})(?:-\w+)?\/?$/);
-    if (pulseUrlMatch && pulseUrlMatch[1]) {
-        return pulseUrlMatch[1];
-    }
-    const directIdMatch = urlOrUrnStr.match(/^([0-9]{19})$/);
-    if (directIdMatch && directIdMatch[1]) {
-        return directIdMatch[1];
-    }
-    return null;
-  }
 
-  function extractUnixTimestamp(linkedinId){
-    if(!linkedinId || linkedinId.length !== 19) return null;
-    try {
-        const binaryRepresentation = BigInt(linkedinId).toString(2).padStart(63, '0'); 
-        const timestampBinary = binaryRepresentation.substring(0, 41);
-        return parseInt(timestampBinary, 2);
-    } catch (e) {
-        return null; 
-    }
-  }
+    // --- Input Groups for Search UI ---
+    function setInitialPageState() {
+        const inputGroups = [
+            {
+                inputIds: ['input-linkedin-profile-user'],
+                buttonSelector: '#section-linkedin-profile .button',
+                validator: ExploratoresValidators.getAndValidateLinkedinProfile,
+                feedbackId: 'feedback-linkedin-profile'
+            },
+            {
+                inputIds: ['input-linkedin-media-keyword'],
+                buttonSelector: '#section-linkedin-media .button-grid:nth-of-type(1) .button',
+                validator: ExploratoresValidators.getAndValidateLinkedinMedia,
+                feedbackId: 'feedback-linkedin-media'
+            },
+            {
+                inputIds: ['input-linkedin-video-keyword'],
+                buttonSelector: '#section-linkedin-media .button-grid:nth-of-type(2) .button',
+                validator: ExploratoresValidators.getAndValidateLinkedinVideo,
+                feedbackId: 'feedback-linkedin-video'
+            },
+            {
+                inputIds: ['input-linkedin-cgs-keyword'],
+                buttonSelector: '#section-linkedin-cgs .button',
+                validator: ExploratoresValidators.getAndValidateLinkedinKeyword,
+                feedbackId: 'feedback-linkedin-cgs'
+            },
+            {
+                inputIds: ['input-linkedin-ext-keyword', 'input-linkedin-ext-fname', 'input-linkedin-ext-lname', 'input-linkedin-ext-title', 'input-linkedin-ext-company', 'input-linkedin-ext-school'],
+                buttonSelector: '#section-linkedin-external .button',
+                validator: ExploratoresValidators.getAndValidateLinkedinExternal,
+                feedbackId: 'feedback-linkedin-external'
+            }
+        ];
 
-  function unixTimestampToHumanDate(unixTimestamp){
-    if (unixTimestamp === null || typeof unixTimestamp === 'undefined') return 'Invalid ID, URN or unable to parse.';
-    if (unixTimestamp === 0) return 'Could not extract valid timestamp component from ID.';
-    const date = new Date(unixTimestamp); 
-    if (isNaN(date.getTime())) return 'Invalid date derived from timestamp.';
-    return date.toUTCString() + ' (UTC)';
-  }
+        const updateUi = (group) => {
+            const validationResult = group.validator();
+            const feedbackEl = document.getElementById(group.feedbackId);
 
-  function decodeTimestamp(){
-    const urlOrUrn = getVal('url');
-    if (!urlOrUrn) {
-        document.getElementById('date').textContent = 'Please enter a URL or URN.';
-        return;
+            document.querySelectorAll(group.buttonSelector).forEach(button => {
+                button.disabled = !validationResult.isValid;
+                button.classList.toggle('text-active', validationResult.isValid);
+            });
+
+            if (feedbackEl) {
+                const anyInputWithValue = group.inputIds.some(id => document.getElementById(id)?.value.trim() !== '');
+                if (!anyInputWithValue) {
+                    feedbackEl.textContent = '';
+                } else {
+                    feedbackEl.textContent = validationResult.message;
+                    feedbackEl.className = `feedback-message ${validationResult.isValid ? 'feedback-info' : 'feedback-error'}`;
+                }
+            }
+        };
+
+        inputGroups.forEach(group => {
+            group.inputIds.forEach(inputId => {
+                const inputElement = document.getElementById(inputId);
+                if (inputElement) inputElement.addEventListener('input', () => updateUi(group));
+            });
+            updateUi(group);
+        });
+        
+        setupTimestampDecoder();
     }
-    const postId = getPostIdFromUrlOrUrn(urlOrUrn);
-    if (!postId) {
-        document.getElementById('date').textContent = 'Could not extract a valid LinkedIn ID/URN.';
-        return;
-    }
-    const unixTs = extractUnixTimestamp(postId);
-    document.getElementById('date').textContent = unixTimestampToHumanDate(unixTs);
-  }
+
+    document.addEventListener('DOMContentLoaded', setInitialPageState);
 </script>
+
 <script src="../assets/js/config.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', () => {

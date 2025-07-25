@@ -620,7 +620,24 @@ const SearchLibrary = {
     "images-reverse-repostsleuth": { "urlTemplate": "https://www.repostsleuth.com/search?url={url}", "validator": "getAndValidateImageUrl" },
     "images-reverse-tineye": { "urlTemplate": "http://www.tineye.com/search/?url={url}", "validator": "getAndValidateImageUrl" },
     "images-reverse-yandex": { "urlTemplate": "https://yandex.com/images/search?rpt=imageview&url={url}", "validator": "getAndValidateImageUrl" },
-	
+
+// --- START: LinkedIn Page Entries ---
+
+"linkedin-profile": { "urlTemplate": "https://www.linkedin.com/in/{username}", "validator": "getAndValidateLinkedinProfile" },
+"linkedin-images-google": { "urlTemplate": "https://www.google.com/search?q=site:linkedin.com+\"{keyword}\"&tbm=isch", "validator": "getAndValidateLinkedinMedia" },
+"linkedin-images-bing": { "urlTemplate": "https://www.bing.com/images/search?q=site:linkedin.com+\"{keyword}\"", "validator": "getAndValidateLinkedinMedia" },
+"linkedin-video-search": { "urlTemplate": "https://www.google.com/search?q=site:linkedin.com+\"{keyword}\"&tbm=vid", "validator": "getAndValidateLinkedinVideo" },
+
+"linkedin-search-companies": { "urlTemplate": "https://www.linkedin.com/search/results/companies/?keywords={keyword}", "validator": "getAndValidateLinkedinKeyword" },
+"linkedin-search-groups": { "urlTemplate": "https://www.linkedin.com/search/results/groups/?keywords={keyword}", "validator": "getAndValidateLinkedinKeyword" },
+"linkedin-search-schools": { "urlTemplate": "https://www.linkedin.com/search/results/schools/?keywords={keyword}", "validator": "getAndValidateLinkedinKeyword" },
+"linkedin-search-events": { "urlTemplate": "https://www.linkedin.com/search/results/events/?keywords={keyword}", "validator": "getAndValidateLinkedinKeyword" },
+
+"linkedin-ext-google": { "urlTemplate": "https://www.google.com/search?q=site:linkedin.com+\"{query}\"", "validator": "getAndValidateLinkedinExternal" },
+"linkedin-ext-bing": { "urlTemplate": "https://www.bing.com/search?q=site:linkedin.com+\"{query}\"", "validator": "getAndValidateLinkedinExternal" },
+"linkedin-ext-yandex": { "urlTemplate": "https://www.yandex.com/search/?text=site:linkedin.com+\"{query}\"", "validator": "getAndValidateLinkedinExternal" },
+
+
     // --- Voci per vehicles.html ---
     "vehicles-vindecoderz": { "urlTemplate": "https://www.vindecoderz.com/EN/check-lookup/{vin}", "validator": "getAndValidateVin" },
     "vehicles-faxvin": { "urlTemplate": "https://www.faxvin.com/order/decoding?vin={vin}", "validator": "getAndValidateVin" },

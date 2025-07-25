@@ -548,5 +548,57 @@ const ExploratoresValidators = {
         }
         return { isValid: true, data: { query: value }, message: "Ready for search." };
     },
-	
+
+// --- START: LinkedIn Validators ---
+
+getAndValidateLinkedinProfile: function(config) {
+    const value = document.getElementById('input-linkedin-profile-user')?.value.trim();
+    if (!value) {
+        return { isValid: false, message: "Please enter a username or profile path." };
+    }
+    return { isValid: true, data: { username: value }, message: "Ready for search." };
+},
+
+getAndValidateLinkedinMedia: function(config) {
+    const value = document.getElementById('input-linkedin-media-keyword')?.value.trim();
+    if (!value) {
+        return { isValid: false, message: "Please enter a name or keyword." };
+    }
+    return { isValid: true, data: { keyword: value }, message: "Ready for search." };
+},
+
+getAndValidateLinkedinVideo: function(config) {
+    const value = document.getElementById('input-linkedin-video-keyword')?.value.trim();
+    if (!value) {
+        return { isValid: false, message: "Please enter a search term for videos." };
+    }
+    return { isValid: true, data: { keyword: value }, message: "Ready for search." };
+},
+
+getAndValidateLinkedinKeyword: function(config) {
+    const value = document.getElementById('input-linkedin-cgs-keyword')?.value.trim();
+    if (!value) {
+        return { isValid: false, message: "Please enter a keyword." };
+    }
+    return { isValid: true, data: { keyword: value }, message: "Ready for search." };
+},
+
+getAndValidateLinkedinExternal: function(config) {
+    const keyword = document.getElementById('input-linkedin-ext-keyword')?.value.trim();
+    const fname = document.getElementById('input-linkedin-ext-fname')?.value.trim();
+    const lname = document.getElementById('input-linkedin-ext-lname')?.value.trim();
+    const title = document.getElementById('input-linkedin-ext-title')?.value.trim();
+    const company = document.getElementById('input-linkedin-ext-company')?.value.trim();
+    const school = document.getElementById('input-linkedin-ext-school')?.value.trim();
+
+    const queryParts = [keyword, fname, lname, title, company, school].filter(Boolean);
+    
+    if (queryParts.length === 0) {
+        return { isValid: false, message: "Please enter at least one search term." };
+    }
+
+    const query = queryParts.join(' ');
+    return { isValid: true, data: { query: query }, message: "Ready for search." };
+},
+
 };
