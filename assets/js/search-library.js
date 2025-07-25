@@ -504,6 +504,14 @@ const SearchLibrary = {
 	
 // AGGIUNGI QUESTO BLOCCO DI VOCI A search-library.js
 
+    // --- Voci per keybase.html ---
+    "keybase-team-profile": { "urlTemplate": "https://keybase.io/team/{query}", "validator": "getAndValidateKeybaseQuery" },
+    "keybase-user-devices": { "urlTemplate": "https://keybase.io/{query}/devices", "validator": "getAndValidateKeybaseQuery" },
+    "keybase-user-graph": { "urlTemplate": "https://keybase.io/{query}/graph", "validator": "getAndValidateKeybaseQuery" },
+    "keybase-user-profile": { "urlTemplate": "https://keybase.io/{query}", "validator": "getAndValidateKeybaseQuery" },
+    "keybase-user-sigchain": { "urlTemplate": "https://keybase.io/{query}/sigchain", "validator": "getAndValidateKeybaseQuery" },
+    "keybase-user-stellar": { "urlTemplate": "https://keybase.io/{query}#_", "validator": "getAndValidateKeybaseQuery" },
+
     // --- Voci per ip.html ---
     "ip-search-baidu": { "urlTemplate": "https://www.baidu.com/s?wd=ip%3A{ip}", "validator": "getAndValidateIpAddress" },
     "ip-search-bing": { "urlTemplate": "https://www.bing.com/search?q=ip%3A{ip}", "validator": "getAndValidateIpAddress" },
