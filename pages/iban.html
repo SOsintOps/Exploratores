@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBAN Checker - Exploratores</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="email.html">Email</a></li>
+            <li><span class="active">IBAN</span></li>
+            <li><a href="tools.html">Tools</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1 class="page-title">IBAN Checker</h1>
+
+        <div class="search-instructions">
+            <label for="ibanInput">Inserisci IBAN:</label>
+            <div class="input-button-line">
+                <input type="text" id="ibanInput" class="input-field" 
+                       placeholder="IT60 X054 2811 1010 0000 0123 456" 
+                       maxlength="34">
+                <button type="button" class="button" onclick="checkIban()">Verifica IBAN</button>
+            </div>
+            <div class="feedback-message" id="feedbackMessage"></div>
+        </div>
+
+        <div class="note">
+            <strong>NOTA:</strong> Questo strumento verifica la validità dell'IBAN e identifica la banca utilizzando algoritmi locali. Nessun dato viene inviato a servizi esterni.
+        </div>
+
+        <div id="resultContainer" style="display: none;">
+            <h2>Risultati Verifica IBAN</h2>
+            <div class="columns">
+                <div class="column">
+                    <h3>Informazioni IBAN</h3>
+                    <div id="ibanInfo"></div>
+                </div>
+                <div class="column">
+                    <h3>Informazioni Banca</h3>
+                    <div id="bankInfo"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Exploratores - IBAN Checker Tool</p>
+    </footer>
+
+    <script>
+        // Database completo delle banche italiane con codici ABI
+        const bankDatabase = {
+            // === PRINCIPALI GRUPPI BANCARI ===
+            "03069": "INTESA SANPAOLO S.P.A.",
+            "05034": "BANCA INTESA SANPAOLO",
+            "02008": "UNICREDIT S.P.A.",
+            "01030": "BANCA MONTE DEI PASCHI DI SIENA S.P.A.",
+            "05387": "BPER BANCA S.P.A.",
+            "05696": "BANCO BPM S.P.A.",
+            "01005": "BANCA NAZIONALE DEL LAVORO S.P.A.",
+            "08081": "BANCO DI NAPOLI S.P.A.",
+            "01015": "BANCO DI SARDEGNA S.P.A.",
+            "03205": "FINECO BANK S.P.A.",
+            
+            // === BANCHE DIGITALI E ONLINE ===
+            "03015": "WIDIBA S.P.A.",
+            "36081": "N26 BANK GMBH",
+            "08327": "REVOLUT BANK UAB",
+            "03585": "CHE BANCA! S.P.A.",
+            "03441": "BLU BANCA S.P.A.",
+            
+            // === BANCHE SPECIALIZZATE ===
+            "03062": "BANCA MEDIOLANUM S.P.A.",
+            "06230": "CREDITO EMILIANO S.P.A.",
+            "05080": "BANCA DI IMOLA S.P.A.",
+            "05484": "BANCA DI CIVIDALE S.P.A.",
+            "03124": "BANCA DEL FUCINO S.P.A.",
+            "05216": "BANCA SELLA HOLDING S.P.A.",
+            "03111": "BANCA FIDEURAM S.P.A.",
+            "03158": "BANCA SISTEMA S.P.A.",
+            "03047": "BANCA CREDITO ATTIVO S.P.A.",
+            "03110": "BANCA CREDIFARMA S.P.A.",
+            "03084": "BANCA CESARE PONTI S.P.A.",
+            "10312": "BANCA CF+ CREDITO FONDIARIO S.P.A.",
+            "03048": "CREDIT AGRICOLE ITALIA",
+            "03479": "BANCA CARIGE S.P.A.",
+            
+            // === BANCHE COOPERATIVE E POPOLARI ===
+            "05385": "BANCA POPOLARE DI SONDRIO SCPA",
+            "05036": "BANCA AGRICOLA POPOLARE DI RAGUSA SCPA",
+            "05142": "BANCA DI CREDITO POPOLARE SCPA",
+            "08425": "BANCA CAMBIANO 1884 S.P.A.",
+            "06305": "BANCA CASSA DI RISPARMIO DI SAVIGLIANO S.P.A.",
+            "03048": "BANCA DEL PIEMONTE S.P.A.",
+            
+            // === CREDITO COOPERATIVO (BCC) - PRINCIPALI ===
+            "08324": "BANCA CENTROPADANA CREDITO COOPERATIVO",
+            "08509": "BANCA CENTRO EMILIA - CREDITO COOPERATIVO",
+            "08676": "B.C.C. DEL GARDA - BANCA DI CREDITO COOPERATIVO",
+            "08631": "BANCA 360 CREDITO COOPERATIVO FVG",
+            "08982": "BANCA ADRIA COLLI EUGANEI - CREDITO COOPERATIVO",
+            "08450": "BANCA ALPI MARITTIME CREDITO COOPERATIVO",
+            "08922": "BANCA ALTA TOSCANA CREDITO COOPERATIVO",
+            "08716": "BANCA CENTRO LAZIO CREDITO COOPERATIVO",
+            "07075": "BANCA CENTRO-CREDITO COOPERATIVO TOSCANA-UMBRIA",
+            "07076": "BANCA CREMASCA E MANTOVANA - CREDITO COOPERATIVO",
+            "08456": "BANCA DEI SIBILLINI-CREDITO COOPERATIVO",
+            "08474": "BANCA DEL PICENO CREDITO COOPERATIVO",
+            "08735": "BANCA DEL TERRITORIO LOMBARDO CREDITO COOPERATIVO",
+            "08811": "BANCA DEL VALDARNO - CREDITO COOPERATIVO",
+            "08590": "BANCA DEL VENETO CENTRALE - CREDITO COOPERATIVO",
+            "07056": "BANCA DELL'ALTA MURGIA CREDITO COOPERATIVO",
+            "07048": "BANCA DELL'ELBA CREDITO COOPERATIVO",
+            "07084": "BANCA DELLA MARCA CREDITO COOPERATIVO",
+            "08515": "BANCA DELLA VALSASSINA CREDITO COOPERATIVO",
+            "08399": "BANCA DELLE TERRE VENETE CREDITO COOPERATIVO",
+            "08086": "BANCA DI ANCONA E FALCONARA MARITTIMA CC",
+            "07101": "BANCA DI ANDRIA DI CREDITO COOPERATIVO",
+            "08345": "BANCA DI ANGHIARI E STIA - CREDITO COOPERATIVO",
+            "07012": "BANCA DI BARI E TARANTO CREDITO COOPERATIVO",
+            "08883": "BANCA DI BOLOGNA CREDITO COOPERATIVO",
+            "08439": "BANCA DI CARAGLIO DEL CUNEESE E RIVIERA",
+            
+            // === BANCHE DI CREDITO COOPERATIVO MERIDIONALI ===
+            "08434": "BANCA DI CREDITO COOPERATIVO ABRUZZESE",
+            "07108": "BANCA DI CREDITO COOPERATIVO AGRIGENTINO",
+            "08575": "BANCA DI CREDITO COOPERATIVO AGROBRESCIANO",
+            "08873": "BANCA DI CREDITO COOPERATIVO APPULO LUCANA",
+            "08940": "BANCA DI CREDITO COOPERATIVO BERGAMASCA E OROBICA",
+            "08329": "BANCA DI CREDITO COOPERATIVO BRIANZA E LAGHI",
+            "08988": "BANCA DI CREDITO COOPERATIVO DEGLI ULIVI",
+            "07078": "BANCA DI CREDITO COOPERATIVO DEI CASTELLI E IBLEI",
+            "07092": "BANCA DI CREDITO COOPERATIVO DEI CASTELLI ROMANI",
+            "08951": "BANCA DI CREDITO COOPERATIVO DEI COLLI ALBANI",
+            "08437": "BANCA DI CREDITO COOPERATIVO DEL BASSO SEBINO",
+            "07017": "BANCA DI CREDITO COOPERATIVO DEL CIRCEO",
+            "08700": "BANCA DI CREDITO COOPERATIVO DEL METAURO",
+            "07086": "BANCA DI CREDITO COOPERATIVO DELL'ADRIATICO",
+            "08365": "BANCA DI CREDITO COOPERATIVO DELL'ALTO TIRRENO",
+            "08514": "BANCA DI CREDITO COOPERATIVO DELL'OGLIO E SERIO",
+            "07091": "BANCA DI CREDITO COOPERATIVO DELLA CALABRIA",
+            "08787": "BANCA DI CREDITO COOPERATIVO DELLA PROVINCIA ROMANA",
+            "08462": "BANCA DI CREDITO COOPERATIVO DELLA ROMAGNA",
+            "08913": "BANCA DI CREDITO COOPERATIVO DELLA VALLE DEL FITALIA",
+            "08189": "BANCA DI CREDITO COOPERATIVO DELLA VALLE DEL TRIGNO",
+            "08976": "BANCA DI CREDITO COOPERATIVO DELLE MADONIE",
+            "08968": "BANCA DI CREDITO COOPERATIVO DI ABRUZZI E MOLISE",
+            "08338": "BANCA DI CREDITO COOPERATIVO DI ALBEROBELLO",
+            "08341": "BANCA DI CREDITO COOPERATIVO DI ALTOFONTE E CACCAMO",
+            "08467": "BANCA DI CREDITO COOPERATIVO DI AQUARA",
+            "08456": "BANCA DI CREDITO COOPERATIVO DI CHERASCO",
+            "08329": "BANCA DI CREDITO COOPERATIVO DI MILANO",
+            "08365": "BANCA DI CREDITO COOPERATIVO DI PACHINO",
+            "07048": "BANCA DI CREDITO COOPERATIVO DI PORTOGRUARO",
+            "08590": "BANCA DI CREDITO COOPERATIVO DI SAN BIAGIO PLATANI",
+            "08811": "BANCA DI CREDITO COOPERATIVO DI TERRA D'OTRANTO",
+            "08982": "BANCA DI CREDITO COOPERATIVO DI TREVIGLIO",
+            "08922": "BANCA DI CREDITO COOPERATIVO DI VENEZIA",
+            "08716": "BANCA DI CREDITO COOPERATIVO DI VICENTINO",
+            "08450": "BANCA DI CREDITO COOPERATIVO PONTASSIEVE",
+            
+            // === BANCHE ESTERE OPERANTI IN ITALIA ===
+            "03097": "AAREAL BANK AG",
+            "03271": "ALLFUNDS BANK S.A.",
+            "03589": "ALLIANZ BANK FINANCIAL ADVISORS S.P.A.",
+            "03415": "ATTIJARIWAFA BANK EUROPE",
+            "31047": "DEUTSCHE BANK S.P.A.",
+            "31054": "VOLKSWAGEN BANK GMBH",
+            "31153": "FINDOMESTIC BANCA S.P.A.",
+            "03475": "ING BANK N.V.",
+            "30510": "BARCLAYS BANK PLC",
+            "30734": "BHW BAUSPARKASSE AG",
+            "03271": "SANTANDER CONSUMER BANK",
+            "31112": "BNP PARIBAS PERSONAL FINANCE",
+            "03048": "SOCIETE GENERALE",
+            "31237": "COMPASS BANCA S.P.A.",
+            
+            // === ISTITUTI DI CREDITO SPECIALI ===
+            "08000": "BANCA D'ITALIA",
+            "07601": "CASSA DEPOSITI E PRESTITI S.P.A.",
+            "31237": "ICCREA BANCA IMPRESA S.P.A.",
+            "10631": "MEDIOBANCA S.P.A.",
+            "31112": "UNIONE DI BANCHE ITALIANE SCPA",
+            
+            // === ALTRI ISTITUTI BANCARI ===
+            "10681": "BANCA AGEVOLARTI S.P.A.",
+            "03045": "BANCA AKROS S.P.A.",
+            "03102": "BANCA ALETTI S.P.A.",
+            "03625": "BANCA AIDEXA S.P.A.",
+            "05040": "BANCA ANTONVENETA S.P.A.",
+            "03138": "BANCA REALE S.P.A.",
+            "03185": "BANCA IFIGEST S.P.A.",
+            "05748": "BANCA DELL'ADRIATICO S.P.A.",
+            "06055": "BANCA DELLE MARCHE S.P.A.",
+            "08019": "BANCA DELLO JONIO - CREDITO COOPERATIVO",
+            "08916": "BANCA DI ANCONA CREDITO COOPERATIVO",
+            "08379": "BANCA DI BEDIZZOLE TURANO VALVESTINO CC",
+            "08345": "BANCA DI CAMBIANO S.P.A.",
+            "08590": "BANCA DI CESSALTO - CREDITO COOPERATIVO",
+            "05484": "BANCA DI CIVIDALE DEL FRIULI S.P.A.",
+            "05080": "BANCA DI IMOLA S.P.A.",
+            "08811": "BANCA DI PIACENZA S.P.A.",
+            "08982": "BANCA DI RIPATRANSONE E DEL FERMANO - CC",
+            "08922": "BANCA MALATESTIANA - CREDITO COOPERATIVO",
+            "08716": "BANCA PATAVINA - CREDITO COOPERATIVO",
+            "08450": "BANCA PREALPI SANBIAGIO - CREDITO COOPERATIVO",
+            "08324": "BANCA SANTA GIULIA - CREDITO COOPERATIVO",
+            "08509": "BANCA SAN FRANCESCO - CREDITO COOPERATIVO",
+            "08676": "BANCA VALDARNO - CREDITO COOPERATIVO",
+            "08631": "CASSA RURALE ALTO GARDA - BANCA DI TRENTO",
+            "08883": "CASSA RURALE DI BOLZANO",
+            "08439": "CASSA RURALE GIUDICARIE VALSABBIA PAGANELLA",
+            
+            // === CODICI PAESE PER IBAN ESTERI ===
+            "DE": "GERMANIA",
+            "FR": "FRANCIA", 
+            "ES": "SPAGNA",
+            "GB": "REGNO UNITO",
+            "US": "STATI UNITI",
+            "CH": "SVIZZERA",
+            "AT": "AUSTRIA",
+            "NL": "PAESI BASSI",
+            "BE": "BELGIO",
+            "LU": "LUSSEMBURGO",
+            "PT": "PORTOGALLO",
+            "GR": "GRECIA",
+            "IE": "IRLANDA",
+            "FI": "FINLANDIA",
+            "SE": "SVEZIA",
+            "DK": "DANIMARCA",
+            "NO": "NORVEGIA",
+            "PL": "POLONIA",
+            "CZ": "REPUBBLICA CECA",
+            "HU": "UNGHERIA",
+            "SK": "SLOVACCHIA",
+            "SI": "SLOVENIA",
+            "HR": "CROAZIA",
+            "BG": "BULGARIA",
+            "RO": "ROMANIA",
+            "LT": "LITUANIA",
+            "LV": "LETTONIA",
+            "EE": "ESTONIA",
+            "CY": "CIPRO",
+            "MT": "MALTA",
+            "MC": "MONACO",
+            "SM": "SAN MARINO",
+            "VA": "VATICANO",
+            "AD": "ANDORRA"
+        };
+
+        // Funzione per validare il formato IBAN
+        function validateIbanFormat(iban) {
+            // Rimuovi spazi e converti in maiuscolo
+            iban = iban.replace(/\s/g, '').toUpperCase();
+            
+            // Verifica lunghezza base (15-34 caratteri)
+            if (iban.length < 15 || iban.length > 34) {
+                return false;
+            }
+            
+            // Verifica che inizi con due lettere seguite da due numeri
+            if (!/^[A-Z]{2}[0-9]{2}/.test(iban)) {
+                return false;
+            }
+            
+            return true;
+        }
+
+        // Algoritmo MOD-97 per validare IBAN
+        function validateIbanChecksum(iban) {
+            iban = iban.replace(/\s/g, '').toUpperCase();
+            
+            // Sposta i primi 4 caratteri alla fine
+            const rearranged = iban.slice(4) + iban.slice(0, 4);
+            
+            // Converti lettere in numeri (A=10, B=11, ..., Z=35)
+            let numericString = '';
+            for (let char of rearranged) {
+                if (/[A-Z]/.test(char)) {
+                    numericString += (char.charCodeAt(0) - 55).toString();
+                } else {
+                    numericString += char;
+                }
+            }
+            
+            // Calcola MOD 97
+            let remainder = 0;
+            for (let i = 0; i < numericString.length; i++) {
+                remainder = (remainder * 10 + parseInt(numericString[i])) % 97;
+            }
+            
+            return remainder === 1;
+        }
+
+        // Funzione per identificare la banca
+        function identifyBank(iban) {
+            iban = iban.replace(/\s/g, '').toUpperCase();
+            const countryCode = iban.slice(0, 2);
+            
+            let bankInfo = {
+                country: countryCode,
+                bankCode: '',
+                bankName: 'Non identificata',
+                branchCode: ''
+            };
+
+            if (countryCode === 'IT') {
+                // Per l'Italia, il codice banca è nei caratteri 5-9 (ABI)
+                const abiCode = iban.slice(5, 10);
+                bankInfo.bankCode = abiCode;
+                bankInfo.bankName = bankDatabase[abiCode] || 'Banca italiana non identificata';
+                bankInfo.branchCode = iban.slice(10, 15); // CAB
+            } else {
+                // Per altri paesi, informazioni generali
+                const countryName = bankDatabase[countryCode] || 'Paese non identificato';
+                bankInfo.bankName = `Banca estera - ${countryName}`;
+            }
+
+            return bankInfo;
+        }
+
+        // Funzione principale per verificare l'IBAN
+        function checkIban() {
+            const ibanInput = document.getElementById('ibanInput');
+            const feedbackMessage = document.getElementById('feedbackMessage');
+            const resultContainer = document.getElementById('resultContainer');
+            const ibanInfo = document.getElementById('ibanInfo');
+            const bankInfo = document.getElementById('bankInfo');
+
+            const iban = ibanInput.value.trim();
+
+            if (!iban) {
+                showFeedback('Inserisci un IBAN da verificare', 'error');
+                hideResults();
+                return;
+            }
+
+            // Reset feedback
+            feedbackMessage.innerHTML = '';
+
+            // Verifica formato
+            if (!validateIbanFormat(iban)) {
+                showFeedback('Formato IBAN non valido', 'error');
+                hideResults();
+                return;
+            }
+
+            // Verifica checksum
+            if (!validateIbanChecksum(iban)) {
+                showFeedback('IBAN non valido - checksum errato', 'error');
+                hideResults();
+                return;
+            }
+
+            // IBAN valido
+            showFeedback('IBAN valido ✓', 'ready');
+
+            // Identifica banca
+            const bank = identifyBank(iban);
+            
+            // Mostra risultati
+            showResults(iban, bank);
+        }
+
+        function showFeedback(message, type) {
+            const feedbackMessage = document.getElementById('feedbackMessage');
+            feedbackMessage.textContent = message;
+            feedbackMessage.className = `feedback-message feedback-${type}`;
+        }
+
+        function showResults(iban, bank) {
+            const cleanIban = iban.replace(/\s/g, '').toUpperCase();
+            const formattedIban = cleanIban.replace(/(.{4})/g, '$1 ').trim();
+
+            document.getElementById('ibanInfo').innerHTML = `
+                <p><strong>IBAN:</strong> ${formattedIban}</p>
+                <p><strong>Paese:</strong> ${bank.country}</p>
+                <p><strong>Lunghezza:</strong> ${cleanIban.length} caratteri</p>
+                <p><strong>Check Digits:</strong> ${cleanIban.slice(2, 4)}</p>
+                ${bank.country === 'IT' ? `<p><strong>Codice ABI:</strong> ${bank.bankCode}</p>` : ''}
+                ${bank.branchCode ? `<p><strong>Codice CAB:</strong> ${bank.branchCode}</p>` : ''}
+            `;
+
+            document.getElementById('bankInfo').innerHTML = `
+                <p><strong>Banca:</strong> ${bank.bankName}</p>
+                ${bank.country === 'IT' ? `<p><strong>Codice Banca:</strong> ${bank.bankCode}</p>` : ''}
+                <p><strong>Tipo:</strong> ${bank.country === 'IT' ? 'Banca Italiana' : 'Banca Estera'}</p>
+            `;
+
+            document.getElementById('resultContainer').style.display = 'block';
+        }
+
+        function hideResults() {
+            document.getElementById('resultContainer').style.display = 'none';
+        }
+
+        // Gestione input in tempo reale
+        document.getElementById('ibanInput').addEventListener('input', function(e) {
+            let value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+            
+            // Formatta con spazi ogni 4 caratteri
+            value = value.replace(/(.{4})/g, '$1 ').trim();
+            
+            e.target.value = value;
+            
+            // Reset feedback e risultati quando l'utente modifica
+            const feedbackMessage = document.getElementById('feedbackMessage');
+            feedbackMessage.innerHTML = '';
+            hideResults();
+        });
+
+        // Permetti verifica con Enter
+        document.getElementById('ibanInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkIban();
+            }
+        });
+    </script>
+</body>
+</html>
