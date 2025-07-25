@@ -541,4 +541,12 @@ const ExploratoresValidators = {
         };
     },
 	
+    getAndValidateKeybaseQuery: function(config) {
+        const value = document.getElementById('keybaseQueryInput')?.value.trim();
+        if (!value) {
+            return { isValid: false, message: "Please enter a username, team, or query." };
+        }
+        return { isValid: true, data: { query: value }, message: "Ready for search." };
+    },
+	
 };
