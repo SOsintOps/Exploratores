@@ -637,6 +637,63 @@ const SearchLibrary = {
 "linkedin-ext-bing": { "urlTemplate": "https://www.bing.com/search?q=site:linkedin.com+\"{query}\"", "validator": "getAndValidateLinkedinExternal" },
 "linkedin-ext-yandex": { "urlTemplate": "https://www.yandex.com/search/?text=site:linkedin.com+\"{query}\"", "validator": "getAndValidateLinkedinExternal" },
 
+// --- START: X (Twitter) Page Entries ---
+
+"x-account-profile": { "urlTemplate": "https://x.com/{username}", "validator": "getAndValidateXAccountUsername" },
+"x-account-outgoing": { "urlTemplate": "https://x.com/search?q=from%3A{username}", "validator": "getAndValidateXAccountUsername" },
+"x-account-incoming": { "urlTemplate": "https://x.com/search?q=to%3A{username}", "validator": "getAndValidateXAccountUsername" },
+"x-account-only-replies": { "urlTemplate": "https://x.com/search?q=from%3A{username}%20filter%3Areplies", "validator": "getAndValidateXAccountUsername" },
+"x-account-no-replies": { "urlTemplate": "https://x.com/search?q=from%3A{username}%20-filter%3Areplies", "validator": "getAndValidateXAccountUsername" },
+"x-account-media": { "urlTemplate": "https://x.com/{username}/media", "validator": "getAndValidateXAccountUsername" },
+"x-account-highlights": { "urlTemplate": "https://x.com/{username}/highlights", "validator": "getAndValidateXAccountUsername" },
+"x-account-lists-created": { "urlTemplate": "https://x.com/{username}/lists", "validator": "getAndValidateXAccountUsername" },
+"x-account-lists-included": { "urlTemplate": "https://x.com/{username}/lists/memberships", "validator": "getAndValidateXAccountUsername" },
+"x-account-topics": { "urlTemplate": "https://x.com/{username}/topics", "validator": "getAndValidateXAccountUsername" },
+"x-account-links": { "urlTemplate": "https://x.com/search?q=from%3A{username}%20filter%3Alinks", "validator": "getAndValidateXAccountUsername" },
+"x-account-followers": { "urlTemplate": "https://x.com/{username}/followers", "validator": "getAndValidateXAccountUsername" },
+"x-account-following": { "urlTemplate": "https://x.com/{username}/following", "validator": "getAndValidateXAccountUsername" },
+"x-list-view": { "urlTemplate": "https://x.com/i/lists/{listid}", "validator": "getAndValidateXListId" },
+"x-list-members": { "urlTemplate": "https://x.com/i/lists/{listid}/members", "validator": "getAndValidateXListId" },
+"x-list-followers": { "urlTemplate": "https://x.com/i/lists/{listid}/followers", "validator": "getAndValidateXListId" },
+"x-other-profilename": { "urlTemplate": "https://x.com/search?q={realname}&f=user", "validator": "getAndValidateXRealName" },
+"x-year-outgoing": { "urlTemplate": "https://x.com/search?q=(from%3A{term})%20until%3A{until}%20since%3A{since}", "validator": "getAndValidateXYearSearch" },
+"x-year-incoming": { "urlTemplate": "https://x.com/search?q=(to%3A{term})%20until%3A{until}%20since%3A{since}", "validator": "getAndValidateXYearSearch" },
+"x-year-media": { "urlTemplate": "https://x.com/search?q=({term})%20filter%3Amedia%20until%3A{until}%20since%3A{since}", "validator": "getAndValidateXYearSearch" },
+"x-year-term": { "urlTemplate": "https://x.com/search?q=({term})%20until%3A{until}%20since%3A{since}", "validator": "getAndValidateXYearSearch" },
+"x-year-no-replies": { "urlTemplate": "https://x.com/search?q=({term})%20-filter%3Areplies%20until%3A{until}%20since%3A{since}", "validator": "getAndValidateXYearSearch" },
+"x-year-only-replies": { "urlTemplate": "https://x.com/search?q=({term})%20filter%3Areplies%20until%3A{until}%20since%3A{since}", "validator": "getAndValidateXYearSearch" },
+"x-archive-google-site": { "urlTemplate": "https://www.google.com/search?q=site:x.com/{username}", "validator": "getAndValidateXArchiveUser" },
+"x-archive-google-tweets": { "urlTemplate": "https://www.google.com/search?q=site%3Ax.com%2F{username}%2Fstatus%2F", "validator": "getAndValidateXArchiveUser" },
+"x-archive-bing": { "urlTemplate": "https://www.bing.com/search?q=site:x.com/{username}", "validator": "getAndValidateXArchiveUser" },
+"x-archive-yandex": { "urlTemplate": "https://yandex.com/search/?text=site:x.com/{username}", "validator": "getAndValidateXArchiveUser" },
+"x-archive-wayback": { "urlTemplate": "https://web.archive.org/web/*/x.com/{username}/*", "validator": "getAndValidateXArchiveUser" },
+"x-archive-memorylol": { "urlTemplate": "https://memory.lol/{username}", "validator": "getAndValidateXArchiveUser" },
+"x-archive-audit": { "urlTemplate": "https://www.twitteraudit.com/{username}", "validator": "getAndValidateXArchiveUser" },
+"x-archive-memorylol-id": { "urlTemplate": "https://memory.lol/user/id/{userid}", "validator": "getAndValidateXMemoryId" },
+
+// --- END: X (Twitter) Page Entries ---
+
+// --- START: Instagram Page Entries ---
+
+"instagram-profile": { "urlTemplate": "https://instagram.com/{username}", "validator": "getAndValidateInstagramUsername" },
+"instagram-channel": { "urlTemplate": "https://instagram.com/{username}/channel/", "validator": "getAndValidateInstagramUsername" },
+"instagram-tagged": { "urlTemplate": "https://instagram.com/{username}/tagged/", "validator": "getAndValidateInstagramUsername" },
+"instagram-threads": { "urlTemplate": "https://www.threads.net/@{username}", "validator": "getAndValidateInstagramUsername" },
+"instagram-google-outgoing": { "urlTemplate": "https://www.google.com/search?q=site%3Ainstagram.com+%22{username}%22", "validator": "getAndValidateInstagramUsername" },
+"instagram-google-incoming": { "urlTemplate": "https://www.google.com/search?q=site%3Ainstagram.com+%22@{username}%22", "validator": "getAndValidateInstagramUsername" },
+"instagram-bing-search": { "urlTemplate": "https://www.bing.com/search?q=site%3Ainstagram.com+%22{username}%22", "validator": "getAndValidateInstagramUsername" },
+"instagram-yandex-search": { "urlTemplate": "https://yandex.com/search/?text=site%3Ainstagram.com+%22{username}%22", "validator": "getAndValidateInstagramUsername" },
+"instagram-x-posts": { "urlTemplate": "https://www.google.com/search?q=site%3Ax.com+%22{username}%22+%22instagram.com%2Fp%22", "validator": "getAndValidateInstagramUsername" },
+"instagram-dumpor-profile": { "urlTemplate": "https://dumpor.com/v/{username}", "validator": "getAndValidateInstagramUsername" },
+"instagram-toolzu-profile": { "urlTemplate": "https://toolzu.com/profile-analyzer/instagram/?username={username}", "validator": "getAndValidateInstagramUsername" },
+"instagram-gql-followers": { "urlTemplate": "https://www.instagram.com/graphql/query/?query_hash=c76146de99bb02f6415203be841dd25a&variables={{%22id%22:%22{userid}%22,%22include_reel%22:true,%22fetch_mutual%22:true,%22first%22:50}}", "validator": "getAndValidateInstagramUserId" },
+"instagram-gql-following": { "urlTemplate": "https://www.instagram.com/graphql/query/?query_hash=d04b0a864b4b54837c0d870b0e77e076&variables={{%22id%22:%22{userid}%22,%22include_reel%22:true,%22fetch_mutual%22:false,%22first%22:50}}", "validator": "getAndValidateInstagramUserId" },
+"instagram-combo-user-term": { "urlTemplate": "https://www.google.com/search?q=site%3Ainstagram.com+%22{usera}%22+%22{userb}%22", "validator": "getAndValidateInstagramCombinedSearch" },
+"instagram-combo-associations": { "urlTemplate": "https://www.google.com/search?q=site%3Ainstagram.com+%22{usera}%22+%22{userb}%22", "validator": "getAndValidateInstagramCombinedSearch" },
+"instagram-hashtag-search": { "urlTemplate": "https://www.instagram.com/explore/tags/{hashtag}", "validator": "getAndValidateInstagramHashtag" },
+"instagram-term-google": { "urlTemplate": "https://www.google.com/search?q=site%3Ainstagram.com+{hashtag}", "validator": "getAndValidateInstagramHashtag" },
+"instagram-dumpor-tag": { "urlTemplate": "https://dumpor.com/t/{hashtag}", "validator": "getAndValidateInstagramHashtag" },
+
 
     // --- Voci per vehicles.html ---
     "vehicles-vindecoderz": { "urlTemplate": "https://www.vindecoderz.com/EN/check-lookup/{vin}", "validator": "getAndValidateVin" },
