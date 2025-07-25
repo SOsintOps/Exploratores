@@ -10,76 +10,7 @@
 </head>
 <body>
 
-<<<<<<< HEAD
 <div id="navbar-placeholder"></div>
-
-<script src="../assets/menu/navigation.js"></script>
-=======
-<nav>
-    <ul class="menu">
-        <li><span>HOME</span>
-            <ul class="submenu">
-                <li><a href="../launchme.html">Index</a></li>
-            </ul>
-        </li>
-        <li><span>Search<br>Engines</span>
-            <ul class="submenu">
-                <li><a href="searchengines.html">Search Engines</a></li>
-            </ul>
-        </li>
-        <li><span>People &<br>Identities</span>
-            <ul class="submenu">
-                <li><a href="names.html">Names</a></li>
-                <li><a href="phoneus.html">US Phones</a></li>
-                <li><a href="phoneint.html">International Phones</a></li>
-                <li><a href="address.html">Addresses</a></li>
-                <li><a href="vehicles.html">Vehicles</a></li>
-                <li><a href="usernames.html">Usernames</a></li>
-                <li><a href="email.html">Email Addresses</a></li>
-                <li><a href="communities.html">Communities</a></li>
-            </ul>
-        </li>
-        <li><span>Social<br>Media</span>
-            <ul class="submenu">
-                <li><a href="x.html" class="active">X (Twitter)</a></li>
-                <li><a href="facebook.html">Facebook</a></li>
-                <li><a href="instagram.html">Instagram</a></li>
-                <li><a href="linkedin.html">LinkedIn</a></li>
-            </ul>
-        </li>
-        <li><span>Websites</span>
-            <ul class="submenu">
-                <li><a href="domains.html">Domains</a></li>
-                <li><a href="ip.html">IP Addresses</a></li>
-            </ul>
-        </li>
-        <li><span>GeoInt</span>
-            <ul class="submenu">
-                <li><a href="maps.html">Maps</a></li>
-            </ul>
-        </li>
-        <li><span>Media<br>Analysis</span>
-            <ul class="submenu">
-                <li><a href="images.html">Images</a></li>
-                <li><a href="videos.html">Videos</a></li>
-                <li><a href="docs.html">Documents</a></li>
-            </ul>
-        </li>
-        <li><span>Business<br>Intelligence</span>
-            <ul class="submenu">
-                <li><a href="publiccompanyrecords.html">Company Public Records</a></li>
-                <li><a href="currencies.html">Virtual Currencies</a></li>
-            </ul>
-        </li>
-        <li><span>Tools</span>
-            <ul class="submenu">
-                <li><a href="guidelines.html">Guidelines</a></li>
-                <li><a href="cyberchef.html">CyberChef</a></li>
-            </ul>
-        </li>
-    </ul>
-</nav>
->>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
 
 <main>
     <h1 class="page-title">X (Twitter) Tools</h1>
@@ -88,25 +19,25 @@
         <div id="column-x-left" class="column">
             <section id="section-x-account" class="search-instructions">
                 <h2>Account & Basic Searches</h2>
-                <label for="input-x-account">X (Twitter) Username (without @)</label>
+                <label for="input-x-account-username">X (Twitter) Username (without @)</label>
                 <div class="input-container">
-                    <input type="text" id="input-x-account" class="input-field" placeholder="Enter username..." autocomplete="off">
+                    <input type="text" id="input-x-account-username" class="input-field" placeholder="Enter username..." autocomplete="off">
                 </div>
-                <div id="feedback-x-account" class="feedback-message"></div>
+                <div id="feedback-x-account-username" class="feedback-message"></div>
                 <div class="button-grid">
-                    <button class="button" data-search-id="x-account-profile">Profile</button>
-                    <button class="button" data-search-id="x-account-outgoing">Outgoing</button>
-                    <button class="button" data-search-id="x-account-incoming">Incoming</button>
-                    <button class="button" data-search-id="x-account-only-replies">Only Replies</button>
-                    <button class="button" data-search-id="x-account-no-replies">No Replies</button>
-                    <button class="button" data-search-id="x-account-media">Media</button>
-                    <button class="button" data-search-id="x-account-highlights">Highlights</button>
-                    <button class="button" data-search-id="x-account-lists-created">Lists Created</button>
-                    <button class="button" data-search-id="x-account-lists-included">Lists Included</button>
-                    <button class="button" data-search-id="x-account-topics">Topics</button>
-                    <button class="button" data-search-id="x-account-links">Links</button>
-                    <button class="button" data-search-id="x-account-followers">Followers</button>
-                    <button class="button" data-search-id="x-account-following">Following</button>
+                    <button id="btn-x-account-profile" class="button" data-search-id="x-account-profile">Profile</button>
+                    <button id="btn-x-account-outgoing" class="button" data-search-id="x-account-outgoing">Outgoing</button>
+                    <button id="btn-x-account-incoming" class="button" data-search-id="x-account-incoming">Incoming</button>
+                    <button id="btn-x-account-only-replies" class="button" data-search-id="x-account-only-replies">Only Replies</button>
+                    <button id="btn-x-account-no-replies" class="button" data-search-id="x-account-no-replies">No Replies</button>
+                    <button id="btn-x-account-media" class="button" data-search-id="x-account-media">Media</button>
+                    <button id="btn-x-account-highlights" class="button" data-search-id="x-account-highlights">Highlights</button>
+                    <button id="btn-x-account-lists-created" class="button" data-search-id="x-account-lists-created">Lists Created</button>
+                    <button id="btn-x-account-lists-included" class="button" data-search-id="x-account-lists-included">Lists Included</button>
+                    <button id="btn-x-account-topics" class="button" data-search-id="x-account-topics">Topics</button>
+                    <button id="btn-x-account-links" class="button" data-search-id="x-account-links">Links</button>
+                    <button id="btn-x-account-followers" class="button" data-search-id="x-account-followers">Followers</button>
+                    <button id="btn-x-account-following" class="button" data-search-id="x-account-following">Following</button>
                 </div>
             </section>
 
@@ -118,9 +49,9 @@
                 </div>
                 <div id="feedback-x-listId" class="feedback-message"></div>
                 <div class="button-grid button-grid-3col">
-                    <button class="button" data-search-id="x-list-view">List</button>
-                    <button class="button" data-search-id="x-list-members">Members</button>
-                    <button class="button" data-search-id="x-list-followers">Followers</button>
+                    <button id="btn-x-list-view" class="button" data-search-id="x-list-view">List</button>
+                    <button id="btn-x-list-members" class="button" data-search-id="x-list-members">Members</button>
+                    <button id="btn-x-list-followers" class="button" data-search-id="x-list-followers">Followers</button>
                 </div>
             </section>
 
@@ -132,7 +63,7 @@
                 </div>
                 <div id="feedback-x-realName" class="feedback-message"></div>
                 <div class="button-grid">
-                    <button class="button" data-search-id="x-other-profilename">Profile Search</button>
+                    <button id="btn-x-other-profilename" class="button" data-search-id="x-other-profilename">Profile Search</button>
                 </div>
             </section>
         </div>
@@ -146,12 +77,12 @@
                 </div>
                 <div id="feedback-x-by-year" class="feedback-message"></div>
                 <div class="button-grid">
-                    <button class="button" data-search-id="x-year-outgoing">Outgoing</button>
-                    <button class="button" data-search-id="x-year-incoming">Incoming</button>
-                    <button class="button" data-search-id="x-year-media">Media</button>
-                    <button class="button" data-search-id="x-year-term">Term</button>
-                    <button class="button" data-search-id="x-year-no-replies">No Replies</button>
-                    <button class="button" data-search-id="x-year-only-replies">Only Replies</button>
+                    <button id="btn-x-year-outgoing" class="button" data-search-id="x-year-outgoing">Outgoing</button>
+                    <button id="btn-x-year-incoming" class="button" data-search-id="x-year-incoming">Incoming</button>
+                    <button id="btn-x-year-media" class="button" data-search-id="x-year-media">Media</button>
+                    <button id="btn-x-year-term" class="button" data-search-id="x-year-term">Term</button>
+                    <button id="btn-x-year-no-replies" class="button" data-search-id="x-year-no-replies">No Replies</button>
+                    <button id="btn-x-year-only-replies" class="button" data-search-id="x-year-only-replies">Only Replies</button>
                 </div>
             </section>
 
@@ -163,13 +94,13 @@
                 </div>
                 <div id="feedback-x-archiveUser" class="feedback-message"></div>
                 <div class="button-grid">
-                    <button class="button" data-search-id="x-archive-google-site">Google Archives</button>
-                    <button class="button" data-search-id="x-archive-google-tweets">Google Tweets</button>
-                    <button class="button" data-search-id="x-archive-bing">Bing Archives</button>
-                    <button class="button" data-search-id="x-archive-yandex">Yandex Archives</button>
-                    <button class="button" data-search-id="x-archive-wayback">Wayback</button>
-                    <button class="button" data-search-id="x-archive-memorylol">Memory.lol</button>
-                    <button class="button" data-search-id="x-archive-audit">TwitterAudit</button>
+                    <button id="btn-x-archive-google-site" class="button" data-search-id="x-archive-google-site">Google Archives</button>
+                    <button id="btn-x-archive-google-tweets" class="button" data-search-id="x-archive-google-tweets">Google Tweets</button>
+                    <button id="btn-x-archive-bing" class="button" data-search-id="x-archive-bing">Bing Archives</button>
+                    <button id="btn-x-archive-yandex" class="button" data-search-id="x-archive-yandex">Yandex Archives</button>
+                    <button id="btn-x-archive-wayback" class="button" data-search-id="x-archive-wayback">Wayback</button>
+                    <button id="btn-x-archive-memorylol" class="button" data-search-id="x-archive-memorylol">Memory.lol</button>
+                    <button id="btn-x-archive-audit" class="button" data-search-id="x-archive-audit">TwitterAudit</button>
                 </div>
                  <hr>
                 <label for="input-x-memoryId">X User ID (numeric)</label>
@@ -178,92 +109,109 @@
                 </div>
                 <div id="feedback-x-memoryId" class="feedback-message"></div>
                 <div class="button-grid">
-                     <button class="button" data-search-id="x-archive-memorylol-id">Memory.lol ID</button>
+                     <button id="btn-x-archive-memorylol-id" class="button" data-search-id="x-archive-memorylol-id">Memory.lol ID</button>
                 </div>
             </section>
         </div>
     </div>
 </main>
 
-<<<<<<< HEAD
-  <footer>
-    Exploratores 2.5 prototype
-    <a href="license.html">License</a>
-  </footer>
-=======
 <footer>
     <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
 </footer>
->>>>>>> be8f0ae49e29d83cbb871026b4e227c6a6f9f31a
 
-<script src="../assets/js/config.js"></script>
-<script src="../assets/js/search-library.js"></script>
 <script src="../assets/js/main.js"></script>
-<script src="../assets/js/externaeven.js"></script>
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/menu/navigation.js"></script>
+
 <script>
-    // --- Validation Functions ---
-    function getAndValidateUsername(elementId) {
-        const input = document.getElementById(elementId);
-        const value = input ? input.value.trim() : '';
-        return value ? { term: value } : null;
-    }
-
-    function getAndValidateNumeric(elementId) {
-        const input = document.getElementById(elementId);
-        const value = input ? input.value.trim() : '';
-        return /^\d+$/.test(value) ? { term: value } : null;
-    }
-    
-    function getAndValidateYearSearch() {
-        const term = document.getElementById('input-x-yearTerm').value.trim();
-        const year = document.getElementById('input-x-yearNum').value.trim();
-        if (term && /^\d{4}$/.test(year)) {
-            return { term: term, year: year };
-        }
-        return null;
-    }
-
-    // --- UI Update Function ---
-    function updatePageState() {
-        const validationMap = [
-            { validator: () => getAndValidateUsername('input-x-account'), feedbackId: 'feedback-x-account', buttonsSelector: '#section-x-account .button', message: 'Requires a username.'},
-            { validator: () => getAndValidateNumeric('input-x-listId'), feedbackId: 'feedback-x-listId', buttonsSelector: '#section-x-lists .button', message: 'Requires a numeric List ID.'},
-            { validator: () => getAndValidateUsername('input-x-realName'), feedbackId: 'feedback-x-realName', buttonsSelector: '#section-x-other .button', message: 'Requires a name.'},
-            { validator: getAndValidateYearSearch, feedbackId: 'feedback-x-by-year', buttonsSelector: '#section-x-by-year .button', message: 'Requires a term and a 4-digit year.'},
-            { validator: () => getAndValidateUsername('input-x-archiveUser'), feedbackId: 'feedback-x-archiveUser', buttonsSelector: '#section-x-archives .button-grid:first-of-type .button', message: 'Requires a username.'},
-            { validator: () => getAndValidateNumeric('input-x-memoryId'), feedbackId: 'feedback-x-memoryId', buttonsSelector: '#section-x-archives .button-grid:last-of-type .button', message: 'Requires a numeric User ID.'}
+    function setInitialPageState() {
+        const inputGroups = [
+            {
+                inputIds: ['input-x-account-username'],
+                buttonSelector: '#section-x-account .button',
+                validator: ExploratoresValidators.getAndValidateXAccountUsername,
+                feedbackId: 'feedback-x-account-username'
+            },
+            {
+                inputIds: ['input-x-listId'],
+                buttonSelector: '#section-x-lists .button',
+                validator: ExploratoresValidators.getAndValidateXListId,
+                feedbackId: 'feedback-x-listId'
+            },
+            {
+                inputIds: ['input-x-realName'],
+                buttonSelector: '#section-x-other .button',
+                validator: ExploratoresValidators.getAndValidateXRealName,
+                feedbackId: 'feedback-x-realName'
+            },
+            {
+                inputIds: ['input-x-yearTerm', 'input-x-yearNum'],
+                buttonSelector: '#section-x-by-year .button',
+                validator: ExploratoresValidators.getAndValidateXYearSearch,
+                feedbackId: 'feedback-x-by-year'
+            },
+            {
+                inputIds: ['input-x-archiveUser'],
+                buttonSelector: '#section-x-archives .button-grid:first-of-type .button',
+                validator: ExploratoresValidators.getAndValidateXArchiveUser,
+                feedbackId: 'feedback-x-archiveUser'
+            },
+            {
+                inputIds: ['input-x-memoryId'],
+                buttonSelector: '#section-x-archives .button-grid:last-of-type .button',
+                validator: ExploratoresValidators.getAndValidateXMemoryId,
+                feedbackId: 'feedback-x-memoryId'
+            }
         ];
 
-        validationMap.forEach(group => {
-            const isValid = group.validator() !== null;
-            const feedbackDiv = document.getElementById(group.feedbackId);
-            const buttons = document.querySelectorAll(group.buttonsSelector);
+        const updateUi = (group) => {
+            const validationResult = group.validator();
+            const feedbackEl = document.getElementById(group.feedbackId);
 
-            if (feedbackDiv) {
-                feedbackDiv.textContent = isValid ? 'Ready.' : group.message;
-                feedbackDiv.className = isValid ? 'feedback-message ready' : 'feedback-message';
-            }
-
-            buttons.forEach(button => {
-                button.disabled = !isValid;
-                button.classList.toggle('text-active', isValid);
+            document.querySelectorAll(group.buttonSelector).forEach(button => {
+                button.disabled = !validationResult.isValid;
+                button.classList.toggle('text-active', validationResult.isValid);
             });
+
+            if (feedbackEl) {
+                const anyInputWithValue = group.inputIds.some(id => document.getElementById(id)?.value.trim() !== '');
+                if (!anyInputWithValue) {
+                    feedbackEl.textContent = '';
+                } else {
+                    feedbackEl.textContent = validationResult.message;
+                    feedbackEl.className = `feedback-message ${validationResult.isValid ? 'feedback-info' : 'feedback-error'}`;
+                }
+            }
+        };
+
+        inputGroups.forEach(group => {
+            group.inputIds.forEach(inputId => {
+                const inputElement = document.getElementById(inputId);
+                if (inputElement) inputElement.addEventListener('input', () => updateUi(group));
+            });
+            updateUi(group);
         });
     }
 
-    // --- Initial Page State ---
-    function setInitialPageState() {
-        document.querySelectorAll('.input-field').forEach(input => input.value = '');
-        updatePageState();
-    }
+    document.addEventListener('DOMContentLoaded', setInitialPageState);
+</script>
 
-    // --- Event Listeners ---
-    document.addEventListener('DOMContentLoaded', () => {
-        setInitialPageState();
-        document.querySelectorAll('.input-field').forEach(input => {
-            input.addEventListener('input', updatePageState);
-        });
-    });
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
 </script>
 
 </body>

@@ -601,4 +601,90 @@ getAndValidateLinkedinExternal: function(config) {
     return { isValid: true, data: { query: query }, message: "Ready for search." };
 },
 
+// --- START: X (Twitter) Validators ---
+
+getAndValidateXAccountUsername: function(config) {
+    const value = document.getElementById('input-x-account-username')?.value.trim();
+    if (!value) return { isValid: false, message: "Please enter a username (without @)." };
+    return { isValid: true, data: { username: value }, message: "Ready for search." };
+},
+
+getAndValidateXListId: function(config) {
+    const value = document.getElementById('input-x-listId')?.value.trim();
+    if (!/^\d+$/.test(value)) return { isValid: false, message: "Please enter a numeric List ID." };
+    return { isValid: true, data: { listid: value }, message: "Ready for search." };
+},
+
+getAndValidateXRealName: function(config) {
+    const value = document.getElementById('input-x-realName')?.value.trim();
+    if (!value) return { isValid: false, message: "Please enter a real name." };
+    return { isValid: true, data: { realname: value }, message: "Ready for search." };
+},
+
+getAndValidateXYearSearch: function(config) {
+    const term = document.getElementById('input-x-yearTerm')?.value.trim();
+    const year = document.getElementById('input-x-yearNum')?.value.trim();
+    if (!term || !/^\d{4}$/.test(year)) {
+        return { isValid: false, message: "Requires a username/term and a 4-digit year." };
+    }
+    const since = `${year}-01-01`;
+    const until = `${year}-12-31`;
+    return { isValid: true, data: { term: term, since: since, until: until }, message: "Ready for search." };
+},
+
+getAndValidateXArchiveUser: function(config) {
+    const value = document.getElementById('input-x-archiveUser')?.value.trim();
+    if (!value) return { isValid: false, message: "Please enter a username." };
+    return { isValid: true, data: { username: value }, message: "Ready for search." };
+},
+
+getAndValidateXMemoryId: function(config) {
+    const value = document.getElementById('input-x-memoryId')?.value.trim();
+    if (!/^\d+$/.test(value)) return { isValid: false, message: "Please enter a numeric User ID." };
+    return { isValid: true, data: { userid: value }, message: "Ready for search." };
+},
+
+// --- END: X (Twitter) Validators ---
+
+// --- START: Instagram Validators ---
+
+getAndValidateInstagramUsername: function(config) {
+    const value = document.getElementById('input-instagram-username')?.value.trim();
+    if (!value) {
+        return { isValid: false, message: "Please enter a username." };
+    }
+    return { isValid: true, data: { username: value }, message: "Ready for search." };
+},
+
+getAndValidateInstagramUserId: function(config) {
+    const value = document.getElementById('input-instagram-userid')?.value.trim();
+    const isNumeric = /^\d+$/.test(value);
+    if (!value) {
+        return { isValid: false, message: "Please enter an Instagram User ID." };
+    }
+    if (!isNumeric) {
+        return { isValid: false, message: "User ID must be numeric." };
+    }
+    return { isValid: true, data: { userid: value }, message: "Ready for search." };
+},
+
+getAndValidateInstagramCombinedSearch: function(config) {
+    const userA = document.getElementById('input-instagram-combo-usera')?.value.trim();
+    const userB = document.getElementById('input-instagram-combo-userb')?.value.trim();
+    if (!userA || !userB) {
+        return { isValid: false, message: "Please enter both a username and a search term/user B." };
+    }
+    return { isValid: true, data: { usera: userA, userb: userB }, message: "Ready for search." };
+},
+
+getAndValidateInstagramHashtag: function(config) {
+    const value = document.getElementById('input-instagram-hashtag')?.value.trim();
+    if (!value) {
+        return { isValid: false, message: "Please enter a hashtag or term." };
+    }
+    return { isValid: true, data: { hashtag: value }, message: "Ready for search." };
+},
+
+// --- END: Instagram Validators ---
+
 };
