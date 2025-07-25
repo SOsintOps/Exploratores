@@ -646,6 +646,38 @@ getAndValidateXMemoryId: function(config) {
 
 // --- END: X (Twitter) Validators ---
 
+// --- START: Facebook Validators ---
+
+getAndValidateFacebookUsername: function(config) {
+    const value = document.getElementById('input-facebook-username')?.value.trim();
+    if (!value) {
+        return { isValid: false, message: "Please enter a username or User ID." };
+    }
+    return { isValid: true, data: { username: value }, message: "Ready for search." };
+},
+
+getAndValidateFacebookUserId: function(config) {
+    const value = document.getElementById('input-facebook-userid')?.value.trim();
+    if (!value) {
+        return { isValid: false, message: "Please enter a numeric User ID." };
+    }
+    if (!/^\d+$/.test(value)) {
+        return { isValid: false, message: "User ID must be numeric." };
+    }
+    return { isValid: true, data: { userid: value }, message: "Ready for search." };
+},
+
+getAndValidateFacebookSearchTerm: function(config) {
+    const value = document.getElementById('input-facebook-searchterm')?.value.trim();
+    if (!value) {
+        return { isValid: false, message: "Please enter a search term." };
+    }
+    return { isValid: true, data: { term: value }, message: "Ready for search." };
+},
+
+// --- END: Facebook Validators ---
+
+
 // --- START: Instagram Validators ---
 
 getAndValidateInstagramUsername: function(config) {

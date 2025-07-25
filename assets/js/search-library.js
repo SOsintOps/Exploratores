@@ -673,6 +673,58 @@ const SearchLibrary = {
 
 // --- END: X (Twitter) Page Entries ---
 
+// --- START: Facebook Page Entries ---
+
+"facebook-profile-timeline": { "urlTemplate": "https://www.facebook.com/{username}", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-about": { "urlTemplate": "https://www.facebook.com/{username}/about", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-work": { "urlTemplate": "https://www.facebook.com/{username}/about_work_and_education", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-education": { "urlTemplate": "https://www.facebook.com/{username}/about_work_and_education", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-living": { "urlTemplate": "https://www.facebook.com/{username}/about_places", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-contact": { "urlTemplate": "https://www.facebook.com/{username}/about_contact_and_basic_info", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-basic": { "urlTemplate": "https://www.facebook.com/{username}/about_contact_and_basic_info", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-relationship": { "urlTemplate": "https://www.facebook.com/{username}/about_family_and_relationships", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-family": { "urlTemplate": "https://www.facebook.com/{username}/about_family_and_relationships", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-bio": { "urlTemplate": "https://www.facebook.com/{username}/about_details", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-events": { "urlTemplate": "https://www.facebook.com/{username}/about_life_events", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-friends": { "urlTemplate": "https://www.facebook.com/{username}/friends", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-following": { "urlTemplate": "https://www.facebook.com/{username}/following", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-photos": { "urlTemplate": "https://www.facebook.com/{username}/photos_by", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-albums": { "urlTemplate": "https://www.facebook.com/{username}/photos_albums", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-videos": { "urlTemplate": "https://www.facebook.com/{username}/videos_by", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-reels": { "urlTemplate": "https://www.facebook.com/{username}/reels", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-checkins": { "urlTemplate": "https://www.facebook.com/{username}/map", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-mapvisits": { "urlTemplate": "https://www.facebook.com/{username}/map", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-recentcheckins": { "urlTemplate": "https://www.facebook.com/{username}/places_recent", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-sports": { "urlTemplate": "https://www.facebook.com/{username}/sports", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-music": { "urlTemplate": "https://www.facebook.com/{username}/music", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-movies": { "urlTemplate": "https://www.facebook.com/{username}/movies", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-tv": { "urlTemplate": "https://www.facebook.com/{username}/tv", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-books": { "urlTemplate": "https://www.facebook.com/{username}/books", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-apps": { "urlTemplate": "https://www.facebook.com/{username}/games", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-likes": { "urlTemplate": "https://www.facebook.com/{username}/likes", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-userevents": { "urlTemplate": "https://www.facebook.com/{username}/events", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-facts": { "urlTemplate": "https://www.facebook.com/{username}/about_details", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-reviews": { "urlTemplate": "https://www.facebook.com/{username}/reviews", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-reviewsgiven": { "urlTemplate": "https://www.facebook.com/{username}/reviews_given", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-reviewswritten": { "urlTemplate": "https://www.facebook.com/{username}/reviews_written", "validator": "getAndValidateFacebookUsername" },
+"facebook-profile-notes": { "urlTemplate": "https://www.facebook.com/{username}/notes", "validator": "getAndValidateFacebookUsername" },
+"facebook-userid-profile": { "urlTemplate": "https://www.facebook.com/{userid}", "validator": "getAndValidateFacebookUserId" },
+"facebook-search-posts": { "urlTemplate": "https://www.facebook.com/search/posts/?q={term}", "validator": "getAndValidateFacebookSearchTerm" },
+"facebook-search-people": { "urlTemplate": "https://www.facebook.com/search/people/?q={term}", "validator": "getAndValidateFacebookSearchTerm" },
+"facebook-search-photos": { "urlTemplate": "https://www.facebook.com/search/photos/?q={term}", "validator": "getAndValidateFacebookSearchTerm" },
+"facebook-search-videos": { "urlTemplate": "https://www.facebook.com/search/videos/?q={term}", "validator": "getAndValidateFacebookSearchTerm" },
+"facebook-search-marketplace": { "urlTemplate": "https://www.facebook.com/search/marketplace/?q={term}", "validator": "getAndValidateFacebookSearchTerm" },
+"facebook-search-pages": { "urlTemplate": "https://www.facebook.com/search/pages/?q={term}", "validator": "getAndValidateFacebookSearchTerm" },
+"facebook-search-places": { "urlTemplate": "https://www.facebook.com/search/places/?q={term}", "validator": "getAndValidateFacebookSearchTerm" },
+"facebook-search-groups": { "urlTemplate": "https://www.facebook.com/search/groups/?q={term}", "validator": "getAndValidateFacebookSearchTerm" },
+"facebook-search-apps": { "urlTemplate": "https://www.facebook.com/search/apps/?q={term}", "validator": "getAndValidateFacebookSearchTerm" },
+"facebook-search-events": { "urlTemplate": "https://www.facebook.com/search/events/?q={term}", "validator": "getAndValidateFacebookSearchTerm" },
+"facebook-search-links": { "urlTemplate": "https://www.facebook.com/search/links/?q={term}", "validator": "getAndValidateFacebookSearchTerm" },
+"facebook-search-watch": { "urlTemplate": "https://www.facebook.com/watch/search/?q={term}", "validator": "getAndValidateFacebookSearchTerm" },
+
+// --- END: Facebook Page Entries ---
+
+
 // --- START: Instagram Page Entries ---
 
 "instagram-profile": { "urlTemplate": "https://instagram.com/{username}", "validator": "getAndValidateInstagramUsername" },
