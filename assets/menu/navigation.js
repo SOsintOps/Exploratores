@@ -62,6 +62,7 @@ function generateNavHTML() {
           <ul class="submenu">
             <li><a href="${pagesPath}publiccompanyrecords.html">Company Public Records</a></li>
             <li><a href="${pagesPath}currencies.html">Virtual Currencies</a></li>
+            <li><a href="${pagesPath}iban.html">IBAN</a></li>
           </ul>
         </li>
         <li><span>Tools</span>
