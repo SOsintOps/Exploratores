@@ -719,4 +719,98 @@ getAndValidateInstagramHashtag: function(config) {
 
 // --- END: Instagram Validators ---
 
+// --- START: Domains Validators ---
+
+getAndValidateDomain: function(config) {
+    const value = document.getElementById('input-domains-main')?.value.trim();
+    if (!value) {
+        return { isValid: false, message: "Please enter a domain or keyword." };
+    }
+    const isLikelyDomain = value.includes('.');
+    return { 
+        isValid: true, 
+        data: { domain: value, domain_nodots: value.replace(/\./g, '') }, 
+        message: isLikelyDomain ? "Valid domain format." : "Keyword ready for search."
+    };
+},
+
+getAndValidateUrl: function(config) {
+    const value = document.getElementById('input-domains-shortUrl')?.value.trim();
+    if (!value) {
+        return { isValid: false, message: "Please enter a URL." };
+    }
+    try {
+        new URL(value);
+        return { isValid: true, data: { url: value }, message: "Valid URL format." };
+    } catch (_) {
+        return { isValid: false, message: "Invalid URL format. Must include http/https." };
+    }
+},
+
+getAndValidateAdsenseId: function(config) {
+    const value = document.getElementById('input-domains-adsenseId')?.value.trim();
+    const adsenseRegex = /^pub-\d{16}$/;
+    if (!value) {
+        return { isValid: false, message: "Please enter an AdSense ID." };
+    }
+    if (!adsenseRegex.test(value)) {
+        return { isValid: false, message: "Format must be pub-XXXXXXXXXXXXXXXX." };
+    }
+    return { isValid: true, data: { adsenseid: value }, message: "Valid AdSense ID." };
+},
+
+getAndValidateAnalyticsId: function(config) {
+    const value = document.getElementById('input-domains-analyticsId')?.value.trim();
+    const analyticsRegex = /^(UA-\d{4,}-\d{1,})|(G-[A-Z0-9]{10})$/i;
+     if (!value) {
+        return { isValid: false, message: "Please enter an Analytics ID." };
+    }
+    if (!analyticsRegex.test(value)) {
+        return { isValid: false, message: "Invalid Analytics ID format (UA-xxxx or G-xxxx)." };
+    }
+    return { isValid: true, data: { analyticsid: value }, message: "Valid Analytics ID." };
+},
+
+getAndValidateFaviconUrl: function(config) {
+    const value = document.getElementById('input-domains-faviconUrl')?.value.trim();
+     if (!value) {
+        return { isValid: false, message: "Please enter a Favicon URL." };
+    }
+    return { isValid: true, data: { favicon_url: value }, message: "Ready. Note: Hash calculation is external." };
+},
+
+getAndValidateShodanFaviconHash: function(config) {
+    const value = document.getElementById('input-domains-shodanHash')?.value.trim();
+    if (!value) {
+        return { isValid: false, message: "Please enter a numeric hash." };
+    }
+    // Accetta numeri interi, positivi o negativi
+    if (!/^-?\d+$/.test(value)) {
+        return { isValid: false, message: "Hash must be a numeric value." };
+    }
+    return { isValid: true, data: { shodan_hash: value }, message: "Valid Shodan hash." };
+},
+
+getAndValidateMd5Hash: function(config) {
+    const value = document.getElementById('input-domains-md5Hash')?.value.trim().toLowerCase();
+    const md5Regex = /^[a-f0-9]{32}$/;
+    if (!value) {
+        return { isValid: false, message: "Please enter an MD5 hash." };
+    }
+    if (!md5Regex.test(value)) {
+        return { isValid: false, message: "Invalid MD5 format (must be 32 hex chars)." };
+    }
+    return { isValid: true, data: { md5_hash: value }, message: "Valid MD5 hash." };
+},
+
+getAndValidateCsp: function(config) {
+    const value = document.getElementById('input-domains-csp')?.value.trim();
+    if (!value) {
+        return { isValid: false, message: "Please enter a CSP string." };
+    }
+    return { isValid: true, data: { csp_string: value }, message: "Ready for search." };
+},
+
+// --- END: Domains Validators ---
+
 };
