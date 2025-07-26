@@ -813,4 +813,43 @@ getAndValidateCsp: function(config) {
 
 // --- END: Domains Validators ---
 
+// --- START: VK Validators ---
+
+getAndValidateVkUsername: function(config) {
+    const value = document.getElementById('input-vk-username')?.value.trim();
+    if (!value) {
+        return { isValid: false, message: "Please enter a username or search term." };
+    }
+    return { isValid: true, data: { username: value }, message: "Ready for search." };
+},
+
+getAndValidateVkUserId: function(config) {
+    const value = document.getElementById('input-vk-userid')?.value.trim();
+    if (!value || isNaN(value)) {
+        return { isValid: false, message: "Please enter a numeric User or Group ID." };
+    }
+    return { isValid: true, data: { userid: value }, message: "Ready for search." };
+},
+
+getAndValidateVkTag: function(config) {
+    const value = document.getElementById('input-vk-tag')?.value.trim();
+    if (!value) {
+        return { isValid: false, message: "Please enter a tag to search." };
+    }
+    const tag = '#' + value.replace(/^#/, ''); // Add # if not present
+    return { isValid: true, data: { tag: tag }, message: "Ready for search." };
+},
+
+getAndValidateVkSmat: function(config) {
+    const value = document.getElementById('input-vk-username')?.value.trim();
+    if (!value) {
+        return { isValid: false, message: "Please enter a search term for SMAT." };
+    }
+    const today = new Date();
+    const endDate = today.toISOString().split('T')[0];
+    return { isValid: true, data: { username: value, enddate: endDate }, message: "Ready for search." };
+},
+
+// --- END: VK Validators ---
+
 };

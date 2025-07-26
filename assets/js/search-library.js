@@ -916,4 +916,39 @@ const SearchLibrary = {
     "vehicles-infotracer-plate": { "urlTemplate": "https://infotracer.com/loading/?type=plate-lookup&mercSubId=plate&plate={plate}&state={state}", "validator": "getAndValidatePlate" },
     "vehicles-carnetai": { "urlTemplate": "https://carnet.ai/", "no_input": true }
 
+// --- START: VK Page Entries (Complete) ---
+
+"vk-profile-username": { "urlTemplate": "https://vk.com/{username}", "validator": "getAndValidateVkUsername" },
+"vk-profile-id": { "urlTemplate": "https://vk.com/id{userid}", "validator": "getAndValidateVkUserId" },
+"vk-profile-link": { "urlTemplate": "https://vk.me/{username}", "validator": "getAndValidateVkUsername" },
+"vk-user-allposts": { "urlTemplate": "https://vk.com/wall{userid}", "validator": "getAndValidateVkUserId" },
+"vk-user-friends": { "urlTemplate": "https://vk.com/friends?id={userid}", "validator": "getAndValidateVkUserId" },
+"vk-user-followers": { "urlTemplate": "https://vk.com/friends?id={userid}&section=followers", "validator": "getAndValidateVkUserId" },
+"vk-user-groups": { "urlTemplate": "https://vk.com/groups?id={userid}", "validator": "getAndValidateVkUserId" },
+"vk-user-photos": { "urlTemplate": "https://vk.com/photos{userid}", "validator": "getAndValidateVkUserId" },
+"vk-user-photoalbums": { "urlTemplate": "https://vk.com/albums{userid}", "validator": "getAndValidateVkUserId" },
+"vk-user-videos": { "urlTemplate": "https://vk.com/video/@id{userid}", "validator": "getAndValidateVkUserId" },
+"vk-user-audio": { "urlTemplate": "https://vk.com/audios{userid}", "validator": "getAndValidateVkUserId" },
+"vk-user-notes": { "urlTemplate": "https://vk.com/notes{userid}", "validator": "getAndValidateVkUserId" },
+"vk-user-gifts": { "urlTemplate": "https://vk.com/gifts?id={userid}", "validator": "getAndValidateVkUserId" },
+"vk-user-market": { "urlTemplate": "https://vk.com/market?owner_id={userid}", "validator": "getAndValidateVkUserId" },
+"vk-user-apps": { "urlTemplate": "https://vk.com/apps?act=user_apps&id={userid}", "validator": "getAndValidateVkUserId" },
+"vk-search-all": { "urlTemplate": "https://vk.com/search?q={username}", "validator": "getAndValidateVkUsername" },
+"vk-search-people": { "urlTemplate": "https://vk.com/search?c[section]=people&c[q]={username}", "validator": "getAndValidateVkUsername" },
+"vk-search-groups": { "urlTemplate": "https://vk.com/search?c[section]=communities&c[q]={username}", "validator": "getAndValidateVkUsername" },
+"vk-search-news": { "urlTemplate": "https://vk.com/search?c[section]=news&c[q]={username}", "validator": "getAndValidateVkUsername" },
+"vk-search-photos": { "urlTemplate": "https://vk.com/search?c[section]=photos&c[q]={username}", "validator": "getAndValidateVkUsername" },
+"vk-search-videos": { "urlTemplate": "https://vk.com/search?c[section]=videos&c[q]={username}", "validator": "getAndValidateVkUsername" },
+"vk-search-audio": { "urlTemplate": "https://vk.com/search?c[section]=audio&c[q]={username}", "validator": "getAndValidateVkUsername" },
+"vk-search-docs": { "urlTemplate": "https://vk.com/search?c[section]=docs&c[q]={username}", "validator": "getAndValidateVkUsername" },
+"vk-search-market": { "urlTemplate": "https://vk.com/search?c[section]=market&c[q]={username}", "validator": "getAndValidateVkUsername" },
+"vk-search-tag": { "urlTemplate": "https://vk.com/search/statuses?q={tag}", "validator": "getAndValidateVkTag" },
+"vk-ext-google": { "urlTemplate": "https://www.google.com/search?q=site%3Avk.com+\"{username}\"", "validator": "getAndValidateVkUsername" },
+"vk-ext-smat": { "urlTemplate": "https://www.smat-app.com/search?searchTerm={username}&startDate=2000-06-01&endDate={enddate}&websites=vk", "validator": "getAndValidateVkSmat" },
+"vk-ext-checko": { "urlTemplate": "https://checko.ru/search?query={username}", "validator": "getAndValidateVkUsername" },
+"vk-ext-mailru": { "urlTemplate": "https://go.mail.ru/search_social?q={username}", "validator": "getAndValidateVkUsername" },
+"vk-ext-webarchive": { "urlTemplate": "https://web.archive.org/russian-independent-media/search/{username}", "validator": "getAndValidateVkUsername" },
+
+// --- END: VK Page Entries (Complete) ---
+
 };
