@@ -72,12 +72,11 @@ For detailed information on the project, customization, and frequently asked que
 
 ## 📚 References
 
-- *Open Source Intelligence Techniques* by Michael Bazzell
-- *Deep Dive: A Guide to Advanced Open Source Intelligence*
-- *Operator Handbook: Red Team + OSINT + Blue Team Reference*
-- *ICD 203: Analytic Standards*
-- *Psychology of Intelligence Analysis* by Richards J. Heuer Jr.
 - Community feedback from OSINT & Cybercrime analysts
+- *Deep Dive: A Guide to Advanced Open Source Intelligence*
+- *ICD 203: Analytic Standards*
+- *Open Source Intelligence Techniques* by Michael Bazzell
+- *Psychology of Intelligence Analysis* by Richards J. Heuer Jr.
 
 ---
 
