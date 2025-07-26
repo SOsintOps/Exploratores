@@ -639,3 +639,44 @@ body.matrix-mode footer a {
 .hidden-in-light {
   display: none !important;
 }
+
+/* Stili per la Ricerca Toolkit */
+
+#toolkit-search-input {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+#toolkit-search-results {
+    background-color: #2e2e2e;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #444;
+    display: none; /* Nascosto di default */
+}
+
+#toolkit-search-results ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#toolkit-search-results li a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #ccc;
+    text-decoration: none;
+    border-bottom: 1px solid #444;
+    transition: background-color 0.2s ease;
+}
+
+#toolkit-search-results li:last-child a {
+    border-bottom: none;
+}
+
+#toolkit-search-results li a:hover {
+    background-color: #3a3a3a;
+    color: #fff;
+}
