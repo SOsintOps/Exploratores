@@ -17,7 +17,7 @@
     <section class="search-instructions">
         <label for="ibanInput">Enter IBAN to verify:</label>
         <div class="input-button-line">
-            <input type="text" id="ibanInput" class="input-field" placeholder="e.g., IT53X0100503266000000218000" autocomplete="off">
+            <input type="text" id="ibanInput" class="input-field" placeholder="e.g., IT18N0503401633000000005226" autocomplete="off">
             <button type="button" id="verifyButton" class="button">Verify</button>
         </div>
         <div id="feedbackMessage" class="feedback-message"></div>
@@ -96,32 +96,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const showResults = (iban) => {
         const countryCode = iban.substring(0, 2);
-        let bankCode = 'N/A';
-        let bankName = 'Bank name lookup only for Italian IBANs.';
-
-        if (countryCode === 'IT') {
-            // CORREZIONE: Estrae 5 cifre a partire dalla posizione 5
-            bankCode = iban.substring(5, 10); 
-            if (typeof bankDatabase !== 'undefined') {
-                bankName = bankDatabase[bankCode] || 'Italian bank not identified in this list.';
-            }
-        } else {
-            const countryInfo = ibankit.IBAN_COUNTRIES[countryCode];
-            if (countryInfo) {
-                 // Logica generica per altri paesi (se necessaria)
-                 bankCode = 'See BBAN';
-            }
-        }
         
         ibanInfo.innerHTML = `
             <p><strong>Country:</strong> ${ibankit.getCountryName(countryCode)} (${countryCode})</p>
             <p><strong>Check Digits:</strong> ${iban.substring(2, 4)}</p>
             <p><strong>Length:</strong> ${iban.length} characters</p>
         `;
-        bankInfo.innerHTML = `
-            <p><strong>Bank Identifier:</strong> ${bankCode}</p>
-            <p><strong>Bank Name:</strong> ${bankName}</p>
-        `;
+
+        let bankInfoHtml = '';
+        if (countryCode === 'IT') {
+            const cin = iban.substring(4, 5);
+            const abi = iban.substring(5, 10);
+            const cab = iban.substring(10, 15);
+            const accountNumber = iban.substring(15);
+            const bankName = (typeof bankDatabase !== 'undefined' && bankDatabase[abi])
+                ? bankDatabase[abi]
+                : 'Italian bank not identified in this list.';
+
+            bankInfoHtml = `
+                <p><strong>Bank Name:</strong> ${bankName}</p>
+                <p><strong>Country:</strong> ${countryCode}</p>
+                <p><strong>CIN EUR:</strong> ${iban.substring(2, 4)}</p>
+                <p><strong>CIN:</strong> ${cin}</p>
+                <p><strong>ABI:</strong> ${abi}</p>
+                <p><strong>CAB:</strong> ${cab}</p>
+                <p><strong>Account Number:</strong> ${accountNumber}</p>
+            `;
+        } else {
+            const bankCode = 'N/A';
+            const bankName = 'Bank name identification is available for Italian IBANs only.';
+            bankInfoHtml = `
+                <p><strong>Bank Identifier:</strong> ${bankCode}</p>
+                <p><strong>Bank Name:</strong> ${bankName}</p>
+            `;
+        }
+        
+        bankInfo.innerHTML = bankInfoHtml;
         resultContainer.style.display = 'block';
     };
 
