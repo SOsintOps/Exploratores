@@ -76,7 +76,6 @@ For detailed information on the project, customization, and frequently asked que
 - *Deep Dive: A Guide to Advanced Open Source Intelligence*
 - *ICD 203: Analytic Standards*
 - *Open Source Intelligence Techniques* by Michael Bazzell
-- *Operator Handbook: Red Team + OSINT + Blue Team Reference*
 - *Psychology of Intelligence Analysis* by Richards J. Heuer Jr.
 
 ---
