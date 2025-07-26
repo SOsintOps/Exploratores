@@ -1,4 +1,4 @@
-# Exploratores OSINT Toolkit v2.5
+# Exploratores OSINT Toolkit v3
 
 ![Exploratores Toolkit Logo](assets/images/exploratores.jpg)
 
