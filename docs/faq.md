@@ -70,10 +70,10 @@ For a structured approach, Michael Bazzell's books (like "Open Source Intelligen
 
 Operational Security (OPSEC) is critical. While using this toolkit, always consider:
 
-* **Network Anonymity:** Use a trusted VPN or the Tor network to mask your real IP address.
-* **Dedicated Environment:** Conduct investigations from a dedicated virtual machine (VM) or a separate physical device to prevent cross-contamination with your personal data.
-* **Browser Fingerprinting:** Be aware that websites can identify you through your browser's unique configuration. Use browsers or browser extensions designed to minimize fingerprinting.
-* **Non-Attributable Accounts:** As mentioned below, always use dedicated, non-personal accounts for interacting with online services.
+*   **Network Anonymity:** Use a trusted VPN or the Tor network to mask your real IP address.
+*   **Dedicated Environment:** Conduct investigations from a dedicated virtual machine (VM) or a separate physical device to prevent cross-contamination with your personal data.
+*   **Browser Fingerprinting:** Be aware that websites can identify you through your browser's unique configuration. Use browsers or browser extensions designed to minimize fingerprinting.
+*   **Non-Attributable Accounts:** As mentioned below, always use dedicated, non-personal accounts for interacting with online services.
 
 ### What are the ethical guidelines for using these tools?
 
@@ -123,11 +123,80 @@ The standard workflow for contributing is:
 
 To interact effectively with a Large Language Model (LLM) for developing pages or features, provide a clear and detailed prompt. Key elements to include are:
 
-* **Clear Objective**: Precisely describe what the new page or feature should do.
-* **Adherence to Architecture**: Explicitly state that the new page must follow the established data-driven architecture (main.js, validators.js, search-library.js).
-* **No Inline Logic**: Specify that buttons must use `data-search-id` and not `onclick`.
-* **Reference to Project Guidelines**: Remind the LLM to adhere to all established project standards, including file naming and CSS classes.
+*   **Clear Objective**: Precisely describe what the new page or feature should do.
+*   **Adherence to Architecture**: Explicitly state that the new page must follow the established data-driven architecture (main.js, validators.js, search-library.js).
+*   **No Inline Logic**: Specify that buttons must use `data-search-id` and not `onclick`.
+*   **Reference to Project Guidelines**: Remind the LLM to adhere to all established project standards, including file naming and CSS classes.
 
 ### Can you provide an example prompt for an LLM to create a basic Exploratores page template from scratch?
 
 Certainly. Here is an updated prompt that reflects the current project architecture:
+
+```html
+"Please generate the complete HTML code for a new page named 'ExampleTool.html' for the Exploratores OSINT Toolkit. The page must strictly follow the new data-driven architecture.
+
+1.  **HTML Structure**: Standard HTML5 boilerplate.
+2.  **Head**: Include meta tags, title 'Example Tool • Exploratores', and link to `../assets/css/style.css`.
+3.  **Body**:
+    - Include the dynamic navigation placeholder: `<div id="navbar-placeholder"></div>`.
+    - `<main>` section with a title `<h1 class="page-title">Example Tool</h1>`.
+    - A `<section class="search-instructions">` with an input field (`id="exampleInput"`) and a feedback div (`id="page-feedback"`).
+    - A `<div class="button-grid">` with one button: `<button id="btn-example-run" class="button" data-search-id="example-run">Run Example</button>`. Note the use of `data-search-id` and no `onclick`.
+4.  **Scripts**:
+    - At the end of `<body>`, include the script tags for the entire architecture: `main.js`, `validators.js`, `search-library.js`, and `navigation.js`.
+    - Add the standard page-specific initialization script (`updatePageState`, `setInitialPageState`) that links to a new validator function (e.g., `getAndValidateExample`) and manages the button state."
+```
+
+### Were any Large Language Models (LLMs) unduly stressed during the creation of this toolkit?
+
+We can confirm that, to the best of our knowledge, no LLMs reported permanent damage or suffered disproportionately during the development of the Exploratores OSINT Toolkit. All interactions were conducted with the aim of constructive collaboration and respect for computational capacities. Prompts were formulated with care, and we appreciate the patience and "artificial creativity" demonstrated. ;)
+
+## Technical Details & Troubleshooting
+
+### What is the logic behind the new "Data-Driven" system?
+
+The new architecture centralizes the logic to avoid code duplication. It works like this:
+
+*   **HTML Pages (e.g., Names.html):** Contain only the structure and UI elements. Buttons have a `data-search-id` attribute that acts as a unique identifier for a search, but they contain no JavaScript code.
+*   **search-library.js:** Acts as a "catalog." It contains an object that maps each `data-search-id` to a URL template and a validation function.
+*   **main.js:** This is the "engine" of the toolkit. It contains a single event handler that, on a button click, uses the `data-search-id` to find the corresponding configuration in `search-library.js`, runs the validation, and opens the correct URL.
+
+This approach makes the pages cleaner and maintenance easier, as all search logics are defined in one place.
+
+### How does the page state management (`updatePageState`) work?
+
+Each interactive page has a small, page-specific script with two key functions: `updatePageState()` and `setInitialPageState()`.
+
+*   `setInitialPageState()` runs once when the page loads. Its job is to attach event listeners (e.g., for the `input` event) to the page's form fields.
+*   `updatePageState()` is called every time a user types into a field. It calls the appropriate validation function from `validators.js`. Based on whether the input is valid, it then enables or disables all the search buttons on the page and adds/removes the `.text-active` class.
+
+This ensures that search buttons are only clickable when the required input is valid.
+
+### What are the steps to add a new search button?
+
+To add a new button under the new architecture, follow these two steps:
+
+1.  **Add the configuration to `search-library.js`:** Create a new entry in the `SearchLibrary` object. The key must be a unique identifier (e.g., `'names-new-service'`), and the value must be an object with the `urlTemplate` and the name of the `validator` function (e.g., `'getAndValidateNames'`).
+2.  **Add the button to the HTML:** Insert the `<button>` tag on the desired page. Assign it a unique `id` (for customization) and the `data-search-id` attribute corresponding to the key you created in the library.
+
+The "engine" in `main.js` will automatically make the new button work without needing to write more JavaScript on the page.
+
+### What should I check if a button click does nothing?
+
+If a button is clickable but doesn't open a new tab, the problem is almost certainly a JavaScript error. The first thing to do is check the browser's **Developer Console** (F12 key, "Console" tab):
+
+*   **Look for syntax errors:** The most common error is an `Uncaught SyntaxError`, often caused by a missing comma (`,`) between entries in the `search-library.js` file. This error prevents all configurations from loading.
+*   **Look for "Validator not found" or "SearchLibrary not defined" errors:** These indicate that one of the core JavaScript files (`validators.js`, `search-library.js`) failed to load due to a syntax error or a broken path in the HTML `<script>` tag.
+
+Fixing the error shown in the console is the quickest way to get the buttons working again.
+
+### What is the "Light Version" for?
+
+The "Light Version" is a customizable display mode for the toolkit. It allows each user to hide tools, sections, or columns they do not use, creating a leaner and more focused interface.
+
+This customization is managed by the `assets/js/config.js` file. By editing this file, you can:
+
+*   **Enable or disable** the Light Version by setting `lightVersionEnabled` to `true` or `false`.
+*   **Specify which elements to hide** by adding their CSS selectors (like `#btn-names-us-advbackground` or `#column-names-usa`) to the `selectorsToHide` array.
+
+When the Light Version is active, a script automatically adds the `.hidden-in-light` class to all elements listed in the configuration file, making them disappear from the page.
