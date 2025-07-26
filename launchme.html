@@ -11,7 +11,6 @@
 <body>
 
 <div id="navbar-placeholder"></div>
-<script src="assets/menu/navigation.js"></script>
 
 <main>
     <div class="center-text">
@@ -19,22 +18,40 @@
     </div>
     <h1 class="page-title">Exploratores OSINT Toolkit</h1>
 
-    <section>
-        <h2 class="center-text">How to Start</h2>
-        <p><strong>Exploratores</strong> is an OSINT toolkit developed to support investigations.</p>
-        <p>To start your investigation, please select one of the tool pages available from the navigation bar above.</p>
-        <p>To understand how to use, contribute to, or find answers about Exploratores, please refer to these key resources:</p>
-        <ul>
-            <li><a href="pages/guidelines.html">Project Guidelines</a>: Learn about the coding standards, page structure, and style conventions.</li>
-            <li><a href="pages/customise.html">Customise Pages</a>: Discover how to add new tools, modify layouts, and tailor the toolkit to your needs.</li>
-            <li><a href="pages/faq.html">Frequently Asked Questions (FAQ)</a>: Find answers to common questions about the toolkit's purpose, usage, development, and OSINT resources.</li>
-        </ul>
-    </section>
+    <div class="columns">
+        <div class="column">
+            <section>
+                <h2 class="center-text">How to Start</h2>
+                <p><strong>Exploratores</strong> is an OSINT toolkit developed to support investigations.</p>
+                <p>To start, select a tool from the navigation bar above or use the Toolkit Search.</p>
+                <p>For more details, refer to these key resources:</p>
+                <ul>
+                    <li><a href="pages/guidelines.html">Project Guidelines</a></li>
+                    <li><a href="pages/customise.html">Customise Pages</a></li>
+                    <li><a href="pages/faq.html">Frequently Asked Questions (FAQ)</a></li>
+                </ul>
+            </section>
+        </div>
+        <div class="column">
+            <section id="toolkit-search-section">
+                <h2 class="center-text">Toolkit Search</h2>
+                <p class="center-text">Search for a specific tool or function across all pages.</p><br><br>
+                <div class="input-container">
+                    <input type="text" id="toolkit-search-input" class="input-field" placeholder="e.g., Facebook, VIN, IP Address..." autocomplete="off">
+                </div>
+                <div id="toolkit-search-results"></div>
+            </section>
+        </div>
+    </div>
 </main>
 
 <footer>
     <p>Exploratores 2.5 • Prototype <a href="pages/license.html">License</a></p>
 </footer>
+
+<script src="assets/menu/navigation.js"></script>
+<script src="assets/js/search-library.js"></script>
+<script src="assets/js/toolkit-search.js"></script>
 
 </body>
 </html>

@@ -756,6 +756,8 @@ const SearchLibrary = {
     "docs-filetype-mp3": { "urlTemplate": "https://www.google.com/search?q=filetype:mp3 OR filetype:wav \"{term}\"", "validator": "getAndValidateDocSearchTerm" },
     "docs-filetype-mpg": { "urlTemplate": "https://www.google.com/search?q=filetype:mpg OR filetype:mp4 \"{term}\"", "validator": "getAndValidateDocSearchTerm" },
     "docs-filetype-zip": { "urlTemplate": "https://www.google.com/search?q=filetype:zip OR filetype:rar OR filetype:7z \"{term}\"", "validator": "getAndValidateDocSearchTerm" },
+
+"docs-dataset-openafrica": { "urlTemplate": "https://open.africa/dataset/?q={term}", "validator": "getAndValidateDocSearchTerm" },
 	
     // --- Voci per images.html ---
     "images-term-bing": { "urlTemplate": "https://www.bing.com/images/search?q={term}", "validator": "getAndValidateImageTerm" },
@@ -914,7 +916,7 @@ const SearchLibrary = {
     "vehicles-searchquarry-plate": { "urlTemplate": "https://www.searchquarry.com/vehicle_records/lregister?sqtb=license_plate&license_plates={plate}&state={state}", "validator": "getAndValidatePlate" },
     "vehicles-recordfinder-plate": { "urlTemplate": "https://recordsfinder.com/search/plate/loader/?flow=plate&plateNumber={plate}&state={state}", "validator": "getAndValidatePlate" },
     "vehicles-infotracer-plate": { "urlTemplate": "https://infotracer.com/loading/?type=plate-lookup&mercSubId=plate&plate={plate}&state={state}", "validator": "getAndValidatePlate" },
-    "vehicles-carnetai": { "urlTemplate": "https://carnet.ai/", "no_input": true }
+    "vehicles-carnetai": { "urlTemplate": "https://carnet.ai/", "no_input": true },
 
 // --- START: VK Page Entries (Complete) ---
 
