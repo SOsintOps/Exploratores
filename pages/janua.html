@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janua - Indicator Dispatcher | Exploratores OSINT Toolkit</title>
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+    <div id="navbar-placeholder"></div>
+
+    <main class="container">
+        <div class="card card-body text-center mt-4">
+            <h1 class="page-title">Janua</h1>
+            <p class="lead">Enter an indicator to find the relevant search tools.</p>
+            
+            <div class="input-container">
+                 <input type="text" id="indicator-input" class="input-field" placeholder="E.g., an email, IP, domain, IBAN...">
+            </div>
+        </div>
+
+        <div id="results-container" class="mt-4">
+            </div>
+    </main>
+
+    <footer>
+        <p>Exploratores 3 • Prototype <a href="../license.html">License</a></p>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/validators.js"></script>
+    <script src="../assets/js/search-library.js"></script>
+    <script src="../assets/menu/navigation.js"></script>
+    
+    <script src="../assets/js/indicator-classifier.js"></script>
+    <script src="../assets/js/dispatcher.js"></script>
+
+    <script src="../assets/js/config.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+          exploratoresConfig.selectorsToHide.forEach(selector => {
+            try {
+              document.querySelectorAll(selector).forEach(el => el.classList.add('hidden-in-light'));
+            } catch (e) {
+              console.error("Invalid selector in config.js:", selector);
+            }
+          });
+        }
+      });
+    </script>
+
+</body>
+</html>
