@@ -1,160 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IBAN • Exploratores</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBAN Toolkit • Exploratores</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
 <body>
 
-<div id="navbar-placeholder"></div>
+    <div id="navbar-placeholder"></div>
 
-<main>
-    <h1 class="page-title">IBAN Verification & Parsing Tool</h1>
-    <section class="search-instructions">
-        <label for="ibanInput">Enter IBAN to verify:</label>
-        <div class="input-button-line">
-            <input type="text" id="ibanInput" class="input-field" placeholder="e.g., IT18N0503401633000000005226" autocomplete="off">
-            <button type="button" id="verifyButton" class="button">Verify</button>
-        </div>
-        <div id="feedbackMessage" class="feedback-message"></div>
-    </section>
-    <div class="note">
-        <strong>NOTE:</strong> This tool validates IBAN structure for multiple countries and identifies the bank for Italian IBANs. No data is sent to external services.
-    </div>
+    <main>
+        <h1 class="page-title">IBAN Toolkit</h1>
 
-    <div id="resultContainer" style="display: none;">
-        <h2>Verification Results</h2>
-        <div class="columns">
-            <div class="column">
-                <h3>IBAN Information</h3>
-                <div id="ibanInfo"></div>
+        <section class="search-instructions">
+            <h2>Local IBAN Verifier</h2>
+            <label for="ibanVerifyInput">Enter IBAN for local validation and parsing:</label>
+            <div class="input-button-line">
+                <input type="text" id="ibanVerifyInput" class="input-field" placeholder="e.g., IT60X054281110100000123456" autocomplete="off">
+                <button type="button" id="verifyButton" class="button">Verify</button>
             </div>
-            <div class="column">
-                <h3>Bank Information</h3>
-                <div id="bankInfo"></div>
+            <div id="verifyFeedback" class="feedback-message"></div>
+            
+            <div id="verificationResult" class="results-box" style="display: none;">
+                <div class="columns">
+                    <div class="column" id="ibanInfoColumn"></div>
+                    <div class="column" id="bankInfoColumn"></div>
+                </div>
             </div>
-        </div>
-    </div>
-</main>
+        </section>
 
-<footer>
-    <p>Exploratores 3 • ALPHA <a href="../license.html">License</a></p>
-</footer>
+        <hr>
 
-<script src="../assets/menu/navigation.js"></script>
-<script src="../assets/js/config.js"></script>
-<script src="../assets/js/ibankit.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const ibanInput = document.getElementById('ibanInput');
-    const verifyButton = document.getElementById('verifyButton');
-    const feedbackMessage = document.getElementById('feedbackMessage');
-    const resultContainer = document.getElementById('resultContainer');
-    const ibanInfo = document.getElementById('ibanInfo');
-    const bankInfo = document.getElementById('bankInfo');
+        <section class="search-instructions">
+            <h2>External OSINT Search</h2>
+            <label for="ibanSearchInput">Enter IBAN to search on external services:</label>
+            <div class="input-container">
+                <input type="text" id="ibanSearchInput" class="input-field" placeholder="IBAN..." autocomplete="off">
+            </div>
+            <div id="searchFeedback" class="feedback-message"></div>
 
-    const checkIban = () => {
-        const iban = ibanInput.value.replace(/\s/g, '').toUpperCase();
-        
-        hideResults();
-        if (!iban) {
-            showFeedback('Please enter an IBAN.', 'error');
-            return;
-        }
+            <div class="button-grid">
+                <button id="btn-iban-google" type="button" class="button" data-search-id="iban-search-google">Google Search</button>
+                <button id="btn-iban-swift" type="button" class="button" data-search-id="iban-search-swift">SWIFT Search</button>
+                <button id="btn-iban-ibancom" type="button" class="button" data-search-id="iban-search-ibancom">IBAN.com</button>
+            </div>
+        </section>
+    </main>
 
-        if (!ibankit.validateIBAN(iban)) {
-            const countryCode = iban.substring(0, 2);
-            const countryInfo = ibankit.IBAN_COUNTRIES[countryCode];
-            let message = 'IBAN is not valid.';
-            if (countryInfo && iban.length !== countryInfo.length) {
-                message += ` Expected length for ${countryCode} is ${countryInfo.length}.`;
-            } else {
-                message += ' Checksum or format is incorrect.';
+    <footer>
+        <p>Exploratores 3 • ALPHA <a href="license.html">License</a></p>
+    </footer>
+
+    <script src="../assets/js/config.js"></script>
+    <script src="../assets/js/ibankit.js"></script>
+    <script src="../assets/js/validators.js"></script>
+    <script src="../assets/js/search-library.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/menu/navigation.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- LOGICA PER LA VERIFICA LOCALE ---
+        const verifyInput = document.getElementById('ibanVerifyInput');
+        const verifyButton = document.getElementById('verifyButton');
+        const verifyFeedback = document.getElementById('verifyFeedback');
+        const verificationResult = document.getElementById('verificationResult');
+        const ibanInfoColumn = document.getElementById('ibanInfoColumn');
+        const bankInfoColumn = document.getElementById('bankInfoColumn');
+
+        const handleVerification = () => {
+            const ibanRaw = verifyInput.value.trim();
+            const iban = ibanRaw.replace(/\s/g, '').toUpperCase();
+            
+            verificationResult.style.display = 'none';
+            ibanInfoColumn.innerHTML = '';
+            bankInfoColumn.innerHTML = '';
+
+            if (!iban) {
+                verifyFeedback.textContent = 'Please enter an IBAN.';
+                verifyFeedback.className = 'feedback-message feedback-error';
+                return;
             }
-            showFeedback(message, 'error');
-            return;
-        }
 
-        showFeedback('IBAN is valid.', 'info');
-        showResults(iban);
-    };
+            if (typeof ibankit !== 'undefined' && ibankit.validateIBAN(iban)) {
+                verifyFeedback.textContent = 'IBAN structure and checksum are valid.';
+                verifyFeedback.className = 'feedback-message feedback-info';
 
-    const showFeedback = (message, type) => {
-        feedbackMessage.textContent = message;
-        feedbackMessage.className = `feedback-message feedback-${type}`;
-    };
+                const countryCode = iban.substring(0, 2);
+                const countryInfo = ibankit.IBAN_COUNTRIES[countryCode];
+                
+                let ibanInfoHTML = `
+                    <h3>IBAN Information</h3>
+                    <p><strong>Country:</strong> ${countryInfo.name || 'Unknown'} (${countryCode})</p>
+                    <p><strong>Check Digits:</strong> ${iban.substring(2, 4)}</p>
+                    <p><strong>Length:</strong> ${iban.length} characters</p>
+                `;
+                
+                let bankInfoHTML = `<h3>Bank Information</h3>`;
 
-    const hideResults = () => {
-        resultContainer.style.display = 'none';
-        ibanInfo.innerHTML = '';
-        bankInfo.innerHTML = '';
-    };
+                // --- LOGICA DI PARSING DETTAGLIATA PER IBAN ITALIANI ---
+                if (countryCode === 'IT') {
+                    const cin = iban.substring(4, 5);
+                    const abi = iban.substring(5, 10);
+                    const cab = iban.substring(10, 15);
+                    const accountNumber = iban.substring(15, 27);
+                    const bankName = (typeof bankDatabase !== 'undefined' && bankDatabase[abi]) ? bankDatabase[abi] : 'Italian bank not found in local database.';
 
-    const showResults = (iban) => {
-        const countryCode = iban.substring(0, 2);
-        
-        ibanInfo.innerHTML = `
-            <p><strong>Country:</strong> ${ibankit.getCountryName(countryCode)} (${countryCode})</p>
-            <p><strong>Check Digits:</strong> ${iban.substring(2, 4)}</p>
-            <p><strong>Length:</strong> ${iban.length} characters</p>
-        `;
+                    bankInfoHTML += `
+                        <p><strong>Bank Name:</strong> ${bankName}</p>
+                        <p><strong>CIN:</strong> ${cin}</p>
+                        <p><strong>ABI:</strong> ${abi}</p>
+                        <p><strong>CAB:</strong> ${cab}</p>
+                        <p><strong>Account Number:</strong> ${accountNumber}</p>
+                    `;
+                } else {
+                    bankInfoHTML += `<p>Detailed BBAN parsing is currently only supported for Italian IBANs.</p>`;
+                }
 
-        let bankInfoHtml = '';
-        if (countryCode === 'IT') {
-            const cin = iban.substring(4, 5);
-            const abi = iban.substring(5, 10);
-            const cab = iban.substring(10, 15);
-            const accountNumber = iban.substring(15);
-            const bankName = (typeof bankDatabase !== 'undefined' && bankDatabase[abi])
-                ? bankDatabase[abi]
-                : 'Italian bank not identified in this list.';
+                ibanInfoColumn.innerHTML = ibanInfoHTML;
+                bankInfoColumn.innerHTML = bankInfoHTML;
+                verificationResult.style.display = 'block';
 
-            bankInfoHtml = `
-                <p><strong>Bank Name:</strong> ${bankName}</p>
-                <p><strong>Country:</strong> ${countryCode}</p>
-                <p><strong>CIN EUR:</strong> ${iban.substring(2, 4)}</p>
-                <p><strong>CIN:</strong> ${cin}</p>
-                <p><strong>ABI:</strong> ${abi}</p>
-                <p><strong>CAB:</strong> ${cab}</p>
-                <p><strong>Account Number:</strong> ${accountNumber}</p>
-            `;
-        } else {
-            const bankCode = 'N/A';
-            const bankName = 'Bank name identification is available for Italian IBANs only.';
-            bankInfoHtml = `
-                <p><strong>Bank Identifier:</strong> ${bankCode}</p>
-                <p><strong>Bank Name:</strong> ${bankName}</p>
-            `;
-        }
-        
-        bankInfo.innerHTML = bankInfoHtml;
-        resultContainer.style.display = 'block';
-    };
+            } else {
+                verifyFeedback.textContent = 'Invalid IBAN format or checksum.';
+                verifyFeedback.className = 'feedback-message feedback-error';
+            }
+        };
 
-    verifyButton.addEventListener('click', checkIban);
-    ibanInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') checkIban();
+        verifyButton.addEventListener('click', handleVerification);
+        verifyInput.addEventListener('keypress', e => {
+            if (e.key === 'Enter') handleVerification();
+        });
+
+        // --- LOGICA PER LE RICERCHE ESTERNE ---
+        const searchInput = document.getElementById('ibanSearchInput');
+        const searchFeedback = document.getElementById('searchFeedback');
+        const searchButtons = document.querySelectorAll('[data-search-id^="iban-search-"]');
+
+        const updateSearchUi = () => {
+            const validationResult = ExploratoresValidators.getAndValidateIban({}, searchInput.value);
+            
+            searchButtons.forEach(button => {
+                button.disabled = !validationResult.isValid;
+                button.classList.toggle('text-active', validationResult.isValid);
+            });
+
+            if (searchInput.value) {
+                searchFeedback.textContent = validationResult.message;
+                searchFeedback.className = `feedback-message ${validationResult.isValid ? 'feedback-info' : 'feedback-error'}`;
+            } else {
+                searchFeedback.textContent = '';
+            }
+        };
+
+        searchInput.addEventListener('input', updateSearchUi);
+        updateSearchUi(); // Set initial state
     });
-    ibanInput.addEventListener('input', () => {
-        hideResults();
-        showFeedback('', 'info');
-    });
-
-    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
-      exploratoresConfig.selectorsToHide.forEach(selector => {
-        try {
-          document.querySelectorAll(selector).forEach(el => el.classList.add('hidden-in-light'));
-        } catch (e) {
-          console.error("Invalid selector in config.js:", selector);
-        }
-      });
-    }
-});
-</script>
+    </script>
 
 </body>
 </html>

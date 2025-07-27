@@ -953,4 +953,9 @@ const SearchLibrary = {
 
 // --- END: VK Page Entries (Complete) ---
 
+// iban page
+"iban-search-google": { "urlTemplate": "https://www.google.com/search?q=\"{iban}\"", "validator": "getAndValidateIban" },
+"iban-search-swift": { "urlTemplate": "https://www.swift.com/search?type=bic&keyword={iban}", "validator": "getAndValidateIban" },
+"iban-search-ibancom": { "urlTemplate": "https://www.iban.com/search?query={iban}", "validator": "getAndValidateIban" }
+
 };
