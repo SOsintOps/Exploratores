@@ -1,94 +1,91 @@
-/**
- * @file Manages the logic for the Janua.html dispatcher page.
- * It listens for user input, classifies the indicator using `indicator-classifier.js`,
- * finds relevant tools from `search-library.js`, and dynamically displays them.
- */
+// assets/js/dispatcher.js
 
 document.addEventListener('DOMContentLoaded', () => {
     const input = document.getElementById('indicator-input');
     const resultsContainer = document.getElementById('results-container');
+    let debounceTimer;
 
     if (!input || !resultsContainer) {
-        console.error("Dispatcher script cannot find required elements (input or results container).");
+        console.error("Dispatcher script: Manca l'input o il container dei risultati.");
         return;
     }
 
-    // This map links the type returned by classifyIndicator to the validator function names in SearchLibrary.
     const typeToValidatorMap = {
-        'EMAIL': 'getAndValidateEmail',
-        'DOMAIN': 'getAndValidateDomain',
-        'IPV4': 'getAndValidateIp',
-        'USERNAME': 'getAndValidateUsername',
-        'IBAN': 'getAndValidateIban',
-        // Add other mappings here as needed for different indicator types.
-        'GENERIC_TEXT': 'getAndValidateGeneric' 
+        'EMAIL': ['getAndValidateEmail', 'getAndValidateGmail', 'getAndValidateCompanyEmail'],
+        'DOMAIN': ['getAndValidateDomain'],
+        'IPV4': ['getAndValidateIpAddress', 'getAndValidateNetworksDbRange'],
+        'USERNAME': ['getAndValidateUsername', 'getAndValidateTumblrUsername', 'getAndValidateSmatVkUsername', 'getAndValidateVkUsername', 'getAndValidateYoutubeUsername'],
+        'IBAN': ['getAndValidateIban'],
+        'VEHICLE_VIN': ['getAndValidateVin'],
+        'BTC_ADDRESS': ['getAndValidateBtcAddress'],
+        'PHONE_E164': ['getAndValidateIntlPhone'],
+        'COORDINATES': ['getAndValidateCoordinates', 'getAndValidateZillowCoords'],
+        'GENERIC_TEXT': ['getAndValidateSearchTerm', 'getAndValidateNames', 'getAndValidateOfficerName', 'getAndValidateCompanyName', 'getAndValidateDocSearchTerm', 'getAndValidateKeybaseQuery']
     };
 
-    /**
-     * Updates the results view based on the current input value.
-     */
     const updateResults = () => {
         const query = input.value.trim();
-        
-        // Clear previous results
         resultsContainer.innerHTML = '';
 
-        if (!query) {
-            return; // Do nothing if input is empty
-        }
+        if (query.length < 2) return;
 
         const indicatorType = classifyIndicator(query);
-        const validatorName = typeToValidatorMap[indicatorType];
+        const validatorNames = typeToValidatorMap[indicatorType] || [];
         
-        if (!validatorName) {
-            return; // No tools defined for this indicator type
-        }
-        
-        const relevantButtons = findRelevantButtons(validatorName);
-        renderButtons(relevantButtons);
+        const relevantButtons = findRelevantButtons(validatorNames);
+        renderButtons(relevantButtons, query);
     };
 
-    /**
-     * Finds all buttons from the SearchLibrary that match a given validator name.
-     * @param {string} validatorName - The name of the validator function (e.g., 'getAndValidateEmail').
-     * @returns {Object} An object with buttons grouped by their original page title.
-     */
-    const findRelevantButtons = (validatorName) => {
+    const findRelevantButtons = (validatorNames) => {
         const groupedButtons = {};
+        const validatorSet = new Set(validatorNames);
 
         for (const searchId in SearchLibrary) {
             const config = SearchLibrary[searchId];
-            if (config.validator === validatorName) {
-                const pageTitle = config.page || 'General Tools'; // Group by page name
+            const mapInfo = JanuaSearchMap[searchId];
 
-                if (!groupedButtons[pageTitle]) {
-                    groupedButtons[pageTitle] = [];
+            if (mapInfo) {
+                const isValidatorMatch = validatorSet.has(config.validator);
+                const isSearchEngine = mapInfo.page === 'Search Engines';
+
+                // Aggiungi il pulsante se il suo validatore corrisponde O se appartiene alla pagina "Search Engines"
+                if (isValidatorMatch || isSearchEngine) {
+                    const pageTitle = mapInfo.page || 'General Tools';
+                    if (!groupedButtons[pageTitle]) {
+                        groupedButtons[pageTitle] = [];
+                    }
+                    // Evita di aggiungere duplicati
+                    if (!groupedButtons[pageTitle].some(btn => btn.searchId === searchId)) {
+                        groupedButtons[pageTitle].push({
+                            id: `btn-janua-${searchId}`,
+                            searchId: searchId,
+                            label: mapInfo.label
+                        });
+                    }
                 }
-                
-                groupedButtons[pageTitle].push({
-                    id: `btn-janua-${searchId}`,
-                    searchId: searchId,
-                    label: config.label
-                });
             }
         }
         return groupedButtons;
     };
 
-    /**
-     * Renders the groups of buttons into the results container.
-     * @param {Object} groupedButtons - Buttons grouped by page title.
-     */
-    const renderButtons = (groupedButtons) => {
-        for (const pageTitle in groupedButtons) {
+    const renderButtons = (groupedButtons, query) => {
+        const pageTitles = Object.keys(groupedButtons);
+        
+        // Assicura che "Search Engines" sia sempre l'ultima sezione
+        const sortedPageTitles = pageTitles
+            .filter(title => title !== 'Search Engines')
+            .sort();
+        if (groupedButtons['Search Engines']) {
+            sortedPageTitles.push('Search Engines');
+        }
+
+        for (const pageTitle of sortedPageTitles) {
             const buttons = groupedButtons[pageTitle];
-
-            // Create a section for each group of tools
+            
             const section = document.createElement('section');
-            section.className = 'card card-body mt-4';
-
+            section.className = 'search-instructions';
+            
             const title = document.createElement('h2');
-            title.className = 'card-title';
             title.textContent = pageTitle;
             section.appendChild(title);
             
@@ -98,10 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
             buttons.forEach(btnInfo => {
                 const button = document.createElement('button');
                 button.id = btnInfo.id;
-                button.className = 'button text-active'; // Start as active
+                button.className = 'button text-active';
                 button.textContent = btnInfo.label;
                 button.setAttribute('data-search-id', btnInfo.searchId);
-                button.setAttribute('data-query-override', input.value.trim()); // Pass the query to main.js
+                button.setAttribute('data-query-override', query);
                 buttonGrid.appendChild(button);
             });
 
@@ -110,6 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Listen for typing in the input field
-    input.addEventListener('keyup', updateResults);
+    input.addEventListener('input', () => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(updateResults, 250);
+    });
 });
