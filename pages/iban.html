@@ -17,7 +17,7 @@
     <section class="search-instructions">
         <label for="ibanInput">Enter IBAN to verify:</label>
         <div class="input-button-line">
-            <input type="text" id="ibanInput" class="input-field" placeholder="e.g., IT60X054281110100000123456" autocomplete="off">
+            <input type="text" id="ibanInput" class="input-field" placeholder="e.g., IT18N0503401633000000005226" autocomplete="off">
             <button type="button" id="verifyButton" class="button">Verify</button>
         </div>
         <div id="feedbackMessage" class="feedback-message"></div>
@@ -47,9 +47,7 @@
 
 <script src="../assets/menu/navigation.js"></script>
 <script src="../assets/js/config.js"></script>
-<script src="../assets/data/italian-banks.js"></script>
-<script src="../assets/data/iban-registry.js"></script>
-
+<script src="../assets/js/ibankit.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const ibanInput = document.getElementById('ibanInput');
@@ -58,19 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultContainer = document.getElementById('resultContainer');
     const ibanInfo = document.getElementById('ibanInfo');
     const bankInfo = document.getElementById('bankInfo');
-
-    const validateIbanChecksum = (iban) => {
-        const rearranged = iban.slice(4) + iban.slice(0, 4);
-        let numericString = '';
-        for (let char of rearranged) {
-            if (/[A-Z]/.test(char)) {
-                numericString += (char.charCodeAt(0) - 55);
-            } else {
-                numericString += char;
-            }
-        }
-        return BigInt(numericString) % 97n === 1n;
-    };
 
     const checkIban = () => {
         const iban = ibanInput.value.replace(/\s/g, '').toUpperCase();
@@ -81,24 +66,21 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        const countryCode = iban.slice(0, 2);
-        const registry = (typeof ibanRegistry !== 'undefined') ? ibanRegistry[countryCode] : undefined;
-
-        if (!registry) {
-            showFeedback('Invalid or unsupported country code.', 'error');
-            return;
-        }
-        if (iban.length !== registry.length) {
-            showFeedback(`Invalid length for ${registry.name}. Expected ${registry.length} chars.`, 'error');
-            return;
-        }
-        if (!validateIbanChecksum(iban)) {
-            showFeedback('IBAN is not valid (checksum failed).', 'error');
+        if (!ibankit.validateIBAN(iban)) {
+            const countryCode = iban.substring(0, 2);
+            const countryInfo = ibankit.IBAN_COUNTRIES[countryCode];
+            let message = 'IBAN is not valid.';
+            if (countryInfo && iban.length !== countryInfo.length) {
+                message += ` Expected length for ${countryCode} is ${countryInfo.length}.`;
+            } else {
+                message += ' Checksum or format is incorrect.';
+            }
+            showFeedback(message, 'error');
             return;
         }
 
         showFeedback('IBAN is valid.', 'info');
-        showResults(iban, registry);
+        showResults(iban);
     };
 
     const showFeedback = (message, type) => {
@@ -112,25 +94,44 @@ document.addEventListener('DOMContentLoaded', function() {
         bankInfo.innerHTML = '';
     };
 
-    const showResults = (iban, registry) => {
-        const bban = iban.slice(4);
-        const [start, end] = registry.bankIdPos.split('-').map(Number);
-        const bankId = bban.slice(start - 1, end);
-        let bankName = 'Bank name lookup only for Italian IBANs.';
-
-        if (registry.name === 'Italy' && typeof bankDatabase !== 'undefined') {
-            bankName = bankDatabase[bankId] || 'Italian bank not identified in this list.';
-        }
+    const showResults = (iban) => {
+        const countryCode = iban.substring(0, 2);
         
         ibanInfo.innerHTML = `
-            <p><strong>Country:</strong> ${registry.name} (${iban.slice(0, 2)})</p>
-            <p><strong>Check Digits:</strong> ${iban.slice(2, 4)}</p>
+            <p><strong>Country:</strong> ${ibankit.getCountryName(countryCode)} (${countryCode})</p>
+            <p><strong>Check Digits:</strong> ${iban.substring(2, 4)}</p>
             <p><strong>Length:</strong> ${iban.length} characters</p>
         `;
-        bankInfo.innerHTML = `
-            <p><strong>Bank Identifier:</strong> ${bankId}</p>
-            <p><strong>Bank Name:</strong> ${bankName}</p>
-        `;
+
+        let bankInfoHtml = '';
+        if (countryCode === 'IT') {
+            const cin = iban.substring(4, 5);
+            const abi = iban.substring(5, 10);
+            const cab = iban.substring(10, 15);
+            const accountNumber = iban.substring(15);
+            const bankName = (typeof bankDatabase !== 'undefined' && bankDatabase[abi])
+                ? bankDatabase[abi]
+                : 'Italian bank not identified in this list.';
+
+            bankInfoHtml = `
+                <p><strong>Bank Name:</strong> ${bankName}</p>
+                <p><strong>Country:</strong> ${countryCode}</p>
+                <p><strong>CIN EUR:</strong> ${iban.substring(2, 4)}</p>
+                <p><strong>CIN:</strong> ${cin}</p>
+                <p><strong>ABI:</strong> ${abi}</p>
+                <p><strong>CAB:</strong> ${cab}</p>
+                <p><strong>Account Number:</strong> ${accountNumber}</p>
+            `;
+        } else {
+            const bankCode = 'N/A';
+            const bankName = 'Bank name identification is available for Italian IBANs only.';
+            bankInfoHtml = `
+                <p><strong>Bank Identifier:</strong> ${bankCode}</p>
+                <p><strong>Bank Name:</strong> ${bankName}</p>
+            `;
+        }
+        
+        bankInfo.innerHTML = bankInfoHtml;
         resultContainer.style.display = 'block';
     };
 
