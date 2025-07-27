@@ -1,167 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VK • Exploratores</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/style.css">
-  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IBAN • Exploratores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
 <body>
 
 <div id="navbar-placeholder"></div>
 
 <main>
-  <h1 class="page-title">VK Tools</h1>
-  
-  <section class="search-instructions">
-    <div class="columns">
-      <div class="column">
-        <label for="input-vk-username">Enter VK Username or Search Term:</label>
-        <div class="input-container">
-           <input type="text" id="input-vk-username" class="input-field" placeholder="e.g., paveldurov, osint" autocomplete="off">
+    <h1 class="page-title">IBAN Verification & Parsing Tool</h1>
+    <section class="search-instructions">
+        <label for="ibanInput">Enter IBAN to verify:</label>
+        <div class="input-button-line">
+            <input type="text" id="ibanInput" class="input-field" placeholder="e.g., IT60X054281110100000123456" autocomplete="off">
+            <button type="button" id="verifyButton" class="button">Verify</button>
         </div>
-        <div id="feedback-vk-username" class="feedback-message"></div>
-      </div>
-      <div class="column">
-        <label for="input-vk-userid">Enter VK User ID or Group ID (Numeric):</label>
-        <div class="input-container">
-          <input type="text" id="input-vk-userid" class="input-field" placeholder="e.g., 1 (user) or -12345 (group)" autocomplete="off">
-        </div>
-        <div id="feedback-vk-userid" class="feedback-message"></div>
-      </div>
+        <div id="feedbackMessage" class="feedback-message"></div>
+    </section>
+    <div class="note">
+        <strong>NOTE:</strong> This tool validates IBAN structure for multiple countries and identifies the bank for Italian IBANs. No data is sent to external services.
     </div>
-  </section>
-  
-  <div class="note">
-    Some VK features may require an active account to be viewed correctly.
-  </div>
 
-  <div class="columns">
-    <div class="column">
-      <h2>User Profile & Information</h2>
-      <div class="button-grid button-grid-2col">
-        <button id="btn-vk-profile-username" type="button" class="button" data-search-id="vk-profile-username">Profile (Username)</button>
-        <button id="btn-vk-profile-id" type="button" class="button" data-search-id="vk-profile-id">Profile (User ID)</button>
-        <button id="btn-vk-profile-link" type="button" class="button" data-search-id="vk-profile-link">VK.me Profile</button>
-        <button id="btn-vk-user-allposts" type="button" class="button" data-search-id="vk-user-allposts">All Posts</button>
-        <button id="btn-vk-user-friends" type="button" class="button" data-search-id="vk-user-friends">Friends</button>
-        <button id="btn-vk-user-followers" type="button" class="button" data-search-id="vk-user-followers">Followers</button>
-        <button id="btn-vk-user-groups" type="button" class="button" data-search-id="vk-user-groups">User's Groups</button>
-        <button id="btn-vk-user-photos" type="button" class="button" data-search-id="vk-user-photos">User Photos</button>
-        <button id="btn-vk-user-photoalbums" type="button" class="button" data-search-id="vk-user-photoalbums">Photo Albums</button>
-        <button id="btn-vk-user-videos" type="button" class="button" data-search-id="vk-user-videos">Videos</button>
-        <button id="btn-vk-user-audio" type="button" class="button" data-search-id="vk-user-audio">Audio</button>
-        <button id="btn-vk-user-notes" type="button" class="button" data-search-id="vk-user-notes">Notes</button>
-        <button id="btn-vk-user-gifts" type="button" class="button" data-search-id="vk-user-gifts">Gifts</button>
-        <button id="btn-vk-user-market" type="button" class="button" data-search-id="vk-user-market">User's Market</button>
-        <button id="btn-vk-user-apps" type="button" class="button" data-search-id="vk-user-apps">User Apps</button>
-      </div>
+    <div id="resultContainer" style="display: none;">
+        <h2>Verification Results</h2>
+        <div class="columns">
+            <div class="column">
+                <h3>IBAN Information</h3>
+                <div id="ibanInfo"></div>
+            </div>
+            <div class="column">
+                <h3>Bank Information</h3>
+                <div id="bankInfo"></div>
+            </div>
+        </div>
     </div>
-    <div class="column">
-      <h2>Content Search</h2>
-       <div class="button-grid button-grid-2col">
-        <button id="btn-vk-search-all" type="button" class="button" data-search-id="vk-search-all">Search All Content</button>
-        <button id="btn-vk-search-people" type="button" class="button" data-search-id="vk-search-people">Search People</button>
-        <button id="btn-vk-search-news" type="button" class="button" data-search-id="vk-search-news">Search News/Posts</button>
-        <button id="btn-vk-search-groups" type="button" class="button" data-search-id="vk-search-groups">Search Groups</button>
-        <button id="btn-vk-search-photos" type="button" class="button" data-search-id="vk-search-photos">Search Photos</button>
-        <button id="btn-vk-search-videos" type="button" class="button" data-search-id="vk-search-videos">Search Videos</button>
-        <button id="btn-vk-search-audio" type="button" class="button" data-search-id="vk-search-audio">Search Audio</button>
-        <button id="btn-vk-search-docs" type="button" class="button" data-search-id="vk-search-docs">Search Documents</button>
-        <button id="btn-vk-search-market" type="button" class="button" data-search-id="vk-search-market">Search Market</button>
-      </div>
-      
-      <section id="section-vk-trend" class="search-instructions" style="margin-top: 2rem;">
-        <h2>Trend</h2>
-        <label for="input-vk-tag">Enter tag to search (without #):</label>
-        <div class="input-container">
-            <input type="text" id="input-vk-tag" class="input-field" placeholder="e.g., pixelart" autocomplete="off">
-        </div>
-        <div id="feedback-vk-tag" class="feedback-message"></div>
-        <div class="button-grid">
-            <button id="btn-vk-search-tag" type="button" class="button" data-search-id="vk-search-tag">Search Tag</button>
-        </div>
-      </section>
-
-      <section id="section-vk-external" class="search-instructions" style="margin-top: 2rem;">
-        <h2>External Searches</h2>
-        <div class="button-grid">
-            <button id="btn-vk-ext-google" type="button" class="button" data-search-id="vk-ext-google">Google Search</button>
-            <button id="btn-vk-ext-smat" type="button" class="button" data-search-id="vk-ext-smat">SMAT Search</button>
-            <button id="btn-vk-ext-checko" type="button" class="button" data-search-id="vk-ext-checko">Checko.ru</button>
-            <button id="btn-vk-ext-mailru" type="button" class="button" data-search-id="vk-ext-mailru">Mail.Ru Search</button>
-            <button id="btn-vk-ext-webarchive" type="button" class="button" data-search-id="vk-ext-webarchive">WebArchive (RU)</button>
-        </div>
-      </section>
-    </div>
-  </div>
 </main>
 
 <footer>
-  <p>Exploratores 3 • Prototype <a href="../license.html">License</a></p>
+    <p>Exploratores 2.5 • Prototype <a href="../license.html">License</a></p>
 </footer>
 
-<script src="../assets/js/main.js"></script>
-<script src="../assets/js/validators.js"></script>
-<script src="../assets/js/search-library.js"></script>
 <script src="../assets/menu/navigation.js"></script>
 <script src="../assets/js/config.js"></script>
+<script src="../assets/data/italian-banks.js"></script>
+<script src="../assets/data/iban-registry.js"></script>
 
 <script>
-    function setInitialPageState() {
-        const inputGroups = [
-            {
-                inputIds: ['input-vk-username'],
-                buttonSelector: '#btn-vk-profile-username, #btn-vk-profile-link, #btn-vk-search-all, #btn-vk-search-people, #btn-vk-search-news, #btn-vk-search-groups, #btn-vk-search-photos, #btn-vk-search-videos, #btn-vk-search-audio, #btn-vk-search-docs, #btn-vk-search-market, #btn-vk-ext-google, #btn-vk-ext-smat, #btn-vk-ext-checko, #btn-vk-ext-mailru, #btn-vk-ext-webarchive',
-                validator: ExploratoresValidators.getAndValidateVkUsername,
-                feedbackId: 'feedback-vk-username'
-            },
-            {
-                inputIds: ['input-vk-userid'],
-                buttonSelector: '#btn-vk-profile-id, #btn-vk-user-allposts, #btn-vk-user-friends, #btn-vk-user-followers, #btn-vk-user-groups, #btn-vk-user-photos, #btn-vk-user-photoalbums, #btn-vk-user-videos, #btn-vk-user-audio, #btn-vk-user-notes, #btn-vk-user-gifts, #btn-vk-user-market, #btn-vk-user-apps',
-                validator: ExploratoresValidators.getAndValidateVkUserId,
-                feedbackId: 'feedback-vk-userid'
-            },
-            {
-                inputIds: ['input-vk-tag'],
-                buttonSelector: '#btn-vk-search-tag',
-                validator: ExploratoresValidators.getAndValidateVkTag,
-                feedbackId: 'feedback-vk-tag'
+document.addEventListener('DOMContentLoaded', function() {
+    const ibanInput = document.getElementById('ibanInput');
+    const verifyButton = document.getElementById('verifyButton');
+    const feedbackMessage = document.getElementById('feedbackMessage');
+    const resultContainer = document.getElementById('resultContainer');
+    const ibanInfo = document.getElementById('ibanInfo');
+    const bankInfo = document.getElementById('bankInfo');
+
+    const validateIbanChecksum = (iban) => {
+        const rearranged = iban.slice(4) + iban.slice(0, 4);
+        let numericString = '';
+        for (let char of rearranged) {
+            if (/[A-Z]/.test(char)) {
+                numericString += (char.charCodeAt(0) - 55);
+            } else {
+                numericString += char;
             }
-        ];
+        }
+        return BigInt(numericString) % 97n === 1n;
+    };
 
-        const updateUi = (group) => {
-            const validationResult = group.validator();
-            const feedbackEl = document.getElementById(group.feedbackId);
+    const checkIban = () => {
+        const iban = ibanInput.value.replace(/\s/g, '').toUpperCase();
+        
+        hideResults();
+        if (!iban) {
+            showFeedback('Please enter an IBAN.', 'error');
+            return;
+        }
 
-            document.querySelectorAll(group.buttonSelector).forEach(button => {
-                button.disabled = !validationResult.isValid;
-                button.classList.toggle('text-active', validationResult.isValid);
-            });
+        const countryCode = iban.slice(0, 2);
+        const registry = (typeof ibanRegistry !== 'undefined') ? ibanRegistry[countryCode] : undefined;
 
-            if (feedbackEl) {
-                const anyInputWithValue = group.inputIds.some(id => document.getElementById(id)?.value.trim() !== '');
-                if (!anyInputWithValue) {
-                    feedbackEl.textContent = '';
-                } else {
-                    feedbackEl.textContent = validationResult.message;
-                    feedbackEl.className = `feedback-message ${validationResult.isValid ? 'feedback-info' : 'feedback-error'}`;
-                }
-            }
-        };
+        if (!registry) {
+            showFeedback('Invalid or unsupported country code.', 'error');
+            return;
+        }
+        if (iban.length !== registry.length) {
+            showFeedback(`Invalid length for ${registry.name}. Expected ${registry.length} chars.`, 'error');
+            return;
+        }
+        if (!validateIbanChecksum(iban)) {
+            showFeedback('IBAN is not valid (checksum failed).', 'error');
+            return;
+        }
 
-        inputGroups.forEach(group => {
-            group.inputIds.forEach(inputId => {
-                const inputElement = document.getElementById(inputId);
-                if (inputElement) inputElement.addEventListener('input', () => updateUi(group));
-            });
-            updateUi(group);
-        });
+        showFeedback('IBAN is valid.', 'info');
+        showResults(iban, registry);
+    };
+
+    const showFeedback = (message, type) => {
+        feedbackMessage.textContent = message;
+        feedbackMessage.className = `feedback-message feedback-${type}`;
+    };
+
+    const hideResults = () => {
+        resultContainer.style.display = 'none';
+        ibanInfo.innerHTML = '';
+        bankInfo.innerHTML = '';
+    };
+
+    const showResults = (iban, registry) => {
+        const bban = iban.slice(4);
+        const [start, end] = registry.bankIdPos.split('-').map(Number);
+        const bankId = bban.slice(start - 1, end);
+        let bankName = 'Bank name lookup only for Italian IBANs.';
+
+        if (registry.name === 'Italy' && typeof bankDatabase !== 'undefined') {
+            bankName = bankDatabase[bankId] || 'Italian bank not identified in this list.';
+        }
+        
+        ibanInfo.innerHTML = `
+            <p><strong>Country:</strong> ${registry.name} (${iban.slice(0, 2)})</p>
+            <p><strong>Check Digits:</strong> ${iban.slice(2, 4)}</p>
+            <p><strong>Length:</strong> ${iban.length} characters</p>
+        `;
+        bankInfo.innerHTML = `
+            <p><strong>Bank Identifier:</strong> ${bankId}</p>
+            <p><strong>Bank Name:</strong> ${bankName}</p>
+        `;
+        resultContainer.style.display = 'block';
+    };
+
+    verifyButton.addEventListener('click', checkIban);
+    ibanInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') checkIban();
+    });
+    ibanInput.addEventListener('input', () => {
+        hideResults();
+        showFeedback('', 'info');
+    });
+
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          document.querySelectorAll(selector).forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
     }
-
-    document.addEventListener('DOMContentLoaded', setInitialPageState);
+});
 </script>
 
 </body>
