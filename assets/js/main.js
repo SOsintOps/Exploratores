@@ -39,10 +39,7 @@ const Exploratores = {
             }
             
             const queryOverride = button.getAttribute('data-query-override');
-            
-            // --- CORREZIONE ---
-            // Usiamo .call() per impostare esplicitamente il contesto 'this' a ExploratoresValidators
-            const validationResult = validator.call(ExploratoresValidators, config, queryOverride);
+            const validationResult = validator(config, queryOverride);
 
             if (!validationResult.isValid) return;
 
