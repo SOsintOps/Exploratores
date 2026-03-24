@@ -64,8 +64,8 @@
 
         <h3>Guide A: Page State Management</h3>
         <p><strong>Concept:</strong> To prevent searches with invalid data, buttons on a page are disabled until the user provides valid input. This is handled by a page-specific script.</p>
-        <p><strong>Standard Implementation:</strong> For pages with multiple, independent input groups (like `PublicCompanyRecords.html`), the standard method is to use an `inputGroups` array. Each object in the array defines a set of inputs, the buttons they control, and the validator to use.</p>
-        <pre class="code-guide-block"><code>// In a page-specific script, e.g., at the bottom of PublicCompanyRecords.html
+        <p><strong>Standard Implementation:</strong> For pages with multiple, independent input groups (like `publiccompanyrecords.html`), the standard method is to use an `inputGroups` array. Each object in the array defines a set of inputs, the buttons they control, and the validator to use.</p>
+        <pre class="code-guide-block"><code>// In a page-specific script, e.g., at the bottom of publiccompanyrecords.html
 function setInitialPageState() {
     const inputGroups = [
         {
@@ -144,7 +144,7 @@ getAndValidateIpAddress: function(config) {
 </main>
 
 <footer>
-    <p>Exploratores 2.6 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.0alpha <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>

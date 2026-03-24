@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Version History • Exploratores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<main>
+    <h1 class="page-title">Version History</h1>
+    <p class="center-text">Changelog of all releases and improvements to the Exploratores OSINT Toolkit.</p>
+
+    <section class="faq-section">
+
+        <div class="faq-item">
+            <h2>3.0 alpha <span style="font-size:0.7em; font-weight:normal;">— 2025</span></h2>
+            <ul>
+                <li><strong>New:</strong> <strong>Janua</strong> — intelligent indicator dispatcher. Paste any indicator (email, IP, domain, IBAN, username, hash, crypto address, VIN, etc.) and get only the relevant search tools.</li>
+                <li><strong>New:</strong> <code>indicator-classifier.js</code> — classifies input with a confidence score across 20+ indicator types.</li>
+                <li><strong>New:</strong> <code>dispatcher.js</code> — maps classified types to validators and renders contextual search buttons dynamically.</li>
+                <li><strong>New:</strong> <code>janua-search-map.js</code> — maps every <code>searchId</code> to a label and source page for Janua rendering.</li>
+                <li><strong>New:</strong> Platform-specific URL parsing (VK, X/Twitter, Instagram, Telegram, Facebook, LinkedIn).</li>
+                <li><strong>Improved:</strong> <code>validators.js</code> — full refactor with consistent return structure and broader coverage.</li>
+                <li><strong>Improved:</strong> <code>search-library.js</code> — added IBAN search entries (Google, SWIFT, iban.com) and VK profile info.</li>
+                <li><strong>Improved:</strong> Navigation menu — fixed case-sensitive links for <code>guidelines.html</code> and <code>publiccompanyrecords.html</code>.</li>
+                <li><strong>Improved:</strong> All HTML files renamed to lowercase to enforce naming convention.</li>
+                <li><strong>Improved:</strong> Version History page added to the Tools menu.</li>
+                <li><strong>Fixed:</strong> Broken links across all pages resolved.</li>
+                <li><strong>Fixed:</strong> Missing CSS imports corrected.</li>
+            </ul>
+        </div>
+
+        <div class="faq-item">
+            <h2>2.6 <span style="font-size:0.7em; font-weight:normal;">— 2025</span></h2>
+            <ul>
+                <li><strong>Fixed:</strong> Broken links across all pages.</li>
+                <li><strong>Fixed:</strong> Missing CSS assets corrected.</li>
+                <li><strong>Improved:</strong> Version string consistency enforced across all 30+ pages.</li>
+                <li><strong>Improved:</strong> Documentation pages (<code>faq.md</code>, <code>customise.md</code>) updated.</li>
+                <li><strong>Improved:</strong> <code>assets/css/style.css</code> — minor layout fixes.</li>
+                <li><strong>Improved:</strong> <code>assets/menu/navigation.js</code> — link corrections.</li>
+            </ul>
+        </div>
+
+        <div class="faq-item">
+            <h2>2.5 <span style="font-size:0.7em; font-weight:normal;">— 2025</span></h2>
+            <ul>
+                <li><strong>New:</strong> Data-driven architecture introduced — <code>main.js</code>, <code>validators.js</code>, <code>search-library.js</code> replace all inline <code>onclick</code> logic.</li>
+                <li><strong>New:</strong> <code>search-library.js</code> as centralized catalog of all search configurations (URL templates + validators).</li>
+                <li><strong>New:</strong> <code>validators.js</code> as shared validation library used across all pages.</li>
+                <li><strong>New:</strong> <code>config.js</code> — Light Version support: hide/show UI elements per-user via configuration.</li>
+                <li><strong>New:</strong> Pages: VK, IBAN (refactored), Search Engines (updated).</li>
+                <li><strong>Improved:</strong> Dynamic navigation bar via <code>navigation.js</code> — single definition, path-aware links.</li>
+                <li><strong>Improved:</strong> IBAN page — centralized search logic, cleaner layout.</li>
+                <li><strong>Improved:</strong> <code>launchme.html</code> — search function added.</li>
+                <li><strong>Improved:</strong> Separation of concerns enforced: no inline styles or scripts in HTML.</li>
+            </ul>
+        </div>
+
+        <div class="faq-item">
+            <h2>1.0 <span style="font-size:0.7em; font-weight:normal;">— Initial Release</span></h2>
+            <ul>
+                <li><strong>New:</strong> Initial release of the Exploratores OSINT Toolkit.</li>
+                <li><strong>New:</strong> Core pages: Names, Email, IP, Domains, Maps, Addresses, Images, Videos, Documents, Vehicles, Usernames, Phone (US &amp; International), Social Media (Facebook, Instagram, X, LinkedIn, VK, Keybase), Virtual Currencies, Company Public Records, IBAN, CyberChef integration.</li>
+                <li><strong>New:</strong> Dynamic navigation menu.</li>
+                <li><strong>New:</strong> Guidelines, FAQ, License, Customise documentation pages.</li>
+            </ul>
+        </div>
+
+    </section>
+</main>
+
+<footer>
+    <p>Exploratores 3.0alpha <a href="./license.html">License</a></p>
+</footer>
+
+<script src="../assets/menu/navigation.js"></script>
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
