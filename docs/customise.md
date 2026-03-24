@@ -8,7 +8,7 @@ The toolkit is built on three fundamental principles: a Data-Driven Design, Cent
 
 ### Directory and File Structure
 
-The file organization is designed to separate content (HTML pages) from shared resources (assets), ensuring order and ease of maintenance. The definitive structure is documented in the `gemini.md` file.
+The file organization is designed to separate content (HTML pages) from shared resources (assets), ensuring order and ease of maintenance.
 
 ### Technical & Contribution Guidelines
 
