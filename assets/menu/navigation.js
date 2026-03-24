@@ -60,14 +60,14 @@ function generateNavHTML() {
         </li>
         <li><span>Company<br>Public Records</span>
           <ul class="submenu">
-            <li><a href="${pagesPath}publiccompanyrecords.html">Company Public Records</a></li>
+            <li><a href="${pagesPath}PublicCompanyRecords.html">Company Public Records</a></li>
             <li><a href="${pagesPath}currencies.html">Virtual Currencies</a></li>
             <li><a href="${pagesPath}iban.html">IBAN</a></li>
           </ul>
         </li>
         <li><span>Tools</span>
           <ul class="submenu">
-            <li><a href="${pagesPath}guidelines.html">Guidelines</a></li>
+            <li><a href="${pagesPath}Guidelines.html">Guidelines</a></li>
             <li><a href="${pagesPath}customise.html">Customise</a></li>
             <li><a href="${pagesPath}faq.html">FAQ</a></li>
             <li><a href="${pagesPath}cyberchef.html">CyberChef (Pages)</a></li>

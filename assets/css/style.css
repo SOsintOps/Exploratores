@@ -420,6 +420,11 @@ main {
   margin-bottom: 1rem;
 }
 
+/* Modifier class for a button grid strictly with 2 columns */
+.button-grid-2col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 /* Modifier class for a button grid strictly with 3 columns */
 .button-grid-3col {
   grid-template-columns: repeat(3, 1fr);
@@ -541,7 +546,8 @@ footer a {
     padding: 0 0.2rem;
   }
   .button-grid,
-  .button-grid-3col { 
+  .button-grid-2col,
+  .button-grid-3col {
     grid-template-columns: 1fr;
   }
   .form-row-grid { 

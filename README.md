@@ -1,10 +1,10 @@
-# Exploratores OSINT Toolkit v3
+# Exploratores OSINT Toolkit v2.6
 
 ![Exploratores Toolkit Logo](assets/images/exploratores.jpg)
 
 [GitHub Repository](https://github.com/SOsintOps/Exploratores)
 
-**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows. Version 2.5 introduces a centralized, data-driven JavaScript architecture, making the toolkit more robust, maintainable, and easier to extend.
+**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows. Version 2.6 features a centralized, data-driven JavaScript architecture, making the toolkit more robust, maintainable, and easier to extend.
 
 ---
 
@@ -19,7 +19,7 @@
 
 ---
 
-![version](https://img.shields.io/badge/version-2.5-blue)
+![version](https://img.shields.io/badge/version-2.6-blue)
 
 ## 🔧 Requirements
 

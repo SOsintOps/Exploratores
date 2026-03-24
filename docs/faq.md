@@ -46,7 +46,7 @@ The Exploratores OSINT Toolkit aims to consolidate and organize a wide range of 
 
 ### Can I use the Exploratores OSINT Toolkit outside of my team?
 
-Yes. You can distribute, share, and customize explorers as needed. However, You will be responsible for any unapproved purposes or inappropriate use of this tool.
+Yes. You can distribute, share, and customize Exploratores as needed. However, you will be responsible for any unapproved purposes or inappropriate use of this tool.
 
 ### Is the Exploratores OSINT Toolkit covered by any warranty?
 
@@ -87,7 +87,7 @@ No, the toolkit consists of HTML, CSS, and JavaScript pages that run directly in
 
 ### Are my search activities tracked by the toolkit?
 
-The Exploratores toolkit itself does not implement any tracking or logging of your specific queries. However, each external service or website you access through the toolkit operates under its own privacy policies and may log your interactions. Always use safe Browse practices.
+The Exploratores toolkit itself does not implement any tracking or logging of your specific queries. However, each external service or website you access through the toolkit operates under its own privacy policies and may log your interactions. Always use safe browsing practices.
 
 ### Is it necessary to create dedicated investigative accounts for using some of these tools?
 
