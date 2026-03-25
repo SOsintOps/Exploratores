@@ -69,8 +69,8 @@ function generateNavHTML() {
           <ul class="submenu">
             <li><a href="${pagesPath}cyberchef.html">CyberChef</a></li>
             <li><a href="${pagesPath}guidelines.html">Guidelines</a></li>
-            <li><a href="${pagesPath}customise.html">Customise</a></li>
             <li><a href="${pagesPath}faq.html">FAQ</a></li>
+            <li><a href="${pagesPath}customise.html">Customise</a></li>
             <li><a href="${pagesPath}versionhistory.html">Version History</a></li>
           </ul>
         </li>

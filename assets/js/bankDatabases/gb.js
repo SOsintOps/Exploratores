@@ -1,0 +1,26 @@
+// Bank database for United Kingdom — Source: Pay.UK / BIC directory — Updated: March 2025
+const bankDatabase_GB = {
+  "NWBK": "NatWest", "BARC": "Barclays", "HBUK": "HSBC UK",
+  "LOYD": "Lloyds Bank", "SRLG": "Starling Bank", "MONZ": "Monzo Bank",
+  "REVO": "Revolut", "BUKB": "Barclays UK", "CPBK": "Co-operative Bank",
+  "RBOS": "Royal Bank of Scotland", "HALI": "Halifax", "BOFS": "Bank of Scotland",
+  "MIDL": "HSBC (legacy Midland)", "NAIA": "Nationwide Building Society",
+  "ABBY": "Santander UK", "CITI": "Citibank UK", "DEUT": "Deutsche Bank UK",
+  "BNPA": "BNP Paribas UK", "SOGE": "Société Générale UK",
+  "CMCB": "Chase UK", "WISE": "Wise", "TRWI": "Transferwise",
+  "CLRB": "Clearbank", "FIRE": "Fire Financial Services",
+  "BPLA": "Plaid / Bacs", "FTCS": "First Direct",
+  "MSUF": "Metro Bank", "PAOB": "Atom Bank",
+  "AAAA": "Aldermore Bank", "SUNS": "Sunlight Bank",
+  "FAST": "Fastpay", "TSBS": "TSB Bank",
+  "YRKB": "Yorkshire Bank", "CLYD": "Clydesdale Bank",
+  "UBAN": "Ulster Bank", "DAIB": "AIB (Allied Irish Banks)",
+  "ULSB": "Ulster Bank (NI)", "BOFI": "Bank of Ireland UK",
+  "NTAG": "Northern Trust", "GSLN": "Goldman Sachs International",
+  "JPMG": "JPMorgan Chase UK", "MSBG": "Morgan Stanley Bank",
+  "INGB": "ING Bank London", "ABNA": "ABN AMRO UK",
+  "RABO": "Rabobank London", "KASA": "Kasab Bank",
+  "SWIS": "Credit Suisse UK", "UBSW": "UBS UK",
+  "CAHB": "Cahoot (Santander)", "DAVD": "Virgin Money",
+  "NRBS": "Nationwide (alt)", "WEST": "Wesleyan Bank"
+};
