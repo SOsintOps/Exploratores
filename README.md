@@ -1,72 +1,81 @@
-# Exploratores OSINT Toolkit v2.6
+# Exploratores OSINT Toolkit 3.0α
 
 ![Exploratores Toolkit Logo](assets/images/exploratores.jpg)
 
 [GitHub Repository](https://github.com/SOsintOps/Exploratores)
 
-**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows. Version 2.6 features a centralized, data-driven JavaScript architecture, making the toolkit more robust, maintainable, and easier to extend.
+**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows. Version 3.0α introduces the **Janua** intelligent indicator dispatcher, multi-country IBAN analysis, a redesigned Toolkit Search, and a fully data-driven JavaScript architecture.
 
 ---
 
 ## ✨ Key Features
 
+- ✅ **Janua** — paste any indicator (email, IP, domain, IBAN, hash, username, crypto address, VIN…) and get only the relevant search tools automatically.
+- ✅ Multi-country IBAN verifier with offline bank name resolution for 11 countries.
+- ✅ Toolkit Search with two-column scrollable results and live counter.
 - ✅ Clean and fully responsive layout with semantic HTML5.
 - ✅ Dynamically loaded navigation bar for easy site-wide updates.
-- ✅ Centralized, data-driven JavaScript architecture for maintainability.
-- ✅ Modular pages with scoped focus (Names, Phones, Domains, etc.).
-- ✅ Toolkit UI is fully functional offline (via `file://` protocol); external tools require internet.
-- ✅ No server or backend dependencies required for the toolkit itself.
+- ✅ Centralized, data-driven JavaScript architecture (`main.js`, `validators.js`, `search-library.js`).
+- ✅ Modular pages with scoped focus (Names, Phones, Domains, IBAN, etc.).
+- ✅ Fully functional offline via `file://` protocol; external tools require internet.
+- ✅ No server or backend dependencies required.
 
 ---
 
-![version](https://img.shields.io/badge/version-2.6-blue)
+![version](https://img.shields.io/badge/version-3.0α-blue)
 
 ## 🔧 Requirements
 
-- Any modern web browser (Chrome, Firefox, Edge, Brave).
+- Any modern web browser (Chrome, Edge, Brave).
 - No server or backend required to run the toolkit.
 - **Internet access is mandatory** for the external search features to work.
 
 ## 📦 Installation
 
-1.  Clone or download the repository.
-    ```bash
-    git clone [https://github.com/SOsintOps/Exploratores.git](https://github.com/SOsintOps/Exploratores.git)
-    ```
-2.  Open **`launchme.html`** in your browser.
-3.  Start using the toolkit.
+1. Clone or download the repository.
+   ```bash
+   git clone https://github.com/SOsintOps/Exploratores.git
+   ```
+2. Open **`launchme.html`** in your browser.
+3. Start using the toolkit.
 
 ## 📂 Toolkit Sections
 
 The toolkit is organized into the following sections, accessible from the main navigation menu:
+
+* **Janua**: Intelligent indicator dispatcher — automatically routes any input to the right tools.
 * **Search Engines**: Clear Web and Tor search capabilities.
 * **People & Identities**: Tools for investigating names, phone numbers, addresses, and more.
-* **Social Media**: Search functions for major platforms like X (Twitter), Facebook, etc.
+* **Social Media**: Search functions for major platforms (X/Twitter, Facebook, Instagram, LinkedIn, VK, Telegram).
 * **Websites**: Tools for domain and IP address analysis.
 * **GeoInt**: Mapping and geolocation tools.
 * **Media Analysis**: Image, video, and document analysis tools.
-* **Company Public Records**: Corporate and virtual currency investigation tools.
-* **Tools**: Internal utilities and documentation.
+* **Company & Finance**: Corporate records, virtual currencies, IBAN verification.
+* **Tools**: CyberChef, Guidelines, FAQ, Customise, Version History.
 
 ---
 
 ## 📚 Documentation
 
-For detailed information on the project, customization, and frequently asked questions, refer to the files in the `/docs` directory:
-* [Customisation Guide](./docs/customise.md)
-* [Frequently Asked Questions (FAQ)](./docs/faq.md)
-* [Analytic & OPSEC Guidelines](./docs/guidelines.md)
+Detailed documentation is available directly in the toolkit under the **Tools** menu:
+
+* [Guidelines](pages/guidelines.html) — analytic standards, 5W1H framework, OPSEC best practices.
+* [FAQ](pages/faq.html) — frequently asked questions, architecture overview, troubleshooting.
+* [Customise](pages/customise.html) — guide to extending and customising the toolkit.
+* [Version History](pages/versionhistory.html) — full changelog.
+
+The `docs/` directory contains the source Markdown for the [Guidelines](docs/guidelines.md).
 
 ---
 
 ## 🧭 How to Use Exploratores
 
-1.  Open **`launchme.html`** in a web browser.
-2.  Use the navigation bar to access OSINT tools grouped by category.
-3.  Enter your search terms in the input fields on a given page.
-4.  Click the buttons to launch searches on various external services.
-5.  Some tools may require you to be logged into the respective service (e.g., Facebook, LinkedIn).
-6.  Always apply OPSEC principles while conducting investigations.
+1. Open **`launchme.html`** in a web browser.
+2. Use **Janua** (home page) to paste any indicator and get contextual tools instantly.
+3. Or navigate to a specific section via the navigation bar.
+4. Enter your search terms in the input fields and click the search buttons.
+5. Some tools may require you to be logged into the respective service.
+6. Always apply OPSEC principles while conducting investigations.
 
 ---
 

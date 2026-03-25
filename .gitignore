@@ -72,3 +72,7 @@ _site/
 .claude/
 .claude-flow/
 CLAUDE.md
+
+# Swarm and local scripts — local only, do not push
+.swarm/
+start.ps1
