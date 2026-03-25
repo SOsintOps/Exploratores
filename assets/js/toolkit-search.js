@@ -41,6 +41,11 @@ const ToolkitSearch = {
         }
     },
 
+    updateCounter: function(count) {
+        const el = document.getElementById('toolkit-search-count');
+        if (el) el.textContent = count;
+    },
+
     performSearch: function(query) {
         const resultsContainer = document.getElementById('toolkit-search-results');
         if (!resultsContainer) return;
@@ -50,12 +55,15 @@ const ToolkitSearch = {
 
         if (searchTerm.length < 2) {
             resultsContainer.style.display = 'none';
+            this.updateCounter(0);
             return;
         }
 
         const results = this.searchIndex.filter(item =>
             item.keywords.includes(searchTerm) || item.searchKey.includes(searchTerm)
         );
+
+        this.updateCounter(results.length);
 
         if (results.length > 0) {
             const list = document.createElement('ul');
