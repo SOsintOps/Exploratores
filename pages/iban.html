@@ -31,37 +31,34 @@
             </div>
         </section>
 
-        <section class="search-instructions" id="iban-coverage-notes">
-            <h2>Local Database Coverage</h2>
-            <p>The following table shows the number of banks available in the local lookup database for each supported country. Bank name resolution is performed entirely offline.</p>
+        <div class="note" id="iban-coverage-notes">
+            <strong>Local Database Coverage</strong> — Bank name resolution is performed entirely offline.
             <table class="iban-coverage-table">
                 <thead>
                     <tr>
                         <th>Country</th>
                         <th>Code</th>
-                        <th>Bank Code Type</th>
                         <th>Banks in DB</th>
                         <th>Coverage</th>
-                        <th>Source</th>
                         <th>Updated</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Italy</td><td>IT</td><td>ABI (5-digit)</td><td>~340</td><td>Partial</td><td>ABI Register</td><td>Jan 2025</td></tr>
-                    <tr><td>Germany</td><td>DE</td><td>BLZ (8-digit)</td><td>~80</td><td>Partial — top banks</td><td>Deutsche Bundesbank</td><td>Mar 2025</td></tr>
-                    <tr><td>France</td><td>FR</td><td>CIB (5-digit)</td><td>~55</td><td>Partial — top banks</td><td>CFONB</td><td>Mar 2025</td></tr>
-                    <tr><td>Spain</td><td>ES</td><td>Entidad (4-digit)</td><td>~35</td><td>Partial — top banks</td><td>Banco de España</td><td>Mar 2025</td></tr>
-                    <tr><td>United Kingdom</td><td>GB</td><td>BIC-4 (alpha)</td><td>~50</td><td>Good</td><td>Pay.UK / BIC directory</td><td>Mar 2025</td></tr>
-                    <tr><td>Netherlands</td><td>NL</td><td>BIC-4 (alpha)</td><td>~20</td><td>Complete</td><td>Betaalvereniging NL</td><td>Mar 2025</td></tr>
-                    <tr><td>Belgium</td><td>BE</td><td>Bank code (3-digit)</td><td>~32</td><td>Good</td><td>NBB / Febelfin</td><td>Mar 2025</td></tr>
-                    <tr><td>Portugal</td><td>PT</td><td>Bank code (4-digit)</td><td>~25</td><td>Good</td><td>Banco de Portugal</td><td>Mar 2025</td></tr>
-                    <tr><td>Austria</td><td>AT</td><td>BLZ (5-digit)</td><td>~45</td><td>Partial — top banks</td><td>OeNB</td><td>Mar 2025</td></tr>
-                    <tr><td>Switzerland</td><td>CH</td><td>IID / Clearing (5-digit)</td><td>~50</td><td>Good</td><td>SIX Interbank Clearing</td><td>Mar 2025</td></tr>
-                    <tr><td>Poland</td><td>PL</td><td>Routing prefix (3-digit)</td><td>~28</td><td>Partial — top banks</td><td>NBP ELIXIR</td><td>Mar 2025</td></tr>
+                    <tr><td>Italy</td><td>IT</td><td>~340</td><td>Partial</td><td>Jan 2025</td></tr>
+                    <tr><td>Germany</td><td>DE</td><td>~80</td><td>Partial</td><td>Mar 2025</td></tr>
+                    <tr><td>France</td><td>FR</td><td>~55</td><td>Partial</td><td>Mar 2025</td></tr>
+                    <tr><td>Spain</td><td>ES</td><td>~35</td><td>Partial</td><td>Mar 2025</td></tr>
+                    <tr><td>United Kingdom</td><td>GB</td><td>~50</td><td>Good</td><td>Mar 2025</td></tr>
+                    <tr><td>Netherlands</td><td>NL</td><td>~20</td><td>Complete</td><td>Mar 2025</td></tr>
+                    <tr><td>Belgium</td><td>BE</td><td>~32</td><td>Good</td><td>Mar 2025</td></tr>
+                    <tr><td>Portugal</td><td>PT</td><td>~25</td><td>Good</td><td>Mar 2025</td></tr>
+                    <tr><td>Austria</td><td>AT</td><td>~45</td><td>Partial</td><td>Mar 2025</td></tr>
+                    <tr><td>Switzerland</td><td>CH</td><td>~50</td><td>Good</td><td>Mar 2025</td></tr>
+                    <tr><td>Poland</td><td>PL</td><td>~28</td><td>Partial</td><td>Mar 2025</td></tr>
                 </tbody>
             </table>
-            <p class="note-text"><em>Full datasets for DE, AT, CH are freely available from national central banks. FR, ES, PL data from official regulatory registers. Coverage marked "Partial" can be expanded by importing the full official CSV/XLS files.</em></p>
-        </section>
+            <em>Full datasets for DE, AT, CH are freely available from national central banks. Coverage marked "Partial" can be expanded by importing the full official CSV/XLS files. See the <a href="faq.html#q-iban-db-update">FAQ: How do I update the IBAN bank databases?</a> for sources and procedure.</em>
+        </div>
 
         <hr>
 

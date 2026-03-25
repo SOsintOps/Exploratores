@@ -43,6 +43,7 @@
       <li><a href="#q-add-new-button">What are the steps to add a new search button?</a></li>
       <li><a href="#q-button-not-working">What should I check if a button click does nothing?</a></li>
       <li><a href="#q-light-version">What is the "Light Version" for?</a></li>
+      <li><a href="#q-iban-db-update">How do I update the IBAN bank databases?</a></li>
     </ul>
   </section>
   
@@ -217,6 +218,39 @@
             <li><strong>Specify which elements to hide</strong> by adding their CSS selectors (like <code>#btn-names-us-advbackground</code> or <code>#column-names-usa</code>) to the <code>selectorsToHide</code> array.</li>
         </ul>
         <p>When the Light Version is active, a script automatically adds the <code>.hidden-in-light</code> class to all elements listed in the configuration file, making them disappear from the page.</p>
+    </div>
+    <div class="faq-item">
+        <h3 id="q-iban-db-update">How do I update the IBAN bank databases?</h3>
+        <p>The local bank name databases are stored as plain JavaScript files in <code>assets/js/bankDatabases/</code>. Each file exports a single object mapping a bank identifier (BLZ, BIC-4, entity code, etc.) to the bank name. To update or expand a database, simply edit the corresponding file and add or correct entries.</p>
+
+        <h4>Procedure</h4>
+        <ol>
+            <li>Download the official bank list for the country you want to update (see sources below).</li>
+            <li>Open the matching file in <code>assets/js/bankDatabases/</code> (e.g., <code>de.js</code> for Germany).</li>
+            <li>Add or update entries using the format <code>"BANKCODE": "Bank Name"</code>, ensuring each line ends with a comma except the last one before the closing brace.</li>
+            <li>Save the file. No build step is required — the change takes effect immediately in the browser.</li>
+        </ol>
+
+        <h4>Official Sources by Country</h4>
+        <table class="iban-coverage-table">
+            <thead>
+                <tr><th>Country</th><th>File</th><th>Source</th><th>Format</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Germany (DE)</td><td>de.js</td><td>Deutsche Bundesbank — <em>Bankleitzahlendatei</em></td><td>CSV/TXT, free download</td></tr>
+                <tr><td>Austria (AT)</td><td>at.js</td><td>Oesterreichische Nationalbank — BLZ register</td><td>CSV/XLS, free download</td></tr>
+                <tr><td>Switzerland (CH)</td><td>ch.js</td><td>SIX Group — IID/Clearing register</td><td>XLS/CSV, free download</td></tr>
+                <tr><td>United Kingdom (GB)</td><td>gb.js</td><td>Pay.UK / EISCD — Sort Code directory</td><td>CSV, free download</td></tr>
+                <tr><td>Netherlands (NL)</td><td>nl.js</td><td>BIC lookup via ECB/SWIFT IBAN registry</td><td>Manual / SWIFT API</td></tr>
+                <tr><td>Belgium (BE)</td><td>be.js</td><td>National Bank of Belgium — BIC/IBAN guide</td><td>PDF/Manual</td></tr>
+                <tr><td>France (FR)</td><td>fr.js</td><td>Banque de France — Code CIB / CFONB</td><td>PDF/Manual</td></tr>
+                <tr><td>Spain (ES)</td><td>es.js</td><td>Banco de España — Registro de entidades</td><td>PDF/Web</td></tr>
+                <tr><td>Portugal (PT)</td><td>pt.js</td><td>Banco de Portugal — Instituições de crédito</td><td>PDF/Web</td></tr>
+                <tr><td>Poland (PL)</td><td>pl.js</td><td>Narodowy Bank Polski — IBAN structure / NBP register</td><td>PDF/Web</td></tr>
+                <tr><td>Italy (IT)</td><td>(built-in)</td><td>Banca d'Italia — Albo delle banche (ABI codes)</td><td>XLS, free download</td></tr>
+            </tbody>
+        </table>
+        <p><em>For countries where a single machine-readable file is not available (NL, BE, FR, ES, PT, PL), the ECB's <a href="https://www.ecb.europa.eu/paym/integration/retail/sepa/html/index.en.html" target="_blank" rel="noopener">SEPA IBAN registry</a> and the <a href="https://www.swift.com/our-solutions/compliance-and-shared-services/banking-standards/bic" target="_blank" rel="noopener">SWIFT BIC directory</a> are useful cross-reference sources.</em></p>
     </div>
 
   </section>

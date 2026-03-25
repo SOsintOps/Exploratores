@@ -445,6 +445,33 @@ main {
   font-weight: bold;
 }
 
+.note .iban-coverage-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.6rem 0;
+    font-size: 0.85rem;
+    color: #333;
+}
+
+.note .iban-coverage-table th {
+    padding: 0.35rem 0.6rem;
+    background-color: #e8c800;
+    color: #222;
+    font-weight: bold;
+    border: 1px solid #bda800;
+    text-align: left;
+}
+
+.note .iban-coverage-table td {
+    padding: 0.3rem 0.6rem;
+    border: 1px solid #c8b800;
+    background-color: #fffde8;
+}
+
+.note .iban-coverage-table tbody tr:nth-child(even) td {
+    background-color: #fff8c0;
+}
+
 
 /* MISCELLANEOUS STYLES */
 /* Styling for Unix timestamp output (used in Currencies.html) */
