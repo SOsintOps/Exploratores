@@ -31,6 +31,38 @@
             </div>
         </section>
 
+        <section class="search-instructions" id="iban-coverage-notes">
+            <h2>Local Database Coverage</h2>
+            <p>The following table shows the number of banks available in the local lookup database for each supported country. Bank name resolution is performed entirely offline.</p>
+            <table class="iban-coverage-table">
+                <thead>
+                    <tr>
+                        <th>Country</th>
+                        <th>Code</th>
+                        <th>Bank Code Type</th>
+                        <th>Banks in DB</th>
+                        <th>Coverage</th>
+                        <th>Source</th>
+                        <th>Updated</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Italy</td><td>IT</td><td>ABI (5-digit)</td><td>~340</td><td>Partial</td><td>ABI Register</td><td>Jan 2025</td></tr>
+                    <tr><td>Germany</td><td>DE</td><td>BLZ (8-digit)</td><td>~80</td><td>Partial — top banks</td><td>Deutsche Bundesbank</td><td>Mar 2025</td></tr>
+                    <tr><td>France</td><td>FR</td><td>CIB (5-digit)</td><td>~55</td><td>Partial — top banks</td><td>CFONB</td><td>Mar 2025</td></tr>
+                    <tr><td>Spain</td><td>ES</td><td>Entidad (4-digit)</td><td>~35</td><td>Partial — top banks</td><td>Banco de España</td><td>Mar 2025</td></tr>
+                    <tr><td>United Kingdom</td><td>GB</td><td>BIC-4 (alpha)</td><td>~50</td><td>Good</td><td>Pay.UK / BIC directory</td><td>Mar 2025</td></tr>
+                    <tr><td>Netherlands</td><td>NL</td><td>BIC-4 (alpha)</td><td>~20</td><td>Complete</td><td>Betaalvereniging NL</td><td>Mar 2025</td></tr>
+                    <tr><td>Belgium</td><td>BE</td><td>Bank code (3-digit)</td><td>~32</td><td>Good</td><td>NBB / Febelfin</td><td>Mar 2025</td></tr>
+                    <tr><td>Portugal</td><td>PT</td><td>Bank code (4-digit)</td><td>~25</td><td>Good</td><td>Banco de Portugal</td><td>Mar 2025</td></tr>
+                    <tr><td>Austria</td><td>AT</td><td>BLZ (5-digit)</td><td>~45</td><td>Partial — top banks</td><td>OeNB</td><td>Mar 2025</td></tr>
+                    <tr><td>Switzerland</td><td>CH</td><td>IID / Clearing (5-digit)</td><td>~50</td><td>Good</td><td>SIX Interbank Clearing</td><td>Mar 2025</td></tr>
+                    <tr><td>Poland</td><td>PL</td><td>Routing prefix (3-digit)</td><td>~28</td><td>Partial — top banks</td><td>NBP ELIXIR</td><td>Mar 2025</td></tr>
+                </tbody>
+            </table>
+            <p class="note-text"><em>Full datasets for DE, AT, CH are freely available from national central banks. FR, ES, PL data from official regulatory registers. Coverage marked "Partial" can be expanded by importing the full official CSV/XLS files.</em></p>
+        </section>
+
         <hr>
 
         <section class="search-instructions">
@@ -54,6 +86,16 @@
     </footer>
 
     <script src="../assets/js/config.js"></script>
+    <script src="../assets/js/bankDatabases/gb.js"></script>
+    <script src="../assets/js/bankDatabases/nl.js"></script>
+    <script src="../assets/js/bankDatabases/be.js"></script>
+    <script src="../assets/js/bankDatabases/pt.js"></script>
+    <script src="../assets/js/bankDatabases/de.js"></script>
+    <script src="../assets/js/bankDatabases/at.js"></script>
+    <script src="../assets/js/bankDatabases/ch.js"></script>
+    <script src="../assets/js/bankDatabases/es.js"></script>
+    <script src="../assets/js/bankDatabases/fr.js"></script>
+    <script src="../assets/js/bankDatabases/pl.js"></script>
     <script src="../assets/js/ibankit.js"></script>
     <script src="../assets/js/validators.js"></script>
     <script src="../assets/js/search-library.js"></script>
@@ -100,23 +142,145 @@
                 
                 let bankInfoHTML = `<h3>Bank Information</h3>`;
 
-                // --- LOGICA DI PARSING DETTAGLIATA PER IBAN ITALIANI ---
-                if (countryCode === 'IT') {
-                    const cin = iban.substring(4, 5);
-                    const abi = iban.substring(5, 10);
-                    const cab = iban.substring(10, 15);
-                    const accountNumber = iban.substring(15, 27);
-                    const bankName = (typeof bankDatabase !== 'undefined' && bankDatabase[abi]) ? bankDatabase[abi] : 'Italian bank not found in local database.';
+                // --- MULTI-COUNTRY BBAN PARSER ---
+                const bban = iban.substring(4);
+                const parsers = {
+                    IT: () => {
+                        const cin = bban.substring(0, 1);
+                        const abi = bban.substring(1, 6);
+                        const cab = bban.substring(6, 11);
+                        const account = bban.substring(11);
+                        const db = (typeof bankDatabase !== 'undefined') ? bankDatabase : {};
+                        const name = db[abi] || null;
+                        return { fields: [
+                            { label: 'CIN', value: cin },
+                            { label: 'ABI', value: abi },
+                            { label: 'CAB', value: cab },
+                            { label: 'Account', value: account }
+                        ], bankName: name };
+                    },
+                    DE: () => {
+                        const blz = bban.substring(0, 8);
+                        const account = bban.substring(8);
+                        const db = (typeof bankDatabase_DE !== 'undefined') ? bankDatabase_DE : {};
+                        return { fields: [
+                            { label: 'BLZ', value: blz },
+                            { label: 'Account', value: account }
+                        ], bankName: db[blz] || null };
+                    },
+                    FR: () => {
+                        const cib = bban.substring(0, 5);
+                        const branch = bban.substring(5, 10);
+                        const account = bban.substring(10, 21);
+                        const ribKey = bban.substring(21, 23);
+                        const db = (typeof bankDatabase_FR !== 'undefined') ? bankDatabase_FR : {};
+                        return { fields: [
+                            { label: 'CIB (Bank)', value: cib },
+                            { label: 'Branch (Guichet)', value: branch },
+                            { label: 'Account', value: account },
+                            { label: 'RIB Key', value: ribKey }
+                        ], bankName: db[cib] || null };
+                    },
+                    ES: () => {
+                        const entity = bban.substring(0, 4);
+                        const branch = bban.substring(4, 8);
+                        const cd = bban.substring(8, 10);
+                        const account = bban.substring(10);
+                        const db = (typeof bankDatabase_ES !== 'undefined') ? bankDatabase_ES : {};
+                        return { fields: [
+                            { label: 'Entidad (Bank)', value: entity },
+                            { label: 'Oficina (Branch)', value: branch },
+                            { label: 'Control Digits', value: cd },
+                            { label: 'Account', value: account }
+                        ], bankName: db[entity] || null };
+                    },
+                    GB: () => {
+                        const bic4 = bban.substring(0, 4);
+                        const sortCode = bban.substring(4, 10);
+                        const account = bban.substring(10);
+                        const db = (typeof bankDatabase_GB !== 'undefined') ? bankDatabase_GB : {};
+                        return { fields: [
+                            { label: 'Bank (BIC-4)', value: bic4 },
+                            { label: 'Sort Code', value: sortCode },
+                            { label: 'Account', value: account }
+                        ], bankName: db[bic4] || null };
+                    },
+                    NL: () => {
+                        const bic4 = bban.substring(0, 4);
+                        const account = bban.substring(4);
+                        const db = (typeof bankDatabase_NL !== 'undefined') ? bankDatabase_NL : {};
+                        return { fields: [
+                            { label: 'Bank (BIC-4)', value: bic4 },
+                            { label: 'Account', value: account }
+                        ], bankName: db[bic4] || null };
+                    },
+                    BE: () => {
+                        const bankCode = bban.substring(0, 3);
+                        const account = bban.substring(3, 10);
+                        const check = bban.substring(10, 12);
+                        const db = (typeof bankDatabase_BE !== 'undefined') ? bankDatabase_BE : {};
+                        return { fields: [
+                            { label: 'Bank Code', value: bankCode },
+                            { label: 'Account', value: account },
+                            { label: 'National Check', value: check }
+                        ], bankName: db[bankCode] || null };
+                    },
+                    PT: () => {
+                        const bankCode = bban.substring(0, 4);
+                        const branch = bban.substring(4, 8);
+                        const account = bban.substring(8, 19);
+                        const check = bban.substring(19, 21);
+                        const db = (typeof bankDatabase_PT !== 'undefined') ? bankDatabase_PT : {};
+                        return { fields: [
+                            { label: 'Bank Code', value: bankCode },
+                            { label: 'Branch', value: branch },
+                            { label: 'Account', value: account },
+                            { label: 'Check Digits', value: check }
+                        ], bankName: db[bankCode] || null };
+                    },
+                    AT: () => {
+                        const blz = bban.substring(0, 5);
+                        const account = bban.substring(5);
+                        const db = (typeof bankDatabase_AT !== 'undefined') ? bankDatabase_AT : {};
+                        return { fields: [
+                            { label: 'BLZ', value: blz },
+                            { label: 'Account', value: account }
+                        ], bankName: db[blz] || null };
+                    },
+                    CH: () => {
+                        const iid = bban.substring(0, 5);
+                        const account = bban.substring(5);
+                        const db = (typeof bankDatabase_CH !== 'undefined') ? bankDatabase_CH : {};
+                        return { fields: [
+                            { label: 'IID / Clearing', value: iid },
+                            { label: 'Account', value: account }
+                        ], bankName: db[iid] || null };
+                    },
+                    PL: () => {
+                        const routing = bban.substring(0, 8);
+                        const bankPrefix = routing.substring(0, 3);
+                        const account = bban.substring(8);
+                        const db = (typeof bankDatabase_PL !== 'undefined') ? bankDatabase_PL : {};
+                        return { fields: [
+                            { label: 'Routing Number', value: routing },
+                            { label: 'Account', value: account }
+                        ], bankName: db[bankPrefix] || null };
+                    }
+                };
 
-                    bankInfoHTML += `
-                        <p><strong>Bank Name:</strong> ${bankName}</p>
-                        <p><strong>CIN:</strong> ${cin}</p>
-                        <p><strong>ABI:</strong> ${abi}</p>
-                        <p><strong>CAB:</strong> ${cab}</p>
-                        <p><strong>Account Number:</strong> ${accountNumber}</p>
-                    `;
+                const parser = parsers[countryCode];
+                if (parser) {
+                    const result = parser();
+                    if (result.bankName) {
+                        bankInfoHTML += `<p><strong>Bank Name:</strong> ${result.bankName}</p>`;
+                    } else {
+                        bankInfoHTML += `<p><strong>Bank Name:</strong> <em>Not found in local database</em></p>`;
+                    }
+                    result.fields.forEach(f => {
+                        bankInfoHTML += `<p><strong>${f.label}:</strong> ${f.value}</p>`;
+                    });
                 } else {
-                    bankInfoHTML += `<p>Detailed BBAN parsing is currently only supported for Italian IBANs.</p>`;
+                    bankInfoHTML += `<p>Detailed BBAN parsing is not yet available for ${countryInfo.name || countryCode}.</p>`;
                 }
 
                 ibanInfoColumn.innerHTML = ibanInfoHTML;
