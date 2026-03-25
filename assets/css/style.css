@@ -663,13 +663,12 @@ body.matrix-mode footer a {
 
 #toolkit-search-counter {
     flex: 1;
-    color: #aaa;
     text-align: center;
     white-space: nowrap;
 }
 
 #toolkit-search-count {
-    color: #e0e0e0;
+    color: #c0392b;
     font-weight: bold;
 }
 
