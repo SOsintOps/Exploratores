@@ -4,13 +4,12 @@
 
 [GitHub Repository](https://github.com/SOsintOps/Exploratores)
 
-**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows. Version 3.0α introduces the **Janua** intelligent indicator dispatcher, multi-country IBAN analysis, a redesigned Toolkit Search, and a fully data-driven JavaScript architecture.
+**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows. Version 3.0α introduces multi-country IBAN analysis, a redesigned Toolkit Search, and a fully data-driven JavaScript architecture.
 
 ---
 
 ## ✨ Key Features
 
-- ✅ **Janua** — paste any indicator (email, IP, domain, IBAN, hash, username, crypto address, VIN…) and get only the relevant search tools automatically.
 - ✅ Multi-country IBAN verifier with offline bank name resolution for 11 countries.
 - ✅ Toolkit Search with two-column scrollable results and live counter.
 - ✅ Clean and fully responsive layout with semantic HTML5.
@@ -43,7 +42,6 @@
 
 The toolkit is organized into the following sections, accessible from the main navigation menu:
 
-* **Janua**: Intelligent indicator dispatcher — automatically routes any input to the right tools.
 * **Search Engines**: Clear Web and Tor search capabilities.
 * **People & Identities**: Tools for investigating names, phone numbers, addresses, and more.
 * **Social Media**: Search functions for major platforms (X/Twitter, Facebook, Instagram, LinkedIn, VK, Telegram).
@@ -71,8 +69,7 @@ The `docs/` directory contains the source Markdown for the [Guidelines](docs/gui
 ## 🧭 How to Use Exploratores
 
 1. Open **`launchme.html`** in a web browser.
-2. Use **Janua** (home page) to paste any indicator and get contextual tools instantly.
-3. Or navigate to a specific section via the navigation bar.
+2. Navigate to a specific section via the navigation bar.
 4. Enter your search terms in the input fields and click the search buttons.
 5. Some tools may require you to be logged into the respective service.
 6. Always apply OPSEC principles while conducting investigations.
