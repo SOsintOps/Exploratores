@@ -449,33 +449,24 @@ main {
     width: 100%;
     border-collapse: collapse;
     margin: 0.8rem 0;
-    font-size: 0.85rem;
-    color: #333;
 }
 
 .iban-coverage-table th {
-    padding: 0.45rem 0.75rem;
-    background-color: #2a2a2a;
-    color: #f0f0f0;
+    padding: 0.4rem 0.75rem;
     font-weight: bold;
-    border: 1px solid #444;
+    border: 1px solid #ccc;
     text-align: left;
     white-space: nowrap;
 }
 
 .iban-coverage-table td {
     padding: 0.35rem 0.75rem;
-    border: 1px solid #444;
-    background-color: #1e1e1e;
+    border: 1px solid #ccc;
     vertical-align: top;
 }
 
 .iban-coverage-table tbody tr:nth-child(even) td {
-    background-color: #252525;
-}
-
-.iban-coverage-table tbody tr:hover td {
-    background-color: #2f2f2f;
+    background-color: #f4f4f4;
 }
 
 /* Override inside .note (yellow background context) */
@@ -488,15 +479,10 @@ main {
 .note .iban-coverage-table td {
     background-color: #fffde8;
     border-color: #c8b800;
-    color: #333;
 }
 
 .note .iban-coverage-table tbody tr:nth-child(even) td {
     background-color: #fff8c0;
-}
-
-.note .iban-coverage-table tbody tr:hover td {
-    background-color: #fff3a0;
 }
 
 
