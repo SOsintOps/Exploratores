@@ -10,14 +10,14 @@
 
 ## ✨ Key Features
 
-- ✅ Multi-country IBAN verifier with offline bank name resolution for 11 countries.
-- ✅ Toolkit Search with two-column scrollable results and live counter.
 - ✅ Clean and fully responsive layout with semantic HTML5.
-- ✅ Dynamically loaded navigation bar for easy site-wide updates.
-- ✅ Centralized, data-driven JavaScript architecture (`main.js`, `validators.js`, `search-library.js`).
-- ✅ Modular pages with scoped focus (Names, Phones, Domains, IBAN, etc.).
-- ✅ Fully functional offline via `file://` protocol; external tools require internet.
 - ✅ No server or backend dependencies required.
+- ✅ Fully functional offline via `file://` protocol; external tools require internet.
+- ✅ Centralized, data-driven JavaScript architecture (`main.js`, `validators.js`, `search-library.js`).
+- ✅ Dynamically loaded navigation bar for easy site-wide updates.
+- ✅ Modular pages with scoped focus (Names, Phones, Domains, IBAN, etc.).
+- ✅ Toolkit Search with two-column scrollable results and live counter.
+- ✅ Multi-country IBAN verifier with offline bank name resolution for 11 countries.
 
 ---
 
