@@ -686,3 +686,24 @@ body.matrix-mode footer a {
     background-color: #3a3a3a;
     color: #fff;
 }
+
+.toolkit-search-label {
+    display: block;
+    color: #e0e0e0;
+    font-size: 0.95em;
+}
+
+.toolkit-search-category {
+    display: block;
+    font-size: 0.78em;
+    color: #888;
+    margin-top: 2px;
+}
+
+#toolkit-search-results li.toolkit-search-more {
+    padding: 0.5rem 1rem;
+    font-size: 0.8em;
+    color: #666;
+    font-style: italic;
+    text-align: center;
+}
