@@ -51,10 +51,10 @@ const ToolkitSearch = {
         if (!resultsContainer) return;
 
         resultsContainer.innerHTML = '';
+        resultsContainer.classList.remove('active');
         const searchTerm = query.toLowerCase().trim();
 
         if (searchTerm.length < 2) {
-            resultsContainer.style.display = 'none';
             this.updateCounter(0);
             return;
         }
@@ -65,42 +65,53 @@ const ToolkitSearch = {
 
         this.updateCounter(results.length);
 
-        if (results.length > 0) {
-            const list = document.createElement('ul');
-            results.slice(0, this.maxResults).forEach(item => {
-                const listItem = document.createElement('li');
-                const link = document.createElement('a');
-                link.href = `pages/${item.page}`;
-                link.title = item.category ? `${item.category} → ${item.page}` : `Go to ${item.page}`;
+        if (results.length === 0) return;
 
-                const labelSpan = document.createElement('span');
-                labelSpan.className = 'toolkit-search-label';
-                labelSpan.textContent = item.label;
-                link.appendChild(labelSpan);
+        // --- Sticky header row ---
+        const headerRow = document.createElement('div');
+        headerRow.className = 'toolkit-search-header';
 
-                if (item.category) {
-                    const categorySpan = document.createElement('span');
-                    categorySpan.className = 'toolkit-search-category';
-                    categorySpan.textContent = item.category;
-                    link.appendChild(categorySpan);
-                }
+        const funcHead = document.createElement('span');
+        funcHead.textContent = 'Function';
+        const pageHead = document.createElement('span');
+        pageHead.textContent = 'Page';
+        headerRow.appendChild(funcHead);
+        headerRow.appendChild(pageHead);
 
-                listItem.appendChild(link);
-                list.appendChild(listItem);
-            });
+        // --- Scrollable body ---
+        const body = document.createElement('div');
+        body.className = 'toolkit-search-body';
 
-            if (results.length > this.maxResults) {
-                const more = document.createElement('li');
-                more.className = 'toolkit-search-more';
-                more.textContent = `+${results.length - this.maxResults} more results — refine your search`;
-                list.appendChild(more);
-            }
+        results.slice(0, this.maxResults).forEach(item => {
+            const row = document.createElement('div');
+            row.className = 'toolkit-search-row';
 
-            resultsContainer.appendChild(list);
-            resultsContainer.style.display = 'block';
-        } else {
-            resultsContainer.style.display = 'none';
+            const funcCell = document.createElement('a');
+            funcCell.href = `pages/${item.page}`;
+            funcCell.title = item.label;
+            funcCell.textContent = item.label;
+
+            const pageCell = document.createElement('a');
+            const displayName = item.category || item.page.replace('.html', '').replace(/-/g, ' ');
+            pageCell.href = `pages/${item.page}`;
+            pageCell.title = displayName;
+            pageCell.textContent = displayName;
+
+            row.appendChild(funcCell);
+            row.appendChild(pageCell);
+            body.appendChild(row);
+        });
+
+        if (results.length > this.maxResults) {
+            const more = document.createElement('div');
+            more.className = 'toolkit-search-more';
+            more.textContent = `+${results.length - this.maxResults} more`;
+            body.appendChild(more);
         }
+
+        resultsContainer.appendChild(headerRow);
+        resultsContainer.appendChild(body);
+        resultsContainer.classList.add('active');
     }
 };
 

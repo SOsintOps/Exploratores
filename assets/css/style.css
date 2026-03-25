@@ -673,56 +673,83 @@ body.matrix-mode footer a {
 }
 
 #toolkit-search-results {
-    background-color: #2e2e2e;
-    border-radius: 4px;
+    display: none;
     margin-top: 0.5rem;
-    max-height: 300px;
-    overflow-y: auto;
     border: 1px solid #444;
-    display: none; /* Nascosto di default */
+    border-radius: 4px;
+    background-color: #2e2e2e;
 }
 
-#toolkit-search-results ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+#toolkit-search-results.active {
+    display: flex;
+    flex-direction: column;
+    max-height: 260px;
+    overflow: hidden;
 }
 
-#toolkit-search-results li a {
-    display: block;
-    padding: 0.75rem 1rem;
-    color: #ccc;
-    text-decoration: none;
+.toolkit-search-header {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    background-color: #252525;
     border-bottom: 1px solid #444;
-    transition: background-color 0.2s ease;
 }
 
-#toolkit-search-results li:last-child a {
+.toolkit-search-header span {
+    flex: 1;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.7em;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888;
+}
+
+.toolkit-search-header span + span {
+    border-left: 1px solid #444;
+}
+
+.toolkit-search-body {
+    overflow-y: auto;
+    flex: 1;
+}
+
+.toolkit-search-row {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #3a3a3a;
+}
+
+.toolkit-search-row:last-child {
     border-bottom: none;
 }
 
-#toolkit-search-results li a:hover {
+.toolkit-search-row a {
+    flex: 1;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.88em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color 0.15s ease;
+}
+
+.toolkit-search-row a + a {
+    border-left: 1px solid #3a3a3a;
+}
+
+.toolkit-search-row:hover a {
     background-color: #3a3a3a;
     color: #fff;
 }
 
-.toolkit-search-label {
-    display: block;
-    color: #e0e0e0;
-    font-size: 0.95em;
-}
-
-.toolkit-search-category {
-    display: block;
-    font-size: 0.78em;
-    color: #888;
-    margin-top: 2px;
-}
-
-#toolkit-search-results li.toolkit-search-more {
-    padding: 0.5rem 1rem;
-    font-size: 0.8em;
-    color: #666;
+.toolkit-search-more {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.75em;
+    color: #555;
     font-style: italic;
     text-align: center;
 }
