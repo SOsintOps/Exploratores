@@ -445,31 +445,58 @@ main {
   font-weight: bold;
 }
 
-.note .iban-coverage-table {
+.iban-coverage-table {
     width: 100%;
     border-collapse: collapse;
-    margin: 0.6rem 0;
+    margin: 0.8rem 0;
     font-size: 0.85rem;
     color: #333;
 }
 
-.note .iban-coverage-table th {
-    padding: 0.35rem 0.6rem;
-    background-color: #e8c800;
-    color: #222;
+.iban-coverage-table th {
+    padding: 0.45rem 0.75rem;
+    background-color: #2a2a2a;
+    color: #f0f0f0;
     font-weight: bold;
-    border: 1px solid #bda800;
+    border: 1px solid #444;
     text-align: left;
+    white-space: nowrap;
+}
+
+.iban-coverage-table td {
+    padding: 0.35rem 0.75rem;
+    border: 1px solid #444;
+    background-color: #1e1e1e;
+    vertical-align: top;
+}
+
+.iban-coverage-table tbody tr:nth-child(even) td {
+    background-color: #252525;
+}
+
+.iban-coverage-table tbody tr:hover td {
+    background-color: #2f2f2f;
+}
+
+/* Override inside .note (yellow background context) */
+.note .iban-coverage-table th {
+    background-color: #c8a000;
+    color: #111;
+    border-color: #a08000;
 }
 
 .note .iban-coverage-table td {
-    padding: 0.3rem 0.6rem;
-    border: 1px solid #c8b800;
     background-color: #fffde8;
+    border-color: #c8b800;
+    color: #333;
 }
 
 .note .iban-coverage-table tbody tr:nth-child(even) td {
     background-color: #fff8c0;
+}
+
+.note .iban-coverage-table tbody tr:hover td {
+    background-color: #fff3a0;
 }
 
 
