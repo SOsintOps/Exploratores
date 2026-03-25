@@ -67,3 +67,8 @@ error.log
 _site/
 .sass-cache/
 .jekyll-cache/
+
+# LLM / AI tooling — local only, do not push
+.claude/
+.claude-flow/
+CLAUDE.md
