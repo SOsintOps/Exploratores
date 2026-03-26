@@ -53,32 +53,42 @@ const ExploratoresValidators = {
 
     getAndValidateIntlPhone: function(config, queryOverride) {
         // Multi-input validator.
-        const countryCode = document.getElementById('countryCodeInput')?.value.trim();
-        const nationalNum = document.getElementById('nationalNumberInput')?.value.trim();
-        const countryIso = document.getElementById('countryLettersInput')?.value.trim().toUpperCase();
-        
+        const countryCode = (document.getElementById('countryCodeInput')?.value || '').trim();
+        const nationalNum = (document.getElementById('nationalNumberInput')?.value || '').trim();
+        const countryIso = (document.getElementById('countryLettersInput')?.value || '').trim().toUpperCase();
+
         const rules = config.validation_rules || {};
         if (rules.requireCountryCode && !countryCode) return { isValid: false, message: "Country code is required." };
         if (rules.requireNatNum && !nationalNum) return { isValid: false, message: "National number is required." };
         if (rules.requireCountryLetters && !countryIso) return { isValid: false, message: "Country ISO is required." };
         if (!countryCode && !nationalNum) return { isValid: false, message: "Enter a phone number." };
 
-        const e164 = countryCode.replace('+', '') + nationalNum;
-        const queryVariations = [`"${countryCode}${nationalNum}"`, `"${countryCode} ${nationalNum}"`];
+        // Normalize country code: strip spaces, 0039 → 39, +39 → 39
+        const cc = countryCode.replace(/\s/g, '').replace(/^\+/, '').replace(/^00/, '');
+        // Normalize national number: strip internal spaces and leading zero (trunk prefix)
+        const nat = nationalNum.replace(/\s/g, '').replace(/^0/, '');
+
+        // Post-normalization guards: only fire if value was provided but became empty after normalization
+        if (countryCode && !cc) return { isValid: false, message: "Invalid country code format." };
+        if (nationalNum && !nat) return { isValid: false, message: "Invalid national number format." };
+
+        const e164 = cc + nat;
+        const queryVariations = [`"+${cc}${nat}"`, `"+${cc} ${nat}"`];
         return {
             isValid: true,
             data: {
                 e164: e164,
-                countrycode: countryCode.replace('+', ''),
-                nat_num: nationalNum,
+                countrycode: cc,
+                nat_num: nat,
                 country_iso: countryIso,
+                country_iso_lower: countryIso.toLowerCase(),
                 google_query: queryVariations.join(" OR "),
-                dt_plus_cc_num: `${countryCode}.${nationalNum}`,
-                dt_plus_cc_0num: `${countryCode}.0${nationalNum}`,
-                dt_num_only: nationalNum,
-                dt_0num_only: `0${nationalNum}`,
-                dt_enum_generic: `e${nationalNum}`,
-                dt_num_generic: nationalNum
+                dt_plus_cc_num: `+${cc}.${nat}`,
+                dt_plus_cc_0num: `+${cc}.0${nat}`,
+                dt_num_only: nat,
+                dt_0num_only: `0${nat}`,
+                dt_enum_generic: `e${nat}`,
+                dt_num_generic: nat
             },
             message: "Ready for search."
         };

@@ -1,10 +1,10 @@
 /**
  * CyberChef - The Cyber Swiss Army Knife
  *
- * @copyright Crown Copyright 2016-2025
+ * @copyright Crown Copyright 2016-2026
  * @license Apache-2.0
  *
- *   Copyright 2016-2025 Crown Copyright
+ *   Copyright 2016-2026 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14838,6 +14838,12 @@ optgroup {
     height: 100px;
 }
 
+/* Bootstrap form inside CodeMirror editor */
+
+.cm-panel > .bmd-form-group {
+    padding-top: 0;
+}
+
 /* CodeMirror */
 
 .ͼ2 .cm-specialChar,
@@ -15773,6 +15779,36 @@ input.toggle-string {
 #banner a {
     color: #1976d2;
     color: var(--banner-url-colour);
+}
+
+#options:focus {
+    background-color: #eef3ec;
+    border: solid black 2px;
+    border-radius: 4px;
+}
+
+#support:focus {
+    background-color: #eef3ec;
+    border: solid black 2px;
+    border-radius: 4px;
+}
+
+#notice:focus {
+    background-color: #eef3ec;
+    border: solid black 2px;
+    border-radius: 4px;
+}
+
+#banner .col a:focus {
+    background-color: #eef3ec;
+    border: solid black 2px;
+    border-radius: 4px;
+}
+
+#notice-wrapper #notice:focus {
+    background-color: #eef3ec;
+    border: solid black 2px;
+    border-radius: 4px;
 }
 
 #notice-wrapper {
@@ -16761,6 +16797,11 @@ input.toggle-string {
     padding: 20px;
     border-left: 2px solid #ddd;
     border-left: 2px solid var(--primary-border-colour);
+}
+
+p a:focus {
+    color: #0a6ebd;
+    text-decoration: underline;
 }
 
 .checkbox label input[type=checkbox]+.checkbox-decorator .check {

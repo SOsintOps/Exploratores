@@ -108,7 +108,7 @@
 </main>
 
 <footer>
-    <p>Exploratores 3.0α <a href="./license.html">License</a></p>
+    <p>Exploratores 3.0β <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/js/main.js"></script>
@@ -131,8 +131,8 @@
             const nationalNumberInput = document.getElementById('nationalNumberInput');
             const countryLettersInput = document.getElementById('countryLettersInput');
             
-            const phoneData = ExploratoresValidators.getAndValidateIntlPhone({ validation_rules: {} });
-            displayPhoneNumberIntel(phoneData);
+            const validationResult = ExploratoresValidators.getAndValidateIntlPhone({ validation_rules: {} });
+            displayPhoneNumberIntel(validationResult.isValid ? validationResult.data : null);
 
             if (document.activeElement === countryCodeInput && countryCodeInput.value) {
                 const code = countryCodeInput.value.replace('+', '');
@@ -168,9 +168,20 @@
             }
 
             const type = phoneNumberObject.getType();
-            const countryName = new Intl.DisplayNames(['en'], { type: 'region' }).of(phoneNumberObject.country);
+            const realCountry = phoneNumberObject.country;
+            const countryName = new Intl.DisplayNames(['en'], { type: 'region' }).of(realCountry) ?? realCountry;
             const typeName = phoneNumberTypeTranslations[type] || type || "Unknown Type";
             intelDisplayElement.textContent = `${countryName} - ${typeName}`;
+
+            // Auto-correct ISO field with the real country identified by libphonenumber
+            // (handles shared dial codes e.g. +44 → GG for Guernsey vs GB for UK)
+            const countryLettersInput = document.getElementById('countryLettersInput');
+            if (realCountry && countryLettersInput && document.activeElement !== countryLettersInput) {
+                if (countryLettersInput.value !== realCountry) {
+                    countryLettersInput.value = realCountry;
+                    updatePageState(); // Re-evaluate buttons with corrected ISO (e.g. Truecaller)
+                }
+            }
         } catch (error) {
             intelDisplayElement.textContent = "";
         }
@@ -182,8 +193,8 @@
             if (!config) return;
             
             const validationResult = ExploratoresValidators.getAndValidateIntlPhone(config);
-            button.disabled = !validationResult;
-            button.classList.toggle('text-active', !!validationResult);
+            button.disabled = !validationResult.isValid;
+            button.classList.toggle('text-active', validationResult.isValid);
         });
         handleIntelUpdate();
     }
