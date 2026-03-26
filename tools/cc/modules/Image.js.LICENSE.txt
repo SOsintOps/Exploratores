@@ -1,4 +1,11 @@
 /*!
+	 * The buffer module from node.js, for the browser.
+	 *
+	 * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+	 * @license  MIT
+	 */
+
+/*!
  * The buffer module from node.js, for the browser.
  *
  * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
@@ -12,18 +19,11 @@
  * @license  MIT
  */
 
-/*!
- * Timm
- *
- * Immutability helpers with fast reads and acceptable writes.
- *
- * @copyright Guillermo Grau Panea 2016
- * @license MIT
- */
-
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
-/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
+
+/*! safe-buffer. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
 /**
  * @author Ge0rg3 [georgeomnet+cyberchef@gmail.com]
@@ -360,10 +360,10 @@
 /**
  * CyberChef - The Cyber Swiss Army Knife
  *
- * @copyright Crown Copyright 2016-2025
+ * @copyright Crown Copyright 2016-2026
  * @license Apache-2.0
  *
- *   Copyright 2016-2025 Crown Copyright
+ *   Copyright 2016-2026 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -410,14 +410,6 @@
  * @author n1474335 [n1474335@gmail.com]
  *
  * @copyright Crown Copyright 2016
- * @license Apache-2.0
- */
-
-/**
- * Image manipulation resources
- *
- * @author j433866 [j433866@gmail.com]
- * @copyright Crown Copyright 2019
  * @license Apache-2.0
  */
 

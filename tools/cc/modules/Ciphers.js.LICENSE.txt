@@ -23,7 +23,7 @@
 
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
-/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
 
 /**
   Blowfish.js from Dojo Toolkit 1.8.1 (https://github.com/dojo/dojox/tree/1.8/encoding)
@@ -104,6 +104,18 @@
 /**
  * @author Matt C [me@mitt.dev]
  * @copyright Crown Copyright 2020
+ * @license Apache-2.0
+ */
+
+/**
+ * @author Medjedtxm
+ * @copyright Crown Copyright 2026
+ * @license Apache-2.0
+ */
+
+/**
+ * @author cktgh [chankaitung@gmail.com]
+ * @copyright Crown Copyright 2026
  * @license Apache-2.0
  */
 
@@ -211,6 +223,23 @@
  */
 
 /**
+ * Complete implementation of RC6 block cipher encryption/decryption with
+ * configurable word size (w), rounds (r), and key length (b).
+ *
+ * RC6 was an AES finalist designed by Ron Rivest, Matt Robshaw, Ray Sidney, and Yiqun Lisa Yin.
+ * Reference: https://en.wikipedia.org/wiki/RC6
+ * Test Vectors: https://datatracker.ietf.org/doc/html/draft-krovetz-rc6-rc5-vectors-00
+ *
+ * The P and Q constants are derived from mathematical constants e (Euler's number) and
+ * φ (golden ratio) as specified in the IETF draft. Master 256-bit values are scaled to
+ * any word size.
+ *
+ * @author Medjedtxm
+ * @copyright Crown Copyright 2026
+ * @license Apache-2.0
+ */
+
+/**
  * Complete implementation of SM4 cipher encryption/decryption with
  * ECB, CBC, CFB, OFB, CTR block modes.
  * These modes are specified in IETF draft-ribose-cfrg-sm4-09, see:
@@ -254,10 +283,10 @@
 /**
  * CyberChef - The Cyber Swiss Army Knife
  *
- * @copyright Crown Copyright 2016-2025
+ * @copyright Crown Copyright 2016-2026
  * @license Apache-2.0
  *
- *   Copyright 2016-2025 Crown Copyright
+ *   Copyright 2016-2026 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

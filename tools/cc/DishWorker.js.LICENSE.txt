@@ -11,7 +11,7 @@
 
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
-/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
 
 /**
  *
@@ -114,10 +114,10 @@
 /**
  * CyberChef - The Cyber Swiss Army Knife
  *
- * @copyright Crown Copyright 2016-2025
+ * @copyright Crown Copyright 2016-2026
  * @license Apache-2.0
  *
- *   Copyright 2016-2025 Crown Copyright
+ *   Copyright 2016-2026 Crown Copyright
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

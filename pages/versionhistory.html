@@ -19,6 +19,24 @@
     <section class="faq-section">
 
         <div class="faq-item">
+            <h2>3.0β <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+            <ul>
+                <li><strong>New:</strong> Navigation — dedicated <em>Help</em> menu (Guidelines, FAQ, Customise, Version History); <em>Tools</em> now contains CyberChef only.</li>
+                <li><strong>Improved:</strong> CyberChef updated to v10.22.1.</li>
+                <li><strong>New:</strong> IBAN Checker — Bing, Yandex, and Baidu search buttons added.</li>
+                <li><strong>New:</strong> Phone International — dial code normalization: <code>0039</code> / <code>+39</code> / spaces all converted to E.164 automatically.</li>
+                <li><strong>Improved:</strong> IBAN page — external OSINT search merged into IBAN Checker section; auto-verify on input (no button needed); inline validation feedback on same line as input.</li>
+                <li><strong>Improved:</strong> Phone International — libphonenumber-js updated to latest; Truecaller URL now uses lowercase ISO code.</li>
+                <li><strong>Improved:</strong> <code>validators.js</code> — <code>getAndValidateIban</code> function added; <code>getAndValidateIntlPhone</code> enhanced with normalization and conditional guards.</li>
+                <li><strong>Improved:</strong> <code>search-library.js</code> — IBAN Bing/Yandex/Baidu entries added; Truecaller template corrected to <code>{country_iso_lower}</code>.</li>
+                <li><strong>Fixed:</strong> IBAN search buttons never worked (validator function was missing).</li>
+                <li><strong>Fixed:</strong> Phone buttons always enabled regardless of input validity.</li>
+                <li><strong>Fixed:</strong> Phone intel display was always empty (<code>validationResult.data</code> was passed incorrectly).</li>
+                <li><strong>Fixed:</strong> Truecaller generated uppercase ISO in URL (e.g. <code>/IT/</code> instead of <code>/it/</code>).</li>
+            </ul>
+        </div>
+
+        <div class="faq-item">
             <h2>3.0α <span style="font-size:0.7em; font-weight:normal;">— 2025</span></h2>
             <ul>
                 <li><strong>New:</strong> Platform-specific URL parsing (VK, X/Twitter, Instagram, Telegram, Facebook, LinkedIn).</li>
@@ -81,7 +99,7 @@
 </main>
 
 <footer>
-    <p>Exploratores 3.0α <a href="./license.html">License</a></p>
+    <p>Exploratores 3.0β <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>
