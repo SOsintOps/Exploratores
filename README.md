@@ -58,9 +58,9 @@ The toolkit is organized into the following sections, accessible from the main n
 
 Detailed documentation is available directly in the toolkit under the **Help** menu:
 
-* [Guidelines](pages/guidelines.html) — analytic standards, 5W1H framework, OPSEC best practices.
-* [FAQ](pages/faq.html) — frequently asked questions, architecture overview, troubleshooting.
-* [Customise](pages/customise.html) — guide to extending and customising the toolkit.
+* [Guidelines](docs/guidelines.md) — analytic standards, 5W1H framework, OPSEC best practices.
+* [FAQ](docs/faq.md) — frequently asked questions, architecture overview, troubleshooting.
+* [Customise](docs/customise.md) — guide to extending and customising the toolkit.
 * [Version History](pages/versionhistory.html) — full changelog.
 
 The `docs/` directory contains the Markdown source for [Guidelines](docs/guidelines.md), [FAQ](docs/faq.md), and [Customise](docs/customise.md).
