@@ -63,7 +63,7 @@ Detailed documentation is available directly in the toolkit under the **Help** m
 * [Customise](pages/customise.html) — guide to extending and customising the toolkit.
 * [Version History](pages/versionhistory.html) — full changelog.
 
-The `docs/` directory contains the source Markdown for the [Guidelines](docs/guidelines.md).
+The `docs/` directory contains the Markdown source for [Guidelines](docs/guidelines.md), [FAQ](docs/faq.md), and [Customise](docs/customise.md).
 
 ---
 

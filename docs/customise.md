@@ -75,8 +75,8 @@ function setInitialPageState() {
     const updateButtons = (group) => {
         const validationResult = group.validator();
         document.querySelectorAll(group.buttonSelector).forEach(button => {
-            button.disabled = !validationResult;
-            button.classList.toggle('text-active', !!validationResult);
+            button.disabled = !validationResult.isValid;
+            button.classList.toggle('text-active', validationResult.isValid);
         });
     };
 
@@ -123,11 +123,10 @@ document.addEventListener('DOMContentLoaded', setInitialPageState);
     // In assets/js/validators.js
     getAndValidateIpAddress: function(config) {
         const ip = document.getElementById('ipAddressInput')?.value.trim();
+        if (!ip) return { isValid: false, message: "Please enter an IP address." };
         const ipv4Regex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
-        if (ip && ipv4Regex.test(ip)) {
-            return { ip: ip };
-        }
-        return null; // Return null if invalid
+        if (!ipv4Regex.test(ip)) return { isValid: false, message: "Invalid IPv4 address." };
+        return { isValid: true, data: { ip: ip }, message: "Valid IP address." };
     },
     ```
 2.  **Step 2: Use the Validator in `search-library.js`**
