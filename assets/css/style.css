@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap');
+
 /* CSS Custom Properties (Variables) for site-wide theming */
 :root {
   --primary-color: #0066ff;
@@ -605,52 +607,94 @@ footer a {
   }
 }
 
-/* --- Easter Egg: Matrix Mode --- */
+/* --- Easter Egg: Classical Theme --- */
 body.matrix-mode {
-  background-color: #000000;
-  color: #00FF41; /* Verde Matrix */
+  background-color: #ffffff;
+  color: #2c1a00;
+  font-family: 'Cinzel', serif;
 }
 
-body.matrix-mode .page-title,
+body.matrix-mode * {
+  font-family: 'Cinzel', serif;
+}
+
+body.matrix-mode .page-title {
+  color: #8B6914;
+  letter-spacing: 0.12em;
+  text-shadow: 1px 1px 2px rgba(139,105,20,0.2);
+  font-weight: 700;
+}
+
 body.matrix-mode h2,
 body.matrix-mode h3 {
-  color: #00FF41;
+  color: #8B6914;
+}
+
+body.matrix-mode h2 {
+  border-bottom-color: #C9A84C;
+}
+
+body.matrix-mode nav {
+  background-color: #ffffff;
+  border-bottom: 1px solid #C9A84C;
+}
+
+body.matrix-mode nav .menu > li {
+  border-right-color: #C9A84C;
 }
 
 body.matrix-mode nav .menu > li > span,
 body.matrix-mode nav .menu > li > a {
-  color: #00FF41;
+  color: #2c1a00;
 }
 
 body.matrix-mode nav .submenu {
-  background-color: #050505;
-  border: 1px solid #00FF41;
+  background-color: #fffdf5;
+  border: 1px solid #C9A84C;
+}
+
+body.matrix-mode nav .submenu li a {
+  color: #2c1a00;
+}
+
+body.matrix-mode nav .submenu li a:hover {
+  background-color: rgba(201,168,76,0.12);
+  color: #8B6914;
 }
 
 body.matrix-mode .input-field {
-  background-color: #080808;
-  color: #00FF41;
-  border-color: #00FF41;
+  background-color: #fffdf5;
+  color: #2c1a00;
+  border: 1px solid #C9A84C;
+}
+
+body.matrix-mode .input-field:focus {
+  border-color: #8B6914;
+  box-shadow: 0 0 6px rgba(139,105,20,0.2);
+  outline: none;
 }
 
 body.matrix-mode .input-field::placeholder {
-  color: #009F29;
+  color: #b89a5a;
 }
 
 body.matrix-mode .button {
-  background-color: transparent;
-  color: #00FF41;
-  border: 1px solid #00FF41;
+  background-color: #ffffff;
+  color: #2c1a00;
+  border: 1px solid #C9A84C;
 }
 
 body.matrix-mode .button:hover {
-  background-color: #00FF41;
-  color: #000000;
+  background-color: #C9A84C;
+  color: #ffffff;
+  border-color: #8B6914;
+  box-shadow: 0 2px 8px rgba(139,105,20,0.25);
 }
 
 body.matrix-mode .button.text-active {
-  color: #8CFFAD; /* Verde più chiaro per il testo attivo */
+  color: #8B6914;
   font-weight: bold;
+  border-color: #8B6914;
 }
 
 /* Styles for Phone Number Intel Display */
@@ -669,13 +713,27 @@ body.matrix-mode .button.text-active {
 }
 
 body.matrix-mode .note {
-  background-color: #0a0a0a;
-  border-left-color: #00FF41;
+  background-color: #1a1410;
+  border-left-color: #8B7355;
+  color: #D4AF37;
 }
 
-body.matrix-mode footer,
+body.matrix-mode .note strong {
+  color: #E8C547;
+}
+
+body.matrix-mode footer {
+  background-color: #1a1410;
+  border-top: 1px solid #3d3428;
+  color: #D4AF37;
+}
+
 body.matrix-mode footer a {
-  color: #00FF41;
+  color: #D4AF37;
+}
+
+body.matrix-mode footer a:hover {
+  color: #E8C547;
 }
 
 /* --- Light Version Visibility ---
