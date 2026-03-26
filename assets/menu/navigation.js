@@ -16,6 +16,7 @@ function generateNavHTML() {
         <li><span>Search<br>Engines</span>
           <ul class="submenu">
             <li><a href="${pagesPath}searchengines.html">Search Engines</a></li>
+            <li><a href="${pagesPath}dorks.html">Dork Builder (BETA)</a></li>
           </ul>
         </li>
         <li><span>People &<br>Identities</span>
@@ -91,4 +92,9 @@ if (placeholder) {
       item.addEventListener('mouseout', () => { submenu.style.display = 'none'; });
     }
   });
+
+  const eggScript = document.createElement('script');
+  const rootPath = !window.location.pathname.includes('/pages/') ? '' : '../';
+  eggScript.src = rootPath + 'assets/js/externaeven.js';
+  document.body.appendChild(eggScript);
 }

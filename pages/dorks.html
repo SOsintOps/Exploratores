@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dork Builder • Exploratores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<main>
+  <h1 class="page-title">DORK BUILDER <span style="font-size:0.6em; color:#999; font-weight:normal;">BETA</span></h1>
+
+  <section class="search-instructions">
+    <label for="engineSelect">Search Engine:</label>
+    <div class="input-container">
+      <select id="engineSelect" class="input-field">
+        <option value="google">Google</option>
+        <option value="bing">Bing</option>
+        <option value="baidu">Baidu</option>
+        <option value="yandex">Yandex</option>
+      </select>
+    </div>
+
+    <label for="keywords">Keywords:</label>
+    <div class="input-container">
+      <input id="keywords" type="text" class="input-field" placeholder="e.g. login admin password" autocomplete="off">
+    </div>
+
+    <label for="targetSite">Target site / domain (optional):</label>
+    <div class="input-container">
+      <input id="targetSite" type="text" class="input-field" placeholder="e.g. example.com" autocomplete="off">
+    </div>
+
+    <label for="fileType">File type (optional):</label>
+    <div class="input-container">
+      <input id="fileType" type="text" class="input-field" placeholder="e.g. pdf, xls, doc" autocomplete="off">
+    </div>
+
+    <label for="customPattern">Custom operators (optional):</label>
+    <div class="input-container">
+      <input id="customPattern" type="text" class="input-field" placeholder="e.g. inurl:admin OR intitle:login" autocomplete="off">
+    </div>
+
+    <div id="page-feedback" class="feedback-message"></div>
+
+    <div class="button-grid">
+      <button id="btn-generate" class="button" disabled>Generate &amp; Search</button>
+      <button id="btn-copy" class="button" disabled>Copy Dork</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Generated Query</h2>
+    <textarea id="dorkOutput" readonly class="input-field" rows="2" style="width:100%; resize:none; min-height:2.6rem; font-family:monospace; font-size:0.95rem;"></textarea>
+  </section>
+
+  <!-- Predefined Templates by Category -->
+  <section>
+    <h2>Predefined Templates by Category</h2>
+    <p style="font-size:0.9rem; color:#666; margin-bottom:1rem;">Click a template to pre-fill the operators field, then add your keywords and click Generate &amp; Search.</p>
+
+    <div class="columns">
+
+      <div class="column">
+        <h3>People &amp; Identities</h3>
+        <div class="button-grid">
+          <button class="button dork-tpl" data-custom="intitle: OR intext:">Name Searches</button>
+          <button class="button dork-tpl" data-custom="intext:&quot;+&quot;">Phone Numbers</button>
+          <button class="button dork-tpl" data-custom="intitle:&quot;address&quot; OR intext:&quot;street&quot;">Addresses</button>
+          <button class="button dork-tpl" data-custom="intext:&quot;@&quot;">Email Addresses</button>
+          <button class="button dork-tpl" data-custom="inurl:">Usernames</button>
+        </div>
+      </div>
+
+      <div class="column">
+        <h3>Social Media</h3>
+        <div class="button-grid">
+          <button class="button dork-tpl" data-custom="site:x.com OR site:twitter.com">X (Twitter)</button>
+          <button class="button dork-tpl" data-custom="site:facebook.com">Facebook</button>
+          <button class="button dork-tpl" data-custom="site:instagram.com">Instagram</button>
+          <button class="button dork-tpl" data-custom="site:linkedin.com/in">LinkedIn</button>
+          <button class="button dork-tpl" data-custom="site:x.com OR site:facebook.com OR site:instagram.com">All Social</button>
+        </div>
+      </div>
+
+      <div class="column">
+        <h3>Websites</h3>
+        <div class="button-grid">
+          <button class="button dork-tpl" data-custom="site:">Domain</button>
+          <button class="button dork-tpl" data-custom="site:*.">Subdomains</button>
+          <button class="button dork-tpl" data-custom="intext:&quot;powered by&quot; OR intext:&quot;built with&quot;">Technology Stack</button>
+          <button class="button dork-tpl" data-custom="intitle:&quot;index of&quot;">Open Directories</button>
+        </div>
+      </div>
+
+      <div class="column">
+        <h3>Media Analysis</h3>
+        <div class="button-grid">
+          <button class="button dork-tpl" data-filetype="jpg" data-custom="">Image Files (JPG)</button>
+          <button class="button dork-tpl" data-filetype="mp4" data-custom="">Video Files (MP4)</button>
+          <button class="button dork-tpl" data-filetype="pdf" data-custom="">Documents (PDF)</button>
+          <button class="button dork-tpl" data-custom="intitle:&quot;exif&quot; OR intext:&quot;exif data&quot;">Metadata</button>
+        </div>
+      </div>
+
+      <div class="column">
+        <h3>Company &amp; Finance</h3>
+        <div class="button-grid">
+          <button class="button dork-tpl" data-custom="site:sec.gov OR site:companieshouse.gov.uk">Company Filings</button>
+          <button class="button dork-tpl" data-custom="site:linkedin.com/in intext:&quot;works at&quot;">Employees</button>
+          <button class="button dork-tpl" data-filetype="pdf" data-custom="intitle:&quot;annual report&quot;">Financial Reports</button>
+          <button class="button dork-tpl" data-custom="intext:&quot;bitcoin&quot; OR intext:&quot;ethereum&quot; intext:&quot;wallet&quot;">Cryptocurrency</button>
+        </div>
+      </div>
+
+      <div class="column">
+        <h3>Geographic Intelligence</h3>
+        <div class="button-grid">
+          <button class="button dork-tpl" data-custom="intext:&quot;coordinates&quot; OR intext:&quot;latitude&quot; intext:&quot;longitude&quot;">Coordinates</button>
+          <button class="button dork-tpl" data-custom="site:google.com/maps OR site:openstreetmap.org">Maps</button>
+          <button class="button dork-tpl" data-custom="intitle:&quot;schedule&quot; OR intitle:&quot;timetable&quot;">Travel &amp; Transport</button>
+        </div>
+      </div>
+
+      <div class="column">
+        <h3>Advanced Techniques</h3>
+        <div class="button-grid">
+          <button class="button dork-tpl" data-custom="cache:">Cached Pages</button>
+          <button class="button dork-tpl" data-custom="site:web.archive.org">Archive.org</button>
+          <button class="button dork-tpl" data-custom="related:">Related Sites</button>
+          <button class="button dork-tpl" data-custom="intitle:&quot;index of&quot; inurl:&quot;/backup&quot;">Backup Files</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="note">
+      <strong>NOTE:</strong> This tool is intended for legitimate OSINT research, security testing, and educational purposes only. Always ensure proper authorisation before testing any systems and comply with all applicable laws and regulations.
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Exploratores 3.0&#945; <a href="./license.html">License</a></p>
+</footer>
+
+<script src="../assets/menu/navigation.js"></script>
+<script src="../assets/js/config.js"></script>
+<script>
+  const ENGINES = {
+    google: 'https://www.google.com/search?q=',
+    bing:   'https://www.bing.com/search?q=',
+    baidu:  'https://www.baidu.com/s?wd=',
+    yandex: 'https://yandex.com/search/?text='
+  };
+
+  const elKeywords = document.getElementById('keywords');
+  const elSite     = document.getElementById('targetSite');
+  const elFile     = document.getElementById('fileType');
+  const elCustom   = document.getElementById('customPattern');
+  const elEngine   = document.getElementById('engineSelect');
+  const elOutput   = document.getElementById('dorkOutput');
+  const elFeedback = document.getElementById('page-feedback');
+  const btnGen     = document.getElementById('btn-generate');
+  const btnCopy    = document.getElementById('btn-copy');
+
+  function buildDork() {
+    const parts = [];
+    const keywords = elKeywords.value.trim();
+    const site     = elSite.value.trim();
+    const filetype = elFile.value.trim();
+    const custom   = elCustom.value.trim();
+    if (keywords) parts.push(keywords);
+    if (site)     parts.push('site:' + site);
+    if (filetype) parts.push('filetype:' + filetype);
+    if (custom)   parts.push(custom);
+    return parts.join(' ');
+  }
+
+  function updateState() {
+    const ready = elKeywords.value.trim().length > 0;
+    btnGen.disabled  = !ready;
+    btnCopy.disabled = !ready;
+    if (!ready) {
+      elFeedback.textContent = '';
+      elFeedback.className = 'feedback-message';
+    }
+  }
+
+  [elKeywords, elSite, elFile, elCustom, elEngine].forEach(el => {
+    el.addEventListener('input', updateState);
+  });
+
+  btnGen.addEventListener('click', () => {
+    const dork = buildDork();
+    if (!dork) return;
+    elOutput.value = dork;
+    window.open(ENGINES[elEngine.value] + encodeURIComponent(dork), '_blank');
+  });
+
+  btnCopy.addEventListener('click', () => {
+    const dork = buildDork();
+    if (!dork) return;
+    elOutput.value = dork;
+    navigator.clipboard.writeText(dork).then(() => {
+      elFeedback.textContent = 'Copied to clipboard.';
+      elFeedback.className = 'feedback-message feedback-info';
+      setTimeout(() => {
+        elFeedback.textContent = '';
+        elFeedback.className = 'feedback-message';
+      }, 2000);
+    });
+  });
+
+  // Predefined template buttons
+  document.querySelectorAll('.dork-tpl').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const custom   = btn.getAttribute('data-custom') || '';
+      const filetype = btn.getAttribute('data-filetype') || '';
+      elCustom.value = custom;
+      if (filetype) elFile.value = filetype;
+      elFeedback.textContent = 'Template applied — add your keywords and click Generate & Search.';
+      elFeedback.className = 'feedback-message feedback-info';
+      elKeywords.focus();
+      updateState();
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          document.querySelectorAll(selector).forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {}
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
