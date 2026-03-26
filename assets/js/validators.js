@@ -830,6 +830,18 @@ const ExploratoresValidators = {
         return { isValid: true, data: { username: value, enddate: endDate }, message: "Ready for search." };
     },
 
+    getAndValidateIban: function(config, queryOverride) {
+        const raw = queryOverride != null ? queryOverride : document.getElementById('ibanSearchInput')?.value.trim();
+        const iban = raw ? raw.replace(/\s/g, '').toUpperCase() : '';
+        if (!iban) return { isValid: false, message: "Please enter an IBAN." };
+        const basicIbanRegex = /^[A-Z]{2}[0-9]{2}[A-Z0-9]{1,30}$/;
+        if (!basicIbanRegex.test(iban)) return { isValid: false, message: "Invalid IBAN format." };
+        if (typeof ibankit !== 'undefined' && !ibankit.validateIBAN(iban)) {
+            return { isValid: false, message: "Invalid IBAN checksum." };
+        }
+        return { isValid: true, data: { iban: iban }, message: "Valid IBAN." };
+    },
+
     getAndValidateJanuaInput: function(config, queryOverride) {
         // This function is unique to Janua and does not need a queryOverride itself.
         const inputElement = document.getElementById('indicator-input');

@@ -15,19 +15,30 @@
         <h1 class="page-title">IBAN Toolkit</h1>
 
         <section class="search-instructions">
-            <h2>Local IBAN Verifier</h2>
+            <h2>IBAN Checker</h2>
             <label for="ibanVerifyInput">Enter IBAN for local validation and parsing:</label>
             <div class="input-button-line">
-                <input type="text" id="ibanVerifyInput" class="input-field" placeholder="e.g., IT60X054281110100000123456" autocomplete="off">
-                <button type="button" id="verifyButton" class="button">Verify</button>
+                <input type="text" id="ibanVerifyInput" class="input-field" placeholder="e.g., IT60X054281110100000123456" autocomplete="off" style="flex: 0 0 auto; width: 50%;">
+                <span id="verifyFeedback" class="feedback-message" style="flex: 1; margin-left: 12px; font-size: 1em; padding-top: 3px;"></span>
             </div>
-            <div id="verifyFeedback" class="feedback-message"></div>
-            
+
             <div id="verificationResult" class="results-box" style="display: none;">
                 <div class="columns">
                     <div class="column" id="ibanInfoColumn"></div>
                     <div class="column" id="bankInfoColumn"></div>
                 </div>
+            </div>
+
+            <input type="hidden" id="ibanSearchInput">
+            <div id="searchFeedback" class="feedback-message"></div>
+
+            <div class="button-grid">
+                <button id="btn-iban-google" type="button" class="button" data-search-id="iban-search-google">Google Search</button>
+                <button id="btn-iban-bing" type="button" class="button" data-search-id="iban-search-bing">Bing Search</button>
+                <button id="btn-iban-yandex" type="button" class="button" data-search-id="iban-search-yandex">Yandex Search</button>
+                <button id="btn-iban-baidu" type="button" class="button" data-search-id="iban-search-baidu">Baidu Search</button>
+                <button id="btn-iban-swift" type="button" class="button" data-search-id="iban-search-swift">SWIFT Search</button>
+                <button id="btn-iban-ibancom" type="button" class="button" data-search-id="iban-search-ibancom">IBAN.com</button>
             </div>
         </section>
 
@@ -59,23 +70,6 @@
             </table>
             <em>Full datasets for DE, AT, CH are freely available from national central banks. Coverage marked "Partial" can be expanded by importing the full official CSV/XLS files. See the <a href="faq.html#q-iban-db-update">FAQ: How do I update the IBAN bank databases?</a> for sources and procedure.</em>
         </div>
-
-        <hr>
-
-        <section class="search-instructions">
-            <h2>External OSINT Search</h2>
-            <label for="ibanSearchInput">Enter IBAN to search on external services:</label>
-            <div class="input-container">
-                <input type="text" id="ibanSearchInput" class="input-field" placeholder="IBAN..." autocomplete="off">
-            </div>
-            <div id="searchFeedback" class="feedback-message"></div>
-
-            <div class="button-grid">
-                <button id="btn-iban-google" type="button" class="button" data-search-id="iban-search-google">Google Search</button>
-                <button id="btn-iban-swift" type="button" class="button" data-search-id="iban-search-swift">SWIFT Search</button>
-                <button id="btn-iban-ibancom" type="button" class="button" data-search-id="iban-search-ibancom">IBAN.com</button>
-            </div>
-        </section>
     </main>
 
     <footer>
@@ -101,25 +95,31 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // --- LOGICA PER LA VERIFICA LOCALE ---
         const verifyInput = document.getElementById('ibanVerifyInput');
-        const verifyButton = document.getElementById('verifyButton');
         const verifyFeedback = document.getElementById('verifyFeedback');
         const verificationResult = document.getElementById('verificationResult');
         const ibanInfoColumn = document.getElementById('ibanInfoColumn');
         const bankInfoColumn = document.getElementById('bankInfoColumn');
+        const searchInput = document.getElementById('ibanSearchInput');
+        const searchFeedback = document.getElementById('searchFeedback');
+        const searchButtons = document.querySelectorAll('[data-search-id^="iban-search-"]');
 
         const handleVerification = () => {
             const ibanRaw = verifyInput.value.trim();
             const iban = ibanRaw.replace(/\s/g, '').toUpperCase();
-            
+
+            // Sync hidden search input
+            searchInput.value = iban;
+
             verificationResult.style.display = 'none';
             ibanInfoColumn.innerHTML = '';
             bankInfoColumn.innerHTML = '';
 
             if (!iban) {
-                verifyFeedback.textContent = 'Please enter an IBAN.';
-                verifyFeedback.className = 'feedback-message feedback-error';
+                verifyFeedback.textContent = '';
+                verifyFeedback.className = 'feedback-message';
+                searchFeedback.textContent = '';
+                searchButtons.forEach(b => { b.disabled = true; b.classList.remove('text-active'); });
                 return;
             }
 
@@ -127,19 +127,21 @@
                 verifyFeedback.textContent = 'IBAN structure and checksum are valid.';
                 verifyFeedback.className = 'feedback-message feedback-info';
 
+                searchButtons.forEach(b => { b.disabled = false; b.classList.add('text-active'); });
+                searchFeedback.textContent = '';
+
                 const countryCode = iban.substring(0, 2);
                 const countryInfo = ibankit.IBAN_COUNTRIES[countryCode];
-                
+
                 let ibanInfoHTML = `
                     <h3>IBAN Information</h3>
                     <p><strong>Country:</strong> ${countryInfo.name || 'Unknown'} (${countryCode})</p>
                     <p><strong>Check Digits:</strong> ${iban.substring(2, 4)}</p>
                     <p><strong>Length:</strong> ${iban.length} characters</p>
                 `;
-                
+
                 let bankInfoHTML = `<h3>Bank Information</h3>`;
 
-                // --- MULTI-COUNTRY BBAN PARSER ---
                 const bban = iban.substring(4);
                 const parsers = {
                     IT: () => {
@@ -148,13 +150,12 @@
                         const cab = bban.substring(6, 11);
                         const account = bban.substring(11);
                         const db = (typeof bankDatabase !== 'undefined') ? bankDatabase : {};
-                        const name = db[abi] || null;
                         return { fields: [
                             { label: 'CIN', value: cin },
                             { label: 'ABI', value: abi },
                             { label: 'CAB', value: cab },
                             { label: 'Account', value: account }
-                        ], bankName: name };
+                        ], bankName: db[abi] || null };
                     },
                     DE: () => {
                         const blz = bban.substring(0, 8);
@@ -277,7 +278,7 @@
                         bankInfoHTML += `<p><strong>${f.label}:</strong> ${f.value}</p>`;
                     });
                 } else {
-                    bankInfoHTML += `<p>Detailed BBAN parsing is not yet available for ${countryInfo.name || countryCode}.</p>`;
+                    bankInfoHTML += `<p>Detailed BBAN parsing is not yet available for ${countryInfo ? countryInfo.name : countryCode}.</p>`;
                 }
 
                 ibanInfoColumn.innerHTML = ibanInfoHTML;
@@ -287,37 +288,15 @@
             } else {
                 verifyFeedback.textContent = 'Invalid IBAN format or checksum.';
                 verifyFeedback.className = 'feedback-message feedback-error';
+                searchButtons.forEach(b => { b.disabled = true; b.classList.remove('text-active'); });
             }
         };
 
-        verifyButton.addEventListener('click', handleVerification);
-        verifyInput.addEventListener('keypress', e => {
-            if (e.key === 'Enter') handleVerification();
-        });
+        // Auto-verify on input/paste
+        verifyInput.addEventListener('input', handleVerification);
 
-        // --- LOGICA PER LE RICERCHE ESTERNE ---
-        const searchInput = document.getElementById('ibanSearchInput');
-        const searchFeedback = document.getElementById('searchFeedback');
-        const searchButtons = document.querySelectorAll('[data-search-id^="iban-search-"]');
-
-        const updateSearchUi = () => {
-            const validationResult = ExploratoresValidators.getAndValidateIban({}, searchInput.value);
-            
-            searchButtons.forEach(button => {
-                button.disabled = !validationResult.isValid;
-                button.classList.toggle('text-active', validationResult.isValid);
-            });
-
-            if (searchInput.value) {
-                searchFeedback.textContent = validationResult.message;
-                searchFeedback.className = `feedback-message ${validationResult.isValid ? 'feedback-info' : 'feedback-error'}`;
-            } else {
-                searchFeedback.textContent = '';
-            }
-        };
-
-        searchInput.addEventListener('input', updateSearchUi);
-        updateSearchUi(); // Set initial state
+        // Initialize search buttons as disabled
+        searchButtons.forEach(b => { b.disabled = true; });
     });
     </script>
 
