@@ -956,6 +956,9 @@ const SearchLibrary = {
 // iban page
 "iban-search-google": { "urlTemplate": "https://www.google.com/search?q=\"{iban}\"", "validator": "getAndValidateIban" },
 "iban-search-swift": { "urlTemplate": "https://www.swift.com/search?type=bic&keyword={iban}", "validator": "getAndValidateIban" },
-"iban-search-ibancom": { "urlTemplate": "https://www.iban.com/search?query={iban}", "validator": "getAndValidateIban" }
+"iban-search-ibancom": { "urlTemplate": "https://www.iban.com/search?query={iban}", "validator": "getAndValidateIban" },
+"iban-search-bing": { "urlTemplate": "https://www.bing.com/search?q=\"{iban}\"", "validator": "getAndValidateIban" },
+"iban-search-yandex": { "urlTemplate": "https://yandex.com/search/?text=\"{iban}\"", "validator": "getAndValidateIban" },
+"iban-search-baidu": { "urlTemplate": "https://www.baidu.com/s?wd=\"{iban}\"", "validator": "getAndValidateIban" }
 
 };
