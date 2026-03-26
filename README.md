@@ -1,10 +1,10 @@
-# Exploratores OSINT Toolkit 3.0α
+# Exploratores OSINT Toolkit 3.0β
 
 ![Exploratores Toolkit Logo](assets/images/exploratores.jpg)
 
 [GitHub Repository](https://github.com/SOsintOps/Exploratores)
 
-**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows. Version 3.0α introduces multi-country IBAN analysis, a redesigned Toolkit Search, and a fully data-driven JavaScript architecture.
+**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows. Version 3.0β introduces multi-country IBAN analysis, a redesigned Toolkit Search, a fully data-driven JavaScript architecture, and enhanced phone number normalization.
 
 ---
 
@@ -21,7 +21,7 @@
 
 ---
 
-![version](https://img.shields.io/badge/version-3.0α-blue)
+![version](https://img.shields.io/badge/version-3.0β-blue)
 
 ## 🔧 Requirements
 
@@ -49,13 +49,14 @@ The toolkit is organized into the following sections, accessible from the main n
 * **GeoInt**: Mapping and geolocation tools.
 * **Media Analysis**: Image, video, and document analysis tools.
 * **Company & Finance**: Corporate records, virtual currencies, IBAN verification.
-* **Tools**: CyberChef, Guidelines, FAQ, Customise, Version History.
+* **Tools**: CyberChef.
+* **Help**: Guidelines, FAQ, Customise, Version History.
 
 ---
 
 ## 📚 Documentation
 
-Detailed documentation is available directly in the toolkit under the **Tools** menu:
+Detailed documentation is available directly in the toolkit under the **Help** menu:
 
 * [Guidelines](pages/guidelines.html) — analytic standards, 5W1H framework, OPSEC best practices.
 * [FAQ](pages/faq.html) — frequently asked questions, architecture overview, troubleshooting.
