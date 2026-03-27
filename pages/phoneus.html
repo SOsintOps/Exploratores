@@ -18,7 +18,7 @@
   <h1 class="page-title">US Phone Numbers Tool</h1>
 
   <section class="search-instructions" id="section-phoneus-main-input">
-    <label for="areaCode">Please insert the 3 numeric parts (Area, Prefix, Line) then choose a service below:</label>
+    <label for="areaCode">Enter the three numeric components (Area, Prefix, Line), then select a service below:</label>
     <p class="input-section-description"></p>
     <div class="input-container">
       <input type="text" id="areaCode" class="input-field" placeholder="Area (e.g., 702)" maxlength="3" autocomplete="off" />
@@ -29,7 +29,7 @@
   </section>
 
   <div class="note" id="note-phoneus-main">
-    <strong>NOTE:</strong> Phone number data, including country and type association, can vary in precision due to factors like number portability. The actual current use of a specific number may differ. Always cross-verify findings using multiple sources.
+    <strong>NOTE:</strong> Phone number metadata, including country and type classification, may vary due to number portability. The current use of a number may differ from recorded data. Always cross-verify findings using multiple sources.
   </div>
   
   <div class="columns">
@@ -125,7 +125,7 @@
           }
           const phoneNumberObject = libphonenumber.parsePhoneNumberFromString("+" + phoneData.e164, 'US');
           if (!phoneNumberObject || !phoneNumberObject.isValid()) {
-              intelDisplayElement.textContent = "Invalid number or info not determinable.";
+              intelDisplayElement.textContent = "Invalid number or data not available.";
               return;
           }
           const type = phoneNumberObject.getType();
@@ -139,7 +139,8 @@
 
   // --- Standard Page State Management ---
   function updatePageState() {
-    const phoneData = ExploratoresValidators.getAndValidateUsPhone();
+    const result = ExploratoresValidators.getAndValidateUsPhone();
+    const phoneData = result.isValid ? result.data : null;
     document.querySelectorAll('button[data-search-id]').forEach(button => {
         button.disabled = !phoneData;
         button.classList.toggle('text-active', !!phoneData);
