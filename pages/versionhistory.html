@@ -33,6 +33,8 @@
                 <li><strong>Fixed:</strong> Phone buttons always enabled regardless of input validity.</li>
                 <li><strong>Fixed:</strong> Phone intel display was always empty (<code>validationResult.data</code> was passed incorrectly).</li>
                 <li><strong>Fixed:</strong> Truecaller generated uppercase ISO in URL (e.g. <code>/IT/</code> instead of <code>/it/</code>).</li>
+                <li><strong>Fixed:</strong> US Phone — <code>updatePageState</code> did not unwrap the validator result object; buttons were never disabled and phone intel always showed an error.</li>
+                <li><strong>Improved:</strong> IBAN page — replaced IBAN.com with IBAN Calculator; removed broken SWIFT Search; buttons centered on page.</li>
             </ul>
         </div>
 
