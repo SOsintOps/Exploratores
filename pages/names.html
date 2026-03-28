@@ -138,13 +138,13 @@
 
 <script>
   function updatePageState() {
-    const nameData = ExploratoresValidators.getAndValidateNames();
+    const result = ExploratoresValidators.getAndValidateNames();
     document.querySelectorAll('button[data-search-id]').forEach(button => {
         const config = SearchLibrary[button.dataset.searchId] || {};
-        const isEnabled = nameData || config.no_input;
-        
+        const isEnabled = result.isValid || config.no_input;
+
         button.disabled = !isEnabled;
-        button.classList.toggle('text-active', isEnabled);
+        button.classList.toggle('text-active', !!isEnabled);
     });
   }
 

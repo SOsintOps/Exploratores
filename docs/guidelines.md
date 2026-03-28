@@ -32,7 +32,7 @@ Adherence to the five Core Analytic Standards is mandatory for all intelligence 
 9.  Incorporates effective visual information where appropriate to clarify the analytic message.
 
 ## The 5W1H Analytical Framework
-The 5W1H framework (Who, What, When, Where, Why, How) is a cognitive tool that imposes order on chaotic data streams, enhances analytical clarity, and provides a structured pathway for transforming raw open-source information into finished, actionable intelligence. It serves as a bulwark against common analytical pitfalls and cognitive biases, such as confirmation bias and tunnel vision.
+The 5W1H framework (Who, What, When, Where, Why, How) is a cognitive tool that imposes order on chaotic data streams, enhances analytical clarity, and provides a structured pathway for transforming raw open-source information into finished, actionable intelligence. It serves as a safeguard against common analytical pitfalls and cognitive biases, such as confirmation bias and tunnel vision.
 
 ### The Six Components
 #### Who: Identifying Actors and Networks
@@ -76,7 +76,7 @@ Effective OPSEC is not optional. It is a core discipline required to protect you
 - **Identity Segregation:** Never use personal accounts or equipment for investigative activities. Create and use dedicated, non-attributable online accounts and personas for your work. Do not link these personas to each other or to your real identity.
 - **Secure Infrastructure:** Always use a trusted, no-log Virtual Private Network (VPN) to mask your true IP address. For sensitive investigations, conduct your work from within a dedicated Virtual Machine (VM) to sandbox your activities from your host machine. Consider using the Tor Browser for enhanced anonymization.
 - **Sterile Browse Environment:** Use a dedicated web browser with separate profiles for each digital persona. Install privacy-enhancing extensions (e.g., ad blockers, script blockers, anti-tracking tools). Regularly clear cookies, cache, and history.
-- **Mindful Online Conduct:** Be aware of your digital footprint. Avoid providing unnecessary personal information when registering for services. Use unique, strong passwords and email addresses for each persona. Be cautious about the information you "like," share, or post, as it can be used to profile your persona.
+- **Disciplined Online Conduct:** Be aware of your digital footprint. Avoid providing unnecessary personal information when registering for services. Use unique, strong passwords and email addresses for each persona. Be cautious about the information you "like," share, or post, as it can be used to profile your persona.
 - **Secure Data Handling:** All information collected during an investigation must be stored securely. Use encrypted storage for your case files. Establish a clear data retention and destruction policy to securely delete information that is no longer needed.
 
 ## Further Reading

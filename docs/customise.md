@@ -23,7 +23,7 @@ This section outlines the technical standards for maintaining and extending the 
 
 ## The Role of the Main JavaScript Files
 
-The JavaScript architecture is the heart of the project. Here is the role of each file located in `assets/js/`.
+The JavaScript architecture is the core of the project. Here is the role of each file located in `assets/js/`.
 
 ### 1. `navigation.js` (in `assets/menu/`) - The Dynamic Menu
 
@@ -47,7 +47,7 @@ The JavaScript architecture is the heart of the project. Here is the role of eac
 
 ## Practical Guides
 
-The following guides show with practical examples how to modify and extend the toolkit.
+The following guides demonstrate, with practical examples, how to modify and extend the toolkit.
 
 ### Guide A: Page State Management
 
