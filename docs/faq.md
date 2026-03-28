@@ -58,7 +58,7 @@ No guarantees are provided regarding the accuracy, completeness, reliability, or
 
 ### Am I responsible for validating information found using the toolkit?
 
-Yes, absolutely. The Exploratores OSINT Toolkit provides access to various tools and external resources. However, any information, data, or "news" obtained through these tools must be critically evaluated and independently validated by you, the analyst, before being considered reliable or actionable. The toolkit itself does not verify the accuracy or truthfulness of the data retrieved from external sources.
+Yes. The Exploratores OSINT Toolkit provides access to various tools and external resources. However, any information, data, or "news" obtained through these tools must be critically evaluated and independently validated by you, the analyst, before being considered reliable or actionable. The toolkit itself does not verify the accuracy or truthfulness of the data retrieved from external sources.
 
 ## Learning & Best Practices
 
@@ -101,11 +101,11 @@ Yes, the toolkit is designed to be customizable. You can add new tools, modify e
 
 ### How is the maintenance of tools within the toolkit handled?
 
-The Exploratores OSINT Toolkit was created and is carried forward as a side project. Ongoing maintenance, updating links, removing obsolete tools, and adding new ones is managed in free time and may take time.
+The Exploratores OSINT Toolkit is maintained on a voluntary basis. Ongoing maintenance — including updating links, removing obsolete tools, and adding new resources — is performed as capacity allows.
 
 ### How can I suggest new tools or improvements?
 
-To report errors or request new functionalities, use the GitHub reporting procedures and communication channels. This will ensure direct feedback.
+To report errors or request new functionalities, submit an issue via the GitHub repository. This ensures requests are tracked and addressed.
 
 ### What is the recommended workflow for contributing a new page?
 
@@ -130,7 +130,7 @@ To interact effectively with a Large Language Model (LLM) for developing pages o
 
 ### Can you provide an example prompt for an LLM to create a basic Exploratores page template from scratch?
 
-Certainly. Here is an updated prompt that reflects the current project architecture:
+The following prompt reflects the current project architecture:
 
 ```html
 "Please generate the complete HTML code for a new page named 'ExampleTool.html' for the Exploratores OSINT Toolkit. The page must strictly follow the new data-driven architecture.
@@ -161,7 +161,7 @@ The new architecture centralizes the logic to avoid code duplication. It works l
 *   **search-library.js:** Acts as a "catalog." It contains an object that maps each `data-search-id` to a URL template and a validation function.
 *   **main.js:** This is the "engine" of the toolkit. It contains a single event handler that, on a button click, uses the `data-search-id` to find the corresponding configuration in `search-library.js`, runs the validation, and opens the correct URL.
 
-This approach makes the pages cleaner and maintenance easier, as all search logics are defined in one place.
+This approach makes the pages cleaner and maintenance easier, as all search logic is defined in one place.
 
 ### How does the page state management (`updatePageState`) work?
 

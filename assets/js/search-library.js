@@ -280,6 +280,7 @@ const SearchLibrary = {
     "phoneint-syncme": { "urlTemplate": "https://sync.me/search/?number=+{e164}", "validator": "getAndValidateIntlPhone", "validation_rules": { "requireCountryCode": true, "requireNatNum": true } },
     "phoneint-thatsthem": { "urlTemplate": "https://thatsthem.com/phone/{nat_num}", "validator": "getAndValidateIntlPhone", "validation_rules": { "requireNatNum": true } },
     "phoneint-truecaller": { "urlTemplate": "https://www.truecaller.com/search/{country_iso_lower}/{nat_num}", "validator": "getAndValidateIntlPhone", "validation_rules": { "requireNatNum": true, "requireCountryLetters": true } },
+    "phoneint-tellows": { "urlTemplate": "https://www.tellows.it/num/{nat_num}", "validator": "getAndValidateIntlPhone", "validation_rules": { "requireNatNum": true } },
     "phoneint-facebookposts": { "urlTemplate": "https://www.facebook.com/search/posts/?q=+{e164}", "validator": "getAndValidateIntlPhone", "validation_rules": { "requireCountryCode": true, "requireNatNum": true } },
     "phoneint-ofac": { "urlTemplate": "https://sanctionssearch.ofac.treas.gov/Details.aspx?id=+{e164}", "validator": "getAndValidateIntlPhone", "validation_rules": { "requireCountryCode": true, "requireNatNum": true } },
     "phoneint-riskiq": { "urlTemplate": "https://community.riskiq.com/search/whois/phone?query=+{e164}", "validator": "getAndValidateIntlPhone", "validation_rules": { "requireCountryCode": true, "requireNatNum": true } },

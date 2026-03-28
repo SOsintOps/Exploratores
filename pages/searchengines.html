@@ -100,16 +100,13 @@
 
 <script>
   function updatePageState() {
-    const inputs = ExploratoresValidators.getAndValidateSearchTerm();
+    const result = ExploratoresValidators.getAndValidateSearchTerm();
+    const isValid = result.isValid;
     const allButtons = document.querySelectorAll('.button-grid .button');
-    
+
     allButtons.forEach(button => {
-      button.disabled = !inputs;
-      if (inputs) {
-        button.classList.add('text-active');
-      } else {
-        button.classList.remove('text-active');
-      }
+      button.disabled = !isValid;
+      button.classList.toggle('text-active', isValid);
     });
   }
 

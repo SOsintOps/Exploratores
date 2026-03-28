@@ -139,7 +139,7 @@
     </div>
     <div class="faq-item">
       <h3 id="q-user-validation">Am I responsible for validating information found using the toolkit?</h3>
-      <p>Yes, absolutely. The Exploratores OSINT Toolkit provides access to various tools and external resources. However, any information, data, or "news" obtained through these tools must be critically evaluated and independently validated by you, the analyst, before being considered reliable or actionable. The toolkit itself does not verify the accuracy or truthfulness of the data retrieved from external sources.</p>
+      <p>Yes. The Exploratores OSINT Toolkit provides access to various tools and external resources. However, any information, data, or "news" obtained through these tools must be critically evaluated and independently validated by you, the analyst, before being considered reliable or actionable. The toolkit itself does not verify the accuracy or truthfulness of the data retrieved from external sources.</p>
     </div>
     <div class="faq-item">
       <h3 id="q-accuracy-guarantee">Are there any guarantees regarding the accuracy or reliability of the tools and results?</h3>
@@ -166,11 +166,11 @@
     <h2 id="s-maintenance">Maintenance &amp; Contribution</h2>
     <div class="faq-item">
       <h3 id="q-maintenance">How is the maintenance of tools within the toolkit handled?</h3>
-      <p>The Exploratores OSINT Toolkit was created and is carried forward as a side project. Ongoing maintenance, updating links, removing obsolete tools, and adding new ones is managed in free time and may take time.</p>
+      <p>The Exploratores OSINT Toolkit is maintained on a voluntary basis. Ongoing maintenance — including updating links, removing obsolete tools, and adding new resources — is performed as capacity allows.</p>
     </div>
     <div class="faq-item">
       <h3 id="q-suggest-improvements">How can I suggest new tools or improvements?</h3>
-      <p>To report errors or request new functionalities, use the GitHub reporting procedures and communication channels. This will ensure direct feedback.</p>
+      <p>To report errors or request new functionalities, submit an issue via the GitHub repository. This ensures requests are tracked and addressed.</p>
     </div>
     <div class="faq-item">
         <h3 id="q-contribution-workflow">What is the recommended workflow for contributing a new page?</h3>
@@ -193,7 +193,7 @@
         <li><strong>search-library.js:</strong> Acts as a "catalog." It contains an object that maps each <code>data-search-id</code> to a URL template and a validation function.</li>
         <li><strong>main.js:</strong> This is the "engine" of the toolkit. It contains a single event handler that, on a button click, uses the <code>data-search-id</code> to find the corresponding configuration in <code>search-library.js</code>, runs the validation, and opens the correct URL.</li>
       </ul>
-      <p>This approach makes the pages cleaner and maintenance easier, as all search logics are defined in one place.</p>
+      <p>This approach makes the pages cleaner and maintenance easier, as all search logic is defined in one place.</p>
     </div>
     <div class="faq-item">
         <h3 id="q-page-state">How does the page state management (`updatePageState`) work?</h3>
@@ -269,7 +269,7 @@
     </div>
     <div class="faq-item">
       <h3 id="q-llm-prompt-newpage">Can you provide an example prompt for an LLM to create a basic Exploratores page template from scratch?</h3>
-      <p>Certainly. Here is an updated prompt that reflects the current project architecture:</p>
+      <p>The following prompt reflects the current project architecture:</p>
       <pre class="code-guide-block"><code>"Please generate the complete HTML code for a new page named 'ExampleTool.html' for the Exploratores OSINT Toolkit. The page must strictly follow the new data-driven architecture.
 
 1.  **HTML Structure**: Standard HTML5 boilerplate.
