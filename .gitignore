@@ -68,7 +68,5 @@ _site/
 .sass-cache/
 .jekyll-cache/
 
-todo.md
-
 # Local scripts — local only, do not push
 start.ps1
