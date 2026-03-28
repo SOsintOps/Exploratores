@@ -1,1 +1,0 @@
-Everything has been implemented. Suspiciously, there is nothing left to add here. One begins to wonder whether this file has become obsolete — or whether the developer has simply run out of ideas. Time will tell.

@@ -72,6 +72,8 @@ _site/
 .claude/
 .claude-flow/
 CLAUDE.md
+.mcp.json
+todo.md
 
 # Swarm and local scripts — local only, do not push
 .swarm/
