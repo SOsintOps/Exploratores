@@ -58,11 +58,14 @@
       </li>
       <li><strong><a href="#s-technical">Technical Details &amp; Troubleshooting</a></strong>
         <ul>
-          <li><a href="#q-new-architecture">What is the logic behind the new "Data-Driven" system?</a></li>
+          <li><a href="#q-new-architecture">What is the logic behind the new centralised architecture?</a></li>
           <li><a href="#q-page-state">How does the page state management work?</a></li>
           <li><a href="#q-add-new-button">What are the steps to add a new search button?</a></li>
           <li><a href="#q-button-not-working">What should I check if a button click does nothing?</a></li>
           <li><a href="#q-iban-db-update">How do I update the IBAN bank databases?</a></li>
+          <li><a href="#q-redactor-what">What is the Redactor tool and how does it work?</a></li>
+          <li><a href="#q-redactor-flow">What is the Censor → LLM → Restore workflow?</a></li>
+          <li><a href="#q-redactor-custom">How do I add custom detection patterns to the Redactor?</a></li>
         </ul>
       </li>
       <li><strong><a href="#s-llm">LLMs and Toolkit Development</a></strong>
@@ -155,10 +158,10 @@
       <h3 id="q-osint-resources">Where can I find resources to learn more about OSINT?</h3>
       <p>The following texts are recommended as foundational references for OSINT practitioners and intelligence analysts:</p>
       <ul>
-        <li><strong><em>Deep Dive: A Guide to Advanced Open Source Intelligence</em></strong> — a practical guide to advanced OSINT methodologies and real-world applications.</li>
-        <li><strong>ICD 203: Analytic Standards</strong> — the US Intelligence Community Directive defining the analytic tradecraft standards that govern intelligence products.</li>
-        <li><strong><em>Open Source Intelligence Techniques</em></strong> by Michael Bazzell — the industry-standard reference for OSINT tools and collection techniques, updated regularly.</li>
-        <li><strong><em>Psychology of Intelligence Analysis</em></strong> by Richards J. Heuer Jr. — a foundational text on understanding and mitigating cognitive biases in analytical judgment.</li>
+        <li><strong><em>Deep Dive: A Guide to Advanced Open Source Intelligence</em></strong>: a practical guide to advanced OSINT methodologies and real-world applications.</li>
+        <li><strong>ICD 203: Analytic Standards</strong>: the US Intelligence Community Directive defining the analytic tradecraft standards that govern intelligence products.</li>
+        <li><strong><em>Open Source Intelligence Techniques</em></strong> by Michael Bazzell: the industry-standard reference for OSINT tools and collection techniques, updated regularly.</li>
+        <li><strong><em>Psychology of Intelligence Analysis</em></strong> by Richards J. Heuer Jr.: a foundational text on understanding and mitigating cognitive biases in analytical judgment.</li>
       </ul>
       <p>Additionally, following specialized blogs, participating in webinars, and joining professional OSINT communities are valuable for staying updated on the latest techniques and tools.</p>
     </div>
@@ -166,7 +169,7 @@
     <h2 id="s-maintenance">Maintenance &amp; Contribution</h2>
     <div class="faq-item">
       <h3 id="q-maintenance">How is the maintenance of tools within the toolkit handled?</h3>
-      <p>The Exploratores OSINT Toolkit is maintained on a voluntary basis. Ongoing maintenance — including updating links, removing obsolete tools, and adding new resources — is performed as capacity allows.</p>
+      <p>The Exploratores OSINT Toolkit is maintained on a voluntary basis. Ongoing maintenance, including updating links, removing obsolete tools, and adding new resources, is performed as capacity allows.</p>
     </div>
     <div class="faq-item">
       <h3 id="q-suggest-improvements">How can I suggest new tools or improvements?</h3>
@@ -186,7 +189,7 @@
 
     <h2 id="s-technical">Technical Details &amp; Troubleshooting</h2>
     <div class="faq-item">
-      <h3 id="q-new-architecture">What is the logic behind the new "Data-Driven" system?</h3>
+      <h3 id="q-new-architecture">What is the logic behind the new centralised architecture?</h3>
       <p>The new architecture centralizes the logic to avoid code duplication. It works like this:</p>
       <ul>
         <li><strong>HTML Pages (e.g., Names.html):</strong> Contain only the structure and UI elements. Buttons have a <code>data-search-id</code> attribute that acts as a unique identifier for a search, but they contain no JavaScript code.</li>
@@ -231,7 +234,7 @@
             <li>Download the official bank list for the country you want to update (see sources below).</li>
             <li>Open the matching file in <code>assets/js/bankDatabases/</code> (e.g., <code>de.js</code> for Germany).</li>
             <li>Add or update entries using the format <code>"BANKCODE": "Bank Name"</code>, ensuring each line ends with a comma except the last one before the closing brace.</li>
-            <li>Save the file. No build step is required — the change takes effect immediately in the browser.</li>
+            <li>Save the file. No build step is required; the change takes effect immediately in the browser.</li>
         </ol>
 
         <h4>Official Sources by Country</h4>
@@ -240,20 +243,52 @@
                 <tr><th>Country</th><th>File</th><th>Source</th><th>Format</th></tr>
             </thead>
             <tbody>
-                <tr><td>Germany (DE)</td><td>de.js</td><td>Deutsche Bundesbank — <em>Bankleitzahlendatei</em></td><td>CSV/TXT, free download</td></tr>
-                <tr><td>Austria (AT)</td><td>at.js</td><td>Oesterreichische Nationalbank — BLZ register</td><td>CSV/XLS, free download</td></tr>
-                <tr><td>Switzerland (CH)</td><td>ch.js</td><td>SIX Group — IID/Clearing register</td><td>XLS/CSV, free download</td></tr>
-                <tr><td>United Kingdom (GB)</td><td>gb.js</td><td>Pay.UK / EISCD — Sort Code directory</td><td>CSV, free download</td></tr>
+                <tr><td>Germany (DE)</td><td>de.js</td><td>Deutsche Bundesbank: <em>Bankleitzahlendatei</em></td><td>CSV/TXT, free download</td></tr>
+                <tr><td>Austria (AT)</td><td>at.js</td><td>Oesterreichische Nationalbank: BLZ register</td><td>CSV/XLS, free download</td></tr>
+                <tr><td>Switzerland (CH)</td><td>ch.js</td><td>SIX Group: IID/Clearing register</td><td>XLS/CSV, free download</td></tr>
+                <tr><td>United Kingdom (GB)</td><td>gb.js</td><td>Pay.UK / EISCD: Sort Code directory</td><td>CSV, free download</td></tr>
                 <tr><td>Netherlands (NL)</td><td>nl.js</td><td>BIC lookup via ECB/SWIFT IBAN registry</td><td>Manual / SWIFT API</td></tr>
-                <tr><td>Belgium (BE)</td><td>be.js</td><td>National Bank of Belgium — BIC/IBAN guide</td><td>PDF/Manual</td></tr>
-                <tr><td>France (FR)</td><td>fr.js</td><td>Banque de France — Code CIB / CFONB</td><td>PDF/Manual</td></tr>
-                <tr><td>Spain (ES)</td><td>es.js</td><td>Banco de España — Registro de entidades</td><td>PDF/Web</td></tr>
-                <tr><td>Portugal (PT)</td><td>pt.js</td><td>Banco de Portugal — Instituições de crédito</td><td>PDF/Web</td></tr>
-                <tr><td>Poland (PL)</td><td>pl.js</td><td>Narodowy Bank Polski — IBAN structure / NBP register</td><td>PDF/Web</td></tr>
-                <tr><td>Italy (IT)</td><td>(built-in)</td><td>Banca d'Italia — Albo delle banche (ABI codes)</td><td>XLS, free download</td></tr>
+                <tr><td>Belgium (BE)</td><td>be.js</td><td>National Bank of Belgium: BIC/IBAN guide</td><td>PDF/Manual</td></tr>
+                <tr><td>France (FR)</td><td>fr.js</td><td>Banque de France: Code CIB / CFONB</td><td>PDF/Manual</td></tr>
+                <tr><td>Spain (ES)</td><td>es.js</td><td>Banco de España: Registro de entidades</td><td>PDF/Web</td></tr>
+                <tr><td>Portugal (PT)</td><td>pt.js</td><td>Banco de Portugal: Instituições de crédito</td><td>PDF/Web</td></tr>
+                <tr><td>Poland (PL)</td><td>pl.js</td><td>Narodowy Bank Polski: IBAN structure / NBP register</td><td>PDF/Web</td></tr>
+                <tr><td>Italy (IT)</td><td>(built-in)</td><td>Banca d'Italia: Albo delle banche (ABI codes)</td><td>XLS, free download</td></tr>
             </tbody>
         </table>
         <p><em>For countries where a single machine-readable file is not available (NL, BE, FR, ES, PT, PL), the ECB's <a href="https://www.ecb.europa.eu/paym/integration/retail/sepa/html/index.en.html" target="_blank" rel="noopener">SEPA IBAN registry</a> and the <a href="https://www.swift.com/our-solutions/compliance-and-shared-services/banking-standards/bic" target="_blank" rel="noopener">SWIFT BIC directory</a> are useful cross-reference sources.</em></p>
+    </div>
+
+        <h3 id="q-redactor-what">What is the Redactor tool and how does it work?</h3>
+        <p>The Redactor (accessible under the <strong>Tools</strong> menu) is a browser-side PII removal tool designed for workflows that involve submitting case text to external AI models. It scans input text or CSV files and replaces sensitive values with numbered placeholders such as <code>[EMAIL_1]</code>, <code>[VAT_IT_1]</code>, or <code>[AMEX_1]</code>. The same value always receives the same placeholder within a session, so the mapping is consistent. A <strong>Redaction Map</strong> records every substitution and can be exported as JSON for later use.</p>
+        <p>All processing runs locally in your browser. No data is transmitted to any server.</p>
+        <p>Detected categories out of the box:</p>
+        <ul>
+            <li><strong>EMAIL</strong>: standard email addresses.</li>
+            <li><strong>CF</strong>: Italian Codice Fiscale (16-character alphanumeric).</li>
+            <li><strong>VAT_XX</strong>: VAT / fiscal codes for 30+ countries, each tagged with its ISO country code (e.g., <code>[VAT_DE_1]</code>, <code>[VAT_FR_1]</code>). Includes both the EU-prefix form (<code>IT04598600403</code>) and the plain 11-digit Italian P.IVA.</li>
+            <li><strong>AMEX</strong>: American Express card numbers: CM15 (full 15 digits), CM13, and CM11, both spaced (4-6-N format) and unspaced.</li>
+            <li><strong>SE10</strong>: SE10 merchant codes (exactly 10 digits).</li>
+        </ul>
+
+        <h3 id="q-redactor-flow">What is the Censor → LLM → Restore workflow?</h3>
+        <ol>
+            <li>Paste your text into the <strong>Censor</strong> section (or upload a CSV) and click <strong>Censor</strong>.</li>
+            <li>Copy the redacted output and submit it to your AI model.</li>
+            <li>Once the AI returns its report (which will contain the placeholders), paste it into the <strong>Restore</strong> section and click <strong>Restore</strong>. All original values are reinserted automatically.</li>
+            <li>If you need to continue a session later (e.g., the report arrives the next day), click <strong>Copy Map (JSON)</strong> to export the redaction map, save it externally, then re-import it via the <strong>Import Map</strong> panel before using Restore.</li>
+        </ol>
+        <p>The session state is held only in memory. It is cleared when you close or refresh the tab, or when you click <strong>Clear Session</strong>.</p>
+
+        <h3 id="q-redactor-custom">How do I add custom detection patterns to the Redactor?</h3>
+        <p>Open the <strong>Custom Patterns</strong> section on the Redactor page. Fill in the form:</p>
+        <ul>
+            <li><strong>Type name</strong>: used in the placeholder, e.g. <code>SSN_US</code> → <code>[SSN_US_1]</code>. Spaces are converted to underscores; letters uppercased automatically.</li>
+            <li><strong>Regex</strong>: the pattern without surrounding slashes, e.g. <code>\b\d{3}-\d{2}-\d{4}\b</code>.</li>
+            <li><strong>Colour</strong>: badge colour in the Redaction Map table.</li>
+            <li><strong>Case-insensitive</strong>: tick to apply the <code>i</code> flag.</li>
+        </ul>
+        <p>Click <strong>Add Pattern</strong>. Custom patterns are saved in your browser's <code>localStorage</code> and persist between sessions. Remove any pattern via the <strong>Remove</strong> button in the active patterns table.</p>
     </div>
 
     <h2 id="s-llm">LLMs and Toolkit Development</h2>
@@ -262,7 +297,7 @@
       <p>To interact effectively with a Large Language Model (LLM) for developing pages or features, provide a clear and detailed prompt. Key elements to include are:</p>
       <ul>
         <li><strong>Clear Objective</strong>: Precisely describe what the new page or feature should do.</li>
-        <li><strong>Adherence to Architecture</strong>: Explicitly state that the new page must follow the established data-driven architecture (main.js, validators.js, search-library.js).</li>
+        <li><strong>Adherence to Architecture</strong>: Explicitly state that the new page must follow the established centralised architecture (main.js, validators.js, search-library.js).</li>
         <li><strong>No Inline Logic</strong>: Specify that buttons must use `data-search-id` and not `onclick`.</li>
         <li><strong>Reference to Project Guidelines</strong>: Remind the LLM to adhere to all established project standards, including file naming and CSS classes.</li>
       </ul>
@@ -293,7 +328,7 @@
 </main>
 
 <footer>
-  <p>Exploratores 3.0 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.1.0 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>

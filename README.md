@@ -1,10 +1,10 @@
-# Exploratores OSINT Toolkit 3.0
+# Exploratores OSINT Toolkit 3.1.0
 
 ![Exploratores Toolkit Logo](assets/images/exploratores.jpg)
 
 [GitHub Repository](https://github.com/SOsintOps/Exploratores)
 
-**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows. Version 3.0 introduces multi-country IBAN analysis, a redesigned Toolkit Search, a fully data-driven JavaScript architecture, and enhanced phone number normalization.
+**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows. Version 3.1.0 adds the Redactor tool for browser-side PII removal before LLM submission, and official bank databases for 8 new IBAN countries. Version 3.0 introduced multi-country IBAN analysis, a redesigned Toolkit Search, a centralised JavaScript architecture, and enhanced phone number normalization.
 
 ---
 
@@ -13,15 +13,15 @@
 - Fully responsive layout built with semantic HTML5.
 - No server or backend dependencies required.
 - Fully functional offline via `file://` protocol; external tools require internet.
-- Centralised, data-driven JavaScript architecture (`main.js`, `validators.js`, `search-library.js`).
-- Dynamically loaded navigation bar for easy site-wide updates.
+- Centralised JavaScript architecture (`main.js`, `validators.js`, `search-library.js`).
+- Navigation bar defined once, shared across all pages.
 - Modular pages with scoped focus (Names, Phones, Domains, IBAN, etc.).
 - Toolkit Search with two-column scrollable results and live counter.
 - Multi-country IBAN verifier with offline bank name resolution for 11 countries.
 
 ---
 
-![version](https://img.shields.io/badge/version-3.0-blue)
+![version](https://img.shields.io/badge/version-3.1.0-blue)
 
 ## Requirements
 
@@ -49,7 +49,7 @@ The toolkit is organized into the following sections, accessible from the main n
 * **GeoInt**: Mapping and geolocation tools.
 * **Media Analysis**: Image, video, and document analysis tools.
 * **Company & Finance**: Corporate records, virtual currencies, IBAN verification.
-* **Tools**: CyberChef.
+* **Tools**: CyberChef, Redactor (browser-side PII removal and restoration).
 * **Help**: Guidelines, FAQ, Customise, Version History.
 
 ---
@@ -58,10 +58,10 @@ The toolkit is organized into the following sections, accessible from the main n
 
 Detailed documentation is available directly in the toolkit under the **Help** menu:
 
-* [Guidelines](docs/guidelines.md) — analytic standards, 5W1H framework, OPSEC best practices.
-* [FAQ](docs/faq.md) — frequently asked questions, architecture overview, troubleshooting.
-* [Customise](docs/customise.md) — guide to extending and customising the toolkit.
-* [Version History](pages/versionhistory.html) — full changelog.
+* [Guidelines](docs/guidelines.md): analytic standards, 5W1H method, OPSEC best practices.
+* [FAQ](docs/faq.md): frequently asked questions, architecture overview, troubleshooting.
+* [Customise](docs/customise.md): guide to extending and customising the toolkit.
+* [Version History](pages/versionhistory.html): full changelog.
 
 The `docs/` directory contains the Markdown source for [Guidelines](docs/guidelines.md), [FAQ](docs/faq.md), and [Customise](docs/customise.md).
 

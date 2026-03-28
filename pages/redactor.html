@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redactor • Exploratores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+    <style>
+        .redactor-textarea {
+            width: 100%;
+            min-height: 140px;
+            padding: 0.6rem;
+            font-size: 0.9rem;
+            font-family: 'Courier New', Courier, monospace;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            resize: vertical;
+            box-sizing: border-box;
+            margin-bottom: 0.75rem;
+        }
+        .redactor-textarea[readonly] {
+            background-color: #f4f4f8;
+            color: #333;
+        }
+        .redactor-row {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .redactor-row .button {
+            width: auto;
+            min-width: 140px;
+            flex-shrink: 0;
+        }
+        .mode-toggle {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .mode-toggle .button {
+            width: auto;
+            min-width: 80px;
+        }
+        .pii-badge {
+            display: inline-block;
+            padding: 0.2em 0.55em;
+            border-radius: 3px;
+            font-size: 0.78em;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 0.04em;
+        }
+        .redaction-map-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        .redaction-map-table th {
+            padding: 0.4rem 0.75rem;
+            font-weight: bold;
+            border: 1px solid #ccc;
+            text-align: left;
+            background-color: #f0f0f0;
+            white-space: nowrap;
+        }
+        .redaction-map-table td {
+            padding: 0.35rem 0.75rem;
+            border: 1px solid #ccc;
+            vertical-align: middle;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            word-break: break-all;
+        }
+        .redaction-map-table tbody tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+        .redaction-map-table td.td-badge {
+            font-family: inherit;
+            text-align: center;
+        }
+        .csv-info {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0.75rem;
+        }
+        .file-input-wrap {
+            margin-bottom: 0.75rem;
+        }
+        #btn-clear-session,
+        #btn-copy-map {
+            width: 160px;
+            min-width: 160px;
+            flex-shrink: 0;
+        }
+        .redactor-section {
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<main>
+    <h1 class="page-title">Redactor</h1>
+    <p class="center-text">Remove PII from text or CSV before submitting to AI models. Restore originals once the report is ready.</p>
+
+    <!-- Section 1: Censor -->
+    <section class="redactor-section">
+        <div class="search-instructions">
+            <h2>Censor</h2>
+
+            <div class="mode-toggle">
+                <button id="btn-mode-text" class="button text-active">Text</button>
+                <button id="btn-mode-csv" class="button">CSV</button>
+            </div>
+
+            <!-- Text panel -->
+            <div id="panel-text">
+                <label style="display:block; font-weight:600; margin-bottom:0.4rem;">Input text</label>
+                <textarea id="input-text" class="redactor-textarea" placeholder="Paste text containing PII here&#8230;"></textarea>
+                <div class="redactor-row">
+                    <button id="btn-censor-text" class="button text-active">Censor</button>
+                </div>
+                <div id="output-text-wrap" style="display:none;">
+                    <label style="display:block; font-weight:600; margin-bottom:0.4rem;">Redacted text</label>
+                    <textarea id="output-text" class="redactor-textarea" readonly></textarea>
+                    <div class="redactor-row">
+                        <button id="btn-copy-text" class="button">Copy to Clipboard</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CSV panel -->
+            <div id="panel-csv" style="display:none;">
+                <label style="display:block; font-weight:600; margin-bottom:0.4rem;">Upload CSV file</label>
+                <div class="file-input-wrap">
+                    <input type="file" id="input-csv" accept=".csv">
+                </div>
+                <div class="redactor-row">
+                    <button id="btn-censor-csv" class="button text-active">Censor CSV</button>
+                </div>
+                <div id="output-csv-wrap" style="display:none;">
+                    <p id="csv-stats" class="csv-info"></p>
+                    <div class="redactor-row">
+                        <button id="btn-download-csv" class="button text-active">Download Redacted CSV</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Restore -->
+    <section class="redactor-section">
+        <div class="search-instructions">
+            <h2>Restore</h2>
+            <label style="display:block; font-weight:600; margin-bottom:0.4rem;">Paste AI report (containing placeholders)</label>
+            <textarea id="input-restore" class="redactor-textarea" placeholder="Paste the AI-generated report here. All [TYPE_N] placeholders will be replaced with the original values from the current session."></textarea>
+            <div class="redactor-row">
+                <button id="btn-restore" class="button text-active">Restore</button>
+            </div>
+            <div id="output-restore-wrap" style="display:none;">
+                <label style="display:block; font-weight:600; margin-bottom:0.4rem;">Restored text</label>
+                <textarea id="output-restore" class="redactor-textarea" readonly></textarea>
+                <div class="redactor-row">
+                    <button id="btn-copy-restore" class="button">Copy to Clipboard</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Custom Patterns -->
+    <section class="redactor-section">
+        <div class="search-instructions">
+            <h2>Custom Patterns</h2>
+
+            <!-- Add form -->
+            <div style="display:grid; grid-template-columns:1fr 2fr auto auto; gap:0.5rem; align-items:end; margin-bottom:0.75rem; flex-wrap:wrap;">
+                <div>
+                    <label style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:0.25rem;">Type name</label>
+                    <input id="cp-type" type="text" class="input-field" placeholder="e.g. SSN_US" style="width:100%;">
+                </div>
+                <div>
+                    <label style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:0.25rem;">Regex (without slashes)</label>
+                    <input id="cp-regex" type="text" class="input-field" placeholder="e.g. \b\d{3}-\d{2}-\d{4}\b" style="width:100%;">
+                </div>
+                <div>
+                    <label style="display:block; font-size:0.85rem; font-weight:600; margin-bottom:0.25rem;">Colour</label>
+                    <input id="cp-color" type="color" value="#555555" style="width:48px; height:36px; border:1px solid #ccc; border-radius:3px; cursor:pointer;">
+                </div>
+                <div style="display:flex; flex-direction:column; justify-content:flex-end;">
+                    <label style="font-size:0.85rem; margin-bottom:0.25rem;">
+                        <input id="cp-ci" type="checkbox"> Case-insensitive
+                    </label>
+                </div>
+            </div>
+            <div class="redactor-row">
+                <button id="btn-add-pattern" class="button text-active" style="width:auto; min-width:140px;">Add Pattern</button>
+                <span id="cp-feedback" class="feedback-message"></span>
+            </div>
+
+            <!-- Active custom patterns table -->
+            <div id="cp-empty" class="csv-info">No custom patterns defined.</div>
+            <table id="cp-table" class="redaction-map-table" style="display:none;">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Regex</th>
+                        <th>Flags</th>
+                        <th>Colour</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="cp-tbody"></tbody>
+            </table>
+
+            <div class="note" style="margin-top:1rem;">
+                <strong>NOTE:</strong> Custom patterns are saved in your browser's <code>localStorage</code> and persist between sessions. Each pattern is applied after all built-in patterns; the same overlap rules apply. Use word boundaries (<code>\b</code>) in your regex to avoid partial matches.
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Redaction Map -->
+    <section class="redactor-section">
+        <div class="search-instructions">
+            <h2>Redaction Map</h2>
+            <div class="redactor-row" style="margin-bottom:1rem;">
+                <button id="btn-copy-map" class="button text-active">Copy Map (JSON)</button>
+                <button id="btn-clear-session" class="button">Clear Session</button>
+            </div>
+            <div id="map-empty" class="csv-info">No redactions in this session.</div>
+            <table id="map-table" class="redaction-map-table" style="display:none;">
+                <thead>
+                    <tr>
+                        <th>Placeholder</th>
+                        <th>Type</th>
+                        <th>Original Value</th>
+                    </tr>
+                </thead>
+                <tbody id="map-tbody"></tbody>
+            </table>
+
+            <details style="margin-top:1rem;">
+                <summary style="cursor:pointer; font-weight:600; font-size:0.9rem; color:var(--primary-color);">Import Map (restore a previous session)</summary>
+                <div style="margin-top:0.6rem;">
+                    <textarea id="input-import-map" class="redactor-textarea" style="min-height:80px;" placeholder='Paste the JSON map here, e.g. {"[EMAIL_1]":"john@example.com","[PIVA_1]":"04598600403"}'></textarea>
+                    <div class="redactor-row">
+                        <button id="btn-import-map" class="button text-active">Import</button>
+                        <span id="import-feedback" class="feedback-message"></span>
+                    </div>
+                </div>
+            </details>
+
+            <div class="note" style="margin-top:1rem;">
+                <strong>NOTE:</strong> All processing is performed entirely within your browser. No data is transmitted to any server. The redaction map is stored only in memory and is cleared when you close or refresh the tab.<br>
+                <strong>Detects:</strong> Email addresses &bull; Codice Fiscale (IT) &bull; VAT / fiscal codes for 30+ countries (IT, DE, FR, ES, GB, NL, BE, AT, PT, PL, HR, SI, CY, GR, MT, AL, SE, DK, FI, LU, IE, CZ, HU, RO, BG, EE, LT, LV, SK, US-EIN and more) &bull; American Express card numbers (CM11 / CM13 / CM15, spaced and unspaced) &bull; SE10 merchant codes (10 digits) &bull; custom user-defined patterns.
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <p>Exploratores 3.1.0 <a href="./license.html">License</a></p>
+</footer>
+
+<script src="../assets/menu/navigation.js"></script>
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
+
+  // ─── PII Pattern Definitions ────────────────────────────────────────────────
+  // Priority order: longer / more specific patterns first.
+  // Prevents shorter numeric patterns from consuming parts of longer matches.
+  const PII_PATTERNS = [
+    {
+      type: 'AMEX',
+      // CM15 (15 digits), CM13 (13 digits), CM11 (11 digits) starting with 34xx / 37xx.
+      // Spaced format: 4-6-N (N = 1, 3 or 5). Separator may be space or hyphen.
+      // Unspaced: word-boundary anchors prevent partial matches inside longer digit strings.
+      regex: /3[47]\d{2}[\s\-]\d{6}[\s\-]\d{1,5}|\b3[47](?:\d{13}|\d{11}|\d{9})\b/g,
+      color: '#c0392b'
+    },
+    {
+      type: 'CF',
+      // Italian Codice Fiscale: 6 letters + 2 digits + 1 letter + 2 digits + 1 letter + 3 digits + 1 letter (16 chars total).
+      regex: /\b[A-Za-z]{6}\d{2}[A-Za-z]\d{2}[A-Za-z]\d{3}[A-Za-z]\b/g,
+      color: '#27ae60'
+    },
+    // ── VAT / Fiscal Codes by country ──────────────────────────────────────────
+    // Each entry is tagged [VAT_XX_N] where XX = ISO 3166-1 alpha-2 country code.
+    // Patterns with country prefix (e.g. DE123456789) are placed before plain-digit
+    // patterns to win overlap resolution. VAT_IT also catches the unadorned 11-digit
+    // Italian Partita IVA for backward compatibility.
+    // Note: Montenegro (PIB) and Turkey (VKN) are pure 10/8-digit numbers indistinguishable
+    // from SE10 / other codes without prefix — they are caught by SE10 and not listed here.
+    { type: 'VAT_IT', regex: /\b[Ii][Tt]\d{11}\b|\b\d{11}\b/g,            color: '#16a085' }, // Italy: EU VAT (IT prefix) or plain 11-digit P.IVA
+    { type: 'VAT_AL', regex: /\b[A-Za-z]\d{8}[A-Za-z]\b/g,                color: '#c0392b' }, // Albania NIPT: letter + 8 digits + letter
+    { type: 'VAT_AT', regex: /\bATU\d{8}\b/g,                              color: '#2980b9' }, // Austria
+    { type: 'VAT_BE', regex: /\bBE0?\d{9,10}\b/g,                          color: '#8e44ad' }, // Belgium
+    { type: 'VAT_BG', regex: /\bBG\d{9,10}\b/g,                            color: '#27ae60' }, // Bulgaria
+    { type: 'VAT_CY', regex: /\bCY\d{8}[A-Za-z]\b/g,                      color: '#d35400' }, // Cyprus
+    { type: 'VAT_CZ', regex: /\bCZ\d{8,10}\b/g,                            color: '#7f8c8d' }, // Czech Republic
+    { type: 'VAT_DE', regex: /\bDE\d{9}\b/g,                               color: '#2c3e50' }, // Germany
+    { type: 'VAT_DK', regex: /\bDK\d{8}\b/g,                               color: '#e74c3c' }, // Denmark
+    { type: 'VAT_EE', regex: /\bEE\d{9}\b/g,                               color: '#1abc9c' }, // Estonia
+    { type: 'VAT_ES', regex: /\bES[A-Za-z0-9]\d{7}[A-Za-z0-9]\b/g,        color: '#f39c12' }, // Spain
+    { type: 'VAT_FI', regex: /\bFI\d{8}\b/g,                               color: '#3498db' }, // Finland
+    { type: 'VAT_FR', regex: /\bFR[A-Za-z0-9]{2}\d{9}\b/g,                color: '#9b59b6' }, // France
+    { type: 'VAT_GB', regex: /\bGB(?:\d{9}|\d{12}|GD\d{3}|HA\d{3})\b/g,  color: '#1a252f' }, // United Kingdom
+    { type: 'VAT_GR', regex: /\b(?:EL|GR)\d{9}\b/g,                       color: '#2980b9' }, // Greece (uses EL prefix in VAT)
+    { type: 'VAT_HR', regex: /\bHR\d{11}\b/g,                              color: '#c0392b' }, // Croatia
+    { type: 'VAT_HU', regex: /\bHU\d{8}\b/g,                               color: '#e67e22' }, // Hungary
+    { type: 'VAT_IE', regex: /\bIE\d[A-Za-z0-9+*]\d{5}[A-Za-z]{1,2}\b/g, color: '#27ae60' }, // Ireland
+    { type: 'VAT_LT', regex: /\bLT(?:\d{9}|\d{12})\b/g,                   color: '#16a085' }, // Lithuania
+    { type: 'VAT_LU', regex: /\bLU\d{8}\b/g,                               color: '#f1c40f' }, // Luxembourg
+    { type: 'VAT_LV', regex: /\bLV\d{11}\b/g,                              color: '#8e44ad' }, // Latvia
+    { type: 'VAT_MT', regex: /\bMT\d{8}\b/g,                               color: '#e74c3c' }, // Malta
+    { type: 'VAT_NL', regex: /\bNL\d{9}B\d{2}\b/g,                        color: '#e67e22' }, // Netherlands
+    { type: 'VAT_PL', regex: /\bPL\d{10}\b/g,                              color: '#c0392b' }, // Poland
+    { type: 'VAT_PT', regex: /\bPT\d{9}\b/g,                               color: '#27ae60' }, // Portugal
+    { type: 'VAT_RO', regex: /\bRO\d{2,10}\b/g,                            color: '#d35400' }, // Romania
+    { type: 'VAT_SE', regex: /\bSE\d{12}\b/g,                              color: '#2980b9' }, // Sweden
+    { type: 'VAT_SI', regex: /\bSI\d{8}\b/g,                               color: '#1abc9c' }, // Slovenia
+    { type: 'VAT_SK', regex: /\bSK\d{10}\b/g,                              color: '#7f8c8d' }, // Slovakia
+    { type: 'VAT_US', regex: /\b\d{2}-\d{7}\b/g,                           color: '#2c3e50' }, // USA EIN (Employer Identification Number)
+    {
+      type: 'EMAIL',
+      // Standard RFC-compliant email address.
+      regex: /\b[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}\b/g,
+      color: '#2980b9'
+    },
+    {
+      type: 'SE10',
+      // SE10 merchant code: exactly 10 consecutive digits.
+      // Word boundaries prevent matching inside longer digit sequences.
+      // Note: Montenegro PIB (8 digits) and Turkey VKN (10 digits) share this pattern.
+      regex: /\b\d{10}\b/g,
+      color: '#8e44ad'
+    }
+  ];
+
+  // ─── Session State ──────────────────────────────────────────────────────────
+  const session = {
+    forward: new Map(),    // original value  →  placeholder
+    reverse: new Map(),    // placeholder     →  original value
+    counters: {},          // dynamically populated: type → highest counter used
+    redactedCsvBlob: null
+  };
+
+  // ─── Core Logic ─────────────────────────────────────────────────────────────
+
+  function getOrCreatePlaceholder(type, value) {
+    if (session.forward.has(value)) {
+      return session.forward.get(value);
+    }
+    if (!(type in session.counters)) session.counters[type] = 0;
+    session.counters[type]++;
+    const placeholder = '[' + type + '_' + session.counters[type] + ']';
+    session.forward.set(value, placeholder);
+    session.reverse.set(placeholder, value);
+    return placeholder;
+  }
+
+  function findAllMatches(text) {
+    const matches = [];
+    for (const pattern of PII_PATTERNS) {
+      // Re-create the RegExp to reset lastIndex for each call
+      const re = new RegExp(pattern.regex.source, pattern.regex.flags);
+      let m;
+      while ((m = re.exec(text)) !== null) {
+        matches.push({ start: m.index, end: m.index + m[0].length, value: m[0], type: pattern.type });
+      }
+    }
+    // Sort by start position ascending; ties resolved by preferring the longer (earlier-ending) match.
+    // Array.prototype.sort is stable in modern engines, so insertion order is preserved for equal keys.
+    matches.sort((a, b) => a.start - b.start || b.end - a.end);
+    // Remove overlapping matches: leftmost wins; advance cursor past each kept match.
+    const kept = [];
+    let cursor = 0;
+    for (const m of matches) {
+      if (m.start >= cursor) {
+        kept.push(m);
+        cursor = m.end;
+      }
+    }
+    return kept;
+  }
+
+  function censorText(text) {
+    const matches = findAllMatches(text);
+    if (matches.length === 0) return text;
+    // Replace right-to-left so earlier index positions remain valid after each substitution.
+    let result = text;
+    for (let i = matches.length - 1; i >= 0; i--) {
+      const { start, end, value, type } = matches[i];
+      const placeholder = getOrCreatePlaceholder(type, value);
+      result = result.slice(0, start) + placeholder + result.slice(end);
+    }
+    return result;
+  }
+
+  function restoreText(text) {
+    let result = text;
+    for (const [placeholder, original] of session.reverse) {
+      result = result.split(placeholder).join(original);
+    }
+    return result;
+  }
+
+  // ─── CSV Parser — RFC 4180 ──────────────────────────────────────────────────
+
+  function parseCSV(text) {
+    const rows = [];
+    let i = 0;
+    const len = text.length;
+    while (i < len) {
+      const row = [];
+      while (i < len && text[i] !== '\n' && text[i] !== '\r') {
+        if (text[i] === '"') {
+          i++;
+          let field = '';
+          while (i < len) {
+            if (text[i] === '"') {
+              if (i + 1 < len && text[i + 1] === '"') {
+                field += '"';
+                i += 2;
+              } else {
+                i++;
+                break;
+              }
+            } else {
+              field += text[i++];
+            }
+          }
+          row.push(field);
+          if (i < len && text[i] === ',') i++;
+        } else {
+          const start = i;
+          while (i < len && text[i] !== ',' && text[i] !== '\n' && text[i] !== '\r') i++;
+          row.push(text.slice(start, i));
+          if (i < len && text[i] === ',') i++;
+        }
+      }
+      if (row.length > 0) rows.push(row);
+      if (i < len && text[i] === '\r') i++;
+      if (i < len && text[i] === '\n') i++;
+    }
+    return rows;
+  }
+
+  function serializeCSV(rows) {
+    return rows.map(row =>
+      row.map(field => {
+        if (field.includes(',') || field.includes('"') || field.includes('\n') || field.includes('\r')) {
+          return '"' + field.replace(/"/g, '""') + '"';
+        }
+        return field;
+      }).join(',')
+    ).join('\r\n');
+  }
+
+  function censorCSV(csvText) {
+    const rows = parseCSV(csvText);
+    let totalRedactions = 0;
+    const redacted = rows.map(row =>
+      row.map(cell => {
+        const censored = censorText(cell);
+        if (censored !== cell) totalRedactions++;
+        return censored;
+      })
+    );
+    return { rows: redacted, totalRedactions, totalRows: rows.length };
+  }
+
+  // ─── UI Helpers ─────────────────────────────────────────────────────────────
+
+  function escapeHtml(str) {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function updateMapTable() {
+    const tbody = document.getElementById('map-tbody');
+    const table = document.getElementById('map-table');
+    const empty = document.getElementById('map-empty');
+    tbody.innerHTML = '';
+    if (session.reverse.size === 0) {
+      table.style.display = 'none';
+      empty.style.display = '';
+      return;
+    }
+    empty.style.display = 'none';
+    table.style.display = '';
+    for (const [placeholder, original] of session.reverse) {
+      const typeMatch = placeholder.match(/^\[(.+)_(\d+)\]$/);
+      const type = typeMatch ? typeMatch[1] : 'UNK';
+      const patternDef = PII_PATTERNS.find(p => p.type === type);
+      const color = patternDef ? patternDef.color : '#666';
+      const tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td>' + escapeHtml(placeholder) + '</td>' +
+        '<td class="td-badge"><span class="pii-badge" style="background:' + color + '">' + type + '</span></td>' +
+        '<td>' + escapeHtml(original) + '</td>';
+      tbody.appendChild(tr);
+    }
+  }
+
+  function showCopyFeedback(btn) {
+    const orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(() => { btn.textContent = orig; }, 1500);
+  }
+
+  // ─── Mode Toggle ─────────────────────────────────────────────────────────────
+
+  document.getElementById('btn-mode-text').addEventListener('click', () => {
+    document.getElementById('panel-text').style.display = '';
+    document.getElementById('panel-csv').style.display = 'none';
+    document.getElementById('btn-mode-text').classList.add('text-active');
+    document.getElementById('btn-mode-csv').classList.remove('text-active');
+  });
+
+  document.getElementById('btn-mode-csv').addEventListener('click', () => {
+    document.getElementById('panel-csv').style.display = '';
+    document.getElementById('panel-text').style.display = 'none';
+    document.getElementById('btn-mode-csv').classList.add('text-active');
+    document.getElementById('btn-mode-text').classList.remove('text-active');
+  });
+
+  // ─── Censor Text ─────────────────────────────────────────────────────────────
+
+  document.getElementById('btn-censor-text').addEventListener('click', () => {
+    const input = document.getElementById('input-text').value;
+    if (!input.trim()) return;
+    const warn = checkInputSize(input, 'text');
+    if (warn && !confirm(warn + '\n\nProceed anyway?')) return;
+    const censored = censorText(input);
+    document.getElementById('output-text').value = censored;
+    document.getElementById('output-text-wrap').style.display = '';
+    updateMapTable();
+  });
+
+  document.getElementById('btn-copy-text').addEventListener('click', function () {
+    navigator.clipboard.writeText(document.getElementById('output-text').value);
+    showCopyFeedback(this);
+  });
+
+  // ─── Censor CSV ──────────────────────────────────────────────────────────────
+
+  document.getElementById('btn-censor-csv').addEventListener('click', () => {
+    const file = document.getElementById('input-csv').files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const warn = checkInputSize(e.target.result, 'csv');
+      if (warn && !confirm(warn + '\n\nProceed anyway?')) return;
+      const { rows, totalRedactions, totalRows } = censorCSV(e.target.result);
+      const csvContent = serializeCSV(rows);
+      // BOM prefix ensures correct UTF-8 rendering when opened in Excel
+      session.redactedCsvBlob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+      document.getElementById('csv-stats').textContent =
+        'Processed ' + totalRows + ' rows \u2014 ' + totalRedactions + ' cell(s) redacted.';
+      document.getElementById('output-csv-wrap').style.display = '';
+      updateMapTable();
+    };
+    reader.readAsText(file, 'UTF-8');
+  });
+
+  document.getElementById('btn-download-csv').addEventListener('click', () => {
+    if (!session.redactedCsvBlob) return;
+    const url = URL.createObjectURL(session.redactedCsvBlob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'redacted.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+  // ─── Restore ─────────────────────────────────────────────────────────────────
+
+  document.getElementById('btn-restore').addEventListener('click', () => {
+    const input = document.getElementById('input-restore').value;
+    if (!input.trim()) return;
+    const restored = restoreText(input);
+    document.getElementById('output-restore').value = restored;
+    document.getElementById('output-restore-wrap').style.display = '';
+  });
+
+  document.getElementById('btn-copy-restore').addEventListener('click', function () {
+    navigator.clipboard.writeText(document.getElementById('output-restore').value);
+    showCopyFeedback(this);
+  });
+
+  // ─── Copy Map ────────────────────────────────────────────────────────────────
+
+  function exportMapAsJson() {
+    return JSON.stringify(Object.fromEntries(session.reverse), null, 2);
+  }
+
+  document.getElementById('btn-copy-map').addEventListener('click', function () {
+    if (session.reverse.size === 0) return;
+    navigator.clipboard.writeText(exportMapAsJson());
+    showCopyFeedback(this);
+  });
+
+  // ─── Import Map ───────────────────────────────────────────────────────────────
+
+  function importSessionMap(jsonStr) {
+    let data;
+    try { data = JSON.parse(jsonStr); } catch (e) { return false; }
+    if (typeof data !== 'object' || data === null || Array.isArray(data)) return false;
+    let count = 0;
+    for (const [placeholder, original] of Object.entries(data)) {
+      if (typeof placeholder !== 'string' || typeof original !== 'string') continue;
+      const m = placeholder.match(/^\[(.+)_(\d+)\]$/);
+      if (!m) continue;
+      const type = m[1];
+      const n = parseInt(m[2], 10);
+      session.reverse.set(placeholder, original);
+      session.forward.set(original, placeholder);
+      if (Object.prototype.hasOwnProperty.call(session.counters, type)) {
+        session.counters[type] = Math.max(session.counters[type], n);
+      }
+      count++;
+    }
+    return count;
+  }
+
+  document.getElementById('btn-import-map').addEventListener('click', () => {
+    const raw = document.getElementById('input-import-map').value.trim();
+    const fb = document.getElementById('import-feedback');
+    if (!raw) { fb.textContent = ''; return; }
+    const count = importSessionMap(raw);
+    if (count === false || count === 0) {
+      fb.textContent = 'Invalid JSON or no valid entries found.';
+      fb.className = 'feedback-message feedback-error';
+    } else {
+      fb.textContent = count + ' entr' + (count === 1 ? 'y' : 'ies') + ' imported.';
+      fb.className = 'feedback-message feedback-info';
+      document.getElementById('input-import-map').value = '';
+      updateMapTable();
+    }
+  });
+
+  // ─── Clear Session ────────────────────────────────────────────────────────────
+
+  // ─── Custom Patterns ─────────────────────────────────────────────────────────
+
+  const CUSTOM_STORAGE_KEY = 'redactor_custom_patterns';
+
+  function renderCustomPatternsList() {
+    const tbody = document.getElementById('cp-tbody');
+    const table = document.getElementById('cp-table');
+    const empty = document.getElementById('cp-empty');
+    const customs = PII_PATTERNS.filter(p => p.custom);
+    tbody.innerHTML = '';
+    if (customs.length === 0) {
+      table.style.display = 'none';
+      empty.style.display = '';
+      return;
+    }
+    empty.style.display = 'none';
+    table.style.display = '';
+    for (const p of customs) {
+      const tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td><span class="pii-badge" style="background:' + p.color + '">' + escapeHtml(p.type) + '</span></td>' +
+        '<td style="font-family:monospace;">' + escapeHtml(p.regex.source) + '</td>' +
+        '<td>' + escapeHtml(p.regex.flags) + '</td>' +
+        '<td><span style="display:inline-block;width:20px;height:20px;background:' + p.color + ';border-radius:3px;vertical-align:middle;border:1px solid #ccc;"></span></td>' +
+        '<td><button class="button" style="width:auto;min-width:60px;font-size:0.8rem;" data-remove="' + escapeHtml(p.type) + '">Remove</button></td>';
+      tbody.appendChild(tr);
+    }
+    tbody.querySelectorAll('[data-remove]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        removeCustomPattern(btn.getAttribute('data-remove'));
+        renderCustomPatternsList();
+      });
+    });
+  }
+
+  function addCustomPattern(type, regexSource, flags, color, save) {
+    if (save === undefined) save = true;
+    try {
+      const re = new RegExp(regexSource, flags + 'g');
+      PII_PATTERNS.push({ type: type, regex: re, color: color, custom: true });
+      if (save) {
+        const stored = JSON.parse(localStorage.getItem(CUSTOM_STORAGE_KEY) || '[]');
+        stored.push({ type: type, regexSource: regexSource, flags: flags, color: color });
+        localStorage.setItem(CUSTOM_STORAGE_KEY, JSON.stringify(stored));
+      }
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function removeCustomPattern(type) {
+    const idx = PII_PATTERNS.findIndex(p => p.type === type && p.custom);
+    if (idx !== -1) PII_PATTERNS.splice(idx, 1);
+    try {
+      const stored = JSON.parse(localStorage.getItem(CUSTOM_STORAGE_KEY) || '[]');
+      localStorage.setItem(CUSTOM_STORAGE_KEY, JSON.stringify(stored.filter(p => p.type !== type)));
+    } catch (e) {}
+  }
+
+  function loadCustomPatterns() {
+    try {
+      const stored = JSON.parse(localStorage.getItem(CUSTOM_STORAGE_KEY) || '[]');
+      for (const p of stored) {
+        addCustomPattern(p.type, p.regexSource, p.flags || '', p.color, false);
+      }
+    } catch (e) {}
+    renderCustomPatternsList();
+  }
+
+  document.getElementById('btn-add-pattern').addEventListener('click', () => {
+    const fb = document.getElementById('cp-feedback');
+    const typeVal = document.getElementById('cp-type').value.trim().toUpperCase().replace(/\s+/g, '_');
+    const regexVal = document.getElementById('cp-regex').value.trim();
+    const colorVal = document.getElementById('cp-color').value;
+    const ciVal = document.getElementById('cp-ci').checked ? 'i' : '';
+    if (!typeVal || !regexVal) {
+      fb.textContent = 'Type name and regex are required.';
+      fb.className = 'feedback-message feedback-error';
+      return;
+    }
+    if (PII_PATTERNS.some(p => p.type === typeVal)) {
+      fb.textContent = 'Type "' + typeVal + '" already exists.';
+      fb.className = 'feedback-message feedback-error';
+      return;
+    }
+    const ok = addCustomPattern(typeVal, regexVal, ciVal, colorVal, true);
+    if (!ok) {
+      fb.textContent = 'Invalid regex.';
+      fb.className = 'feedback-message feedback-error';
+      return;
+    }
+    document.getElementById('cp-type').value = '';
+    document.getElementById('cp-regex').value = '';
+    document.getElementById('cp-ci').checked = false;
+    fb.textContent = 'Pattern "' + typeVal + '" added.';
+    fb.className = 'feedback-message feedback-info';
+    renderCustomPatternsList();
+  });
+
+  loadCustomPatterns();
+
+  // ─── Large Input Warning ──────────────────────────────────────────────────────
+
+  const WARN_CHARS = 400000; // ~20 000 lines of ~20 chars each
+  const WARN_CSV_ROWS = 20000;
+
+  function checkInputSize(text, mode) {
+    if (mode === 'text' && text.length > WARN_CHARS) {
+      return 'Warning: input exceeds ~20 000 lines. Processing may be slow or cause the browser tab to freeze. Consider splitting the input into smaller chunks.';
+    }
+    if (mode === 'csv') {
+      let lines = 0;
+      for (let i = 0; i < text.length; i++) { if (text[i] === '\n') lines++; }
+      if (lines > WARN_CSV_ROWS) {
+        return 'Warning: CSV has more than ' + lines.toLocaleString() + ' lines. Processing may be slow or cause the browser tab to freeze. Consider splitting the file into smaller batches.';
+      }
+    }
+    return null;
+  }
+
+  // ─── Clear Session ────────────────────────────────────────────────────────────
+
+  document.getElementById('btn-clear-session').addEventListener('click', () => {
+    session.forward.clear();
+    session.reverse.clear();
+    session.counters = {};
+    session.redactedCsvBlob = null;
+    document.getElementById('input-text').value = '';
+    document.getElementById('output-text').value = '';
+    document.getElementById('output-text-wrap').style.display = 'none';
+    document.getElementById('input-csv').value = '';
+    document.getElementById('output-csv-wrap').style.display = 'none';
+    document.getElementById('input-restore').value = '';
+    document.getElementById('output-restore').value = '';
+    document.getElementById('output-restore-wrap').style.display = 'none';
+    document.getElementById('input-import-map').value = '';
+    document.getElementById('import-feedback').textContent = '';
+    updateMapTable();
+  });
+</script>
+
+</body>
+</html>

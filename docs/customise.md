@@ -4,7 +4,7 @@ This page serves as the technical documentation for understanding, modifying, an
 
 ## Project Architecture
 
-The toolkit is built on three fundamental principles: a Data-Driven Design, Centralized Logic, and a clear Separation of Concerns.
+The toolkit is built on three fundamental principles: a centralised design, centralised logic, and a clear separation of concerns.
 
 ### Directory and File Structure
 
@@ -15,7 +15,7 @@ The file organization is designed to separate content (HTML pages) from shared r
 This section outlines the technical standards for maintaining and extending the Exploratores toolkit.
 
 -   **Separation of Concerns:** The project strictly separates structure (HTML), presentation (CSS), and logic (JavaScript). No inline styles or scripts are permitted in HTML files.
--   **JavaScript Architecture:** All pages must adhere to the central, data-driven architecture powered by `main.js`, `validators.js`, and `search-library.js`.
+-   **JavaScript Architecture:** All pages must adhere to the centralised architecture powered by `main.js`, `validators.js`, and `search-library.js`.
 -   **File Naming:** All HTML files must use lowercase names (e.g., `new_page.html`).
 -   **ID & Data Attribute Conventions:**
     -   Element `id` attributes must follow the `[type]-[page]-[name]` format (e.g., `btn-names-us-fastpeople`).
@@ -25,9 +25,9 @@ This section outlines the technical standards for maintaining and extending the 
 
 The JavaScript architecture is the core of the project. Here is the role of each file located in `assets/js/`.
 
-### 1. `navigation.js` (in `assets/menu/`) - The Dynamic Menu
+### 1. `navigation.js` (in `assets/menu/`) - The Navigation Menu
 
-**Role:** This script dynamically generates the navigation bar on every page. It detects its location and adjusts all link paths accordingly, allowing for a single, centralized menu definition.
+**Role:** This script generates the navigation bar on every page. It detects its location and adjusts all link paths accordingly, allowing for a single, centralised menu definition.
 
 ### 2. `search-library.js` - The Catalog
 
@@ -138,3 +138,32 @@ document.addEventListener('DOMContentLoaded', setInitialPageState);
         "validator": "getAndValidateIpAddress" // Use the new validator
     },
     ```
+
+---
+
+## Redactor: Custom Detection Patterns
+
+The Redactor page lets each user define additional PII patterns beyond the built-in set. Custom patterns are stored in the browser's `localStorage` under the key `redactor_custom_patterns` and are loaded automatically on every visit. They are browser-specific and do not affect other users of the same installation.
+
+### Guide D: Adding a Custom Pattern
+
+**Scenario:** Detect US Social Security Numbers in the format `123-45-6789`.
+
+1.  Open **Tools → Redactor**.
+2.  Scroll to the **Custom Patterns** section.
+3.  Fill in the form:
+    *   **Type name:** `SSN_US`
+    *   **Regex:** `\b\d{3}-\d{2}-\d{4}\b`
+    *   **Colour:** choose any colour.
+    *   **Case-insensitive:** leave unticked (digits only).
+4.  Click **Add Pattern**. The pattern appears immediately in the active patterns table.
+5.  Values matching the pattern will be replaced with `[SSN_US_1]`, `[SSN_US_2]`, etc. on the next Censor operation.
+
+To remove a custom pattern, click **Remove** in the active patterns table. The pattern is deleted from `localStorage` immediately.
+
+### Technical Notes
+
+*   Custom patterns are appended after all built-in patterns. Standard left-to-right overlap resolution applies.
+*   Use `\b` word boundaries in your regex to avoid partial matches inside longer tokens.
+*   The `g` (global) flag is always added automatically; do not include it in the regex field.
+*   Type names are converted to uppercase and spaces replaced with underscores. Duplicate type names are rejected.

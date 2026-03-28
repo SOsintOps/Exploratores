@@ -22,7 +22,7 @@
 * [How can I create a new page or add features using a prompt for an LLM?](#how-can-i-create-a-new-page-or-add-features-using-a-prompt-for-an-llm)
 * [Can you provide an example prompt for an LLM to create a basic Exploratores page template from scratch?](#can-you-provide-an-example-prompt-for-an-llm-to-create-a-basic-exploratores-page-template-from-scratch)
 * [Were any Large Language Models (LLMs) unduly stressed during the creation of this toolkit?](#were-any-large-language-models-llms-unduly-stressed-during-the-creation-of-this-toolkit)
-* [What is the logic behind the new "Data-Driven" system?](#what-is-the-logic-behind-the-new-data-driven-system)
+* [What is the logic behind the new centralised architecture?](#what-is-the-logic-behind-the-new-centralised-architecture)
 * [How does the page state management (`updatePageState`) work?](#how-does-the-page-state-management-updatepagestate-work)
 * [What are the steps to add a new search button?](#what-are-the-steps-to-add-a-new-search-button)
 * [What should I check if a button click does nothing?](#what-should-i-check-if-a-button-click-does-nothing)
@@ -101,7 +101,7 @@ Yes, the toolkit is designed to be customizable. You can add new tools, modify e
 
 ### How is the maintenance of tools within the toolkit handled?
 
-The Exploratores OSINT Toolkit is maintained on a voluntary basis. Ongoing maintenance — including updating links, removing obsolete tools, and adding new resources — is performed as capacity allows.
+The Exploratores OSINT Toolkit is maintained on a voluntary basis. Ongoing maintenance, including updating links, removing obsolete tools, and adding new resources, is performed as capacity allows.
 
 ### How can I suggest new tools or improvements?
 
@@ -124,7 +124,7 @@ The standard workflow for contributing is:
 To interact effectively with a Large Language Model (LLM) for developing pages or features, provide a clear and detailed prompt. Key elements to include are:
 
 *   **Clear Objective**: Precisely describe what the new page or feature should do.
-*   **Adherence to Architecture**: Explicitly state that the new page must follow the established data-driven architecture (main.js, validators.js, search-library.js).
+*   **Adherence to Architecture**: Explicitly state that the new page must follow the established centralised architecture (main.js, validators.js, search-library.js).
 *   **No Inline Logic**: Specify that buttons must use `data-search-id` and not `onclick`.
 *   **Reference to Project Guidelines**: Remind the LLM to adhere to all established project standards, including file naming and CSS classes.
 
@@ -153,7 +153,7 @@ We can confirm that, to the best of our knowledge, no LLMs reported permanent da
 
 ## Technical Details & Troubleshooting
 
-### What is the logic behind the new "Data-Driven" system?
+### What is the logic behind the new centralised architecture?
 
 The new architecture centralizes the logic to avoid code duplication. It works like this:
 
@@ -200,3 +200,37 @@ This customization is managed by the `assets/js/config.js` file. By editing this
 *   **Specify which elements to hide** by adding their CSS selectors (like `#btn-names-us-advbackground` or `#column-names-usa`) to the `selectorsToHide` array.
 
 When the Light Version is active, a script automatically adds the `.hidden-in-light` class to all elements listed in the configuration file, making them disappear from the page.
+
+### What is the Redactor tool and how does it work?
+
+The Redactor (accessible under the **Tools** menu) is a browser-side PII removal tool designed for workflows that involve submitting case text to external AI models. It scans input text or CSV files and replaces sensitive values with numbered placeholders such as `[EMAIL_1]`, `[VAT_IT_1]`, or `[AMEX_1]`. The same value always receives the same placeholder within a session. A **Redaction Map** records every substitution and can be exported as JSON for later use.
+
+All processing runs locally in your browser. No data is transmitted to any server.
+
+Detected categories out of the box:
+
+*   **EMAIL**: standard email addresses.
+*   **CF**: Italian Codice Fiscale (16-character alphanumeric).
+*   **VAT_XX**: VAT / fiscal codes for 30+ countries, each tagged with its ISO country code (e.g., `[VAT_DE_1]`, `[VAT_FR_1]`). Includes both the EU-prefix form (`IT04598600403`) and the plain 11-digit Italian P.IVA.
+*   **AMEX**: American Express card numbers: CM15 (full 15 digits), CM13, and CM11, both spaced (4-6-N format) and unspaced.
+*   **SE10**: SE10 merchant codes (exactly 10 digits).
+
+### What is the Censor → LLM → Restore workflow?
+
+1.  Paste your text into the **Censor** section (or upload a CSV) and click **Censor**.
+2.  Copy the redacted output and submit it to your AI model.
+3.  Once the AI returns its report (which will contain the placeholders), paste it into the **Restore** section and click **Restore**. All original values are reinserted automatically.
+4.  If you need to continue a session later, click **Copy Map (JSON)** to export the redaction map, save it externally, then re-import it via the **Import Map** panel before using Restore.
+
+The session state is held only in memory and is cleared when you close or refresh the tab, or when you click **Clear Session**.
+
+### How do I add custom detection patterns to the Redactor?
+
+Open the **Custom Patterns** section on the Redactor page. Fill in the form:
+
+*   **Type name**: used in the placeholder, e.g. `SSN_US` → `[SSN_US_1]`. Spaces are converted to underscores; letters uppercased automatically.
+*   **Regex**: the pattern without surrounding slashes, e.g. `\b\d{3}-\d{2}-\d{4}\b`.
+*   **Colour**: badge colour in the Redaction Map table.
+*   **Case-insensitive**: tick to apply the `i` flag.
+
+Click **Add Pattern**. Custom patterns are saved in your browser's `localStorage` and persist between sessions. Remove any pattern via the **Remove** button in the active patterns table.

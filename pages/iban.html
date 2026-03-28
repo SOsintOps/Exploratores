@@ -42,7 +42,7 @@
         </section>
 
         <div class="note" id="iban-coverage-notes">
-            <strong>NOTE:</strong> Local Database Coverage — Bank name resolution is performed entirely offline.
+            <strong>NOTE:</strong> Local Database Coverage: Bank name resolution is performed entirely offline.
             <table class="iban-coverage-table">
                 <thead>
                     <tr>
@@ -65,6 +65,14 @@
                     <tr><td>Austria</td><td>AT</td><td>~45</td><td>Partial</td><td>Mar 2025</td></tr>
                     <tr><td>Switzerland</td><td>CH</td><td>~50</td><td>Good</td><td>Mar 2025</td></tr>
                     <tr><td>Poland</td><td>PL</td><td>~28</td><td>Partial</td><td>Mar 2025</td></tr>
+                    <tr><td>Albania</td><td>AL</td><td>1</td><td>Minimal</td><td>Mar 2026</td></tr>
+                    <tr><td>Croatia</td><td>HR</td><td>17</td><td>Partial</td><td>Mar 2026</td></tr>
+                    <tr><td>Cyprus</td><td>CY</td><td>9</td><td>Partial</td><td>Mar 2026</td></tr>
+                    <tr><td>Greece</td><td>GR</td><td>9</td><td>Partial</td><td>Mar 2026</td></tr>
+                    <tr><td>Malta</td><td>MT</td><td>10</td><td>Partial</td><td>Mar 2026</td></tr>
+                    <tr><td>Montenegro</td><td>ME</td><td>15</td><td>Good</td><td>Mar 2026</td></tr>
+                    <tr><td>Slovenia</td><td>SI</td><td>16</td><td>Good</td><td>Mar 2026</td></tr>
+                    <tr><td>Turkey</td><td>TR</td><td>15</td><td>Partial</td><td>Mar 2026</td></tr>
                 </tbody>
             </table>
             <em>Full datasets for DE, AT, CH are freely available from national central banks. Coverage marked "Partial" can be expanded by importing the full official CSV/XLS files. See the <a href="faq.html#q-iban-db-update">FAQ: How do I update the IBAN bank databases?</a> for sources and procedure.</em>
@@ -72,7 +80,7 @@
     </main>
 
     <footer>
-        <p>Exploratores 3.0 <a href="license.html">License</a></p>
+        <p>Exploratores 3.1.0 <a href="license.html">License</a></p>
     </footer>
 
     <script src="../assets/js/config.js"></script>
@@ -86,6 +94,14 @@
     <script src="../assets/js/bankDatabases/es.js"></script>
     <script src="../assets/js/bankDatabases/fr.js"></script>
     <script src="../assets/js/bankDatabases/pl.js"></script>
+    <script src="../assets/js/bankDatabases/al.js"></script>
+    <script src="../assets/js/bankDatabases/hr.js"></script>
+    <script src="../assets/js/bankDatabases/cy.js"></script>
+    <script src="../assets/js/bankDatabases/gr.js"></script>
+    <script src="../assets/js/bankDatabases/mt.js"></script>
+    <script src="../assets/js/bankDatabases/me.js"></script>
+    <script src="../assets/js/bankDatabases/si.js"></script>
+    <script src="../assets/js/bankDatabases/tr.js"></script>
     <script src="../assets/js/ibankit.js"></script>
     <script src="../assets/js/validators.js"></script>
     <script src="../assets/js/search-library.js"></script>
@@ -262,6 +278,95 @@
                             { label: 'Routing Number', value: routing },
                             { label: 'Account', value: account }
                         ], bankName: db[bankPrefix] || null };
+                    },
+                    AL: () => {
+                        const bankCode = bban.substring(0, 3);
+                        const branch = bban.substring(3, 7);
+                        const check = bban.substring(7, 8);
+                        const account = bban.substring(8);
+                        const db = (typeof bankDatabase_AL !== 'undefined') ? bankDatabase_AL : {};
+                        return { fields: [
+                            { label: 'Bank Code (NID)', value: bankCode },
+                            { label: 'Branch Code', value: branch },
+                            { label: 'Check Digit', value: check },
+                            { label: 'Account', value: account }
+                        ], bankName: db[bankCode] || null };
+                    },
+                    HR: () => {
+                        const bankCode = bban.substring(0, 7);
+                        const account = bban.substring(7);
+                        const db = (typeof bankDatabase_HR !== 'undefined') ? bankDatabase_HR : {};
+                        return { fields: [
+                            { label: 'Bank Code', value: bankCode },
+                            { label: 'Account', value: account }
+                        ], bankName: db[bankCode] || null };
+                    },
+                    CY: () => {
+                        const bankCode = bban.substring(0, 3);
+                        const branch = bban.substring(3, 8);
+                        const account = bban.substring(8);
+                        const db = (typeof bankDatabase_CY !== 'undefined') ? bankDatabase_CY : {};
+                        return { fields: [
+                            { label: 'Bank Code', value: bankCode },
+                            { label: 'Branch Code', value: branch },
+                            { label: 'Account', value: account }
+                        ], bankName: db[bankCode] || null };
+                    },
+                    GR: () => {
+                        const bankCode = bban.substring(0, 3);
+                        const branch = bban.substring(3, 7);
+                        const account = bban.substring(7);
+                        const db = (typeof bankDatabase_GR !== 'undefined') ? bankDatabase_GR : {};
+                        return { fields: [
+                            { label: 'Bank Code', value: bankCode },
+                            { label: 'Branch Code', value: branch },
+                            { label: 'Account', value: account }
+                        ], bankName: db[bankCode] || null };
+                    },
+                    MT: () => {
+                        const bankCode = bban.substring(0, 4);
+                        const branch = bban.substring(4, 9);
+                        const account = bban.substring(9);
+                        const db = (typeof bankDatabase_MT !== 'undefined') ? bankDatabase_MT : {};
+                        return { fields: [
+                            { label: 'Bank Code', value: bankCode },
+                            { label: 'Branch Code', value: branch },
+                            { label: 'Account', value: account }
+                        ], bankName: db[bankCode] || null };
+                    },
+                    ME: () => {
+                        const bankCode = bban.substring(0, 3);
+                        const account = bban.substring(3, 16);
+                        const check = bban.substring(16);
+                        const db = (typeof bankDatabase_ME !== 'undefined') ? bankDatabase_ME : {};
+                        return { fields: [
+                            { label: 'Bank Code', value: bankCode },
+                            { label: 'Account', value: account },
+                            { label: 'Check Digits', value: check }
+                        ], bankName: db[bankCode] || null };
+                    },
+                    SI: () => {
+                        const bankCode = bban.substring(0, 2);
+                        const branch = bban.substring(2, 5);
+                        const account = bban.substring(5, 13);
+                        const check = bban.substring(13);
+                        const db = (typeof bankDatabase_SI !== 'undefined') ? bankDatabase_SI : {};
+                        return { fields: [
+                            { label: 'Bank Code', value: bankCode },
+                            { label: 'Branch Code', value: branch },
+                            { label: 'Account', value: account },
+                            { label: 'Check Digits', value: check }
+                        ], bankName: db[bankCode] || null };
+                    },
+                    TR: () => {
+                        const bankCode = bban.substring(0, 5);
+                        const reserved = bban.substring(5, 6);
+                        const account = bban.substring(6);
+                        const db = (typeof bankDatabase_TR !== 'undefined') ? bankDatabase_TR : {};
+                        return { fields: [
+                            { label: 'Bank Code', value: bankCode },
+                            { label: 'Account', value: account }
+                        ], bankName: db[bankCode] || null };
                     }
                 };
 

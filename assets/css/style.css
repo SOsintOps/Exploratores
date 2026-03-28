@@ -487,6 +487,15 @@ main {
     background-color: #fff8c0;
 }
 
+/* Likelihood table: highlight header row, body rows all same colour */
+.likelihood-table thead th {
+    background-color: #f4f4f4;
+}
+.likelihood-table tbody tr:nth-child(odd) td,
+.likelihood-table tbody tr:nth-child(even) td {
+    background-color: transparent;
+}
+
 
 /* MISCELLANEOUS STYLES */
 /* Styling for Unix timestamp output (used in Currencies.html) */
