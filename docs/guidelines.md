@@ -31,8 +31,8 @@ Adherence to the five Core Analytic Standards is mandatory for all intelligence 
 8.  Makes accurate judgments and assessments based on available information and known gaps.
 9.  Incorporates effective visual information where appropriate to clarify the analytic message.
 
-## The 5W1H Analytical Framework
-The 5W1H framework (Who, What, When, Where, Why, How) is a cognitive tool that imposes order on chaotic data streams, enhances analytical clarity, and provides a structured pathway for transforming raw open-source information into finished, actionable intelligence. It serves as a safeguard against common analytical pitfalls and cognitive biases, such as confirmation bias and tunnel vision.
+## The 5W1H Analytical Method
+The 5W1H method (Who, What, When, Where, Why, How) is a cognitive tool that imposes order on chaotic data streams, enhances analytical clarity, and provides a structured pathway for transforming raw open-source information into finished intelligence. It serves as a safeguard against common analytical pitfalls and cognitive biases, such as confirmation bias and tunnel vision.
 
 ### The Six Components
 #### Who: Identifying Actors and Networks
@@ -66,7 +66,7 @@ This is often the most critical and challenging question, as it seeks to uncover
 - **Guiding Question:** What is the root cause of the problem or event?
 
 #### How: Detailing the Modus Operandi
-This question focuses on the operational mechanics—the methods, tools, and procedures used to carry out an action, often referred to as Tactics, Techniques, and Procedures (TTPs).
+This question focuses on the operational mechanics: the methods, tools, and procedures used to carry out an action, often referred to as Tactics, Techniques, and Procedures (TTPs).
 - **Guiding Question:** How were the actions executed (step-by-step process)?
 - **Guiding Question:** What specific tools, software, or hardware were used?
 - **Guiding Question:** How was detection avoided or security circumvented?
@@ -82,7 +82,8 @@ Effective OPSEC is not optional. It is a core discipline required to protect you
 ## Further Reading
 For a more in-depth analysis of the methodologies and practices discussed, the following foundational texts are recommended:
 - **"Psychology of Intelligence Analysis"** by Richards J. Heuer Jr. - A crucial text for understanding and mitigating the cognitive biases that affect analytical judgment.
+- **"Criminal Intelligence: Manual for Analysts"** by Howard Atkin (UNODC, 2011) - A UNODC reference manual covering the full intelligence process: source evaluation, link analysis, event charting, flow analysis, and telephone analysis. Equips practitioners to develop inferences and present analytical results.
 - **"Structured Analytic Techniques for Intelligence Analysis"** by Richards J. Heuer Jr. and Randolph H. Pherson - A reference manual that presents dozens of structured analytical techniques to improve the rigor and quality of analysis.
-- **"Open Source Intelligence Techniques"** by Michael Bazzell - A comprehensive, practical guide to the tools and techniques for gathering information from open sources.
 - **"Extreme Privacy: What It Takes to Disappear"** by Michael Bazzell - An extensive guide on digital security and maintaining anonymity, which directly supports the OPSEC principles discussed.
-- **"Deep Dive: Exploring the Real-World Value of Open Source Intelligence"** by Rae Baker - This book provides real-world case studies demonstrating the practical application and value of OSINT in various sectors.
+- **"Open Source Intelligence Techniques"** by Michael Bazzell - A comprehensive, practical guide to the tools and techniques for gathering information from open sources.
+- **"Deep Dive: Exploring the Real-World Value of Open Source Intelligence"** by Rae Baker - Real-world case studies demonstrating the practical application and value of OSINT across various sectors.

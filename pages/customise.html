@@ -18,7 +18,7 @@
 
     <section id="section-architecture">
         <h2>Project Architecture</h2>
-        <p>The toolkit is built on three fundamental principles: a Data-Driven Design, Centralized Logic, and a clear Separation of Concerns.</p>
+        <p>The toolkit is built on three fundamental principles: a centralised design, centralised logic, and a clear separation of concerns.</p>
         
         <h3>Directory and File Structure</h3>
         <p>The file organization is designed to separate content (HTML pages) from shared resources (assets), ensuring order and ease of maintenance.</p>
@@ -27,7 +27,7 @@
         <p>This section outlines the technical standards for maintaining and extending the Exploratores toolkit.</p>
         <ul>
             <li><strong>Separation of Concerns:</strong> The project strictly separates structure (HTML), presentation (CSS), and logic (JavaScript). No inline styles or scripts are permitted in HTML files.</li>
-            <li><strong>JavaScript Architecture:</strong> All pages must adhere to the central, data-driven architecture powered by `main.js`, `validators.js`, and `search-library.js`.</li>
+            <li><strong>JavaScript Architecture:</strong> All pages must adhere to the centralised architecture powered by `main.js`, `validators.js`, and `search-library.js`.</li>
             <li><strong>File Naming:</strong> All HTML files must use lowercase names (e.g., `new_page.html`).</li>
             <li><strong>ID & Data Attribute Conventions:</strong>
                 <ul>
@@ -42,8 +42,8 @@
         <h2>The Role of the Main JavaScript Files</h2>
         <p>The JavaScript architecture is the core of the project. Here is the role of each file located in `assets/js/`.</p>
 
-        <h3>1. `navigation.js` (in `assets/menu/`) - The Dynamic Menu</h3>
-        <p><strong>Role:</strong> This script dynamically generates the navigation bar on every page. It detects its location and adjusts all link paths accordingly, allowing for a single, centralized menu definition.</p>
+        <h3>1. `navigation.js` (in `assets/menu/`) - The Navigation Menu</h3>
+        <p><strong>Role:</strong> This script generates the navigation bar on every page. It detects its location and adjusts all link paths accordingly, allowing for a single, centralised menu definition.</p>
         
         <h3>2. `search-library.js` - The Catalog</h3>
         <p><strong>Role:</strong> Acts as a database for all search functions. It contains a single large object, `SearchLibrary`, that maps a button's `data-search-id` to a URL template and a validator function.</p>
@@ -141,10 +141,41 @@ getAndValidateIpAddress: function(config) {
             </li>
         </ol>
     </section>
+
+    <section id="section-redactor">
+        <h2>Redactor: Custom Detection Patterns</h2>
+        <p>The Redactor page lets each user define additional PII patterns beyond the built-in set. Custom patterns are stored in the browser's <code>localStorage</code> under the key <code>redactor_custom_patterns</code> and are loaded automatically on every visit. They are browser-specific and do not affect other users of the same installation.</p>
+
+        <h3>Guide D: Adding a Custom Pattern</h3>
+        <p><strong>Scenario:</strong> Detect US Social Security Numbers in the format <code>123-45-6789</code>.</p>
+        <ol>
+            <li>Open <strong>Tools → Redactor</strong>.</li>
+            <li>Scroll to the <strong>Custom Patterns</strong> section.</li>
+            <li>Fill in the form:
+                <ul>
+                    <li><strong>Type name:</strong> <code>SSN_US</code></li>
+                    <li><strong>Regex:</strong> <code>\b\d{3}-\d{2}-\d{4}\b</code></li>
+                    <li><strong>Colour:</strong> choose any colour.</li>
+                    <li><strong>Case-insensitive:</strong> leave unticked (digits only).</li>
+                </ul>
+            </li>
+            <li>Click <strong>Add Pattern</strong>. The pattern appears immediately in the active patterns table.</li>
+            <li>Values matching <code>\b\d{3}-\d{2}-\d{4}\b</code> will now be replaced with <code>[SSN_US_1]</code>, <code>[SSN_US_2]</code>, etc. on the next Censor operation.</li>
+        </ol>
+        <p>To remove a custom pattern, click <strong>Remove</strong> in the active patterns table. The pattern is deleted from <code>localStorage</code> immediately and will not be applied in future sessions.</p>
+
+        <h3>Technical Notes</h3>
+        <ul>
+            <li>Custom patterns are appended to the end of the built-in pattern list. They are applied after all built-in patterns; the standard left-to-right overlap resolution applies.</li>
+            <li>Use <code>\b</code> word boundaries in your regex to avoid partial matches inside longer tokens.</li>
+            <li>The <code>g</code> (global) flag is always added automatically; do not include it in the regex field.</li>
+            <li>Type names are converted to uppercase and spaces replaced with underscores. Duplicate type names are rejected.</li>
+        </ul>
+    </section>
 </main>
 
 <footer>
-    <p>Exploratores 3.0 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.1.0 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>
