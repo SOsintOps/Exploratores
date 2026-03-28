@@ -1,10 +1,10 @@
-# Exploratores OSINT Toolkit 3.0β
+# Exploratores OSINT Toolkit 3.0
 
 ![Exploratores Toolkit Logo](assets/images/exploratores.jpg)
 
 [GitHub Repository](https://github.com/SOsintOps/Exploratores)
 
-**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows. Version 3.0β introduces multi-country IBAN analysis, a redesigned Toolkit Search, a fully data-driven JavaScript architecture, and enhanced phone number normalization.
+**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows. Version 3.0 introduces multi-country IBAN analysis, a redesigned Toolkit Search, a fully data-driven JavaScript architecture, and enhanced phone number normalization.
 
 ---
 
@@ -21,7 +21,7 @@
 
 ---
 
-![version](https://img.shields.io/badge/version-3.0β-blue)
+![version](https://img.shields.io/badge/version-3.0-blue)
 
 ## Requirements
 
