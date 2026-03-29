@@ -38,7 +38,7 @@ const Exploratores = {
                 return;
             }
             
-            const queryOverride = button.getAttribute('data-query-override');
+            const queryOverride = button.hasAttribute('data-query-override') ? button.getAttribute('data-query-override') : undefined;
             const validationResult = validator(config, queryOverride);
 
             if (!validationResult.isValid) return;
