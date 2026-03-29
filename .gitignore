@@ -5,8 +5,7 @@ Thumbs.db
 ehthumbs.db
 Icon?
 gemini.md
-promptdaeseguire.txt
-stato_progetto.md
+
 
 # Temporary and cache files
 *.tmp
@@ -22,6 +21,8 @@ stato_progetto.md
 .vscode/
 *.code-workspace
 .idea/
+promptdaeseguire.txt
+stato_progetto.md
 
 # Virtual environments and dependencies
 venv/
