@@ -29,23 +29,3 @@ This file collects ideas, source suggestions, and potential improvements to be e
 - **Additional sources from digitaldigging.org:** review the OSINT resource list at
   `https://digitaldigging.org/osint/` and identify entries not yet covered by the toolkit.
 
----
-
-## Completed
-
-| Item | Version |
-|------|---------|
-| Button activation bug across all pages (main.js null/undefined on `getAttribute`) | 3.1.0 |
-| Search Engines buttons non-functional | 3.1.0 |
-| Usernames Tool buttons non-functional | 3.1.0 |
-| Email Tool buttons non-functional | 3.1.0 |
-| Vehicles Tool VIN Finder buttons non-functional | 3.1.0 |
-| Communities Tool buttons never activated | 3.1.0 |
-| X (Twitter) Tools — Web Archives buttons never activated | 3.1.0 |
-| International Phone: normalise `0039` / `+39` / spaces to E.164 | 3.0 |
-| IBAN bank databases: Albania, Croatia, Cyprus, Greece, Malta, Montenegro, Slovenia, Turkey | 3.1.0 |
-| Names Tool — Sweden: Hitta.se, Eniro, Mr Koll, Ratsit, Merinfo | 3.1.0 |
-| Names Tool — YachtlyCrew (General & Social Presence) | 3.1.0 |
-| Names Tool — fix `no_input` on Google Maps, Interpol, OFAC, Canada411, Search Systems | 3.1.0 |
-| Names Tool — Google Maps URL template broken (`FULL_NAME_ENC` literal) | 3.1.0 |
-| Names Tool — Canada411 URL now embeds name in search parameters | 3.1.0 |

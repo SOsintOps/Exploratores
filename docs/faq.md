@@ -213,6 +213,11 @@ Detected categories out of the box:
 *   **CF**: Italian Codice Fiscale (16-character alphanumeric).
 *   **VAT_XX**: VAT / fiscal codes for 30+ countries, each tagged with its ISO country code (e.g., `[VAT_DE_1]`, `[VAT_FR_1]`). Includes both the EU-prefix form (`IT04598600403`) and the plain 11-digit Italian P.IVA.
 *   **AMEX**: American Express card numbers: CM15 (full 15 digits), CM13, and CM11, both spaced (4-6-N format) and unspaced.
+*   **VISA**: Visa card numbers: 16-digit (standard) and legacy 13-digit, both compact and spaced (4-4-4-4 format).
+*   **MASTERCARD**: Mastercard card numbers: 16-digit, classic range 51–55xxxx and new range 2221–2720xxxx, both compact and spaced (4-4-4-4 format).
+*   **DISCOVER**: Discover card numbers: 16-digit, prefixes 6011, 644–649, and 65xx, both compact and spaced (4-4-4-4 format).
+*   **IBAN**: International Bank Account Numbers: 2-letter country code + 2 check digits + BBAN (11–30 chars), both compact and spaced format.
+*   **PHONE_IT_MOBILE**: Italian mobile phone numbers (prefixes 32x–39x, 10 digits). Matches compact (`3351234567`), grouped (`335 123 4567`), and country-code formats (`+39 335 123 4567`, `0039335123456`, `(+39) 335 123 4567`).
 *   **SE10**: SE10 merchant codes (exactly 10 digits).
 
 ### What is the Censor → LLM → Restore workflow?

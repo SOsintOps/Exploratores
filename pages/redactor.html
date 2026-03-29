@@ -108,7 +108,6 @@
 
 <main>
     <h1 class="page-title">Redactor</h1>
-    <p class="center-text">Remove PII from text or CSV before submitting to AI models. Restore originals once the report is ready.</p>
 
     <!-- Section 1: Censor -->
     <section class="redactor-section">
@@ -152,6 +151,7 @@
                     </div>
                 </div>
             </div>
+            <div class="note" style="margin-top:0.5rem;"><strong>NOTE:</strong> Remove PII from text or CSV before submitting to AI models.</div>
         </div>
     </section>
 
@@ -164,6 +164,7 @@
             <div class="redactor-row">
                 <button id="btn-restore" class="button text-active">Restore</button>
             </div>
+            <div class="note"><strong>NOTE:</strong> Original values will be restored in place of the placeholders listed in the Redaction Map below.</div>
             <div id="output-restore-wrap" style="display:none;">
                 <label style="display:block; font-weight:600; margin-bottom:0.4rem;">Restored text</label>
                 <textarea id="output-restore" class="redactor-textarea" readonly></textarea>
@@ -258,7 +259,7 @@
 
             <div class="note" style="margin-top:1rem;">
                 <strong>NOTE:</strong> All processing is performed entirely within your browser. No data is transmitted to any server. The redaction map is stored only in memory and is cleared when you close or refresh the tab.<br>
-                <strong>Detects:</strong> Email addresses &bull; Codice Fiscale (IT) &bull; VAT / fiscal codes for 30+ countries (IT, DE, FR, ES, GB, NL, BE, AT, PT, PL, HR, SI, CY, GR, MT, AL, SE, DK, FI, LU, IE, CZ, HU, RO, BG, EE, LT, LV, SK, US-EIN and more) &bull; American Express card numbers (CM11 / CM13 / CM15, spaced and unspaced) &bull; PCN codes (17+ digits starting with year) &bull; SE10 merchant codes (10 digits) &bull; custom user-defined patterns.
+                <strong>Detects:</strong> Email addresses &bull; Codice Fiscale (IT) &bull; VAT / fiscal codes for 30+ countries (IT, DE, FR, ES, GB, NL, BE, AT, PT, PL, HR, SI, CY, GR, MT, AL, SE, DK, FI, LU, IE, CZ, HU, RO, BG, EE, LT, LV, SK, US-EIN and more) &bull; IBAN bank account numbers (compact and spaced) &bull; payment card numbers: American Express (CM11/CM13/CM15), Visa (13/16-digit), Mastercard (Classic 51–55 / New 2221–2720), Discover (6011/644–649/65xx) — compact and spaced (4-4-4-4) &bull; PCN codes (17+ digits starting with year) &bull; Italian mobile numbers (32x–39x, compact and spaced, with optional +39/0039 country code) &bull; SE10 merchant codes (10 digits) &bull; custom user-defined patterns.
             </div>
         </div>
     </section>
@@ -296,6 +297,27 @@
       // Unspaced: word-boundary anchors prevent partial matches inside longer digit strings.
       regex: /3[47]\d{2}[\s\-]\d{6}[\s\-]\d{1,5}|\b3[47](?:\d{13}|\d{11}|\d{9})\b/g,
       color: '#c0392b'
+    },
+    {
+      type: 'VISA',
+      // Visa: 16-digit (most common) or legacy 13-digit, starting with 4.
+      // Spaced format: 4-4-4-4 with single space separator.
+      regex: /\b4\d{3}(?:\s\d{4}){3}\b|\b4\d{15}\b|\b4\d{12}\b/g,
+      color: '#1a5276'
+    },
+    {
+      type: 'MASTERCARD',
+      // Mastercard: 16 digits. Classic range 51–55xxxx; new range 2221–2720xxxx.
+      // Spaced format: 4-4-4-4 with single space separator.
+      regex: /\b5[1-5]\d{2}(?:\s\d{4}){3}\b|\b5[1-5]\d{14}\b|\b2[2-7]\d{2}(?:\s\d{4}){3}\b|\b2(?:2[2-9]\d|[3-6]\d{2}|7[01]\d|720)\d{12}\b/g,
+      color: '#922b21'
+    },
+    {
+      type: 'DISCOVER',
+      // Discover: 16 digits. Prefixes: 6011, 644–649, 65xx.
+      // Spaced format: 4-4-4-4 with single space separator.
+      regex: /\b6(?:011|4[4-9]\d|5\d{2})(?:\s\d{4}){3}\b|\b6(?:011|4[4-9]\d|5\d{2})\d{12}\b/g,
+      color: '#b7950b'
     },
     {
       type: 'CF',
@@ -345,6 +367,23 @@
       // Standard RFC-compliant email address.
       regex: /\b[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}\b/g,
       color: '#2980b9'
+    },
+    {
+      type: 'IBAN',
+      // International Bank Account Number: 2-letter country code + 2 check digits + BBAN (11–30 alphanumeric chars).
+      // Matches both compact (IT60X0542811101000000123456) and spaced (IT60 X054 2811 …) formats.
+      // Placed before PCN so alphanumeric IBANs are not partially consumed by digit-only patterns.
+      regex: /\b[A-Z]{2}\d{2}(?:\s[A-Z0-9]{4}){2,7}(?:\s[A-Z0-9]{1,4})?\b|\b[A-Z]{2}\d{2}[A-Z0-9]{11,30}\b/g,
+      color: '#1e8449'
+    },
+    {
+      type: 'PHONE_IT_MOBILE',
+      // Italian mobile numbers: all active prefixes 32x–39x (10 digits total).
+      // Optional country code: +39 / 0039 / (+39) / (0039), with optional space or hyphen separator.
+      // Handles compact (3351234567), grouped (335 123 4567), and prefixed (+39 335 123 4567) formats.
+      // Placed before SE10 so 10-digit mobile numbers are not consumed by the generic digit pattern.
+      regex: /(?<!\d)(?:(?:\((?:00|\+)39\)|(?:00|\+)39)[ -]?)?3[2-9]\d[ -]?\d{3}[ -]?\d{4}(?!\d)/g,
+      color: '#117a65'
     },
     {
       type: 'PCN',
