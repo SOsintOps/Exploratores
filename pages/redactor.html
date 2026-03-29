@@ -258,7 +258,7 @@
 
             <div class="note" style="margin-top:1rem;">
                 <strong>NOTE:</strong> All processing is performed entirely within your browser. No data is transmitted to any server. The redaction map is stored only in memory and is cleared when you close or refresh the tab.<br>
-                <strong>Detects:</strong> Email addresses &bull; Codice Fiscale (IT) &bull; VAT / fiscal codes for 30+ countries (IT, DE, FR, ES, GB, NL, BE, AT, PT, PL, HR, SI, CY, GR, MT, AL, SE, DK, FI, LU, IE, CZ, HU, RO, BG, EE, LT, LV, SK, US-EIN and more) &bull; American Express card numbers (CM11 / CM13 / CM15, spaced and unspaced) &bull; SE10 merchant codes (10 digits) &bull; custom user-defined patterns.
+                <strong>Detects:</strong> Email addresses &bull; Codice Fiscale (IT) &bull; VAT / fiscal codes for 30+ countries (IT, DE, FR, ES, GB, NL, BE, AT, PT, PL, HR, SI, CY, GR, MT, AL, SE, DK, FI, LU, IE, CZ, HU, RO, BG, EE, LT, LV, SK, US-EIN and more) &bull; American Express card numbers (CM11 / CM13 / CM15, spaced and unspaced) &bull; PCN codes (17+ digits starting with year) &bull; SE10 merchant codes (10 digits) &bull; custom user-defined patterns.
             </div>
         </div>
     </section>
@@ -345,6 +345,13 @@
       // Standard RFC-compliant email address.
       regex: /\b[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}\b/g,
       color: '#2980b9'
+    },
+    {
+      type: 'PCN',
+      // PCN (Prescription Control Number / codice pratica): any numeric code of 17 or more digits.
+      // Placed before SE10 so longer matches win overlap resolution.
+      regex: /\b\d{17,}\b/g,
+      color: '#e67e22'
     },
     {
       type: 'SE10',

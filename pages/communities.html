@@ -150,25 +150,25 @@
         const inputGroups = [
             {
                 inputIds: ['input-communities-redditTerm'],
-                buttonSelector: '#section-communities-reddit .button-grid:nth-of-type(1) .button',
+                buttonSelector: '#feedback-communities-redditTerm + .button-grid .button',
                 validator: ExploratoresValidators.getAndValidateRedditTerm,
                 feedbackId: 'feedback-communities-redditTerm'
             },
             {
                 inputIds: ['input-communities-redditUser'],
-                buttonSelector: '#section-communities-reddit .button-grid:nth-of-type(2) .button',
+                buttonSelector: '#feedback-communities-redditUser + .button-grid .button',
                 validator: ExploratoresValidators.getAndValidateRedditUser,
                 feedbackId: 'feedback-communities-redditUser'
             },
             {
                 inputIds: ['input-communities-hnTerm'],
-                buttonSelector: '#section-communities-hackernews .button-grid:nth-of-type(1) .button',
+                buttonSelector: '#feedback-communities-hnTerm + .button-grid .button',
                 validator: ExploratoresValidators.getAndValidateHnTerm,
                 feedbackId: 'feedback-communities-hnTerm'
             },
             {
                 inputIds: ['input-communities-hnUser'],
-                buttonSelector: '#section-communities-hackernews .button-grid:nth-of-type(2) .button',
+                buttonSelector: '#feedback-communities-hnUser + .button-grid .button',
                 validator: ExploratoresValidators.getAndValidateHnUser,
                 feedbackId: 'feedback-communities-hnUser'
             },
@@ -186,13 +186,13 @@
             },
             {
                 inputIds: ['input-communities-tgUser'],
-                buttonSelector: '#section-communities-telegram .button-grid:nth-of-type(1) .button',
+                buttonSelector: '#feedback-communities-tgUser + .button-grid .button',
                 validator: ExploratoresValidators.getAndValidateTgUser,
                 feedbackId: 'feedback-communities-tgUser'
             },
             {
                 inputIds: ['input-communities-tgKey'],
-                buttonSelector: '#section-communities-telegram .button-grid:nth-of-type(2) .button',
+                buttonSelector: '#feedback-communities-tgKey + .button-grid .button',
                 validator: ExploratoresValidators.getAndValidateTgKey,
                 feedbackId: 'feedback-communities-tgKey'
             }

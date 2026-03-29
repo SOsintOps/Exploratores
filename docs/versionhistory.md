@@ -1,0 +1,104 @@
+# Version History
+
+Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
+
+---
+
+## 3.1.0 — 2026
+
+- **New:** Redactor: PII removal tool for text and CSV files before submission to AI models. Detects Email addresses, Codice Fiscale (IT), VAT/fiscal codes for 30+ countries, American Express card numbers (CM11/CM13/CM15, spaced and unspaced), PCN codes (17+ digits), and SE10 merchant codes; replaces them with numbered placeholders (`[TYPE_N]`). Includes Copy/Import Map for cross-session persistence, Custom Patterns (user-defined regex with localStorage), large-input warning (>20,000 lines), and a Restore function. All processing is local; no data transmitted. Added to the Tools menu.
+- **Improved:** Guidelines: "Criminal Intelligence: Manual for Analysts" (UNODC, Atkin 2011) added to Further Reading; books reordered from introductory to specific; likelihood table styled correctly.
+- **Fixed:** `main.js`: `getAttribute('data-query-override')` returned `null` (not `undefined`) when attribute absent, causing all single-input validators to fail at click time. Affected: Search Engines, Email, Usernames, Vehicles. Fixed with `hasAttribute` guard.
+- **Fixed:** Communities Tool: button selectors used `:nth-of-type` with class, which does not match by class in CSS — buttons never received `text-active` state. Fixed with adjacent-sibling selectors (`+`).
+- **Fixed:** X (Twitter) Tools: same `:first-of-type`/`:last-of-type` selector issue in the Web Archives section. Fixed with adjacent-sibling selectors.
+- **New:** Names Tool: Sweden added to National Registers with five sources: Hitta.se, Eniro, Mr Koll, Ratsit, and Merinfo. Each uses the verified search URL pattern for that service.
+- **New:** Names Tool: YachtlyCrew added to General & Social Presence for searching yacht crew by name.
+- **Fixed:** Names Tool: five buttons were incorrectly active without input due to `no_input: true` (Google Maps, Interpol Red Notices, OFAC Sanctions Search, Canada411, Search Systems). Flag removed; buttons now require name input.
+- **Fixed:** Names Tool: Google Maps URL template contained the literal string `FULL_NAME_ENC` instead of the `{fullname}` placeholder; search never worked. Corrected.
+- **Improved:** Names Tool: Canada411 URL updated to embed first and last name in the search query parameters instead of linking to the generic address page.
+- **New:** IBAN Tool: added offline bank name resolution for 8 new countries: Albania (AL), Croatia (HR), Cyprus (CY), Greece (GR), Malta (MT), Montenegro (ME), Slovenia (SI), Turkey (TR). Coverage table updated accordingly.
+- **Improved:** IBAN bank databases: all 8 new country databases replaced with data sourced from official registers: Slovenia from Banka Slovenije (bsi.si); Croatia from HNB VBDI register; Montenegro from Erste Bank Montenegro IBAN calculator; Turkey from AFAD official donation IBANs; Greece from Hellenic Bank Association HEBIC index and bank websites; Cyprus from Central Bank of Cyprus IBAN register; Albania (1 entry confirmed from Raiffeisen Bank Albania). Coverage table updated with accurate entry counts and quality ratings.
+
+---
+
+## 3.0 — 2026
+
+- **New:** Navigation: dedicated *Help* menu (Guidelines, FAQ, Customise, Version History); *Tools* now contains CyberChef only.
+- **Improved:** CyberChef updated to v10.22.1.
+- **New:** IBAN Checker: Bing, Yandex, and Baidu search buttons added.
+- **New:** Phone International: dial code normalisation: `0039` / `+39` / spaces all converted to E.164 automatically.
+- **Improved:** IBAN page: external OSINT search merged into IBAN Checker section; auto-verify on input (no button needed); inline validation feedback on same line as input.
+- **Improved:** Phone International: libphonenumber-js updated to latest; Truecaller URL now uses lowercase ISO code.
+- **Improved:** `validators.js`: `getAndValidateIban` function added; `getAndValidateIntlPhone` enhanced with normalisation and conditional guards.
+- **Improved:** `search-library.js`: IBAN Bing/Yandex/Baidu entries added; Truecaller template corrected to `{country_iso_lower}`.
+- **Fixed:** IBAN search buttons never worked (validator function was missing).
+- **Fixed:** Phone buttons always enabled regardless of input validity.
+- **Fixed:** Phone intel display was always empty (`validationResult.data` was passed incorrectly).
+- **Fixed:** Truecaller generated uppercase ISO in URL (e.g. `/IT/` instead of `/it/`).
+- **Fixed:** US Phone: `updatePageState` did not unwrap the validator result object; buttons were never disabled and phone intel always showed an error.
+- **Improved:** IBAN page: replaced IBAN.com with IBAN Calculator; removed broken SWIFT Search; buttons centred on page.
+- **Improved:** OSINT language review: standardised register across all pages: replaced "Insert" with "Enter", removed "Please" softeners, fixed informal abbreviations (FB→Facebook, IG→Instagram), corrected "For proper function" phrasing, translated Italian headings in Search Engines, updated page titles for consistency, and adopted British English throughout.
+- **Improved:** README: removed marketing emoji from headers; fixed numbered list; tightened credits phrasing.
+- **Improved:** FAQ/Guidelines/Customise: tightened informal language ("side project"→"voluntary basis", "bulwark"→"safeguard", "Mindful"→"Disciplined Online Conduct"); standardised person/voice.
+- **Improved:** Social media pages: clarified ambiguous labels ("Outgoing"→"Outgoing Mentions"), renamed headings for precision ("Virtual Currencies"→"Cryptocurrency Analysis", "Other Reverse Image Search"→"Video Thumbnail & Image Reverse Search").
+- **Fixed:** Dorks page footer showed 3.0α instead of 3.0β; "VirusTotal" brand name corrected in Domains page.
+- **Fixed:** VK page: moved "WORK IN PROGRESS" from h1 tag to proper NOTE banner.
+- **New:** Phone International: Tellows reputation lookup added.
+- **Fixed:** Search Engines: `updatePageState` did not unwrap the validator result object; buttons appeared active regardless of input.
+- **Fixed:** Names: same validator unwrap bug; buttons were never properly disabled.
+- **Improved:** IBAN page: NOTE label standardised to match the pattern used across all other pages.
+
+---
+
+## 3.0α — 2025
+
+- **New:** Platform-specific URL parsing (VK, X/Twitter, Instagram, Telegram, Facebook, LinkedIn).
+- **New:** IBAN: multi-country BBAN parser for 11 countries (IT, DE, FR, ES, GB, NL, BE, PT, AT, CH, PL).
+- **New:** IBAN: local bank name databases for 10 countries (`assets/js/bankDatabases/`), resolving bank names entirely offline.
+- **New:** IBAN: Local Database Coverage note with per-country bank count, coverage status, and update date.
+- **New:** Toolkit Search: two-column scrollable layout (Function / Page) with sticky header and live result counter.
+- **New:** Guidelines page added to the Tools menu and to `launchme.html`.
+- **Improved:** `validators.js`: full refactor with consistent return structure and broader coverage.
+- **Improved:** `search-library.js`: added IBAN search entries (Google, SWIFT, iban.com) and VK profile info.
+- **Improved:** Navigation menu: CyberChef moved to first position; FAQ before Customise; Version History link added to How to Start.
+- **Improved:** Navigation menu: fixed case-sensitive links for `guidelines.html` and `publiccompanyrecords.html`.
+- **Improved:** All HTML files renamed to lowercase to enforce naming convention.
+- **Improved:** FAQ: restructured into 7 logical sections with nested Table of Contents; new entry on updating IBAN bank databases.
+- **Fixed:** Broken links across all pages resolved.
+- **Fixed:** Missing CSS imports corrected.
+- **Fixed:** Corrupted character in `guidelines.html` ("When" section).
+- **Fixed:** Stale reference to `gemini.md` removed from `customise.html`.
+
+---
+
+## 2.6 — 2025
+
+- **Fixed:** Broken links across all pages.
+- **Fixed:** Missing CSS assets corrected.
+- **Improved:** Version string consistency enforced across all 30+ pages.
+- **Improved:** Documentation pages (`faq.md`, `customise.md`) updated.
+- **Improved:** `assets/css/style.css`: minor layout fixes.
+- **Improved:** `assets/menu/navigation.js`: link corrections.
+
+---
+
+## 2.5 — 2025
+
+- **New:** Centralised architecture introduced: `main.js`, `validators.js`, `search-library.js` replace all inline `onclick` logic.
+- **New:** `search-library.js` as centralised catalog of all search configurations (URL templates + validators).
+- **New:** `validators.js` as shared validation library used across all pages.
+- **New:** `config.js`: Light Version support: hide/show UI elements per-user via configuration.
+- **New:** Pages: VK, IBAN (refactored), Search Engines (updated).
+- **Improved:** Navigation bar via `navigation.js`: single definition, path-aware links.
+- **Improved:** IBAN page: centralised search logic, cleaner layout.
+- **Improved:** `launchme.html`: search function added.
+- **Improved:** Separation of concerns enforced: no inline styles or scripts in HTML.
+
+---
+
+## 1.0 — Initial Release
+
+- **New:** Initial release of the Exploratores OSINT Toolkit.
+- **New:** Core pages: Names, Email, IP, Domains, Maps, Addresses, Images, Videos, Documents, Vehicles, Usernames, Phone (US & International), Social Media (Facebook, Instagram, X, LinkedIn, VK, Keybase), Virtual Currencies, Company Public Records, IBAN, CyberChef integration.
+- **New:** Navigation menu via `navigation.js`.
+- **New:** Guidelines, FAQ, License, Customise documentation pages.
