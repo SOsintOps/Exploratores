@@ -86,4 +86,4 @@ For a more in-depth analysis of the methodologies and practices discussed, the f
 - **"Structured Analytic Techniques for Intelligence Analysis"** by Richards J. Heuer Jr. and Randolph H. Pherson - A reference manual that presents dozens of structured analytical techniques to improve the rigor and quality of analysis.
 - **"Extreme Privacy: What It Takes to Disappear"** by Michael Bazzell - An extensive guide on digital security and maintaining anonymity, which directly supports the OPSEC principles discussed.
 - **"Open Source Intelligence Techniques"** by Michael Bazzell - A comprehensive, practical guide to the tools and techniques for gathering information from open sources.
-- **"Deep Dive: Exploring the Real-World Value of Open Source Intelligence"** by Rae Baker - Real-world case studies demonstrating the practical application and value of OSINT across various sectors.
+- **"Deep Dive: Exploring the Real-World Value of Open Source Intelligence"** by Rae L. Baker - Real-world case studies demonstrating the practical application and value of OSINT across various sectors.
