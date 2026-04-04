@@ -83,7 +83,7 @@ The `docs/` directory contains the Markdown source for [Guidelines](docs/guideli
 ## References
 
 - Community feedback from OSINT & Cybercrime analysts
-- *Deep Dive: A Guide to Advanced Open Source Intelligence*
+- *Deep Dive: A Guide to Advanced Open Source Intelligence* by Rae L. Baker
 - *ICD 203: Analytic Standards*
 - *Open Source Intelligence Techniques* by Michael Bazzell
 - *Psychology of Intelligence Analysis* by Richards J. Heuer Jr.
