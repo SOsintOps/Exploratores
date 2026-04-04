@@ -1,12 +1,12 @@
-# Exploratores OSINT Toolkit 3.1.0
+# Exploratores OSINT Toolkit 3.1.1
 
 ![Exploratores Toolkit Logo](assets/images/exploratores.jpg)
 
 [GitHub Repository](https://github.com/SOsintOps/Exploratores)
 
-![version](https://img.shields.io/badge/version-3.1.0-blue)
+![version](https://img.shields.io/badge/version-3.1.1-blue)
 
-**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows. Version 3.1.0 adds the Redactor tool for browser-side PII removal before LLM submission, and official bank databases for 8 new IBAN countries. Version 3.0 introduced multi-country IBAN analysis, a redesigned Toolkit Search, a centralised JavaScript architecture, and enhanced phone number normalization.
+**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows. Version 3.1.1 is a patch release fixing four bugs identified in 3.1.0. Version 3.1.0 added the Redactor tool for browser-side PII removal before LLM submission, and official bank databases for 8 new IBAN countries. Version 3.0 introduced multi-country IBAN analysis, a redesigned Toolkit Search, a centralised JavaScript architecture, and enhanced phone number normalization.
 
 ---
 
