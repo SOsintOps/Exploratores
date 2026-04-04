@@ -64,7 +64,7 @@ Detailed documentation is available directly in the toolkit under the **Help** m
 * [FAQ](docs/faq.md): frequently asked questions, architecture overview, troubleshooting.
 * [Customise](docs/customise.md): guide to extending and customising the toolkit.
 * [Version History](docs/versionhistory.md): full changelog.
-* [Ideas & Roadmap](todo.md): ideas and sources under consideration for future implementation.
+* [Ideas & Roadmap](docs/todo.md): ideas and sources under consideration for future implementation.
 
 The `docs/` directory contains the Markdown source for [Guidelines](docs/guidelines.md), [FAQ](docs/faq.md), and [Customise](docs/customise.md).
 
