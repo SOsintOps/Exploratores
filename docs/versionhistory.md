@@ -4,6 +4,17 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.1.1 — 2026
+
+- **Fixed:** `main.js`: validator functions extracted from `ExploratoresValidators` were called without context, losing `this`. Affected buttons: GHunt (email), Tumblr username, SMAT/VK username, NetworksDB range — all silently failed on click. Fixed by calling validators with `.call(ExploratoresValidators, ...)`.
+- **Fixed:** `indicator-classifier.js`: COORDINATES regex had a missing decimal point in the longitude group (`(?:\d+)?` instead of `(?:\.\d+)?`). Decimal coordinates such as `40.7128, -74.0060` were never classified as COORDINATES and produced no results in Janua.
+- **Fixed:** `search-library.js` (`phoneint-dt-base`): URL template contained `{placeholder}`, which is not a key returned by `getAndValidateIntlPhone`; the button opened a broken URL. Replaced with `{e164}`.
+- **Fixed:** `janua-search-map.js`: six entries introduced in 3.1.0 (YachtlyCrew, Hitta, Eniro, Mr Koll, Ratsit, Merinfo) were present in `search-library.js` but missing from `janua-search-map.js`; they never appeared in Janua dispatch results. Entries added.
+- **Fixed:** `editorconfig` renamed to `.editorconfig`; without the leading dot, editors and IDEs never loaded the file and the declared rules (LF line endings, UTF-8, 2-space indent) were never applied.
+- **Fixed:** Empty artefact files `20` and `p.type` introduced accidentally in a prior commit removed from the repository root.
+
+---
+
 ## 3.1.0 — 2026
 
 - **New:** Redactor: PII removal tool for text and CSV files before submission to AI models. Detects Email addresses, Codice Fiscale (IT), VAT/fiscal codes for 30+ countries, payment card numbers (AMEX CM11/CM13/CM15, Visa 13/16-digit, Mastercard Classic 51–55/New 2221–2720, Discover 6011/644–649/65xx — all compact and spaced), IBAN bank account numbers (compact and spaced), Italian mobile phone numbers (prefixes 32x–39x, with optional +39/0039 country code, compact and grouped), PCN codes (17+ digits), and SE10 merchant codes; replaces them with numbered placeholders (`[TYPE_N]`). Includes Copy/Import Map for cross-session persistence, Custom Patterns (user-defined regex with localStorage), large-input warning (>20,000 lines), and a Restore function. All processing is local; no data transmitted. Added to the Tools menu.
