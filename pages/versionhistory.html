@@ -19,6 +19,18 @@
     <section class="faq-section">
 
         <div class="faq-item">
+            <h2>3.1.1 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+            <ul>
+                <li><strong>Fixed:</strong> <code>main.js</code>: validator functions extracted from <code>ExploratoresValidators</code> were called without context, losing <code>this</code>. Affected buttons: GHunt (email), Tumblr username, SMAT/VK username, NetworksDB range — all silently failed on click. Fixed by calling validators with <code>.call(ExploratoresValidators, ...)</code>.</li>
+                <li><strong>Fixed:</strong> <code>indicator-classifier.js</code>: COORDINATES regex had a missing decimal point in the longitude group (<code>(?:\d+)?</code> instead of <code>(?:\.\d+)?</code>). Decimal coordinates such as <code>40.7128, -74.0060</code> were never classified as COORDINATES and produced no results in Janua.</li>
+                <li><strong>Fixed:</strong> <code>search-library.js</code> (<code>phoneint-dt-base</code>): URL template contained <code>{placeholder}</code>, which is not a key returned by <code>getAndValidateIntlPhone</code>; the button opened a broken URL. Replaced with <code>{e164}</code>.</li>
+                <li><strong>Fixed:</strong> <code>janua-search-map.js</code>: six entries introduced in 3.1.0 (YachtlyCrew, Hitta, Eniro, Mr Koll, Ratsit, Merinfo) were present in <code>search-library.js</code> but missing from <code>janua-search-map.js</code>; they never appeared in Janua dispatch results. Entries added.</li>
+                <li><strong>Fixed:</strong> <code>editorconfig</code> renamed to <code>.editorconfig</code>; without the leading dot, editors and IDEs never loaded the file and the declared rules (LF line endings, UTF-8, 2-space indent) were never applied.</li>
+                <li><strong>Fixed:</strong> Empty artefact files <code>20</code> and <code>p.type</code> introduced accidentally in a prior commit removed from the repository root.</li>
+            </ul>
+        </div>
+
+        <div class="faq-item">
             <h2>3.1.0 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
             <ul>
                 <li><strong>New:</strong> Redactor: PII removal tool for text and CSV files before submission to AI models. Detects Email addresses, Codice Fiscale (IT), VAT/fiscal codes for 30+ countries, payment card numbers (AMEX CM11/CM13/CM15, Visa 13/16-digit, Mastercard Classic 51–55/New 2221–2720, Discover 6011/644–649/65xx — all compact and spaced), IBAN bank account numbers (compact and spaced), Italian mobile phone numbers (prefixes 32x–39x, with optional +39/0039 country code, compact and grouped), PCN codes (17+ digits), and SE10 merchant codes; replaces them with numbered placeholders (<code>[TYPE_N]</code>). Includes Copy/Import Map for cross-session persistence, Custom Patterns (user-defined regex with localStorage), large-input warning (&gt;20,000 lines), and a Restore function. All processing is local; no data transmitted. Added to the Tools menu.</li>
@@ -33,10 +45,6 @@
                 <li><strong>Fixed:</strong> Names Tool: five buttons were incorrectly active without input due to <code>no_input: true</code> (Google Maps, Interpol Red Notices, OFAC Sanctions Search, Canada411, Search Systems). Flag removed; buttons now require name input.</li>
                 <li><strong>Fixed:</strong> Names Tool: Google Maps URL template contained the literal string <code>FULL_NAME_ENC</code> instead of the <code>{fullname}</code> placeholder; search never worked. Corrected.</li>
                 <li><strong>Improved:</strong> Names Tool: Canada411 URL updated to embed first and last name in the search query parameters instead of linking to the generic address page.</li>
-                <li><strong>Fixed:</strong> <code>main.js</code>: validator functions extracted from <code>ExploratoresValidators</code> were called without context, losing <code>this</code>. Affected buttons: GHunt (email), Tumblr username, SMAT/VK username, NetworksDB range — all silently failed on click. Fixed by calling validators with <code>.call(ExploratoresValidators, ...)</code>.</li>
-                <li><strong>Fixed:</strong> <code>indicator-classifier.js</code>: COORDINATES regex had a missing decimal point in the longitude group (<code>(?:\d+)?</code> instead of <code>(?:\.\d+)?</code>). Decimal coordinates such as <code>40.7128, -74.0060</code> were never classified as COORDINATES and produced no results in Janua.</li>
-                <li><strong>Fixed:</strong> <code>search-library.js</code> (<code>phoneint-dt-base</code>): URL template contained <code>{placeholder}</code>, which is not a key returned by <code>getAndValidateIntlPhone</code>; the button opened a broken URL. Replaced with <code>{e164}</code>.</li>
-                <li><strong>Fixed:</strong> <code>janua-search-map.js</code>: six entries introduced in this release (YachtlyCrew, Hitta, Eniro, Mr Koll, Ratsit, Merinfo) were present in <code>search-library.js</code> but missing from <code>janua-search-map.js</code>; they never appeared in Janua dispatch results. Entries added.</li>
             </ul>
         </div>
 
@@ -133,7 +141,7 @@
 </main>
 
 <footer>
-    <p>Exploratores 3.1.0 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.1.1 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>
