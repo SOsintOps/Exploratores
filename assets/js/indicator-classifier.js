@@ -93,7 +93,7 @@ function classifyIndicator(query) {
     // --- GRUPPO 2: Indicatori Ambigui (Gerarchia Bassa) ---
     // Eseguito solo se nessun indicatore univoco è stato trovato.
     const indicatoriAmbigui = [
-        { type: 'COORDINATES', pattern: /^-?\d{1,3}(?:\.\d+)?,\s*-?\d{1,3}(?:\d+)?$/, score: 0.75 },
+        { type: 'COORDINATES', pattern: /^-?\d{1,3}(?:\.\d+)?,\s*-?\d{1,3}(?:\.\d+)?$/, score: 0.75 },
         { type: 'YOUTUBE_VIDEO_ID', pattern: /^[a-zA-Z0-9_-]{11}$/, score: 0.7 },
         { type: 'USERNAME', pattern: /^[a-zA-Z0-9_.-]{3,24}$/, score: 0.6, preCheck: q => !q.includes(' ') },
         { type: 'PERSON_NAME', pattern: /^[A-Z][a-z']+(\s[A-Z][a-z']{1,})+$/, score: 0.55, preCheck: q => q.includes(' ') },

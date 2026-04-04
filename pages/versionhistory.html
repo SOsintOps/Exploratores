@@ -33,6 +33,10 @@
                 <li><strong>Fixed:</strong> Names Tool: five buttons were incorrectly active without input due to <code>no_input: true</code> (Google Maps, Interpol Red Notices, OFAC Sanctions Search, Canada411, Search Systems). Flag removed; buttons now require name input.</li>
                 <li><strong>Fixed:</strong> Names Tool: Google Maps URL template contained the literal string <code>FULL_NAME_ENC</code> instead of the <code>{fullname}</code> placeholder; search never worked. Corrected.</li>
                 <li><strong>Improved:</strong> Names Tool: Canada411 URL updated to embed first and last name in the search query parameters instead of linking to the generic address page.</li>
+                <li><strong>Fixed:</strong> <code>main.js</code>: validator functions extracted from <code>ExploratoresValidators</code> were called without context, losing <code>this</code>. Affected buttons: GHunt (email), Tumblr username, SMAT/VK username, NetworksDB range — all silently failed on click. Fixed by calling validators with <code>.call(ExploratoresValidators, ...)</code>.</li>
+                <li><strong>Fixed:</strong> <code>indicator-classifier.js</code>: COORDINATES regex had a missing decimal point in the longitude group (<code>(?:\d+)?</code> instead of <code>(?:\.\d+)?</code>). Decimal coordinates such as <code>40.7128, -74.0060</code> were never classified as COORDINATES and produced no results in Janua.</li>
+                <li><strong>Fixed:</strong> <code>search-library.js</code> (<code>phoneint-dt-base</code>): URL template contained <code>{placeholder}</code>, which is not a key returned by <code>getAndValidateIntlPhone</code>; the button opened a broken URL. Replaced with <code>{e164}</code>.</li>
+                <li><strong>Fixed:</strong> <code>janua-search-map.js</code>: six entries introduced in this release (YachtlyCrew, Hitta, Eniro, Mr Koll, Ratsit, Merinfo) were present in <code>search-library.js</code> but missing from <code>janua-search-map.js</code>; they never appeared in Janua dispatch results. Entries added.</li>
             </ul>
         </div>
 
