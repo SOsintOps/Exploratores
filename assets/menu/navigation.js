@@ -75,6 +75,8 @@ function generateNavHTML() {
         <li><span>Help</span>
           <ul class="submenu">
             <li><a href="${pagesPath}guidelines.html">Guidelines</a></li>
+            <li><a href="${pagesPath}help-redactor.html">Redactor Guide</a></li>
+            <li><a href="${pagesPath}help-iban.html">IBAN Guide</a></li>
             <li><a href="${pagesPath}faq.html">FAQ</a></li>
             <li><a href="${pagesPath}customise.html">Customise</a></li>
             <li><a href="${pagesPath}versionhistory.html">Version History</a></li>

@@ -860,3 +860,32 @@ body.matrix-mode footer a:hover {
     font-style: italic;
     text-align: center;
 }
+
+/* Help page screenshots */
+.screenshot {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    margin: 1rem 0 1.5rem;
+}
+.screenshot-caption {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+    margin-top: -1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Help page TOC */
+.faq-toc {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+    display: inline-block;
+    min-width: 260px;
+}

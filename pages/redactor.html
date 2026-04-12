@@ -112,7 +112,7 @@
     <!-- Section 1: Censor -->
     <section class="redactor-section">
         <div class="search-instructions">
-            <h2>Censor</h2>
+            <h2>Redactor</h2>
 
             <div class="mode-toggle">
                 <button id="btn-mode-text" class="button text-active">Text</button>
@@ -124,7 +124,7 @@
                 <label style="display:block; font-weight:600; margin-bottom:0.4rem;">Input text</label>
                 <textarea id="input-text" class="redactor-textarea" placeholder="Paste text containing PII here&#8230;"></textarea>
                 <div class="redactor-row">
-                    <button id="btn-censor-text" class="button text-active">Censor</button>
+                    <button id="btn-censor-text" class="button text-active">Redact</button>
                 </div>
                 <div id="output-text-wrap" style="display:none;">
                     <label style="display:block; font-weight:600; margin-bottom:0.4rem;">Redacted text</label>
@@ -142,7 +142,7 @@
                     <input type="file" id="input-csv" accept=".csv">
                 </div>
                 <div class="redactor-row">
-                    <button id="btn-censor-csv" class="button text-active">Censor CSV</button>
+                    <button id="btn-censor-csv" class="button text-active">Redact CSV</button>
                 </div>
                 <div id="output-csv-wrap" style="display:none;">
                     <p id="csv-stats" class="csv-info"></p>
@@ -159,19 +159,46 @@
     <section class="redactor-section">
         <div class="search-instructions">
             <h2>Restore</h2>
-            <label style="display:block; font-weight:600; margin-bottom:0.4rem;">Paste AI report (containing placeholders)</label>
-            <textarea id="input-restore" class="redactor-textarea" placeholder="Paste the AI-generated report here. All [TYPE_N] placeholders will be replaced with the original values from the current session."></textarea>
-            <div class="redactor-row">
-                <button id="btn-restore" class="button text-active">Restore</button>
+
+            <div class="mode-toggle">
+                <button id="btn-restore-mode-text" class="button text-active">Text</button>
+                <button id="btn-restore-mode-csv" class="button">CSV</button>
             </div>
-            <div class="note"><strong>NOTE:</strong> Original values will be restored in place of the placeholders listed in the Redaction Map below.</div>
-            <div id="output-restore-wrap" style="display:none;">
-                <label style="display:block; font-weight:600; margin-bottom:0.4rem;">Restored text</label>
-                <textarea id="output-restore" class="redactor-textarea" readonly></textarea>
+
+            <!-- Text panel -->
+            <div id="restore-panel-text">
+                <label style="display:block; font-weight:600; margin-bottom:0.4rem;">Paste AI report (containing placeholders)</label>
+                <textarea id="input-restore" class="redactor-textarea" placeholder="Paste the AI-generated report here. All [TYPE_N] placeholders will be replaced with the original values from the current session."></textarea>
                 <div class="redactor-row">
-                    <button id="btn-copy-restore" class="button">Copy to Clipboard</button>
+                    <button id="btn-restore" class="button text-active">Restore</button>
+                </div>
+                <div id="output-restore-wrap" style="display:none;">
+                    <label style="display:block; font-weight:600; margin-bottom:0.4rem;">Restored text</label>
+                    <textarea id="output-restore" class="redactor-textarea" readonly></textarea>
+                    <div class="redactor-row">
+                        <button id="btn-copy-restore" class="button">Copy to Clipboard</button>
+                    </div>
                 </div>
             </div>
+
+            <!-- CSV panel -->
+            <div id="restore-panel-csv" style="display:none;">
+                <label style="display:block; font-weight:600; margin-bottom:0.4rem;">Upload redacted CSV file</label>
+                <div class="file-input-wrap">
+                    <input type="file" id="input-restore-csv" accept=".csv">
+                </div>
+                <div class="redactor-row">
+                    <button id="btn-restore-csv" class="button text-active">Restore CSV</button>
+                </div>
+                <div id="output-restore-csv-wrap" style="display:none;">
+                    <p id="restore-csv-stats" class="csv-info"></p>
+                    <div class="redactor-row">
+                        <button id="btn-download-restore-csv" class="button text-active">Download Restored CSV</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note"><strong>NOTE:</strong> Original values will be restored in place of the placeholders listed in the Redaction Map below.</div>
         </div>
     </section>
 
@@ -267,7 +294,7 @@
 </main>
 
 <footer>
-    <p>Exploratores 3.1.1 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.1.5 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>
@@ -407,7 +434,8 @@
     forward: new Map(),    // original value  →  placeholder
     reverse: new Map(),    // placeholder     →  original value
     counters: {},          // dynamically populated: type → highest counter used
-    redactedCsvBlob: null
+    redactedCsvBlob: null,
+    restoredCsvBlob: null
   };
 
   // ─── Core Logic ─────────────────────────────────────────────────────────────
@@ -644,7 +672,23 @@
     URL.revokeObjectURL(url);
   });
 
-  // ─── Restore ─────────────────────────────────────────────────────────────────
+  // ─── Restore — Mode Toggle ────────────────────────────────────────────────────
+
+  document.getElementById('btn-restore-mode-text').addEventListener('click', () => {
+    document.getElementById('restore-panel-text').style.display = '';
+    document.getElementById('restore-panel-csv').style.display = 'none';
+    document.getElementById('btn-restore-mode-text').classList.add('text-active');
+    document.getElementById('btn-restore-mode-csv').classList.remove('text-active');
+  });
+
+  document.getElementById('btn-restore-mode-csv').addEventListener('click', () => {
+    document.getElementById('restore-panel-csv').style.display = '';
+    document.getElementById('restore-panel-text').style.display = 'none';
+    document.getElementById('btn-restore-mode-csv').classList.add('text-active');
+    document.getElementById('btn-restore-mode-text').classList.remove('text-active');
+  });
+
+  // ─── Restore — Text ───────────────────────────────────────────────────────────
 
   document.getElementById('btn-restore').addEventListener('click', () => {
     const input = document.getElementById('input-restore').value;
@@ -657,6 +701,43 @@
   document.getElementById('btn-copy-restore').addEventListener('click', function () {
     navigator.clipboard.writeText(document.getElementById('output-restore').value);
     showCopyFeedback(this);
+  });
+
+  // ─── Restore — CSV ────────────────────────────────────────────────────────────
+
+  document.getElementById('btn-restore-csv').addEventListener('click', () => {
+    const file = document.getElementById('input-restore-csv').files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const rows = parseCSV(e.target.result);
+      let totalRestored = 0;
+      const restored = rows.map(row =>
+        row.map(cell => {
+          const r = restoreText(cell);
+          if (r !== cell) totalRestored++;
+          return r;
+        })
+      );
+      const csvContent = serializeCSV(restored);
+      session.restoredCsvBlob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+      document.getElementById('restore-csv-stats').textContent =
+        'Processed ' + rows.length + ' rows — ' + totalRestored + ' cell(s) restored.';
+      document.getElementById('output-restore-csv-wrap').style.display = '';
+    };
+    reader.readAsText(file, 'UTF-8');
+  });
+
+  document.getElementById('btn-download-restore-csv').addEventListener('click', () => {
+    if (!session.restoredCsvBlob) return;
+    const url = URL.createObjectURL(session.restoredCsvBlob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'restored.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   });
 
   // ─── Copy Map ────────────────────────────────────────────────────────────────
@@ -840,6 +921,7 @@
     session.reverse.clear();
     session.counters = {};
     session.redactedCsvBlob = null;
+    session.restoredCsvBlob = null;
     document.getElementById('input-text').value = '';
     document.getElementById('output-text').value = '';
     document.getElementById('output-text-wrap').style.display = 'none';
@@ -848,6 +930,8 @@
     document.getElementById('input-restore').value = '';
     document.getElementById('output-restore').value = '';
     document.getElementById('output-restore-wrap').style.display = 'none';
+    document.getElementById('input-restore-csv').value = '';
+    document.getElementById('output-restore-csv-wrap').style.display = 'none';
     document.getElementById('input-import-map').value = '';
     document.getElementById('import-feedback').textContent = '';
     updateMapTable();

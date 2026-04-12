@@ -4,6 +4,14 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.1.5 — 2026
+
+- **New:** Redactor: CSV restore mode added to the Restore section. Upload a previously redacted CSV file, apply the current session map to every cell, and download the result as `restored.csv`. The CSV parser follows RFC 4180 and handles quoted fields, embedded commas, and line breaks inside cells.
+- **Improved:** Redactor: section heading and action button renamed from "Censor" / "Censor CSV" to "Redactor" / "Redact CSV" for consistency with the tool name.
+- **New:** Help: dedicated guide pages added for the Redactor (`help-redactor.html`) and the IBAN Tool (`help-iban.html`), with step-by-step instructions and screenshots. Both pages are accessible from the Help menu.
+
+---
+
 ## 3.1.1 — 2026
 
 - **Fixed:** `main.js`: validator functions extracted from `ExploratoresValidators` were called without context, losing `this`. Affected buttons: GHunt (email), Tumblr username, SMAT/VK username, NetworksDB range — all silently failed on click. Fixed by calling validators with `.call(ExploratoresValidators, ...)`.

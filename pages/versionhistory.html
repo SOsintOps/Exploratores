@@ -19,6 +19,15 @@
     <section class="faq-section">
 
         <div class="faq-item">
+            <h2>3.1.5 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+            <ul>
+                <li><strong>New:</strong> Redactor: CSV restore mode added to the Restore section. Upload a previously redacted CSV file, apply the current session map to every cell, and download the result as <code>restored.csv</code>. The CSV parser follows RFC 4180 and handles quoted fields, embedded commas, and line breaks inside cells.</li>
+                <li><strong>Improved:</strong> Redactor: section heading and action button renamed from "Censor" / "Censor CSV" to "Redactor" / "Redact CSV" for consistency with the tool name.</li>
+                <li><strong>New:</strong> Help: dedicated guide pages added for the Redactor (<code>help-redactor.html</code>) and the IBAN Tool (<code>help-iban.html</code>), with step-by-step instructions and screenshots. Both pages are accessible from the Help menu.</li>
+            </ul>
+        </div>
+
+        <div class="faq-item">
             <h2>3.1.1 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
             <ul>
                 <li><strong>Fixed:</strong> <code>main.js</code>: validator functions extracted from <code>ExploratoresValidators</code> were called without context, losing <code>this</code>. Affected buttons: GHunt (email), Tumblr username, SMAT/VK username, NetworksDB range — all silently failed on click. Fixed by calling validators with <code>.call(ExploratoresValidators, ...)</code>.</li>
@@ -141,7 +150,7 @@
 </main>
 
 <footer>
-    <p>Exploratores 3.1.1 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.1.5 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>
