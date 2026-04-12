@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redactor Help • Exploratores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<main>
+    <h1 class="page-title">Redactor — Help</h1>
+
+    <section id="table-of-contents" class="faq-toc">
+
+        <h2>Contents</h2>
+        <ul>
+            <li><a href="#redactor-overview">What Redactor does</a></li>
+            <li><a href="#redactor-censor-text">Text mode</a></li>
+            <li><a href="#redactor-restore-text">Restore a redacted Text</a></li>
+            <li><a href="#redactor-censor-csv">CSV mode</a></li>
+            <li><a href="#redactor-restore-csv">Restoring a CSV file</a></li>
+            <li><a href="#redactor-custom">Custom Patterns</a></li>
+            <li><a href="#redactor-map">Redaction Map</a></li>
+            <li><a href="#redactor-detects">What Redactor detects</a></li>
+        </ul>
+    </section>
+
+    <section id="s-redactor">
+
+        <h3 id="redactor-overview">What Redactor does</h3>
+
+        <p>Redactor removes personally identifiable information (PII) from text and CSV files. It is designed to be used before sending documents to AI models, or any third party where the original data must not be shared.</p>
+
+        <p><strong>How it works:</strong> Redactor scans your input, a text or a CSV file, replaces each piece of sensitive data with a coded placeholder such as <code>[EMAIL_1]</code> or <code>[IBAN_2]</code>, and keeps a session map that links each placeholder back to its original value. You can later restore the original data by pasting the output back into the Restore section.</p>
+
+        <p><strong>Privacy note:</strong> all processing happens inside your browser. No data is sent to any server.</p>
+
+
+        <h2 id="redactor-censor-text">TEXT MODE</h2>
+        <h3>Redacting a text</h3>
+
+        <p>Use this to remove PII from a block of plain text.</p>
+        <ol>
+            <li>Make sure the <strong>Text</strong> button is selected at the top of the Redactor section. It is selected by default.
+                <img src="../assets/images/screenshots/Screenshot 01.png" alt="Text mode button selected" class="screenshot">
+            </li>
+            <li>Paste your text into the <em>Input text</em> box.
+                <img src="../assets/images/screenshots/Screenshot 0.png" alt="Input text box" class="screenshot">
+            </li>
+            <li>Click <strong>Redact</strong>. A redacted version appears in the <em>Redacted text</em> box below.
+                <img src="../assets/images/screenshots/Screenshot 1.png" alt="Redacted text output" class="screenshot">
+            </li>
+            <li>Click <strong>Copy to Clipboard</strong> to copy the result and paste it where needed.
+                <img src="../assets/images/screenshots/Screenshot 2.png" alt="Copy to Clipboard button" class="screenshot">
+            </li>
+        </ol>
+
+        <p>Each piece of PII is replaced by a bracketed placeholder. The same value always receives the same placeholder within a session, so if the same email address appears five times, all five instances become <code>[EMAIL_1]</code>.</p>
+
+        <img src="../assets/images/screenshots/Screenshot 3.png" alt="Example of redacted text with placeholders" class="screenshot">
+
+        <h2 id="redactor-restore-text">RESTORE — TEXT MODE</h2>
+        <h3>Restore a redacted Text</h3>
+
+        <p>Use this after you receive a text response from an AI model (or any other tool) that contains placeholders.</p>
+        <ol>
+            <li>Make sure the <strong>Text</strong> button is selected at the top of the Restore section. It is selected by default.
+                <img src="../assets/images/screenshots/Screenshot 41.png" alt="Text mode selected in Restore section" class="screenshot">
+            </li>
+            <li>Copy the text you need to restore that contains placeholders, for example the AI response.</li>
+            <li>Paste it into the <em>Restore</em> box.
+                <img src="../assets/images/screenshots/Screenshot 4.png" alt="Restore input box with placeholders" class="screenshot">
+            </li>
+            <li>Click <strong>Restore</strong>. Every placeholder is replaced with its original value.</li>
+            <li>Click <strong>Copy to Clipboard</strong> to copy the restored text.
+                <img src="../assets/images/screenshots/Screenshot 5.png" alt="Restored text output" class="screenshot">
+            </li>
+        </ol>
+
+        <h2 id="redactor-censor-csv">CSV MODE</h2>
+        <h3>Redacting a CSV file</h3>
+
+        <p>Use this to remove PII from an entire CSV file and download the cleaned version.</p>
+        <ol>
+            <li>Click the <strong>CSV</strong> button at the top of the Redactor section.
+                <img src="../assets/images/screenshots/Screenshot 61.png" alt="CSV mode button" class="screenshot">
+            </li>
+            <li>Click <strong>Browse...</strong> and select your CSV file.
+                <img src="../assets/images/screenshots/Screenshot 6.png" alt="File browser for CSV upload" class="screenshot">
+            </li>
+            <li>Click <strong>Redact CSV</strong>. A summary shows how many rows were processed and how many cells were redacted.
+                <img src="../assets/images/screenshots/Screenshot 7.png" alt="CSV redaction summary" class="screenshot">
+            </li>
+            <li>Click <strong>Download Redacted CSV</strong> to save the cleaned file as <code>redacted.csv</code>. The file is saved to your browser's default download folder.</li>
+        </ol>
+
+        <p>NOTE: The CSV parser follows the RFC 4180 standard and handles quoted fields, embedded commas, and line breaks inside cells.</p>
+
+        <h2 id="redactor-restore-csv">RESTORE — CSV MODE</h2>
+        <h3>Restoring a CSV file</h3>
+
+        <p>Use this to restore an entire CSV file that was previously redacted. This is the correct way to reverse a Redact CSV operation — do not paste CSV content into the text restore box.</p>
+        <ol>
+            <li>Click the <strong>CSV</strong> button at the top of the Restore section.
+                <img src="../assets/images/screenshots/Screenshot 81.png" alt="CSV mode selected in Restore section" class="screenshot">
+            </li>
+            <li>Click <strong>Browse...</strong> and select the redacted CSV file (the one downloaded after using Redact CSV).</li>
+            <li>Click <strong>Restore CSV</strong>. The tool applies the session map to every cell in the file. A summary shows how many rows were processed and how many cells were restored.
+                <img src="../assets/images/screenshots/Screenshot 8.png" alt="CSV restore summary" class="screenshot">
+            </li>
+            <li>Click <strong>Download Restored CSV</strong> to save the file as <code>restored.csv</code> in your browser's default download folder, with all original values reinstated.</li>
+        </ol>
+
+        <p><strong>Important:</strong> both Restore modes work only within the same browser session. If you close or refresh the tab, the map is lost. To carry a session across tabs or days, use <em>Copy Map (JSON)</em> and <em>Import Map</em> — both are described in the Redaction Map section below.</p>
+
+        <h2>CUSTOM PATTERNS</h2>
+        <h3 id="redactor-custom">How to add a custom pattern</h3>
+
+        <p>If you need to redact data that Redactor does not detect automatically, you can add your own patterns using regular expressions.</p>
+
+        <img src="../assets/images/screenshots/Screenshot 9.png" alt="Custom patterns section" class="screenshot">
+
+        <p>In the following example the analyst added the regular expression to detect the NIR (Numéro d'Inscription au Répertoire).</p>
+
+        <img src="../assets/images/screenshots/Screenshot 10.png" alt="Custom pattern for NIR entered" class="screenshot">
+
+        <p>To do that, the analyst followed this procedure:</p>
+        <ol>
+            <li><strong>Type name:</strong> enter a short label for your pattern, for example <code>NIR_FR</code>. Use only letters, digits, and underscores.</li>
+            <li><strong>Regex:</strong> enter your regular expression without surrounding slashes. Example: <code>[12]\d{2}[ ]?(?:0[1-9]|1[0-2]|20)[ ]?\d{2}[ ]?\d{3}[ ]?\d{3}[ ]?\d{2}</code> matches NIR (Numéro d'Inscription au Répertoire).</li>
+            <li><strong>Colour:</strong> choose a colour for the badge shown in the Redaction Map.</li>
+            <li><strong>Case-insensitive:</strong> tick this box if the pattern should match regardless of capitalisation.</li>
+            <li>Click <strong>Add Pattern</strong>. The pattern is saved in your browser's local storage and will be available the next time you open the page.
+                <img src="../assets/images/screenshots/Screenshot 11.png" alt="Pattern added to the custom patterns table" class="screenshot">
+            </li>
+        </ol>
+
+        <p>To remove a custom pattern, click the <strong>Remove</strong> button next to it in the table. Built-in patterns cannot be removed.</p>
+
+        <h2 id="redactor-map">REDACTION MAP</h2>
+        <h3>Redaction Map</h3>
+
+        <p>The Redaction Map shows every placeholder created in the current session, its data type, and the original value it replaced.</p>
+
+        <img src="../assets/images/screenshots/Screenshot 301.png" alt="Redaction Map showing session placeholders" class="screenshot">
+
+        <ul>
+            <li><strong>Copy Map (JSON):</strong> copies the full map as a JSON object. Paste this somewhere safe if you want to restore data in a future session.</li>
+            <li><strong>Import Map:</strong> paste a previously exported JSON map to reload a session. Click the <em>Import Map (restore a previous session)</em> link to expand the import field, paste the JSON, then click <strong>Import</strong>.</li>
+            <li><strong>Clear Session:</strong> erases all redactions from memory and clears all input fields. This cannot be undone.</li>
+        </ul>
+
+        <h2 id="redactor-detects">WHAT REDACTOR DETECTS</h2>
+        <h3>What Redactor detects (as of 12 April 2026)</h3>
+
+        <p>Redactor recognises the following data types automatically:</p>
+        <ul>
+            <li><strong>Payment cards:</strong> American Express (CM11, CM13, CM15), Visa (13 and 16 digit), Mastercard (Classic 51–55 and New 2221–2720), Discover (6011, 644–649, 65xx). Compact and spaced 4-4-4-4 formats.</li>
+            <li><strong>CF:</strong> Italian Codice Fiscale (16-character alphanumeric).</li>
+            <li><strong>EMAIL:</strong> standard RFC-compliant email addresses.</li>
+            <li><strong>IBAN:</strong> bank account numbers — compact and spaced formats.</li>
+            <li><strong>PHONE_IT_MOBILE:</strong> Italian mobile numbers (32x–39x prefixes), with or without +39/0039 country code, compact and grouped formats.</li>
+            <li><strong>PCN:</strong> prescription control numbers and similar codes of 17 or more consecutive digits.</li>
+            <li><strong>SE10:</strong> 10-digit merchant codes. Also catches Montenegro PIB and Turkey VKN by overlap.</li>
+            <li><strong>VAT and fiscal codes</strong> for 30+ countries: IT, DE, FR, ES, GB, NL, BE, AT, PT, PL, HR, SI, CY, GR, MT, AL, SE, DK, FI, LU, IE, CZ, HU, RO, BG, EE, LT, LV, SK, US-EIN.</li>
+        </ul>
+
+        <p>Detection runs in priority order. When two patterns overlap, the longer match wins and the shorter one is discarded.</p>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>Exploratores 3.1.5 <a href="./license.html">License</a></p>
+</footer>
+
+<script src="../assets/menu/navigation.js"></script>
+
+</body>
+</html>
