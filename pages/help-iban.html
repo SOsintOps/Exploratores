@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IBAN Tool Help • Exploratores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<main>
+    <h1 class="page-title">IBAN Tool — Help</h1>
+
+    <section id="table-of-contents" class="faq-toc">
+
+        <h2>Contents</h2>
+        <ul>
+            <li><a href="#iban-overview">What the IBAN Tool does</a></li>
+            <li><a href="#iban-checker">IBAN Checker</a></li>
+            <li><a href="#iban-search">Online search buttons</a></li>
+            <li><a href="#iban-databases">Bank database coverage</a></li>
+        </ul>
+    </section>
+
+    <section id="s-iban">
+
+        <h3 id="iban-overview">What the IBAN Tool does</h3>
+
+        <p>The IBAN Tool validates International Bank Account Numbers offline, extracts bank details from a local database, and opens targeted search queries in external search engines. Validation is performed entirely inside your browser — no data is sent to any server.</p>
+
+        <img src="../assets/images/screenshots/Screenshot 13.png" alt="IBAN Tool overview" class="screenshot">
+
+        <h2 id="iban-checker">IBAN CHECKER</h2>
+        <h3>How to use the IBAN Checker</h3>
+
+        <ol>
+            <li>Type or paste the IBAN into the input field. You can include spaces or write it without, for example: <code>IT60 X054 2811 1010 0000 1234 56</code> or <code>IT60X054281110100000123456</code>. The tool normalises the input automatically.</li>
+            <li>Validation runs as you type. A green message confirms the structure and checksum are valid. A red message means the format or checksum is wrong — check you copied the full number without missing or extra characters.
+                <img src="../assets/images/screenshots/Screenshot 13a.png" alt="Valid IBAN confirmation message" class="screenshot">
+            </li>
+            <li>When the IBAN is valid, two panels appear below the input field:
+                <ul>
+                    <li><strong>IBAN Information:</strong> country, check digits, total length.</li>
+                    <li><strong>Bank Information:</strong> bank name (if found in the local database), and the BBAN breakdown — routing codes, branch codes, and account number in the format specific to that country.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <p>If the bank name shows as <em>Not found in local database</em>, the IBAN is still valid. The tool simply does not have that institution in its records.</p>
+
+        <h2 id="iban-search">ONLINE SEARCH BUTTONS</h2>
+        <h3>Online search buttons</h3>
+
+        <p>When a valid IBAN is entered, the search buttons activate. Each button opens a new browser tab and runs a search for the IBAN on the selected engine or tool. The buttons are disabled until the IBAN passes local validation.</p>
+
+        <ul>
+            <li><strong>Google Search:</strong> general web search for the IBAN string.</li>
+            <li><strong>Bing Search:</strong> same query on Bing.</li>
+            <li><strong>Yandex Search:</strong> same query on Yandex.</li>
+            <li><strong>Baidu Search:</strong> same query on Baidu.</li>
+            <li><strong>IBAN Calculator:</strong> opens an external website for further validation.</li>
+        </ul>
+
+        <h2 id="iban-databases">BANK DATABASE COVERAGE</h2>
+        <h3>Bank database coverage</h3>
+
+        <p>The local database identifies the bank name from the routing codes inside the BBAN. It currently covers 19 countries. Coverage levels:</p>
+
+        <ul>
+            <li><strong>Complete</strong> — all major banks are present.</li>
+            <li><strong>Good</strong> — most banks are covered; uncommon institutions may be absent.</li>
+            <li><strong>Partial</strong> — common banks are listed; many institutions are missing.</li>
+            <li><strong>Minimal</strong> — only a handful of entries are included.</li>
+        </ul>
+
+        <p>Full datasets for Germany (DE), Austria (AT), and Switzerland (CH) are available free from the respective national central banks as CSV or XLS files. To expand coverage, download the official file and convert the routing code to bank name mappings into the format used by the existing files in <code>assets/js/bankDatabases/</code>.</p>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>Exploratores 3.1.5 <a href="./license.html">License</a></p>
+</footer>
+
+<script src="../assets/menu/navigation.js"></script>
+
+</body>
+</html>
