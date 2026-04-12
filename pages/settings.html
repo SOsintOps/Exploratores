@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings • Exploratores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<main>
+    <h1 class="page-title">Settings</h1>
+    <p>Configure display and behaviour preferences. All settings are stored locally in your browser and never sent to any server.</p>
+
+    <section id="section-display">
+        <h2>Display</h2>
+
+        <div class="setting-row">
+            <div class="setting-info">
+                <strong>Typewriter effect</strong>
+                <p>Reveals page titles character by character on load.</p>
+            </div>
+            <label class="toggle-switch" aria-label="Toggle typewriter effect">
+                <input type="checkbox" id="toggle-typewriter">
+                <span class="toggle-track"></span>
+            </label>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>Exploratores 3.1.2 <a href="./license.html">License</a></p>
+</footer>
+
+<script src="../assets/menu/navigation.js"></script>
+<script src="../assets/js/typewriter.js"></script>
+<script src="../assets/js/settings-page.js"></script>
+</body>
+</html>
