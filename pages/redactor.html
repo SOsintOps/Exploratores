@@ -359,7 +359,7 @@
     // Italian Partita IVA for backward compatibility.
     // Note: Montenegro (PIB) and Turkey (VKN) are pure 10/8-digit numbers indistinguishable
     // from SE10 / other codes without prefix — they are caught by SE10 and not listed here.
-    { type: 'VAT_IT', regex: /\b[Ii][Tt]\d{11}\b|\b\d{11}\b/g,            color: '#16a085' }, // Italy: EU VAT (IT prefix) or plain 11-digit P.IVA
+    { type: 'VAT_IT', regex: /\b[Ii][Tt]\d{11}\b|\b\d{7}(?:0[0-9]{2}|1[01][0-9]|12[01])\d\b/g, color: '#16a085' }, // Italy: EU VAT (IT prefix) or plain 11-digit P.IVA (office code 001-121)
     { type: 'VAT_AL', regex: /\b[A-Za-z]\d{8}[A-Za-z]\b/g,                color: '#c0392b' }, // Albania NIPT: letter + 8 digits + letter
     { type: 'VAT_AT', regex: /\bATU\d{8}\b/g,                              color: '#2980b9' }, // Austria
     { type: 'VAT_BE', regex: /\bBE0?\d{9,10}\b/g,                          color: '#8e44ad' }, // Belgium
@@ -491,11 +491,11 @@
   }
 
   function restoreText(text) {
-    let result = text;
-    for (const [placeholder, original] of session.reverse) {
-      result = result.split(placeholder).join(original);
-    }
-    return result;
+    if (session.reverse.size === 0) return text;
+    const escaped = Array.from(session.reverse.keys())
+      .map(k => k.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
+    const pattern = new RegExp(escaped.join('|'), 'g');
+    return text.replace(pattern, match => session.reverse.get(match) || match);
   }
 
   // ─── CSV Parser — RFC 4180 ──────────────────────────────────────────────────
@@ -585,16 +585,40 @@
     }
     empty.style.display = 'none';
     table.style.display = '';
-    for (const [placeholder, original] of session.reverse) {
+
+    const entries = Array.from(session.reverse.entries()).map(([placeholder, original]) => {
       const typeMatch = placeholder.match(/^\[(.+)_(\d+)\]$/);
       const type = typeMatch ? typeMatch[1] : 'UNK';
-      const patternDef = PII_PATTERNS.find(p => p.type === type);
+      const num = typeMatch ? parseInt(typeMatch[2], 10) : 0;
+      return { placeholder, original, type, num };
+    });
+
+    entries.sort((a, b) => {
+      if (a.type < b.type) return -1;
+      if (a.type > b.type) return 1;
+      return a.num - b.num;
+    });
+
+    let lastType = null;
+    for (const entry of entries) {
+      if (entry.type !== lastType) {
+        lastType = entry.type;
+        const patternDef = PII_PATTERNS.find(p => p.type === entry.type);
+        const color = patternDef ? patternDef.color : '#666';
+        const headerTr = document.createElement('tr');
+        headerTr.innerHTML =
+          '<td colspan="3" style="background:' + color + '1a;padding:0.4rem 0.75rem;font-weight:600;font-size:0.85rem;border-bottom:2px solid ' + color + ';">' +
+          '<span class="pii-badge" style="background:' + color + '">' + escapeHtml(entry.type) + '</span>' +
+          ' <span style="color:#666;font-weight:400;">(' + entries.filter(e => e.type === entry.type).length + ')</span></td>';
+        tbody.appendChild(headerTr);
+      }
+      const patternDef = PII_PATTERNS.find(p => p.type === entry.type);
       const color = patternDef ? patternDef.color : '#666';
       const tr = document.createElement('tr');
       tr.innerHTML =
-        '<td>' + escapeHtml(placeholder) + '</td>' +
-        '<td class="td-badge"><span class="pii-badge" style="background:' + color + '">' + type + '</span></td>' +
-        '<td>' + escapeHtml(original) + '</td>';
+        '<td>' + escapeHtml(entry.placeholder) + '</td>' +
+        '<td class="td-badge"><span class="pii-badge" style="background:' + color + '">' + escapeHtml(entry.type) + '</span></td>' +
+        '<td>' + escapeHtml(entry.original) + '</td>';
       tbody.appendChild(tr);
     }
   }
@@ -635,7 +659,8 @@
   });
 
   document.getElementById('btn-copy-text').addEventListener('click', function () {
-    navigator.clipboard.writeText(document.getElementById('output-text').value);
+    try { navigator.clipboard.writeText(document.getElementById('output-text').value); }
+    catch (e) { /* clipboard API unavailable on file:// in some browsers */ }
     showCopyFeedback(this);
   });
 
@@ -699,7 +724,8 @@
   });
 
   document.getElementById('btn-copy-restore').addEventListener('click', function () {
-    navigator.clipboard.writeText(document.getElementById('output-restore').value);
+    try { navigator.clipboard.writeText(document.getElementById('output-restore').value); }
+    catch (e) { /* clipboard API unavailable on file:// in some browsers */ }
     showCopyFeedback(this);
   });
 
@@ -748,7 +774,8 @@
 
   document.getElementById('btn-copy-map').addEventListener('click', function () {
     if (session.reverse.size === 0) return;
-    navigator.clipboard.writeText(exportMapAsJson());
+    try { navigator.clipboard.writeText(exportMapAsJson()); }
+    catch (e) { /* clipboard API unavailable on file:// in some browsers */ }
     showCopyFeedback(this);
   });
 
@@ -767,9 +794,7 @@
       const n = parseInt(m[2], 10);
       session.reverse.set(placeholder, original);
       session.forward.set(original, placeholder);
-      if (Object.prototype.hasOwnProperty.call(session.counters, type)) {
-        session.counters[type] = Math.max(session.counters[type], n);
-      }
+      session.counters[type] = Math.max(session.counters[type] || 0, n);
       count++;
     }
     return count;
@@ -820,18 +845,19 @@
         '<td><button class="button" style="width:auto;min-width:60px;font-size:0.8rem;" data-remove="' + escapeHtml(p.type) + '">Remove</button></td>';
       tbody.appendChild(tr);
     }
-    tbody.querySelectorAll('[data-remove]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        removeCustomPattern(btn.getAttribute('data-remove'));
-        renderCustomPatternsList();
-      });
-    });
+    tbody.onclick = function(e) {
+      const btn = e.target.closest('[data-remove]');
+      if (!btn) return;
+      removeCustomPattern(btn.getAttribute('data-remove'));
+      renderCustomPatternsList();
+    };
   }
 
   function addCustomPattern(type, regexSource, flags, color, save) {
     if (save === undefined) save = true;
     try {
-      const re = new RegExp(regexSource, flags + 'g');
+      const combinedFlags = flags.includes('g') ? flags : flags + 'g';
+      const re = new RegExp(regexSource, combinedFlags);
       PII_PATTERNS.push({ type: type, regex: re, color: color, custom: true });
       if (save) {
         const stored = JSON.parse(localStorage.getItem(CUSTOM_STORAGE_KEY) || '[]');

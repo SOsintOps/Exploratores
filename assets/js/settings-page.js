@@ -10,11 +10,16 @@
   }
 
   function saveSettings(s) {
-    localStorage.setItem(KEY, JSON.stringify(s));
+    try {
+      localStorage.setItem(KEY, JSON.stringify(s));
+    } catch (e) {
+      console.error('Could not save settings:', e);
+    }
   }
 
   document.addEventListener('DOMContentLoaded', function () {
     var toggle = document.getElementById('toggle-typewriter');
+    if (!toggle) return;
     var settings = getSettings();
     toggle.checked = settings.typewriterEffect !== false;
 
