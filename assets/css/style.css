@@ -226,7 +226,7 @@ nav {
   margin: 0;
   border: 1px solid #ddd;
   min-width: 200px;
-  z-index: 999;
+  z-index: 1001;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
@@ -413,6 +413,23 @@ main {
 }
 
 
+/* BUTTON GROUP LABELS */
+/* Category labels used to visually group buttons within a section */
+.button-group-label {
+  font-size: 0.8rem;
+  color: var(--neutral-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  margin: 0.75rem 0 0.35rem;
+  padding-left: 2px;
+}
+
+.button-group-label:first-of-type {
+  margin-top: 0;
+}
+
+
 /* BUTTON GRID */
 /* Container for a responsive grid of buttons */
 .button-grid {
@@ -559,7 +576,7 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 900;
 }
 
 footer a {
@@ -782,9 +799,9 @@ body.matrix-mode footer a:hover {
 #toolkit-search-results {
     display: none;
     margin-top: 0.5rem;
-    border: 1px solid #444;
+    border: 1px solid #ddd;
     border-radius: 4px;
-    background-color: #2e2e2e;
+    background-color: #f5f5f5;
 }
 
 #toolkit-search-results.active {
@@ -798,8 +815,8 @@ body.matrix-mode footer a:hover {
     display: flex;
     flex-direction: row;
     flex-shrink: 0;
-    background-color: #252525;
-    border-bottom: 1px solid #444;
+    background-color: #eaeaea;
+    border-bottom: 1px solid #ddd;
 }
 
 .toolkit-search-header span {
@@ -809,11 +826,11 @@ body.matrix-mode footer a:hover {
     font-weight: bold;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #888;
+    color: var(--neutral-color);
 }
 
 .toolkit-search-header span + span {
-    border-left: 1px solid #444;
+    border-left: 1px solid #ddd;
 }
 
 .toolkit-search-body {
@@ -824,7 +841,7 @@ body.matrix-mode footer a:hover {
 .toolkit-search-row {
     display: flex;
     flex-direction: row;
-    border-bottom: 1px solid #3a3a3a;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .toolkit-search-row:last-child {
@@ -835,7 +852,7 @@ body.matrix-mode footer a:hover {
     flex: 1;
     display: block;
     padding: 0.5rem 0.75rem;
-    color: #ccc;
+    color: var(--secondary-color);
     text-decoration: none;
     font-size: 0.88em;
     white-space: nowrap;
@@ -845,18 +862,18 @@ body.matrix-mode footer a:hover {
 }
 
 .toolkit-search-row a + a {
-    border-left: 1px solid #3a3a3a;
+    border-left: 1px solid #e0e0e0;
 }
 
 .toolkit-search-row:hover a {
-    background-color: #3a3a3a;
+    background-color: var(--primary-color);
     color: #fff;
 }
 
 .toolkit-search-more {
     padding: 0.4rem 0.75rem;
     font-size: 0.75em;
-    color: #555;
+    color: var(--neutral-color);
     font-style: italic;
     text-align: center;
 }
