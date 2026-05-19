@@ -16,12 +16,29 @@ const ToolkitSearch = {
         this.attachEventListeners();
     },
 
+    pageNameMap: {
+        'Search Engines': 'searchengines',
+        'Company Public Records': 'publiccompanyrecords',
+        'US Phones': 'phoneus',
+        'International Phones': 'phoneint',
+        'Virtual Currencies': 'currencies',
+        'IP Addresses': 'ip',
+        'X (Twitter)': 'x'
+    },
+
+    resolvePageFile: function(key, category) {
+        if (category && this.pageNameMap[category]) {
+            return this.pageNameMap[category] + '.html';
+        }
+        return key.split('-')[0] + '.html';
+    },
+
     buildIndex: function() {
         this.searchIndex = Object.keys(SearchLibrary).map(key => {
             const mapEntry = (typeof JanuaSearchMap !== 'undefined') ? (JanuaSearchMap[key] || {}) : {};
             const label = mapEntry.label || key.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
             const category = mapEntry.page || null;
-            const page = key.split('-')[0] + '.html';
+            const page = this.resolvePageFile(key, category);
 
             return {
                 id: key,
