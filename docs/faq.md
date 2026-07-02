@@ -222,6 +222,10 @@ Detected categories out of the box:
 *   **Cryptocurrency addresses**: Bitcoin (`CRYPTO_BTC`: legacy, P2SH, bech32/segwit-taproot), Ethereum and every EVM chain (`CRYPTO_ETH`: `0x…`, also BSC/Polygon/Arbitrum wallets), Monero (`CRYPTO_XMR`), Litecoin (`CRYPTO_LTC`), Tron (`CRYPTO_TRX`), Ripple (`CRYPTO_XRP`). Matching is structural; checksums are not verified.
 *   **IBAN**: International Bank Account Numbers: 2-letter country code + 2 check digits + BBAN (11–30 chars) — compact, spaced or hyphen-separated, upper or lower case.
 *   **PHONE_IT_MOBILE**: Italian mobile phone numbers (prefixes 32x–39x, 10 digits). Matches compact (`3351234567`), grouped (`335 123 4567`), and country-code formats (`+39 335 123 4567`, `0039335123456`, `(+39) 335 123 4567`).
+*   **PHONE_DE_MOBILE**: German mobile numbers — prefixes 015x/016x/017x plus 7–8 digits (`0151 12345678`), with or without `+49`/`0049` country code.
+*   **PHONE_FR_MOBILE**: French mobile numbers — 06/07 plus 8 digits in pairs, dots, hyphens or compact (`06 12 34 56 78`, `0612345678`), with or without `+33`/`0033` country code.
+*   **PHONE_UK_MOBILE**: UK mobile numbers — `07xxx xxxxxx`, compact or spaced, with or without `+44`/`0044` country code.
+*   **PHONE_INTL**: any other international number with an explicit country prefix — `+CC` followed by 6–12 digits, compact or separated (`+34 612 34 56 78`, `+31612345678`), or `00CC` followed by a separator (`0031 6 12345678`). The compact `00CC…` form without separators is deliberately not matched: it cannot be told apart from zero-padded numeric IDs common in CSV exports.
 *   **PCN**: prescription control numbers and similar codes of 17 or more consecutive digits.
 *   **SE10**: SE10 merchant codes (exactly 10 digits).
 
