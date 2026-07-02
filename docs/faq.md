@@ -227,7 +227,7 @@ Detected categories out of the box:
 3.  Once the AI returns its report (which will contain the placeholders), paste it into the **Restore** section and click **Restore**. All original values are reinserted automatically.
 4.  If you need to continue a session later, click **Copy Map (JSON)** to export the redaction map, save it externally, then re-import it via the **Import Map** panel before using Restore.
 
-The session state is held only in memory and is cleared when you close or refresh the tab, or when you click **Clear Session**.
+The session state is held only in memory and is cleared when you close or refresh the tab, or when you click **Clear Redaction Map**.
 
 ### How do I add custom detection patterns to the Redactor?
 
