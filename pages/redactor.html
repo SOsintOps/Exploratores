@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Redactor • Exploratores</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
     <style>
@@ -93,7 +92,7 @@
         }
         #btn-clear-session,
         #btn-copy-map {
-            width: 160px;
+            width: auto;
             min-width: 160px;
             flex-shrink: 0;
         }
@@ -248,7 +247,7 @@
             </table>
 
             <div class="note" style="margin-top:1rem;">
-                <strong>NOTE:</strong> Custom patterns are saved in your browser's <code>localStorage</code> and persist between sessions. Each pattern is applied after all built-in patterns; the same overlap rules apply. Use word boundaries (<code>\b</code>) in your regex to avoid partial matches.
+                <strong>NOTE:</strong> Custom patterns are saved in your browser's <code>localStorage</code> and persist between sessions. Each pattern is applied after all built-in patterns; the same overlap rules apply. Use word boundaries (<code>\b</code>) in your regex to avoid partial matches. The type name is stored in <code>localStorage</code> together with the pattern: do not use sensitive names (e.g. case or subject identifiers).
             </div>
         </div>
     </section>
@@ -259,7 +258,7 @@
             <h2>Redaction Map</h2>
             <div class="redactor-row" style="margin-bottom:1rem;">
                 <button id="btn-copy-map" class="button text-active">Copy Map (JSON)</button>
-                <button id="btn-clear-session" class="button">Clear Session</button>
+                <button id="btn-clear-session" class="button">Clear Redaction Map</button>
             </div>
             <div id="map-empty" class="csv-info">No redactions in this session.</div>
             <table id="map-table" class="redaction-map-table" style="display:none;">
@@ -285,7 +284,7 @@
             </details>
 
             <div class="note" style="margin-top:1rem;">
-                <strong>NOTE:</strong> All processing is performed entirely within your browser. No data is transmitted to any server. The redaction map is stored only in memory and is cleared when you close or refresh the tab.<br>
+                <strong>NOTE:</strong> All processing is performed entirely within your browser. No data is transmitted to any server. The redaction map is stored only in memory and is cleared when you close or refresh the tab. The <em>Clear Redaction Map</em> button empties the map and every input/output field on this page; custom patterns are kept.<br>
                 <strong>Detects:</strong> Email addresses &bull; Codice Fiscale (IT) &bull; VAT / fiscal codes for 30+ countries (IT, DE, FR, ES, GB, NL, BE, AT, PT, PL, HR, SI, CY, GR, MT, AL, SE, DK, FI, LU, IE, CZ, HU, RO, BG, EE, LT, LV, SK, US-EIN and more) &bull; IBAN bank account numbers (compact and spaced) &bull; payment card numbers: American Express (CM11/CM13/CM15), Visa (13/16-digit), Mastercard (Classic 51–55 / New 2221–2720), Discover (6011/644–649/65xx) — compact and spaced (4-4-4-4) &bull; PCN codes (17+ digits starting with year) &bull; Italian mobile numbers (32x–39x, compact and spaced, with optional +39/0039 country code) &bull; SE10 merchant codes (10 digits) &bull; custom user-defined patterns.
             </div>
         </div>
@@ -294,7 +293,7 @@
 </main>
 
 <footer>
-    <p>Exploratores 3.1.5 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.1.6 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>
@@ -360,7 +359,7 @@
     // Note: Montenegro (PIB) and Turkey (VKN) are pure 10/8-digit numbers indistinguishable
     // from SE10 / other codes without prefix — they are caught by SE10 and not listed here.
     { type: 'VAT_IT', regex: /\b[Ii][Tt]\d{11}\b|\b\d{7}(?:0[0-9]{2}|1[01][0-9]|12[01])\d\b/g, color: '#16a085' }, // Italy: EU VAT (IT prefix) or plain 11-digit P.IVA (office code 001-121)
-    { type: 'VAT_AL', regex: /\b[A-Za-z]\d{8}[A-Za-z]\b/g,                color: '#c0392b' }, // Albania NIPT: letter + 8 digits + letter
+    { type: 'VAT_AL', regex: /\b[A-Za-z]\d{8}[A-Za-z]\b/g,                color: '#c0392b' }, // Albania NIPT: letter + 8 digits + letter. Ambiguous by design: any letter-8digits-letter token matches (false positives on serials / reference codes)
     { type: 'VAT_AT', regex: /\bATU\d{8}\b/g,                              color: '#2980b9' }, // Austria
     { type: 'VAT_BE', regex: /\bBE0?\d{9,10}\b/g,                          color: '#8e44ad' }, // Belgium
     { type: 'VAT_BG', regex: /\bBG\d{9,10}\b/g,                            color: '#27ae60' }, // Bulgaria
@@ -388,7 +387,7 @@
     { type: 'VAT_SE', regex: /\bSE\d{12}\b/g,                              color: '#2980b9' }, // Sweden
     { type: 'VAT_SI', regex: /\bSI\d{8}\b/g,                               color: '#1abc9c' }, // Slovenia
     { type: 'VAT_SK', regex: /\bSK\d{10}\b/g,                              color: '#7f8c8d' }, // Slovakia
-    { type: 'VAT_US', regex: /\b\d{2}-\d{7}\b/g,                           color: '#2c3e50' }, // USA EIN (Employer Identification Number)
+    { type: 'VAT_US', regex: /\b\d{2}-\d{7}\b/g,                           color: '#2c3e50' }, // USA EIN. No prefix exists in the wild: any NN-NNNNNNN token matches (false positives on dates/IDs); accepted to avoid missing real EINs
     {
       type: 'EMAIL',
       // Standard RFC-compliant email address.
@@ -464,6 +463,7 @@
     }
     // Sort by start position ascending; ties resolved by preferring the longer (earlier-ending) match.
     // Array.prototype.sort is stable in modern engines, so insertion order is preserved for equal keys.
+    // Custom patterns are appended after built-ins, so on an identical span the built-in wins silently.
     matches.sort((a, b) => a.start - b.start || b.end - a.end);
     // Remove overlapping matches: leftmost wins; advance cursor past each kept match.
     const kept = [];
@@ -599,34 +599,66 @@
       return a.num - b.num;
     });
 
+    // Rows are built with createElement/textContent (never innerHTML) so PII values
+    // and type names can never be interpreted as markup, regardless of their content.
     let lastType = null;
     for (const entry of entries) {
-      if (entry.type !== lastType) {
-        lastType = entry.type;
-        const patternDef = PII_PATTERNS.find(p => p.type === entry.type);
-        const color = patternDef ? patternDef.color : '#666';
-        const headerTr = document.createElement('tr');
-        headerTr.innerHTML =
-          '<td colspan="3" style="background:' + color + '1a;padding:0.4rem 0.75rem;font-weight:600;font-size:0.85rem;border-bottom:2px solid ' + color + ';">' +
-          '<span class="pii-badge" style="background:' + color + '">' + escapeHtml(entry.type) + '</span>' +
-          ' <span style="color:#666;font-weight:400;">(' + entries.filter(e => e.type === entry.type).length + ')</span></td>';
-        tbody.appendChild(headerTr);
-      }
       const patternDef = PII_PATTERNS.find(p => p.type === entry.type);
       const color = patternDef ? patternDef.color : '#666';
+      if (entry.type !== lastType) {
+        lastType = entry.type;
+        const headerTr = document.createElement('tr');
+        const headerTd = document.createElement('td');
+        headerTd.colSpan = 3;
+        headerTd.style.cssText = 'background:' + color + '1a;padding:0.4rem 0.75rem;font-weight:600;font-size:0.85rem;border-bottom:2px solid ' + color + ';';
+        const badge = document.createElement('span');
+        badge.className = 'pii-badge';
+        badge.style.background = color;
+        badge.textContent = entry.type;
+        const countSpan = document.createElement('span');
+        countSpan.style.cssText = 'color:#666;font-weight:400;';
+        countSpan.textContent = ' (' + entries.filter(e => e.type === entry.type).length + ')';
+        headerTd.appendChild(badge);
+        headerTd.appendChild(countSpan);
+        headerTr.appendChild(headerTd);
+        tbody.appendChild(headerTr);
+      }
       const tr = document.createElement('tr');
-      tr.innerHTML =
-        '<td>' + escapeHtml(entry.placeholder) + '</td>' +
-        '<td class="td-badge"><span class="pii-badge" style="background:' + color + '">' + escapeHtml(entry.type) + '</span></td>' +
-        '<td>' + escapeHtml(entry.original) + '</td>';
+      const tdPlaceholder = document.createElement('td');
+      tdPlaceholder.textContent = entry.placeholder;
+      const tdType = document.createElement('td');
+      tdType.className = 'td-badge';
+      const typeBadge = document.createElement('span');
+      typeBadge.className = 'pii-badge';
+      typeBadge.style.background = color;
+      typeBadge.textContent = entry.type;
+      tdType.appendChild(typeBadge);
+      const tdOriginal = document.createElement('td');
+      tdOriginal.textContent = entry.original;
+      tr.appendChild(tdPlaceholder);
+      tr.appendChild(tdType);
+      tr.appendChild(tdOriginal);
       tbody.appendChild(tr);
     }
   }
 
-  function showCopyFeedback(btn) {
+  function showCopyFeedback(btn, msg) {
     const orig = btn.textContent;
-    btn.textContent = 'Copied!';
+    btn.textContent = msg || 'Copied!';
     setTimeout(() => { btn.textContent = orig; }, 1500);
+  }
+
+  function copyToClipboard(text, btn) {
+    // navigator.clipboard is undefined on plain HTTP and file:// in some browsers,
+    // and writeText rejects when the user denies the clipboard permission.
+    if (!navigator.clipboard || !navigator.clipboard.writeText) {
+      showCopyFeedback(btn, 'Copy failed');
+      return;
+    }
+    navigator.clipboard.writeText(text).then(
+      () => showCopyFeedback(btn),
+      () => showCopyFeedback(btn, 'Copy failed')
+    );
   }
 
   // ─── Mode Toggle ─────────────────────────────────────────────────────────────
@@ -659,9 +691,7 @@
   });
 
   document.getElementById('btn-copy-text').addEventListener('click', function () {
-    try { navigator.clipboard.writeText(document.getElementById('output-text').value); }
-    catch (e) { /* clipboard API unavailable on file:// in some browsers */ }
-    showCopyFeedback(this);
+    copyToClipboard(document.getElementById('output-text').value, this);
   });
 
   // ─── Censor CSV ──────────────────────────────────────────────────────────────
@@ -682,6 +712,7 @@
       document.getElementById('output-csv-wrap').style.display = '';
       updateMapTable();
     };
+    reader.onerror = () => { alert('Failed to read file.'); };
     reader.readAsText(file, 'UTF-8');
   });
 
@@ -724,9 +755,7 @@
   });
 
   document.getElementById('btn-copy-restore').addEventListener('click', function () {
-    try { navigator.clipboard.writeText(document.getElementById('output-restore').value); }
-    catch (e) { /* clipboard API unavailable on file:// in some browsers */ }
-    showCopyFeedback(this);
+    copyToClipboard(document.getElementById('output-restore').value, this);
   });
 
   // ─── Restore — CSV ────────────────────────────────────────────────────────────
@@ -736,6 +765,8 @@
     if (!file) return;
     const reader = new FileReader();
     reader.onload = (e) => {
+      const warn = checkInputSize(e.target.result, 'csv');
+      if (warn && !confirm(warn + '\n\nProceed anyway?')) return;
       const rows = parseCSV(e.target.result);
       let totalRestored = 0;
       const restored = rows.map(row =>
@@ -748,9 +779,10 @@
       const csvContent = serializeCSV(restored);
       session.restoredCsvBlob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
       document.getElementById('restore-csv-stats').textContent =
-        'Processed ' + rows.length + ' rows — ' + totalRestored + ' cell(s) restored.';
+        'Processed ' + rows.length + ' rows \u2014 ' + totalRestored + ' cell(s) restored.';
       document.getElementById('output-restore-csv-wrap').style.display = '';
     };
+    reader.onerror = () => { alert('Failed to read file.'); };
     reader.readAsText(file, 'UTF-8');
   });
 
@@ -774,26 +806,34 @@
 
   document.getElementById('btn-copy-map').addEventListener('click', function () {
     if (session.reverse.size === 0) return;
-    try { navigator.clipboard.writeText(exportMapAsJson()); }
-    catch (e) { /* clipboard API unavailable on file:// in some browsers */ }
-    showCopyFeedback(this);
+    copyToClipboard(exportMapAsJson(), this);
   });
 
   // ─── Import Map ───────────────────────────────────────────────────────────────
 
+  // Hard caps keep a corrupted or oversized map from exhausting memory (self-DoS only).
+  const IMPORT_MAX_JSON_CHARS = 5 * 1024 * 1024;
+  const IMPORT_MAX_ENTRIES = 10000;
+  const IMPORT_MAX_VALUE_CHARS = 10000;
+
   function importSessionMap(jsonStr) {
+    if (jsonStr.length > IMPORT_MAX_JSON_CHARS) return false;
     let data;
     try { data = JSON.parse(jsonStr); } catch (e) { return false; }
     if (typeof data !== 'object' || data === null || Array.isArray(data)) return false;
     let count = 0;
     for (const [placeholder, original] of Object.entries(data)) {
+      if (count >= IMPORT_MAX_ENTRIES) break;
       if (typeof placeholder !== 'string' || typeof original !== 'string') continue;
+      if (original.length > IMPORT_MAX_VALUE_CHARS) continue;
       const m = placeholder.match(/^\[(.+)_(\d+)\]$/);
       if (!m) continue;
       const type = m[1];
       const n = parseInt(m[2], 10);
       session.reverse.set(placeholder, original);
-      session.forward.set(original, placeholder);
+      // If the same original appears under two placeholders, the first mapping wins in
+      // forward (future redactions reuse it); reverse keeps both so restore works for either.
+      if (!session.forward.has(original)) session.forward.set(original, placeholder);
       session.counters[type] = Math.max(session.counters[type] || 0, n);
       count++;
     }
@@ -816,8 +856,6 @@
     }
   });
 
-  // ─── Clear Session ────────────────────────────────────────────────────────────
-
   // ─── Custom Patterns ─────────────────────────────────────────────────────────
 
   const CUSTOM_STORAGE_KEY = 'redactor_custom_patterns';
@@ -835,14 +873,37 @@
     }
     empty.style.display = 'none';
     table.style.display = '';
+    // Built with createElement/textContent (never innerHTML): the type name and regex
+    // source are user-controlled and must never be interpreted as markup.
     for (const p of customs) {
       const tr = document.createElement('tr');
-      tr.innerHTML =
-        '<td><span class="pii-badge" style="background:' + p.color + '">' + escapeHtml(p.type) + '</span></td>' +
-        '<td style="font-family:monospace;">' + escapeHtml(p.regex.source) + '</td>' +
-        '<td>' + escapeHtml(p.regex.flags) + '</td>' +
-        '<td><span style="display:inline-block;width:20px;height:20px;background:' + p.color + ';border-radius:3px;vertical-align:middle;border:1px solid #ccc;"></span></td>' +
-        '<td><button class="button" style="width:auto;min-width:60px;font-size:0.8rem;" data-remove="' + escapeHtml(p.type) + '">Remove</button></td>';
+      const tdType = document.createElement('td');
+      const badge = document.createElement('span');
+      badge.className = 'pii-badge';
+      badge.style.background = p.color;
+      badge.textContent = p.type;
+      tdType.appendChild(badge);
+      const tdRegex = document.createElement('td');
+      tdRegex.style.fontFamily = 'monospace';
+      tdRegex.textContent = p.regex.source;
+      const tdFlags = document.createElement('td');
+      tdFlags.textContent = p.regex.flags;
+      const tdColor = document.createElement('td');
+      const swatch = document.createElement('span');
+      swatch.style.cssText = 'display:inline-block;width:20px;height:20px;background:' + p.color + ';border-radius:3px;vertical-align:middle;border:1px solid #ccc;';
+      tdColor.appendChild(swatch);
+      const tdRemove = document.createElement('td');
+      const removeBtn = document.createElement('button');
+      removeBtn.className = 'button';
+      removeBtn.style.cssText = 'width:auto;min-width:60px;font-size:0.8rem;';
+      removeBtn.dataset.remove = p.type;
+      removeBtn.textContent = 'Remove';
+      tdRemove.appendChild(removeBtn);
+      tr.appendChild(tdType);
+      tr.appendChild(tdRegex);
+      tr.appendChild(tdFlags);
+      tr.appendChild(tdColor);
+      tr.appendChild(tdRemove);
       tbody.appendChild(tr);
     }
     tbody.onclick = function(e) {
@@ -853,21 +914,40 @@
     };
   }
 
+  // Heuristic ReDoS screen: a quantified group that itself contains a quantifier
+  // (e.g. (a+)+, (a*)*, (\d+){2,}) can make a backtracking engine go exponential.
+  // Reject the structure before the pattern is ever executed.
+  function looksCatastrophic(source) {
+    return /\([^()]*[+*][^()]*\)\s*[+*{]/.test(source);
+  }
+
   function addCustomPattern(type, regexSource, flags, color, save) {
     if (save === undefined) save = true;
+    if (PII_PATTERNS.some(p => p.type === type)) return 'duplicate';
+    if (looksCatastrophic(regexSource)) return 'redos';
+    let re;
     try {
       const combinedFlags = flags.includes('g') ? flags : flags + 'g';
-      const re = new RegExp(regexSource, combinedFlags);
-      PII_PATTERNS.push({ type: type, regex: re, color: color, custom: true });
-      if (save) {
+      re = new RegExp(regexSource, combinedFlags);
+    } catch (e) {
+      return 'invalid';
+    }
+    // Canary run: patterns the structural check misses (e.g. ambiguous alternations)
+    // still reveal themselves as slow on a short pathological string.
+    const canary = 'aaaaaaaaaaaaaaaaaaaaaaaa! 000000000000000000000001x';
+    const t0 = performance.now();
+    re.test(canary);
+    re.lastIndex = 0;
+    if (performance.now() - t0 > 50) return 'redos';
+    PII_PATTERNS.push({ type: type, regex: re, color: color, custom: true });
+    if (save) {
+      try {
         const stored = JSON.parse(localStorage.getItem(CUSTOM_STORAGE_KEY) || '[]');
         stored.push({ type: type, regexSource: regexSource, flags: flags, color: color });
         localStorage.setItem(CUSTOM_STORAGE_KEY, JSON.stringify(stored));
-      }
-      return true;
-    } catch (e) {
-      return false;
+      } catch (e) {}
     }
+    return true;
   }
 
   function removeCustomPattern(type) {
@@ -882,8 +962,15 @@
   function loadCustomPatterns() {
     try {
       const stored = JSON.parse(localStorage.getItem(CUSTOM_STORAGE_KEY) || '[]');
-      for (const p of stored) {
-        addCustomPattern(p.type, p.regexSource, p.flags || '', p.color, false);
+      const list = Array.isArray(stored) ? stored : [];
+      for (const p of list) {
+        // localStorage can be tampered with by extensions or injected scripts: validate every field.
+        if (!p || typeof p.type !== 'string' || !/^[A-Z0-9_]{1,64}$/.test(p.type)) continue;
+        if (typeof p.regexSource !== 'string' || p.regexSource.length === 0 || p.regexSource.length > 2000) continue;
+        const flags = typeof p.flags === 'string' ? p.flags : '';
+        if (!/^[gimsuy]*$/.test(flags)) continue;
+        if (typeof p.color !== 'string' || !/^#[0-9a-fA-F]{6}$/.test(p.color)) continue;
+        addCustomPattern(p.type, p.regexSource, flags, p.color, false);
       }
     } catch (e) {}
     renderCustomPatternsList();
@@ -891,7 +978,7 @@
 
   document.getElementById('btn-add-pattern').addEventListener('click', () => {
     const fb = document.getElementById('cp-feedback');
-    const typeVal = document.getElementById('cp-type').value.trim().toUpperCase().replace(/\s+/g, '_');
+    const typeVal = document.getElementById('cp-type').value.trim().toUpperCase().replace(/\s+/g, '_').replace(/[^A-Z0-9_]/g, '');
     const regexVal = document.getElementById('cp-regex').value.trim();
     const colorVal = document.getElementById('cp-color').value;
     const ciVal = document.getElementById('cp-ci').checked ? 'i' : '';
@@ -900,14 +987,12 @@
       fb.className = 'feedback-message feedback-error';
       return;
     }
-    if (PII_PATTERNS.some(p => p.type === typeVal)) {
-      fb.textContent = 'Type "' + typeVal + '" already exists.';
-      fb.className = 'feedback-message feedback-error';
-      return;
-    }
-    const ok = addCustomPattern(typeVal, regexVal, ciVal, colorVal, true);
-    if (!ok) {
-      fb.textContent = 'Invalid regex.';
+    const result = addCustomPattern(typeVal, regexVal, ciVal, colorVal, true);
+    if (result !== true) {
+      fb.textContent =
+        result === 'duplicate' ? 'Type "' + typeVal + '" already exists.' :
+        result === 'redos' ? 'Pattern rejected: it could cause catastrophic backtracking and freeze the browser.' :
+        'Invalid regex.';
       fb.className = 'feedback-message feedback-error';
       return;
     }
@@ -932,7 +1017,10 @@
     }
     if (mode === 'csv') {
       let lines = 0;
-      for (let i = 0; i < text.length; i++) { if (text[i] === '\n') lines++; }
+      for (let i = 0; i < text.length; i++) {
+        if (text[i] === '\n') lines++;
+        else if (text[i] === '\r' && text[i + 1] !== '\n') lines++; // bare-CR (old Mac) line endings
+      }
       if (lines > WARN_CSV_ROWS) {
         return 'Warning: CSV has more than ' + lines.toLocaleString() + ' lines. Processing may be slow or cause the browser tab to freeze. Consider splitting the file into smaller batches.';
       }
@@ -940,12 +1028,14 @@
     return null;
   }
 
-  // ─── Clear Session ────────────────────────────────────────────────────────────
+  // ─── Clear Redaction Map ─────────────────────────────────────────────────────
 
   document.getElementById('btn-clear-session').addEventListener('click', () => {
     session.forward.clear();
     session.reverse.clear();
     session.counters = {};
+    // The blobs hold no live object URL (download handlers revoke theirs immediately),
+    // so nulling the references is enough for the GC to reclaim the memory.
     session.redactedCsvBlob = null;
     session.restoredCsvBlob = null;
     document.getElementById('input-text').value = '';
