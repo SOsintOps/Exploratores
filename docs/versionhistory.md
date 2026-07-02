@@ -4,6 +4,13 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.4.0 — 2026
+
+- **New:** Redactor: phone detection extended beyond Italy — German mobiles (015x/016x/017x, `PHONE_DE_MOBILE`), French mobiles (06/07 in pairs, dots, hyphens or compact, `PHONE_FR_MOBILE`) and UK mobiles (07xxx xxxxxx, `PHONE_UK_MOBILE`), each with or without its country code, plus a generic `PHONE_INTL` catch-all for any number with an explicit `+CC` prefix (6–12 digits) or `00CC` followed by a separator. The compact `00CC…` form is deliberately not matched: it cannot be told apart from zero-padded numeric IDs common in CSV exports. Country-specific patterns are evaluated before the generic one so prefixed numbers keep their country type; the whole block stays before PCN/SE10 in overlap resolution.
+- **Improved:** Redactor: the "Detects" note is now a three-column grouped list (Personal identity / Financial & payment / Contact & other) with alphabetical entries, replacing the single bullet-separated paragraph; payment-card BIN ranges live in the help page only.
+
+---
+
 ## 3.3.0 — 2026
 
 - **Improved:** CyberChef updated to v11.2.0 (from v10.22.1); the bundled module set now includes the new `File.js` module.

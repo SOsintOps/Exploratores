@@ -166,6 +166,10 @@
             <li><strong>EMAIL:</strong> standard RFC-compliant email addresses.</li>
             <li><strong>IBAN:</strong> bank account numbers — compact, spaced or hyphen-separated, upper or lower case.</li>
             <li><strong>PHONE_IT_MOBILE:</strong> Italian mobile numbers (32x–39x prefixes), with or without +39/0039 country code, compact and grouped formats.</li>
+            <li><strong>PHONE_DE_MOBILE:</strong> German mobile numbers (015x/016x/017x prefixes, 7–8 further digits), with or without +49/0049 country code.</li>
+            <li><strong>PHONE_FR_MOBILE:</strong> French mobile numbers (06/07 + 8 digits in pairs, dots, hyphens or compact), with or without +33/0033 country code.</li>
+            <li><strong>PHONE_UK_MOBILE:</strong> UK mobile numbers (07xxx xxxxxx), compact or spaced, with or without +44/0044 country code.</li>
+            <li><strong>PHONE_INTL:</strong> any other international number with an explicit country prefix: <code>+CC</code> followed by 6–12 digits (compact or separated), or <code>00CC</code> followed by a separator. The compact <code>00CC…</code> form without separators is deliberately not matched — it cannot be told apart from zero-padded numeric IDs; use a custom pattern if you need it.</li>
             <li><strong>PCN:</strong> prescription control numbers and similar codes of 17 or more consecutive digits.</li>
             <li><strong>SE10:</strong> 10-digit merchant codes. Also catches Montenegro PIB and Turkey VKN by overlap.</li>
             <li><strong>VAT and fiscal codes</strong> for 30+ countries: IT, DE, FR, ES, GB, NL, BE, AT, PT, PL, HR, SI, CY, GR, MT, AL, SE, DK, FI, LU, IE, CZ, HU, RO, BG, EE, LT, LV, SK, US-EIN.</li>
@@ -178,7 +182,7 @@
 </main>
 
 <footer>
-    <p>Exploratores 3.3.0 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.4.0 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>
