@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Version History • Exploratores</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
@@ -19,11 +18,32 @@
     <section class="faq-section">
 
         <div class="faq-item">
+            <h2>3.1.6 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+            <ul>
+                <li><strong>Security:</strong> all Google Fonts references removed; Inter and Cinzel are now self-hosted in <code>assets/fonts/</code> (WOFF2, latin + latin-ext subsets). No third-party request — and therefore no Referer metadata — ever leaves a page, closing the last external dependency on pages that process PII.</li>
+                <li><strong>Security:</strong> Redactor: custom patterns are now screened against catastrophic backtracking (ReDoS): nested-quantifier structures are rejected outright and every new pattern must complete a timed canary run before being accepted.</li>
+                <li><strong>Security:</strong> Redactor: custom patterns loaded from <code>localStorage</code> are fully validated (type name, regex source, flags, colour) before use; the Redaction Map and Custom Patterns tables are built with DOM APIs instead of <code>innerHTML</code>, removing the structural dependency on manual HTML escaping.</li>
+                <li><strong>Fixed:</strong> Redactor: both CSV FileReaders now report read failures with an alert instead of failing silently.</li>
+                <li><strong>Fixed:</strong> Redactor: Restore CSV now shows the same large-file warning as Redact CSV before processing.</li>
+                <li><strong>Fixed:</strong> Redactor: clipboard copy failures (permission denied, non-HTTPS context) now show "Copy failed" on the button instead of a false "Copied!".</li>
+                <li><strong>Improved:</strong> Redactor: Import Map enforces hard caps (10,000 entries, 10,000 characters per value, 5 MB JSON) and first-mapping-wins conflict resolution when the same original value appears under two placeholders.</li>
+                <li><strong>Improved:</strong> Redactor: "Clear Session" renamed to "Clear Redaction Map"; UI notes clarify that custom patterns — including their type names — persist in <code>localStorage</code> and are not touched by the button.</li>
+                <li><strong>Improved:</strong> Redactor: duplicate type names are rejected inside <code>addCustomPattern</code> as well as in the UI; type names are restricted to <code>A–Z 0–9 _</code>; the CSV line-count warning also counts bare-CR (old Mac) line endings.</li>
+                <li><strong>Chore:</strong> internal working files (<code>todo/</code>, <code>docs/WIP/</code>, <code>pages/test/</code>, local status notes) removed from the repository ahead of public release.</li>
+            </ul>
+        </div>
+
+        <div class="faq-item">
             <h2>3.1.5 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
             <ul>
                 <li><strong>New:</strong> Redactor: CSV restore mode added to the Restore section. Upload a previously redacted CSV file, apply the current session map to every cell, and download the result as <code>restored.csv</code>. The CSV parser follows RFC 4180 and handles quoted fields, embedded commas, and line breaks inside cells.</li>
                 <li><strong>Improved:</strong> Redactor: section heading and action button renamed from "Censor" / "Censor CSV" to "Redactor" / "Redact CSV" for consistency with the tool name.</li>
                 <li><strong>New:</strong> Help: dedicated guide pages added for the Redactor (<code>help-redactor.html</code>) and the IBAN Tool (<code>help-iban.html</code>), with step-by-step instructions and screenshots. Both pages are accessible from the Help menu.</li>
+                <li><strong>Fixed:</strong> <code>validators.js</code>: four VK element IDs aligned with the vk.html DOM (<code>getAndValidateVkUsername</code>, <code>getAndValidateVkUserId</code>, <code>getAndValidateVkTag</code>, <code>getAndValidateVkSmat</code>); the affected buttons read from non-existent inputs and silently failed. <em>(Shipped between 3.1.1 and 3.1.5 without its own changelog entry; folded into this release.)</em></li>
+                <li><strong>Improved:</strong> Redactor: the plain 11-digit <code>VAT_IT</code> pattern now validates the office-code block (001–121), sharply reducing false positives on generic 11-digit numbers. <em>(Folded into this release.)</em></li>
+                <li><strong>Improved:</strong> Redactor: text restore rewritten to use a single combined regex, removing the risk of partial placeholder substitution; the Redaction Map table is grouped by type with per-type counts. <em>(Folded into this release.)</em></li>
+                <li><strong>Fixed:</strong> Redactor: Import Map now initialises counters for types never seen in the current session, preventing placeholder collisions after an import. <em>(Folded into this release.)</em></li>
+                <li><strong>Chore:</strong> line endings normalised across 33 files via <code>.gitattributes</code> and <code>git renormalize</code>. <em>(Folded into this release.)</em></li>
             </ul>
         </div>
 
@@ -150,7 +170,7 @@
 </main>
 
 <footer>
-    <p>Exploratores 3.1.5 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.1.6 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>

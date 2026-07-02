@@ -1,12 +1,12 @@
-# Exploratores OSINT Toolkit 3.1.5
+# Exploratores OSINT Toolkit 3.1.6
 
 ![Exploratores Toolkit Logo](assets/images/exploratores.jpg)
 
 [GitHub Repository](https://github.com/SOsintOps/Exploratores)
 
-![version](https://img.shields.io/badge/version-3.1.5-blue)
+![version](https://img.shields.io/badge/version-3.1.6-blue)
 
-**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows. Version 3.1.5 adds CSV restore to the Redactor, renames the Censor section to Redactor, and introduces dedicated help pages for the Redactor and IBAN tools. Version 3.1.1 was a patch release fixing four bugs identified in 3.1.0. Version 3.1.0 added the Redactor tool for browser-side PII removal before LLM submission, and official bank databases for 8 new IBAN countries. Version 3.0 introduced multi-country IBAN analysis, a redesigned Toolkit Search, a centralised JavaScript architecture, and enhanced phone number normalization.
+**Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows. Version 3.1.6 is a security and hardening release: all fonts are now self-hosted (no third-party requests leave any page), and the Redactor gains ReDoS protection for custom patterns, stricter input validation, and explicit error reporting for file and clipboard operations. Version 3.1.5 adds CSV restore to the Redactor, renames the Censor section to Redactor, and introduces dedicated help pages for the Redactor and IBAN tools. Version 3.1.1 was a patch release fixing four bugs identified in 3.1.0. Version 3.1.0 added the Redactor tool for browser-side PII removal before LLM submission, and official bank databases for 8 new IBAN countries. Version 3.0 introduced multi-country IBAN analysis, a redesigned Toolkit Search, a centralised JavaScript architecture, and enhanced phone number normalization.
 
 ---
 

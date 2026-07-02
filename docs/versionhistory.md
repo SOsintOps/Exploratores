@@ -4,11 +4,31 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.1.6 — 2026
+
+- **Security:** all Google Fonts references removed; Inter and Cinzel are now self-hosted in `assets/fonts/` (WOFF2, latin + latin-ext subsets). No third-party request — and therefore no Referer metadata — ever leaves a page, closing the last external dependency on pages that process PII.
+- **Security:** Redactor: custom patterns are now screened against catastrophic backtracking (ReDoS): nested-quantifier structures are rejected outright and every new pattern must complete a timed canary run before being accepted.
+- **Security:** Redactor: custom patterns loaded from `localStorage` are fully validated (type name, regex source, flags, colour) before use; the Redaction Map and Custom Patterns tables are built with DOM APIs instead of `innerHTML`, removing the structural dependency on manual HTML escaping.
+- **Fixed:** Redactor: both CSV FileReaders now report read failures with an alert instead of failing silently.
+- **Fixed:** Redactor: Restore CSV now shows the same large-file warning as Redact CSV before processing.
+- **Fixed:** Redactor: clipboard copy failures (permission denied, non-HTTPS context) now show "Copy failed" on the button instead of a false "Copied!".
+- **Improved:** Redactor: Import Map enforces hard caps (10,000 entries, 10,000 characters per value, 5 MB JSON) and first-mapping-wins conflict resolution when the same original value appears under two placeholders.
+- **Improved:** Redactor: "Clear Session" renamed to "Clear Redaction Map"; UI notes clarify that custom patterns — including their type names — persist in `localStorage` and are not touched by the button.
+- **Improved:** Redactor: duplicate type names are rejected inside `addCustomPattern` as well as in the UI; type names are restricted to `A–Z 0–9 _`; the CSV line-count warning also counts bare-CR (old Mac) line endings.
+- **Chore:** internal working files (`todo/`, `docs/WIP/`, `pages/test/`, local status notes) removed from the repository ahead of public release.
+
+---
+
 ## 3.1.5 — 2026
 
 - **New:** Redactor: CSV restore mode added to the Restore section. Upload a previously redacted CSV file, apply the current session map to every cell, and download the result as `restored.csv`. The CSV parser follows RFC 4180 and handles quoted fields, embedded commas, and line breaks inside cells.
 - **Improved:** Redactor: section heading and action button renamed from "Censor" / "Censor CSV" to "Redactor" / "Redact CSV" for consistency with the tool name.
 - **New:** Help: dedicated guide pages added for the Redactor (`help-redactor.html`) and the IBAN Tool (`help-iban.html`), with step-by-step instructions and screenshots. Both pages are accessible from the Help menu.
+- **Fixed:** `validators.js`: four VK element IDs aligned with the vk.html DOM (`getAndValidateVkUsername`, `getAndValidateVkUserId`, `getAndValidateVkTag`, `getAndValidateVkSmat`); the affected buttons read from non-existent inputs and silently failed. *(Shipped between 3.1.1 and 3.1.5 without its own changelog entry; folded into this release.)*
+- **Improved:** Redactor: the plain 11-digit `VAT_IT` pattern now validates the office-code block (001–121), sharply reducing false positives on generic 11-digit numbers. *(Folded into this release.)*
+- **Improved:** Redactor: text restore rewritten to use a single combined regex, removing the risk of partial placeholder substitution; the Redaction Map table is grouped by type with per-type counts. *(Folded into this release.)*
+- **Fixed:** Redactor: Import Map now initialises counters for types never seen in the current session, preventing placeholder collisions after an import. *(Folded into this release.)*
+- **Chore:** line endings normalised across 33 files via `.gitattributes` and `git renormalize`. *(Folded into this release.)*
 
 ---
 
