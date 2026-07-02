@@ -233,8 +233,8 @@ The session state is held only in memory and is cleared when you close or refres
 
 Open the **Custom Patterns** section on the Redactor page. Fill in the form:
 
-*   **Type name**: used in the placeholder, e.g. `SSN_US` → `[SSN_US_1]`. Spaces are converted to underscores, letters are uppercased, and any character outside `A–Z 0–9 _` is removed automatically.
-*   **Regex**: the pattern without surrounding slashes, e.g. `\b\d{3}-\d{2}-\d{4}\b`.
+*   **Type name**: used in the placeholder, e.g. `CASE_ID` → `[CASE_ID_1]`. Spaces are converted to underscores, letters are uppercased, and any character outside `A–Z 0–9 _` is removed automatically.
+*   **Regex**: the pattern without surrounding slashes, e.g. `\bCASE-\d{6}\b`.
 *   **Colour**: badge colour in the Redaction Map table.
 *   **Case-insensitive**: tick to apply the `i` flag.
 
