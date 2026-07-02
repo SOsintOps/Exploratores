@@ -220,9 +220,9 @@ Detected categories out of the box:
 *   **PHONE_IT_MOBILE**: Italian mobile phone numbers (prefixes 32x–39x, 10 digits). Matches compact (`3351234567`), grouped (`335 123 4567`), and country-code formats (`+39 335 123 4567`, `0039335123456`, `(+39) 335 123 4567`).
 *   **SE10**: SE10 merchant codes (exactly 10 digits).
 
-### What is the Censor → LLM → Restore workflow?
+### What is the Redact → LLM → Restore workflow?
 
-1.  Paste your text into the **Censor** section (or upload a CSV) and click **Censor**.
+1.  Paste your text into the **Redactor** section (or upload a CSV) and click **Redact**.
 2.  Copy the redacted output and submit it to your AI model.
 3.  Once the AI returns its report (which will contain the placeholders), paste it into the **Restore** section and click **Restore**. All original values are reinserted automatically.
 4.  If you need to continue a session later, click **Copy Map (JSON)** to export the redaction map, save it externally, then re-import it via the **Import Map** panel before using Restore.
@@ -233,9 +233,9 @@ The session state is held only in memory and is cleared when you close or refres
 
 Open the **Custom Patterns** section on the Redactor page. Fill in the form:
 
-*   **Type name**: used in the placeholder, e.g. `SSN_US` → `[SSN_US_1]`. Spaces are converted to underscores; letters uppercased automatically.
+*   **Type name**: used in the placeholder, e.g. `SSN_US` → `[SSN_US_1]`. Spaces are converted to underscores, letters are uppercased, and any character outside `A–Z 0–9 _` is removed automatically.
 *   **Regex**: the pattern without surrounding slashes, e.g. `\b\d{3}-\d{2}-\d{4}\b`.
 *   **Colour**: badge colour in the Redaction Map table.
 *   **Case-insensitive**: tick to apply the `i` flag.
 
-Click **Add Pattern**. Custom patterns are saved in your browser's `localStorage` and persist between sessions. Remove any pattern via the **Remove** button in the active patterns table.
+Click **Add Pattern**. Patterns that could cause catastrophic backtracking (ReDoS) — for example nested quantifiers such as `(a+)+` — are rejected with an explanatory message. Custom patterns are saved in your browser's `localStorage` and persist between sessions. Remove any pattern via the **Remove** button in the active patterns table.

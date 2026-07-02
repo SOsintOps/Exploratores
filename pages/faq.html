@@ -63,7 +63,7 @@
           <li><a href="#q-button-not-working">What should I check if a button click does nothing?</a></li>
           <li><a href="#q-iban-db-update">How do I update the IBAN bank databases?</a></li>
           <li><a href="#q-redactor-what">What is the Redactor tool and how does it work?</a></li>
-          <li><a href="#q-redactor-flow">What is the Censor → LLM → Restore workflow?</a></li>
+          <li><a href="#q-redactor-flow">What is the Redact → LLM → Restore workflow?</a></li>
           <li><a href="#q-redactor-custom">How do I add custom detection patterns to the Redactor?</a></li>
         </ul>
       </li>
@@ -270,9 +270,9 @@
             <li><strong>SE10</strong>: SE10 merchant codes (exactly 10 digits).</li>
         </ul>
 
-        <h3 id="q-redactor-flow">What is the Censor → LLM → Restore workflow?</h3>
+        <h3 id="q-redactor-flow">What is the Redact → LLM → Restore workflow?</h3>
         <ol>
-            <li>Paste your text into the <strong>Censor</strong> section (or upload a CSV) and click <strong>Censor</strong>.</li>
+            <li>Paste your text into the <strong>Redactor</strong> section (or upload a CSV) and click <strong>Redact</strong>.</li>
             <li>Copy the redacted output and submit it to your AI model.</li>
             <li>Once the AI returns its report (which will contain the placeholders), paste it into the <strong>Restore</strong> section and click <strong>Restore</strong>. All original values are reinserted automatically.</li>
             <li>If you need to continue a session later (e.g., the report arrives the next day), click <strong>Copy Map (JSON)</strong> to export the redaction map, save it externally, then re-import it via the <strong>Import Map</strong> panel before using Restore.</li>
@@ -282,12 +282,12 @@
         <h3 id="q-redactor-custom">How do I add custom detection patterns to the Redactor?</h3>
         <p>Open the <strong>Custom Patterns</strong> section on the Redactor page. Fill in the form:</p>
         <ul>
-            <li><strong>Type name</strong>: used in the placeholder, e.g. <code>SSN_US</code> → <code>[SSN_US_1]</code>. Spaces are converted to underscores; letters uppercased automatically.</li>
+            <li><strong>Type name</strong>: used in the placeholder, e.g. <code>SSN_US</code> → <code>[SSN_US_1]</code>. Spaces are converted to underscores, letters are uppercased, and any character outside <code>A–Z 0–9 _</code> is removed automatically.</li>
             <li><strong>Regex</strong>: the pattern without surrounding slashes, e.g. <code>\b\d{3}-\d{2}-\d{4}\b</code>.</li>
             <li><strong>Colour</strong>: badge colour in the Redaction Map table.</li>
             <li><strong>Case-insensitive</strong>: tick to apply the <code>i</code> flag.</li>
         </ul>
-        <p>Click <strong>Add Pattern</strong>. Custom patterns are saved in your browser's <code>localStorage</code> and persist between sessions. Remove any pattern via the <strong>Remove</strong> button in the active patterns table.</p>
+        <p>Click <strong>Add Pattern</strong>. Patterns that could cause catastrophic backtracking (ReDoS) — for example nested quantifiers such as <code>(a+)+</code> — are rejected with an explanatory message. Custom patterns are saved in your browser's <code>localStorage</code> and persist between sessions. Remove any pattern via the <strong>Remove</strong> button in the active patterns table.</p>
     </div>
 
     <h2 id="s-llm">LLMs and Toolkit Development</h2>

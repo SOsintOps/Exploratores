@@ -157,7 +157,7 @@ The Redactor page lets each user define additional PII patterns beyond the built
     *   **Colour:** choose any colour.
     *   **Case-insensitive:** leave unticked (digits only).
 4.  Click **Add Pattern**. The pattern appears immediately in the active patterns table.
-5.  Values matching the pattern will be replaced with `[SSN_US_1]`, `[SSN_US_2]`, etc. on the next Censor operation.
+5.  Values matching the pattern will be replaced with `[SSN_US_1]`, `[SSN_US_2]`, etc. on the next Redact operation.
 
 To remove a custom pattern, click **Remove** in the active patterns table. The pattern is deleted from `localStorage` immediately.
 
