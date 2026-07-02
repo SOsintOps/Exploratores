@@ -293,7 +293,7 @@
 </main>
 
 <footer>
-    <p>Exploratores 3.1.6 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.1.7 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>
@@ -480,11 +480,15 @@
   function censorText(text) {
     const matches = findAllMatches(text);
     if (matches.length === 0) return text;
-    // Replace right-to-left so earlier index positions remain valid after each substitution.
+    // Assign placeholders left-to-right so numbering follows reading order ([X_1] is
+    // the first occurrence in the text), then replace right-to-left so earlier index
+    // positions remain valid after each substitution.
+    for (const m of matches) {
+      m.placeholder = getOrCreatePlaceholder(m.type, m.value);
+    }
     let result = text;
     for (let i = matches.length - 1; i >= 0; i--) {
-      const { start, end, value, type } = matches[i];
-      const placeholder = getOrCreatePlaceholder(type, value);
+      const { start, end, placeholder } = matches[i];
       result = result.slice(0, start) + placeholder + result.slice(end);
     }
     return result;
@@ -593,7 +597,14 @@
       return { placeholder, original, type, num };
     });
 
+    // Groups follow the PII_PATTERNS order (cards, CF, VAT, email, IBAN, phone, PCN,
+    // SE10, then custom patterns) so related types sit together; alphabetical fallback
+    // covers types that no longer have a pattern (e.g. imported from a removed custom).
+    const typeOrder = new Map(PII_PATTERNS.map((p, i) => [p.type, i]));
     entries.sort((a, b) => {
+      const oa = typeOrder.has(a.type) ? typeOrder.get(a.type) : PII_PATTERNS.length;
+      const ob = typeOrder.has(b.type) ? typeOrder.get(b.type) : PII_PATTERNS.length;
+      if (oa !== ob) return oa - ob;
       if (a.type < b.type) return -1;
       if (a.type > b.type) return 1;
       return a.num - b.num;

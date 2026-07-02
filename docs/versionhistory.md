@@ -4,6 +4,13 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.1.7 — 2026
+
+- **Improved:** Redactor: the Redaction Map is now grouped by data family following the pattern order — payment cards first (AMEX, VISA, MASTERCARD, DISCOVER), then Codice Fiscale, VAT codes, email, IBAN, phone numbers, PCN, SE10, and custom patterns last — instead of alphabetically, so related types sit together.
+- **Fixed:** Redactor: placeholder numbering now follows reading order — `[TYPE_1]` is always the first occurrence in the text. Previously numbers were assigned during the right-to-left substitution pass, so the last occurrence received `_1`.
+
+---
+
 ## 3.1.6 — 2026
 
 - **Security:** all Google Fonts references removed; Inter and Cinzel are now self-hosted in `assets/fonts/` (WOFF2, latin + latin-ext subsets). No third-party request — and therefore no Referer metadata — ever leaves a page, closing the last external dependency on pages that process PII.
