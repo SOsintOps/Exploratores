@@ -147,17 +147,17 @@ The Redactor page lets each user define additional PII patterns beyond the built
 
 ### Guide D: Adding a Custom Pattern
 
-**Scenario:** Detect US Social Security Numbers in the format `123-45-6789`.
+**Scenario:** Detect internal case references in the format `CASE-123456`. (US Social Security Numbers, formerly this example, are now detected out of the box.)
 
 1.  Open **Tools → Redactor**.
 2.  Scroll to the **Custom Patterns** section.
 3.  Fill in the form:
-    *   **Type name:** `SSN_US`
-    *   **Regex:** `\b\d{3}-\d{2}-\d{4}\b`
+    *   **Type name:** `CASE_ID`
+    *   **Regex:** `\bCASE-\d{6}\b`
     *   **Colour:** choose any colour.
-    *   **Case-insensitive:** leave unticked (digits only).
+    *   **Case-insensitive:** tick it if references may also appear as `case-123456`.
 4.  Click **Add Pattern**. The pattern appears immediately in the active patterns table.
-5.  Values matching the pattern will be replaced with `[SSN_US_1]`, `[SSN_US_2]`, etc. on the next Redact operation.
+5.  Values matching the pattern will be replaced with `[CASE_ID_1]`, `[CASE_ID_2]`, etc. on the next Redact operation.
 
 To remove a custom pattern, click **Remove** in the active patterns table. The pattern is deleted from `localStorage` immediately.
 
