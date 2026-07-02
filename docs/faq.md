@@ -5,6 +5,7 @@
 * [Why is the toolkit named "Exploratores"?](#why-is-the-toolkit-named-exploratores)
 * [Who were the "Exploratores" historically?](#who-were-the-exploratores-historically)
 * [What is the main purpose of the Exploratores OSINT Toolkit?](#what-is-the-main-purpose-of-the-exploratores-osint-toolkit)
+* [What inspired the creation of the toolkit?](#what-inspired-the-creation-of-the-toolkit)
 * [Can I use the Exploratores OSINT Toolkit outside of my team?](#can-i-use-the-exploratores-osint-toolkit-outside-of-my-team)
 * [Is the Exploratores OSINT Toolkit covered by any warranty?](#is-the-exploratores-osint-toolkit-covered-by-any-warranty)
 * [Are there any guarantees regarding the accuracy or reliability of the tools and results?](#are-there-any-guarantees-regarding-the-accuracy-or-reliability-of-the-tools-and-results)
@@ -41,6 +42,10 @@ In ancient Rome, "Exploratores" were soldiers specifically chosen for their skil
 ### What is the main purpose of the Exploratores OSINT Toolkit?
 
 The Exploratores OSINT Toolkit aims to consolidate and organize a wide range of OSINT (Open Source Intelligence) tools and resources to facilitate investigation and information gathering activities. It provides a centralized access point and a consistent structure for these tools.
+
+### What inspired the creation of the toolkit?
+
+The idea of collecting OSINT search tools into a set of local, browser-based pages was inspired by the approach described in Michael Bazzell's book *Open Source Intelligence Techniques* (see [Further Reading](#where-can-i-find-resources-to-learn-more-about-osint)). The Exploratores codebase — the centralised architecture, search library, validators, and every tool page — is an original implementation developed for this project.
 
 ## Usage & Authorization
 
