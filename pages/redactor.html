@@ -99,6 +99,26 @@
         .redactor-section {
             margin-bottom: 1.5rem;
         }
+        .detect-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.25rem 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .detect-group h4 {
+            margin: 0.4rem 0 0.3rem;
+            font-size: 0.95em;
+        }
+        .detect-group ul {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+        .detect-group li {
+            margin-bottom: 0.25rem;
+        }
+        @media (max-width: 900px) {
+            .detect-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -285,7 +305,48 @@
 
             <div class="note" style="margin-top:1rem;">
                 <strong>NOTE:</strong> All processing is performed entirely within your browser. No data is transmitted to any server. The redaction map is stored only in memory and is cleared when you close or refresh the tab. The <em>Clear Redaction Map</em> button empties the map and every input/output field on this page; custom patterns are kept.<br>
-                <strong>Detects:</strong> Email addresses &bull; Codice Fiscale (IT) &bull; national identity / social security numbers: US SSN (dashed), UK NINO, Spain DNI/NIE, France NIR, Switzerland AVS, Romania CNP, Finland HETU, Nordic personal numbers (SE/DK/NO, separated form), Czech/Slovak rodné číslo, Belgium national number &bull; VAT / fiscal codes for 30+ countries (IT, DE, FR, ES, GB, NL, BE, AT, PT, PL, HR, SI, CY, GR, MT, AL, SE, DK, FI, LU, IE, CZ, HU, RO, BG, EE, LT, LV, SK, US-EIN and more) &bull; IBAN bank account numbers (compact, spaced or hyphenated, any case) &bull; payment card numbers: American Express (CM11/CM13/CM15), Visa (13/16-digit), Mastercard (Classic 51–55 / New 2221–2720), Discover (6011/644–649/65xx), JCB (3528–3589), Diners Club (300–305/36/38), UnionPay (62, 16–19 digits) — compact and grouped with spaces or hyphens &bull; cryptocurrency addresses: Bitcoin (legacy, P2SH, bech32), Ethereum/EVM (0x…), Monero, Litecoin, Tron, Ripple &bull; PCN codes (17+ digits starting with year) &bull; Italian mobile numbers (32x–39x, compact and spaced, with optional +39/0039 country code) &bull; SE10 merchant codes (10 digits) &bull; custom user-defined patterns.
+                <strong>Detects:</strong>
+                <div class="detect-grid">
+                    <div class="detect-group">
+                        <h4>Personal identity</h4>
+                        <ul>
+                            <li>Belgium national number</li>
+                            <li>Czech/Slovak rodné číslo</li>
+                            <li>Finland HETU</li>
+                            <li>France NIR</li>
+                            <li>Italian Codice Fiscale</li>
+                            <li>Nordic personal numbers (SE/DK/NO)</li>
+                            <li>Romania CNP</li>
+                            <li>Spain DNI/NIE</li>
+                            <li>Switzerland AVS</li>
+                            <li>UK National Insurance number</li>
+                            <li>US SSN (dashed form)</li>
+                        </ul>
+                    </div>
+                    <div class="detect-group">
+                        <h4>Financial &amp; payment</h4>
+                        <ul>
+                            <li>Cryptocurrency addresses: Bitcoin (legacy, P2SH, bech32), Ethereum/EVM (0x…), Monero, Litecoin, Tron, Ripple</li>
+                            <li>IBAN bank account numbers (compact, spaced or hyphenated, any case)</li>
+                            <li>Payment cards: American Express, Visa, Mastercard, Discover, JCB, Diners Club, UnionPay — compact or grouped with spaces/hyphens</li>
+                            <li>PCN codes (17+ digits starting with year)</li>
+                            <li>SE10 merchant codes (10 digits)</li>
+                            <li>VAT / business fiscal codes for 30+ countries (incl. Italian Partita IVA, US EIN)</li>
+                        </ul>
+                    </div>
+                    <div class="detect-group">
+                        <h4>Contact &amp; other</h4>
+                        <ul>
+                            <li>Custom user-defined patterns</li>
+                            <li>Email addresses</li>
+                            <li>French mobile numbers (06/07, optional +33/0033 prefix)</li>
+                            <li>German mobile numbers (015x–017x, optional +49/0049 prefix)</li>
+                            <li>International phone numbers with explicit +CC or 00&nbsp;CC prefix</li>
+                            <li>Italian mobile numbers (32x–39x, optional +39/0039 prefix)</li>
+                            <li>UK mobile numbers (07…, optional +44/0044 prefix)</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -293,7 +354,7 @@
 </main>
 
 <footer>
-    <p>Exploratores 3.3.0 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.4.0 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>
@@ -538,14 +599,52 @@
       regex: /\b[A-Za-z]{2}\d{2}(?:[ -][A-Za-z0-9]{4}){2,7}(?:[ -][A-Za-z0-9]{1,4})?\b|\b[A-Za-z]{2}\d{2}[A-Za-z0-9]{11,30}\b/g,
       color: '#1e8449'
     },
+    // ── Phone numbers ──────────────────────────────────────────────────────────
+    // Country-specific patterns first, generic PHONE_INTL last: on an identical
+    // span the earlier entry wins (stable sort), so a +39/+49/+33/+44 number keeps
+    // its country type instead of falling through to the generic one. The whole
+    // block stays before PCN and SE10 so mobile numbers are not consumed by the
+    // generic digit patterns, and after VAT_*: an 11-digit token starting 07 whose
+    // digits 8-10 happen to form a valid P.IVA office code (001-121) is claimed by
+    // VAT_IT rather than PHONE_UK_MOBILE — rare, and the value is redacted either way.
     {
       type: 'PHONE_IT_MOBILE',
       // Italian mobile numbers: all active prefixes 32x–39x (10 digits total).
       // Optional country code: +39 / 0039 / (+39) / (0039), with optional space or hyphen separator.
       // Handles compact (3351234567), grouped (335 123 4567), and prefixed (+39 335 123 4567) formats.
-      // Placed before SE10 so 10-digit mobile numbers are not consumed by the generic digit pattern.
       regex: /(?<!\d)(?:(?:\((?:00|\+)39\)|(?:00|\+)39)[ -]?)?3[2-9]\d[ -]?\d{3}[ -]?\d{4}(?!\d)/g,
       color: '#117a65'
+    },
+    {
+      type: 'PHONE_DE_MOBILE',
+      // German mobile numbers: prefixes 015x/016x/017x + 7-8 digits, national form
+      // with leading 0 (0151 12345678) or with +49 / 0049 country code replacing it.
+      regex: /(?<!\d)(?:(?:\((?:00|\+)49\)|(?:00|\+)49)[ -]?1[5-7]\d|01[5-7]\d)[ -]?\d{7,8}(?!\d)/g,
+      color: '#0e6251'
+    },
+    {
+      type: 'PHONE_FR_MOBILE',
+      // French mobile numbers: 06/07 + 8 digits in pairs (06 12 34 56 78, dots or
+      // hyphens too), compact, or with +33 / 0033 country code replacing the 0.
+      regex: /(?<!\d)(?:(?:\((?:00|\+)33\)|(?:00|\+)33)[ -]?[67]|0[67])(?:[ .\-]?\d{2}){4}(?!\d)/g,
+      color: '#0b5345'
+    },
+    {
+      type: 'PHONE_UK_MOBILE',
+      // UK mobile numbers: 07xxx xxxxxx (11 digits), compact or spaced, or with
+      // +44 / 0044 country code replacing the leading 0.
+      regex: /(?<!\d)(?:(?:\((?:00|\+)44\)|(?:00|\+)44)[ -]?7\d{3}|07\d{3})[ -]?\d{6}(?!\d)/g,
+      color: '#145a32'
+    },
+    {
+      type: 'PHONE_INTL',
+      // Generic international number, catch-all for countries without a dedicated
+      // pattern. Requires an explicit prefix: '+CC' followed by 6-12 digits (compact
+      // or separated, optional parenthesised area code), or '00CC' followed by a
+      // separator — the 00-compact form (0031612345678) is intentionally NOT matched:
+      // it is indistinguishable from zero-padded numeric IDs common in CSV exports.
+      regex: /(?<!\d)\+[1-9]\d{0,2}(?:[ .\-]?\(\d{1,4}\))?(?:[ .\-]?\d){6,12}(?!\d)|(?<!\d)00[1-9]\d{0,2}[ .\-]\(?\d{1,4}\)?(?:[ .\-]?\d){2,11}(?!\d)/g,
+      color: '#7e5109'
     },
     {
       type: 'PCN',
