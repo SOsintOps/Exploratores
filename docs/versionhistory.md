@@ -4,6 +4,13 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.3.0 — 2026
+
+- **Improved:** CyberChef updated to v11.2.0 (from v10.22.1); the bundled module set now includes the new `File.js` module.
+- **New:** FAQ: "What inspired the creation of the toolkit?" entry crediting Michael Bazzell's *Open Source Intelligence Techniques* as the inspiration for the browser-based search-tool approach; the codebase remains an original implementation.
+
+---
+
 ## 3.2.0 — 2026
 
 - **New:** Redactor: cryptocurrency address detection — Bitcoin (legacy, P2SH and bech32/segwit-taproot), Ethereum and every EVM chain (`0x…`, also BSC/Polygon/Arbitrum wallets), Monero, Litecoin, Tron, Ripple. Matching is structural (prefix, alphabet, length); checksums are not verified. Solana and other plain-base58 formats without a fixed prefix are omitted by design: they would match too many random tokens.
