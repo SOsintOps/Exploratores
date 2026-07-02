@@ -83,10 +83,10 @@ The `docs/` directory contains the Markdown source for [Guidelines](docs/guideli
 ## References
 
 - Community feedback from OSINT & Cybercrime analysts
-- *Deep Dive: A Guide to Advanced Open Source Intelligence* by Rae L. Baker
-- *ICD 203: Analytic Standards*
-- *Open Source Intelligence Techniques* by Michael Bazzell
-- *Psychology of Intelligence Analysis* by Richards J. Heuer Jr.
+- *Deep Dive: A Guide to Advanced Open Source Intelligence* by Rae L. Baker — [Wiley](https://www.wiley.com/en-us/Deep+Dive%3A+Exploring+the+Real+World+Value+of+Open+Source+Intelligence-p-9781119933243) | [Amazon](https://www.amazon.com/dp/1119933242)
+- *ICD 203: Analytic Standards* — [free PDF (ODNI)](https://www.dni.gov/files/documents/ICD/ICD%20203%20Analytic%20Standards.pdf)
+- *Open Source Intelligence Techniques* by Michael Bazzell — [IntelTechniques](https://inteltechniques.com/book1.html)
+- *Psychology of Intelligence Analysis* by Richards J. Heuer Jr. — [free PDF (CIA CSI)](https://www.cia.gov/resources/csi/books-monographs/psychology-of-intelligence-analysis-2/)
 
 ---
 
