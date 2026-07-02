@@ -24,6 +24,12 @@ gemini.md
 promptdaeseguire.txt
 stato_progetto.md
 piano_miglioramenti.md
+PROJECT_STATUS.md
+
+# Internal working material — local only, do not push
+todo/
+docs/WIP/
+pages/test/
 
 # Virtual environments and dependencies
 venv/
