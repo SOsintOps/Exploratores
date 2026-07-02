@@ -18,6 +18,14 @@
     <section class="faq-section">
 
         <div class="faq-item">
+            <h2>3.1.7 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+            <ul>
+                <li><strong>Improved:</strong> Redactor: the Redaction Map is now grouped by data family following the pattern order — payment cards first (AMEX, VISA, MASTERCARD, DISCOVER), then Codice Fiscale, VAT codes, email, IBAN, phone numbers, PCN, SE10, and custom patterns last — instead of alphabetically, so related types sit together.</li>
+                <li><strong>Fixed:</strong> Redactor: placeholder numbering now follows reading order — <code>[TYPE_1]</code> is always the first occurrence in the text. Previously numbers were assigned during the right-to-left substitution pass, so the last occurrence received <code>_1</code>.</li>
+            </ul>
+        </div>
+
+        <div class="faq-item">
             <h2>3.1.6 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
             <ul>
                 <li><strong>Security:</strong> all Google Fonts references removed; Inter and Cinzel are now self-hosted in <code>assets/fonts/</code> (WOFF2, latin + latin-ext subsets). No third-party request — and therefore no Referer metadata — ever leaves a page, closing the last external dependency on pages that process PII.</li>
@@ -170,7 +178,7 @@
 </main>
 
 <footer>
-    <p>Exploratores 3.1.6 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.1.7 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>
