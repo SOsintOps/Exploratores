@@ -15,13 +15,29 @@
 
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
-/*! js-yaml 4.1.1 https://github.com/nodeca/js-yaml @license MIT */
-
-/*! noble-hashes - MIT License (c) 2022 Paul Miller (paulmillr.com) */
-
 /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */
 
 /*! safe-buffer. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
+
+/**
+     * @license
+     * Copyright 2009 The Closure Library Authors
+     * Copyright 2020 Daniel Wirtz / The long.js Authors.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     *
+     *     http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     *
+     * SPDX-License-Identifier: Apache-2.0
+     */
 
 /**
  *
@@ -83,6 +99,18 @@
  **/
 
 /**
+ * @author 0xff1ce [github.com/0xff1ce]
+ * @copyright Crown Copyright 2024
+ * @license Apache-2.0
+ */
+
+/**
+ * @author CyberChef
+ * @copyright Crown Copyright 2026
+ * @license Apache-2.0
+ */
+
+/**
  * @author Dachande663 [dachande663@gmail.com]
  * @copyright Crown Copyright 2018
  * @license Apache-2.0
@@ -114,6 +142,12 @@
  */
 
 /**
+ * @author HarelKatz [github.com/HarelKatz]
+ * @copyright Crown Copyright 2026
+ * @license Apache-2.0
+ */
+
+/**
  * @author Jarmo van Lenthe [github.com/jarmovanlenthe]
  * @copyright Jarmo van Lenthe
  * @license Apache-2.0
@@ -128,6 +162,12 @@
 /**
  * @author Klaxon [klaxon@veyr.com]
  * @copyright Crown Copyright 2018
+ * @license Apache-2.0
+ */
+
+/**
+ * @author Louis-Ladd [lewisharshman1@gmail.com]
+ * @copyright Crown Copyright 2025
  * @license Apache-2.0
  */
 
@@ -319,6 +359,12 @@
 /**
  * @author j433866 [j433866@gmail.com]
  * @copyright Crown Copyright 2019
+ * @license Apache-2.0
+ */
+
+/**
+ * @author j83305 [awz22@protonmail.com]
+ * @copyright Crown Copyright 2020
  * @license Apache-2.0
  */
 
@@ -740,6 +786,15 @@
  */
 
 /**
+ * Parity Bit functions.
+ *
+ * @author j83305 [awz22@protonmail.com]
+ * @copyright Crown Copyright 2020
+ * @license Apache-2.0
+ *
+ */
+
+/**
  * Parser for Type-length-value data.
  *
  * @author gchq77703 []
@@ -776,6 +831,12 @@
  *
  * @author Medjedtxm
  * @copyright Crown Copyright 2025
+ * @license Apache-2.0
+ */
+
+/**
+ * ROR13 Hash operation (Windows API hashing convention)
+ * @author fufu_btw
  * @license Apache-2.0
  */
 
@@ -861,4 +922,4 @@
 
 //! moment.js locale configuration
 
-//! version : 0.6.1
+//! version : 0.6.2
