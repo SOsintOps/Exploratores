@@ -211,13 +211,13 @@ Detected categories out of the box:
 
 *   **EMAIL**: standard email addresses.
 *   **CF**: Italian Codice Fiscale (16-character alphanumeric).
+*   **National identity / social security numbers**: US SSN (`SSN_US`, dashed form), UK National Insurance number (`NINO_UK`, compact and spaced), Spain DNI/NIE (`DNI_ES`, validated against the real check-letter alphabet), France NIR (`NIR_FR`, compact and INSEE-spaced, Corsica 2A/2B included), Switzerland AVS (`AVS_CH`, 756 prefix), Romania CNP (`CNP_RO`), Finland HETU (`HETU_FI`), Nordic personal numbers (`ID_NORDIC`, SE/DK/NO separated form), Czech/Slovak rodné číslo (`RC_CZSK`, slash form), Belgium national number (`NN_BE`, dotted form). Digit-only IDs with no distinctive structure (NL BSN, DE Steuer-ID, PL PESEL, HR OIB, UK NHS) cannot be told apart from generic numbers: define a custom pattern if you need them.
 *   **VAT_XX**: VAT / fiscal codes for 30+ countries, each tagged with its ISO country code (e.g., `[VAT_DE_1]`, `[VAT_FR_1]`). Includes both the EU-prefix form (`IT04598600403`) and the plain 11-digit Italian P.IVA.
-*   **AMEX**: American Express card numbers: CM15 (full 15 digits), CM13, and CM11, both spaced (4-6-N format) and unspaced.
-*   **VISA**: Visa card numbers: 16-digit (standard) and legacy 13-digit, both compact and spaced (4-4-4-4 format).
-*   **MASTERCARD**: Mastercard card numbers: 16-digit, classic range 51–55xxxx and new range 2221–2720xxxx, both compact and spaced (4-4-4-4 format).
-*   **DISCOVER**: Discover card numbers: 16-digit, prefixes 6011, 644–649, and 65xx, both compact and spaced (4-4-4-4 format).
-*   **IBAN**: International Bank Account Numbers: 2-letter country code + 2 check digits + BBAN (11–30 chars), both compact and spaced format.
+*   **Payment cards**: American Express (`AMEX`, CM15/CM13/CM11, 4-6-N grouping), Visa (`VISA`, 16 and legacy 13 digits), Mastercard (`MASTERCARD`, 51–55 and 2221–2720), Discover (`DISCOVER`, 6011/644–649/65xx), JCB (`JCB`, 3528–3589), Diners Club (`DINERS`, 300–305/36/38, 4-6-4 grouping), UnionPay (`UNIONPAY`, 62, 16–19 digits). All in compact form and grouped with spaces or hyphens.
+*   **Cryptocurrency addresses**: Bitcoin (`CRYPTO_BTC`: legacy, P2SH, bech32/segwit-taproot), Ethereum and every EVM chain (`CRYPTO_ETH`: `0x…`, also BSC/Polygon/Arbitrum wallets), Monero (`CRYPTO_XMR`), Litecoin (`CRYPTO_LTC`), Tron (`CRYPTO_TRX`), Ripple (`CRYPTO_XRP`). Matching is structural; checksums are not verified.
+*   **IBAN**: International Bank Account Numbers: 2-letter country code + 2 check digits + BBAN (11–30 chars) — compact, spaced or hyphen-separated, upper or lower case.
 *   **PHONE_IT_MOBILE**: Italian mobile phone numbers (prefixes 32x–39x, 10 digits). Matches compact (`3351234567`), grouped (`335 123 4567`), and country-code formats (`+39 335 123 4567`, `0039335123456`, `(+39) 335 123 4567`).
+*   **PCN**: prescription control numbers and similar codes of 17 or more consecutive digits.
 *   **SE10**: SE10 merchant codes (exactly 10 digits).
 
 ### What is the Redact → LLM → Restore workflow?
