@@ -4,6 +4,16 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.2.0 — 2026
+
+- **New:** Redactor: cryptocurrency address detection — Bitcoin (legacy, P2SH and bech32/segwit-taproot), Ethereum and every EVM chain (`0x…`, also BSC/Polygon/Arbitrum wallets), Monero, Litecoin, Tron, Ripple. Matching is structural (prefix, alphabet, length); checksums are not verified. Solana and other plain-base58 formats without a fixed prefix are omitted by design: they would match too many random tokens.
+- **New:** Redactor: national identity and social security numbers for 10+ jurisdictions — US SSN (dashed form), UK National Insurance number (compact and spaced, real restricted alphabet), Spain DNI/NIE (validated against the real check-letter alphabet), France NIR (compact and INSEE-spaced, Corsica 2A/2B included), Switzerland AVS (756 prefix), Romania CNP, Finland HETU, Nordic personal numbers (SE/DK/NO separated form), Czech/Slovak rodné číslo (slash form), Belgium national number (dotted form). Digit-only IDs with no distinctive structure (NL BSN, DE Steuer-ID, PL PESEL, HR OIB, UK NHS) are deliberately excluded and documented as custom-pattern material.
+- **New:** Redactor: payment card coverage extended with JCB (3528–3589), Diners Club (300–305/36/38, 4-6-4 grouping) and UnionPay (62, 16–19 digits).
+- **Improved:** Redactor: card numbers grouped with hyphens (`4111-1111-1111-1111`) are now detected for Visa, Mastercard, Discover, JCB and UnionPay; IBAN matching accepts lowercase and hyphen-separated forms in addition to compact and spaced.
+- **Changed:** docs: the custom-pattern walkthrough example switched from `SSN_US` (now a built-in type) to a `CASE_ID` internal-reference example.
+
+---
+
 ## 3.1.7 — 2026
 
 - **Improved:** Redactor: the Redaction Map is now grouped by data family following the pattern order — payment cards first (AMEX, VISA, MASTERCARD, DISCOVER), then Codice Fiscale, VAT codes, email, IBAN, phone numbers, PCN, SE10, and custom patterns last — instead of alphabetically, so related types sit together.

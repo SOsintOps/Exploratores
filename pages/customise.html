@@ -146,20 +146,20 @@ getAndValidateIpAddress: function(config) {
         <p>The Redactor page lets each user define additional PII patterns beyond the built-in set. Custom patterns are stored in the browser's <code>localStorage</code> under the key <code>redactor_custom_patterns</code> and are loaded automatically on every visit. They are browser-specific and do not affect other users of the same installation.</p>
 
         <h3>Guide D: Adding a Custom Pattern</h3>
-        <p><strong>Scenario:</strong> Detect US Social Security Numbers in the format <code>123-45-6789</code>.</p>
+        <p><strong>Scenario:</strong> Detect internal case references in the format <code>CASE-123456</code>. (US Social Security Numbers, formerly this example, are now detected out of the box.)</p>
         <ol>
             <li>Open <strong>Tools → Redactor</strong>.</li>
             <li>Scroll to the <strong>Custom Patterns</strong> section.</li>
             <li>Fill in the form:
                 <ul>
-                    <li><strong>Type name:</strong> <code>SSN_US</code></li>
-                    <li><strong>Regex:</strong> <code>\b\d{3}-\d{2}-\d{4}\b</code></li>
+                    <li><strong>Type name:</strong> <code>CASE_ID</code></li>
+                    <li><strong>Regex:</strong> <code>\bCASE-\d{6}\b</code></li>
                     <li><strong>Colour:</strong> choose any colour.</li>
-                    <li><strong>Case-insensitive:</strong> leave unticked (digits only).</li>
+                    <li><strong>Case-insensitive:</strong> tick it if references may also appear as <code>case-123456</code>.</li>
                 </ul>
             </li>
             <li>Click <strong>Add Pattern</strong>. The pattern appears immediately in the active patterns table.</li>
-            <li>Values matching <code>\b\d{3}-\d{2}-\d{4}\b</code> will now be replaced with <code>[SSN_US_1]</code>, <code>[SSN_US_2]</code>, etc. on the next Redact operation.</li>
+            <li>Values matching <code>\bCASE-\d{6}\b</code> will now be replaced with <code>[CASE_ID_1]</code>, <code>[CASE_ID_2]</code>, etc. on the next Redact operation.</li>
         </ol>
         <p>To remove a custom pattern, click <strong>Remove</strong> in the active patterns table. The pattern is deleted from <code>localStorage</code> immediately and will not be applied in future sessions.</p>
 
@@ -174,7 +174,7 @@ getAndValidateIpAddress: function(config) {
 </main>
 
 <footer>
-    <p>Exploratores 3.1.7 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.2.0 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>

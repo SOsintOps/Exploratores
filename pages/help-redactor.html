@@ -155,14 +155,16 @@
         </ul>
 
         <h2 id="redactor-detects">WHAT REDACTOR DETECTS</h2>
-        <h3>What Redactor detects (as of 12 April 2026)</h3>
+        <h3>What Redactor detects (as of 2 July 2026)</h3>
 
         <p>Redactor recognises the following data types automatically:</p>
         <ul>
-            <li><strong>Payment cards:</strong> American Express (CM11, CM13, CM15), Visa (13 and 16 digit), Mastercard (Classic 51–55 and New 2221–2720), Discover (6011, 644–649, 65xx). Compact and spaced 4-4-4-4 formats.</li>
+            <li><strong>Payment cards:</strong> American Express (CM11, CM13, CM15), Visa (13 and 16 digit), Mastercard (Classic 51–55 and New 2221–2720), Discover (6011, 644–649, 65xx), JCB (3528–3589), Diners Club (300–305, 36, 38), UnionPay (62, 16–19 digits). Compact and grouped formats with spaces or hyphens.</li>
+            <li><strong>Cryptocurrency addresses:</strong> Bitcoin (legacy, P2SH, bech32/segwit), Ethereum and every EVM chain (0x…), Monero, Litecoin, Tron, Ripple. Structural matching only — checksums are not verified.</li>
             <li><strong>CF:</strong> Italian Codice Fiscale (16-character alphanumeric).</li>
+            <li><strong>National identity / social security numbers:</strong> US SSN (dashed form), UK National Insurance number (compact and spaced), Spain DNI/NIE, France NIR (compact and INSEE-spaced), Switzerland AVS (756…), Romania CNP, Finland HETU, Nordic personal numbers (SE/DK/NO, 6-digit date + hyphen + 4 digits), Czech/Slovak rodné číslo (with slash), Belgium national number (dotted form). Digit-only IDs without a distinctive structure (NL BSN, DE Steuer-ID, PL PESEL, HR OIB, UK NHS) cannot be told apart from generic numbers: use a custom pattern if you need them.</li>
             <li><strong>EMAIL:</strong> standard RFC-compliant email addresses.</li>
-            <li><strong>IBAN:</strong> bank account numbers — compact and spaced formats.</li>
+            <li><strong>IBAN:</strong> bank account numbers — compact, spaced or hyphen-separated, upper or lower case.</li>
             <li><strong>PHONE_IT_MOBILE:</strong> Italian mobile numbers (32x–39x prefixes), with or without +39/0039 country code, compact and grouped formats.</li>
             <li><strong>PCN:</strong> prescription control numbers and similar codes of 17 or more consecutive digits.</li>
             <li><strong>SE10:</strong> 10-digit merchant codes. Also catches Montenegro PIB and Turkey VKN by overlap.</li>
@@ -176,7 +178,7 @@
 </main>
 
 <footer>
-    <p>Exploratores 3.1.7 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.2.0 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>
