@@ -16,12 +16,11 @@ Version 3.4.0 extends Redactor phone detection to German, French and UK mobiles 
 
 - Fully responsive layout built with semantic HTML5.
 - No server or backend dependencies required.
-- Fully functional offline via `file://` protocol; external tools require internet.
-- Centralised JavaScript architecture (`main.js`, `validators.js`, `search-library.js`).
-- Navigation bar defined once, shared across all pages.
+- Centralised JavaScript architecture.
 - Modular pages with scoped focus (Names, Phones, Domains, IBAN, etc.).
-- Toolkit Search with two-column scrollable results and live counter.
 - Multi-country IBAN verifier with offline bank name resolution for 11 countries.
+- aggiungere descrizione redactor
+- aggiungere presenza di cyberchef
 
 ---
 
@@ -32,6 +31,7 @@ Version 3.4.0 extends Redactor phone detection to German, French and UK mobiles 
 - Any modern web browser (Chrome, Edge, Brave).
 - No server or backend required to run the toolkit.
 - **Internet access is mandatory** for the external search features to work.
+- suggerisre uso della vpn
 
 ## Installation
 
@@ -40,7 +40,7 @@ Version 3.4.0 extends Redactor phone detection to German, French and UK mobiles 
    git clone https://github.com/SOsintOps/Exploratores.git
    ```
 2. Open **`launchme.html`** in your browser.
-3. Begin your investigation by selecting a section from the navigation menu.
+
 
 ## Toolkit Sections
 
