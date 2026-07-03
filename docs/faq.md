@@ -18,7 +18,7 @@ Frequently asked questions about the toolkit — usage, architecture, and troubl
 * [Do I need to install additional software to use the toolkit?](#do-i-need-to-install-additional-software-to-use-the-toolkit)
 * [Are my search activities tracked by the toolkit?](#are-my-search-activities-tracked-by-the-toolkit)
 * [Is it necessary to create dedicated investigative accounts for using some of these tools?](#is-it-necessary-to-create-dedicated-investigative-accounts-for-using-some-of-these-tools)
-* [Can the Exploratores OSINT Toolkit pages be customized?](#can-the-exploratores-osint-toolkit-pages-be-customized)
+* [Can the Exploratores OSINT Toolkit pages be customised?](#can-the-exploratores-osint-toolkit-pages-be-customised)
 * [How is the maintenance of tools within the toolkit handled?](#how-is-the-maintenance-of-tools-within-the-toolkit-handled)
 * [How can I suggest new tools or improvements?](#how-can-i-suggest-new-tools-or-improvements)
 * [What is the recommended workflow for contributing a new page?](#what-is-the-recommended-workflow-for-contributing-a-new-page)
@@ -47,17 +47,17 @@ In ancient Rome, "Exploratores" were soldiers specifically chosen for their skil
 
 ### What is the main purpose of the Exploratores OSINT Toolkit?
 
-The Exploratores OSINT Toolkit aims to consolidate and organize a wide range of OSINT (Open Source Intelligence) tools and resources to facilitate investigation and information gathering activities. It provides a centralized access point and a consistent structure for these tools.
+The Exploratores OSINT Toolkit aims to consolidate and organise a wide range of OSINT (Open Source Intelligence) tools and resources to facilitate investigation and information gathering activities. It provides a centralised access point and a consistent structure for these tools.
 
 ### What inspired the creation of the toolkit?
 
 The idea of collecting OSINT search tools into a set of local, browser-based pages was inspired by the approach described in Michael Bazzell's book *Open Source Intelligence Techniques* (see [Further Reading](#where-can-i-find-resources-to-learn-more-about-osint)). The Exploratores codebase — the centralised architecture, search library, validators, and every tool page — is an original implementation developed for this project.
 
-## Usage & Authorization
+## Usage & Authorisation
 
 ### Can I use the Exploratores OSINT Toolkit outside of my team?
 
-Yes. You can distribute, share, and customize Exploratores as needed. However, you will be responsible for any unapproved purposes or inappropriate use of this tool.
+Yes. You can distribute, share, and customise Exploratores as needed. However, you will be responsible for any unapproved purposes or inappropriate use of this tool.
 
 ### Is the Exploratores OSINT Toolkit covered by any warranty?
 
@@ -82,7 +82,7 @@ The following texts are recommended as foundational references for OSINT practit
 *   ***Open Source Intelligence Techniques*** by Michael Bazzell: the industry-standard reference for OSINT tools and collection techniques, updated regularly.
 *   ***Psychology of Intelligence Analysis*** by Richards J. Heuer Jr.: a foundational text on understanding and mitigating cognitive biases in analytical judgment.
 
-Additionally, following specialized blogs, participating in webinars, and joining professional OSINT communities are valuable for staying updated on the latest techniques and tools.
+Additionally, following specialised blogs, participating in webinars, and joining professional OSINT communities are valuable for staying updated on the latest techniques and tools.
 
 ### What are some basic OPSEC best practices when using this toolkit?
 
@@ -90,14 +90,14 @@ Operational Security (OPSEC) is critical. While using this toolkit, always consi
 
 *   **Network Anonymity:** Use a trusted VPN or the Tor network to mask your real IP address.
 *   **Dedicated Environment:** Conduct investigations from a dedicated virtual machine (VM) or a separate physical device to prevent cross-contamination with your personal data.
-*   **Browser Fingerprinting:** Be aware that websites can identify you through your browser's unique configuration. Use browsers or browser extensions designed to minimize fingerprinting.
+*   **Browser Fingerprinting:** Be aware that websites can identify you through your browser's unique configuration. Use browsers or browser extensions designed to minimise fingerprinting.
 *   **Non-Attributable Accounts:** Always use dedicated, non-personal accounts for interacting with online services.
 
 ### What are the ethical guidelines for using these tools?
 
-Ethical use is paramount. Always act within legal and jurisdictional boundaries. The purpose of these tools is for legitimate intelligence gathering on authorized targets. Never use them for harassment, illegal surveillance, or any activity that violates privacy laws or terms of service of the platforms being accessed. The responsibility for ethical conduct lies entirely with the analyst.
+Ethical use is paramount. Always act within legal and jurisdictional boundaries. The purpose of these tools is for legitimate intelligence gathering on authorised targets. Never use them for harassment, illegal surveillance, or any activity that violates privacy laws or terms of service of the platforms being accessed. The responsibility for ethical conduct lies entirely with the analyst.
 
-## Functionality & Customization
+## Functionality & Customisation
 
 ### Do I need to install additional software to use the toolkit?
 
@@ -111,9 +111,9 @@ The Exploratores toolkit itself does not implement any tracking or logging of yo
 
 Yes, for many OSINT activities, it is highly recommended to use dedicated, non-attributable "investigative" or "sock puppet" accounts. Using personal accounts can compromise your investigation, expose your identity, and may violate the terms of service of some platforms.
 
-### Can the Exploratores OSINT Toolkit pages be customized?
+### Can the Exploratores OSINT Toolkit pages be customised?
 
-Yes, the toolkit is designed to be customizable. You can add new tools, modify existing categories, or adapt functionalities. For a detailed guide on how to do this, please refer to the [How to Customize Pages](customise.md) page.
+Yes, the toolkit is designed to be customisable. You can add new tools, modify existing categories, or adapt functionalities. For a detailed guide on how to do this, please refer to the [How to Customise Pages](customise.md) page.
 
 ## Maintenance & Contribution
 
@@ -173,10 +173,10 @@ We can confirm that, to the best of our knowledge, no LLMs reported permanent da
 
 ### What is the logic behind the new centralised architecture?
 
-The new architecture centralizes the logic to avoid code duplication. It works like this:
+The new architecture centralises the logic to avoid code duplication. It works like this:
 
 *   **HTML Pages (e.g., Names.html):** Contain only the structure and UI elements. Buttons have a `data-search-id` attribute that acts as a unique identifier for a search, but they contain no JavaScript code.
-*   **search-library.js:** Acts as a "catalog." It contains an object that maps each `data-search-id` to a URL template and a validation function.
+*   **search-library.js:** Acts as a "catalogue." It contains an object that maps each `data-search-id` to a URL template and a validation function.
 *   **main.js:** This is the "engine" of the toolkit. It contains a single event handler that, on a button click, uses the `data-search-id` to find the corresponding configuration in `search-library.js`, runs the validation, and opens the correct URL.
 
 This approach makes the pages cleaner and maintenance easier, as all search logic is defined in one place.
@@ -195,7 +195,7 @@ This ensures that search buttons are only clickable when the required input is v
 To add a new button under the new architecture, follow these two steps:
 
 1.  **Add the configuration to `search-library.js`:** Create a new entry in the `SearchLibrary` object. The key must be a unique identifier (e.g., `'names-new-service'`), and the value must be an object with the `urlTemplate` and the name of the `validator` function (e.g., `'getAndValidateNames'`).
-2.  **Add the button to the HTML:** Insert the `<button>` tag on the desired page. Assign it a unique `id` (for customization) and the `data-search-id` attribute corresponding to the key you created in the library.
+2.  **Add the button to the HTML:** Insert the `<button>` tag on the desired page. Assign it a unique `id` (for customisation) and the `data-search-id` attribute corresponding to the key you created in the library.
 
 The "engine" in `main.js` will automatically make the new button work without needing to write more JavaScript on the page.
 
@@ -239,9 +239,9 @@ The local bank name databases are stored as plain JavaScript files in `assets/js
 
 ### What is the "Light Version" for?
 
-The "Light Version" is a customizable display mode for the toolkit. It allows each user to hide tools, sections, or columns they do not use, creating a leaner and more focused interface.
+The "Light Version" is a customisable display mode for the toolkit. It allows each user to hide tools, sections, or columns they do not use, creating a leaner and more focused interface.
 
-This customization is managed by the `assets/js/config.js` file. By editing this file, you can:
+This customisation is managed by the `assets/js/config.js` file. By editing this file, you can:
 
 *   **Enable or disable** the Light Version by setting `lightVersionEnabled` to `true` or `false`.
 *   **Specify which elements to hide** by adding their CSS selectors (like `#column-searchengines-tor`) to the `selectorsToHide` array.
