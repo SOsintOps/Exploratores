@@ -19,19 +19,17 @@ Version 3.4.0 extends Redactor phone detection to German, French and UK mobiles 
 - Centralised JavaScript architecture.
 - Modular pages with scoped focus (Names, Phones, Domains, IBAN, etc.).
 - Multi-country IBAN verifier with offline bank name resolution for 11 countries.
-- aggiungere descrizione redactor
-- aggiungere presenza di cyberchef
+- Redactor: browser-side PII removal and restoration with numbered placeholders, exportable Redaction Map, CSV support and user-defined custom patterns — designed for safely submitting case text to external AI models.
+- Embedded CyberChef (v11.2.0) for local data conversion, decoding and analysis.
 
 ---
-
-
 
 ## Requirements
 
 - Any modern web browser (Chrome, Edge, Brave).
 - No server or backend required to run the toolkit.
 - **Internet access is mandatory** for the external search features to work.
-- suggerisre uso della vpn
+- The use of a VPN is recommended while conducting investigations, to protect your identity and location.
 
 ## Installation
 
@@ -40,7 +38,6 @@ Version 3.4.0 extends Redactor phone detection to German, French and UK mobiles 
    git clone https://github.com/SOsintOps/Exploratores.git
    ```
 2. Open **`launchme.html`** in your browser.
-
 
 ## Toolkit Sections
 
