@@ -1,70 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Customise Page • Exploratores</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customise Page • Exploratores</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
 <body>
 
 <div id="navbar-placeholder"></div>
 
 <main>
-    <h1 class="page-title">Customising Exploratores Pages</h1>
-    <p class="center-text">This page serves as the technical documentation for understanding, modifying, and extending the Exploratores toolkit.</p>
+  <h1 class="page-title">Customising Exploratores Pages</h1>
+  <p class="center-text">This page serves as the technical documentation for understanding, modifying, and extending the Exploratores toolkit.</p>
 
-    <section id="section-architecture">
-        <h2>Project Architecture</h2>
-        <p>The toolkit is built on three fundamental principles: a centralised design, centralised logic, and a clear separation of concerns.</p>
-        
-        <h3>Directory and File Structure</h3>
-        <p>The file organization is designed to separate content (HTML pages) from shared resources (assets), ensuring order and ease of maintenance.</p>
-        
-        <h3>Technical & Contribution Guidelines</h3>
-        <p>This section outlines the technical standards for maintaining and extending the Exploratores toolkit.</p>
+  <section id="section-architecture">
+    <h2>Project Architecture</h2>
+    <p>The toolkit is built on three fundamental principles: a centralised design, centralised logic, and a clear separation of concerns.</p>
+    
+    <h3>Directory and File Structure</h3>
+    <p>The file organization is designed to separate content (HTML pages) from shared resources (assets), ensuring order and ease of maintenance.</p>
+    
+    <h3>Technical & Contribution Guidelines</h3>
+    <p>This section outlines the technical standards for maintaining and extending the Exploratores toolkit.</p>
+    <ul>
+      <li><strong>Separation of Concerns:</strong> The project strictly separates structure (HTML), presentation (CSS), and logic (JavaScript). No inline styles or scripts are permitted in HTML files.</li>
+      <li><strong>JavaScript Architecture:</strong> All pages must adhere to the centralised architecture powered by `main.js`, `validators.js`, and `search-library.js`.</li>
+      <li><strong>File Naming:</strong> All HTML files must use lowercase names (e.g., `new_page.html`).</li>
+      <li><strong>ID & Data Attribute Conventions:</strong>
         <ul>
-            <li><strong>Separation of Concerns:</strong> The project strictly separates structure (HTML), presentation (CSS), and logic (JavaScript). No inline styles or scripts are permitted in HTML files.</li>
-            <li><strong>JavaScript Architecture:</strong> All pages must adhere to the centralised architecture powered by `main.js`, `validators.js`, and `search-library.js`.</li>
-            <li><strong>File Naming:</strong> All HTML files must use lowercase names (e.g., `new_page.html`).</li>
-            <li><strong>ID & Data Attribute Conventions:</strong>
-                <ul>
-                    <li>Element `id` attributes must follow the `[type]-[page]-[name]` format (e.g., `btn-names-us-fastpeople`).</li>
-                    <li>`data-search-id` attributes must follow the `[page]-[name]` format and match a key in `search-library.js`.</li>
-                </ul>
-            </li>
+          <li>Element `id` attributes must follow the `[type]-[page]-[name]` format (e.g., `btn-names-us-fastpeople`).</li>
+          <li>`data-search-id` attributes must follow the `[page]-[name]` format and match a key in `search-library.js`.</li>
         </ul>
-    </section>
+      </li>
+    </ul>
+  </section>
 
-    <section id="section-js-files">
-        <h2>The Role of the Main JavaScript Files</h2>
-        <p>The JavaScript architecture is the core of the project. Here is the role of each file located in `assets/js/`.</p>
+  <section id="section-js-files">
+    <h2>The Role of the Main JavaScript Files</h2>
+    <p>The JavaScript architecture is the core of the project. Here is the role of each file located in `assets/js/`.</p>
 
-        <h3>1. `navigation.js` (in `assets/menu/`) - The Navigation Menu</h3>
-        <p><strong>Role:</strong> This script generates the navigation bar on every page. It detects its location and adjusts all link paths accordingly, allowing for a single, centralised menu definition.</p>
-        
-        <h3>2. `search-library.js` - The Catalog</h3>
-        <p><strong>Role:</strong> Acts as a database for all search functions. It contains a single large object, `SearchLibrary`, that maps a button's `data-search-id` to a URL template and a validator function.</p>
-        
-        <h3>3. `validators.js` - The Rulebook</h3>
-        <p><strong>Role:</strong> Contains the `ExploratoresValidators` object, a library of reusable functions that check if user input is valid before launching a search.</p>
-        
-        <h3>4. `main.js` - The Engine</h3>
-        <p><strong>Role:</strong> Contains the `Exploratores` object, which holds the core logic. `initSearchHandler` listens for clicks and orchestrates the search process, while `clearAllInputs` resets form fields on page load for a clean state.</p>
+    <h3>1. `navigation.js` (in `assets/menu/`) - The Navigation Menu</h3>
+    <p><strong>Role:</strong> This script generates the navigation bar on every page. It detects its location and adjusts all link paths accordingly, allowing for a single, centralised menu definition.</p>
+    
+    <h3>2. `search-library.js` - The Catalog</h3>
+    <p><strong>Role:</strong> Acts as a database for all search functions. It contains a single large object, `SearchLibrary`, that maps a button's `data-search-id` to a URL template and a validator function.</p>
+    
+    <h3>3. `validators.js` - The Rulebook</h3>
+    <p><strong>Role:</strong> Contains the `ExploratoresValidators` object, a library of reusable functions that check if user input is valid before launching a search.</p>
+    
+    <h3>4. `main.js` - The Engine</h3>
+    <p><strong>Role:</strong> Contains the `Exploratores` object, which holds the core logic. `initSearchHandler` listens for clicks and orchestrates the search process, while `clearAllInputs` resets form fields on page load for a clean state.</p>
 
-        <h3>5. `config.js` - The Settings</h3>
-        <p><strong>Role:</strong> This file holds global configuration data and flags, such as enabling the "Light Version" of the toolkit and specifying which UI elements to hide.</p>
-    </section>
+    <h3>5. `config.js` - The Settings</h3>
+    <p><strong>Role:</strong> This file holds global configuration data and flags, such as enabling the "Light Version" of the toolkit and specifying which UI elements to hide.</p>
 
-    <section id="section-guides">
-        <h2>Practical Guides</h2>
-        <p>The following guides demonstrate, with practical examples, how to modify and extend the toolkit.</p>
+    <p>Besides these five core files, `assets/js/` also contains auxiliary modules — `dispatcher.js`, `indicator-classifier.js`, `janua-search-map.js`, `toolkit-search.js`, and `settings-page.js` — that power the Janua dispatch page, the Toolkit Search, and the Settings page. They follow the same conventions but are not required knowledge for adding a standard search page.</p>
+  </section>
 
-        <h3>Guide A: Page State Management</h3>
-        <p><strong>Concept:</strong> To prevent searches with invalid data, buttons on a page are disabled until the user provides valid input. This is handled by a page-specific script.</p>
-        <p><strong>Standard Implementation:</strong> For pages with multiple, independent input groups (like `publiccompanyrecords.html`), the standard method is to use an `inputGroups` array. Each object in the array defines a set of inputs, the buttons they control, and the validator to use.</p>
-        <pre class="code-guide-block"><code>// In a page-specific script, e.g., at the bottom of publiccompanyrecords.html
+  <section id="section-guides">
+    <h2>Practical Guides</h2>
+    <p>The following guides demonstrate, with practical examples, how to modify and extend the toolkit.</p>
+
+    <h3>Guide A: Page State Management</h3>
+    <p><strong>Concept:</strong> To prevent searches with invalid data, buttons on a page are disabled until the user provides valid input. This is handled by a page-specific script.</p>
+    <p><strong>Standard Implementation:</strong> For pages with multiple, independent input groups (like `publiccompanyrecords.html`), the standard method is to use an `inputGroups` array. Each object in the array defines a set of inputs, the buttons they control, and the validator to use.</p>
+    <pre class="code-guide-block"><code>// In a page-specific script, e.g., at the bottom of publiccompanyrecords.html
 function setInitialPageState() {
     const inputGroups = [
         {
@@ -83,8 +85,8 @@ function setInitialPageState() {
     const updateButtons = (group) => {
         const validationResult = group.validator();
         document.querySelectorAll(group.buttonSelector).forEach(button => {
-            button.disabled = !validationResult;
-            button.classList.toggle('text-active', !!validationResult);
+            button.disabled = !validationResult.isValid;
+            button.classList.toggle('text-active', validationResult.isValid);
         });
     };
 
@@ -98,83 +100,87 @@ function setInitialPageState() {
 document.addEventListener('DOMContentLoaded', setInitialPageState);
 </code></pre>
 
-        <h3>Guide B: Adding a New Search Function</h3>
-        <p><strong>Scenario:</strong> Add a button to `names.html` to search "PersonaDB".</p>
-        <ol>
-            <li><strong>Step 1: Add to `search-library.js`</strong><br>Add a new entry with a unique key.
-            <pre class="code-guide-block"><code>// Inside SearchLibrary object
+    <h3>Guide B: Adding a New Search Function</h3>
+    <p><strong>Scenario:</strong> Add a button to `names.html` to search "PersonaDB".</p>
+    <ol>
+      <li><strong>Step 1: Add to `search-library.js`</strong><br>Add a new entry with a unique key.
+      <pre class="code-guide-block"><code>// Inside SearchLibrary object
 "names-personadb": {
     "urlTemplate": "https://personadb.com/search?name={fullname}",
     "validator": "getAndValidateNames"
 },</code></pre>
-            </li>
-            <li><strong>Step 2: Add Button to `names.html`</strong><br>Add the HTML button, matching the `data-search-id` to the new key.
-            <pre class="code-guide-block"><code>&lt;!-- In pages/names.html --&gt;
+      </li>
+      <li><strong>Step 2: Add Button to `names.html`</strong><br>Add the HTML button, matching the `data-search-id` to the new key.
+      <pre class="code-guide-block"><code>&lt;!-- In pages/names.html --&gt;
 &lt;div class="button-grid"&gt;
     ...
     &lt;button id="btn-names-personadb" type="button" class="button" data-search-id="names-personadb"&gt;PersonaDB&lt;/button&gt; &lt;!-- NEW BUTTON --&gt;
 &lt;/div&gt;</code></pre>
-            </li>
-        </ol>
+      </li>
+    </ol>
 
-        <h3>Guide C: Creating a New Validator</h3>
-        <p><strong>Scenario:</strong> Create a page `ip.html` that requires a valid IPv4 address.</p>
-        <ol>
-            <li><strong>Step 1: Create a New Function in `validators.js`</strong><br>Add a function to the `ExploratoresValidators` object that gets the input and validates it.
-            <pre class="code-guide-block"><code>// In assets/js/validators.js
-getAndValidateIpAddress: function(config) {
-    const ip = document.getElementById('ipAddressInput')?.value.trim();
-    const ipv4Regex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
-    if (ip && ipv4Regex.test(ip)) {
-        return { ip: ip };
+    <h3>Guide C: Creating a New Validator</h3>
+    <p><strong>Scenario:</strong> Create a page `ip.html` that requires a valid IPv4 address.</p>
+    <ol>
+      <li><strong>Step 1: Create a New Function in `validators.js`</strong><br>Add a function to the `ExploratoresValidators` object that gets the input and validates it.
+      <pre class="code-guide-block"><code>// In assets/js/validators.js
+getAndValidateIpAddress: function(config, queryOverride) {
+    const ip = queryOverride !== undefined ? queryOverride : document.getElementById('ipAddressInput')?.value.trim();
+    const ipv4Regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+    if (!ip) {
+        return { isValid: false, message: "Please enter an IP address." };
     }
-    return null; // Return null if invalid
+    if (!ipv4Regex.test(ip)) {
+        return { isValid: false, message: "Invalid IPv4 address format." };
+    }
+    return { isValid: true, data: { ip: ip }, message: "Valid IP address format." };
 },</code></pre>
-            </li>
-            <li><strong>Step 2: Use the Validator in `search-library.js`</strong><br>Reference your new function in a search configuration.
-            <pre class="code-guide-block"><code>// In assets/js/search-library.js
+      </li>
+      <li><strong>Step 2: Use the Validator in `search-library.js`</strong><br>Reference your new function in a search configuration.
+      <pre class="code-guide-block"><code>// In assets/js/search-library.js
 "ip-shodan-search": {
     "urlTemplate": "https://www.shodan.io/host/{ip}",
     "validator": "getAndValidateIpAddress" // Use the new validator
 },</code></pre>
-            </li>
-        </ol>
-    </section>
+      </li>
+    </ol>
+  </section>
 
-    <section id="section-redactor">
-        <h2>Redactor: Custom Detection Patterns</h2>
-        <p>The Redactor page lets each user define additional PII patterns beyond the built-in set. Custom patterns are stored in the browser's <code>localStorage</code> under the key <code>redactor_custom_patterns</code> and are loaded automatically on every visit. They are browser-specific and do not affect other users of the same installation.</p>
+  <section id="section-redactor">
+    <h2>Redactor: Custom Detection Patterns</h2>
+    <p>The Redactor page lets each user define additional PII patterns beyond the built-in set. Custom patterns are stored in the browser's <code>localStorage</code> under the key <code>redactor_custom_patterns</code> and are loaded automatically on every visit. They are browser-specific and do not affect other users of the same installation.</p>
 
-        <h3>Guide D: Adding a Custom Pattern</h3>
-        <p><strong>Scenario:</strong> Detect internal case references in the format <code>CASE-123456</code>. (US Social Security Numbers, formerly this example, are now detected out of the box.)</p>
-        <ol>
-            <li>Open <strong>Tools → Redactor</strong>.</li>
-            <li>Scroll to the <strong>Custom Patterns</strong> section.</li>
-            <li>Fill in the form:
-                <ul>
-                    <li><strong>Type name:</strong> <code>CASE_ID</code></li>
-                    <li><strong>Regex:</strong> <code>\bCASE-\d{6}\b</code></li>
-                    <li><strong>Colour:</strong> choose any colour.</li>
-                    <li><strong>Case-insensitive:</strong> tick it if references may also appear as <code>case-123456</code>.</li>
-                </ul>
-            </li>
-            <li>Click <strong>Add Pattern</strong>. The pattern appears immediately in the active patterns table.</li>
-            <li>Values matching <code>\bCASE-\d{6}\b</code> will now be replaced with <code>[CASE_ID_1]</code>, <code>[CASE_ID_2]</code>, etc. on the next Redact operation.</li>
-        </ol>
-        <p>To remove a custom pattern, click <strong>Remove</strong> in the active patterns table. The pattern is deleted from <code>localStorage</code> immediately and will not be applied in future sessions.</p>
-
-        <h3>Technical Notes</h3>
+    <h3>Guide D: Adding a Custom Pattern</h3>
+    <p><strong>Scenario:</strong> Detect internal case references in the format <code>CASE-123456</code>. (US Social Security Numbers, formerly this example, are now detected out of the box.)</p>
+    <ol>
+      <li>Open <strong>Tools → Redactor</strong>.</li>
+      <li>Scroll to the <strong>Custom Patterns</strong> section.</li>
+      <li>Fill in the form:
         <ul>
-            <li>Custom patterns are appended to the end of the built-in pattern list. They are applied after all built-in patterns; the standard left-to-right overlap resolution applies.</li>
-            <li>Use <code>\b</code> word boundaries in your regex to avoid partial matches inside longer tokens.</li>
-            <li>The <code>g</code> (global) flag is always added automatically; do not include it in the regex field.</li>
-            <li>Type names are converted to uppercase and spaces replaced with underscores. Duplicate type names are rejected.</li>
+          <li><strong>Type name:</strong> <code>CASE_ID</code></li>
+          <li><strong>Regex:</strong> <code>\bCASE-\d{6}\b</code></li>
+          <li><strong>Colour:</strong> choose any colour.</li>
+          <li><strong>Case-insensitive:</strong> tick it if references may also appear as <code>case-123456</code>.</li>
         </ul>
-    </section>
+      </li>
+      <li>Click <strong>Add Pattern</strong>. The pattern appears immediately in the active patterns table (Type, Regex, Flags, Colour).</li>
+      <li>Values matching <code>\bCASE-\d{6}\b</code> will now be replaced with <code>[CASE_ID_1]</code>, <code>[CASE_ID_2]</code>, etc. on the next Redact operation.</li>
+    </ol>
+    <p>To remove a custom pattern, click <strong>Remove</strong> in the active patterns table. The pattern is deleted from <code>localStorage</code> immediately and will not be applied in future sessions.</p>
+
+    <h3>Technical Notes</h3>
+    <ul>
+      <li>Custom patterns are appended to the end of the built-in pattern list. They are applied after all built-in patterns; the standard left-to-right overlap resolution applies.</li>
+      <li>Use <code>\b</code> word boundaries in your regex to avoid partial matches inside longer tokens.</li>
+      <li>The <code>g</code> (global) flag is added automatically if not already present. The <strong>Case-insensitive</strong> checkbox is the only way to set the <code>i</code> flag; flags cannot be typed in the regex field.</li>
+      <li>Patterns are screened against catastrophic backtracking (ReDoS): nested-quantifier structures such as <code>(a+)+</code> are rejected outright, and every new pattern must complete a timed canary run before being accepted.</li>
+      <li>Type names are converted to uppercase, spaces are replaced with underscores, and any character outside <code>A–Z 0–9 _</code> is stripped. Names are limited to 64 characters, regex sources to 2000 characters, and duplicate type names are rejected.</li>
+    </ul>
+  </section>
 </main>
 
 <footer>
-    <p>Exploratores 3.4.0 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.4.1 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>

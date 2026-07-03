@@ -1,14 +1,14 @@
-# Exploratores OSINT Toolkit 3.4.0
+# Exploratores OSINT Toolkit 3.4.1
 
 ![Exploratores Toolkit Logo](assets/images/exploratores.jpg)
 
 [GitHub Repository](https://github.com/SOsintOps/Exploratores)
 
-![version](https://img.shields.io/badge/version-3.4.0-blue)
+![version](https://img.shields.io/badge/version-3.4.1-blue)
 
 **Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows: curated search tools for people, domains, images, social platforms and more, plus built-in utilities such as the Redactor (browser-side PII removal), multi-country IBAN analysis and an embedded CyberChef.
 
-Version 3.4.0 extends Redactor phone detection to German, French and UK mobiles plus any internationally prefixed number. See the full [version history](docs/versionhistory.md) for previous releases.
+Version 3.4.1 realigns the documentation with the codebase (FAQ, Customise, Version History), fixes a dead external link and unifies the layout of the help pages. See the full [version history](docs/versionhistory.md) for previous releases.
 
 ---
 
