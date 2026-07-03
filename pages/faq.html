@@ -13,6 +13,7 @@
 
 <main>
   <h1 class="page-title">Frequently Asked Questions (FAQ)</h1>
+  <p class="center-text">Frequently asked questions about the toolkit — usage, architecture, and troubleshooting.</p>
 
   <section id="table-of-contents" class="faq-toc">
     <h2>Table of Contents</h2>
@@ -77,7 +78,7 @@
       </li>
     </ul>
   </section>
-  
+
   <section class="faq-section">
     <h2 id="s-about">About the Toolkit</h2>
     <div class="faq-item">
@@ -111,30 +112,30 @@
       <p>Yes, the toolkit is designed to be customizable. You can add new tools, modify existing categories, or adapt functionalities. For a detailed guide on how to do this, please refer to the <a href="customise.html">How to Customize Pages</a> page.</p>
     </div>
     <div class="faq-item">
-        <h3 id="q-light-version">What is the "Light Version" for?</h3>
-        <p>The "Light Version" is a customizable display mode for the toolkit. It allows each user to hide tools, sections, or columns they do not use, creating a leaner and more focused interface.</p>
-        <p>This customization is managed by the <code>assets/js/config.js</code> file. By editing this file, you can:</p>
-        <ul>
-            <li><strong>Enable or disable</strong> the Light Version by setting <code>lightVersionEnabled</code> to <code>true</code> or <code>false</code>.</li>
-            <li><strong>Specify which elements to hide</strong> by adding their CSS selectors (like <code>#btn-names-us-advbackground</code> or <code>#column-names-usa</code>) to the <code>selectorsToHide</code> array.</li>
-        </ul>
-        <p>When the Light Version is active, a script automatically adds the <code>.hidden-in-light</code> class to all elements listed in the configuration file, making them disappear from the page.</p>
+      <h3 id="q-light-version">What is the "Light Version" for?</h3>
+      <p>The "Light Version" is a customizable display mode for the toolkit. It allows each user to hide tools, sections, or columns they do not use, creating a leaner and more focused interface.</p>
+      <p>This customization is managed by the <code>assets/js/config.js</code> file. By editing this file, you can:</p>
+      <ul>
+        <li><strong>Enable or disable</strong> the Light Version by setting <code>lightVersionEnabled</code> to <code>true</code> or <code>false</code>.</li>
+        <li><strong>Specify which elements to hide</strong> by adding their CSS selectors (like <code>#column-searchengines-tor</code>) to the <code>selectorsToHide</code> array.</li>
+      </ul>
+      <p>When the Light Version is active, a script automatically adds the <code>.hidden-in-light</code> class to all elements listed in the configuration file, making them disappear from the page.</p>
     </div>
 
     <h2 id="s-ethics">Ethics, OPSEC &amp; Responsibility</h2>
     <div class="faq-item">
-        <h3 id="q-ethical-guidelines">What are the ethical guidelines for using these tools?</h3>
-        <p>Ethical use is paramount. Always act within legal and jurisdictional boundaries. The purpose of these tools is for legitimate intelligence gathering on authorized targets. Never use them for harassment, illegal surveillance, or any activity that violates privacy laws or terms of service of the platforms being accessed. The responsibility for ethical conduct lies entirely with the analyst.</p>
+      <h3 id="q-ethical-guidelines">What are the ethical guidelines for using these tools?</h3>
+      <p>Ethical use is paramount. Always act within legal and jurisdictional boundaries. The purpose of these tools is for legitimate intelligence gathering on authorized targets. Never use them for harassment, illegal surveillance, or any activity that violates privacy laws or terms of service of the platforms being accessed. The responsibility for ethical conduct lies entirely with the analyst.</p>
     </div>
     <div class="faq-item">
-        <h3 id="q-opsec-basics">What are some basic OPSEC best practices when using this toolkit?</h3>
-        <p>Operational Security (OPSEC) is critical. While using this toolkit, always consider:</p>
-        <ul>
-            <li><strong>Network Anonymity:</strong> Use a trusted VPN or the Tor network to mask your real IP address.</li>
-            <li><strong>Dedicated Environment:</strong> Conduct investigations from a dedicated virtual machine (VM) or a separate physical device to prevent cross-contamination with your personal data.</li>
-            <li><strong>Browser Fingerprinting:</strong> Be aware that websites can identify you through your browser's unique configuration. Use browsers or browser extensions designed to minimize fingerprinting.</li>
-            <li><strong>Non-Attributable Accounts:</strong> Always use dedicated, non-personal accounts for interacting with online services.</li>
-        </ul>
+      <h3 id="q-opsec-basics">What are some basic OPSEC best practices when using this toolkit?</h3>
+      <p>Operational Security (OPSEC) is critical. While using this toolkit, always consider:</p>
+      <ul>
+        <li><strong>Network Anonymity:</strong> Use a trusted VPN or the Tor network to mask your real IP address.</li>
+        <li><strong>Dedicated Environment:</strong> Conduct investigations from a dedicated virtual machine (VM) or a separate physical device to prevent cross-contamination with your personal data.</li>
+        <li><strong>Browser Fingerprinting:</strong> Be aware that websites can identify you through your browser's unique configuration. Use browsers or browser extensions designed to minimize fingerprinting.</li>
+        <li><strong>Non-Attributable Accounts:</strong> Always use dedicated, non-personal accounts for interacting with online services.</li>
+      </ul>
     </div>
     <div class="faq-item">
       <h3 id="q-investigative-accounts">Is it necessary to create dedicated investigative accounts for using some of these tools?</h3>
@@ -180,15 +181,15 @@
       <p>To report errors or request new functionalities, submit an issue via the GitHub repository. This ensures requests are tracked and addressed.</p>
     </div>
     <div class="faq-item">
-        <h3 id="q-contribution-workflow">What is the recommended workflow for contributing a new page?</h3>
-        <p>The standard workflow for contributing is:</p>
-        <ol>
-            <li><strong>Create the HTML file:</strong> Build the new page in the `pages/` directory, following all project standards (no `onclick`, use `data-search-id`, etc.).</li>
-            <li><strong>Update `validators.js`:</strong> Add a new validation function if the existing ones are not suitable.</li>
-            <li><strong>Update `search-library.js`:</strong> Add the configuration objects for all the new buttons on your page.</li>
-            <li><strong>Update `navigation.js`:</strong> Add a link to your new page in the appropriate submenu.</li>
-            <li><strong>Submit for Review:</strong> Follow the established contribution process (e.g., submitting a pull request on GitHub).</li>
-        </ol>
+      <h3 id="q-contribution-workflow">What is the recommended workflow for contributing a new page?</h3>
+      <p>The standard workflow for contributing is:</p>
+      <ol>
+        <li><strong>Create the HTML file:</strong> Build the new page in the `pages/` directory, following all project standards (no `onclick`, use `data-search-id`, etc.).</li>
+        <li><strong>Update `validators.js`:</strong> Add a new validation function if the existing ones are not suitable.</li>
+        <li><strong>Update `search-library.js`:</strong> Add the configuration objects for all the new buttons on your page.</li>
+        <li><strong>Update `navigation.js`:</strong> Add a link to your new page in the appropriate submenu.</li>
+        <li><strong>Submit for Review:</strong> Follow the established contribution process (e.g., submitting a pull request on GitHub).</li>
+      </ol>
     </div>
 
     <h2 id="s-technical">Technical Details &amp; Troubleshooting</h2>
@@ -203,13 +204,13 @@
       <p>This approach makes the pages cleaner and maintenance easier, as all search logic is defined in one place.</p>
     </div>
     <div class="faq-item">
-        <h3 id="q-page-state">How does the page state management (`updatePageState`) work?</h3>
-        <p>Each interactive page has a small, page-specific script with two key functions: `updatePageState()` and `setInitialPageState()`.</p>
-        <ul>
-            <li>`setInitialPageState()` runs once when the page loads. Its job is to attach event listeners (e.g., for the `input` event) to the page's form fields.</li>
-            <li>`updatePageState()` is called every time a user types into a field. It calls the appropriate validation function from `validators.js`. Based on whether the input is valid, it then enables or disables all the search buttons on the page and adds/removes the `.text-active` class.</li>
-        </ul>
-        <p>This ensures that search buttons are only clickable when the required input is valid.</p>
+      <h3 id="q-page-state">How does the page state management (`updatePageState`) work?</h3>
+      <p>Each interactive page has a small, page-specific script with two key functions: `updatePageState()` and `setInitialPageState()`.</p>
+      <ul>
+        <li>`setInitialPageState()` runs once when the page loads. Its job is to attach event listeners (e.g., for the `input` event) to the page's form fields.</li>
+        <li>`updatePageState()` is called every time a user types into a field. It calls the appropriate validation function from `validators.js`. Based on whether the input is valid, it then enables or disables all the search buttons on the page and adds/removes the `.text-active` class.</li>
+      </ul>
+      <p>This ensures that search buttons are only clickable when the required input is valid.</p>
     </div>
     <div class="faq-item">
       <h3 id="q-add-new-button">What are the steps to add a new search button?</h3>
@@ -224,84 +225,84 @@
       <h3 id="q-button-not-working">What should I check if a button click does nothing?</h3>
       <p>If a button is clickable but doesn't open a new tab, the problem is almost certainly a JavaScript error. The first thing to do is check the browser's <strong>Developer Console</strong> (F12 key, "Console" tab):</p>
       <ul>
-          <li><strong>Look for syntax errors:</strong> The most common error is an <code>Uncaught SyntaxError</code>, often caused by a missing comma (<code>,</code>) between entries in the `search-library.js` file. This error prevents all configurations from loading.</li>
-          <li><strong>Look for "Validator not found" or "SearchLibrary not defined" errors:</strong> These indicate that one of the core JavaScript files (`validators.js`, `search-library.js`) failed to load due to a syntax error or a broken path in the HTML `&lt;script&gt;` tag.</li>
+        <li><strong>Look for syntax errors:</strong> The most common error is an <code>Uncaught SyntaxError</code>, often caused by a missing comma (<code>,</code>) between entries in the `search-library.js` file. This error prevents all configurations from loading.</li>
+        <li><strong>Look for "Validator not found" or "SearchLibrary not defined" errors:</strong> These indicate that one of the core JavaScript files (`validators.js`, `search-library.js`) failed to load due to a syntax error or a broken path in the HTML `&lt;script&gt;` tag.</li>
       </ul>
       <p>Fixing the error shown in the console is the quickest way to get the buttons working again.</p>
     </div>
     <div class="faq-item">
-        <h3 id="q-iban-db-update">How do I update the IBAN bank databases?</h3>
-        <p>The local bank name databases are stored as plain JavaScript files in <code>assets/js/bankDatabases/</code>. Each file exports a single object mapping a bank identifier (BLZ, BIC-4, entity code, etc.) to the bank name. To update or expand a database, simply edit the corresponding file and add or correct entries.</p>
-
-        <h4>Procedure</h4>
-        <ol>
-            <li>Download the official bank list for the country you want to update (see sources below).</li>
-            <li>Open the matching file in <code>assets/js/bankDatabases/</code> (e.g., <code>de.js</code> for Germany).</li>
-            <li>Add or update entries using the format <code>"BANKCODE": "Bank Name"</code>, ensuring each line ends with a comma except the last one before the closing brace.</li>
-            <li>Save the file. No build step is required; the change takes effect immediately in the browser.</li>
-        </ol>
-
-        <h4>Official Sources by Country</h4>
-        <table class="iban-coverage-table">
-            <thead>
-                <tr><th>Country</th><th>File</th><th>Source</th><th>Format</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>Germany (DE)</td><td>de.js</td><td>Deutsche Bundesbank: <em>Bankleitzahlendatei</em></td><td>CSV/TXT, free download</td></tr>
-                <tr><td>Austria (AT)</td><td>at.js</td><td>Oesterreichische Nationalbank: BLZ register</td><td>CSV/XLS, free download</td></tr>
-                <tr><td>Switzerland (CH)</td><td>ch.js</td><td>SIX Group: IID/Clearing register</td><td>XLS/CSV, free download</td></tr>
-                <tr><td>United Kingdom (GB)</td><td>gb.js</td><td>Pay.UK / EISCD: Sort Code directory</td><td>CSV, free download</td></tr>
-                <tr><td>Netherlands (NL)</td><td>nl.js</td><td>BIC lookup via ECB/SWIFT IBAN registry</td><td>Manual / SWIFT API</td></tr>
-                <tr><td>Belgium (BE)</td><td>be.js</td><td>National Bank of Belgium: BIC/IBAN guide</td><td>PDF/Manual</td></tr>
-                <tr><td>France (FR)</td><td>fr.js</td><td>Banque de France: Code CIB / CFONB</td><td>PDF/Manual</td></tr>
-                <tr><td>Spain (ES)</td><td>es.js</td><td>Banco de España: Registro de entidades</td><td>PDF/Web</td></tr>
-                <tr><td>Portugal (PT)</td><td>pt.js</td><td>Banco de Portugal: Instituições de crédito</td><td>PDF/Web</td></tr>
-                <tr><td>Poland (PL)</td><td>pl.js</td><td>Narodowy Bank Polski: IBAN structure / NBP register</td><td>PDF/Web</td></tr>
-                <tr><td>Italy (IT)</td><td>(built-in)</td><td>Banca d'Italia: Albo delle banche (ABI codes)</td><td>XLS, free download</td></tr>
-            </tbody>
-        </table>
-        <p><em>For countries where a single machine-readable file is not available (NL, BE, FR, ES, PT, PL), the ECB's <a href="https://www.ecb.europa.eu/paym/integration/retail/sepa/html/index.en.html" target="_blank" rel="noopener">SEPA IBAN registry</a> and the <a href="https://www.swift.com/our-solutions/compliance-and-shared-services/banking-standards/bic" target="_blank" rel="noopener">SWIFT BIC directory</a> are useful cross-reference sources.</em></p>
+      <h3 id="q-iban-db-update">How do I update the IBAN bank databases?</h3>
+      <p>The local bank name databases are stored as plain JavaScript files in <code>assets/js/bankDatabases/</code>. Each file exports a single object mapping a bank identifier (BLZ, BIC-4, entity code, etc.) to the bank name. To update or expand a database, simply edit the corresponding file and add or correct entries.</p>
+      <h4>Procedure</h4>
+      <ol>
+        <li>Download the official bank list for the country you want to update (see sources below).</li>
+        <li>Open the matching file in <code>assets/js/bankDatabases/</code> (e.g., <code>de.js</code> for Germany).</li>
+        <li>Add or update entries using the format <code>"BANKCODE": "Bank Name"</code>, ensuring each line ends with a comma except the last one before the closing brace.</li>
+        <li>Save the file. No build step is required; the change takes effect immediately in the browser.</li>
+      </ol>
+      <h4>Official Sources by Country</h4>
+      <table class="iban-coverage-table">
+        <thead>
+          <tr><th>Country</th><th>File</th><th>Source</th><th>Format</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Germany (DE)</td><td>de.js</td><td>Deutsche Bundesbank: <em>Bankleitzahlendatei</em></td><td>CSV/TXT, free download</td></tr>
+          <tr><td>Austria (AT)</td><td>at.js</td><td>Oesterreichische Nationalbank: BLZ register</td><td>CSV/XLS, free download</td></tr>
+          <tr><td>Switzerland (CH)</td><td>ch.js</td><td>SIX Group: IID/Clearing register</td><td>XLS/CSV, free download</td></tr>
+          <tr><td>United Kingdom (GB)</td><td>gb.js</td><td>Pay.UK / EISCD: Sort Code directory</td><td>CSV, free download</td></tr>
+          <tr><td>Netherlands (NL)</td><td>nl.js</td><td>BIC lookup via ECB/SWIFT IBAN registry</td><td>Manual / SWIFT API</td></tr>
+          <tr><td>Belgium (BE)</td><td>be.js</td><td>National Bank of Belgium: BIC/IBAN guide</td><td>PDF/Manual</td></tr>
+          <tr><td>France (FR)</td><td>fr.js</td><td>Banque de France: Code CIB / CFONB</td><td>PDF/Manual</td></tr>
+          <tr><td>Spain (ES)</td><td>es.js</td><td>Banco de España: Registro de entidades</td><td>PDF/Web</td></tr>
+          <tr><td>Portugal (PT)</td><td>pt.js</td><td>Banco de Portugal: Instituições de crédito</td><td>PDF/Web</td></tr>
+          <tr><td>Poland (PL)</td><td>pl.js</td><td>Narodowy Bank Polski: IBAN structure / NBP register</td><td>PDF/Web</td></tr>
+          <tr><td>Italy (IT)</td><td>(built-in)</td><td>Banca d'Italia: Albo delle banche (ABI codes)</td><td>XLS, free download</td></tr>
+        </tbody>
+      </table>
+      <p><em>For countries where a single machine-readable file is not available (NL, BE, FR, ES, PT, PL), the ECB's <a href="https://www.ecb.europa.eu/paym/integration/retail/sepa/html/index.en.html" target="_blank" rel="noopener">SEPA IBAN registry</a> and the <a href="https://www.swift.com/standards/data-standards/bic-business-identifier-code" target="_blank" rel="noopener">SWIFT BIC directory</a> are useful cross-reference sources.</em></p>
     </div>
-
-        <h3 id="q-redactor-what">What is the Redactor tool and how does it work?</h3>
-        <p>The Redactor (accessible under the <strong>Tools</strong> menu) is a browser-side PII removal tool designed for workflows that involve submitting case text to external AI models. It scans input text or CSV files and replaces sensitive values with numbered placeholders such as <code>[EMAIL_1]</code>, <code>[VAT_IT_1]</code>, or <code>[AMEX_1]</code>. The same value always receives the same placeholder within a session, so the mapping is consistent. A <strong>Redaction Map</strong> records every substitution and can be exported as JSON for later use.</p>
-        <p>All processing runs locally in your browser. No data is transmitted to any server.</p>
-        <p>Detected categories out of the box:</p>
-        <ul>
-            <li><strong>EMAIL</strong>: standard email addresses.</li>
-            <li><strong>CF</strong>: Italian Codice Fiscale (16-character alphanumeric).</li>
-            <li><strong>National identity / social security numbers</strong>: US SSN (<code>SSN_US</code>, dashed form), UK National Insurance number (<code>NINO_UK</code>, compact and spaced), Spain DNI/NIE (<code>DNI_ES</code>, validated against the real check-letter alphabet), France NIR (<code>NIR_FR</code>, compact and INSEE-spaced, Corsica 2A/2B included), Switzerland AVS (<code>AVS_CH</code>, 756 prefix), Romania CNP (<code>CNP_RO</code>), Finland HETU (<code>HETU_FI</code>), Nordic personal numbers (<code>ID_NORDIC</code>, SE/DK/NO separated form), Czech/Slovak rodné číslo (<code>RC_CZSK</code>, slash form), Belgium national number (<code>NN_BE</code>, dotted form). Digit-only IDs with no distinctive structure (NL BSN, DE Steuer-ID, PL PESEL, HR OIB, UK NHS) cannot be told apart from generic numbers: define a custom pattern if you need them.</li>
-            <li><strong>VAT_XX</strong>: VAT / fiscal codes for 30+ countries, each tagged with its ISO country code (e.g., <code>[VAT_DE_1]</code>, <code>[VAT_FR_1]</code>). Includes both the EU-prefix form (<code>IT04598600403</code>) and the plain 11-digit Italian P.IVA.</li>
-            <li><strong>Payment cards</strong>: American Express (<code>AMEX</code>, CM15/CM13/CM11, 4-6-N grouping), Visa (<code>VISA</code>, 16 and legacy 13 digits), Mastercard (<code>MASTERCARD</code>, 51–55 and 2221–2720), Discover (<code>DISCOVER</code>, 6011/644–649/65xx), JCB (<code>JCB</code>, 3528–3589), Diners Club (<code>DINERS</code>, 300–305/36/38, 4-6-4 grouping), UnionPay (<code>UNIONPAY</code>, 62, 16–19 digits). All in compact form and grouped with spaces or hyphens.</li>
-            <li><strong>Cryptocurrency addresses</strong>: Bitcoin (<code>CRYPTO_BTC</code>: legacy, P2SH, bech32/segwit-taproot), Ethereum and every EVM chain (<code>CRYPTO_ETH</code>: <code>0x…</code>, also BSC/Polygon/Arbitrum wallets), Monero (<code>CRYPTO_XMR</code>), Litecoin (<code>CRYPTO_LTC</code>), Tron (<code>CRYPTO_TRX</code>), Ripple (<code>CRYPTO_XRP</code>). Matching is structural; checksums are not verified.</li>
-            <li><strong>IBAN</strong>: International Bank Account Numbers: 2-letter country code + 2 check digits + BBAN (11–30 chars) — compact, spaced or hyphen-separated, upper or lower case.</li>
-            <li><strong>PHONE_IT_MOBILE</strong>: Italian mobile phone numbers (prefixes 32x–39x, 10 digits). Matches compact (<code>3351234567</code>), grouped (<code>335 123 4567</code>), and country-code formats (<code>+39 335 123 4567</code>, <code>0039335123456</code>, <code>(+39) 335 123 4567</code>).</li>
-            <li><strong>PHONE_DE_MOBILE</strong>: German mobile numbers — prefixes 015x/016x/017x plus 7–8 digits (<code>0151 12345678</code>), with or without <code>+49</code>/<code>0049</code> country code.</li>
-            <li><strong>PHONE_FR_MOBILE</strong>: French mobile numbers — 06/07 plus 8 digits in pairs, dots, hyphens or compact (<code>06 12 34 56 78</code>, <code>0612345678</code>), with or without <code>+33</code>/<code>0033</code> country code.</li>
-            <li><strong>PHONE_UK_MOBILE</strong>: UK mobile numbers — <code>07xxx xxxxxx</code>, compact or spaced, with or without <code>+44</code>/<code>0044</code> country code.</li>
-            <li><strong>PHONE_INTL</strong>: any other international number with an explicit country prefix — <code>+CC</code> followed by 6–12 digits, compact or separated (<code>+34 612 34 56 78</code>, <code>+31612345678</code>), or <code>00CC</code> followed by a separator (<code>0031 6 12345678</code>). The compact <code>00CC…</code> form without separators is deliberately not matched: it cannot be told apart from zero-padded numeric IDs common in CSV exports.</li>
-            <li><strong>PCN</strong>: prescription control numbers and similar codes of 17 or more consecutive digits.</li>
-            <li><strong>SE10</strong>: SE10 merchant codes (exactly 10 digits).</li>
-        </ul>
-
-        <h3 id="q-redactor-flow">What is the Redact → LLM → Restore workflow?</h3>
-        <ol>
-            <li>Paste your text into the <strong>Redactor</strong> section (or upload a CSV) and click <strong>Redact</strong>.</li>
-            <li>Copy the redacted output and submit it to your AI model.</li>
-            <li>Once the AI returns its report (which will contain the placeholders), paste it into the <strong>Restore</strong> section and click <strong>Restore</strong>. All original values are reinserted automatically.</li>
-            <li>If you need to continue a session later (e.g., the report arrives the next day), click <strong>Copy Map (JSON)</strong> to export the redaction map, save it externally, then re-import it via the <strong>Import Map</strong> panel before using Restore.</li>
-        </ol>
-        <p>The session state is held only in memory. It is cleared when you close or refresh the tab, or when you click <strong>Clear Redaction Map</strong>.</p>
-
-        <h3 id="q-redactor-custom">How do I add custom detection patterns to the Redactor?</h3>
-        <p>Open the <strong>Custom Patterns</strong> section on the Redactor page. Fill in the form:</p>
-        <ul>
-            <li><strong>Type name</strong>: used in the placeholder, e.g. <code>CASE_ID</code> → <code>[CASE_ID_1]</code>. Spaces are converted to underscores, letters are uppercased, and any character outside <code>A–Z 0–9 _</code> is removed automatically.</li>
-            <li><strong>Regex</strong>: the pattern without surrounding slashes, e.g. <code>\bCASE-\d{6}\b</code>.</li>
-            <li><strong>Colour</strong>: badge colour in the Redaction Map table.</li>
-            <li><strong>Case-insensitive</strong>: tick to apply the <code>i</code> flag.</li>
-        </ul>
-        <p>Click <strong>Add Pattern</strong>. Patterns that could cause catastrophic backtracking (ReDoS) — for example nested quantifiers such as <code>(a+)+</code> — are rejected with an explanatory message. Custom patterns are saved in your browser's <code>localStorage</code> and persist between sessions. Remove any pattern via the <strong>Remove</strong> button in the active patterns table.</p>
+    <div class="faq-item">
+      <h3 id="q-redactor-what">What is the Redactor tool and how does it work?</h3>
+      <p>The Redactor (accessible under the <strong>Tools</strong> menu) is a browser-side PII removal tool designed for workflows that involve submitting case text to external AI models. It scans input text or CSV files and replaces sensitive values with numbered placeholders such as <code>[EMAIL_1]</code>, <code>[VAT_IT_1]</code>, or <code>[AMEX_1]</code>. The same value always receives the same placeholder within a session, so the mapping is consistent. A <strong>Redaction Map</strong> records every substitution and can be exported as JSON for later use.</p>
+      <p>All processing runs locally in your browser. No data is transmitted to any server.</p>
+      <p>Detected categories out of the box:</p>
+      <ul>
+        <li><strong>EMAIL</strong>: standard email addresses.</li>
+        <li><strong>CF</strong>: Italian Codice Fiscale (16-character alphanumeric).</li>
+        <li><strong>National identity / social security numbers</strong>: US SSN (<code>SSN_US</code>, dashed form), UK National Insurance number (<code>NINO_UK</code>, compact and spaced), Spain DNI/NIE (<code>DNI_ES</code>, validated against the real check-letter alphabet), France NIR (<code>NIR_FR</code>, compact and INSEE-spaced, Corsica 2A/2B included), Switzerland AVS (<code>AVS_CH</code>, 756 prefix), Romania CNP (<code>CNP_RO</code>), Finland HETU (<code>HETU_FI</code>), Nordic personal numbers (<code>ID_NORDIC</code>, SE/DK/NO separated form), Czech/Slovak rodné číslo (<code>RC_CZSK</code>, slash form), Belgium national number (<code>NN_BE</code>, dotted form). Digit-only IDs with no distinctive structure (NL BSN, DE Steuer-ID, PL PESEL, HR OIB, UK NHS) cannot be told apart from generic numbers: define a custom pattern if you need them.</li>
+        <li><strong>VAT_XX</strong>: VAT / fiscal codes for 30 countries, each tagged with its ISO country code (e.g., <code>[VAT_DE_1]</code>, <code>[VAT_FR_1]</code>). Includes both the EU-prefix form (<code>IT04598600403</code>) and the plain 11-digit Italian P.IVA.</li>
+        <li><strong>Payment cards</strong>: American Express (<code>AMEX</code>, CM15/CM13/CM11, 4-6-N grouping), Visa (<code>VISA</code>, 16 and legacy 13 digits), Mastercard (<code>MASTERCARD</code>, 51–55 and 2221–2720), Discover (<code>DISCOVER</code>, 6011/644–649/65xx), JCB (<code>JCB</code>, 3528–3589), Diners Club (<code>DINERS</code>, 300–305/36/38, 4-6-4 grouping), UnionPay (<code>UNIONPAY</code>, 62, 16–19 digits). All in compact form and grouped with spaces or hyphens.</li>
+        <li><strong>Cryptocurrency addresses</strong>: Bitcoin (<code>CRYPTO_BTC</code>: legacy, P2SH, bech32/segwit-taproot), Ethereum and every EVM chain (<code>CRYPTO_ETH</code>: <code>0x…</code>, also BSC/Polygon/Arbitrum wallets), Monero (<code>CRYPTO_XMR</code>), Litecoin (<code>CRYPTO_LTC</code>), Tron (<code>CRYPTO_TRX</code>), Ripple (<code>CRYPTO_XRP</code>). Matching is structural; checksums are not verified.</li>
+        <li><strong>IBAN</strong>: International Bank Account Numbers: 2-letter country code + 2 check digits + BBAN (11–30 chars) — compact, spaced or hyphen-separated, upper or lower case.</li>
+        <li><strong>PHONE_IT_MOBILE</strong>: Italian mobile phone numbers (prefixes 32x–39x, 10 digits). Matches compact (<code>3351234567</code>), grouped (<code>335 123 4567</code>), and country-code formats (<code>+39 335 123 4567</code>, <code>0039335123456</code>, <code>(+39) 335 123 4567</code>).</li>
+        <li><strong>PHONE_DE_MOBILE</strong>: German mobile numbers — prefixes 015x/016x/017x plus 7–8 digits (<code>0151 12345678</code>), with or without <code>+49</code>/<code>0049</code> country code.</li>
+        <li><strong>PHONE_FR_MOBILE</strong>: French mobile numbers — 06/07 plus 8 digits in pairs, dots, hyphens or compact (<code>06 12 34 56 78</code>, <code>0612345678</code>), with or without <code>+33</code>/<code>0033</code> country code.</li>
+        <li><strong>PHONE_UK_MOBILE</strong>: UK mobile numbers — <code>07xxx xxxxxx</code>, compact or spaced, with or without <code>+44</code>/<code>0044</code> country code.</li>
+        <li><strong>PHONE_INTL</strong>: any other international number with an explicit country prefix — <code>+CC</code> followed by 6–12 digits, compact or separated (<code>+34 612 34 56 78</code>, <code>+31612345678</code>), or <code>00CC</code> followed by a separator (<code>0031 6 12345678</code>). The compact <code>00CC…</code> form without separators is deliberately not matched: it cannot be told apart from zero-padded numeric IDs common in CSV exports.</li>
+        <li><strong>PCN</strong>: prescription control numbers and similar codes of 17 or more consecutive digits.</li>
+        <li><strong>SE10</strong>: SE10 merchant codes (exactly 10 digits).</li>
+      </ul>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-redactor-flow">What is the Redact → LLM → Restore workflow?</h3>
+      <ol>
+        <li>Paste your text into the <strong>Redactor</strong> section (or upload a CSV) and click <strong>Redact</strong>.</li>
+        <li>Copy the redacted output and submit it to your AI model.</li>
+        <li>Once the AI returns its report (which will contain the placeholders), paste it into the <strong>Restore</strong> section and click <strong>Restore</strong>. All original values are reinserted automatically.</li>
+        <li>If you need to continue a session later (e.g., the report arrives the next day), click <strong>Copy Map (JSON)</strong> to export the redaction map, save it externally, then re-import it via the <strong>Import Map</strong> panel before using Restore.</li>
+      </ol>
+      <p>The session state is held only in memory. It is cleared when you close or refresh the tab, or when you click <strong>Clear Redaction Map</strong>.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-redactor-custom">How do I add custom detection patterns to the Redactor?</h3>
+      <p>Open the <strong>Custom Patterns</strong> section on the Redactor page. Fill in the form:</p>
+      <ul>
+        <li><strong>Type name</strong>: used in the placeholder, e.g. <code>CASE_ID</code> → <code>[CASE_ID_1]</code>. Spaces are converted to underscores, letters are uppercased, and any character outside <code>A–Z 0–9 _</code> is removed automatically.</li>
+        <li><strong>Regex</strong>: the pattern without surrounding slashes, e.g. <code>\bCASE-\d{6}\b</code>.</li>
+        <li><strong>Colour</strong>: badge colour in the Redaction Map table.</li>
+        <li><strong>Case-insensitive</strong>: tick to apply the <code>i</code> flag.</li>
+      </ul>
+      <p>Click <strong>Add Pattern</strong>. Patterns that could cause catastrophic backtracking (ReDoS) — for example nested quantifiers such as <code>(a+)+</code> — are rejected with an explanatory message. Custom patterns are saved in your browser's <code>localStorage</code> and persist between sessions. Remove any pattern via the <strong>Remove</strong> button in the active patterns table.</p>
     </div>
 
     <h2 id="s-llm">LLMs and Toolkit Development</h2>
@@ -341,7 +342,7 @@
 </main>
 
 <footer>
-  <p>Exploratores 3.4.0 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.4.1 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>
@@ -367,10 +368,10 @@
     document.querySelectorAll('.faq-toc a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        
+
         const targetId = this.getAttribute('href');
         const targetElement = document.querySelector(targetId);
-        
+
         if (targetElement) {
           targetElement.scrollIntoView({
             behavior: 'smooth',

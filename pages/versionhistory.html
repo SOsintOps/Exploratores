@@ -1,211 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Version History • Exploratores</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Version History • Exploratores</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
 </head>
 <body>
 
 <div id="navbar-placeholder"></div>
 
 <main>
-    <h1 class="page-title">Version History</h1>
-    <p class="center-text">Changelog of all releases and improvements to the Exploratores OSINT Toolkit.</p>
+  <h1 class="page-title">Version History</h1>
+  <p class="center-text">Changelog of all releases and improvements to the Exploratores OSINT Toolkit.</p>
 
-    <section class="faq-section">
+  <section class="faq-section">
 
-        <div class="faq-item">
-            <h2>3.4.0 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
-            <ul>
-                <li><strong>New:</strong> Redactor: phone detection extended beyond Italy — German mobiles (015x/016x/017x, <code>PHONE_DE_MOBILE</code>), French mobiles (06/07 in pairs, dots, hyphens or compact, <code>PHONE_FR_MOBILE</code>) and UK mobiles (07xxx xxxxxx, <code>PHONE_UK_MOBILE</code>), each with or without its country code, plus a generic <code>PHONE_INTL</code> catch-all for any number with an explicit <code>+CC</code> prefix (6–12 digits) or <code>00CC</code> followed by a separator. The compact <code>00CC…</code> form is deliberately not matched: it cannot be told apart from zero-padded numeric IDs common in CSV exports. Country-specific patterns are evaluated before the generic one so prefixed numbers keep their country type; the whole block stays before PCN/SE10 in overlap resolution.</li>
-                <li><strong>Improved:</strong> Redactor: the "Detects" note is now a three-column grouped list (Personal identity / Financial &amp; payment / Contact &amp; other) with alphabetical entries, replacing the single bullet-separated paragraph; payment-card BIN ranges live in the help page only.</li>
-            </ul>
-        </div>
+    <div class="faq-item">
+      <h2>3.4.1 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+      <ul>
+        <li><strong>Fixed:</strong> FAQ: dead SWIFT BIC directory link replaced with the current swift.com BIC standard page; the Light Version selector example now matches the real <code>config.js</code> entry; VAT country count corrected to 30.</li>
+        <li><strong>Fixed:</strong> Docs: <code>faq.md</code> realigned with the FAQ page (IBAN bank-database update guide, recommended reading list, Redactor and IBAN entries in the Table of Contents); Customise code snippets aligned with the real validator API (<code>queryOverride</code> parameter, strict IPv4 regex, <code>isValid</code> return convention) and lowercase page filenames.</li>
+        <li><strong>Improved:</strong> Customise: custom-pattern Technical Notes now document ReDoS screening, the type-name character set and length limits, and the Flags column; auxiliary JS modules listed alongside the five core files.</li>
+        <li><strong>Improved:</strong> Help pages: uniform layout — consistent 2-space indentation, intro subtitle on all four pages, FAQ Redactor entries wrapped in standard <code>faq-item</code> blocks; <code>versionhistory.html</code> wording realigned with <code>versionhistory.md</code> (British spellings, "Centralised architecture").</li>
+      </ul>
+    </div>
 
-        <div class="faq-item">
-            <h2>3.3.0 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
-            <ul>
-                <li><strong>Improved:</strong> CyberChef updated to v11.2.0 (from v10.22.1); the bundled module set now includes the new <code>File.js</code> module.</li>
-                <li><strong>New:</strong> FAQ: "What inspired the creation of the toolkit?" entry crediting Michael Bazzell's <em>Open Source Intelligence Techniques</em> as the inspiration for the browser-based search-tool approach; the codebase remains an original implementation.</li>
-            </ul>
-        </div>
+    <div class="faq-item">
+      <h2>3.4.0 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+      <ul>
+        <li><strong>New:</strong> Redactor: phone detection extended beyond Italy — German mobiles (015x/016x/017x, <code>PHONE_DE_MOBILE</code>), French mobiles (06/07 in pairs, dots, hyphens or compact, <code>PHONE_FR_MOBILE</code>) and UK mobiles (07xxx xxxxxx, <code>PHONE_UK_MOBILE</code>), each with or without its country code, plus a generic <code>PHONE_INTL</code> catch-all for any number with an explicit <code>+CC</code> prefix (6–12 digits) or <code>00CC</code> followed by a separator. The compact <code>00CC…</code> form is deliberately not matched: it cannot be told apart from zero-padded numeric IDs common in CSV exports. Country-specific patterns are evaluated before the generic one so prefixed numbers keep their country type; the whole block stays before PCN/SE10 in overlap resolution.</li>
+        <li><strong>Improved:</strong> Redactor: the "Detects" note is now a three-column grouped list (Personal identity / Financial &amp; payment / Contact &amp; other) with alphabetical entries, replacing the single bullet-separated paragraph; payment-card BIN ranges live in the help page only.</li>
+      </ul>
+    </div>
 
-        <div class="faq-item">
-            <h2>3.2.0 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
-            <ul>
-                <li><strong>New:</strong> Redactor: cryptocurrency address detection — Bitcoin (legacy, P2SH and bech32/segwit-taproot), Ethereum and every EVM chain (<code>0x…</code>, also BSC/Polygon/Arbitrum wallets), Monero, Litecoin, Tron, Ripple. Matching is structural (prefix, alphabet, length); checksums are not verified. Solana and other plain-base58 formats without a fixed prefix are omitted by design: they would match too many random tokens.</li>
-                <li><strong>New:</strong> Redactor: national identity and social security numbers for 10+ jurisdictions — US SSN (dashed form), UK National Insurance number (compact and spaced, real restricted alphabet), Spain DNI/NIE (validated against the real check-letter alphabet), France NIR (compact and INSEE-spaced, Corsica 2A/2B included), Switzerland AVS (756 prefix), Romania CNP, Finland HETU, Nordic personal numbers (SE/DK/NO separated form), Czech/Slovak rodné číslo (slash form), Belgium national number (dotted form). Digit-only IDs with no distinctive structure (NL BSN, DE Steuer-ID, PL PESEL, HR OIB, UK NHS) are deliberately excluded and documented as custom-pattern material.</li>
-                <li><strong>New:</strong> Redactor: payment card coverage extended with JCB (3528–3589), Diners Club (300–305/36/38, 4-6-4 grouping) and UnionPay (62, 16–19 digits).</li>
-                <li><strong>Improved:</strong> Redactor: card numbers grouped with hyphens (<code>4111-1111-1111-1111</code>) are now detected for Visa, Mastercard, Discover, JCB and UnionPay; IBAN matching accepts lowercase and hyphen-separated forms in addition to compact and spaced.</li>
-                <li><strong>Changed:</strong> docs: the custom-pattern walkthrough example switched from <code>SSN_US</code> (now a built-in type) to a <code>CASE_ID</code> internal-reference example.</li>
-            </ul>
-        </div>
+    <div class="faq-item">
+      <h2>3.3.0 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+      <ul>
+        <li><strong>Improved:</strong> CyberChef updated to v11.2.0 (from v10.22.1); the bundled module set now includes the new <code>File.js</code> module.</li>
+        <li><strong>New:</strong> FAQ: "What inspired the creation of the toolkit?" entry crediting Michael Bazzell's <em>Open Source Intelligence Techniques</em> as the inspiration for the browser-based search-tool approach; the codebase remains an original implementation.</li>
+      </ul>
+    </div>
 
-        <div class="faq-item">
-            <h2>3.1.7 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
-            <ul>
-                <li><strong>Improved:</strong> Redactor: the Redaction Map is now grouped by data family following the pattern order — payment cards first (AMEX, VISA, MASTERCARD, DISCOVER), then Codice Fiscale, VAT codes, email, IBAN, phone numbers, PCN, SE10, and custom patterns last — instead of alphabetically, so related types sit together.</li>
-                <li><strong>Fixed:</strong> Redactor: placeholder numbering now follows reading order — <code>[TYPE_1]</code> is always the first occurrence in the text. Previously numbers were assigned during the right-to-left substitution pass, so the last occurrence received <code>_1</code>.</li>
-            </ul>
-        </div>
+    <div class="faq-item">
+      <h2>3.2.0 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+      <ul>
+        <li><strong>New:</strong> Redactor: cryptocurrency address detection — Bitcoin (legacy, P2SH and bech32/segwit-taproot), Ethereum and every EVM chain (<code>0x…</code>, also BSC/Polygon/Arbitrum wallets), Monero, Litecoin, Tron, Ripple. Matching is structural (prefix, alphabet, length); checksums are not verified. Solana and other plain-base58 formats without a fixed prefix are omitted by design: they would match too many random tokens.</li>
+        <li><strong>New:</strong> Redactor: national identity and social security numbers for 10+ jurisdictions — US SSN (dashed form), UK National Insurance number (compact and spaced, real restricted alphabet), Spain DNI/NIE (validated against the real check-letter alphabet), France NIR (compact and INSEE-spaced, Corsica 2A/2B included), Switzerland AVS (756 prefix), Romania CNP, Finland HETU, Nordic personal numbers (SE/DK/NO separated form), Czech/Slovak rodné číslo (slash form), Belgium national number (dotted form). Digit-only IDs with no distinctive structure (NL BSN, DE Steuer-ID, PL PESEL, HR OIB, UK NHS) are deliberately excluded and documented as custom-pattern material.</li>
+        <li><strong>New:</strong> Redactor: payment card coverage extended with JCB (3528–3589), Diners Club (300–305/36/38, 4-6-4 grouping) and UnionPay (62, 16–19 digits).</li>
+        <li><strong>Improved:</strong> Redactor: card numbers grouped with hyphens (<code>4111-1111-1111-1111</code>) are now detected for Visa, Mastercard, Discover, JCB and UnionPay; IBAN matching accepts lowercase and hyphen-separated forms in addition to compact and spaced.</li>
+        <li><strong>Changed:</strong> docs: the custom-pattern walkthrough example switched from <code>SSN_US</code> (now a built-in type) to a <code>CASE_ID</code> internal-reference example.</li>
+      </ul>
+    </div>
 
-        <div class="faq-item">
-            <h2>3.1.6 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
-            <ul>
-                <li><strong>Security:</strong> all Google Fonts references removed; Inter and Cinzel are now self-hosted in <code>assets/fonts/</code> (WOFF2, latin + latin-ext subsets). No third-party request — and therefore no Referer metadata — ever leaves a page, closing the last external dependency on pages that process PII.</li>
-                <li><strong>Security:</strong> Redactor: custom patterns are now screened against catastrophic backtracking (ReDoS): nested-quantifier structures are rejected outright and every new pattern must complete a timed canary run before being accepted.</li>
-                <li><strong>Security:</strong> Redactor: custom patterns loaded from <code>localStorage</code> are fully validated (type name, regex source, flags, colour) before use; the Redaction Map and Custom Patterns tables are built with DOM APIs instead of <code>innerHTML</code>, removing the structural dependency on manual HTML escaping.</li>
-                <li><strong>Fixed:</strong> Redactor: both CSV FileReaders now report read failures with an alert instead of failing silently.</li>
-                <li><strong>Fixed:</strong> Redactor: Restore CSV now shows the same large-file warning as Redact CSV before processing.</li>
-                <li><strong>Fixed:</strong> Redactor: clipboard copy failures (permission denied, non-HTTPS context) now show "Copy failed" on the button instead of a false "Copied!".</li>
-                <li><strong>Improved:</strong> Redactor: Import Map enforces hard caps (10,000 entries, 10,000 characters per value, 5 MB JSON) and first-mapping-wins conflict resolution when the same original value appears under two placeholders.</li>
-                <li><strong>Improved:</strong> Redactor: "Clear Session" renamed to "Clear Redaction Map"; UI notes clarify that custom patterns — including their type names — persist in <code>localStorage</code> and are not touched by the button.</li>
-                <li><strong>Improved:</strong> Redactor: duplicate type names are rejected inside <code>addCustomPattern</code> as well as in the UI; type names are restricted to <code>A–Z 0–9 _</code>; the CSV line-count warning also counts bare-CR (old Mac) line endings.</li>
-                <li><strong>Chore:</strong> internal working files (<code>todo/</code>, <code>docs/WIP/</code>, <code>pages/test/</code>, local status notes) removed from the repository ahead of public release.</li>
-            </ul>
-        </div>
+    <div class="faq-item">
+      <h2>3.1.7 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+      <ul>
+        <li><strong>Improved:</strong> Redactor: the Redaction Map is now grouped by data family following the pattern order — payment cards first (AMEX, VISA, MASTERCARD, DISCOVER), then Codice Fiscale, VAT codes, email, IBAN, phone numbers, PCN, SE10, and custom patterns last — instead of alphabetically, so related types sit together.</li>
+        <li><strong>Fixed:</strong> Redactor: placeholder numbering now follows reading order — <code>[TYPE_1]</code> is always the first occurrence in the text. Previously numbers were assigned during the right-to-left substitution pass, so the last occurrence received <code>_1</code>.</li>
+      </ul>
+    </div>
 
-        <div class="faq-item">
-            <h2>3.1.5 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
-            <ul>
-                <li><strong>New:</strong> Redactor: CSV restore mode added to the Restore section. Upload a previously redacted CSV file, apply the current session map to every cell, and download the result as <code>restored.csv</code>. The CSV parser follows RFC 4180 and handles quoted fields, embedded commas, and line breaks inside cells.</li>
-                <li><strong>Improved:</strong> Redactor: section heading and action button renamed from "Censor" / "Censor CSV" to "Redactor" / "Redact CSV" for consistency with the tool name.</li>
-                <li><strong>New:</strong> Help: dedicated guide pages added for the Redactor (<code>help-redactor.html</code>) and the IBAN Tool (<code>help-iban.html</code>), with step-by-step instructions and screenshots. Both pages are accessible from the Help menu.</li>
-                <li><strong>Fixed:</strong> <code>validators.js</code>: four VK element IDs aligned with the vk.html DOM (<code>getAndValidateVkUsername</code>, <code>getAndValidateVkUserId</code>, <code>getAndValidateVkTag</code>, <code>getAndValidateVkSmat</code>); the affected buttons read from non-existent inputs and silently failed. <em>(Shipped between 3.1.1 and 3.1.5 without its own changelog entry; folded into this release.)</em></li>
-                <li><strong>Improved:</strong> Redactor: the plain 11-digit <code>VAT_IT</code> pattern now validates the office-code block (001–121), sharply reducing false positives on generic 11-digit numbers. <em>(Folded into this release.)</em></li>
-                <li><strong>Improved:</strong> Redactor: text restore rewritten to use a single combined regex, removing the risk of partial placeholder substitution; the Redaction Map table is grouped by type with per-type counts. <em>(Folded into this release.)</em></li>
-                <li><strong>Fixed:</strong> Redactor: Import Map now initialises counters for types never seen in the current session, preventing placeholder collisions after an import. <em>(Folded into this release.)</em></li>
-                <li><strong>Chore:</strong> line endings normalised across 33 files via <code>.gitattributes</code> and <code>git renormalize</code>. <em>(Folded into this release.)</em></li>
-            </ul>
-        </div>
+    <div class="faq-item">
+      <h2>3.1.6 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+      <ul>
+        <li><strong>Security:</strong> all Google Fonts references removed; Inter and Cinzel are now self-hosted in <code>assets/fonts/</code> (WOFF2, latin + latin-ext subsets). No third-party request — and therefore no Referer metadata — ever leaves a page, closing the last external dependency on pages that process PII.</li>
+        <li><strong>Security:</strong> Redactor: custom patterns are now screened against catastrophic backtracking (ReDoS): nested-quantifier structures are rejected outright and every new pattern must complete a timed canary run before being accepted.</li>
+        <li><strong>Security:</strong> Redactor: custom patterns loaded from <code>localStorage</code> are fully validated (type name, regex source, flags, colour) before use; the Redaction Map and Custom Patterns tables are built with DOM APIs instead of <code>innerHTML</code>, removing the structural dependency on manual HTML escaping.</li>
+        <li><strong>Fixed:</strong> Redactor: both CSV FileReaders now report read failures with an alert instead of failing silently.</li>
+        <li><strong>Fixed:</strong> Redactor: Restore CSV now shows the same large-file warning as Redact CSV before processing.</li>
+        <li><strong>Fixed:</strong> Redactor: clipboard copy failures (permission denied, non-HTTPS context) now show "Copy failed" on the button instead of a false "Copied!".</li>
+        <li><strong>Improved:</strong> Redactor: Import Map enforces hard caps (10,000 entries, 10,000 characters per value, 5 MB JSON) and first-mapping-wins conflict resolution when the same original value appears under two placeholders.</li>
+        <li><strong>Improved:</strong> Redactor: "Clear Session" renamed to "Clear Redaction Map"; UI notes clarify that custom patterns — including their type names — persist in <code>localStorage</code> and are not touched by the button.</li>
+        <li><strong>Improved:</strong> Redactor: duplicate type names are rejected inside <code>addCustomPattern</code> as well as in the UI; type names are restricted to <code>A–Z 0–9 _</code>; the CSV line-count warning also counts bare-CR (old Mac) line endings.</li>
+        <li><strong>Chore:</strong> internal working files (<code>todo/</code>, <code>docs/WIP/</code>, <code>pages/test/</code>, local status notes) removed from the repository ahead of public release.</li>
+      </ul>
+    </div>
 
-        <div class="faq-item">
-            <h2>3.1.1 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
-            <ul>
-                <li><strong>Fixed:</strong> <code>main.js</code>: validator functions extracted from <code>ExploratoresValidators</code> were called without context, losing <code>this</code>. Affected buttons: GHunt (email), Tumblr username, SMAT/VK username, NetworksDB range — all silently failed on click. Fixed by calling validators with <code>.call(ExploratoresValidators, ...)</code>.</li>
-                <li><strong>Fixed:</strong> <code>indicator-classifier.js</code>: COORDINATES regex had a missing decimal point in the longitude group (<code>(?:\d+)?</code> instead of <code>(?:\.\d+)?</code>). Decimal coordinates such as <code>40.7128, -74.0060</code> were never classified as COORDINATES and produced no results in Janua.</li>
-                <li><strong>Fixed:</strong> <code>search-library.js</code> (<code>phoneint-dt-base</code>): URL template contained <code>{placeholder}</code>, which is not a key returned by <code>getAndValidateIntlPhone</code>; the button opened a broken URL. Replaced with <code>{e164}</code>.</li>
-                <li><strong>Fixed:</strong> <code>janua-search-map.js</code>: six entries introduced in 3.1.0 (YachtlyCrew, Hitta, Eniro, Mr Koll, Ratsit, Merinfo) were present in <code>search-library.js</code> but missing from <code>janua-search-map.js</code>; they never appeared in Janua dispatch results. Entries added.</li>
-                <li><strong>Fixed:</strong> <code>editorconfig</code> renamed to <code>.editorconfig</code>; without the leading dot, editors and IDEs never loaded the file and the declared rules (LF line endings, UTF-8, 2-space indent) were never applied.</li>
-                <li><strong>Fixed:</strong> Empty artefact files <code>20</code> and <code>p.type</code> introduced accidentally in a prior commit removed from the repository root.</li>
-            </ul>
-        </div>
+    <div class="faq-item">
+      <h2>3.1.5 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+      <ul>
+        <li><strong>New:</strong> Redactor: CSV restore mode added to the Restore section. Upload a previously redacted CSV file, apply the current session map to every cell, and download the result as <code>restored.csv</code>. The CSV parser follows RFC 4180 and handles quoted fields, embedded commas, and line breaks inside cells.</li>
+        <li><strong>Improved:</strong> Redactor: section heading and action button renamed from "Censor" / "Censor CSV" to "Redactor" / "Redact CSV" for consistency with the tool name.</li>
+        <li><strong>New:</strong> Help: dedicated guide pages added for the Redactor (<code>help-redactor.html</code>) and the IBAN Tool (<code>help-iban.html</code>), with step-by-step instructions and screenshots. Both pages are accessible from the Help menu.</li>
+        <li><strong>Fixed:</strong> <code>validators.js</code>: four VK element IDs aligned with the vk.html DOM (<code>getAndValidateVkUsername</code>, <code>getAndValidateVkUserId</code>, <code>getAndValidateVkTag</code>, <code>getAndValidateVkSmat</code>); the affected buttons read from non-existent inputs and silently failed. <em>(Shipped between 3.1.1 and 3.1.5 without its own changelog entry; folded into this release.)</em></li>
+        <li><strong>Improved:</strong> Redactor: the plain 11-digit <code>VAT_IT</code> pattern now validates the office-code block (001–121), sharply reducing false positives on generic 11-digit numbers. <em>(Folded into this release.)</em></li>
+        <li><strong>Improved:</strong> Redactor: text restore rewritten to use a single combined regex, removing the risk of partial placeholder substitution; the Redaction Map table is grouped by type with per-type counts. <em>(Folded into this release.)</em></li>
+        <li><strong>Fixed:</strong> Redactor: Import Map now initialises counters for types never seen in the current session, preventing placeholder collisions after an import. <em>(Folded into this release.)</em></li>
+        <li><strong>Chore:</strong> line endings normalised across 33 files via <code>.gitattributes</code> and <code>git renormalize</code>. <em>(Folded into this release.)</em></li>
+      </ul>
+    </div>
 
-        <div class="faq-item">
-            <h2>3.1.0 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
-            <ul>
-                <li><strong>New:</strong> Redactor: PII removal tool for text and CSV files before submission to AI models. Detects Email addresses, Codice Fiscale (IT), VAT/fiscal codes for 30+ countries, payment card numbers (AMEX CM11/CM13/CM15, Visa 13/16-digit, Mastercard Classic 51–55/New 2221–2720, Discover 6011/644–649/65xx — all compact and spaced), IBAN bank account numbers (compact and spaced), Italian mobile phone numbers (prefixes 32x–39x, with optional +39/0039 country code, compact and grouped), PCN codes (17+ digits), and SE10 merchant codes; replaces them with numbered placeholders (<code>[TYPE_N]</code>). Includes Copy/Import Map for cross-session persistence, Custom Patterns (user-defined regex with localStorage), large-input warning (&gt;20,000 lines), and a Restore function. All processing is local; no data transmitted. Added to the Tools menu.</li>
-                <li><strong>New:</strong> IBAN Tool: added offline bank name resolution for 8 new countries: Albania (AL), Croatia (HR), Cyprus (CY), Greece (GR), Malta (MT), Montenegro (ME), Slovenia (SI), Turkey (TR). Coverage table updated accordingly.</li>
-                <li><strong>Improved:</strong> IBAN bank databases: all 8 new country databases replaced with data sourced from official registers: Slovenia from Banka Slovenije (bsi.si); Croatia from HNB VBDI register; Montenegro from Erste Bank Montenegro IBAN calculator; Turkey from AFAD official donation IBANs; Greece from Hellenic Bank Association HEBIC index and bank websites; Cyprus from Central Bank of Cyprus IBAN register; Albania (1 entry confirmed from Raiffeisen Bank Albania). Coverage table updated with accurate entry counts and quality ratings.</li>
-                <li><strong>Improved:</strong> Guidelines: "Criminal Intelligence: Manual for Analysts" (UNODC, Atkin 2011) added to Further Reading; books reordered from introductory to specific; likelihood table styled correctly.</li>
-                <li><strong>Fixed:</strong> <code>main.js</code>: <code>getAttribute('data-query-override')</code> returned <code>null</code> (not <code>undefined</code>) when attribute absent, causing all single-input validators to fail at click time. Affected: Search Engines, Email, Usernames, Vehicles. Fixed with <code>hasAttribute</code> guard.</li>
-                <li><strong>Fixed:</strong> Communities Tool: button selectors used <code>:nth-of-type</code> with class, which does not match by class in CSS — buttons never received <code>text-active</code> state. Fixed with adjacent-sibling selectors (<code>+</code>).</li>
-                <li><strong>Fixed:</strong> X (Twitter) Tools: same <code>:first-of-type</code>/<code>:last-of-type</code> selector issue in the Web Archives section. Fixed with adjacent-sibling selectors.</li>
-                <li><strong>New:</strong> Names Tool: Sweden added to National Registers with five sources: Hitta.se, Eniro, Mr Koll, Ratsit, and Merinfo. Each uses the verified search URL pattern for that service.</li>
-                <li><strong>New:</strong> Names Tool: YachtlyCrew added to General &amp; Social Presence for searching yacht crew by name.</li>
-                <li><strong>Fixed:</strong> Names Tool: five buttons were incorrectly active without input due to <code>no_input: true</code> (Google Maps, Interpol Red Notices, OFAC Sanctions Search, Canada411, Search Systems). Flag removed; buttons now require name input.</li>
-                <li><strong>Fixed:</strong> Names Tool: Google Maps URL template contained the literal string <code>FULL_NAME_ENC</code> instead of the <code>{fullname}</code> placeholder; search never worked. Corrected.</li>
-                <li><strong>Improved:</strong> Names Tool: Canada411 URL updated to embed first and last name in the search query parameters instead of linking to the generic address page.</li>
-            </ul>
-        </div>
+    <div class="faq-item">
+      <h2>3.1.1 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+      <ul>
+        <li><strong>Fixed:</strong> <code>main.js</code>: validator functions extracted from <code>ExploratoresValidators</code> were called without context, losing <code>this</code>. Affected buttons: GHunt (email), Tumblr username, SMAT/VK username, NetworksDB range — all silently failed on click. Fixed by calling validators with <code>.call(ExploratoresValidators, ...)</code>.</li>
+        <li><strong>Fixed:</strong> <code>indicator-classifier.js</code>: COORDINATES regex had a missing decimal point in the longitude group (<code>(?:\d+)?</code> instead of <code>(?:\.\d+)?</code>). Decimal coordinates such as <code>40.7128, -74.0060</code> were never classified as COORDINATES and produced no results in Janua.</li>
+        <li><strong>Fixed:</strong> <code>search-library.js</code> (<code>phoneint-dt-base</code>): URL template contained <code>{placeholder}</code>, which is not a key returned by <code>getAndValidateIntlPhone</code>; the button opened a broken URL. Replaced with <code>{e164}</code>.</li>
+        <li><strong>Fixed:</strong> <code>janua-search-map.js</code>: six entries introduced in 3.1.0 (YachtlyCrew, Hitta, Eniro, Mr Koll, Ratsit, Merinfo) were present in <code>search-library.js</code> but missing from <code>janua-search-map.js</code>; they never appeared in Janua dispatch results. Entries added.</li>
+        <li><strong>Fixed:</strong> <code>editorconfig</code> renamed to <code>.editorconfig</code>; without the leading dot, editors and IDEs never loaded the file and the declared rules (LF line endings, UTF-8, 2-space indent) were never applied.</li>
+        <li><strong>Fixed:</strong> Empty artefact files <code>20</code> and <code>p.type</code> introduced accidentally in a prior commit removed from the repository root.</li>
+      </ul>
+    </div>
 
-        <div class="faq-item">
-            <h2>3.0 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
-            <ul>
-                <li><strong>New:</strong> Navigation: dedicated <em>Help</em> menu (Guidelines, FAQ, Customise, Version History); <em>Tools</em> now contains CyberChef only.</li>
-                <li><strong>Improved:</strong> CyberChef updated to v10.22.1.</li>
-                <li><strong>New:</strong> IBAN Checker: Bing, Yandex, and Baidu search buttons added.</li>
-                <li><strong>New:</strong> Phone International: dial code normalization: <code>0039</code> / <code>+39</code> / spaces all converted to E.164 automatically.</li>
-                <li><strong>Improved:</strong> IBAN page: external OSINT search merged into IBAN Checker section; auto-verify on input (no button needed); inline validation feedback on same line as input.</li>
-                <li><strong>Improved:</strong> Phone International: libphonenumber-js updated to latest; Truecaller URL now uses lowercase ISO code.</li>
-                <li><strong>Improved:</strong> <code>validators.js</code>: <code>getAndValidateIban</code> function added; <code>getAndValidateIntlPhone</code> enhanced with normalization and conditional guards.</li>
-                <li><strong>Improved:</strong> <code>search-library.js</code>: IBAN Bing/Yandex/Baidu entries added; Truecaller template corrected to <code>{country_iso_lower}</code>.</li>
-                <li><strong>Fixed:</strong> IBAN search buttons never worked (validator function was missing).</li>
-                <li><strong>Fixed:</strong> Phone buttons always enabled regardless of input validity.</li>
-                <li><strong>Fixed:</strong> Phone intel display was always empty (<code>validationResult.data</code> was passed incorrectly).</li>
-                <li><strong>Fixed:</strong> Truecaller generated uppercase ISO in URL (e.g. <code>/IT/</code> instead of <code>/it/</code>).</li>
-                <li><strong>Fixed:</strong> US Phone: <code>updatePageState</code> did not unwrap the validator result object; buttons were never disabled and phone intel always showed an error.</li>
-                <li><strong>Improved:</strong> IBAN page: replaced IBAN.com with IBAN Calculator; removed broken SWIFT Search; buttons centered on page.</li>
-                <li><strong>Improved:</strong> OSINT language review: standardised register across all pages: replaced "Insert" with "Enter", removed "Please" softeners, fixed informal abbreviations (FB→Facebook, IG→Instagram), corrected "For proper function" phrasing, translated Italian headings in Search Engines, updated page titles for consistency, and adopted British English throughout.</li>
-                <li><strong>Improved:</strong> README: removed marketing emoji from headers; fixed numbered list; tightened credits phrasing.</li>
-                <li><strong>Improved:</strong> FAQ/Guidelines/Customise: tightened informal language ("side project"→"voluntary basis", "bulwark"→"safeguard", "Mindful"→"Disciplined Online Conduct"); standardised person/voice.</li>
-                <li><strong>Improved:</strong> Social media pages: clarified ambiguous labels ("Outgoing"→"Outgoing Mentions"), renamed headings for precision ("Virtual Currencies"→"Cryptocurrency Analysis", "Other Reverse Image Search"→"Video Thumbnail &amp; Image Reverse Search").</li>
-                <li><strong>Fixed:</strong> Dorks page footer showed 3.0α instead of 3.0β; "VirusTotal" brand name corrected in Domains page.</li>
-                <li><strong>Fixed:</strong> VK page: moved "WORK IN PROGRESS" from h1 tag to proper NOTE banner.</li>
-                <li><strong>New:</strong> Phone International: Tellows reputation lookup added.</li>
-                <li><strong>Fixed:</strong> Search Engines: <code>updatePageState</code> did not unwrap the validator result object; buttons appeared active regardless of input.</li>
-                <li><strong>Fixed:</strong> Names: same validator unwrap bug; buttons were never properly disabled.</li>
-                <li><strong>Improved:</strong> IBAN page: NOTE label standardised to match the pattern used across all other pages.</li>
-            </ul>
-        </div>
+    <div class="faq-item">
+      <h2>3.1.0 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+      <ul>
+        <li><strong>New:</strong> Redactor: PII removal tool for text and CSV files before submission to AI models. Detects Email addresses, Codice Fiscale (IT), VAT/fiscal codes for 30+ countries, payment card numbers (AMEX CM11/CM13/CM15, Visa 13/16-digit, Mastercard Classic 51–55/New 2221–2720, Discover 6011/644–649/65xx — all compact and spaced), IBAN bank account numbers (compact and spaced), Italian mobile phone numbers (prefixes 32x–39x, with optional +39/0039 country code, compact and grouped), PCN codes (17+ digits), and SE10 merchant codes; replaces them with numbered placeholders (<code>[TYPE_N]</code>). Includes Copy/Import Map for cross-session persistence, Custom Patterns (user-defined regex with localStorage), large-input warning (&gt;20,000 lines), and a Restore function. All processing is local; no data transmitted. Added to the Tools menu.</li>
+        <li><strong>New:</strong> IBAN Tool: added offline bank name resolution for 8 new countries: Albania (AL), Croatia (HR), Cyprus (CY), Greece (GR), Malta (MT), Montenegro (ME), Slovenia (SI), Turkey (TR). Coverage table updated accordingly.</li>
+        <li><strong>Improved:</strong> IBAN bank databases: all 8 new country databases replaced with data sourced from official registers: Slovenia from Banka Slovenije (bsi.si); Croatia from HNB VBDI register; Montenegro from Erste Bank Montenegro IBAN calculator; Turkey from AFAD official donation IBANs; Greece from Hellenic Bank Association HEBIC index and bank websites; Cyprus from Central Bank of Cyprus IBAN register; Albania (1 entry confirmed from Raiffeisen Bank Albania). Coverage table updated with accurate entry counts and quality ratings.</li>
+        <li><strong>Improved:</strong> Guidelines: "Criminal Intelligence: Manual for Analysts" (UNODC, Atkin 2011) added to Further Reading; books reordered from introductory to specific; likelihood table styled correctly.</li>
+        <li><strong>Fixed:</strong> <code>main.js</code>: <code>getAttribute('data-query-override')</code> returned <code>null</code> (not <code>undefined</code>) when attribute absent, causing all single-input validators to fail at click time. Affected: Search Engines, Email, Usernames, Vehicles. Fixed with <code>hasAttribute</code> guard.</li>
+        <li><strong>Fixed:</strong> Communities Tool: button selectors used <code>:nth-of-type</code> with class, which does not match by class in CSS — buttons never received <code>text-active</code> state. Fixed with adjacent-sibling selectors (<code>+</code>).</li>
+        <li><strong>Fixed:</strong> X (Twitter) Tools: same <code>:first-of-type</code>/<code>:last-of-type</code> selector issue in the Web Archives section. Fixed with adjacent-sibling selectors.</li>
+        <li><strong>New:</strong> Names Tool: Sweden added to National Registers with five sources: Hitta.se, Eniro, Mr Koll, Ratsit, and Merinfo. Each uses the verified search URL pattern for that service.</li>
+        <li><strong>New:</strong> Names Tool: YachtlyCrew added to General &amp; Social Presence for searching yacht crew by name.</li>
+        <li><strong>Fixed:</strong> Names Tool: five buttons were incorrectly active without input due to <code>no_input: true</code> (Google Maps, Interpol Red Notices, OFAC Sanctions Search, Canada411, Search Systems). Flag removed; buttons now require name input.</li>
+        <li><strong>Fixed:</strong> Names Tool: Google Maps URL template contained the literal string <code>FULL_NAME_ENC</code> instead of the <code>{fullname}</code> placeholder; search never worked. Corrected.</li>
+        <li><strong>Improved:</strong> Names Tool: Canada411 URL updated to embed first and last name in the search query parameters instead of linking to the generic address page.</li>
+      </ul>
+    </div>
 
-        <div class="faq-item">
-            <h2>3.0α <span style="font-size:0.7em; font-weight:normal;">— 2025</span></h2>
-            <ul>
-                <li><strong>New:</strong> Platform-specific URL parsing (VK, X/Twitter, Instagram, Telegram, Facebook, LinkedIn).</li>
-                <li><strong>New:</strong> IBAN: multi-country BBAN parser for 11 countries (IT, DE, FR, ES, GB, NL, BE, PT, AT, CH, PL).</li>
-                <li><strong>New:</strong> IBAN: local bank name databases for 10 countries (<code>assets/js/bankDatabases/</code>), resolving bank names entirely offline.</li>
-                <li><strong>New:</strong> IBAN: Local Database Coverage note with per-country bank count, coverage status, and update date.</li>
-                <li><strong>New:</strong> Toolkit Search: two-column scrollable layout (Function / Page) with sticky header and live result counter.</li>
-                <li><strong>New:</strong> Guidelines page added to the Tools menu and to <code>launchme.html</code>.</li>
-                <li><strong>Improved:</strong> <code>validators.js</code>: full refactor with consistent return structure and broader coverage.</li>
-                <li><strong>Improved:</strong> <code>search-library.js</code>: added IBAN search entries (Google, SWIFT, iban.com) and VK profile info.</li>
-                <li><strong>Improved:</strong> Navigation menu: CyberChef moved to first position; FAQ before Customise; Version History link added to How to Start.</li>
-                <li><strong>Improved:</strong> Navigation menu: fixed case-sensitive links for <code>guidelines.html</code> and <code>publiccompanyrecords.html</code>.</li>
-                <li><strong>Improved:</strong> All HTML files renamed to lowercase to enforce naming convention.</li>
-                <li><strong>Improved:</strong> FAQ: restructured into 7 logical sections with nested Table of Contents; new entry on updating IBAN bank databases.</li>
-                <li><strong>Fixed:</strong> Broken links across all pages resolved.</li>
-                <li><strong>Fixed:</strong> Missing CSS imports corrected.</li>
-                <li><strong>Fixed:</strong> Corrupted character in <code>guidelines.html</code> ("When" section).</li>
-                <li><strong>Fixed:</strong> Stale reference to <code>gemini.md</code> removed from <code>customise.html</code>.</li>
-            </ul>
-        </div>
+    <div class="faq-item">
+      <h2>3.0 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+      <ul>
+        <li><strong>New:</strong> Navigation: dedicated <em>Help</em> menu (Guidelines, FAQ, Customise, Version History); <em>Tools</em> now contains CyberChef only.</li>
+        <li><strong>Improved:</strong> CyberChef updated to v10.22.1.</li>
+        <li><strong>New:</strong> IBAN Checker: Bing, Yandex, and Baidu search buttons added.</li>
+        <li><strong>New:</strong> Phone International: dial code normalisation: <code>0039</code> / <code>+39</code> / spaces all converted to E.164 automatically.</li>
+        <li><strong>Improved:</strong> IBAN page: external OSINT search merged into IBAN Checker section; auto-verify on input (no button needed); inline validation feedback on same line as input.</li>
+        <li><strong>Improved:</strong> Phone International: libphonenumber-js updated to latest; Truecaller URL now uses lowercase ISO code.</li>
+        <li><strong>Improved:</strong> <code>validators.js</code>: <code>getAndValidateIban</code> function added; <code>getAndValidateIntlPhone</code> enhanced with normalization and conditional guards.</li>
+        <li><strong>Improved:</strong> <code>search-library.js</code>: IBAN Bing/Yandex/Baidu entries added; Truecaller template corrected to <code>{country_iso_lower}</code>.</li>
+        <li><strong>Fixed:</strong> IBAN search buttons never worked (validator function was missing).</li>
+        <li><strong>Fixed:</strong> Phone buttons always enabled regardless of input validity.</li>
+        <li><strong>Fixed:</strong> Phone intel display was always empty (<code>validationResult.data</code> was passed incorrectly).</li>
+        <li><strong>Fixed:</strong> Truecaller generated uppercase ISO in URL (e.g. <code>/IT/</code> instead of <code>/it/</code>).</li>
+        <li><strong>Fixed:</strong> US Phone: <code>updatePageState</code> did not unwrap the validator result object; buttons were never disabled and phone intel always showed an error.</li>
+        <li><strong>Improved:</strong> IBAN page: replaced IBAN.com with IBAN Calculator; removed broken SWIFT Search; buttons centred on page.</li>
+        <li><strong>Improved:</strong> OSINT language review: standardised register across all pages: replaced "Insert" with "Enter", removed "Please" softeners, fixed informal abbreviations (FB→Facebook, IG→Instagram), corrected "For proper function" phrasing, translated Italian headings in Search Engines, updated page titles for consistency, and adopted British English throughout.</li>
+        <li><strong>Improved:</strong> README: removed marketing emoji from headers; fixed numbered list; tightened credits phrasing.</li>
+        <li><strong>Improved:</strong> FAQ/Guidelines/Customise: tightened informal language ("side project"→"voluntary basis", "bulwark"→"safeguard", "Mindful"→"Disciplined Online Conduct"); standardised person/voice.</li>
+        <li><strong>Improved:</strong> Social media pages: clarified ambiguous labels ("Outgoing"→"Outgoing Mentions"), renamed headings for precision ("Virtual Currencies"→"Cryptocurrency Analysis", "Other Reverse Image Search"→"Video Thumbnail &amp; Image Reverse Search").</li>
+        <li><strong>Fixed:</strong> Dorks page footer showed 3.0α instead of 3.0β; "VirusTotal" brand name corrected in Domains page.</li>
+        <li><strong>Fixed:</strong> VK page: moved "WORK IN PROGRESS" from h1 tag to proper NOTE banner.</li>
+        <li><strong>New:</strong> Phone International: Tellows reputation lookup added.</li>
+        <li><strong>Fixed:</strong> Search Engines: <code>updatePageState</code> did not unwrap the validator result object; buttons appeared active regardless of input.</li>
+        <li><strong>Fixed:</strong> Names: same validator unwrap bug; buttons were never properly disabled.</li>
+        <li><strong>Improved:</strong> IBAN page: NOTE label standardised to match the pattern used across all other pages.</li>
+      </ul>
+    </div>
 
-        <div class="faq-item">
-            <h2>2.6 <span style="font-size:0.7em; font-weight:normal;">— 2025</span></h2>
-            <ul>
-                <li><strong>Fixed:</strong> Broken links across all pages.</li>
-                <li><strong>Fixed:</strong> Missing CSS assets corrected.</li>
-                <li><strong>Improved:</strong> Version string consistency enforced across all 30+ pages.</li>
-                <li><strong>Improved:</strong> Documentation pages (<code>faq.md</code>, <code>customise.md</code>) updated.</li>
-                <li><strong>Improved:</strong> <code>assets/css/style.css</code>: minor layout fixes.</li>
-                <li><strong>Improved:</strong> <code>assets/menu/navigation.js</code>: link corrections.</li>
-            </ul>
-        </div>
+    <div class="faq-item">
+      <h2>3.0α <span style="font-size:0.7em; font-weight:normal;">— 2025</span></h2>
+      <ul>
+        <li><strong>New:</strong> Platform-specific URL parsing (VK, X/Twitter, Instagram, Telegram, Facebook, LinkedIn).</li>
+        <li><strong>New:</strong> IBAN: multi-country BBAN parser for 11 countries (IT, DE, FR, ES, GB, NL, BE, PT, AT, CH, PL).</li>
+        <li><strong>New:</strong> IBAN: local bank name databases for 10 countries (<code>assets/js/bankDatabases/</code>), resolving bank names entirely offline.</li>
+        <li><strong>New:</strong> IBAN: Local Database Coverage note with per-country bank count, coverage status, and update date.</li>
+        <li><strong>New:</strong> Toolkit Search: two-column scrollable layout (Function / Page) with sticky header and live result counter.</li>
+        <li><strong>New:</strong> Guidelines page added to the Tools menu and to <code>launchme.html</code>.</li>
+        <li><strong>Improved:</strong> <code>validators.js</code>: full refactor with consistent return structure and broader coverage.</li>
+        <li><strong>Improved:</strong> <code>search-library.js</code>: added IBAN search entries (Google, SWIFT, iban.com) and VK profile info.</li>
+        <li><strong>Improved:</strong> Navigation menu: CyberChef moved to first position; FAQ before Customise; Version History link added to How to Start.</li>
+        <li><strong>Improved:</strong> Navigation menu: fixed case-sensitive links for <code>guidelines.html</code> and <code>publiccompanyrecords.html</code>.</li>
+        <li><strong>Improved:</strong> All HTML files renamed to lowercase to enforce naming convention.</li>
+        <li><strong>Improved:</strong> FAQ: restructured into 7 logical sections with nested Table of Contents; new entry on updating IBAN bank databases.</li>
+        <li><strong>Fixed:</strong> Broken links across all pages resolved.</li>
+        <li><strong>Fixed:</strong> Missing CSS imports corrected.</li>
+        <li><strong>Fixed:</strong> Corrupted character in <code>guidelines.html</code> ("When" section).</li>
+        <li><strong>Fixed:</strong> Stale reference to <code>gemini.md</code> removed from <code>customise.html</code>.</li>
+      </ul>
+    </div>
 
-        <div class="faq-item">
-            <h2>2.5 <span style="font-size:0.7em; font-weight:normal;">— 2025</span></h2>
-            <ul>
-                <li><strong>New:</strong> Data-driven architecture introduced: <code>main.js</code>, <code>validators.js</code>, <code>search-library.js</code> replace all inline <code>onclick</code> logic.</li>
-                <li><strong>New:</strong> <code>search-library.js</code> as centralized catalog of all search configurations (URL templates + validators).</li>
-                <li><strong>New:</strong> <code>validators.js</code> as shared validation library used across all pages.</li>
-                <li><strong>New:</strong> <code>config.js</code>: Light Version support: hide/show UI elements per-user via configuration.</li>
-                <li><strong>New:</strong> Pages: VK, IBAN (refactored), Search Engines (updated).</li>
-                <li><strong>Improved:</strong> Navigation bar via <code>navigation.js</code>: single definition, path-aware links.</li>
-                <li><strong>Improved:</strong> IBAN page: centralized search logic, cleaner layout.</li>
-                <li><strong>Improved:</strong> <code>launchme.html</code>: search function added.</li>
-                <li><strong>Improved:</strong> Separation of concerns enforced: no inline styles or scripts in HTML.</li>
-            </ul>
-        </div>
+    <div class="faq-item">
+      <h2>2.6 <span style="font-size:0.7em; font-weight:normal;">— 2025</span></h2>
+      <ul>
+        <li><strong>Fixed:</strong> Broken links across all pages.</li>
+        <li><strong>Fixed:</strong> Missing CSS assets corrected.</li>
+        <li><strong>Improved:</strong> Version string consistency enforced across all 30+ pages.</li>
+        <li><strong>Improved:</strong> Documentation pages (<code>faq.md</code>, <code>customise.md</code>) updated.</li>
+        <li><strong>Improved:</strong> <code>assets/css/style.css</code>: minor layout fixes.</li>
+        <li><strong>Improved:</strong> <code>assets/menu/navigation.js</code>: link corrections.</li>
+      </ul>
+    </div>
 
-        <div class="faq-item">
-            <h2>1.0 <span style="font-size:0.7em; font-weight:normal;">— Initial Release</span></h2>
-            <ul>
-                <li><strong>New:</strong> Initial release of the Exploratores OSINT Toolkit.</li>
-                <li><strong>New:</strong> Core pages: Names, Email, IP, Domains, Maps, Addresses, Images, Videos, Documents, Vehicles, Usernames, Phone (US &amp; International), Social Media (Facebook, Instagram, X, LinkedIn, VK, Keybase), Virtual Currencies, Company Public Records, IBAN, CyberChef integration.</li>
-                <li><strong>New:</strong> Navigation menu via <code>navigation.js</code>.</li>
-                <li><strong>New:</strong> Guidelines, FAQ, License, Customise documentation pages.</li>
-            </ul>
-        </div>
+    <div class="faq-item">
+      <h2>2.5 <span style="font-size:0.7em; font-weight:normal;">— 2025</span></h2>
+      <ul>
+        <li><strong>New:</strong> Centralised architecture introduced: <code>main.js</code>, <code>validators.js</code>, <code>search-library.js</code> replace all inline <code>onclick</code> logic.</li>
+        <li><strong>New:</strong> <code>search-library.js</code> as centralised catalog of all search configurations (URL templates + validators).</li>
+        <li><strong>New:</strong> <code>validators.js</code> as shared validation library used across all pages.</li>
+        <li><strong>New:</strong> <code>config.js</code>: Light Version support: hide/show UI elements per-user via configuration.</li>
+        <li><strong>New:</strong> Pages: VK, IBAN (refactored), Search Engines (updated).</li>
+        <li><strong>Improved:</strong> Navigation bar via <code>navigation.js</code>: single definition, path-aware links.</li>
+        <li><strong>Improved:</strong> IBAN page: centralised search logic, cleaner layout.</li>
+        <li><strong>Improved:</strong> <code>launchme.html</code>: search function added.</li>
+        <li><strong>Improved:</strong> Separation of concerns enforced: no inline styles or scripts in HTML.</li>
+      </ul>
+    </div>
 
-    </section>
+    <div class="faq-item">
+      <h2>1.0 <span style="font-size:0.7em; font-weight:normal;">— Initial Release</span></h2>
+      <ul>
+        <li><strong>New:</strong> Initial release of the Exploratores OSINT Toolkit.</li>
+        <li><strong>New:</strong> Core pages: Names, Email, IP, Domains, Maps, Addresses, Images, Videos, Documents, Vehicles, Usernames, Phone (US &amp; International), Social Media (Facebook, Instagram, X, LinkedIn, VK, Keybase), Virtual Currencies, Company Public Records, IBAN, CyberChef integration.</li>
+        <li><strong>New:</strong> Navigation menu via <code>navigation.js</code>.</li>
+        <li><strong>New:</strong> Guidelines, FAQ, License, Customise documentation pages.</li>
+      </ul>
+    </div>
+
+  </section>
 </main>
 
 <footer>
-    <p>Exploratores 3.4.0 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.4.1 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>

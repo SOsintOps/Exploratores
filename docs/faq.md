@@ -1,5 +1,7 @@
 # Frequently Asked Questions (FAQ)
 
+Frequently asked questions about the toolkit — usage, architecture, and troubleshooting.
+
 ## Table of Contents
 
 * [Why is the toolkit named "Exploratores"?](#why-is-the-toolkit-named-exploratores)
@@ -27,7 +29,11 @@
 * [How does the page state management (`updatePageState`) work?](#how-does-the-page-state-management-updatepagestate-work)
 * [What are the steps to add a new search button?](#what-are-the-steps-to-add-a-new-search-button)
 * [What should I check if a button click does nothing?](#what-should-i-check-if-a-button-click-does-nothing)
+* [How do I update the IBAN bank databases?](#how-do-i-update-the-iban-bank-databases)
 * [What is the "Light Version" for?](#what-is-the-light-version-for)
+* [What is the Redactor tool and how does it work?](#what-is-the-redactor-tool-and-how-does-it-work)
+* [What is the Redact → LLM → Restore workflow?](#what-is-the-redact--llm--restore-workflow)
+* [How do I add custom detection patterns to the Redactor?](#how-do-i-add-custom-detection-patterns-to-the-redactor)
 
 ## About the Toolkit & Its Name
 
@@ -69,7 +75,14 @@ Yes. The Exploratores OSINT Toolkit provides access to various tools and externa
 
 ### Where can I find resources to learn more about OSINT?
 
-For a structured approach, Michael Bazzell's books (like "Open Source Intelligence Techniques") are industry-standard references. Additionally, following specialized blogs, participating in webinars, and joining professional OSINT communities are crucial for staying updated on the latest techniques and tools.
+The following texts are recommended as foundational references for OSINT practitioners and intelligence analysts:
+
+*   ***Deep Dive: A Guide to Advanced Open Source Intelligence*** by Rae L. Baker: a practical guide to advanced OSINT methodologies and real-world applications.
+*   **ICD 203: Analytic Standards**: the US Intelligence Community Directive defining the analytic tradecraft standards that govern intelligence products.
+*   ***Open Source Intelligence Techniques*** by Michael Bazzell: the industry-standard reference for OSINT tools and collection techniques, updated regularly.
+*   ***Psychology of Intelligence Analysis*** by Richards J. Heuer Jr.: a foundational text on understanding and mitigating cognitive biases in analytical judgment.
+
+Additionally, following specialized blogs, participating in webinars, and joining professional OSINT communities are valuable for staying updated on the latest techniques and tools.
 
 ### What are some basic OPSEC best practices when using this toolkit?
 
@@ -78,7 +91,7 @@ Operational Security (OPSEC) is critical. While using this toolkit, always consi
 *   **Network Anonymity:** Use a trusted VPN or the Tor network to mask your real IP address.
 *   **Dedicated Environment:** Conduct investigations from a dedicated virtual machine (VM) or a separate physical device to prevent cross-contamination with your personal data.
 *   **Browser Fingerprinting:** Be aware that websites can identify you through your browser's unique configuration. Use browsers or browser extensions designed to minimize fingerprinting.
-*   **Non-Attributable Accounts:** As mentioned below, always use dedicated, non-personal accounts for interacting with online services.
+*   **Non-Attributable Accounts:** Always use dedicated, non-personal accounts for interacting with online services.
 
 ### What are the ethical guidelines for using these tools?
 
@@ -195,6 +208,35 @@ If a button is clickable but doesn't open a new tab, the problem is almost certa
 
 Fixing the error shown in the console is the quickest way to get the buttons working again.
 
+### How do I update the IBAN bank databases?
+
+The local bank name databases are stored as plain JavaScript files in `assets/js/bankDatabases/`. Each file exports a single object mapping a bank identifier (BLZ, BIC-4, entity code, etc.) to the bank name. To update or expand a database, simply edit the corresponding file and add or correct entries.
+
+#### Procedure
+
+1.  Download the official bank list for the country you want to update (see sources below).
+2.  Open the matching file in `assets/js/bankDatabases/` (e.g., `de.js` for Germany).
+3.  Add or update entries using the format `"BANKCODE": "Bank Name"`, ensuring each line ends with a comma except the last one before the closing brace.
+4.  Save the file. No build step is required; the change takes effect immediately in the browser.
+
+#### Official Sources by Country
+
+| Country | File | Source | Format |
+|---------|------|--------|--------|
+| Germany (DE) | de.js | Deutsche Bundesbank: *Bankleitzahlendatei* | CSV/TXT, free download |
+| Austria (AT) | at.js | Oesterreichische Nationalbank: BLZ register | CSV/XLS, free download |
+| Switzerland (CH) | ch.js | SIX Group: IID/Clearing register | XLS/CSV, free download |
+| United Kingdom (GB) | gb.js | Pay.UK / EISCD: Sort Code directory | CSV, free download |
+| Netherlands (NL) | nl.js | BIC lookup via ECB/SWIFT IBAN registry | Manual / SWIFT API |
+| Belgium (BE) | be.js | National Bank of Belgium: BIC/IBAN guide | PDF/Manual |
+| France (FR) | fr.js | Banque de France: Code CIB / CFONB | PDF/Manual |
+| Spain (ES) | es.js | Banco de España: Registro de entidades | PDF/Web |
+| Portugal (PT) | pt.js | Banco de Portugal: Instituições de crédito | PDF/Web |
+| Poland (PL) | pl.js | Narodowy Bank Polski: IBAN structure / NBP register | PDF/Web |
+| Italy (IT) | (built-in) | Banca d'Italia: Albo delle banche (ABI codes) | XLS, free download |
+
+*For countries where a single machine-readable file is not available (NL, BE, FR, ES, PT, PL), the ECB's [SEPA IBAN registry](https://www.ecb.europa.eu/paym/integration/retail/sepa/html/index.en.html) and the [SWIFT BIC directory](https://www.swift.com/standards/data-standards/bic-business-identifier-code) are useful cross-reference sources.*
+
 ### What is the "Light Version" for?
 
 The "Light Version" is a customizable display mode for the toolkit. It allows each user to hide tools, sections, or columns they do not use, creating a leaner and more focused interface.
@@ -202,13 +244,13 @@ The "Light Version" is a customizable display mode for the toolkit. It allows ea
 This customization is managed by the `assets/js/config.js` file. By editing this file, you can:
 
 *   **Enable or disable** the Light Version by setting `lightVersionEnabled` to `true` or `false`.
-*   **Specify which elements to hide** by adding their CSS selectors (like `#btn-names-us-advbackground` or `#column-names-usa`) to the `selectorsToHide` array.
+*   **Specify which elements to hide** by adding their CSS selectors (like `#column-searchengines-tor`) to the `selectorsToHide` array.
 
 When the Light Version is active, a script automatically adds the `.hidden-in-light` class to all elements listed in the configuration file, making them disappear from the page.
 
 ### What is the Redactor tool and how does it work?
 
-The Redactor (accessible under the **Tools** menu) is a browser-side PII removal tool designed for workflows that involve submitting case text to external AI models. It scans input text or CSV files and replaces sensitive values with numbered placeholders such as `[EMAIL_1]`, `[VAT_IT_1]`, or `[AMEX_1]`. The same value always receives the same placeholder within a session. A **Redaction Map** records every substitution and can be exported as JSON for later use.
+The Redactor (accessible under the **Tools** menu) is a browser-side PII removal tool designed for workflows that involve submitting case text to external AI models. It scans input text or CSV files and replaces sensitive values with numbered placeholders such as `[EMAIL_1]`, `[VAT_IT_1]`, or `[AMEX_1]`. The same value always receives the same placeholder within a session, so the mapping is consistent. A **Redaction Map** records every substitution and can be exported as JSON for later use.
 
 All processing runs locally in your browser. No data is transmitted to any server.
 
@@ -217,7 +259,7 @@ Detected categories out of the box:
 *   **EMAIL**: standard email addresses.
 *   **CF**: Italian Codice Fiscale (16-character alphanumeric).
 *   **National identity / social security numbers**: US SSN (`SSN_US`, dashed form), UK National Insurance number (`NINO_UK`, compact and spaced), Spain DNI/NIE (`DNI_ES`, validated against the real check-letter alphabet), France NIR (`NIR_FR`, compact and INSEE-spaced, Corsica 2A/2B included), Switzerland AVS (`AVS_CH`, 756 prefix), Romania CNP (`CNP_RO`), Finland HETU (`HETU_FI`), Nordic personal numbers (`ID_NORDIC`, SE/DK/NO separated form), Czech/Slovak rodné číslo (`RC_CZSK`, slash form), Belgium national number (`NN_BE`, dotted form). Digit-only IDs with no distinctive structure (NL BSN, DE Steuer-ID, PL PESEL, HR OIB, UK NHS) cannot be told apart from generic numbers: define a custom pattern if you need them.
-*   **VAT_XX**: VAT / fiscal codes for 30+ countries, each tagged with its ISO country code (e.g., `[VAT_DE_1]`, `[VAT_FR_1]`). Includes both the EU-prefix form (`IT04598600403`) and the plain 11-digit Italian P.IVA.
+*   **VAT_XX**: VAT / fiscal codes for 30 countries, each tagged with its ISO country code (e.g., `[VAT_DE_1]`, `[VAT_FR_1]`). Includes both the EU-prefix form (`IT04598600403`) and the plain 11-digit Italian P.IVA.
 *   **Payment cards**: American Express (`AMEX`, CM15/CM13/CM11, 4-6-N grouping), Visa (`VISA`, 16 and legacy 13 digits), Mastercard (`MASTERCARD`, 51–55 and 2221–2720), Discover (`DISCOVER`, 6011/644–649/65xx), JCB (`JCB`, 3528–3589), Diners Club (`DINERS`, 300–305/36/38, 4-6-4 grouping), UnionPay (`UNIONPAY`, 62, 16–19 digits). All in compact form and grouped with spaces or hyphens.
 *   **Cryptocurrency addresses**: Bitcoin (`CRYPTO_BTC`: legacy, P2SH, bech32/segwit-taproot), Ethereum and every EVM chain (`CRYPTO_ETH`: `0x…`, also BSC/Polygon/Arbitrum wallets), Monero (`CRYPTO_XMR`), Litecoin (`CRYPTO_LTC`), Tron (`CRYPTO_TRX`), Ripple (`CRYPTO_XRP`). Matching is structural; checksums are not verified.
 *   **IBAN**: International Bank Account Numbers: 2-letter country code + 2 check digits + BBAN (11–30 chars) — compact, spaced or hyphen-separated, upper or lower case.
@@ -234,9 +276,9 @@ Detected categories out of the box:
 1.  Paste your text into the **Redactor** section (or upload a CSV) and click **Redact**.
 2.  Copy the redacted output and submit it to your AI model.
 3.  Once the AI returns its report (which will contain the placeholders), paste it into the **Restore** section and click **Restore**. All original values are reinserted automatically.
-4.  If you need to continue a session later, click **Copy Map (JSON)** to export the redaction map, save it externally, then re-import it via the **Import Map** panel before using Restore.
+4.  If you need to continue a session later (e.g., the report arrives the next day), click **Copy Map (JSON)** to export the redaction map, save it externally, then re-import it via the **Import Map** panel before using Restore.
 
-The session state is held only in memory and is cleared when you close or refresh the tab, or when you click **Clear Redaction Map**.
+The session state is held only in memory. It is cleared when you close or refresh the tab, or when you click **Clear Redaction Map**.
 
 ### How do I add custom detection patterns to the Redactor?
 

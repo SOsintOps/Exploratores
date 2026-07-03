@@ -1,5 +1,7 @@
 # Intelligence Analysis Guidelines
 
+Analytic standards, the 5W1H method, and OPSEC best practices for intelligence analysis.
+
 ## Core Analytic Standards
 Adherence to the five Core Analytic Standards is mandatory for all intelligence products. These standards ensure the rigor and integrity of the analysis.
 
