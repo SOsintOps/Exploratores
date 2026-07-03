@@ -41,7 +41,7 @@ Version 3.4.1 realigns the documentation with the codebase (FAQ, Customise, Vers
 
 ## Toolkit Sections
 
-The toolkit is organized into the following sections, accessible from the main navigation menu:
+The toolkit is organised into the following sections, accessible from the main navigation menu:
 
 * **Search Engines**: Clear Web and Tor search capabilities.
 * **People & Identities**: Tools for investigating names, phone numbers, addresses, and more.

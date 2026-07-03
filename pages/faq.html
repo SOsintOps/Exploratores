@@ -30,7 +30,7 @@
         <ul>
           <li><a href="#q-software-installation">Do I need to install additional software to use the toolkit?</a></li>
           <li><a href="#q-usage-outside-gs">Can I use the Exploratores OSINT Toolkit outside of my team?</a></li>
-          <li><a href="#q-customization">Can the Exploratores OSINT Toolkit pages be customized?</a></li>
+          <li><a href="#q-customization">Can the Exploratores OSINT Toolkit pages be customised?</a></li>
           <li><a href="#q-light-version">What is the "Light Version" for?</a></li>
         </ul>
       </li>
@@ -83,7 +83,7 @@
     <h2 id="s-about">About the Toolkit</h2>
     <div class="faq-item">
       <h3 id="q-main-purpose">What is the main purpose of the Exploratores OSINT Toolkit?</h3>
-      <p>The Exploratores OSINT Toolkit aims to consolidate and organize a wide range of OSINT (Open Source Intelligence) tools and resources to facilitate investigation and information gathering activities. It provides a centralized access point and a consistent structure for these tools.</p>
+      <p>The Exploratores OSINT Toolkit aims to consolidate and organise a wide range of OSINT (Open Source Intelligence) tools and resources to facilitate investigation and information gathering activities. It provides a centralised access point and a consistent structure for these tools.</p>
     </div>
     <div class="faq-item">
       <h3 id="q-inspiration">What inspired the creation of the toolkit?</h3>
@@ -105,16 +105,16 @@
     </div>
     <div class="faq-item">
       <h3 id="q-usage-outside-gs">Can I use the Exploratores OSINT Toolkit outside of my team?</h3>
-      <p>Yes. You can distribute, share, and customize Exploratores as needed. However, you will be responsible for any unapproved purposes or inappropriate use of this tool.</p>
+      <p>Yes. You can distribute, share, and customise Exploratores as needed. However, you will be responsible for any unapproved purposes or inappropriate use of this tool.</p>
     </div>
     <div class="faq-item">
-      <h3 id="q-customization">Can the Exploratores OSINT Toolkit pages be customized?</h3>
-      <p>Yes, the toolkit is designed to be customizable. You can add new tools, modify existing categories, or adapt functionalities. For a detailed guide on how to do this, please refer to the <a href="customise.html">How to Customize Pages</a> page.</p>
+      <h3 id="q-customization">Can the Exploratores OSINT Toolkit pages be customised?</h3>
+      <p>Yes, the toolkit is designed to be customisable. You can add new tools, modify existing categories, or adapt functionalities. For a detailed guide on how to do this, please refer to the <a href="customise.html">How to Customise Pages</a> page.</p>
     </div>
     <div class="faq-item">
       <h3 id="q-light-version">What is the "Light Version" for?</h3>
-      <p>The "Light Version" is a customizable display mode for the toolkit. It allows each user to hide tools, sections, or columns they do not use, creating a leaner and more focused interface.</p>
-      <p>This customization is managed by the <code>assets/js/config.js</code> file. By editing this file, you can:</p>
+      <p>The "Light Version" is a customisable display mode for the toolkit. It allows each user to hide tools, sections, or columns they do not use, creating a leaner and more focused interface.</p>
+      <p>This customisation is managed by the <code>assets/js/config.js</code> file. By editing this file, you can:</p>
       <ul>
         <li><strong>Enable or disable</strong> the Light Version by setting <code>lightVersionEnabled</code> to <code>true</code> or <code>false</code>.</li>
         <li><strong>Specify which elements to hide</strong> by adding their CSS selectors (like <code>#column-searchengines-tor</code>) to the <code>selectorsToHide</code> array.</li>
@@ -125,7 +125,7 @@
     <h2 id="s-ethics">Ethics, OPSEC &amp; Responsibility</h2>
     <div class="faq-item">
       <h3 id="q-ethical-guidelines">What are the ethical guidelines for using these tools?</h3>
-      <p>Ethical use is paramount. Always act within legal and jurisdictional boundaries. The purpose of these tools is for legitimate intelligence gathering on authorized targets. Never use them for harassment, illegal surveillance, or any activity that violates privacy laws or terms of service of the platforms being accessed. The responsibility for ethical conduct lies entirely with the analyst.</p>
+      <p>Ethical use is paramount. Always act within legal and jurisdictional boundaries. The purpose of these tools is for legitimate intelligence gathering on authorised targets. Never use them for harassment, illegal surveillance, or any activity that violates privacy laws or terms of service of the platforms being accessed. The responsibility for ethical conduct lies entirely with the analyst.</p>
     </div>
     <div class="faq-item">
       <h3 id="q-opsec-basics">What are some basic OPSEC best practices when using this toolkit?</h3>
@@ -133,7 +133,7 @@
       <ul>
         <li><strong>Network Anonymity:</strong> Use a trusted VPN or the Tor network to mask your real IP address.</li>
         <li><strong>Dedicated Environment:</strong> Conduct investigations from a dedicated virtual machine (VM) or a separate physical device to prevent cross-contamination with your personal data.</li>
-        <li><strong>Browser Fingerprinting:</strong> Be aware that websites can identify you through your browser's unique configuration. Use browsers or browser extensions designed to minimize fingerprinting.</li>
+        <li><strong>Browser Fingerprinting:</strong> Be aware that websites can identify you through your browser's unique configuration. Use browsers or browser extensions designed to minimise fingerprinting.</li>
         <li><strong>Non-Attributable Accounts:</strong> Always use dedicated, non-personal accounts for interacting with online services.</li>
       </ul>
     </div>
@@ -168,7 +168,7 @@
         <li><strong><em>Open Source Intelligence Techniques</em></strong> by Michael Bazzell: the industry-standard reference for OSINT tools and collection techniques, updated regularly.</li>
         <li><strong><em>Psychology of Intelligence Analysis</em></strong> by Richards J. Heuer Jr.: a foundational text on understanding and mitigating cognitive biases in analytical judgment.</li>
       </ul>
-      <p>Additionally, following specialized blogs, participating in webinars, and joining professional OSINT communities are valuable for staying updated on the latest techniques and tools.</p>
+      <p>Additionally, following specialised blogs, participating in webinars, and joining professional OSINT communities are valuable for staying updated on the latest techniques and tools.</p>
     </div>
 
     <h2 id="s-maintenance">Maintenance &amp; Contribution</h2>
@@ -195,10 +195,10 @@
     <h2 id="s-technical">Technical Details &amp; Troubleshooting</h2>
     <div class="faq-item">
       <h3 id="q-new-architecture">What is the logic behind the new centralised architecture?</h3>
-      <p>The new architecture centralizes the logic to avoid code duplication. It works like this:</p>
+      <p>The new architecture centralises the logic to avoid code duplication. It works like this:</p>
       <ul>
         <li><strong>HTML Pages (e.g., Names.html):</strong> Contain only the structure and UI elements. Buttons have a <code>data-search-id</code> attribute that acts as a unique identifier for a search, but they contain no JavaScript code.</li>
-        <li><strong>search-library.js:</strong> Acts as a "catalog." It contains an object that maps each <code>data-search-id</code> to a URL template and a validation function.</li>
+        <li><strong>search-library.js:</strong> Acts as a "catalogue." It contains an object that maps each <code>data-search-id</code> to a URL template and a validation function.</li>
         <li><strong>main.js:</strong> This is the "engine" of the toolkit. It contains a single event handler that, on a button click, uses the <code>data-search-id</code> to find the corresponding configuration in <code>search-library.js</code>, runs the validation, and opens the correct URL.</li>
       </ul>
       <p>This approach makes the pages cleaner and maintenance easier, as all search logic is defined in one place.</p>
@@ -217,7 +217,7 @@
       <p>To add a new button under the new architecture, follow these two steps:</p>
       <ol>
         <li><strong>Add the configuration to <code>search-library.js</code>:</strong> Create a new entry in the <code>SearchLibrary</code> object. The key must be a unique identifier (e.g., <code>'names-new-service'</code>), and the value must be an object with the <code>urlTemplate</code> and the name of the <code>validator</code> function (e.g., <code>'getAndValidateNames'</code>).</li>
-        <li><strong>Add the button to the HTML:</strong> Insert the <code>&lt;button&gt;</code> tag on the desired page. Assign it a unique <code>id</code> (for customization) and the <code>data-search-id</code> attribute corresponding to the key you created in the library.</li>
+        <li><strong>Add the button to the HTML:</strong> Insert the <code>&lt;button&gt;</code> tag on the desired page. Assign it a unique <code>id</code> (for customisation) and the <code>data-search-id</code> attribute corresponding to the key you created in the library.</li>
       </ol>
       <p>The "engine" in <code>main.js</code> will automatically make the new button work without needing to write more JavaScript on the page.</p>
     </div>

@@ -164,7 +164,7 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 ## 2.5 — 2025
 
 - **New:** Centralised architecture introduced: `main.js`, `validators.js`, `search-library.js` replace all inline `onclick` logic.
-- **New:** `search-library.js` as centralised catalog of all search configurations (URL templates + validators).
+- **New:** `search-library.js` as centralised catalogue of all search configurations (URL templates + validators).
 - **New:** `validators.js` as shared validation library used across all pages.
 - **New:** `config.js`: Light Version support: hide/show UI elements per-user via configuration.
 - **New:** Pages: VK, IBAN (refactored), Search Engines (updated).
