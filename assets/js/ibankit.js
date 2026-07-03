@@ -6,6 +6,9 @@
 
     // ibankit v1.6.5 - Standalone Bundle
     // Generated from: https://www.npmjs.com/package/ibankit
+    // Copyright 2018-2023 David Koblas
+    // Licensed under the Apache License, Version 2.0
+    // http://www.apache.org/licenses/LICENSE-2.0
 
     const IBAN_COUNTRIES = {
         'AD': { length: 24, name: 'Andorra' },
