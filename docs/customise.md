@@ -45,6 +45,8 @@ The JavaScript architecture is the core of the project. Here is the role of each
 
 **Role:** This file holds global configuration data and flags, such as enabling the "Light Version" of the toolkit and specifying which UI elements to hide.
 
+Besides these five core files, `assets/js/` also contains auxiliary modules — `dispatcher.js`, `indicator-classifier.js`, `janua-search-map.js`, `toolkit-search.js`, and `settings-page.js` — that power the Janua dispatch page, the Toolkit Search, and the Settings page. They follow the same conventions but are not required knowledge for adding a standard search page.
+
 ## Practical Guides
 
 The following guides demonstrate, with practical examples, how to modify and extend the toolkit.
@@ -53,10 +55,10 @@ The following guides demonstrate, with practical examples, how to modify and ext
 
 **Concept:** To prevent searches with invalid data, buttons on a page are disabled until the user provides valid input. This is handled by a page-specific script.
 
-**Standard Implementation:** For pages with multiple, independent input groups (like `PublicCompanyRecords.html`), the standard method is to use an `inputGroups` array. Each object in the array defines a set of inputs, the buttons they control, and the validator to use.
+**Standard Implementation:** For pages with multiple, independent input groups (like `publiccompanyrecords.html`), the standard method is to use an `inputGroups` array. Each object in the array defines a set of inputs, the buttons they control, and the validator to use.
 
 ```javascript
-// In a page-specific script, e.g., at the bottom of PublicCompanyRecords.html
+// In a page-specific script, e.g., at the bottom of publiccompanyrecords.html
 function setInitialPageState() {
     const inputGroups = [
         {
@@ -121,12 +123,16 @@ document.addEventListener('DOMContentLoaded', setInitialPageState);
     Add a function to the `ExploratoresValidators` object that gets the input and validates it.
     ```javascript
     // In assets/js/validators.js
-    getAndValidateIpAddress: function(config) {
-        const ip = document.getElementById('ipAddressInput')?.value.trim();
-        if (!ip) return { isValid: false, message: "Please enter an IP address." };
-        const ipv4Regex = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/;
-        if (!ipv4Regex.test(ip)) return { isValid: false, message: "Invalid IPv4 address." };
-        return { isValid: true, data: { ip: ip }, message: "Valid IP address." };
+    getAndValidateIpAddress: function(config, queryOverride) {
+        const ip = queryOverride !== undefined ? queryOverride : document.getElementById('ipAddressInput')?.value.trim();
+        const ipv4Regex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+        if (!ip) {
+            return { isValid: false, message: "Please enter an IP address." };
+        }
+        if (!ipv4Regex.test(ip)) {
+            return { isValid: false, message: "Invalid IPv4 address format." };
+        }
+        return { isValid: true, data: { ip: ip }, message: "Valid IP address format." };
     },
     ```
 2.  **Step 2: Use the Validator in `search-library.js`**
@@ -156,14 +162,15 @@ The Redactor page lets each user define additional PII patterns beyond the built
     *   **Regex:** `\bCASE-\d{6}\b`
     *   **Colour:** choose any colour.
     *   **Case-insensitive:** tick it if references may also appear as `case-123456`.
-4.  Click **Add Pattern**. The pattern appears immediately in the active patterns table.
-5.  Values matching the pattern will be replaced with `[CASE_ID_1]`, `[CASE_ID_2]`, etc. on the next Redact operation.
+4.  Click **Add Pattern**. The pattern appears immediately in the active patterns table (Type, Regex, Flags, Colour).
+5.  Values matching `\bCASE-\d{6}\b` will now be replaced with `[CASE_ID_1]`, `[CASE_ID_2]`, etc. on the next Redact operation.
 
-To remove a custom pattern, click **Remove** in the active patterns table. The pattern is deleted from `localStorage` immediately.
+To remove a custom pattern, click **Remove** in the active patterns table. The pattern is deleted from `localStorage` immediately and will not be applied in future sessions.
 
 ### Technical Notes
 
-*   Custom patterns are appended after all built-in patterns. Standard left-to-right overlap resolution applies.
+*   Custom patterns are appended to the end of the built-in pattern list. They are applied after all built-in patterns; the standard left-to-right overlap resolution applies.
 *   Use `\b` word boundaries in your regex to avoid partial matches inside longer tokens.
-*   The `g` (global) flag is always added automatically; do not include it in the regex field.
-*   Type names are converted to uppercase and spaces replaced with underscores. Duplicate type names are rejected.
+*   The `g` (global) flag is added automatically if not already present. The **Case-insensitive** checkbox is the only way to set the `i` flag; flags cannot be typed in the regex field.
+*   Patterns are screened against catastrophic backtracking (ReDoS): nested-quantifier structures such as `(a+)+` are rejected outright, and every new pattern must complete a timed canary run before being accepted.
+*   Type names are converted to uppercase, spaces are replaced with underscores, and any character outside `A–Z 0–9 _` is stripped. Names are limited to 64 characters, regex sources to 2000 characters, and duplicate type names are rejected.
