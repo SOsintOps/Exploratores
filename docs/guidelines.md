@@ -3,7 +3,7 @@
 Analytic standards, the 5W1H method, and OPSEC best practices for intelligence analysis.
 
 ## Core Analytic Standards
-Adherence to the five Core Analytic Standards is mandatory for all intelligence products. These standards ensure the rigor and integrity of the analysis.
+Adherence to the five Core Analytic Standards is mandatory for all intelligence products. These standards ensure the rigour and integrity of the analysis.
 
 ### The Five Analytic Standards
 **Objective:** Analysts must perform their functions with objectivity, be aware of their own assumptions, and employ reasoning techniques to mitigate bias.
@@ -18,7 +18,7 @@ Adherence to the five Core Analytic Standards is mandatory for all intelligence 
 
 ### The Nine Analytic Tradecraft Standards
 1.  Properly describes quality and credibility of underlying sources, data, and methodologies.
-2.  Properly expresses and explains uncertainties associated with major analytic judgments. For expressions of likelihood, an analytic product must use standardized sets of terms:
+2.  Properly expresses and explains uncertainties associated with major analytic judgments. For expressions of likelihood, an analytic product must use standardised sets of terms:
 
 | Almost No Chance | Very Unlikely | Unlikely | Roughly Even Chance | Likely | Very Likely | Almost Certain(ly) |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -39,7 +39,7 @@ The 5W1H method (Who, What, When, Where, Why, How) is a cognitive tool that impo
 ### The Six Components
 #### Who: Identifying Actors and Networks
 This component focuses on identifying all individuals, companies, or entities connected to the investigation. It moves beyond simple identification to focus on the relationships, motivations, and structures of the individuals and groups involved.
-- **Guiding Question:** Who are the primary and secondary actors (individuals, groups, organizations)?
+- **Guiding Question:** Who are the primary and secondary actors (individuals, groups, organisations)?
 - **Guiding Question:** Who are the key nodes and influencers within the network?
 - **Guiding Question:** Who provides financial, logistical, or ideological support?
 
@@ -62,7 +62,7 @@ This component encompasses both physical and digital locations relevant to the i
 - **Guiding Question:** What legal or administrative jurisdictions apply to the location?
 
 #### Why: Assessing Intent and Motivation
-This is often the most critical and challenging question, as it seeks to uncover the underlying purpose or motive behind an action. Answering "Why" is essential for assessing threats and predicting future behavior.
+This is often the most critical and challenging question, as it seeks to uncover the underlying purpose or motive behind an action. Answering "Why" is essential for assessing threats and predicting future behaviour.
 - **Guiding Question:** What is the stated or inferred motive (e.g., financial, political, ideological, personal)?
 - **Guiding Question:** Why was this specific target, timing, or method chosen over others?
 - **Guiding Question:** What is the root cause of the problem or event?
@@ -74,9 +74,9 @@ This question focuses on the operational mechanics: the methods, tools, and proc
 - **Guiding Question:** How was detection avoided or security circumvented?
 
 ## Operational Security (OPSEC) Best Practices
-Effective OPSEC is not optional. It is a core discipline required to protect yourself, your investigations, and the organization from exposure and adversarial counter-intelligence. Conduct all activities with the highest ethical standards and in accordance with all applicable laws.
+Effective OPSEC is not optional. It is a core discipline required to protect yourself, your investigations, and the organisation from exposure and adversarial counter-intelligence. Conduct all activities with the highest ethical standards and in accordance with all applicable laws.
 - **Identity Segregation:** Never use personal accounts or equipment for investigative activities. Create and use dedicated, non-attributable online accounts and personas for your work. Do not link these personas to each other or to your real identity.
-- **Secure Infrastructure:** Always use a trusted, no-log Virtual Private Network (VPN) to mask your true IP address. For sensitive investigations, conduct your work from within a dedicated Virtual Machine (VM) to sandbox your activities from your host machine. Consider using the Tor Browser for enhanced anonymization.
+- **Secure Infrastructure:** Always use a trusted, no-log Virtual Private Network (VPN) to mask your true IP address. For sensitive investigations, conduct your work from within a dedicated Virtual Machine (VM) to sandbox your activities from your host machine. Consider using the Tor Browser for enhanced anonymisation.
 - **Sterile Browse Environment:** Use a dedicated web browser with separate profiles for each digital persona. Install privacy-enhancing extensions (e.g., ad blockers, script blockers, anti-tracking tools). Regularly clear cookies, cache, and history.
 - **Disciplined Online Conduct:** Be aware of your digital footprint. Avoid providing unnecessary personal information when registering for services. Use unique, strong passwords and email addresses for each persona. Be cautious about the information you "like," share, or post, as it can be used to profile your persona.
 - **Secure Data Handling:** All information collected during an investigation must be stored securely. Use encrypted storage for your case files. Establish a clear data retention and destruction policy to securely delete information that is no longer needed.
@@ -85,7 +85,7 @@ Effective OPSEC is not optional. It is a core discipline required to protect you
 For a more in-depth analysis of the methodologies and practices discussed, the following foundational texts are recommended:
 - **"Psychology of Intelligence Analysis"** by Richards J. Heuer Jr. - A crucial text for understanding and mitigating the cognitive biases that affect analytical judgment.
 - **"Criminal Intelligence: Manual for Analysts"** by Howard Atkin (UNODC, 2011) - A UNODC reference manual covering the full intelligence process: source evaluation, link analysis, event charting, flow analysis, and telephone analysis. Equips practitioners to develop inferences and present analytical results.
-- **"Structured Analytic Techniques for Intelligence Analysis"** by Richards J. Heuer Jr. and Randolph H. Pherson - A reference manual that presents dozens of structured analytical techniques to improve the rigor and quality of analysis.
+- **"Structured Analytic Techniques for Intelligence Analysis"** by Richards J. Heuer Jr. and Randolph H. Pherson - A reference manual that presents dozens of structured analytical techniques to improve the rigour and quality of analysis.
 - **"Extreme Privacy: What It Takes to Disappear"** by Michael Bazzell - An extensive guide on digital security and maintaining anonymity, which directly supports the OPSEC principles discussed.
 - **"Open Source Intelligence Techniques"** by Michael Bazzell - A comprehensive, practical guide to the tools and techniques for gathering information from open sources.
 - **"Deep Dive: Exploring the Real-World Value of Open Source Intelligence"** by Rae L. Baker - Real-world case studies demonstrating the practical application and value of OSINT across various sectors.

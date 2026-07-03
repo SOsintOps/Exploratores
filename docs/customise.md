@@ -8,7 +8,7 @@ The toolkit is built on three fundamental principles: a centralised design, cent
 
 ### Directory and File Structure
 
-The file organization is designed to separate content (HTML pages) from shared resources (assets), ensuring order and ease of maintenance.
+The file organisation is designed to separate content (HTML pages) from shared resources (assets), ensuring order and ease of maintenance.
 
 ### Technical & Contribution Guidelines
 
@@ -29,7 +29,7 @@ The JavaScript architecture is the core of the project. Here is the role of each
 
 **Role:** This script generates the navigation bar on every page. It detects its location and adjusts all link paths accordingly, allowing for a single, centralised menu definition.
 
-### 2. `search-library.js` - The Catalog
+### 2. `search-library.js` - The Catalogue
 
 **Role:** Acts as a database for all search functions. It contains a single large object, `SearchLibrary`, that maps a button's `data-search-id` to a URL template and a validator function.
 
