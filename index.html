@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index • Exploratores</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/roman-helmet.ico">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<main>
+    <div class="center-text">
+        <img src="assets/images/exploratores.jpg" alt="Exploratores Roman Scouts" class="index-logo">
+    </div>
+    <h1 class="page-title">Exploratores OSINT Toolkit</h1>
+
+    <div class="columns">
+        <div class="column">
+            <section>
+                <h2 class="center-text">How to Start</h2>
+                <p><strong>Exploratores</strong> is an OSINT toolkit developed to support investigations.</p>
+                <p>To start, select a tool from the navigation bar above or use the Toolkit Search.</p>
+                <p>For more details, refer to these key resources:</p>
+                <ul>
+                    <li><a href="pages/guidelines.html">Project Guidelines</a></li>
+                    <li><a href="pages/faq.html">Frequently Asked Questions (FAQ)</a></li>
+                    <li><a href="pages/customise.html">Customise Pages</a></li>
+                    <li><a href="pages/versionhistory.html">Version History</a></li>
+                </ul>
+            </section>
+        </div>
+        <div class="column">
+            <section id="toolkit-search-section">
+                <h2 class="center-text">Toolkit Search</h2>
+                <p class="center-text">Search for a specific tool or function across all pages.</p><br><br>
+                <div class="toolkit-search-bar">
+                    <input type="text" id="toolkit-search-input" class="input-field" placeholder="e.g., Facebook, VIN, IP Address..." autocomplete="off">
+                    <div id="toolkit-search-counter"><span id="toolkit-search-count">0</span> tool(s)</div>
+                </div>
+                <div id="toolkit-search-results"></div>
+            </section>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>Exploratores 3.4.1 <a href="pages/license.html">License</a></p>
+</footer>
+
+<script src="assets/menu/navigation.js"></script>
+<script src="assets/js/search-library.js"></script>
+<script src="assets/js/janua-search-map.js"></script>
+<script src="assets/js/toolkit-search.js"></script>
+
+</body>
+</html>
