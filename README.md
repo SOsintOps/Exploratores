@@ -5,6 +5,11 @@
 [GitHub Repository](https://github.com/SOsintOps/Exploratores)
 
 ![version](https://img.shields.io/badge/version-3.4.1-blue)
+![release](https://img.shields.io/github/v/release/SOsintOps/Exploratores)
+![licence](https://img.shields.io/github/license/SOsintOps/Exploratores)
+![last commit](https://img.shields.io/github/last-commit/SOsintOps/Exploratores)
+![backend](https://img.shields.io/badge/backend-none-success)
+![javascript](https://img.shields.io/badge/javascript-vanilla-yellow)
 
 **Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows: curated search tools for people, domains, images, social platforms and more, plus built-in utilities such as the Redactor (browser-side PII removal), multi-country IBAN analysis and an embedded CyberChef.
 
@@ -20,6 +25,7 @@ Version 3.4.1 realigns the documentation with the codebase (FAQ, Customise, Vers
 - Modular pages with scoped focus (Names, Phones, Domains, IBAN, etc.).
 - Multi-country IBAN verifier with offline bank name resolution for 11 countries.
 - Redactor: browser-side PII removal and restoration with numbered placeholders, exportable Redaction Map, CSV support and user-defined custom patterns — designed for safely submitting case text to external AI models.
+- Privacy by design: the Redactor, the IBAN tool and CyberChef run entirely in your browser — no data ever leaves your machine.
 - Embedded CyberChef (v11.2.0) for local data conversion, decoding and analysis.
 
 ---
@@ -89,7 +95,24 @@ The `docs/` directory contains the Markdown source for [Guidelines](docs/guideli
 
 ---
 
+## Contributing
+
+Contributions are welcome. To report a bug or propose an enhancement, open an issue on the GitHub repository; pull requests are appreciated — please keep changes consistent with the existing architecture (vanilla JavaScript, no build step, no inline scripts).
+
+---
+
 ## Credits
 
 Project developed and maintained by Ramingo.
-To report issues or propose enhancements, open an issue on the GitHub repository.
+
+---
+
+## Licence
+
+This project is released under the [GNU Affero General Public License v3.0](LICENSE) (AGPL-3.0). Bundled third-party software (CyberChef, Inter and Cinzel fonts, libphonenumber, ibankit) remains under its respective licences — see the [licence page](pages/license.html) for details.
+
+---
+
+## Disclaimer
+
+Exploratores is intended for lawful investigations, research and educational use only. Users are solely responsible for ensuring that their use of the toolkit and of the linked external services complies with the laws and regulations of their jurisdiction and with the terms of service of each platform.
