@@ -2,7 +2,7 @@
 
 ![Exploratores Toolkit Logo](assets/images/exploratores.jpg)
 
-[GitHub Repository](https://github.com/SOsintOps/Exploratores)
+[TEST ME](https://sosintops.github.io/Exploratores/)
 
 ![version](https://img.shields.io/badge/version-3.4.1-blue)
 ![release](https://img.shields.io/github/v/release/SOsintOps/Exploratores)
