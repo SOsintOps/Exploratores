@@ -30,6 +30,18 @@ Version 3.4.1 realigns the documentation with the codebase (FAQ, Customise, Vers
 
 ---
 
+## Screenshots
+
+The home page, with the navigation bar and the cross-page Toolkit Search:
+
+![Exploratores home page](assets/images/screenshots/home-3.4.1.png)
+
+The Redactor replacing PII with numbered placeholders before text is submitted to an external AI model:
+
+![Redactor in action](assets/images/screenshots/redactor-3.4.1.png)
+
+---
+
 ## Requirements
 
 - Any modern web browser (Chrome, Edge, Brave).
