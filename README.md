@@ -1,10 +1,10 @@
-# Exploratores OSINT Toolkit 3.4.1
+# Exploratores OSINT Toolkit 3.4.2
 
 ![Exploratores Toolkit Logo](assets/images/exploratores.jpg)
 
 [TEST ME](https://sosintops.github.io/Exploratores/)
 
-![version](https://img.shields.io/badge/version-3.4.1-blue)
+![version](https://img.shields.io/badge/version-3.4.2-blue)
 ![release](https://img.shields.io/github/v/release/SOsintOps/Exploratores)
 ![licence](https://img.shields.io/github/license/SOsintOps/Exploratores)
 ![last commit](https://img.shields.io/github/last-commit/SOsintOps/Exploratores)
@@ -13,7 +13,7 @@
 
 **Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows: curated search tools for people, domains, images, social platforms and more, plus built-in utilities such as the Redactor (browser-side PII removal), multi-country IBAN analysis and an embedded CyberChef.
 
-Version 3.4.1 realigns the documentation with the codebase (FAQ, Customise, Version History), fixes a dead external link and unifies the layout of the help pages. See the full [version history](docs/versionhistory.md) for previous releases.
+Version 3.4.2 hardens outbound-search privacy: external sites open with `noopener,noreferrer` and a site-wide no-referrer policy, so queried services receive neither a referrer nor a handle on the toolkit tab. See the full [version history](docs/versionhistory.md) for previous releases.
 
 ---
 

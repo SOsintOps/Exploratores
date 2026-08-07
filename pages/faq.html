@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="referrer" content="no-referrer" />
   <title>FAQ • Exploratores</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
@@ -40,6 +41,7 @@
           <li><a href="#q-opsec-basics">What are some basic OPSEC best practices when using this toolkit?</a></li>
           <li><a href="#q-investigative-accounts">Is it necessary to create dedicated investigative accounts?</a></li>
           <li><a href="#q-tracking">Are my search activities tracked by the toolkit?</a></li>
+          <li><a href="#q-referrer-privacy">Do the external services I search know that I am using Exploratores?</a></li>
           <li><a href="#q-user-validation">Am I responsible for validating information found using the toolkit?</a></li>
           <li><a href="#q-accuracy-guarantee">Are there any guarantees regarding the accuracy or reliability of results?</a></li>
           <li><a href="#q-warranty">Is the Exploratores OSINT Toolkit covered by any warranty?</a></li>
@@ -144,6 +146,10 @@
     <div class="faq-item">
       <h3 id="q-tracking">Are my search activities tracked by the toolkit?</h3>
       <p>The Exploratores toolkit itself does not implement any tracking or logging of your specific queries. However, each external service or website you access through the toolkit operates under its own privacy policies and may log your interactions. Always use safe browsing practices.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-referrer-privacy">Do the external services I search know that I am using Exploratores?</h3>
+      <p>No. Since version 3.4.2 every page carries a site-wide <code>no-referrer</code> policy and all search buttons open external sites with the <code>noopener,noreferrer</code> flags: the destination service receives no referrer (it cannot tell that the visit originates from Exploratores) and no <code>window.opener</code> handle on the toolkit tab (which also prevents tab-nabbing). Keep in mind that the destination still sees your IP address and browser fingerprint — this is why using a VPN and a dedicated investigative browser profile remains recommended.</p>
     </div>
     <div class="faq-item">
       <h3 id="q-user-validation">Am I responsible for validating information found using the toolkit?</h3>
@@ -342,7 +348,7 @@
 </main>
 
 <footer>
-  <p>Exploratores 3.4.1 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.4.2 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>

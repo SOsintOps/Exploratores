@@ -17,6 +17,7 @@ Frequently asked questions about the toolkit — usage, architecture, and troubl
 * [What are the ethical guidelines for using these tools?](#what-are-the-ethical-guidelines-for-using-these-tools)
 * [Do I need to install additional software to use the toolkit?](#do-i-need-to-install-additional-software-to-use-the-toolkit)
 * [Are my search activities tracked by the toolkit?](#are-my-search-activities-tracked-by-the-toolkit)
+* [Do the external services I search know that I am using Exploratores?](#do-the-external-services-i-search-know-that-i-am-using-exploratores)
 * [Is it necessary to create dedicated investigative accounts for using some of these tools?](#is-it-necessary-to-create-dedicated-investigative-accounts-for-using-some-of-these-tools)
 * [Can the Exploratores OSINT Toolkit pages be customised?](#can-the-exploratores-osint-toolkit-pages-be-customised)
 * [How is the maintenance of tools within the toolkit handled?](#how-is-the-maintenance-of-tools-within-the-toolkit-handled)
@@ -106,6 +107,10 @@ No, the toolkit consists of HTML, CSS, and JavaScript pages that run directly in
 ### Are my search activities tracked by the toolkit?
 
 The Exploratores toolkit itself does not implement any tracking or logging of your specific queries. However, each external service or website you access through the toolkit operates under its own privacy policies and may log your interactions. Always use safe browsing practices.
+
+### Do the external services I search know that I am using Exploratores?
+
+No. Since version 3.4.2 every page carries a site-wide `no-referrer` policy and all search buttons open external sites with the `noopener,noreferrer` flags: the destination service receives no referrer (it cannot tell that the visit originates from Exploratores) and no `window.opener` handle on the toolkit tab (which also prevents tab-nabbing). Keep in mind that the destination still sees your IP address and browser fingerprint — this is why using a VPN and a dedicated investigative browser profile remains recommended.
 
 ### Is it necessary to create dedicated investigative accounts for using some of these tools?
 

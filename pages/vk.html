@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="referrer" content="no-referrer" />
   <title>VK • Exploratores</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
@@ -99,7 +100,7 @@
 </main>
 
 <footer>
-  <p>Exploratores 3.4.1 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.4.2 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>
@@ -137,7 +138,7 @@
     } else { 
       url = baseUrl + encodedTerm + suffix;
     }
-    window.open(url, '_blank');
+    window.open(url, '_blank', 'noopener,noreferrer');
   }
 
   // --- VK Tool Functions ---
@@ -174,7 +175,7 @@
   function VK_OpenFollowers() { 
     const userId = VK_GetAndValidateInput('vkUserIdInput', 'a numeric VK User ID for Followers', true); 
     if(!userId) return; 
-    window.open('https://vk.com/friends?id=' + encodeURIComponent(userId) + '&section=followers', '_blank');
+    window.open('https://vk.com/friends?id=' + encodeURIComponent(userId) + '&section=followers', '_blank', 'noopener,noreferrer');
   }
 
   function VK_OpenGroups() { 
@@ -250,36 +251,36 @@
   function VK_DirectSearchGeneral() { 
     const query = VK_GetAndValidateInput('vkUsernameInput', 'a search term for VK');
     if (!query) return;
-    window.open('https://vk.com/search?q=' + encodeURIComponent(query), '_blank');
+    window.open('https://vk.com/search?q=' + encodeURIComponent(query), '_blank', 'noopener,noreferrer');
   }
 
   // --- External & Related Searches ---
   function VK_GoogleSearch() {
     const query = VK_GetAndValidateInput('vkUsernameInput', 'a search term for VK via Google');
     if (!query) return;
-    window.open('https://www.google.com/search?q=site%3Avk.com+%22' + encodeURIComponent(query) + '%22', '_blank');
+    window.open('https://www.google.com/search?q=site%3Avk.com+%22' + encodeURIComponent(query) + '%22', '_blank', 'noopener,noreferrer');
   }
   function VK_SmatSearch() {
     const query = VK_GetAndValidateInput('vkUsernameInput', 'a search term for SMAT VK');
     if (!query) return;
     const today = new Date();
     const dynamicEndDate = today.toISOString().split('T')[0];
-    window.open('https://www.smat-app.com/search?searchTerm=' + encodeURIComponent(query) + '&startDate=2000-06-01&endDate=' + dynamicEndDate + '&websites=vk&numberOf=10&interval=day&limit=1000&changepoint=false', '_blank');
+    window.open('https://www.smat-app.com/search?searchTerm=' + encodeURIComponent(query) + '&startDate=2000-06-01&endDate=' + dynamicEndDate + '&websites=vk&numberOf=10&interval=day&limit=1000&changepoint=false', '_blank', 'noopener,noreferrer');
   }
   function VK_CheckoSearch() {
     const query = VK_GetAndValidateInput('vkUsernameInput', 'a username for Checko.ru');
     if (!query) return;
-    window.open('https://checko.ru/search?query=' + encodeURIComponent(query), '_blank');
+    window.open('https://checko.ru/search?query=' + encodeURIComponent(query), '_blank', 'noopener,noreferrer');
   }
   function VK_MailRuSocialSearch() {
     const query = VK_GetAndValidateInput('vkUsernameInput', 'a username for Mail.Ru Social Search');
     if (!query) return;
-    window.open('https://go.mail.ru/search_social?q=' + encodeURIComponent(query), '_blank');
+    window.open('https://go.mail.ru/search_social?q=' + encodeURIComponent(query), '_blank', 'noopener,noreferrer');
   }
   function VK_WebArchiveRuMediaSearch() {
     const query = VK_GetAndValidateInput('vkUsernameInput', 'a search term for WebArchive RU Media');
     if (!query) return;
-    window.open('https://web.archive.org/russian-independent-media/search/' + encodeURIComponent(query), '_blank');
+    window.open('https://web.archive.org/russian-independent-media/search/' + encodeURIComponent(query), '_blank', 'noopener,noreferrer');
   }
 
   // --- NUOVA FUNZIONE PER TREND SECTION ---
@@ -287,7 +288,7 @@
       const tag = VK_GetAndValidateInput('vkTrendInput', 'a tag');
       if (!tag) return;
       const url = 'https://vk.com/search/statuses?q=' + encodeURIComponent('#' + tag);
-      window.open(url, '_blank');
+      window.open(url, '_blank', 'noopener,noreferrer');
   }
    
   // --- Dynamic Button State Update ---
