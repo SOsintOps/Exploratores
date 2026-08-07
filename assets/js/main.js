@@ -28,7 +28,7 @@ const Exploratores = {
             }
 
             if (config.no_input) {
-                window.open(config.urlTemplate, '_blank');
+                window.open(config.urlTemplate, '_blank', 'noopener,noreferrer');
                 return;
             }
 
@@ -52,7 +52,7 @@ const Exploratores = {
                 url = url.replace(new RegExp(placeholder.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), value);
             }
             
-            window.open(url, '_blank');
+            window.open(url, '_blank', 'noopener,noreferrer');
         });
     }
 };
