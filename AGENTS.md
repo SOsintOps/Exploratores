@@ -30,6 +30,11 @@ Static HTML/CSS/vanilla-JavaScript OSINT toolkit. No build step, no backend, no 
 - 2-space indentation in HTML/JS; British English in documentation.
 - Validate user input via `validators.js` before opening any search URL.
 
+## Tests
+
+- `node tests/validators.test.js` — dependency-free suite covering every validator in `validators.js` (DOM is stubbed; `ibankit.js` is loaded for the IBAN checksum path). No npm install needed.
+- CI runs the suite on every push and pull request (`.github/workflows/tests.yml`).
+
 ## Link health CI
 
 - `.github/workflows/linkcheck.yml` runs weekly (Sunday 13:13 UTC, plus manual `workflow_dispatch`): `extract-urls.mjs` collects every URL template from `search-library.js` and the inline scripts of `dorks.html`/`vk.html`, then `check.mjs` probes one URL per host and classifies the outcome. `dns-only.txt` and `ignore.txt` hold per-host overrides.
