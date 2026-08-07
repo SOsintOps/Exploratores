@@ -15,7 +15,7 @@ Static HTML/CSS/vanilla-JavaScript OSINT toolkit. No build step, no backend, no 
   - `validators.js` — `ExploratoresValidators` object; validators return `{ isValid, message, data }` and accept `(config, queryOverride)`.
   - `search-library.js` — `SearchLibrary` catalog mapping each `data-search-id` to `{ urlTemplate, validator }`.
   - `config.js` — global flags (Light Version, `selectorsToHide`).
-  - Auxiliary modules: `dispatcher.js`, `toolkit-search.js`, `indicator-classifier.js`, `janua-search-map.js`, `settings-page.js`.
+  - Auxiliary modules: `dispatcher.js`, `toolkit-search.js`, `indicator-classifier.js`, `janua-search-map.js`, `settings-page.js`, `redactor.js` (page logic of `pages/redactor.html`).
   - `assets/js/bankDatabases/` — per-country offline bank-name data for the IBAN tool.
 - `assets/menu/navigation.js` — single navigation definition shared by all pages (`#navbar-placeholder`).
 - `docs/` — Markdown sources of the Help pages (`guidelines.md`, `faq.md`, `customise.md`, `versionhistory.md`). Each has an HTML twin in `pages/` that must stay content-aligned.
