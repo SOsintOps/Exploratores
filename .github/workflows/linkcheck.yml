@@ -2,7 +2,7 @@ name: Weekly link check
 
 on:
   schedule:
-    - cron: '17 3 * * 0'   # Sunday 03:17 UTC — spread load away from the busy top of the hour
+    - cron: '13 13 * * 0'   # Sunday 13:13 UTC — spread load away from the busy top of the hour
   workflow_dispatch:
 
 permissions:
