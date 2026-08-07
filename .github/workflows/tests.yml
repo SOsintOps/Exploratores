@@ -1,0 +1,23 @@
+name: Tests
+
+on:
+  push:
+    branches: [v3]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validators:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run the validators test suite
+        run: node tests/validators.test.js
