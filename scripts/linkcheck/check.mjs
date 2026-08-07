@@ -17,12 +17,16 @@
 // out/previous-history.json (or seeds it from previous-results.json when
 // upgrading from a run that predates the history file). Hosts that recover
 // drop out of the history entirely.
+// Statistics: every run appends to out/runs.csv (one row per run, counts per
+// class) and out/issues.csv (one row per problematic host per run). The CI
+// restores both from the previous run's artifact, so they accumulate the full
+// check history over time.
 // Modes:
 //   node check.mjs               full run (CI or local)
 //   node check.mjs --recheck     re-probe only suspicious hosts from the
 //                                previous out/results.json (local last mile)
 // Always exits 0: the report informs, humans decide.
-import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, appendFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { lookup } from 'node:dns/promises';
@@ -176,5 +180,24 @@ ${section('Alive behind protection (informative)', (h, r) => r.class === 'PROTEC
 writeFileSync(join(outDir, 'history.json'), JSON.stringify(history, null, 1));
 writeFileSync(join(outDir, 'results.json'), JSON.stringify(results, null, 1));
 writeFileSync(join(outDir, 'report.md'), report);
+
+// --- CSV statistics log (accumulates across runs via the CI artifact) ---
+const csvEsc = v => /[",\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v);
+const CLASSES = ['OK', 'DNS_ONLY_OK', 'PROTECTED', 'ALIVE_ERR', 'DNS_FAIL', 'GONE', 'SERVER_ERR', 'TLS_ERR', 'TIMEOUT', 'CONN_REFUSED', 'CONN_RESET', 'NET_OTHER'];
+const runsCsv = join(outDir, 'runs.csv');
+if (!existsSync(runsCsv))
+  writeFileSync(runsCsv, `date,hosts_probed,${CLASSES.map(c => c.toLowerCase()).join(',')},confirmed_dead_hosts,tools_on_confirmed_dead\n`);
+const confirmedDeadHosts = Object.entries(results).filter(([h, r]) => ['DNS_FAIL', 'GONE'].includes(r.class) && confirmed(h)).length;
+appendFileSync(runsCsv, [now, Object.keys(results).length, ...CLASSES.map(c => counts[c] || 0), confirmedDeadHosts, deadTools].join(',') + '\n');
+
+const issuesCsv = join(outDir, 'issues.csv');
+if (!existsSync(issuesCsv))
+  writeFileSync(issuesCsv, 'date,host,class,detail,strikes,confirmed,tools,data_search_ids\n');
+const issueRows = Object.entries(results)
+  .filter(([, r]) => SUSPICIOUS.has(r.class))
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([h, r]) => [now, h, r.class, csvEsc(r.status ?? r.err ?? ''), strikesOf(h), confirmed(h), idsOf(h).length, csvEsc(idsOf(h).join(';'))].join(','));
+if (issueRows.length) appendFileSync(issuesCsv, issueRows.join('\n') + '\n');
+console.log(`stats: ${runsCsv} (+1 row), ${issuesCsv} (+${issueRows.length} rows)`);
 console.log('classes:', JSON.stringify(counts));
 console.log(`report: ${join(outDir, 'report.md')}`);

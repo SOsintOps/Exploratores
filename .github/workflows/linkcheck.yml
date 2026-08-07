@@ -47,6 +47,9 @@ jobs:
             for f in history results targets; do
               cp "$RUNNER_TEMP/prev-results/$f.json" "scripts/linkcheck/out/previous-$f.json" 2>/dev/null || true
             done
+            for f in runs issues; do
+              cp "$RUNNER_TEMP/prev-results/$f.csv" "scripts/linkcheck/out/$f.csv" 2>/dev/null || true
+            done
           fi
 
       - name: Probe host liveness
