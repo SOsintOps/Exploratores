@@ -4,6 +4,12 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.4.3 — 2026
+
+- **Improved:** Redactor: the page logic (~940 lines of JavaScript) moved from an inline script in `pages/redactor.html` to the new `assets/js/redactor.js` module. No functional changes — redaction, restore, custom patterns and the redaction map behave exactly as before; the page now follows the no-inline-scripts convention and the browser can cache the script.
+
+---
+
 ## 3.4.2 — 2026
 
 - **Security:** All search buttons now open external sites with `noopener,noreferrer`: the destination page no longer receives a `window.opener` handle on the toolkit tab (tab-nabbing prevention). Applied to the central engine (`main.js`) and to the page scripts of the Dorks and VK tools.
