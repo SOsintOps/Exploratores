@@ -1,0 +1,2 @@
+# Hosts excluded from the link check entirely. Use sparingly and always
+# explain why. One host per line; everything after '#' is a comment.

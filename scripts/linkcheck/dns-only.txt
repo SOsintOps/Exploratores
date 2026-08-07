@@ -1,0 +1,9 @@
+# Hosts that are known to be alive but drop or stall plain HTTP clients
+# (aggressive bot management or geo-blocking). The checker only verifies
+# that their DNS still resolves; full checks would be false positives.
+# One host per line; everything after '#' is a comment.
+
+baidu.com        # times out for non-CN clients; service is alive
+www.baidu.com    # same as above
+intelx.io        # Intelligence X drops automated clients; service is alive
+checko.ru        # RU business registry; geo/bot hostile from western IPs
