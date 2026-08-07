@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
   <title>Version History • Exploratores</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
@@ -16,6 +17,15 @@
   <p class="center-text">Changelog of all releases and improvements to the Exploratores OSINT Toolkit.</p>
 
   <section class="faq-section">
+
+    <div class="faq-item">
+      <h2>3.4.2 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+      <ul>
+        <li><strong>Security:</strong> All search buttons now open external sites with <code>noopener,noreferrer</code>: the destination page no longer receives a <code>window.opener</code> handle on the toolkit tab (tab-nabbing prevention). Applied to the central engine (<code>main.js</code>) and to the page scripts of the Dorks and VK tools.</li>
+        <li><strong>Security:</strong> New site-wide <code>&lt;meta name="referrer" content="no-referrer"&gt;</code> on every page: the browser no longer sends the referrer to queried services, so external tools cannot see that the visit originates from Exploratores.</li>
+        <li><strong>New:</strong> FAQ: "Do the external services I search know that I am using Exploratores?" entry documenting the no-referrer policy and the <code>noopener,noreferrer</code> flags, with the reminder that IP address and browser fingerprint remain visible (VPN recommended).</li>
+      </ul>
+    </div>
 
     <div class="faq-item">
       <h2>3.4.1 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
@@ -215,7 +225,7 @@
 </main>
 
 <footer>
-  <p>Exploratores 3.4.1 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.4.2 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>

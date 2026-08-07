@@ -4,6 +4,14 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.4.2 — 2026
+
+- **Security:** All search buttons now open external sites with `noopener,noreferrer`: the destination page no longer receives a `window.opener` handle on the toolkit tab (tab-nabbing prevention). Applied to the central engine (`main.js`) and to the page scripts of the Dorks and VK tools.
+- **Security:** New site-wide `<meta name="referrer" content="no-referrer">` on every page: the browser no longer sends the referrer to queried services, so external tools cannot see that the visit originates from Exploratores.
+- **New:** FAQ: "Do the external services I search know that I am using Exploratores?" entry documenting the no-referrer policy and the `noopener,noreferrer` flags, with the reminder that IP address and browser fingerprint remain visible (VPN recommended).
+
+---
+
 ## 3.4.1 — 2026
 
 - **Fixed:** FAQ: dead SWIFT BIC directory link replaced with the current swift.com BIC standard page; the Light Version selector example now matches the real `config.js` entry; VAT country count corrected to 30.
