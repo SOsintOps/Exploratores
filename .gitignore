@@ -86,3 +86,6 @@ CLAUDE.md
 # Swarm and local scripts — local only, do not push
 .swarm/
 start.ps1
+
+# Link-checker working output (uploaded as CI artifact, never committed)
+scripts/linkcheck/out/
