@@ -78,3 +78,6 @@ _site/
 
 # Local scripts — local only, do not push
 start.ps1
+
+# Link-checker working output (uploaded as CI artifact, never committed)
+scripts/linkcheck/out/

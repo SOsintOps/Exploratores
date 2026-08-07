@@ -1,0 +1,50 @@
+name: Weekly link check
+
+on:
+  schedule:
+    - cron: '17 3 * * 0'   # Sunday 03:17 UTC — spread load away from the busy top of the hour
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  linkcheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Extract URL targets from the search catalogue
+        run: node scripts/linkcheck/extract-urls.mjs
+
+      - name: Probe host liveness
+        run: node scripts/linkcheck/check.mjs
+
+      - name: Upload raw results
+        uses: actions/upload-artifact@v4
+        with:
+          name: linkcheck-results
+          path: scripts/linkcheck/out/
+          retention-days: 90
+
+      - name: Create or update the dead-links issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('scripts/linkcheck/out/report.md', 'utf8');
+            const { owner, repo } = context.repo;
+            const { data: open } = await github.rest.issues.listForRepo({ owner, repo, labels: 'dead-links', state: 'open' });
+            if (open.length) {
+              await github.rest.issues.update({ owner, repo, issue_number: open[0].number, body });
+              core.info(`Updated issue #${open[0].number}`);
+            } else {
+              const { data: created } = await github.rest.issues.create({ owner, repo, title: 'Weekly link-check report', labels: ['dead-links'], body });
+              core.info(`Created issue #${created.number}`);
+            }
