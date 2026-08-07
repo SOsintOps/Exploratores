@@ -70,10 +70,31 @@ jobs:
             const body = fs.readFileSync('scripts/linkcheck/out/report.md', 'utf8');
             const { owner, repo } = context.repo;
             const { data: open } = await github.rest.issues.listForRepo({ owner, repo, labels: 'dead-links', state: 'open' });
+            let issue_number;
             if (open.length) {
-              await github.rest.issues.update({ owner, repo, issue_number: open[0].number, body });
-              core.info(`Updated issue #${open[0].number}`);
+              issue_number = open[0].number;
+              await github.rest.issues.update({ owner, repo, issue_number, body });
+              core.info(`Updated issue #${issue_number}`);
             } else {
               const { data: created } = await github.rest.issues.create({ owner, repo, title: 'Weekly link-check report', labels: ['dead-links'], body });
-              core.info(`Created issue #${created.number}`);
+              issue_number = created.number;
+              core.info(`Created issue #${issue_number}`);
+            }
+            // Body edits are silent on GitHub — post a comment so subscribers get
+            // notified whenever a run finds actionable problems.
+            const history = JSON.parse(fs.readFileSync('scripts/linkcheck/out/history.json', 'utf8'));
+            const ACTIONABLE = ['DNS_FAIL', 'GONE', 'SERVER_ERR', 'TLS_ERR'];
+            const act = Object.entries(history).filter(([, h]) => ACTIONABLE.includes(h.class));
+            if (act.length) {
+              const confirmed = act.filter(([, h]) => h.strikes >= 2).map(([host]) => host);
+              const observed = act.length - confirmed.length;
+              const list = confirmed.slice(0, 10).map(h => `\`${h}\``).join(', ') + (confirmed.length > 10 ? ', …' : '');
+              const comment = `Run of ${new Date().toISOString().slice(0, 10)}: ` +
+                `**${confirmed.length} confirmed dead/unreliable host${confirmed.length === 1 ? '' : 's'}**` +
+                (confirmed.length ? ` (${list})` : '') +
+                `, ${observed} in observation. Full report in the issue body above.`;
+              await github.rest.issues.createComment({ owner, repo, issue_number, body: comment });
+              core.info('Notification comment posted.');
+            } else {
+              core.info('No actionable problems — no comment posted.');
             }
