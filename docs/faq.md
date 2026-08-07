@@ -21,6 +21,7 @@ Frequently asked questions about the toolkit — usage, architecture, and troubl
 * [Is it necessary to create dedicated investigative accounts for using some of these tools?](#is-it-necessary-to-create-dedicated-investigative-accounts-for-using-some-of-these-tools)
 * [Can the Exploratores OSINT Toolkit pages be customised?](#can-the-exploratores-osint-toolkit-pages-be-customised)
 * [How is the maintenance of tools within the toolkit handled?](#how-is-the-maintenance-of-tools-within-the-toolkit-handled)
+* [How are dead or unreliable external links detected?](#how-are-dead-or-unreliable-external-links-detected)
 * [How can I suggest new tools or improvements?](#how-can-i-suggest-new-tools-or-improvements)
 * [What is the recommended workflow for contributing a new page?](#what-is-the-recommended-workflow-for-contributing-a-new-page)
 * [How can I create a new page or add features using a prompt for an LLM?](#how-can-i-create-a-new-page-or-add-features-using-a-prompt-for-an-llm)
@@ -125,6 +126,10 @@ Yes, the toolkit is designed to be customisable. You can add new tools, modify e
 ### How is the maintenance of tools within the toolkit handled?
 
 The Exploratores OSINT Toolkit is maintained on a voluntary basis. Ongoing maintenance, including updating links, removing obsolete tools, and adding new resources, is performed as capacity allows.
+
+### How are dead or unreliable external links detected?
+
+An automated link checker runs every Sunday at 13:13 UTC as a GitHub Actions workflow. It extracts every URL template from the search catalogue (`search-library.js`, plus the inline links on the Dorks and VK pages) and probes each external host. A two-strike policy applies: a host is reported as dead or unreliable only after failing two checks at least a week apart — a single failure leaves it "in observation" until the next weekly run, so temporary outages do not raise false alarms. Findings are published in the "Weekly link-check report" issue (label `dead-links`) on the GitHub repository, and confirmed-dead tools are then fixed or removed manually. The checker lives in `scripts/linkcheck/` and can also be run locally with Node.js.
 
 ### How can I suggest new tools or improvements?
 
