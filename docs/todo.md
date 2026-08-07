@@ -29,3 +29,5 @@ This file collects ideas, source suggestions, and potential improvements to be e
 - **Additional sources from digitaldigging.org:** review the OSINT resource list at
   `https://digitaldigging.org/osint/` and identify entries not yet covered by the toolkit.
 
+- **Dead-link triage:** manually verify the hosts flagged by the weekly link checker (issue *Weekly link-check report*, label `dead-links`) and replace or remove the tools on confirmed-dead hosts. First run (2026-08-07) flagged 16 non-resolving hosts (20 tool buttons) and 3 hosts with broken TLS.
+
