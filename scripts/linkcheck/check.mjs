@@ -11,6 +11,12 @@
 //   - hosts listed in dns-only.txt get a DNS lookup only (bot-hostile or
 //     geo-blocked services that drop plain HTTP clients);
 //   - hosts listed in ignore.txt are skipped entirely.
+// Two-strike policy: a host is only reported as confirmed dead/unreliable
+// after failing two checks at least a week apart. Failure streaks persist in
+// out/history.json; the CI restores the previous run's copy as
+// out/previous-history.json (or seeds it from previous-results.json when
+// upgrading from a run that predates the history file). Hosts that recover
+// drop out of the history entirely.
 // Modes:
 //   node check.mjs               full run (CI or local)
 //   node check.mjs --recheck     re-probe only suspicious hosts from the
@@ -108,33 +114,66 @@ async function worker() {
 }
 await Promise.all(Array.from({ length: 12 }, worker));
 
+// --- failure history (two-strike policy) ---
+const now = new Date().toISOString();
+const STRIKE_GAP_MS = 6 * 24 * 3600 * 1000;   // "a week apart", with cron jitter allowance
+let prevHistory = {};
+if (existsSync(join(outDir, 'previous-history.json'))) {
+  prevHistory = JSON.parse(readFileSync(join(outDir, 'previous-history.json'), 'utf8'));
+} else if (existsSync(join(outDir, 'previous-results.json'))) {
+  // Upgrade path: seed one strike from a pre-history run's raw results.
+  const seedDate = existsSync(join(outDir, 'previous-targets.json'))
+    ? JSON.parse(readFileSync(join(outDir, 'previous-targets.json'), 'utf8')).generated
+    : now;
+  for (const [h, r] of Object.entries(JSON.parse(readFileSync(join(outDir, 'previous-results.json'), 'utf8')))) {
+    if (SUSPICIOUS.has(r.class)) prevHistory[h] = { class: r.class, strikes: 1, firstSeen: seedDate, lastStrike: seedDate };
+  }
+}
+const history = {};
+for (const [host, r] of Object.entries(results)) {
+  if (!SUSPICIOUS.has(r.class)) continue;      // recovered hosts drop out of the history
+  const prev = prevHistory[host];
+  if (!prev) history[host] = { class: r.class, strikes: 1, firstSeen: now, lastStrike: now };
+  else if (Date.now() - Date.parse(prev.lastStrike) >= STRIKE_GAP_MS)
+    history[host] = { class: r.class, strikes: prev.strikes + 1, firstSeen: prev.firstSeen, lastStrike: now };
+  else history[host] = { ...prev, class: r.class };   // re-run within the week: streak unchanged
+}
+
 // --- report ---
 const counts = {};
 for (const r of Object.values(results)) counts[r.class] = (counts[r.class] || 0) + 1;
 const idsOf = h => targets.hosts[h]?.ids ?? [];
-const section = (title, classes, note) => {
+const strikesOf = h => history[h]?.strikes ?? 0;
+const confirmed = h => strikesOf(h) >= 2;
+const ACTIONABLE = ['DNS_FAIL', 'GONE', 'SERVER_ERR', 'TLS_ERR'];
+const section = (title, pick, note) => {
   const rows = Object.entries(results)
-    .filter(([, r]) => classes.includes(r.class))
+    .filter(([h, r]) => pick(h, r))
     .sort(([a], [b]) => a.localeCompare(b))
-    .map(([h, r]) => `| \`${h}\` | ${r.status ?? r.class}${r.err ? ` — ${r.err}` : ''} | ${idsOf(h).length} | ${idsOf(h).slice(0, 6).join(', ')}${idsOf(h).length > 6 ? ', …' : ''} |`);
+    .map(([h, r]) => `| \`${h}\` | ${r.status ?? r.class}${r.err ? ` — ${r.err}` : ''} | ${strikesOf(h)} | ${idsOf(h).length} | ${idsOf(h).slice(0, 6).join(', ')}${idsOf(h).length > 6 ? ', …' : ''} |`);
   if (!rows.length) return `## ${title}\n\nNone. ✅\n`;
-  return `## ${title}\n\n${note}\n\n| Host | Result | Tools | data-search-id |\n|---|---|---|---|\n${rows.join('\n')}\n`;
+  return `## ${title}\n\n${note}\n\n| Host | Result | Strikes | Tools | data-search-id |\n|---|---|---|---|---|\n${rows.join('\n')}\n`;
 };
 
-const deadTools = Object.entries(results).filter(([, r]) => ['DNS_FAIL', 'GONE'].includes(r.class)).reduce((n, [h]) => n + idsOf(h).length, 0);
+const deadTools = Object.entries(results)
+  .filter(([h, r]) => ['DNS_FAIL', 'GONE'].includes(r.class) && confirmed(h))
+  .reduce((n, [h]) => n + idsOf(h).length, 0);
 const report = `# Weekly link-check report
 
 Generated: ${new Date().toISOString()} — templates: ${targets.templateCount}, hosts probed: ${Object.keys(results).length}, \`.onion\` skipped: ${targets.onion.length}.
-Summary: ${Object.entries(counts).map(([k, v]) => `${k}: ${v}`).join(' · ')} — **${deadTools} tool buttons on dead-candidate hosts**.
+Summary: ${Object.entries(counts).map(([k, v]) => `${k}: ${v}`).join(' · ')} — **${deadTools} tool buttons on confirmed-dead hosts**.
+Policy: a host is confirmed dead/unreliable only after failing two checks at least a week apart (strikes ≥ 2); first-time failures sit in observation until the next weekly run.
 
-${section('Dead candidates (network)', ['DNS_FAIL'], 'Domain does not resolve. Almost certainly dead — replace or remove the tools.')}
-${section('Dead candidates (HTTP)', ['GONE'], 'Full tool URL answers 404/410. Verify manually, then fix or remove.')}
-${section('Degraded (server errors)', ['SERVER_ERR'], 'Persistent 5xx. Watch across runs; act if stable for weeks.')}
-${section('Broken TLS', ['TLS_ERR'], 'Certificate problems — analysts will hit browser warnings too.')}
-${section('Unverifiable from this network', ['TIMEOUT', 'CONN_REFUSED', 'CONN_RESET', 'NET_OTHER'], 'No HTTP answer (possible datacenter-IP blocking). Re-check locally with: \`node scripts/linkcheck/check.mjs --recheck\`.')}
-${section('Alive behind protection (informative)', ['PROTECTED'], 'Bot-wall or login-wall answered — the service is up. No action needed.')}
+${section('Confirmed dead (network)', (h, r) => r.class === 'DNS_FAIL' && confirmed(h), 'Domain has not resolved for two consecutive weekly checks. Replace or remove the tools.')}
+${section('Confirmed dead (HTTP)', (h, r) => r.class === 'GONE' && confirmed(h), 'Full tool URL has answered 404/410 for two consecutive weekly checks. Fix or remove.')}
+${section('Confirmed degraded (server errors)', (h, r) => r.class === 'SERVER_ERR' && confirmed(h), 'Persistent 5xx across weekly checks. Consider replacing the tools.')}
+${section('Confirmed broken TLS', (h, r) => r.class === 'TLS_ERR' && confirmed(h), 'Certificate problems for two consecutive weekly checks — analysts will hit browser warnings too.')}
+${section('In observation — first failed check', (h, r) => ACTIONABLE.includes(r.class) && !confirmed(h), 'Failed this run only. The next weekly check either confirms the host as dead/unreliable or clears it.')}
+${section('Unverifiable from this network', (h, r) => ['TIMEOUT', 'CONN_REFUSED', 'CONN_RESET', 'NET_OTHER'].includes(r.class), 'No HTTP answer (possible datacenter-IP blocking). Re-check locally with: \`node scripts/linkcheck/check.mjs --recheck\`.')}
+${section('Alive behind protection (informative)', (h, r) => r.class === 'PROTECTED', 'Bot-wall or login-wall answered — the service is up. No action needed.')}
 `;
 
+writeFileSync(join(outDir, 'history.json'), JSON.stringify(history, null, 1));
 writeFileSync(join(outDir, 'results.json'), JSON.stringify(results, null, 1));
 writeFileSync(join(outDir, 'report.md'), report);
 console.log('classes:', JSON.stringify(counts));

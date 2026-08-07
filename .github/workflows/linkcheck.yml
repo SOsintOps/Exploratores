@@ -8,6 +8,7 @@ on:
 permissions:
   contents: read
   issues: write
+  actions: read
 
 jobs:
   linkcheck:
@@ -22,6 +23,31 @@ jobs:
 
       - name: Extract URL targets from the search catalogue
         run: node scripts/linkcheck/extract-urls.mjs
+
+      - name: Restore failure history from the previous run
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const { owner, repo } = context.repo;
+            const runs = await github.rest.actions.listWorkflowRuns({ owner, repo, workflow_id: 'linkcheck.yml', status: 'success', per_page: 5 });
+            const prev = runs.data.workflow_runs.find(r => r.id !== context.runId);
+            if (!prev) return core.info('No previous successful run — starting with a fresh history.');
+            const arts = await github.rest.actions.listWorkflowRunArtifacts({ owner, repo, run_id: prev.id });
+            const art = arts.data.artifacts.find(a => a.name === 'linkcheck-results' && !a.expired);
+            if (!art) return core.info(`Previous run ${prev.id} has no results artifact.`);
+            const dl = await github.rest.actions.downloadArtifact({ owner, repo, artifact_id: art.id, archive_format: 'zip' });
+            fs.writeFileSync(`${process.env.RUNNER_TEMP}/prev-results.zip`, Buffer.from(dl.data));
+            core.info(`Downloaded artifact of run ${prev.id} (${prev.created_at})`);
+
+      - name: Unpack previous history
+        run: |
+          if [ -f "$RUNNER_TEMP/prev-results.zip" ]; then
+            unzip -o "$RUNNER_TEMP/prev-results.zip" -d "$RUNNER_TEMP/prev-results"
+            for f in history results targets; do
+              cp "$RUNNER_TEMP/prev-results/$f.json" "scripts/linkcheck/out/previous-$f.json" 2>/dev/null || true
+            done
+          fi
 
       - name: Probe host liveness
         run: node scripts/linkcheck/check.mjs
