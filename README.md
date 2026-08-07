@@ -1,10 +1,10 @@
-# Exploratores OSINT Toolkit 3.4.3
+# Exploratores OSINT Toolkit 3.4.4
 
 ![Exploratores Toolkit Logo](assets/images/exploratores.jpg)
 
 [TEST ME](https://sosintops.github.io/Exploratores/)
 
-![version](https://img.shields.io/badge/version-3.4.3-blue)
+![version](https://img.shields.io/badge/version-3.4.4-blue)
 ![release](https://img.shields.io/github/v/release/SOsintOps/Exploratores)
 ![licence](https://img.shields.io/github/license/SOsintOps/Exploratores)
 ![last commit](https://img.shields.io/github/last-commit/SOsintOps/Exploratores)
@@ -13,7 +13,7 @@
 
 **Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows: curated search tools for people, domains, images, social platforms and more, plus built-in utilities such as the Redactor (browser-side PII removal), multi-country IBAN analysis and an embedded CyberChef.
 
-Version 3.4.3 extracts the Redactor page logic into its own JavaScript module (`assets/js/redactor.js`) with no functional changes: the page now follows the no-inline-scripts convention and the script is cacheable by the browser. See the full [version history](docs/versionhistory.md) for previous releases.
+Version 3.4.4 rebuilds the IBAN Tool's offline bank-name databases from official registries: Germany is now complete (~3,500 Bundesbank BLZ entries), together with Italy (~530), Spain (~560) and France (~230); legacy codes are retained so old IBANs still resolve. See the full [version history](docs/versionhistory.md) for previous releases.
 
 ---
 
