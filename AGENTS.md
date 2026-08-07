@@ -20,6 +20,8 @@ Static HTML/CSS/vanilla-JavaScript OSINT toolkit. No build step, no backend, no 
 - `assets/menu/navigation.js` — single navigation definition shared by all pages (`#navbar-placeholder`).
 - `docs/` — Markdown sources of the Help pages (`guidelines.md`, `faq.md`, `customise.md`, `versionhistory.md`). Each has an HTML twin in `pages/` that must stay content-aligned.
 - `tools/cc/` — embedded CyberChef build.
+- `scripts/linkcheck/` — weekly link-health checker (see below).
+- `.github/workflows/linkcheck.yml` — CI schedule for the link checker.
 
 ## Conventions
 
@@ -27,6 +29,13 @@ Static HTML/CSS/vanilla-JavaScript OSINT toolkit. No build step, no backend, no 
 - Element ids follow `[type]-[page]-[name]` (e.g. `btn-names-personadb`); `data-search-id` follows `[page]-[name]`.
 - 2-space indentation in HTML/JS; British English in documentation.
 - Validate user input via `validators.js` before opening any search URL.
+
+## Link health CI
+
+- `.github/workflows/linkcheck.yml` runs weekly (Sunday 13:13 UTC, plus manual `workflow_dispatch`): `extract-urls.mjs` collects every URL template from `search-library.js` and the inline scripts of `dorks.html`/`vk.html`, then `check.mjs` probes one URL per host and classifies the outcome. `dns-only.txt` and `ignore.txt` hold per-host overrides.
+- Two-strike policy: a host is confirmed dead/unreliable only after failing two checks at least a week apart; single failures sit "in observation". Failure history (`history.json`) and cumulative statistics (`runs.csv`, `issues.csv`) persist across runs via the `linkcheck-results` artifact (90-day retention).
+- Findings are published in the single open issue labelled `dead-links`; removing or replacing confirmed-dead tools stays a manual decision.
+- Run locally with Node ≥ 18: `node scripts/linkcheck/extract-urls.mjs && node scripts/linkcheck/check.mjs` (outputs in `scripts/linkcheck/out/`, gitignored; `--recheck` re-probes only the suspicious hosts).
 
 ## Versioning
 

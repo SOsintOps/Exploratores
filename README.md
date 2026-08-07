@@ -87,6 +87,12 @@ The `docs/` directory contains the Markdown source for [Guidelines](docs/guideli
 
 ---
 
+## Link Health
+
+The external tools in the catalogue are checked automatically once a week by a GitHub Actions workflow (Sunday 13:13 UTC). A host is flagged as dead or unreliable only after failing two checks at least a week apart, so temporary outages do not raise false alarms. Findings are published in the open [Weekly link-check report](https://github.com/SOsintOps/Exploratores/issues) issue (label `dead-links`), and cumulative statistics in CSV form are attached to every run as a build artifact. The checker lives in `scripts/linkcheck/` and can also be run locally with Node.js — see the [FAQ](docs/faq.md) for details.
+
+---
+
 ## How to Use Exploratores
 
 1. Open **`launchme.html`** in a web browser.
