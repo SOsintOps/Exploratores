@@ -19,6 +19,16 @@
   <section class="faq-section">
 
     <div class="faq-item">
+      <h2>3.5.0 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+      <ul>
+        <li><strong>New:</strong> Telegram Tool: dedicated page (<code>pages/telegram.html</code>, <em>Social Media</em> menu) replacing the Telegram section of the Communities tool. Adds in-channel search — <code>t.me/s/&lt;channel&gt;?q=&lt;term&gt;</code> reads the public web preview of a single channel and matches file names and extensions as well as message text, with no Telegram account — plus a message-ID jump for reaching a channel's earliest posts, Wayback Machine history of channel previews, a link-mention search, the Telegago and OSINT.ME Google Custom Search Engines (both restricted to public Telegram domains, different indexes) and Telegraph and invite-link searches. The six previous buttons are unchanged; ids moved from <code>communities-tg-*</code> to <code>telegram-*</code>.</li>
+        <li><strong>New:</strong> Dork Builder: Telegram template category — canonical <code>t.me</code>/<code>telegram.me</code>, Telegraph, a bundle of ten mirror and directory hosts, invite links and handles in bios. Wildcard TLDs are expanded explicitly (<code>site:tgstat.com OR site:tgstat.ru</code>) because Google's support for them is unreliable.</li>
+        <li><strong>Improved:</strong> Telegram user and channel inputs now strip a leading <code>@</code>, so a pasted <code>@handle</code> no longer produces a broken URL.</li>
+        <li><strong>Improved:</strong> Tests: coverage for the Telegram validators, which were previously untested — 13 new cases, 101 in total.</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
       <h2>3.4.4 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
       <ul>
         <li><strong>Improved:</strong> IBAN Tool: offline bank-name databases rebuilt from official registries (via the MIT-licensed schwifty bank registry) — Germany is now complete with ~3,500 Bundesbank BLZ entries (was ~80), Italy ~530 ABI entries (was ~340), Spain ~560 Banco de España entity codes (was ~35) and France ~230 CIB codes (was ~55). Superseded codes from the previous curated lists are retained so legacy IBANs still resolve; the coverage table on the page reflects the new figures.</li>
@@ -239,7 +249,7 @@
 </main>
 
 <footer>
-  <p>Exploratores 3.4.4 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.5.0 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>

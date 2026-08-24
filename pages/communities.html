@@ -17,6 +17,9 @@
     <div class="note">
         Some features require an active investigative profile on the target platform.
     </div>
+    <div class="note">
+        <strong>Telegram</strong> now has its own page under <em>Social Media</em>: <a href="./telegram.html">Telegram Tool</a>.
+    </div>
 
     <div class="columns">
         <div id="column-communities-left" class="column">
@@ -108,36 +111,12 @@
                 </div>
             </section>
 
-            <section id="section-communities-telegram" class="search-instructions">
-                <h2>Telegram</h2>
-                <label for="input-communities-tgUser">User/Channel Name</label>
-                <div class="input-container">
-                    <input type="text" id="input-communities-tgUser" class="input-field" placeholder="Enter user or channel name..." autocomplete="off">
-                </div>
-                <div id="feedback-communities-tgUser" class="feedback-message"></div>
-                <div class="button-grid">
-                    <button id="btn-communities-tg-profile" type="button" class="button" data-search-id="communities-tg-profile">Profile/Channel</button>
-                    <button id="btn-communities-tg-preview" type="button" class="button" data-search-id="communities-tg-preview">Channel Preview</button>
-                    <button id="btn-communities-tg-telescope" type="button" class="button" data-search-id="communities-tg-telescope">Telesco.pe</button>
-                    <button id="btn-communities-tg-telemetrio" type="button" class="button" data-search-id="communities-tg-telemetrio">Telemetr.io</button>
-                </div>
-                <hr>
-                <label for="input-communities-tgKey">Keyword</label>
-                <div class="input-container">
-                    <input type="text" id="input-communities-tgKey" class="input-field" placeholder="Enter keyword..." autocomplete="off">
-                </div>
-                <div id="feedback-communities-tgKey" class="feedback-message"></div>
-                <div class="button-grid">
-                    <button id="btn-communities-tg-groupsearch" type="button" class="button" data-search-id="communities-tg-groupsearch">Group Search</button>
-                    <button id="btn-communities-tg-channelsearch" type="button" class="button" data-search-id="communities-tg-channelsearch">Channel Search</button>
-                </div>
-            </section>
         </div>
     </div>
 </main>
 
 <footer>
-    <p>Exploratores 3.4.4 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.5.0 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/js/main.js"></script>
@@ -183,18 +162,6 @@
                 buttonSelector: '#section-communities-discord .button-grid .button',
                 validator: ExploratoresValidators.getAndValidateDiscordTerm,
                 feedbackId: 'feedback-communities-discordTerm'
-            },
-            {
-                inputIds: ['input-communities-tgUser'],
-                buttonSelector: '#feedback-communities-tgUser + .button-grid .button',
-                validator: ExploratoresValidators.getAndValidateTgUser,
-                feedbackId: 'feedback-communities-tgUser'
-            },
-            {
-                inputIds: ['input-communities-tgKey'],
-                buttonSelector: '#feedback-communities-tgKey + .button-grid .button',
-                validator: ExploratoresValidators.getAndValidateTgKey,
-                feedbackId: 'feedback-communities-tgKey'
             }
         ];
 
