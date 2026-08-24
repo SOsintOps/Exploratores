@@ -40,9 +40,9 @@ The dedicated page shipped in 3.5.0. Still open:
   they belong in the FAQ with that OPSEC caveat — never as buttons.
 
 - **Host liveness:** the third-party hosts added in 3.5.0 could not be probed from
-  the CI sandbox (the network policy rejects them). The `t.me/s/<channel>?q=`
-  parameter in particular is documented rather than verified — confirm it in a
-  browser, and let `scripts/linkcheck` classify the rest.
+  the CI sandbox (the network policy rejects them); let `scripts/linkcheck`
+  classify them. The two `t.me/s/<channel>` parameters are no longer in doubt:
+  both `?q=` and `?before=` were confirmed in a browser on 2026-08-24.
 
 - **Deliberately not added:** TelegramDB (bot with a credit system, no URL to
   template), the ~60 long-tail directories of Awesome-Telegram-OSINT (covered
