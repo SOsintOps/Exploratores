@@ -34,7 +34,8 @@ const ToolkitSearch = {
     },
 
     buildIndex: function() {
-        this.searchIndex = Object.keys(SearchLibrary).map(key => {
+        // Entries on confirmed-dead hosts ("disabled" flag) are left out of the index.
+        this.searchIndex = Object.keys(SearchLibrary).filter(key => !SearchLibrary[key].disabled).map(key => {
             const mapEntry = (typeof JanuaSearchMap !== 'undefined') ? (JanuaSearchMap[key] || {}) : {};
             const label = mapEntry.label || key.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
             const category = mapEntry.page || null;

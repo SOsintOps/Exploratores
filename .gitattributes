@@ -1,1 +1,4 @@
 * text=auto
+
+# Catalogue export: hashed by the CI guard and the in-browser updater, keep LF
+assets/data/*.json text eol=lf
