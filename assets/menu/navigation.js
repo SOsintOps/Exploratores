@@ -80,6 +80,7 @@ function generateNavHTML() {
             <li><a href="${pagesPath}help-iban.html">IBAN Guide</a></li>
             <li><a href="${pagesPath}faq.html">FAQ</a></li>
             <li><a href="${pagesPath}customise.html">Customise</a></li>
+            <li><a href="${pagesPath}settings.html">Settings</a></li>
             <li><a href="${pagesPath}versionhistory.html">Version History</a></li>
           </ul>
         </li>

@@ -4,6 +4,15 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.7.0 — 2026
+
+- **New:** Catalogue updates for offline copies: the new `assets/js/catalogue-updater.js` (loaded right after `search-library.js` on every tool page) can refresh the search catalogue from the project repository without a `git pull`. Off by default; when switched on in the Settings page the browser checks `catalogue-meta.json` on GitHub once a day, downloads `search-library.json` when a newer one is published, verifies its SHA-256 checksum and structure, and keeps it in local storage. The cached catalogue is applied at the start of every page load (effective from the next page opened); entries needing a validator missing from the local `validators.js` are ignored, and metadata pointing outside the repository is refused. Requests carry no cookies and no referrer. The site on GitHub Pages does not need it.
+- **New:** Settings page (`pages/settings.html`) now linked from the Help menu, with the *Catalogue updates* toggle, a status line (cached version, entries, last check), "Check now" and "Discard cached catalogue" buttons; toggle-switch styling added to the stylesheet. The previous, unlinked draft of the page (a typewriter toggle with no effect) was removed.
+- **Improved:** Tests: new `tests/catalogue-updater.test.mjs` (14 cases) with stubbed `fetch` and `localStorage`, run by the CI.
+- **New:** FAQ: "Can an offline copy of the toolkit refresh its catalogue?" entry.
+
+---
+
 ## 3.6.0 — 2026
 
 - **New:** Link health: the weekly link checker now closes the loop. Tools on hosts confirmed dead or unreliable (two-strike policy) are marked `"disabled"` in `search-library.js` by the new `scripts/linkcheck/apply-history.mjs`, and the change is proposed as an automated pull request (branch `auto/disable-dead-links`, label `dead-links`) — merging stays a human decision. Disabled buttons appear greyed out and struck through, show the confirmation date in their tooltip, never open and are hidden from the Toolkit Search; hosts that recover lose the flag at the next run.

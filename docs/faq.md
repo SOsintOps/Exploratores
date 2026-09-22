@@ -20,6 +20,7 @@ Frequently asked questions about the toolkit — usage, architecture, and troubl
 * [Do the external services I search know that I am using Exploratores?](#do-the-external-services-i-search-know-that-i-am-using-exploratores)
 * [Is it necessary to create dedicated investigative accounts for using some of these tools?](#is-it-necessary-to-create-dedicated-investigative-accounts-for-using-some-of-these-tools)
 * [Can the Exploratores OSINT Toolkit pages be customised?](#can-the-exploratores-osint-toolkit-pages-be-customised)
+* [Can an offline copy of the toolkit refresh its catalogue?](#can-an-offline-copy-of-the-toolkit-refresh-its-catalogue)
 * [How is the maintenance of tools within the toolkit handled?](#how-is-the-maintenance-of-tools-within-the-toolkit-handled)
 * [How are dead or unreliable external links detected?](#how-are-dead-or-unreliable-external-links-detected)
 * [What happens to the tools on a dead host?](#what-happens-to-the-tools-on-a-dead-host)
@@ -121,6 +122,10 @@ Yes, for many OSINT activities, it is highly recommended to use dedicated, non-a
 ### Can the Exploratores OSINT Toolkit pages be customised?
 
 Yes, the toolkit is designed to be customisable. You can add new tools, modify existing categories, or adapt functionalities. For a detailed guide on how to do this, please refer to the [How to Customise Pages](customise.md) page.
+
+### Can an offline copy of the toolkit refresh its catalogue?
+
+Yes, optionally. The site published on GitHub Pages is redeployed on every push and never needs it, but a cloned or downloaded copy can keep its search catalogue current without pulling the repository: switch on *Catalogue updates* in the Settings page (Help menu). Once a day the browser then fetches `catalogue-meta.json` from the project repository; when a newer catalogue is published it downloads `search-library.json`, verifies the SHA-256 checksum announced by the metadata, checks the structure and keeps the result in the browser's local storage. The cached catalogue is applied on top of the bundled one at the start of every page load, so a download takes effect from the next page you open; entries that need a validator missing from your copy of `validators.js` are ignored, which keeps older copies safe. Tools on hosts confirmed dead are greyed out in the offline copy as well. The feature is **off by default** because, when enabled, GitHub sees the requests (sent without cookies or referrer); "Check now" and "Discard cached catalogue" on the Settings page let you control it by hand.
 
 ## Maintenance & Contribution
 

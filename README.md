@@ -1,10 +1,10 @@
-# Exploratores OSINT Toolkit 3.6.0
+# Exploratores OSINT Toolkit 3.7.0
 
 ![Exploratores Toolkit Logo](assets/images/exploratores.jpg)
 
 [TEST ME](https://sosintops.github.io/Exploratores/)
 
-![version](https://img.shields.io/badge/version-3.6.0-blue)
+![version](https://img.shields.io/badge/version-3.7.0-blue)
 ![release](https://img.shields.io/github/v/release/SOsintOps/Exploratores)
 ![licence](https://img.shields.io/github/license/SOsintOps/Exploratores)
 ![last commit](https://img.shields.io/github/last-commit/SOsintOps/Exploratores)
@@ -13,7 +13,7 @@
 
 **Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows: curated search tools for people, domains, images, social platforms and more, plus built-in utilities such as the Redactor (browser-side PII removal), multi-country IBAN analysis and an embedded CyberChef.
 
-Version 3.6.0 closes the loop of the weekly link checker: tools on hosts confirmed dead are flagged as disabled through an automated pull request, greyed out on the page and hidden from the Toolkit Search, and the catalogue is now exported as JSON with a signed metadata file (`assets/data/`). See the full [version history](docs/versionhistory.md) for previous releases.
+Version 3.7.0 adds optional catalogue updates for offline copies of the toolkit: switched on from the new Settings page, the browser checks the project repository once a day and downloads the latest search catalogue with SHA-256 verification, so a cloned copy stays current without a `git pull`. See the full [version history](docs/versionhistory.md) for previous releases.
 
 ---
 
@@ -27,6 +27,7 @@ Version 3.6.0 closes the loop of the weekly link checker: tools on hosts confirm
 - Redactor: browser-side PII removal and restoration with numbered placeholders, exportable Redaction Map, CSV support and user-defined custom patterns — designed for safely submitting case text to external AI models.
 - Privacy by design: the Redactor, the IBAN tool and CyberChef run entirely in your browser — no data ever leaves your machine.
 - Embedded CyberChef (v11.2.0) for local data conversion, decoding and analysis.
+- Weekly link health check with automatic flagging of tools on dead hosts, and optional (off by default) catalogue updates for offline copies, verified by SHA-256.
 
 ---
 
@@ -69,7 +70,7 @@ The toolkit is organised into the following sections, accessible from the main n
 * **Media Analysis**: Image, video, and document analysis tools.
 * **Company & Finance**: Corporate records, virtual currencies, IBAN verification.
 * **Tools**: CyberChef, Redactor (browser-side PII removal and restoration).
-* **Help**: Guidelines, FAQ, Customise, Version History.
+* **Help**: Guidelines, FAQ, Customise, Settings, Version History.
 
 ---
 
