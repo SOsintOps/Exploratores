@@ -1,10 +1,10 @@
-# Exploratores OSINT Toolkit 3.7.0
+# Exploratores OSINT Toolkit 3.8.0
 
 ![Exploratores Toolkit Logo](assets/images/exploratores.jpg)
 
 [TEST ME](https://sosintops.github.io/Exploratores/)
 
-![version](https://img.shields.io/badge/version-3.7.0-blue)
+![version](https://img.shields.io/badge/version-3.8.0-blue)
 ![release](https://img.shields.io/github/v/release/SOsintOps/Exploratores)
 ![licence](https://img.shields.io/github/license/SOsintOps/Exploratores)
 ![last commit](https://img.shields.io/github/last-commit/SOsintOps/Exploratores)
@@ -13,7 +13,7 @@
 
 **Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows: curated search tools for people, domains, images, social platforms and more, plus built-in utilities such as the Redactor (browser-side PII removal), multi-country IBAN analysis and an embedded CyberChef.
 
-Version 3.7.0 adds optional catalogue updates for offline copies of the toolkit: switched on from the new Settings page, the browser checks the project repository once a day and downloads the latest search catalogue with SHA-256 verification, so a cloned copy stays current without a `git pull`. See the full [version history](docs/versionhistory.md) for previous releases.
+Version 3.8.0 opens the country-sources programme with Italy: twelve national registries and lookups (civil records, doctors' register, Cassation rulings, Official Gazette, reverse phone lookup, business register, VAT check, certified e-mail and public-administration indexes, open data, cadastral geoportal, .it WHOIS) added to the thematic pages, each verified in a browser. Next: European countries, Russia, China and the Middle East — see the [roadmap](docs/todo.md). See the full [version history](docs/versionhistory.md) for previous releases.
 
 ---
 

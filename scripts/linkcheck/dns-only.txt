@@ -7,3 +7,4 @@ baidu.com        # times out for non-CN clients; service is alive
 www.baidu.com    # same as above
 intelx.io        # Intelligence X drops automated clients; service is alive
 checko.ru        # RU business registry; geo/bot hostile from western IPs
+www.italgiure.giustizia.it   # serves an incomplete certificate chain: Node reports TLS_ERR, browsers fetch the intermediate and open it fine (checked 2026-09-22)

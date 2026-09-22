@@ -567,6 +567,11 @@
   "urlTemplate": "https://www.whoxy.com/whois-history-{domain_nodots}.html",
   "validator": "getAndValidateDomain"
  },
+ "domains-it-whois": {
+  "urlTemplate": "https://www.nic.it/en/find-your-it/web-whois",
+  "no_input": true,
+  "validator": "getAndValidateDomain"
+ },
  "domains-ip-censys": {
   "urlTemplate": "https://search.censys.io/search?resource=hosts&q={domain}",
   "validator": "getAndValidateDomain"
@@ -821,6 +826,25 @@
  },
  "names-paginegialle": {
   "urlTemplate": "https://www.paginegialle.it/ricerca/{firstname}-{lastname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-it-antenati": {
+  "urlTemplate": "https://antenati.cultura.gov.it/search-nominative/?cognome={lastname}&nome={firstname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-it-fnomceo": {
+  "urlTemplate": "https://albounico.fnomceo.it/",
+  "no_input": true,
+  "validator": "getAndValidateNames"
+ },
+ "names-it-italgiure": {
+  "urlTemplate": "https://www.italgiure.giustizia.it/sncass/",
+  "no_input": true,
+  "validator": "getAndValidateNames"
+ },
+ "names-it-gazzetta": {
+  "urlTemplate": "https://www.gazzettaufficiale.it/ricerca/pdf/foglio_ordinario2/1/0/0?reset=true",
+  "no_input": true,
   "validator": "getAndValidateNames"
  },
  "names-checkoru": {
@@ -1130,6 +1154,13 @@
  },
  "phoneint-tellows": {
   "urlTemplate": "https://www.tellows.it/num/{nat_num}",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireNatNum": true
+  }
+ },
+ "phoneint-it-paginebianche": {
+  "urlTemplate": "https://www.paginebianche.it/cerca-da-numero?qs={national_raw}",
   "validator": "getAndValidateIntlPhone",
   "validation_rules": {
    "requireNatNum": true
@@ -1624,6 +1655,30 @@
  },
  "publiccompanyrecords-company-piva": {
   "urlTemplate": "https://www.google.com/search?q=site:ufficiocamerale.it {companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-it-registroimprese": {
+  "urlTemplate": "https://www.registroimprese.it/ricerca-libera-e-acquisto",
+  "no_input": true,
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-it-verificapiva": {
+  "urlTemplate": "https://telematici.agenziaentrate.gov.it/VerificaPIVA/Scegli.do?parameter=verificaPiva",
+  "no_input": true,
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-it-inipec": {
+  "urlTemplate": "https://www.inipec.gov.it/cerca-pec",
+  "no_input": true,
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-it-indicepa": {
+  "urlTemplate": "https://www.indicepa.gov.it/ipa-portale/consultazione/indirizzo-sonoro/ricerca-ente",
+  "no_input": true,
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-it-datigov": {
+  "urlTemplate": "https://www.dati.gov.it/view-dataset?Cerca={companyname}",
   "validator": "getAndValidateCompanyName"
  },
  "email-google": {
@@ -2281,6 +2336,10 @@
  "maps-zillow": {
   "urlTemplate": "https://www.zillow.com/homes/for_sale/?searchQueryState={searchQueryState}",
   "validator": "getAndValidateZillowCoords"
+ },
+ "maps-it-catasto": {
+  "urlTemplate": "https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/catalog.search#/map",
+  "no_input": true
  },
  "maps-geocode-usa": {
   "urlTemplate": "https://nominatim.openstreetmap.org/search?q={usa_address_query}&format=json&limit=1",

@@ -129,6 +129,17 @@
             </div>
         </section>
 
+        <section id="subsection-pcr-companies-italy" style="margin-top: 1rem;">
+            <h3>Italy</h3>
+            <div class="button-grid" id="grid-pcr-companies-italy">
+                <button id="btn-pcr-it-registroimprese" type="button" class="button" data-search-id="publiccompanyrecords-it-registroimprese" title="Italian Business Register free search (opens the search form; company name suggestions, paid extracts)">Registro Imprese</button>
+                <button id="btn-pcr-it-verificapiva" type="button" class="button" data-search-id="publiccompanyrecords-it-verificapiva" title="Agenzia delle Entrate VAT-number check (opens the form; CAPTCHA required)">Verifica Partita IVA</button>
+                <button id="btn-pcr-it-inipec" type="button" class="button" data-search-id="publiccompanyrecords-it-inipec" title="INI-PEC — national index of certified e-mail addresses of companies and professionals (opens the search)">INI-PEC</button>
+                <button id="btn-pcr-it-indicepa" type="button" class="button" data-search-id="publiccompanyrecords-it-indicepa" title="IndicePA — index of public administrations and their offices (opens the search)">IndicePA</button>
+                <button id="btn-pcr-it-datigov" type="button" class="button" data-search-id="publiccompanyrecords-it-datigov" title="dati.gov.it — national open-data catalogue, searched by the term entered above">dati.gov.it Open Data</button>
+            </div>
+        </section>
+
         <section id="subsection-pcr-companies-india" style="margin-top: 1rem;">
             <h3>India</h3>
             <div class="button-grid" id="grid-pcr-companies-india">
@@ -187,7 +198,7 @@
 </main>
     
 <footer>
-  <p>Exploratores 3.7.0 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.8.0 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/js/main.js"></script>
@@ -213,7 +224,7 @@
             },
             {
                 inputIds: ['companyNameInput'],
-                buttonSelector: '#grid-pcr-companies-intl .button, #grid-pcr-companies-usa .button, #grid-pcr-companies-uk .button, #grid-pcr-companies-nigeria .button, #grid-pcr-companies-europe .button, #grid-pcr-companies-india .button',
+                buttonSelector: '#grid-pcr-companies-intl .button, #grid-pcr-companies-usa .button, #grid-pcr-companies-uk .button, #grid-pcr-companies-nigeria .button, #grid-pcr-companies-europe .button, #grid-pcr-companies-italy .button, #grid-pcr-companies-india .button',
                 validator: ExploratoresValidators.getAndValidateCompanyName,
                 feedbackId: 'company-feedback'
             },
