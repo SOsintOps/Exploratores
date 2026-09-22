@@ -1,0 +1,3785 @@
+{
+ "searchengines-google": {
+  "urlTemplate": "https://google.com/search?q={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-googledate": {
+  "urlTemplate": "https://google.com/search?q={term}&tbs=cdr:1,cd_min:1/1/0,sbd:1",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-googlenews": {
+  "urlTemplate": "https://www.google.com/search?tbm=nws&q={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-googleftp": {
+  "urlTemplate": "https://www.google.com/search?q=inurl%3Aftp%20-inurl%3A(http|https)%20{term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-googleindex": {
+  "urlTemplate": "https://www.google.com/search?q=intitle%3Aindex.of+{term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-googlescholar": {
+  "urlTemplate": "https://scholar.google.com/scholar?&q={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-googlepatents": {
+  "urlTemplate": "https://patents.google.com/?q={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-bing": {
+  "urlTemplate": "https://bing.com/search?q=\"{term}\"",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-bingnews": {
+  "urlTemplate": "https://bing.com/news/search?q=\"{term}\"",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-yahoo": {
+  "urlTemplate": "https://search.yahoo.com/search?p={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-yandex": {
+  "urlTemplate": "https://www.yandex.com/yandsearch?text={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-baidu": {
+  "urlTemplate": "https://baidu.com/s?wd={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-searx": {
+  "urlTemplate": "https://baresearch.org/?q={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-duckduckgo": {
+  "urlTemplate": "https://duckduckgo.com/?q={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-startpage": {
+  "urlTemplate": "https://startpage.com/do/search?q={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-qwant": {
+  "urlTemplate": "https://www.qwant.com/?q={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-brave": {
+  "urlTemplate": "https://search.brave.com/search?q={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-wayback": {
+  "urlTemplate": "https://web.archive.org/web/*/{term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-ahmia": {
+  "urlTemplate": "https://ahmia.fi/search/?q={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-tor66": {
+  "urlTemplate": "http://www.tor66sewebgixwhcqfnp5inzp5x5uohhdy3kvtnyfxc2e5mxiuh34iid.onion/search?q={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-ahmiaonion": {
+  "urlTemplate": "http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/search/?q={term}&action=search",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-gdark": {
+  "urlTemplate": "http://zb2jtkhnbvhkya3d46twv3g7lkobi4s62tjffqmafjibixk6pmq75did.onion/gdark/search.php?query={term}&search=1",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-hiddenreviews": {
+  "urlTemplate": "http://u5lyidiw4lpkonoctpqzxgyk6xop7w7w3oho4dzzsi272rwnjhyx7ayd.onion/?s={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-onionland": {
+  "urlTemplate": "http://3bbad7fauom4d6sgppalyqddsqbf5u5p56b5k5uk2zxsy3d6ey2jobad.onion/search?q={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-submarine": {
+  "urlTemplate": "http://no6m4wzdexe3auiupv2zwif7rm6qwxcyhslkcnzisxgeiw6pvjsgafad.onion/search.php?term={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-deepsearch": {
+  "urlTemplate": "http://searchgf7gdtauh7bhnbyed4ivxqmuoat3nm6zfrg3ymkq6mtnpye3ad.onion/search?q={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-onioncenter": {
+  "urlTemplate": "http://5qqrlc7hw3tsgokkqifb33p3mrlpnleka2bjg7n46vih2synghb6ycid.onion/index.php?a=search&q={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "searchengines-freshonion": {
+  "urlTemplate": "http://freshonifyfe4rmuh6qwpsexfhdrww7wnt5qmkoertwxmcuvm4woo4ad.onion/?query={term}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "domains-search-baidu": {
+  "urlTemplate": "https://www.baidu.com/s?wd=\"{domain}\"",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-search-bing": {
+  "urlTemplate": "https://www.bing.com/search?q=\"{domain}\"",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-search-google": {
+  "urlTemplate": "https://www.google.com/search?q=\"{domain}\"",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-search-googlesite": {
+  "urlTemplate": "https://www.google.com/search?q=site%3A{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-search-yandex": {
+  "urlTemplate": "https://yandex.com/search/?text=\"{domain}\"",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-profile-adsense-dnslytics": {
+  "urlTemplate": "https://dnslytics.com/adsense/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-profile-analyzeid": {
+  "urlTemplate": "http://analyzeid.com/?domain={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-profile-builtwith": {
+  "urlTemplate": "https://builtwith.com/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-profile-centralops": {
+  "urlTemplate": "https://centralops.net/co/DomainDossier.aspx?addr={domain}&net_whois=true",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-profile-domaincodex": {
+  "urlTemplate": "https://www.domaincodex.com/search?q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-profile-domainiq": {
+  "urlTemplate": "https://www.domainiq.com/domain?{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-profile-ga-dnslytics": {
+  "urlTemplate": "https://dnslytics.com/google-analytics/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-profile-hostio": {
+  "urlTemplate": "https://host.io/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-profile-httpheaders": {
+  "urlTemplate": "http://viewdns.info/httpheaders/?domain={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-profile-informeremails": {
+  "urlTemplate": "https://website.informer.com/emails/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-profile-ismysitedown": {
+  "urlTemplate": "http://viewdns.info/ismysitedown/?domain={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-profile-netcraft-report": {
+  "urlTemplate": "https://sitereport.netcraft.com/?url=http://{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-profile-nerdydata": {
+  "urlTemplate": "https://nerdydata.com/search?query={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-profile-publicwww": {
+  "urlTemplate": "https://publicwww.com/websites/\"{domain}\"/",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-profile-robotstxt": {
+  "urlTemplate": "https://{domain}/robots.txt",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-profile-spyonweb": {
+  "urlTemplate": "http://spyonweb.com/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-profile-wmtips": {
+  "urlTemplate": "https://www.wmtips.com/tools/info/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-profile-webscout": {
+  "urlTemplate": "https://web-scout.io/results?q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-screenshot-dmnsapp": {
+  "urlTemplate": "https://dmns.app/screenshots/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-screenshot-domainiq": {
+  "urlTemplate": "https://www.domainiq.com/screenshot?{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-screenshot-domaintools": {
+  "urlTemplate": "https://research.domaintools.com/research/screenshot/?domain={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-screenshot-easycounter": {
+  "urlTemplate": "https://www.easycounter.com/report/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-screenshot-hypestat": {
+  "urlTemplate": "https://hypestat.com/info/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-screenshot-informer": {
+  "urlTemplate": "https://website.informer.com/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-screenshot-urlscan": {
+  "urlTemplate": "https://urlscan.io/domain/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-archive-archiveit": {
+  "urlTemplate": "https://archive-it.org/explore?q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-archive-archivemd": {
+  "urlTemplate": "http://archive.md/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-archive-archiveorg": {
+  "urlTemplate": "https://web.archive.org/web/*/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-archive-archiveph": {
+  "urlTemplate": "http://archive.ph/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-archive-archivescan": {
+  "urlTemplate": "http://web-archive-scan.com/archive/search?q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-archive-wildcard": {
+  "urlTemplate": "https://web.archive.org/web/*/{domain}/*",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-archive-arquivopt": {
+  "urlTemplate": "https://arquivo.pt/page/search?q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-archive-carbondating": {
+  "urlTemplate": "http://carbondate.cs.odu.edu/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-archive-congress": {
+  "urlTemplate": "https://www.google.com/search?q=site:https://webarchive.loc.gov/all/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-archive-dthistory": {
+  "urlTemplate": "https://research.domaintools.com/research/hosting-history/?q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-archive-elephind": {
+  "urlTemplate": "https://elephind.com/?q=&a={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-archive-googlecache": {
+  "urlTemplate": "http://www.google.com/search?q=cache:{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-archive-mementoweb": {
+  "urlTemplate": "http://timetravel.mementoweb.org/memento/*/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-archive-wayback-keyword": {
+  "urlTemplate": "https://web.archive.org/web/*/{domain}/*?q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-archive-whoishistory": {
+  "urlTemplate": "https://www.whois.com/whois-history/results/?domain={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-archive-whois-whois": {
+  "urlTemplate": "https://www.whois.com/whois/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-archive-whois-dt": {
+  "urlTemplate": "https://whois.domaintools.com/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-archive-whois-whoxy": {
+  "urlTemplate": "https://www.whoxy.com/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-seo-linkody": {
+  "urlTemplate": "https://www.linkody.com/en/seo-tools/free-backlink-checker/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-seo-copyscape": {
+  "urlTemplate": "https://www.copyscape.com/?q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-seo-hostio-backlinks": {
+  "urlTemplate": "https://host.io/{domain}/backlinks",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-seo-hostio-redirects": {
+  "urlTemplate": "https://host.io/{domain}/redirects",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-seo-moz": {
+  "urlTemplate": "https://moz.com/domain-analysis?site={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-seo-reddit-mentions": {
+  "urlTemplate": "https://www.reddit.com/search/?q=\"{domain}\"",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-seo-reddit-url": {
+  "urlTemplate": "https://www.reddit.com/domain/{domain}/",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-seo-sharedcount": {
+  "urlTemplate": "https://sharedcount.com/lookup?url={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-seo-similarweb": {
+  "urlTemplate": "https://www.similarweb.com/website/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-seo-sitemapper": {
+  "urlTemplate": "https://www.sitemapper.com/#/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-seo-spyfu": {
+  "urlTemplate": "https://www.spyfu.com/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-alienvault": {
+  "urlTemplate": "https://otx.alienvault.com/browse/global/indicators?q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-blacklight": {
+  "urlTemplate": "https://themarkup.org/blacklight?url={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-chinatest": {
+  "urlTemplate": "http://viewdns.info/chinesefirewall/?domain={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-dehashed": {
+  "urlTemplate": "https://dehashed.com/search?query={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-hudsonrock": {
+  "urlTemplate": "https://cavalier.hudsonrock.com/api/json/v2/preview/search-by-domain?domain={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-hybridanalysis": {
+  "urlTemplate": "https://www.hybrid-analysis.com/search?query={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-ibmxforce": {
+  "urlTemplate": "https://exchange.xforce.ibmcloud.com/url/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-intelx": {
+  "urlTemplate": "https://intelx.io/?s={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-irantest": {
+  "urlTemplate": "http://viewdns.info/iranfirewall/?siteurl={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-joesandbox": {
+  "urlTemplate": "https://www.joesandbox.com/search?q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-leakix": {
+  "urlTemplate": "https://leakix.net/domain/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-leakix-search": {
+  "urlTemplate": "https://leakix.net/search?scope=leak&q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-maltiverse": {
+  "urlTemplate": "https://maltiverse.com/search;query={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-mywot": {
+  "urlTemplate": "https://www.mywot.com/scorecard/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-phishcheck": {
+  "urlTemplate": "https://phishcheck.me/check_url/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-pulsedive": {
+  "urlTemplate": "https://pulsedive.com/indicator/?value={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-riskiq": {
+  "urlTemplate": "https://community.riskiq.com/search/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-securityheaders": {
+  "urlTemplate": "https://securityheaders.com/?q=https://{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-securitytrails": {
+  "urlTemplate": "https://securitytrails.com/domain/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-securitytrails-overview": {
+  "urlTemplate": "https://securitytrails.com/domain/{domain}/overview",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-skymem": {
+  "urlTemplate": "https://www.skymem.info/srch?q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-spamorg": {
+  "urlTemplate": "http://spam.org/evaluate/?domain={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-spamhaus": {
+  "urlTemplate": "https://check.spamhaus.org/domain/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-stopforumspam": {
+  "urlTemplate": "https://www.stopforumspam.com/search?q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-threatcrowd": {
+  "urlTemplate": "https://ci-www.threatcrowd.org/domain.php?domain={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-threatintel": {
+  "urlTemplate": "https://threatintelligenceplatform.com/report/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-triage-smtp": {
+  "urlTemplate": "https://tria.ge/submit?kind=smtp&value={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-triage-url": {
+  "urlTemplate": "https://tria.ge/submit?kind=url&value=https://{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-urlscan-page": {
+  "urlTemplate": "https://urlscan.io/search/#page.domain%3A{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-urlscan-general": {
+  "urlTemplate": "https://urlscan.io/search/#{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-sec-virustotal": {
+  "urlTemplate": "https://www.virustotal.com/gui/domain/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-abusecontact": {
+  "urlTemplate": "http://viewdns.info/abuselookup/?domain={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-censys": {
+  "urlTemplate": "https://search.censys.io/search?resource=hosts&q=services.dns.names%3A+%60{domain}%60",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-crtsh": {
+  "urlTemplate": "https://crt.sh/?q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-records": {
+  "urlTemplate": "http://viewdns.info/dnsrecord/?domain={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-report": {
+  "urlTemplate": "http://viewdns.info/dnsreport/?domain={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-dnssec": {
+  "urlTemplate": "http://viewdns.info/dnssec/?domain={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-dnsdump": {
+  "urlTemplate": "https://dnsdumpster.com/",
+  "no_input": true
+ },
+ "domains-dns-dnslytics": {
+  "urlTemplate": "https://dnslytics.com/dns-records/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-domainapp": {
+  "urlTemplate": "https://dns.domainapp.com/?q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-domaintools": {
+  "urlTemplate": "https://whois.domaintools.com/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-eurid": {
+  "urlTemplate": "https://whois.eurid.eu/?domain={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-etherscan-ens": {
+  "urlTemplate": "https://etherscan.io/enslookup-search?search={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-godaddy": {
+  "urlTemplate": "https://www.godaddy.com/whois/results.aspx?domain={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-netcraft-subdomain": {
+  "urlTemplate": "https://searchdns.netcraft.com/?restriction=site+contains&host={domain}&position=limited",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-resolvers": {
+  "urlTemplate": "https://resolve.rs/dns/troubleshooting.html?domain={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-reversedns": {
+  "urlTemplate": "http://viewdns.info/reversedns/?ip={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-robtex": {
+  "urlTemplate": "https://www.robtex.com/dns-lookup/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-subdomains-columbus": {
+  "urlTemplate": "https://columbus.elmasy.com/search?q=domain%3D{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-whois": {
+  "urlTemplate": "https://www.who.is/whois/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-whois-dns": {
+  "urlTemplate": "https://www.who.is/dns/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-whoiscom": {
+  "urlTemplate": "https://www.whois.com/whois/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-whois-viewdns": {
+  "urlTemplate": "http://viewdns.info/whois/?domain={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-whoisology": {
+  "urlTemplate": "https://whoisology.com/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-dns-whoxy": {
+  "urlTemplate": "https://www.whoxy.com/whois-history-{domain_nodots}.html",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-ip-censys": {
+  "urlTemplate": "https://search.censys.io/search?resource=hosts&q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-ip-networksdb": {
+  "urlTemplate": "https://networksdb.io/ip-addresses-of/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-ip-history": {
+  "urlTemplate": "http://viewdns.info/iphistory/?domain={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-ip-portscan": {
+  "urlTemplate": "http://viewdns.info/portscan/?host={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-ip-reverseip": {
+  "urlTemplate": "http://viewdns.info/reverseip/?host={domain}&t=1",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-ip-shodan-domain": {
+  "urlTemplate": "https://www.shodan.io/domain/{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-ip-shodan-hostname": {
+  "urlTemplate": "https://www.shodan.io/search?query=hostname%3A{domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-ip-shodan-query": {
+  "urlTemplate": "https://www.shodan.io/search?query={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-ip-traceroute": {
+  "urlTemplate": "http://viewdns.info/traceroute/?domain={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-records-asa": {
+  "urlTemplate": "https://www.asa.org.uk/search.html?q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-records-dnpedia": {
+  "urlTemplate": "https://dnpedia.com/tlds/search.php?q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-records-fca": {
+  "urlTemplate": "https://www.fca.org.uk/search-results?search_term={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-records-googlegroups": {
+  "urlTemplate": "https://groups.google.com/search?q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-records-occrp": {
+  "urlTemplate": "https://aleph.occrp.org/search?limit=30&q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-records-ofac": {
+  "urlTemplate": "https://ofac.treasury.gov/recent-actions?search_api_fulltext={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-records-sra": {
+  "urlTemplate": "https://www.sra.org.uk/search-results/?searchText={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-records-udrp": {
+  "urlTemplate": "https://www.udrpsearch.com/search?query={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-records-wipo": {
+  "urlTemplate": "https://www.wipo.int/google/search?q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-shorturl-bitly": {
+  "urlTemplate": "{url}+",
+  "validator": "getAndValidateUrl"
+ },
+ "domains-shorturl-any": {
+  "urlTemplate": "https://www.expandurl.net/expand?url={url}",
+  "validator": "getAndValidateUrl"
+ },
+ "domains-shorturl-tinycc": {
+  "urlTemplate": "https://tiny.cc/preview/{url}",
+  "validator": "getAndValidateUrl"
+ },
+ "domains-adsense-analyzeid": {
+  "urlTemplate": "http://analyzeid.com/?ad={adsenseid}",
+  "validator": "getAndValidateAdsenseId"
+ },
+ "domains-adsense-dnslytics": {
+  "urlTemplate": "https://dnslytics.com/adsense/{adsenseid}",
+  "validator": "getAndValidateAdsenseId"
+ },
+ "domains-adsense-hackertarget": {
+  "urlTemplate": "https://hackertarget.com/google-adsense-decoder/?s={adsenseid}",
+  "validator": "getAndValidateAdsenseId"
+ },
+ "domains-adsense-riskiq": {
+  "urlTemplate": "https://community.riskiq.com/search/trackers?query={adsenseid}",
+  "validator": "getAndValidateAdsenseId"
+ },
+ "domains-analytics-analyzeid": {
+  "urlTemplate": "http://analyzeid.com/?ga={analyticsid}",
+  "validator": "getAndValidateAnalyticsId"
+ },
+ "domains-analytics-dnslytics": {
+  "urlTemplate": "https://dnslytics.com/google-analytics/{analyticsid}",
+  "validator": "getAndValidateAnalyticsId"
+ },
+ "domains-analytics-hackertarget": {
+  "urlTemplate": "https://hackertarget.com/google-analytics-decoder/?s={analyticsid}",
+  "validator": "getAndValidateAnalyticsId"
+ },
+ "domains-analytics-publicwww": {
+  "urlTemplate": "https://publicwww.com/websites/\"{analyticsid}\"/",
+  "validator": "getAndValidateAnalyticsId"
+ },
+ "domains-analytics-riskiq": {
+  "urlTemplate": "https://community.riskiq.com/search/trackers?query={analyticsid}",
+  "validator": "getAndValidateAnalyticsId"
+ },
+ "domains-favicon-hash": {
+  "urlTemplate": "https://favicon-hash.kmsec.uk/api/?url={favicon_url}",
+  "validator": "getAndValidateFaviconUrl"
+ },
+ "domains-favicon-shodan": {
+  "urlTemplate": "https://www.shodan.io/search?query=http.favicon.hash%3A{shodan_hash}",
+  "validator": "getAndValidateShodanFaviconHash"
+ },
+ "domains-favicon-virustotal": {
+  "urlTemplate": "https://www.virustotal.com/gui/search/entity:url%20main_icon_md5:{md5_hash}",
+  "validator": "getAndValidateMd5Hash"
+ },
+ "domains-favicon-censys": {
+  "urlTemplate": "https://search.censys.io/search?resource=hosts&sort=RELEVANCE&per_page=25&virtual_hosts=EXCLUDE&q=services.http.response.favicons.md5_hash%3A{md5_hash}",
+  "validator": "getAndValidateMd5Hash"
+ },
+ "domains-csp-censys": {
+  "urlTemplate": "https://search.censys.io/search?resource=hosts&q=services.http.response.headers.content_security_policy%3A+%60{csp_string}%60",
+  "validator": "getAndValidateCsp"
+ },
+ "names-9jabook": {
+  "urlTemplate": "https://9jabook.com/main/search/search?q={fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-facebook-direct": {
+  "urlTemplate": "https://www.facebook.com/search/top?q={fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-facebook-google": {
+  "urlTemplate": "https://www.google.com/search?q=site%3Afacebook.com+%22{fullname}%22",
+  "validator": "getAndValidateNames"
+ },
+ "names-google-maps": {
+  "urlTemplate": "https://www.google.com/maps/search/{fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-google-search": {
+  "urlTemplate": "https://www.google.com/search?q=%22{fullname}%22",
+  "validator": "getAndValidateNames"
+ },
+ "names-idcrawl": {
+  "urlTemplate": "https://www.idcrawl.com/{fullnamedash}",
+  "validator": "getAndValidateNames"
+ },
+ "names-instagram-google": {
+  "urlTemplate": "https://www.google.com/search?q=site%3Ainstagram.com+%22{fullname}%22",
+  "validator": "getAndValidateNames"
+ },
+ "names-socialsearcher": {
+  "urlTemplate": "https://www.social-searcher.com/search-users/?q6={fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-thatsthem-name": {
+  "urlTemplate": "https://thatsthem.com/name/{fullnamedash}",
+  "validator": "getAndValidateNames"
+ },
+ "names-twitter-direct": {
+  "urlTemplate": "https://twitter.com/search?q=({fullname})&src=typed_query&f=user",
+  "validator": "getAndValidateNames"
+ },
+ "names-twitter-google": {
+  "urlTemplate": "https://www.google.com/search?q=site%3Atwitter.com+%22{fullname}%22",
+  "validator": "getAndValidateNames"
+ },
+ "names-webmii": {
+  "urlTemplate": "https://webmii.com/people?n={fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-yachtlycrew": {
+  "urlTemplate": "https://yachtlycrew.com/crew/search?q={fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-asa": {
+  "urlTemplate": "https://www.asa.org.uk/search.html?q={fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-interpol": {
+  "urlTemplate": "https://www.interpol.int/en/How-we-work/Notices/View-Red-Notices",
+  "validator": "getAndValidateNames"
+ },
+ "names-occrp": {
+  "urlTemplate": "https://aleph.occrp.org/search?limit=30&q={fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-ofac-recent": {
+  "urlTemplate": "https://ofac.treasury.gov/recent-actions?search_api_fulltext={fullname}&ra-start-date=&ra-end-date=&ra_year=",
+  "validator": "getAndValidateNames"
+ },
+ "names-ofac-search": {
+  "urlTemplate": "https://sanctionssearch.ofac.treas.gov/",
+  "validator": "getAndValidateNames"
+ },
+ "names-opensanctions": {
+  "urlTemplate": "https://www.opensanctions.org/search/?q={fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-udrp": {
+  "urlTemplate": "https://www.udrpsearch.com/search?query={fullname}&search=parties",
+  "validator": "getAndValidateNames"
+ },
+ "names-censys-cert": {
+  "urlTemplate": "https://search.censys.io/search?resource=certificates&sort=RELEVANCE&per_page=25&virtual_hosts=EXCLUDE&q={fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-crunchbase": {
+  "urlTemplate": "https://www.crunchbase.com/discover/people/{fullnamedashlower}",
+  "validator": "getAndValidateNames"
+ },
+ "names-domaintools-whois": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{fullname}%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateNames"
+ },
+ "names-opencorporates": {
+  "urlTemplate": "https://opencorporates.com/officers?q={fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-riskiq": {
+  "urlTemplate": "https://community.riskiq.com/search/trackers?query={fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-canada411": {
+  "urlTemplate": "https://www.canada411.ca/search/?stype=rl&searchBy=name&surname={lastname}&given={firstname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-zaubacorp": {
+  "urlTemplate": "https://www.zaubacorp.com/directorsearchresults/{fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-paginebianche": {
+  "urlTemplate": "https://www.paginebianche.it/persone?qs={firstname}-{lastname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-paginegialle": {
+  "urlTemplate": "https://www.paginegialle.it/ricerca/{firstname}-{lastname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-checkoru": {
+  "urlTemplate": "https://checko.ru/search?query={fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-rusfinder": {
+  "urlTemplate": "https://rusfinder.pro/search/",
+  "no_input": true,
+  "validator": "getAndValidateNames"
+ },
+ "names-ukphonebook-name": {
+  "urlTemplate": "https://www.ukphonebook.com/find-a-person/by-fullname/{fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-ukphonebook-resi": {
+  "urlTemplate": "https://www.ukphonebook.com/residential-telephone-directory/",
+  "no_input": true,
+  "validator": "getAndValidateNames"
+ },
+ "names-sweden-hitta": {
+  "urlTemplate": "https://www.hitta.se/s%C3%B6k?vad={fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-sweden-eniro": {
+  "urlTemplate": "https://www.eniro.se/{firstname}+{lastname}/personer",
+  "validator": "getAndValidateNames"
+ },
+ "names-sweden-mrkoll": {
+  "urlTemplate": "https://mrkoll.se/resultat?n={firstname}+{lastname}&c=&min=16&max=120&sex=a&c_stat=all&company=",
+  "validator": "getAndValidateNames"
+ },
+ "names-sweden-ratsit": {
+  "urlTemplate": "https://www.ratsit.se/sok/person?vem={fullname}&m=0&k=0&r=0&er=0&b=0&eb=0&amin=16&amax=120&fon=1&page=1",
+  "validator": "getAndValidateNames"
+ },
+ "names-sweden-merinfo": {
+  "urlTemplate": "https://www.merinfo.se/search?q={firstname}+{lastname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-addresses": {
+  "urlTemplate": "https://www.addresses.com/people/{fullnamedash}",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-advbackground": {
+  "urlTemplate": "https://www.advancedbackgroundchecks.com/names/{firstname}-{lastname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-classmates": {
+  "urlTemplate": "https://www.classmates.com/siteui/ybsearch/results?q={fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-cyberbackground": {
+  "urlTemplate": "https://www.cyberbackgroundchecks.com/people/{firstname}-{lastname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-familytreenow": {
+  "urlTemplate": "https://www.familytreenow.com/search/genealogy/results?first={firstname}&last={lastname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-fastpeople": {
+  "urlTemplate": "https://www.fastpeoplesearch.com/name/{firstname}-{lastname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-idcrawl-us": {
+  "urlTemplate": "https://www.idcrawl.com/{firstname}-{lastname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-intelius": {
+  "urlTemplate": "https://www.intelius.com/people-search/{firstname}-{lastname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-nuwber": {
+  "urlTemplate": "https://nuwber.com/search?name={fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-peoplebyname": {
+  "urlTemplate": "https://www.peoplebyname.com/people/{lastname}/{firstname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-peoplesearchnow": {
+  "urlTemplate": "https://www.peoplesearchnow.com/person/{firstname}-{lastname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-radaris": {
+  "urlTemplate": "https://radaris.com/p/{firstname}/{lastname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-rocketreach": {
+  "urlTemplate": "https://google.com/search?q=site:rocketreach.co+%22{fullname}%22",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-searchpeoplefree": {
+  "urlTemplate": "https://www.searchpeoplefree.com/find/{firstname}-{lastname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-searchsystems": {
+  "urlTemplate": "https://publicrecords.searchsystems.net/",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-spokeo": {
+  "urlTemplate": "https://www.spokeo.com/{firstname}-{lastname}?loaded=1",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-thatsthem": {
+  "urlTemplate": "https://thatsthem.com/name/{fullnamedash}",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-truepeople": {
+  "urlTemplate": "https://www.truepeoplesearch.com/results?name={fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-truthfinder": {
+  "urlTemplate": "https://www.truthfinder.com/results/?firstName={firstname}&lastName={lastname}&state=ALL",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-usaofficial": {
+  "urlTemplate": "https://usa-official.com/{firstname}-{lastname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-whitepages": {
+  "urlTemplate": "https://www.whitepages.com/name/{fullnamedash}",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-yasni": {
+  "urlTemplate": "https://www.yasni.com/{fullname}/check+people?sh",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-zabasearch": {
+  "urlTemplate": "https://www.zabasearch.com/people/{fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "phoneus-bing": {
+  "urlTemplate": "https://www.bing.com/search?q={google_query}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-google": {
+  "urlTemplate": "https://www.google.com/search?q={google_query}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-yandex": {
+  "urlTemplate": "https://yandex.com/search/?text={google_query}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-800notes": {
+  "urlTemplate": "https://800notes.com/Phone.aspx/1-{full_dash}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-callersmart": {
+  "urlTemplate": "https://www.callersmart.com/phone-number/{full_dash}?phone-number={full}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-okcaller": {
+  "urlTemplate": "https://www.okcaller.com/{full}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-whoseno": {
+  "urlTemplate": "https://www.whoseno.com/US/{full}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-facebook": {
+  "urlTemplate": "https://mbasic.facebook.com/login/device-based/ar/login/?multiple_results=0&scp=1&pls=1{e164}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-syncme": {
+  "urlTemplate": "https://sync.me/search/?number={e164}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-whatsapp": {
+  "urlTemplate": "https://whatsapp.checkleaked.cc/{e164}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-dehashed": {
+  "urlTemplate": "https://dehashed.com/search?query={full}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-411": {
+  "urlTemplate": "https://www.411.com/phone/1-{full_dash}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-advbackground": {
+  "urlTemplate": "https://www.advancedbackgroundchecks.com/{full_dash}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-americaphone": {
+  "urlTemplate": "https://www.americaphonebook.com/reverse.php?number={full}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-cyberbackground": {
+  "urlTemplate": "https://www.cyberbackgroundchecks.com/phone/{full_dash}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-fastpeople": {
+  "urlTemplate": "https://www.fastpeoplesearch.com/{full_dash}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-infotracer": {
+  "urlTemplate": "https://infotracer.com/phone-lookup/results/?phone={full}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-numpi": {
+  "urlTemplate": "https://numpi.com/phone-info/{full}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-nuwber": {
+  "urlTemplate": "https://nuwber.com/search/phone?phone={full}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-peoplesearchnow": {
+  "urlTemplate": "https://www.peoplesearchnow.com/phone/{full_dash}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-phoneowner": {
+  "urlTemplate": "https://phoneowner.com/phone/{full}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-searchpeoplefree": {
+  "urlTemplate": "https://www.searchpeoplefree.com/phone-lookup/{full_dash}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-spytox": {
+  "urlTemplate": "https://www.spytox.com/people/search?phone={full_dash}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-thatsthem": {
+  "urlTemplate": "https://thatsthem.com/phone/{full_dash}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-truepeople": {
+  "urlTemplate": "https://www.truepeoplesearch.com/results?phoneno=({area}){prefix}-{line}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-usphonebook": {
+  "urlTemplate": "https://www.usphonebook.com/{full_dash}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-whitepages": {
+  "urlTemplate": "https://www.whitepages.com/phone/1-{full_dash}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-yellowpages": {
+  "urlTemplate": "https://people.yellowpages.com/whitepages/phone-lookup?phone={full}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneus-zabasearch": {
+  "urlTemplate": "https://www.zabasearch.com/phone/{full}",
+  "validator": "getAndValidateUsPhone"
+ },
+ "phoneint-bing": {
+  "urlTemplate": "https://www.bing.com/search?q={google_query}",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireNatNum": true
+  }
+ },
+ "phoneint-google": {
+  "urlTemplate": "https://www.google.com/search?q={google_query}",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireNatNum": true
+  }
+ },
+ "phoneint-yandex": {
+  "urlTemplate": "https://yandex.com/search/?text={google_query}",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireNatNum": true
+  }
+ },
+ "phoneint-411": {
+  "urlTemplate": "https://www.411.com/phone/1-{nat_num}",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireNatNum": true
+  }
+ },
+ "phoneint-epieos": {
+  "urlTemplate": "https://epieos.com/?q=+{e164}&t=phone",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-syncme": {
+  "urlTemplate": "https://sync.me/search/?number=+{e164}",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-thatsthem": {
+  "urlTemplate": "https://thatsthem.com/phone/{nat_num}",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireNatNum": true
+  }
+ },
+ "phoneint-truecaller": {
+  "urlTemplate": "https://www.truecaller.com/search/{country_iso_lower}/{nat_num}",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireNatNum": true,
+   "requireCountryLetters": true
+  }
+ },
+ "phoneint-tellows": {
+  "urlTemplate": "https://www.tellows.it/num/{nat_num}",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireNatNum": true
+  }
+ },
+ "phoneint-facebookposts": {
+  "urlTemplate": "https://www.facebook.com/search/posts/?q=+{e164}",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-ofac": {
+  "urlTemplate": "https://sanctionssearch.ofac.treas.gov/Details.aspx?id=+{e164}",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-riskiq": {
+  "urlTemplate": "https://community.riskiq.com/search/whois/phone?query=+{e164}",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-whatsappleaks": {
+  "urlTemplate": "https://whatsapp.checkleaked.cc/",
+  "no_input": true,
+  "validator": "getAndValidateIntlPhone"
+ },
+ "phoneint-aql": {
+  "urlTemplate": "https://portal.aql.com/telecoms/network_lookup.php/?number={e164}&nlSubmit=submit",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-mysmsbox": {
+  "urlTemplate": "https://mysmsbox.ru/phone-search/+{e164}",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-nigeriaphonebook": {
+  "urlTemplate": "https://nigeriaphonebook.com/search-result?searchKey={nat_num}",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireNatNum": true
+  }
+ },
+ "phoneint-emobiletracker": {
+  "urlTemplate": "https://www.emobiletracker.com/",
+  "no_input": true,
+  "validator": "getAndValidateIntlPhone"
+ },
+ "phoneint-freecarrierlookup": {
+  "urlTemplate": "https://freecarrierlookup.com/",
+  "no_input": true,
+  "validator": "getAndValidateIntlPhone"
+ },
+ "phoneint-vedbex": {
+  "urlTemplate": "https://www.vedbex.com/phone2skype",
+  "no_input": true,
+  "validator": "getAndValidateIntlPhone"
+ },
+ "phoneint-dt-base": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{e164}%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-pluscc0num": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_plus_cc_0num}%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-plusccnum": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_plus_cc_num}%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-0numonly": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_0num_only}%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-enumgmail": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_enum_generic}@gmail.com%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-enumhotmail": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_enum_generic}@hotmail.com%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-enummailru": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_enum_generic}@mail.ru%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-enumpmme": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_enum_generic}@pm.me%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-enumprotonch": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_enum_generic}@proton.ch%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-enumprotonme": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_enum_generic}@proton.me%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-enumprotonmail": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_enum_generic}@protonmail.com%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-enumyahoo": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_enum_generic}@yahoo.com%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-enumyandexcom": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_enum_generic}@yandex.com%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-enumyandexru": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_enum_generic}@yandex.ru%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-numonly": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_num_only}%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-numgmail": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_num_generic}@gmail.com%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-numhotmail": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_num_generic}@hotmail.com%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-nummailru": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_num_generic}@mail.ru%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-numpmme": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_num_generic}@pm.me%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-numprotonme": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_num_generic}@proton.me%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-numprotonmailch": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_num_generic}@protonmail.ch%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-numprotonmailcom": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_num_generic}@protonmail.com%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-numyahoo": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_num_generic}@yahoo.com%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-numyandexcom": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_num_generic}@yandex.com%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "phoneint-dt-numyandexru": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{dt_num_generic}@yandex.ru%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireCountryCode": true,
+   "requireNatNum": true
+  }
+ },
+ "publiccompanyrecords-officer-aihit": {
+  "urlTemplate": "https://www.aihitdata.com/search/companies?t={officername}",
+  "validator": "getAndValidateOfficerName"
+ },
+ "publiccompanyrecords-officer-fca": {
+  "urlTemplate": "https://www.fca.org.uk/search-results?search_term={officername}",
+  "validator": "getAndValidateOfficerName"
+ },
+ "publiccompanyrecords-officer-foia": {
+  "urlTemplate": "https://search.foia.gov/search?affiliate=foia.gov&query={officername}",
+  "validator": "getAndValidateOfficerName"
+ },
+ "publiccompanyrecords-officer-infobel": {
+  "urlTemplate": "https://www.infobel.com/",
+  "no_input": true
+ },
+ "publiccompanyrecords-officer-iosco": {
+  "urlTemplate": "https://www.iosco.org/investor_protection/?subsection=investor_alerts_portal",
+  "no_input": true
+ },
+ "publiccompanyrecords-officer-judyrecords": {
+  "urlTemplate": "https://www.judyrecords.com/getSearchResults/?search={officername}",
+  "validator": "getAndValidateOfficerName"
+ },
+ "publiccompanyrecords-officer-littlesis": {
+  "urlTemplate": "https://littlesis.org/search?q={officername}",
+  "validator": "getAndValidateOfficerName"
+ },
+ "publiccompanyrecords-officer-moneyline": {
+  "urlTemplate": "http://politicalmoneyline.com/tr/tr_MG_IndivDonor.aspx?sMP=1&sText={officername}&sCycle=2020",
+  "validator": "getAndValidateOfficerName"
+ },
+ "publiccompanyrecords-officer-muckrock": {
+  "urlTemplate": "https://www.muckrock.com/foi/list/?q={officername}",
+  "validator": "getAndValidateOfficerName"
+ },
+ "publiccompanyrecords-officer-nigeria24": {
+  "urlTemplate": "https://nigeria24.me/search/{officername}",
+  "validator": "getAndValidateOfficerName"
+ },
+ "publiccompanyrecords-officer-occrp": {
+  "urlTemplate": "https://aleph.occrp.org/search?limit=30&q={officername}",
+  "validator": "getAndValidateOfficerName"
+ },
+ "publiccompanyrecords-officer-ofac": {
+  "urlTemplate": "https://ofac.treasury.gov/recent-actions?search_api_fulltext={officername}&ra-start-date=&ra-end-date=&ra_year=",
+  "validator": "getAndValidateOfficerName"
+ },
+ "publiccompanyrecords-officer-opencorp": {
+  "urlTemplate": "https://opencorporates.com/officers?q={officername}",
+  "validator": "getAndValidateOfficerName"
+ },
+ "publiccompanyrecords-officer-opensanctions": {
+  "urlTemplate": "https://www.opensanctions.org/search/?q={officername}",
+  "validator": "getAndValidateOfficerName"
+ },
+ "publiccompanyrecords-officer-opensecrets": {
+  "urlTemplate": "https://www.opensecrets.org/search?q={officername}",
+  "validator": "getAndValidateOfficerName"
+ },
+ "publiccompanyrecords-officer-pacer": {
+  "urlTemplate": "https://search.uscourts.gov/search?affiliate=uscourts_pacer&locale=en&query={officername}",
+  "validator": "getAndValidateOfficerName"
+ },
+ "publiccompanyrecords-officer-recap": {
+  "urlTemplate": "https://www.courtlistener.com/?type=r&q={officername}",
+  "validator": "getAndValidateOfficerName"
+ },
+ "publiccompanyrecords-officer-sra": {
+  "urlTemplate": "https://www.sra.org.uk/search-results/?searchText={officername}",
+  "validator": "getAndValidateOfficerName"
+ },
+ "publiccompanyrecords-officer-trellis": {
+  "urlTemplate": "https://trellis.law/rulings/\"{officername}\"?state=az&state=ca&state=ct&state=de&state=fl&state=ga&state=il&state=ma&state=nv&state=nj&state=ny&state=oh&state=pa&state=ri&state=tx&state=wa",
+  "validator": "getAndValidateOfficerName"
+ },
+ "publiccompanyrecords-officer-unicourt": {
+  "urlTemplate": "https://www.google.com/search?q=site:unicourt.com+{officername}",
+  "validator": "getAndValidateOfficerName"
+ },
+ "publiccompanyrecords-usofficer-openpayrolls": {
+  "urlTemplate": "https://openpayrolls.com/search/{firstname}-{lastname}",
+  "validator": "getAndValidateUsOfficerName"
+ },
+ "publiccompanyrecords-usofficer-voterrecords": {
+  "urlTemplate": "https://voterrecords.com/voters/{firstname}-{lastname}",
+  "validator": "getAndValidateUsOfficerName"
+ },
+ "publiccompanyrecords-company-asa": {
+  "urlTemplate": "https://www.asa.org.uk/search.html?q={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-aihit": {
+  "urlTemplate": "https://www.aihitdata.com/search/companies?c={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-b2bhint": {
+  "urlTemplate": "https://b2bhint.com/en/search?type=companies&country=&q={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-cac": {
+  "urlTemplate": "https://search.cac.gov.ng/home",
+  "no_input": true
+ },
+ "publiccompanyrecords-company-censys": {
+  "urlTemplate": "https://search.censys.io/search?resource=certificates&sort=RELEVANCE&per_page=25&virtual_hosts=EXCLUDE&q={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-clarifiedby": {
+  "urlTemplate": "https://clarifiedby.diligenciagroup.com/",
+  "no_input": true
+ },
+ "publiccompanyrecords-company-companieshouse": {
+  "urlTemplate": "https://find-and-update.company-information.service.gov.uk/search?q={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-crunchbase": {
+  "urlTemplate": "https://www.crunchbase.com/search/organization.companies",
+  "no_input": true
+ },
+ "publiccompanyrecords-company-ejustice": {
+  "urlTemplate": "https://e-justice.europa.eu/content_find_a_company-489-en.do?clang=en",
+  "no_input": true
+ },
+ "publiccompanyrecords-company-fca": {
+  "urlTemplate": "https://www.fca.org.uk/search-results?search_term={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-foia": {
+  "urlTemplate": "https://search.foia.gov/search?affiliate=foia.gov&query={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-infobel": {
+  "urlTemplate": "https://www.infobel.com/",
+  "no_input": true
+ },
+ "publiccompanyrecords-company-iosco": {
+  "urlTemplate": "https://www.iosco.org/investor_protection/?subsection=investor_alerts_portal",
+  "no_input": true
+ },
+ "publiccompanyrecords-company-judyrecords": {
+  "urlTemplate": "https://www.judyrecords.com/getSearchResults/?search={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-littlesis": {
+  "urlTemplate": "https://littlesis.org/search?q={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-muckrock": {
+  "urlTemplate": "https://www.muckrock.com/foi/list/?q={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-ngcheck": {
+  "urlTemplate": "https://ng-check.com/?query={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-nigeria24": {
+  "urlTemplate": "https://nigeria24.me/search/{companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-occrp": {
+  "urlTemplate": "https://aleph.occrp.org/search?limit=30&q={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-ofac": {
+  "urlTemplate": "https://ofac.treasury.gov/recent-actions?search_api_fulltext={companyname}&ra-start-date=&ra-end-date=&ra_year=",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-opencorp": {
+  "urlTemplate": "https://opencorporates.com/companies?q={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-opencorp-al": {
+  "urlTemplate": "https://opencorporates.al/sq/search?name={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-opensanctions": {
+  "urlTemplate": "https://www.opensanctions.org/search/?q={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-pacer": {
+  "urlTemplate": "https://search.uscourts.gov/search?affiliate=uscourts_pacer&locale=en&query={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-recap": {
+  "urlTemplate": "https://www.courtlistener.com/?type=r&q={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-trellis": {
+  "urlTemplate": "https://trellis.law/rulings/\"{companyname}\"?state=az&state=ca&state=ct&state=de&state=fl&state=ga&state=il&state=ma&state=nv&state=nj&state=ny&state=oh&state=pa&state=ri&state=tx&state=wa",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-udrp": {
+  "urlTemplate": "https://www.udrpsearch.com/search?query={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-unicourt": {
+  "urlTemplate": "https://www.google.com/search?q=site:unicourt.com+{companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-wipo": {
+  "urlTemplate": "https://www.wipo.int/google/search?q=site:https://www.wipo.int/ AND %22{companyname}%22",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-zaubacorp": {
+  "urlTemplate": "https://www.zaubacorp.com/companysearchresults/{companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-contact-aihit-email": {
+  "urlTemplate": "https://www.aihitdata.com/search/companies?k={email}",
+  "validator": "getAndValidateCompanyEmail"
+ },
+ "publiccompanyrecords-contact-aihit-phone": {
+  "urlTemplate": "https://www.aihitdata.com/search/companies?k={phone}",
+  "validator": "getAndValidateCompanyPhone"
+ },
+ "publiccompanyrecords-ssdi": {
+  "urlTemplate": "https://www.genealogybank.com/explore/ssdi/all?fname=&minit=&lname=&kwinc=&kwexc=&birthy_0=&birthy_1=&deathy_0=&deathy_1=&ssnum={ssn}",
+  "validator": "getAndValidateSsn"
+ },
+ "publiccompanyrecords-company-piva": {
+  "urlTemplate": "https://www.google.com/search?q=site:ufficiocamerale.it {companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "email-google": {
+  "urlTemplate": "https://google.com/search?q=%22{email}%22",
+  "validator": "getAndValidateEmail"
+ },
+ "email-bing": {
+  "urlTemplate": "https://bing.com/search?q=%22{email}%22",
+  "validator": "getAndValidateEmail"
+ },
+ "email-yandex": {
+  "urlTemplate": "https://yandex.com/search/?text=%22{email}%22",
+  "validator": "getAndValidateEmail"
+ },
+ "email-analyzeid": {
+  "urlTemplate": "http://analyzeid.com/?email={email}",
+  "validator": "getAndValidateEmail"
+ },
+ "email-cybernews": {
+  "urlTemplate": "https://check.cybernews.com/chk/?e={email}",
+  "validator": "getAndValidateEmail"
+ },
+ "email-emailrep": {
+  "urlTemplate": "https://emailrep.io/query/{email}",
+  "validator": "getAndValidateEmail"
+ },
+ "email-ghunt": {
+  "urlTemplate": "https://gmail-osint.activetk.jp/{localpart}",
+  "validator": "getAndValidateGmail"
+ },
+ "email-gravatar": {
+  "urlTemplate": "https://gravatar.com/site/check/{email}",
+  "validator": "getAndValidateEmail"
+ },
+ "email-occrp": {
+  "urlTemplate": "https://data.occrp.org/search?q={email}",
+  "validator": "getAndValidateEmail"
+ },
+ "email-scamsearch": {
+  "urlTemplate": "https://scamsearch.io/search_report?search={email}",
+  "validator": "getAndValidateEmail"
+ },
+ "email-spycloud": {
+  "urlTemplate": "https://portal.spycloud.com/endpoint/enriched-stats/{email}",
+  "validator": "getAndValidateEmail"
+ },
+ "email-spytox": {
+  "urlTemplate": "https://spytox.com/people/search?email={email}",
+  "validator": "getAndValidateEmail"
+ },
+ "email-thatsthem": {
+  "urlTemplate": "https://thatsthem.com/email/{email}",
+  "validator": "getAndValidateEmail"
+ },
+ "email-whoxy": {
+  "urlTemplate": "https://whoxy.com/search.php?email={email}",
+  "validator": "getAndValidateEmail"
+ },
+ "email-whoisology": {
+  "urlTemplate": "https://whoisology.com/email/{email}",
+  "validator": "getAndValidateEmail"
+ },
+ "email-cleantalk": {
+  "urlTemplate": "https://cleantalk.org/email-checker/{email}",
+  "validator": "getAndValidateEmail"
+ },
+ "email-dehashed": {
+  "urlTemplate": "https://dehashed.com/search?query=%22{email}%22",
+  "validator": "getAndValidateEmail"
+ },
+ "email-hudsonrock": {
+  "urlTemplate": "https://cavalier.hudsonrock.com/api/json/v2/preview/search-by-login/osint-tools?email={email}",
+  "validator": "getAndValidateEmail"
+ },
+ "email-hunterverify": {
+  "urlTemplate": "https://hunter.io/email-verifier/{email}",
+  "validator": "getAndValidateEmail"
+ },
+ "email-intelx": {
+  "urlTemplate": "https://intelx.io/?s={email}",
+  "validator": "getAndValidateEmail"
+ },
+ "email-leakix": {
+  "urlTemplate": "https://leakix.net/search?scope=leak&q=%22{email}%22",
+  "validator": "getAndValidateEmail"
+ },
+ "email-psbdmp": {
+  "urlTemplate": "https://psbdmp.ws/api/search/{email}",
+  "validator": "getAndValidateEmail"
+ },
+ "email-flickr": {
+  "urlTemplate": "https://flickr.com/search/people/?q={email}",
+  "validator": "getAndValidateEmail"
+ },
+ "email-myspace": {
+  "urlTemplate": "https://myspace.com/search/people?q={email}",
+  "validator": "getAndValidateEmail"
+ },
+ "email-protonmail": {
+  "urlTemplate": "https://api.protonmail.ch/pks/lookup?op=get&search={email}",
+  "validator": "getAndValidateEmail"
+ },
+ "usernames-facebook-posts": {
+  "urlTemplate": "https://www.facebook.com/search/posts/?q={username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-facebook-profile": {
+  "urlTemplate": "https://facebook.com/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-facebook-direct": {
+  "urlTemplate": "https://www.facebook.com/search/top?q={username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-facebook-google": {
+  "urlTemplate": "https://www.google.com/search?q=site%3Afacebook.com+\"{username}\"",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-ghunt": {
+  "urlTemplate": "https://gmail-osint.activetk.jp/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-github": {
+  "urlTemplate": "https://github.com/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-gravatar": {
+  "urlTemplate": "https://en.gravatar.com/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-instagram-profile": {
+  "urlTemplate": "https://instagram.com/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-instagram-google": {
+  "urlTemplate": "https://www.google.com/search?q=site%3Ainstagram.com+\"{username}\"",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-instagram-direct": {
+  "urlTemplate": "https://www.instagram.com/{username}/",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-kik": {
+  "urlTemplate": "https://kik.me/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-linkedin-keyword": {
+  "urlTemplate": "https://www.linkedin.com/search/results/all/?keywords={username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-linktree": {
+  "urlTemplate": "https://linktr.ee/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-medium": {
+  "urlTemplate": "https://medium.com/@{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-mewe": {
+  "urlTemplate": "https://mewe.com/i/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-naijaplanet": {
+  "urlTemplate": "https://naijaplanet.com/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-reddit-profile": {
+  "urlTemplate": "https://www.reddit.com/user/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-snapchat": {
+  "urlTemplate": "https://www.snapchat.com/s/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-telegago": {
+  "urlTemplate": "https://cse.google.com/cse?&cx=006368593537057042503:efxu7xprihg#gsc.tab=0&gsc.q={username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-telegram": {
+  "urlTemplate": "https://t.me/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-tiktok-profile": {
+  "urlTemplate": "https://www.tiktok.com/@{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-tinder": {
+  "urlTemplate": "https://tinder.com/@{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-tumblr": {
+  "urlTemplate": "https://{username}.tumblr.com",
+  "validator": "getAndValidateTumblrUsername"
+ },
+ "usernames-x-profile": {
+  "urlTemplate": "https://x.com/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-x-google": {
+  "urlTemplate": "https://www.google.com/search?q=site%3Atwitter.com+\"{username}\"",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-x-direct": {
+  "urlTemplate": "https://twitter.com/search?q=({username})&src=typed_query&f=user",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-arkham": {
+  "urlTemplate": "https://platform.arkhamintelligence.com/explorer/entity/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-cashapp": {
+  "urlTemplate": "https://cash.app/${username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-paypalme": {
+  "urlTemplate": "https://www.paypal.com/paypalme/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-remitano": {
+  "urlTemplate": "https://remitano.com/btc/ng/profile/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-venmo": {
+  "urlTemplate": "https://account.venmo.com/u/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-steam-community": {
+  "urlTemplate": "https://steamcommunity.com/search/users/#text={username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-steamid-lookup": {
+  "urlTemplate": "https://steamid.uk/url/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-xbox-gamertag": {
+  "urlTemplate": "https://xboxgamertag.com/search/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-checkistan": {
+  "urlTemplate": "https://usernamechecker.checkistan.com/#{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-instantusername": {
+  "urlTemplate": "https://instantusername.com/?q={username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-namechck": {
+  "urlTemplate": "https://namechk.com/namechk-plugin-search-results/?n={username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-namechecker": {
+  "urlTemplate": "https://www.namechecker.org/#{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-namevine": {
+  "urlTemplate": "https://namevine.com/#/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-bing-search": {
+  "urlTemplate": "https://www.bing.com/search?q=\"{username}\"",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-email-search": {
+  "urlTemplate": "https://www.google.com/search?q=\"{username}@gmail.com\" OR \"{username}@yahoo.com\"",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-google-exact": {
+  "urlTemplate": "https://www.google.com/search?q=\"{username}\"",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-google-strict": {
+  "urlTemplate": "https://www.google.com/search?q=+\"{username}\"",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-idcrawl": {
+  "urlTemplate": "https://www.idcrawl.com/u/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-profilediscover": {
+  "urlTemplate": "https://profilediscover.com/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-socialsearcher": {
+  "urlTemplate": "https://www.social-searcher.com/search-users/?q6={username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-usersearch": {
+  "urlTemplate": "https://usersearch.org/results_normal.php?URL_username={username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-whatsmyname": {
+  "urlTemplate": "https://whatsmyname.app/",
+  "no_input": true
+ },
+ "usernames-yandex-search": {
+  "urlTemplate": "https://yandex.com/search/?text=\"{username}\"",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-alienvault": {
+  "urlTemplate": "https://otx.alienvault.com/browse/global/indicators?q={username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-dehashed": {
+  "urlTemplate": "https://dehashed.com/search?query=\"{username}\"",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-dehashed-emails": {
+  "urlTemplate": "https://dehashed.com/search?query=\"{username}@gmail.com\" OR \"{username}@yahoo.com\" OR \"{username}@hotmail.com\"",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-krebs": {
+  "urlTemplate": "https://krebsonsecurity.com/?s={username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-pastebin": {
+  "urlTemplate": "https://pastebin.com/u/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-psbdmp": {
+  "urlTemplate": "https://psbdmp.ws/api/search/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-riskiq": {
+  "urlTemplate": "https://community.riskiq.com/search/trackers?query={username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-stopforumspam": {
+  "urlTemplate": "https://www.stopforumspam.com/search/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-asa": {
+  "urlTemplate": "https://www.asa.org.uk/search.html?q={username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-domaintools-whois": {
+  "urlTemplate": "https://reversewhois.domaintools.com/?refine#q=%5B%5B%5B%22whois%22%2C%222%22%2C%22{username}%22%5D%5D%5D&historical=1",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-google-groups": {
+  "urlTemplate": "https://groups.google.com/search?q={username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-occrp-aleph": {
+  "urlTemplate": "https://aleph.occrp.org/search?limit=30&q={username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-ofac-sanctions": {
+  "urlTemplate": "https://ofac.treasury.gov/recent-actions?search_api_fulltext={username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-ru-checko": {
+  "urlTemplate": "https://checko.ru/search?query={username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-ru-mailru": {
+  "urlTemplate": "https://go.mail.ru/search_social?q={username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-ru-smat-vk": {
+  "urlTemplate": "https://www.smat-app.com/search?searchTerm={username}&startDate=2000-06-01&endDate={enddate}&websites=vk&numberOf=10&interval=day&limit=1000&changepoint=false",
+  "validator": "getAndValidateSmatVkUsername"
+ },
+ "usernames-ru-vk-direct": {
+  "urlTemplate": "https://vk.com/search/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-ru-vk-google": {
+  "urlTemplate": "https://www.google.com/search?q=site%3Avk.com+\"{username}\"",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-ru-vkme-profile": {
+  "urlTemplate": "https://vk.me/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "usernames-ru-webarchive": {
+  "urlTemplate": "https://web.archive.org/russian-independent-media/search/{username}",
+  "validator": "getAndValidateUsername"
+ },
+ "communities-reddit-keyword": {
+  "urlTemplate": "https://www.reddit.com/search/?q={term}",
+  "validator": "getAndValidateRedditTerm"
+ },
+ "communities-reddit-title": {
+  "urlTemplate": "https://www.reddit.com/search/?q=title%3A{term}",
+  "validator": "getAndValidateRedditTerm"
+ },
+ "communities-reddit-pullpush-asc": {
+  "urlTemplate": "https://api.pullpush.io/reddit/search/submission/?q={term}&sort=asc",
+  "validator": "getAndValidateRedditTerm"
+ },
+ "communities-reddit-pullpush-desc": {
+  "urlTemplate": "https://api.pullpush.io/reddit/search/submission/?q={term}&sort=desc",
+  "validator": "getAndValidateRedditTerm"
+ },
+ "communities-reddit-profile": {
+  "urlTemplate": "https://www.reddit.com/user/{username}",
+  "validator": "getAndValidateRedditUser"
+ },
+ "communities-reddit-submissions": {
+  "urlTemplate": "https://www.reddit.com/user/{username}/submitted/",
+  "validator": "getAndValidateRedditUser"
+ },
+ "communities-reddit-comments": {
+  "urlTemplate": "https://www.reddit.com/user/{username}/comments/",
+  "validator": "getAndValidateRedditUser"
+ },
+ "communities-reddit-archive": {
+  "urlTemplate": "https://camas.unddit.com/#{\"author\":\"{username}\"}",
+  "validator": "getAndValidateRedditUser"
+ },
+ "communities-reddit-api-asc": {
+  "urlTemplate": "https://api.pullpush.io/reddit/search/comment/?author={username}&sort=asc",
+  "validator": "getAndValidateRedditUser"
+ },
+ "communities-reddit-api-desc": {
+  "urlTemplate": "https://api.pullpush.io/reddit/search/comment/?author={username}&sort=desc",
+  "validator": "getAndValidateRedditUser"
+ },
+ "communities-hn-search": {
+  "urlTemplate": "https://hn.algolia.com/?q={term}",
+  "validator": "getAndValidateHnTerm"
+ },
+ "communities-hn-google": {
+  "urlTemplate": "https://www.google.com/search?q=site%3Anews.ycombinator.com+\"{term}\"",
+  "validator": "getAndValidateHnTerm"
+ },
+ "communities-hn-profile": {
+  "urlTemplate": "https://news.ycombinator.com/user?id={username}",
+  "validator": "getAndValidateHnUser"
+ },
+ "communities-hn-submissions": {
+  "urlTemplate": "https://news.ycombinator.com/submitted?id={username}",
+  "validator": "getAndValidateHnUser"
+ },
+ "communities-hn-threads": {
+  "urlTemplate": "https://news.ycombinator.com/threads?id={username}",
+  "validator": "getAndValidateHnUser"
+ },
+ "communities-hn-favorites": {
+  "urlTemplate": "https://news.ycombinator.com/favorites?id={username}",
+  "validator": "getAndValidateHnUser"
+ },
+ "communities-4chan-boards": {
+  "urlTemplate": "https://boards.4chan.org/search/boards/{term}",
+  "validator": "getAndValidate4chanTerm"
+ },
+ "communities-4chan-threads": {
+  "urlTemplate": "https://boards.4chan.org/search/threads/{term}",
+  "validator": "getAndValidate4chanTerm"
+ },
+ "communities-4chan-archive": {
+  "urlTemplate": "https://4plebs.org/plebs/archive/search/text/{term}/",
+  "validator": "getAndValidate4chanTerm"
+ },
+ "communities-4chan-google": {
+  "urlTemplate": "https://www.google.com/search?q=site%3Aboards.4chan.org+\"{term}\"",
+  "validator": "getAndValidate4chanTerm"
+ },
+ "communities-discord-invite": {
+  "urlTemplate": "https://discord.com/invite/{term}",
+  "validator": "getAndValidateDiscordTerm"
+ },
+ "communities-discord-disboard": {
+  "urlTemplate": "https://disboard.org/search?word={term}",
+  "validator": "getAndValidateDiscordTerm"
+ },
+ "communities-discord-me": {
+  "urlTemplate": "https://discord.me/servers/search?q={term}",
+  "validator": "getAndValidateDiscordTerm"
+ },
+ "communities-discord-servers": {
+  "urlTemplate": "https://discordservers.com/search/{term}",
+  "validator": "getAndValidateDiscordTerm"
+ },
+ "communities-discord-bee": {
+  "urlTemplate": "https://discord.gg/servers/search?q={term}",
+  "validator": "getAndValidateDiscordTerm"
+ },
+ "communities-discord-google": {
+  "urlTemplate": "https://www.google.com/search?q=site%3Adiscord.gg+\"{term}\"",
+  "validator": "getAndValidateDiscordTerm"
+ },
+ "telegram-profile": {
+  "urlTemplate": "https://t.me/{username}",
+  "validator": "getAndValidateTgUser"
+ },
+ "telegram-preview": {
+  "urlTemplate": "https://t.me/s/{username}",
+  "validator": "getAndValidateTgUser"
+ },
+ "telegram-telescope": {
+  "urlTemplate": "https://telesco.pe/{username}",
+  "validator": "getAndValidateTgUser"
+ },
+ "telegram-telemetrio": {
+  "urlTemplate": "https://telemetr.io/en/channels/search?q={username}",
+  "validator": "getAndValidateTgUser"
+ },
+ "telegram-wayback": {
+  "urlTemplate": "https://web.archive.org/web/*/t.me/s/{username}*",
+  "validator": "getAndValidateTgUser"
+ },
+ "telegram-mentions": {
+  "urlTemplate": "https://www.google.com/search?q=\"t.me%2F{username}\"",
+  "validator": "getAndValidateTgUser"
+ },
+ "telegram-inchannel": {
+  "urlTemplate": "https://t.me/s/{username}?q={keyword}",
+  "validator": "getAndValidateTgChannelQuery"
+ },
+ "telegram-history": {
+  "urlTemplate": "https://t.me/s/{username}?before={msgid}",
+  "validator": "getAndValidateTgChannelHistory"
+ },
+ "telegram-tgstat": {
+  "urlTemplate": "https://tgstat.com/en/search?q={keyword}",
+  "validator": "getAndValidateTgKey"
+ },
+ "telegram-lyzem": {
+  "urlTemplate": "https://lyzem.com/search?q={keyword}",
+  "validator": "getAndValidateTgKey"
+ },
+ "telegram-telegago": {
+  "urlTemplate": "https://cse.google.com/cse?cx=006368593537057042503:efxu7xprihg&q={keyword}",
+  "validator": "getAndValidateTgKey"
+ },
+ "telegram-osintme": {
+  "urlTemplate": "https://cse.google.com/cse?cx=6c3e0c0d3da8e3b4a&q={keyword}",
+  "validator": "getAndValidateTgKey"
+ },
+ "telegram-telegraph": {
+  "urlTemplate": "https://www.google.com/search?q=site%3Atelegra.ph+\"{keyword}\"",
+  "validator": "getAndValidateTgKey"
+ },
+ "telegram-invites": {
+  "urlTemplate": "https://www.google.com/search?q=\"t.me%2Fjoinchat\"+\"{keyword}\"",
+  "validator": "getAndValidateTgKey"
+ },
+ "maps-google-map": {
+  "urlTemplate": "https://www.google.com/maps/@{lat},{lon},20z",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-google-sat": {
+  "urlTemplate": "https://www.google.com/maps/@{lat},{lon},20z/data=!3m1!1e3",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-google-street": {
+  "urlTemplate": "https://www.google.com/maps?q&layer=c&cbll={lat},{lon}",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-google-street-n": {
+  "urlTemplate": "https://www.google.com/maps?q&layer=c&cbll={lat},{lon}&cbp=11,0,,0,0",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-google-street-e": {
+  "urlTemplate": "https://www.google.com/maps?q&layer=c&cbll={lat},{lon}&cbp=11,90,,0,0",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-google-street-s": {
+  "urlTemplate": "https://www.google.com/maps?q&layer=c&cbll={lat},{lon}&cbp=11,180,,0,0",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-google-street-w": {
+  "urlTemplate": "https://www.google.com/maps?q&layer=c&cbll={lat},{lon}&cbp=11,270,,0,0",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-bing-map": {
+  "urlTemplate": "https://www.bing.com/maps?cp={lat}~{lon}&lvl=20",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-bing-sat": {
+  "urlTemplate": "https://www.bing.com/maps?cp={lat}~{lon}&lvl=20&sty=a",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-bing-sat-n": {
+  "urlTemplate": "https://www.bing.com/maps?cp={lat}~{lon}&lvl=20&sty=h&dir=0",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-bing-sat-e": {
+  "urlTemplate": "https://www.bing.com/maps?cp={lat}~{lon}&lvl=20&sty=h&dir=90",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-bing-sat-s": {
+  "urlTemplate": "https://www.bing.com/maps?cp={lat}~{lon}&lvl=20&sty=h&dir=180",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-bing-sat-w": {
+  "urlTemplate": "https://www.bing.com/maps?cp={lat}~{lon}&lvl=20&sty=h&dir=270",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-bing-street-n": {
+  "urlTemplate": "https://www.bing.com/maps?cp={lat}~{lon}&lvl=20&dir=0&style=x",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-bing-street-e": {
+  "urlTemplate": "https://www.bing.com/maps?cp={lat}~{lon}&lvl=20&dir=90&style=x",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-bing-street-s": {
+  "urlTemplate": "https://www.bing.com/maps?cp={lat}~{lon}&lvl=20&dir=180&style=x",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-bing-street-w": {
+  "urlTemplate": "https://www.bing.com/maps?cp={lat}~{lon}&lvl=20&dir=270&style=x",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-apple": {
+  "urlTemplate": "https://beta.maps.apple.com/?t=k&z=18&ll={lat}%2C{lon}",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-apple-alt": {
+  "urlTemplate": "https://satellites.pro/USA_map#{lat},{lon},18",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-here-sat": {
+  "urlTemplate": "https://wego.here.com/?map={lat},{lon},20,satellite",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-kartaview": {
+  "urlTemplate": "http://kartaview.org/map/@{lat},{lon},18z",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-landviewer": {
+  "urlTemplate": "https://eos.com/landviewer/?lat={lat}&lng={lon}&z=18",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-mapillary": {
+  "urlTemplate": "https://www.mapillary.com/app/?lat={lat}&lng={lon}&z=18",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-world-imagery": {
+  "urlTemplate": "https://livingatlas.arcgis.com/wayback/#active=20337&mapCenter={lon}%2C{lat}%2C18",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-yandex-sat": {
+  "urlTemplate": "https://yandex.com/maps/?l=sat&ll={lon}%2C{lat}&z=18",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-zoom-earth": {
+  "urlTemplate": "https://zoom.earth/#view={lat},{lon},20z",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-acrevalue": {
+  "urlTemplate": "https://www.acrevalue.com/map/?lat={lat}&lng={lon}&zoom=17",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-realtor": {
+  "urlTemplate": "https://www.realtor.com/realestateandhomes-search?map=true#lat={lat};lng={lon};zoom=17",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-trulia": {
+  "urlTemplate": "https://www.trulia.com/map/?location={lat},{lon}&zoom=17",
+  "validator": "getAndValidateCoordinates"
+ },
+ "maps-zillow": {
+  "urlTemplate": "https://www.zillow.com/homes/for_sale/?searchQueryState={searchQueryState}",
+  "validator": "getAndValidateZillowCoords"
+ },
+ "maps-geocode-usa": {
+  "urlTemplate": "https://nominatim.openstreetmap.org/search?q={usa_address_query}&format=json&limit=1",
+  "validator": "getAndValidateUsaAddress"
+ },
+ "maps-geocode-italy": {
+  "urlTemplate": "https://nominatim.openstreetmap.org/ui/search.html?street={street}&city={city}&country={country}&postalcode={postalcode}",
+  "validator": "getAndValidateItalyAddress"
+ },
+ "address-us-addressescom": {
+  "urlTemplate": "https://www.addresses.com/address/{full_address}",
+  "validator": "getAndValidateUsAddress"
+ },
+ "address-us-advbackground": {
+  "urlTemplate": "https://www.advancedbackgroundchecks.com/address/{number}-{street}-{city}-{state}",
+  "validator": "getAndValidateUsAddress"
+ },
+ "address-us-cyberbackground": {
+  "urlTemplate": "https://www.cyberbackgroundchecks.com/address/{street}-{city}-{state}",
+  "validator": "getAndValidateUsAddress"
+ },
+ "address-us-fastpeople": {
+  "urlTemplate": "https://www.fastpeoplesearch.com/address/{number}-{street}_{city}-{state}",
+  "validator": "getAndValidateUsAddress"
+ },
+ "address-us-gisgraphy": {
+  "urlTemplate": "https://services.gisgraphy.com/street/search?q={full_address}&format=html",
+  "validator": "getAndValidateUsAddress"
+ },
+ "address-us-google": {
+  "urlTemplate": "https://www.google.com/search?q={full_address}",
+  "validator": "getAndValidateUsAddress"
+ },
+ "address-us-hudway": {
+  "urlTemplate": "https://hudway.co/en/radardroid/all?query={full_address}",
+  "validator": "getAndValidateUsAddress"
+ },
+ "address-us-peoplefinders": {
+  "urlTemplate": "https://www.peoplefinders.com/address-search/{street}-{city}-{state}/{zip}",
+  "validator": "getAndValidateUsAddress"
+ },
+ "address-us-rehold": {
+  "urlTemplate": "https://rehold.com/.{state}/{city}/.address/{street}",
+  "validator": "getAndValidateUsAddress"
+ },
+ "address-us-searchpeoplefree": {
+  "urlTemplate": "https://www.searchpeoplefree.com/address/{state}/{city}/{street}",
+  "validator": "getAndValidateUsAddress"
+ },
+ "address-us-smartbackground": {
+  "urlTemplate": "https://smartbackgroundchecks.com/address/{street}/{city}/{state}",
+  "validator": "getAndValidateUsAddress"
+ },
+ "address-us-spokeo": {
+  "urlTemplate": "https://www.spokeo.com/{street}-{city}-{state}",
+  "validator": "getAndValidateUsAddress"
+ },
+ "address-us-truepeople": {
+  "urlTemplate": "https://www.truepeoplesearch.com/results?streetaddress={street}&citystatezip={city}%2C+{state}",
+  "validator": "getAndValidateUsAddress"
+ },
+ "address-us-usapeople": {
+  "urlTemplate": "https://www.usa-people-search.com/address/{street}/{city},_{state}/",
+  "validator": "getAndValidateUsAddress"
+ },
+ "address-us-whitepages": {
+  "urlTemplate": "https://www.whitepages.com/address/{street}-{city}-{state}",
+  "validator": "getAndValidateUsAddress"
+ },
+ "address-us-zillow": {
+  "urlTemplate": "https://www.zillow.com/homes/{street}-{city}-{state}-{zip}_rb/",
+  "validator": "getAndValidateUsAddress"
+ },
+ "address-intl-fastpeople": {
+  "urlTemplate": "https://www.fastpeoplesearch.com/address/{full_address}",
+  "validator": "getAndValidateIntlAddress"
+ },
+ "address-intl-gisgraphy": {
+  "urlTemplate": "https://services.gisgraphy.com/street/search?q={full_address}&format=html",
+  "validator": "getAndValidateIntlAddress"
+ },
+ "address-intl-google": {
+  "urlTemplate": "https://www.google.com/search?q={full_address}",
+  "validator": "getAndValidateIntlAddress"
+ },
+ "address-it-paginebianche-companies": {
+  "urlTemplate": "https://www.paginebianche.it/aziende?qs={company}&dv={city}",
+  "validator": "getAndValidateItCompany"
+ },
+ "address-it-paginebianche-people": {
+  "urlTemplate": "https://www.paginebianche.it/persone?qs={first}%20{last}&dv={city}",
+  "validator": "getAndValidateItPeople"
+ },
+ "address-it-paginegialle": {
+  "urlTemplate": "https://www.paginegialle.it/ricerca/{activity}/{location}",
+  "validator": "getAndValidateItYellow"
+ },
+ "currencies-btc-blockchair": {
+  "urlTemplate": "https://blockchair.com/bitcoin/address/{btc_address}",
+  "validator": "getAndValidateBtcAddress"
+ },
+ "currencies-btc-whoswho": {
+  "urlTemplate": "https://bitcoinwhoswho.com/address/{btc_address}",
+  "validator": "getAndValidateBtcAddress"
+ },
+ "currencies-btc-blockchaincom": {
+  "urlTemplate": "https://www.blockchain.com/btc/address/{btc_address}",
+  "validator": "getAndValidateBtcAddress"
+ },
+ "currencies-btc-validation": {
+  "urlTemplate": "https://bitcoin-e.org/validate/{btc_address}",
+  "validator": "getAndValidateBtcAddress"
+ },
+ "currencies-btc-chainabuse": {
+  "urlTemplate": "https://www.chainabuse.com/address/{btc_address}",
+  "validator": "getAndValidateBtcAddress"
+ },
+ "currencies-btc-cloverpool": {
+  "urlTemplate": "https://mempool.space/address/{btc_address}",
+  "validator": "getAndValidateBtcAddress"
+ },
+ "currencies-btc-firstseen": {
+  "urlTemplate": "https://api.blockchair.com/bitcoin/dashboards/address/{btc_address}?limit=1&offset=0",
+  "validator": "getAndValidateBtcAddress"
+ },
+ "currencies-btc-oxtme": {
+  "urlTemplate": "https://oxt.me/address/{btc_address}",
+  "validator": "getAndValidateBtcAddress"
+ },
+ "currencies-btc-balance": {
+  "urlTemplate": "https://blockchain.info/q/addressbalance/{btc_address}",
+  "validator": "getAndValidateBtcAddress"
+ },
+ "currencies-btc-received": {
+  "urlTemplate": "https://blockchain.info/q/getreceivedbyaddress/{btc_address}",
+  "validator": "getAndValidateBtcAddress"
+ },
+ "currencies-btc-sent": {
+  "urlTemplate": "https://blockchain.info/q/getsentbyaddress/{btc_address}",
+  "validator": "getAndValidateBtcAddress"
+ },
+ "currencies-btc-walletexplorer": {
+  "urlTemplate": "https://www.walletexplorer.com/address/{btc_address}",
+  "validator": "getAndValidateBtcAddress"
+ },
+ "currencies-conv-btc-eur": {
+  "urlTemplate": "https://www.google.com/search?q={amount}+btc+to+eur",
+  "validator": "getAndValidateCryptoAmount"
+ },
+ "currencies-conv-btc-usd": {
+  "urlTemplate": "https://www.google.com/search?q={amount}+btc+to+usd",
+  "validator": "getAndValidateCryptoAmount"
+ },
+ "currencies-conv-satoshi-usd": {
+  "urlTemplate": "https://www.google.com/search?q={amount}+satoshi+to+usd",
+  "validator": "getAndValidateCryptoAmount"
+ },
+ "currencies-conv-eur-btc": {
+  "urlTemplate": "https://www.google.com/search?q={amount}+eur+to+btc",
+  "validator": "getAndValidateFiatAmount"
+ },
+ "currencies-conv-usd-btc": {
+  "urlTemplate": "https://www.google.com/search?q={amount}+usd+to+btc",
+  "validator": "getAndValidateFiatAmount"
+ },
+ "currencies-conv-usd-satoshi": {
+  "urlTemplate": "https://www.google.com/search?q={amount}+usd+to+satoshi",
+  "validator": "getAndValidateFiatAmount"
+ },
+ "currencies-crypto-bch": {
+  "urlTemplate": "https://blockchair.com/bitcoin-cash/address/{query}",
+  "validator": "getAndValidateOtherCryptoAddress"
+ },
+ "currencies-crypto-bsv": {
+  "urlTemplate": "https://blockchair.com/bitcoin-sv/address/{query}",
+  "validator": "getAndValidateOtherCryptoAddress"
+ },
+ "currencies-crypto-dash": {
+  "urlTemplate": "https://blockchair.com/dash/address/{query}",
+  "validator": "getAndValidateOtherCryptoAddress"
+ },
+ "currencies-crypto-doge": {
+  "urlTemplate": "https://blockchair.com/dogecoin/address/{query}",
+  "validator": "getAndValidateOtherCryptoAddress"
+ },
+ "currencies-crypto-eth": {
+  "urlTemplate": "https://blockchair.com/ethereum/address/{query}",
+  "validator": "getAndValidateOtherCryptoAddress"
+ },
+ "currencies-crypto-ltc": {
+  "urlTemplate": "https://blockchair.com/litecoin/address/{query}",
+  "validator": "getAndValidateOtherCryptoAddress"
+ },
+ "currencies-crypto-blockscan": {
+  "urlTemplate": "https://blockscan.com/address/{query}",
+  "validator": "getAndValidateOtherCryptoAddress"
+ },
+ "currencies-crypto-etherscan": {
+  "urlTemplate": "https://etherscan.io/address/{query}",
+  "validator": "getAndValidateOtherCryptoAddress"
+ },
+ "currencies-crypto-metasleuth-bsc": {
+  "urlTemplate": "https://metasleuth.io/result/bsc/{query}",
+  "validator": "getAndValidateOtherCryptoAddress"
+ },
+ "currencies-crypto-metasleuth-eth": {
+  "urlTemplate": "https://metasleuth.io/result/eth/{query}",
+  "validator": "getAndValidateOtherCryptoAddress"
+ },
+ "currencies-crypto-metasleuth-poly": {
+  "urlTemplate": "https://metasleuth.io/result/polygon/{query}",
+  "validator": "getAndValidateOtherCryptoAddress"
+ },
+ "currencies-crypto-polygonscan": {
+  "urlTemplate": "https://polygonscan.com/address/{query}",
+  "validator": "getAndValidateOtherCryptoAddress"
+ },
+ "currencies-crypto-solanafm": {
+  "urlTemplate": "https://solana.fm/address/{query}",
+  "validator": "getAndValidateOtherCryptoAddress"
+ },
+ "currencies-crypto-walletexplorer": {
+  "urlTemplate": "https://www.walletexplorer.com/",
+  "no_input": true
+ },
+ "currencies-crypto-tron-address": {
+  "urlTemplate": "https://tronscan.org/#/address/{query}",
+  "validator": "getAndValidateOtherCryptoAddress"
+ },
+ "currencies-crypto-tron-contract": {
+  "urlTemplate": "https://tronscan.org/#/contract/{query}",
+  "validator": "getAndValidateOtherCryptoAddress"
+ },
+ "currencies-crypto-tron-tx": {
+  "urlTemplate": "https://tronscan.org/#/transaction/{query}",
+  "validator": "getAndValidateOtherCryptoAddress"
+ },
+ "currencies-analysis-arkham-exp": {
+  "urlTemplate": "https://platform.arkhamintelligence.com/explorer/address/{query}",
+  "validator": "getAndValidateAnalysisQuery"
+ },
+ "currencies-analysis-arkham-viz": {
+  "urlTemplate": "https://platform.arkhamintelligence.com/visualizer?query={query}",
+  "validator": "getAndValidateAnalysisQuery"
+ },
+ "currencies-analysis-blockscan": {
+  "urlTemplate": "https://blockscan.com/token/{query}",
+  "validator": "getAndValidateAnalysisQuery"
+ },
+ "currencies-analysis-breadcrumbs": {
+  "urlTemplate": "https://www.breadcrumbs.app/search/{query}",
+  "validator": "getAndValidateAnalysisQuery"
+ },
+ "currencies-analysis-crystal-exp": {
+  "urlTemplate": "https://explorer.crystalblockchain.com/search?q={query}",
+  "validator": "getAndValidateAnalysisQuery"
+ },
+ "currencies-analysis-crystal-viz": {
+  "urlTemplate": "https://explorer.crystalblockchain.com/visualize/{query}",
+  "validator": "getAndValidateAnalysisQuery"
+ },
+ "currencies-analysis-debank": {
+  "urlTemplate": "https://debank.com/profile/{query}",
+  "validator": "getAndValidateAnalysisQuery"
+ },
+ "currencies-analysis-google": {
+  "urlTemplate": "https://www.google.com/search?q={query}",
+  "validator": "getAndValidateAnalysisQuery"
+ },
+ "currencies-analysis-metasleuth-btc": {
+  "urlTemplate": "https://metasleuth.io/result/btc/{query}",
+  "validator": "getAndValidateAnalysisQuery"
+ },
+ "currencies-analysis-oklink-exp": {
+  "urlTemplate": "https://www.oklink.com/explorer?query={query}",
+  "validator": "getAndValidateAnalysisQuery"
+ },
+ "currencies-analysis-oklink-viz": {
+  "urlTemplate": "https://www.oklink.com/onchain-address?address={query}",
+  "validator": "getAndValidateAnalysisQuery"
+ },
+ "currencies-analysis-phalcon": {
+  "urlTemplate": "https://phalcon.blocksec.com/explorer/address/{query}",
+  "validator": "getAndValidateAnalysisQuery"
+ },
+ "currencies-analysis-zapper": {
+  "urlTemplate": "https://zapper.fi/account/{query}",
+  "validator": "getAndValidateAnalysisQuery"
+ },
+ "videos-id-agebypass": {
+  "urlTemplate": "https://nsfwyoutube.com/watch?v={videoid}",
+  "validator": "getAndValidateYoutubeId"
+ },
+ "videos-id-archives": {
+  "urlTemplate": "https://archive.org/details/youtube-{videoid}",
+  "validator": "getAndValidateYoutubeId"
+ },
+ "videos-id-bingreverse": {
+  "urlTemplate": "https://www.bing.com/images/search?view=detailv2&iss=sbi&q=imgurl:https://i.ytimg.com/vi/{videoid}/maxresdefault.jpg",
+  "validator": "getAndValidateYoutubeId"
+ },
+ "videos-id-download": {
+  "urlTemplate": "https://y2mate.is/en50/youtube-{videoid}",
+  "validator": "getAndValidateYoutubeId"
+ },
+ "videos-id-fullscreen": {
+  "urlTemplate": "https://www.youtube.com/embed/{videoid}",
+  "validator": "getAndValidateYoutubeId"
+ },
+ "videos-id-googlereverse": {
+  "urlTemplate": "https://www.google.com/searchbyimage?site=search&sa=X&image_url=https://i.ytimg.com/vi/{videoid}/maxresdefault.jpg",
+  "validator": "getAndValidateYoutubeId"
+ },
+ "videos-id-metadata": {
+  "urlTemplate": "https://www.googleapis.com/youtube/v3/videos?id={videoid}&part=snippet,statistics,recordingDetails&key=YOUR_API_KEY",
+  "validator": "getAndValidateYoutubeId"
+ },
+ "videos-id-restrictions1": {
+  "urlTemplate": "http://polsy.org.uk/stuff/ytrestrict.cgi?ytid={videoid}",
+  "validator": "getAndValidateYoutubeId"
+ },
+ "videos-id-restrictions2": {
+  "urlTemplate": "https://watannetwork.com/tools/blocked/#url={videoid}",
+  "validator": "getAndValidateYoutubeId"
+ },
+ "videos-id-thumb2": {
+  "urlTemplate": "https://i.ytimg.com/vi/{videoid}/1.jpg",
+  "validator": "getAndValidateYoutubeId"
+ },
+ "videos-id-thumb3": {
+  "urlTemplate": "https://i.ytimg.com/vi/{videoid}/2.jpg",
+  "validator": "getAndValidateYoutubeId"
+ },
+ "videos-id-thumb4": {
+  "urlTemplate": "https://i.ytimg.com/vi/{videoid}/3.jpg",
+  "validator": "getAndValidateYoutubeId"
+ },
+ "videos-id-thumbhq": {
+  "urlTemplate": "https://i.ytimg.com/vi/{videoid}/maxresdefault.jpg",
+  "validator": "getAndValidateYoutubeId"
+ },
+ "videos-id-tineye": {
+  "urlTemplate": "http://www.tineye.com/search/?url=https://i.ytimg.com/vi/{videoid}/maxresdefault.jpg",
+  "validator": "getAndValidateYoutubeId"
+ },
+ "videos-id-yandex": {
+  "urlTemplate": "https://yandex.com/images/search?rpt=imageview&url=https://i.ytimg.com/vi/{videoid}/maxresdefault.jpg",
+  "validator": "getAndValidateYoutubeId"
+ },
+ "videos-comments-search": {
+  "urlTemplate": "https://www.googleapis.com/youtube/v3/commentThreads?part=id,snippet&videoId={videoid}&pageToken=&order=Relevance&maxResults=100&searchTerms={term}&textFormat=plainText&key=YOUR_API_KEY",
+  "validator": "getAndValidateYoutubeComments"
+ },
+ "videos-channel-account": {
+  "urlTemplate": "https://www.youtube.com/user/{username}",
+  "validator": "getAndValidateYoutubeUsername"
+ },
+ "videos-channel-metadata": {
+  "urlTemplate": "https://youtube.googleapis.com/youtube/v3/channels?part=snippet&id={channelid}&key=YOUR_API_KEY",
+  "validator": "getAndValidateYoutubeChannelId"
+ },
+ "videos-channel-profile": {
+  "urlTemplate": "https://www.youtube.com/@{username}",
+  "validator": "getAndValidateYoutubeUsername"
+ },
+ "videos-term-archives-movies": {
+  "urlTemplate": "https://archive.org/details/movies?tab=collection&query={term}",
+  "validator": "getAndValidateVideoTerm"
+ },
+ "videos-term-archives-opensource": {
+  "urlTemplate": "https://archive.org/details/opensource_movies?tab=collection&query={term}",
+  "validator": "getAndValidateVideoTerm"
+ },
+ "videos-term-bing": {
+  "urlTemplate": "https://www.bing.com/videos/search?q={term}",
+  "validator": "getAndValidateVideoTerm"
+ },
+ "videos-term-facebook": {
+  "urlTemplate": "https://www.facebook.com/search/videos/?q={term}",
+  "validator": "getAndValidateVideoTerm"
+ },
+ "videos-term-google": {
+  "urlTemplate": "https://www.google.com/search?tbm=vid&q={term}",
+  "validator": "getAndValidateVideoTerm"
+ },
+ "videos-term-reddit": {
+  "urlTemplate": "https://www.reddit.com/search?q=site:v.redd.it AND {term}",
+  "validator": "getAndValidateVideoTerm"
+ },
+ "videos-term-tvarchives": {
+  "urlTemplate": "https://archive.org/details/tv?q={term}",
+  "validator": "getAndValidateVideoTerm"
+ },
+ "videos-term-twitter": {
+  "urlTemplate": "https://twitter.com/search?q={term}&f=media",
+  "validator": "getAndValidateVideoTerm"
+ },
+ "videos-term-yandex": {
+  "urlTemplate": "https://yandex.ru/video/search?text={term}&rpt=imageview",
+  "validator": "getAndValidateVideoTerm"
+ },
+ "videos-term-youtube": {
+  "urlTemplate": "https://www.youtube.com/results?search_query={term}",
+  "validator": "getAndValidateVideoTerm"
+ },
+ "videos-tiktok-hashtag": {
+  "urlTemplate": "https://www.tiktok.com/tag/{hashtag}",
+  "validator": "getAndValidateTikTokHashtag"
+ },
+ "videos-reverse-vimeo-google": {
+  "urlTemplate": "https://www.google.com/searchbyimage?site=search&sa=X&image_url={url}",
+  "validator": "getAndValidateVimeoImageUrl"
+ },
+ "videos-reverse-vimeo-tineye": {
+  "urlTemplate": "http://www.tineye.com/search/?url={url}",
+  "validator": "getAndValidateVimeoImageUrl"
+ },
+ "videos-reverse-vimeo-yandex": {
+  "urlTemplate": "https://yandex.com/images/search?img_url={url}&rpt=imageview",
+  "validator": "getAndValidateVimeoImageUrl"
+ },
+ "videos-reverse-vimeo-bing": {
+  "urlTemplate": "http://www.bing.com/images/searchbyimage?FORM=IRSBIQ&cbir=sbi&imgurl={url}",
+  "validator": "getAndValidateVimeoImageUrl"
+ },
+ "videos-reverse-img-google": {
+  "urlTemplate": "https://www.google.com/searchbyimage?site=search&sa=X&image_url={url}",
+  "validator": "getAndValidateImageUrl"
+ },
+ "videos-reverse-img-bing": {
+  "urlTemplate": "http://www.bing.com/images/searchbyimage?FORM=IRSBIQ&cbir=sbi&imgurl={url}",
+  "validator": "getAndValidateImageUrl"
+ },
+ "videos-reverse-img-tineye": {
+  "urlTemplate": "http://www.tineye.com/search/?url={url}",
+  "validator": "getAndValidateImageUrl"
+ },
+ "videos-reverse-img-yandex": {
+  "urlTemplate": "https://yandex.com/images/search?url={url}&rpt=imageview",
+  "validator": "getAndValidateImageUrl"
+ },
+ "videos-reverse-img-baidu": {
+  "urlTemplate": "https://image.baidu.com/pcdutu?queryImageUrl={url}",
+  "validator": "getAndValidateImageUrl"
+ },
+ "keybase-team-profile": {
+  "urlTemplate": "https://keybase.io/team/{query}",
+  "validator": "getAndValidateKeybaseQuery"
+ },
+ "keybase-user-devices": {
+  "urlTemplate": "https://keybase.io/{query}/devices",
+  "validator": "getAndValidateKeybaseQuery"
+ },
+ "keybase-user-graph": {
+  "urlTemplate": "https://keybase.io/{query}/graph",
+  "validator": "getAndValidateKeybaseQuery"
+ },
+ "keybase-user-profile": {
+  "urlTemplate": "https://keybase.io/{query}",
+  "validator": "getAndValidateKeybaseQuery"
+ },
+ "keybase-user-sigchain": {
+  "urlTemplate": "https://keybase.io/{query}/sigchain",
+  "validator": "getAndValidateKeybaseQuery"
+ },
+ "keybase-user-stellar": {
+  "urlTemplate": "https://keybase.io/{query}#_",
+  "validator": "getAndValidateKeybaseQuery"
+ },
+ "ip-search-baidu": {
+  "urlTemplate": "https://www.baidu.com/s?wd=ip%3A{ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-search-bing": {
+  "urlTemplate": "https://www.bing.com/search?q=ip%3A{ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-search-google": {
+  "urlTemplate": "https://www.google.com/search?q=ip%3A{ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-search-yandex": {
+  "urlTemplate": "https://yandex.com/search/?text=ip%3A{ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-info-dnschecker": {
+  "urlTemplate": "https://dnschecker.org/ip-whois-lookup.php?query={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-info-domaintools": {
+  "urlTemplate": "https://whois.domaintools.com/{ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-info-infobyip": {
+  "urlTemplate": "https://www.infobyip.com/ip-{ip}.html",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-info-ipapico": {
+  "urlTemplate": "https://app.ipapi.co/bulk/",
+  "no_input": true
+ },
+ "ip-info-ipaddresscom": {
+  "urlTemplate": "https://www.ipaddress.com/ipv4/{ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-info-iplocation": {
+  "urlTemplate": "https://www.iplocation.net/ip-lookup?query={ip}&submit=IP+Lookup",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-info-iplookuporg": {
+  "urlTemplate": "https://www.ip-lookup.org/location/{ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-info-maxmind": {
+  "urlTemplate": "https://www.maxmind.com/en/geoip2-precision-demo/",
+  "no_input": true
+ },
+ "ip-info-mxtoolarin": {
+  "urlTemplate": "https://mxtoolbox.com/SuperTool.aspx?action=arin%3a{ip}&run=toolpage",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-info-resolversgeo": {
+  "urlTemplate": "https://resolve.rs/ip/geolocation.html?ip={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-info-robtex": {
+  "urlTemplate": "https://www.robtex.com/ip-lookup/{ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-info-thatsthem": {
+  "urlTemplate": "https://thatsthem.com/ip/{ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-viewdns-abuse": {
+  "urlTemplate": "http://viewdns.info/abuselookup/?domain={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-viewdns-asn": {
+  "urlTemplate": "http://viewdns.info/asnlookup/?asn={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-viewdns-chinafirewall": {
+  "urlTemplate": "http://viewdns.info/chinesefirewall/?domain={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-viewdns-dnsrecords": {
+  "urlTemplate": "http://viewdns.info/dnsrecord/?domain={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-viewdns-dnsreport": {
+  "urlTemplate": "http://viewdns.info/dnsreport/?domain={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-viewdns-dnssec": {
+  "urlTemplate": "http://viewdns.info/dnssec/?domain={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-viewdns-ping": {
+  "urlTemplate": "http://viewdns.info/ping/?domain={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-viewdns-headers": {
+  "urlTemplate": "http://viewdns.info/httpheaders/?domain={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-viewdns-history": {
+  "urlTemplate": "http://viewdns.info/iphistory/?domain={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-viewdns-iranfirewall": {
+  "urlTemplate": "http://viewdns.info/iranfirewall/?siteurl={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-viewdns-sitedown": {
+  "urlTemplate": "http://viewdns.info/ismysitedown/?domain={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-viewdns-locate": {
+  "urlTemplate": "http://viewdns.info/iplocation/?ip={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-viewdns-portscan": {
+  "urlTemplate": "http://viewdns.info/portscan/?host={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-viewdns-revdns": {
+  "urlTemplate": "http://viewdns.info/reversedns/?ip={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-viewdns-revip": {
+  "urlTemplate": "http://viewdns.info/reverseip/?host={ip}&t=1",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-viewdns-spamdb": {
+  "urlTemplate": "http://viewdns.info/spamdblookup/?ip={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-viewdns-traceroute": {
+  "urlTemplate": "http://viewdns.info/traceroute/?domain={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-viewdns-whois": {
+  "urlTemplate": "http://viewdns.info/whois/?domain={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-networksdb-asn": {
+  "urlTemplate": "https://networksdb.io/search/asn?q={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-networksdb-domains": {
+  "urlTemplate": "https://networksdb.io/domains-on-ip/{ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-networksdb-details": {
+  "urlTemplate": "https://networksdb.io/ip/{ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-networksdb-network": {
+  "urlTemplate": "https://networksdb.io/search/network?q={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-networksdb-range": {
+  "urlTemplate": "https://networksdb.io/ips-in-network/{start_ip}/{end_ip}",
+  "validator": "getAndValidateNetworksDbRange"
+ },
+ "ip-security-censys": {
+  "urlTemplate": "https://search.censys.io/hosts/{ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-security-dehashed": {
+  "urlTemplate": "https://dehashed.com/search?query=%22{ip}%22",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-security-greynoise": {
+  "urlTemplate": "https://viz.greynoise.io/ip/{ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-security-ikwyd": {
+  "urlTemplate": "http://iknowwhatyoudownload.com/en/peer/?ip={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-security-leakix": {
+  "urlTemplate": "https://leakix.net/host/{ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-security-maltiverse": {
+  "urlTemplate": "https://maltiverse.com/search;query={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-security-mxblacklist": {
+  "urlTemplate": "https://mxtoolbox.com/SuperTool.aspx?action=blacklist%3a{ip}&run=toolpage",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-security-mxblocklist": {
+  "urlTemplate": "https://mxtoolbox.com/SuperTool.aspx?action=blocklist%3a{ip}&run=networktools",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-security-riskiq": {
+  "urlTemplate": "https://community.riskiq.com/search/{ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-security-securitytrails": {
+  "urlTemplate": "https://securitytrails.com/list/ip/{ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-security-stopforumspam": {
+  "urlTemplate": "https://www.stopforumspam.com/search/{ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-security-threatcrowd": {
+  "urlTemplate": "https://ci-www.threatcrowd.org/ip.php?ip={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-security-virustotal": {
+  "urlTemplate": "https://www.virustotal.com/gui/ip-address/{ip}/relations",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-shodan-history": {
+  "urlTemplate": "https://beta.shodan.io/host/{ip}/history",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-shodan-host": {
+  "urlTemplate": "https://beta.shodan.io/host/{ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-shodan-raw": {
+  "urlTemplate": "https://beta.shodan.io/host/{ip}/raw",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-shodan-search": {
+  "urlTemplate": "https://www.shodan.io/search?query={ip}",
+  "validator": "getAndValidateIpAddress"
+ },
+ "ip-wigle-ssid": {
+  "urlTemplate": "https://wigle.net/search?ssid={ssid}",
+  "validator": "getAndValidateSsid"
+ },
+ "ip-wigle-postal": {
+  "urlTemplate": "https://wigle.net/search#fullSearch?postalCode={postalcode}",
+  "validator": "getAndValidatePostalCode"
+ },
+ "docs-google-api": {
+  "urlTemplate": "https://www.google.com/search?q=inurl:docs.google.com/spreadsheets/u/0/d/ intitle:\"{term}\"",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-google-books": {
+  "urlTemplate": "https://www.google.com/search?tbm=bks&q={term}",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-google-docs": {
+  "urlTemplate": "https://www.google.com/search?q=site:docs.google.com intext:\"{term}\"",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-google-drive": {
+  "urlTemplate": "https://www.google.com/search?q=site:drive.google.com intext:\"{term}\"",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-other-amazon": {
+  "urlTemplate": "https://www.google.com/search?q=site:s3.amazonaws.com intext:\"{term}\"",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-other-archiveorg": {
+  "urlTemplate": "https://archive.org/search?query={term}",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-other-cloudfront": {
+  "urlTemplate": "https://www.google.com/search?q=site:d1.cloudfront.net intext:\"{term}\"",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-other-core": {
+  "urlTemplate": "https://core.ac.uk/search?q={term}",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-other-grayhat": {
+  "urlTemplate": "https://buckets.grayhatwarfare.com/results/{term}",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-other-issuu": {
+  "urlTemplate": "https://issuu.com/search?q={term}",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-other-msdocs": {
+  "urlTemplate": "https://learn.microsoft.com/en-us/search/?terms={term}",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-other-pdfdrive": {
+  "urlTemplate": "https://www.pdfdrive.com/search?q={term}",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-other-powershow": {
+  "urlTemplate": "https://www.powershow.com/search/presentations/query/{term}",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-other-prezi": {
+  "urlTemplate": "https://prezi.com/search/?search={term}",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-other-refseek": {
+  "urlTemplate": "https://www.refseek.com/search?q={term}",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-other-scribd": {
+  "urlTemplate": "https://www.scribd.com/search?content_type=tops&page=1&query={term}&language=0",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-other-slidebean": {
+  "urlTemplate": "https://slidebean.com/search?q={term}",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-other-slideshare": {
+  "urlTemplate": "https://www.slideshare.net/search?q={term}",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-other-wikileaks": {
+  "urlTemplate": "https://search.wikileaks.org/?q={term}",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-filetype-doc": {
+  "urlTemplate": "https://www.google.com/search?q=filetype:doc OR filetype:docx \"{term}\"",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-filetype-odt": {
+  "urlTemplate": "https://www.google.com/search?q=filetype:odt OR filetype:ods OR filetype:odp \"{term}\"",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-filetype-pdf": {
+  "urlTemplate": "https://www.google.com/search?q=filetype:pdf \"{term}\"",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-filetype-ppt": {
+  "urlTemplate": "https://www.google.com/search?q=filetype:ppt OR filetype:pptx OR filetype:key \"{term}\"",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-filetype-txt": {
+  "urlTemplate": "https://www.google.com/search?q=filetype:txt OR filetype:rtf OR filetype:xml \"{term}\"",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-filetype-xls": {
+  "urlTemplate": "https://www.google.com/search?q=filetype:xls OR filetype:xlsx OR filetype:csv \"{term}\"",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-filetype-jpg": {
+  "urlTemplate": "https://www.google.com/search?q=filetype:jpg OR filetype:jpeg OR filetype:png \"{term}\"",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-filetype-mp3": {
+  "urlTemplate": "https://www.google.com/search?q=filetype:mp3 OR filetype:wav \"{term}\"",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-filetype-mpg": {
+  "urlTemplate": "https://www.google.com/search?q=filetype:mpg OR filetype:mp4 \"{term}\"",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-filetype-zip": {
+  "urlTemplate": "https://www.google.com/search?q=filetype:zip OR filetype:rar OR filetype:7z \"{term}\"",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "docs-dataset-openafrica": {
+  "urlTemplate": "https://open.africa/dataset/?q={term}",
+  "validator": "getAndValidateDocSearchTerm"
+ },
+ "images-term-bing": {
+  "urlTemplate": "https://www.bing.com/images/search?q={term}",
+  "validator": "getAndValidateImageTerm"
+ },
+ "images-term-facebook": {
+  "urlTemplate": "https://www.facebook.com/search/photos/?q={term}",
+  "validator": "getAndValidateImageTerm"
+ },
+ "images-term-flickr": {
+  "urlTemplate": "https://www.flickr.com/search/?text={term}",
+  "validator": "getAndValidateImageTerm"
+ },
+ "images-term-google": {
+  "urlTemplate": "https://www.google.com/search?q={term}&tbm=isch",
+  "validator": "getAndValidateImageTerm"
+ },
+ "images-term-instagram": {
+  "urlTemplate": "https://www.google.com/search?tbm=isch&q=site%3Ainstagram.com+{term}",
+  "validator": "getAndValidateImageTerm"
+ },
+ "images-term-linkedin": {
+  "urlTemplate": "https://www.google.com/search?tbm=isch&q=site%3Alinkedin.com+{term}",
+  "validator": "getAndValidateImageTerm"
+ },
+ "images-term-tumblr": {
+  "urlTemplate": "https://www.tumblr.com/search/{term}",
+  "validator": "getAndValidateImageTerm"
+ },
+ "images-term-twitter": {
+  "urlTemplate": "https://twitter.com/search?q={term}&f=media",
+  "validator": "getAndValidateImageTerm"
+ },
+ "images-term-yandex": {
+  "urlTemplate": "https://yandex.com/images/search?text={term}",
+  "validator": "getAndValidateImageTerm"
+ },
+ "images-reverse-bing": {
+  "urlTemplate": "https://www.bing.com/images/search?view=detailv2&iss=sbi&q=imgurl:{url}",
+  "validator": "getAndValidateImageUrl"
+ },
+ "images-reverse-facecheck": {
+  "urlTemplate": "https://facecheck.id/#url={url}",
+  "validator": "getAndValidateImageUrl"
+ },
+ "images-reverse-google": {
+  "urlTemplate": "https://www.google.com/searchbyimage?image_url={url}&client=app",
+  "validator": "getAndValidateImageUrl"
+ },
+ "images-reverse-lens": {
+  "urlTemplate": "https://lens.google.com/uploadbyurl?url={url}",
+  "validator": "getAndValidateImageUrl"
+ },
+ "images-reverse-repostsleuth": {
+  "urlTemplate": "https://www.repostsleuth.com/search?url={url}",
+  "validator": "getAndValidateImageUrl"
+ },
+ "images-reverse-tineye": {
+  "urlTemplate": "http://www.tineye.com/search/?url={url}",
+  "validator": "getAndValidateImageUrl"
+ },
+ "images-reverse-yandex": {
+  "urlTemplate": "https://yandex.com/images/search?rpt=imageview&url={url}",
+  "validator": "getAndValidateImageUrl"
+ },
+ "linkedin-profile": {
+  "urlTemplate": "https://www.linkedin.com/in/{username}",
+  "validator": "getAndValidateLinkedinProfile"
+ },
+ "linkedin-images-google": {
+  "urlTemplate": "https://www.google.com/search?q=site:linkedin.com+\"{keyword}\"&tbm=isch",
+  "validator": "getAndValidateLinkedinMedia"
+ },
+ "linkedin-images-bing": {
+  "urlTemplate": "https://www.bing.com/images/search?q=site:linkedin.com+\"{keyword}\"",
+  "validator": "getAndValidateLinkedinMedia"
+ },
+ "linkedin-video-search": {
+  "urlTemplate": "https://www.google.com/search?q=site:linkedin.com+\"{keyword}\"&tbm=vid",
+  "validator": "getAndValidateLinkedinVideo"
+ },
+ "linkedin-search-companies": {
+  "urlTemplate": "https://www.linkedin.com/search/results/companies/?keywords={keyword}",
+  "validator": "getAndValidateLinkedinKeyword"
+ },
+ "linkedin-search-groups": {
+  "urlTemplate": "https://www.linkedin.com/search/results/groups/?keywords={keyword}",
+  "validator": "getAndValidateLinkedinKeyword"
+ },
+ "linkedin-search-schools": {
+  "urlTemplate": "https://www.linkedin.com/search/results/schools/?keywords={keyword}",
+  "validator": "getAndValidateLinkedinKeyword"
+ },
+ "linkedin-search-events": {
+  "urlTemplate": "https://www.linkedin.com/search/results/events/?keywords={keyword}",
+  "validator": "getAndValidateLinkedinKeyword"
+ },
+ "linkedin-ext-google": {
+  "urlTemplate": "https://www.google.com/search?q=site:linkedin.com+\"{query}\"",
+  "validator": "getAndValidateLinkedinExternal"
+ },
+ "linkedin-ext-bing": {
+  "urlTemplate": "https://www.bing.com/search?q=site:linkedin.com+\"{query}\"",
+  "validator": "getAndValidateLinkedinExternal"
+ },
+ "linkedin-ext-yandex": {
+  "urlTemplate": "https://www.yandex.com/search/?text=site:linkedin.com+\"{query}\"",
+  "validator": "getAndValidateLinkedinExternal"
+ },
+ "x-account-profile": {
+  "urlTemplate": "https://x.com/{username}",
+  "validator": "getAndValidateXAccountUsername"
+ },
+ "x-account-outgoing": {
+  "urlTemplate": "https://x.com/search?q=from%3A{username}",
+  "validator": "getAndValidateXAccountUsername"
+ },
+ "x-account-incoming": {
+  "urlTemplate": "https://x.com/search?q=to%3A{username}",
+  "validator": "getAndValidateXAccountUsername"
+ },
+ "x-account-only-replies": {
+  "urlTemplate": "https://x.com/search?q=from%3A{username}%20filter%3Areplies",
+  "validator": "getAndValidateXAccountUsername"
+ },
+ "x-account-no-replies": {
+  "urlTemplate": "https://x.com/search?q=from%3A{username}%20-filter%3Areplies",
+  "validator": "getAndValidateXAccountUsername"
+ },
+ "x-account-media": {
+  "urlTemplate": "https://x.com/{username}/media",
+  "validator": "getAndValidateXAccountUsername"
+ },
+ "x-account-highlights": {
+  "urlTemplate": "https://x.com/{username}/highlights",
+  "validator": "getAndValidateXAccountUsername"
+ },
+ "x-account-lists-created": {
+  "urlTemplate": "https://x.com/{username}/lists",
+  "validator": "getAndValidateXAccountUsername"
+ },
+ "x-account-lists-included": {
+  "urlTemplate": "https://x.com/{username}/lists/memberships",
+  "validator": "getAndValidateXAccountUsername"
+ },
+ "x-account-topics": {
+  "urlTemplate": "https://x.com/{username}/topics",
+  "validator": "getAndValidateXAccountUsername"
+ },
+ "x-account-links": {
+  "urlTemplate": "https://x.com/search?q=from%3A{username}%20filter%3Alinks",
+  "validator": "getAndValidateXAccountUsername"
+ },
+ "x-account-followers": {
+  "urlTemplate": "https://x.com/{username}/followers",
+  "validator": "getAndValidateXAccountUsername"
+ },
+ "x-account-following": {
+  "urlTemplate": "https://x.com/{username}/following",
+  "validator": "getAndValidateXAccountUsername"
+ },
+ "x-list-view": {
+  "urlTemplate": "https://x.com/i/lists/{listid}",
+  "validator": "getAndValidateXListId"
+ },
+ "x-list-members": {
+  "urlTemplate": "https://x.com/i/lists/{listid}/members",
+  "validator": "getAndValidateXListId"
+ },
+ "x-list-followers": {
+  "urlTemplate": "https://x.com/i/lists/{listid}/followers",
+  "validator": "getAndValidateXListId"
+ },
+ "x-other-profilename": {
+  "urlTemplate": "https://x.com/search?q={realname}&f=user",
+  "validator": "getAndValidateXRealName"
+ },
+ "x-year-outgoing": {
+  "urlTemplate": "https://x.com/search?q=(from%3A{term})%20until%3A{until}%20since%3A{since}",
+  "validator": "getAndValidateXYearSearch"
+ },
+ "x-year-incoming": {
+  "urlTemplate": "https://x.com/search?q=(to%3A{term})%20until%3A{until}%20since%3A{since}",
+  "validator": "getAndValidateXYearSearch"
+ },
+ "x-year-media": {
+  "urlTemplate": "https://x.com/search?q=({term})%20filter%3Amedia%20until%3A{until}%20since%3A{since}",
+  "validator": "getAndValidateXYearSearch"
+ },
+ "x-year-term": {
+  "urlTemplate": "https://x.com/search?q=({term})%20until%3A{until}%20since%3A{since}",
+  "validator": "getAndValidateXYearSearch"
+ },
+ "x-year-no-replies": {
+  "urlTemplate": "https://x.com/search?q=({term})%20-filter%3Areplies%20until%3A{until}%20since%3A{since}",
+  "validator": "getAndValidateXYearSearch"
+ },
+ "x-year-only-replies": {
+  "urlTemplate": "https://x.com/search?q=({term})%20filter%3Areplies%20until%3A{until}%20since%3A{since}",
+  "validator": "getAndValidateXYearSearch"
+ },
+ "x-archive-google-site": {
+  "urlTemplate": "https://www.google.com/search?q=site:x.com/{username}",
+  "validator": "getAndValidateXArchiveUser"
+ },
+ "x-archive-google-tweets": {
+  "urlTemplate": "https://www.google.com/search?q=site%3Ax.com%2F{username}%2Fstatus%2F",
+  "validator": "getAndValidateXArchiveUser"
+ },
+ "x-archive-bing": {
+  "urlTemplate": "https://www.bing.com/search?q=site:x.com/{username}",
+  "validator": "getAndValidateXArchiveUser"
+ },
+ "x-archive-yandex": {
+  "urlTemplate": "https://yandex.com/search/?text=site:x.com/{username}",
+  "validator": "getAndValidateXArchiveUser"
+ },
+ "x-archive-wayback": {
+  "urlTemplate": "https://web.archive.org/web/*/x.com/{username}/*",
+  "validator": "getAndValidateXArchiveUser"
+ },
+ "x-archive-memorylol": {
+  "urlTemplate": "https://memory.lol/{username}",
+  "validator": "getAndValidateXArchiveUser"
+ },
+ "x-archive-audit": {
+  "urlTemplate": "https://www.twitteraudit.com/{username}",
+  "validator": "getAndValidateXArchiveUser"
+ },
+ "x-archive-memorylol-id": {
+  "urlTemplate": "https://memory.lol/user/id/{userid}",
+  "validator": "getAndValidateXMemoryId"
+ },
+ "facebook-profile-timeline": {
+  "urlTemplate": "https://www.facebook.com/{username}",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-about": {
+  "urlTemplate": "https://www.facebook.com/{username}/about",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-work": {
+  "urlTemplate": "https://www.facebook.com/{username}/about_work_and_education",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-education": {
+  "urlTemplate": "https://www.facebook.com/{username}/about_work_and_education",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-living": {
+  "urlTemplate": "https://www.facebook.com/{username}/about_places",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-contact": {
+  "urlTemplate": "https://www.facebook.com/{username}/about_contact_and_basic_info",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-basic": {
+  "urlTemplate": "https://www.facebook.com/{username}/about_contact_and_basic_info",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-relationship": {
+  "urlTemplate": "https://www.facebook.com/{username}/about_family_and_relationships",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-family": {
+  "urlTemplate": "https://www.facebook.com/{username}/about_family_and_relationships",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-bio": {
+  "urlTemplate": "https://www.facebook.com/{username}/about_details",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-events": {
+  "urlTemplate": "https://www.facebook.com/{username}/about_life_events",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-friends": {
+  "urlTemplate": "https://www.facebook.com/{username}/friends",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-following": {
+  "urlTemplate": "https://www.facebook.com/{username}/following",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-photos": {
+  "urlTemplate": "https://www.facebook.com/{username}/photos_by",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-albums": {
+  "urlTemplate": "https://www.facebook.com/{username}/photos_albums",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-videos": {
+  "urlTemplate": "https://www.facebook.com/{username}/videos_by",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-reels": {
+  "urlTemplate": "https://www.facebook.com/{username}/reels",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-checkins": {
+  "urlTemplate": "https://www.facebook.com/{username}/map",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-mapvisits": {
+  "urlTemplate": "https://www.facebook.com/{username}/map",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-recentcheckins": {
+  "urlTemplate": "https://www.facebook.com/{username}/places_recent",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-sports": {
+  "urlTemplate": "https://www.facebook.com/{username}/sports",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-music": {
+  "urlTemplate": "https://www.facebook.com/{username}/music",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-movies": {
+  "urlTemplate": "https://www.facebook.com/{username}/movies",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-tv": {
+  "urlTemplate": "https://www.facebook.com/{username}/tv",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-books": {
+  "urlTemplate": "https://www.facebook.com/{username}/books",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-apps": {
+  "urlTemplate": "https://www.facebook.com/{username}/games",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-likes": {
+  "urlTemplate": "https://www.facebook.com/{username}/likes",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-userevents": {
+  "urlTemplate": "https://www.facebook.com/{username}/events",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-facts": {
+  "urlTemplate": "https://www.facebook.com/{username}/about_details",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-reviews": {
+  "urlTemplate": "https://www.facebook.com/{username}/reviews",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-reviewsgiven": {
+  "urlTemplate": "https://www.facebook.com/{username}/reviews_given",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-reviewswritten": {
+  "urlTemplate": "https://www.facebook.com/{username}/reviews_written",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-profile-notes": {
+  "urlTemplate": "https://www.facebook.com/{username}/notes",
+  "validator": "getAndValidateFacebookUsername"
+ },
+ "facebook-userid-profile": {
+  "urlTemplate": "https://www.facebook.com/{userid}",
+  "validator": "getAndValidateFacebookUserId"
+ },
+ "facebook-search-posts": {
+  "urlTemplate": "https://www.facebook.com/search/posts/?q={term}",
+  "validator": "getAndValidateFacebookSearchTerm"
+ },
+ "facebook-search-people": {
+  "urlTemplate": "https://www.facebook.com/search/people/?q={term}",
+  "validator": "getAndValidateFacebookSearchTerm"
+ },
+ "facebook-search-photos": {
+  "urlTemplate": "https://www.facebook.com/search/photos/?q={term}",
+  "validator": "getAndValidateFacebookSearchTerm"
+ },
+ "facebook-search-videos": {
+  "urlTemplate": "https://www.facebook.com/search/videos/?q={term}",
+  "validator": "getAndValidateFacebookSearchTerm"
+ },
+ "facebook-search-marketplace": {
+  "urlTemplate": "https://www.facebook.com/search/marketplace/?q={term}",
+  "validator": "getAndValidateFacebookSearchTerm"
+ },
+ "facebook-search-pages": {
+  "urlTemplate": "https://www.facebook.com/search/pages/?q={term}",
+  "validator": "getAndValidateFacebookSearchTerm"
+ },
+ "facebook-search-places": {
+  "urlTemplate": "https://www.facebook.com/search/places/?q={term}",
+  "validator": "getAndValidateFacebookSearchTerm"
+ },
+ "facebook-search-groups": {
+  "urlTemplate": "https://www.facebook.com/search/groups/?q={term}",
+  "validator": "getAndValidateFacebookSearchTerm"
+ },
+ "facebook-search-apps": {
+  "urlTemplate": "https://www.facebook.com/search/apps/?q={term}",
+  "validator": "getAndValidateFacebookSearchTerm"
+ },
+ "facebook-search-events": {
+  "urlTemplate": "https://www.facebook.com/search/events/?q={term}",
+  "validator": "getAndValidateFacebookSearchTerm"
+ },
+ "facebook-search-links": {
+  "urlTemplate": "https://www.facebook.com/search/links/?q={term}",
+  "validator": "getAndValidateFacebookSearchTerm"
+ },
+ "facebook-search-watch": {
+  "urlTemplate": "https://www.facebook.com/watch/search/?q={term}",
+  "validator": "getAndValidateFacebookSearchTerm"
+ },
+ "instagram-profile": {
+  "urlTemplate": "https://instagram.com/{username}",
+  "validator": "getAndValidateInstagramUsername"
+ },
+ "instagram-channel": {
+  "urlTemplate": "https://instagram.com/{username}/channel/",
+  "validator": "getAndValidateInstagramUsername"
+ },
+ "instagram-tagged": {
+  "urlTemplate": "https://instagram.com/{username}/tagged/",
+  "validator": "getAndValidateInstagramUsername"
+ },
+ "instagram-threads": {
+  "urlTemplate": "https://www.threads.net/@{username}",
+  "validator": "getAndValidateInstagramUsername"
+ },
+ "instagram-google-outgoing": {
+  "urlTemplate": "https://www.google.com/search?q=site%3Ainstagram.com+%22{username}%22",
+  "validator": "getAndValidateInstagramUsername"
+ },
+ "instagram-google-incoming": {
+  "urlTemplate": "https://www.google.com/search?q=site%3Ainstagram.com+%22@{username}%22",
+  "validator": "getAndValidateInstagramUsername"
+ },
+ "instagram-bing-search": {
+  "urlTemplate": "https://www.bing.com/search?q=site%3Ainstagram.com+%22{username}%22",
+  "validator": "getAndValidateInstagramUsername"
+ },
+ "instagram-yandex-search": {
+  "urlTemplate": "https://yandex.com/search/?text=site%3Ainstagram.com+%22{username}%22",
+  "validator": "getAndValidateInstagramUsername"
+ },
+ "instagram-x-posts": {
+  "urlTemplate": "https://www.google.com/search?q=site%3Ax.com+%22{username}%22+%22instagram.com%2Fp%22",
+  "validator": "getAndValidateInstagramUsername"
+ },
+ "instagram-dumpor-profile": {
+  "urlTemplate": "https://dumpor.com/v/{username}",
+  "validator": "getAndValidateInstagramUsername"
+ },
+ "instagram-toolzu-profile": {
+  "urlTemplate": "https://toolzu.com/profile-analyzer/instagram/?username={username}",
+  "validator": "getAndValidateInstagramUsername"
+ },
+ "instagram-gql-followers": {
+  "urlTemplate": "https://www.instagram.com/graphql/query/?query_hash=c76146de99bb02f6415203be841dd25a&variables={{%22id%22:%22{userid}%22,%22include_reel%22:true,%22fetch_mutual%22:true,%22first%22:50}}",
+  "validator": "getAndValidateInstagramUserId"
+ },
+ "instagram-gql-following": {
+  "urlTemplate": "https://www.instagram.com/graphql/query/?query_hash=d04b0a864b4b54837c0d870b0e77e076&variables={{%22id%22:%22{userid}%22,%22include_reel%22:true,%22fetch_mutual%22:false,%22first%22:50}}",
+  "validator": "getAndValidateInstagramUserId"
+ },
+ "instagram-combo-user-term": {
+  "urlTemplate": "https://www.google.com/search?q=site%3Ainstagram.com+%22{usera}%22+%22{userb}%22",
+  "validator": "getAndValidateInstagramCombinedSearch"
+ },
+ "instagram-combo-associations": {
+  "urlTemplate": "https://www.google.com/search?q=site%3Ainstagram.com+%22{usera}%22+%22{userb}%22",
+  "validator": "getAndValidateInstagramCombinedSearch"
+ },
+ "instagram-hashtag-search": {
+  "urlTemplate": "https://www.instagram.com/explore/tags/{hashtag}",
+  "validator": "getAndValidateInstagramHashtag"
+ },
+ "instagram-term-google": {
+  "urlTemplate": "https://www.google.com/search?q=site%3Ainstagram.com+{hashtag}",
+  "validator": "getAndValidateInstagramHashtag"
+ },
+ "instagram-dumpor-tag": {
+  "urlTemplate": "https://dumpor.com/t/{hashtag}",
+  "validator": "getAndValidateInstagramHashtag"
+ },
+ "vehicles-vindecoderz": {
+  "urlTemplate": "https://www.vindecoderz.com/EN/check-lookup/{vin}",
+  "validator": "getAndValidateVin"
+ },
+ "vehicles-faxvin": {
+  "urlTemplate": "https://www.faxvin.com/order/decoding?vin={vin}",
+  "validator": "getAndValidateVin"
+ },
+ "vehicles-checkthatvin": {
+  "urlTemplate": "https://checkthatvin.com/ctv/#/vin-search/{vin}",
+  "validator": "getAndValidateVin"
+ },
+ "vehicles-vincheckinfo": {
+  "urlTemplate": "https://vincheck.info/check/report-summary.php?vin={vin}",
+  "validator": "getAndValidateVin"
+ },
+ "vehicles-searchquarry-vin": {
+  "urlTemplate": "https://www.searchquarry.com/vin-decoder/search/{vin}",
+  "validator": "getAndValidateVin"
+ },
+ "vehicles-cyclevin": {
+  "urlTemplate": "https://www.cyclevin.com/vin-report/?vin={vin}",
+  "validator": "getAndValidateVin"
+ },
+ "vehicles-recordfinder-vin": {
+  "urlTemplate": "https://recordsfinder.com/search/vin-check/loader/?flow=vin-check&vin={vin}",
+  "validator": "getAndValidateVin"
+ },
+ "vehicles-canadavin": {
+  "urlTemplate": "https://csps.con.rcmp-grc.gc.ca/queryVehicles?vin={vin}",
+  "validator": "getAndValidateVin"
+ },
+ "vehicles-carvana": {
+  "urlTemplate": "https://www.carvana.com/sell-my-car/getoffer/vehicle?licensePlate={plate}&plateState={state}",
+  "validator": "getAndValidatePlate"
+ },
+ "vehicles-searchquarry-plate": {
+  "urlTemplate": "https://www.searchquarry.com/vehicle_records/lregister?sqtb=license_plate&license_plates={plate}&state={state}",
+  "validator": "getAndValidatePlate"
+ },
+ "vehicles-recordfinder-plate": {
+  "urlTemplate": "https://recordsfinder.com/search/plate/loader/?flow=plate&plateNumber={plate}&state={state}",
+  "validator": "getAndValidatePlate"
+ },
+ "vehicles-infotracer-plate": {
+  "urlTemplate": "https://infotracer.com/loading/?type=plate-lookup&mercSubId=plate&plate={plate}&state={state}",
+  "validator": "getAndValidatePlate"
+ },
+ "vehicles-carnetai": {
+  "urlTemplate": "https://carnet.ai/",
+  "no_input": true
+ },
+ "vk-profile-username": {
+  "urlTemplate": "https://vk.com/{username}",
+  "validator": "getAndValidateVkUsername"
+ },
+ "vk-profile-id": {
+  "urlTemplate": "https://vk.com/id{userid}",
+  "validator": "getAndValidateVkUserId"
+ },
+ "vk-profile-link": {
+  "urlTemplate": "https://vk.me/{username}",
+  "validator": "getAndValidateVkUsername"
+ },
+ "vk-user-allposts": {
+  "urlTemplate": "https://vk.com/wall{userid}",
+  "validator": "getAndValidateVkUserId"
+ },
+ "vk-user-friends": {
+  "urlTemplate": "https://vk.com/friends?id={userid}",
+  "validator": "getAndValidateVkUserId"
+ },
+ "vk-user-followers": {
+  "urlTemplate": "https://vk.com/friends?id={userid}&section=followers",
+  "validator": "getAndValidateVkUserId"
+ },
+ "vk-user-groups": {
+  "urlTemplate": "https://vk.com/groups?id={userid}",
+  "validator": "getAndValidateVkUserId"
+ },
+ "vk-user-photos": {
+  "urlTemplate": "https://vk.com/photos{userid}",
+  "validator": "getAndValidateVkUserId"
+ },
+ "vk-user-photoalbums": {
+  "urlTemplate": "https://vk.com/albums{userid}",
+  "validator": "getAndValidateVkUserId"
+ },
+ "vk-user-videos": {
+  "urlTemplate": "https://vk.com/video/@id{userid}",
+  "validator": "getAndValidateVkUserId"
+ },
+ "vk-user-audio": {
+  "urlTemplate": "https://vk.com/audios{userid}",
+  "validator": "getAndValidateVkUserId"
+ },
+ "vk-user-notes": {
+  "urlTemplate": "https://vk.com/notes{userid}",
+  "validator": "getAndValidateVkUserId"
+ },
+ "vk-user-gifts": {
+  "urlTemplate": "https://vk.com/gifts?id={userid}",
+  "validator": "getAndValidateVkUserId"
+ },
+ "vk-user-market": {
+  "urlTemplate": "https://vk.com/market?owner_id={userid}",
+  "validator": "getAndValidateVkUserId"
+ },
+ "vk-user-apps": {
+  "urlTemplate": "https://vk.com/apps?act=user_apps&id={userid}",
+  "validator": "getAndValidateVkUserId"
+ },
+ "vk-search-all": {
+  "urlTemplate": "https://vk.com/search?q={username}",
+  "validator": "getAndValidateVkUsername"
+ },
+ "vk-search-people": {
+  "urlTemplate": "https://vk.com/search?c[section]=people&c[q]={username}",
+  "validator": "getAndValidateVkUsername"
+ },
+ "vk-search-groups": {
+  "urlTemplate": "https://vk.com/search?c[section]=communities&c[q]={username}",
+  "validator": "getAndValidateVkUsername"
+ },
+ "vk-search-news": {
+  "urlTemplate": "https://vk.com/search?c[section]=news&c[q]={username}",
+  "validator": "getAndValidateVkUsername"
+ },
+ "vk-search-photos": {
+  "urlTemplate": "https://vk.com/search?c[section]=photos&c[q]={username}",
+  "validator": "getAndValidateVkUsername"
+ },
+ "vk-search-videos": {
+  "urlTemplate": "https://vk.com/search?c[section]=videos&c[q]={username}",
+  "validator": "getAndValidateVkUsername"
+ },
+ "vk-search-audio": {
+  "urlTemplate": "https://vk.com/search?c[section]=audio&c[q]={username}",
+  "validator": "getAndValidateVkUsername"
+ },
+ "vk-search-docs": {
+  "urlTemplate": "https://vk.com/search?c[section]=docs&c[q]={username}",
+  "validator": "getAndValidateVkUsername"
+ },
+ "vk-search-market": {
+  "urlTemplate": "https://vk.com/search?c[section]=market&c[q]={username}",
+  "validator": "getAndValidateVkUsername"
+ },
+ "vk-search-tag": {
+  "urlTemplate": "https://vk.com/search/statuses?q={tag}",
+  "validator": "getAndValidateVkTag"
+ },
+ "vk-ext-google": {
+  "urlTemplate": "https://www.google.com/search?q=site%3Avk.com+\"{username}\"",
+  "validator": "getAndValidateVkUsername"
+ },
+ "vk-ext-smat": {
+  "urlTemplate": "https://www.smat-app.com/search?searchTerm={username}&startDate=2000-06-01&endDate={enddate}&websites=vk",
+  "validator": "getAndValidateVkSmat"
+ },
+ "vk-ext-checko": {
+  "urlTemplate": "https://checko.ru/search?query={username}",
+  "validator": "getAndValidateVkUsername"
+ },
+ "vk-ext-mailru": {
+  "urlTemplate": "https://go.mail.ru/search_social?q={username}",
+  "validator": "getAndValidateVkUsername"
+ },
+ "vk-ext-webarchive": {
+  "urlTemplate": "https://web.archive.org/russian-independent-media/search/{username}",
+  "validator": "getAndValidateVkUsername"
+ },
+ "iban-search-google": {
+  "urlTemplate": "https://www.google.com/search?q=\"{iban}\"",
+  "validator": "getAndValidateIban"
+ },
+ "iban-search-bing": {
+  "urlTemplate": "https://www.bing.com/search?q=\"{iban}\"",
+  "validator": "getAndValidateIban"
+ },
+ "iban-search-yandex": {
+  "urlTemplate": "https://yandex.com/search/?text=\"{iban}\"",
+  "validator": "getAndValidateIban"
+ },
+ "iban-search-baidu": {
+  "urlTemplate": "https://www.baidu.com/s?wd=\"{iban}\"",
+  "validator": "getAndValidateIban"
+ },
+ "iban-search-ibancalc": {
+  "urlTemplate": "https://www.ibancalculator.com/iban_validieren.html",
+  "no_input": true
+ }
+}

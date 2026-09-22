@@ -33,6 +33,8 @@ The JavaScript architecture is the core of the project. Here is the role of each
 
 **Role:** Acts as a database for all search functions. It contains a single large object, `SearchLibrary`, that maps a button's `data-search-id` to a URL template and a validator function.
 
+Two optional fields exist besides `urlTemplate` and `validator`: `no_input: true` opens the URL as it is, with no input and no validation (for services that only offer a form); `disabled: "YYYY-MM-DD"` is written by the weekly link checker when the host is confirmed dead — never set it by hand, fix or remove the entry instead. After any change to the catalogue run `node scripts/catalogue/build-meta.mjs` to refresh the export in `assets/data/` (the CI fails when it is stale).
+
 ### 3. `validators.js` - The Rulebook
 
 **Role:** Contains the `ExploratoresValidators` object, a library of reusable functions that check if user input is valid before launching a search.
