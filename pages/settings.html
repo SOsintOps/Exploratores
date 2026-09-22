@@ -14,30 +14,42 @@
 
 <main>
     <h1 class="page-title">Settings</h1>
-    <p>Configure display and behaviour preferences. All settings are stored locally in your browser and never sent to any server.</p>
+    <p class="center-text">Preferences are stored locally in your browser and never sent to any server.</p>
 
-    <section id="section-display">
-        <h2>Display</h2>
+    <section id="section-catalogue-updates">
+        <h2>Catalogue Updates</h2>
 
         <div class="setting-row">
             <div class="setting-info">
-                <strong>Typewriter effect</strong>
-                <p>Reveals page titles character by character on load.</p>
+                <strong>Refresh the search catalogue from GitHub</strong>
+                <p>For offline copies of the toolkit. Once a day the browser fetches the catalogue metadata from the project repository and, when a newer catalogue is published, downloads it, verifies its SHA-256 checksum and keeps it in this browser. Tools on hosts confirmed dead are then greyed out here too. The downloaded catalogue is applied from the next page you open. <strong>Off by default:</strong> when enabled, GitHub sees the requests (no cookies, no referrer). The site published on GitHub Pages is always current and does not need this.</p>
             </div>
-            <label class="toggle-switch" aria-label="Toggle typewriter effect">
-                <input type="checkbox" id="toggle-typewriter">
+            <label class="toggle-switch" aria-label="Toggle catalogue updates">
+                <input type="checkbox" id="toggle-catalogue-update">
                 <span class="toggle-track"></span>
             </label>
         </div>
+
+        <div class="setting-row">
+            <div class="setting-info">
+                <strong>Status</strong>
+                <p id="catalogue-status">Reading…</p>
+            </div>
+            <div class="setting-actions">
+                <button id="btn-catalogue-check" type="button" class="button">Check now</button>
+                <button id="btn-catalogue-discard" type="button" class="button">Discard cached catalogue</button>
+            </div>
+        </div>
+        <div id="catalogue-feedback" class="feedback-message"></div>
     </section>
 </main>
 
 <footer>
-    <p>Exploratores 3.6.0 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.7.0 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>
-<script src="../assets/js/typewriter.js"></script>
+<script src="../assets/js/catalogue-updater.js"></script>
 <script src="../assets/js/settings-page.js"></script>
 </body>
 </html>

@@ -25,5 +25,8 @@ jobs:
       - name: Run the link-checker and catalogue-export tests
         run: node tests/linkcheck.test.mjs
 
+      - name: Run the catalogue-updater tests
+        run: node tests/catalogue-updater.test.mjs
+
       - name: Check that the catalogue export is up to date
         run: node scripts/catalogue/verify-meta.mjs
