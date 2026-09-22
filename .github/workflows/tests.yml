@@ -21,3 +21,9 @@ jobs:
 
       - name: Run the validators test suite
         run: node tests/validators.test.js
+
+      - name: Run the link-checker and catalogue-export tests
+        run: node tests/linkcheck.test.mjs
+
+      - name: Check that the catalogue export is up to date
+        run: node scripts/catalogue/verify-meta.mjs

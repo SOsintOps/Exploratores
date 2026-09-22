@@ -3,7 +3,23 @@
 const Exploratores = {
     init: function() {
         this.clearAllInputs();
+        this.markDisabledTools();
         this.initSearchHandler();
+    },
+
+    // Entries flagged "disabled" in the catalogue (set by the weekly link
+    // checker once a host is confirmed dead/unreliable) are greyed out and
+    // never opened. Page scripts may toggle the disabled attribute as the
+    // user types, so the class and the guard in the click handler are what
+    // actually keep a dead tool shut.
+    markDisabledTools: function() {
+        document.querySelectorAll('[data-search-id]').forEach(button => {
+            const config = SearchLibrary[button.getAttribute('data-search-id')];
+            if (!config || !config.disabled) return;
+            button.disabled = true;
+            button.classList.add('button-dead');
+            button.title = `Host confirmed unreachable on ${config.disabled} by the weekly link check`;
+        });
     },
 
     clearAllInputs: function() {
@@ -26,6 +42,8 @@ const Exploratores = {
                 console.error(`Search configuration for "${searchId}" not found.`);
                 return;
             }
+
+            if (config.disabled) return;   // confirmed-dead host, see markDisabledTools
 
             if (config.no_input) {
                 window.open(config.urlTemplate, '_blank', 'noopener,noreferrer');

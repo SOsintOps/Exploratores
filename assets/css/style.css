@@ -439,6 +439,21 @@ main {
   color: #FFFFFF;
 }
 
+/*
+ * 3. Tools on confirmed-dead hosts ("disabled" flag in search-library.js,
+ * set by the weekly link checker). Greyed out, struck through, never opened.
+*/
+.button.button-dead,
+.button.button-dead.text-active,
+.button.button-dead:hover {
+  background-color: #f3f3f3;
+  color: #9a9a9a;
+  font-weight: normal;
+  text-decoration: line-through;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
 /* Buttons within .input-button-line should have automatic width */
 .input-button-line .button {
   width: auto;

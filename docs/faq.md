@@ -22,6 +22,7 @@ Frequently asked questions about the toolkit — usage, architecture, and troubl
 * [Can the Exploratores OSINT Toolkit pages be customised?](#can-the-exploratores-osint-toolkit-pages-be-customised)
 * [How is the maintenance of tools within the toolkit handled?](#how-is-the-maintenance-of-tools-within-the-toolkit-handled)
 * [How are dead or unreliable external links detected?](#how-are-dead-or-unreliable-external-links-detected)
+* [What happens to the tools on a dead host?](#what-happens-to-the-tools-on-a-dead-host)
 * [How can I suggest new tools or improvements?](#how-can-i-suggest-new-tools-or-improvements)
 * [What is the recommended workflow for contributing a new page?](#what-is-the-recommended-workflow-for-contributing-a-new-page)
 * [How can I create a new page or add features using a prompt for an LLM?](#how-can-i-create-a-new-page-or-add-features-using-a-prompt-for-an-llm)
@@ -130,6 +131,10 @@ The Exploratores OSINT Toolkit is maintained on a voluntary basis. Ongoing maint
 ### How are dead or unreliable external links detected?
 
 An automated link checker runs every Sunday at 13:13 UTC as a GitHub Actions workflow. It extracts every URL template from the search catalogue (`search-library.js`, plus the inline links on the Dorks and VK pages) and probes each external host. A two-strike policy applies: a host is reported as dead or unreliable only after failing two checks at least a week apart — a single failure leaves it "in observation" until the next weekly run, so temporary outages do not raise false alarms. Findings are published in the "Weekly link-check report" issue (label `dead-links`) on the GitHub repository; every run that finds problems also adds a comment to the issue, so subscribers receive a notification. Confirmed-dead tools are then fixed or removed manually. The checker lives in `scripts/linkcheck/` and can also be run locally with Node.js.
+
+### What happens to the tools on a dead host?
+
+Once a host is confirmed dead or unreliable (two strikes), the weekly run marks every catalogue entry on that host with a `"disabled"` flag carrying the confirmation date and opens an automated pull request (branch `auto/disable-dead-links`, label `dead-links`) with the change; nothing is published until a maintainer merges it. After the merge the affected buttons appear greyed out and struck through, their tooltip shows the confirmation date, clicking them opens nothing and they no longer appear in the Toolkit Search. The flag is owned by the checker: if the host recovers, the next run removes it; if the tool is really gone, the entry is fixed or removed by hand. The same run rebuilds the catalogue export in `assets/data/` (`search-library.json` plus `catalogue-meta.json` with version, date, counts and SHA-256), which offline copies of the toolkit can use to refresh their catalogue.
 
 ### How can I suggest new tools or improvements?
 
