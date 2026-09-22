@@ -80,6 +80,7 @@ const ExploratoresValidators = {
                 e164: e164,
                 countrycode: cc,
                 nat_num: nat,
+                national_raw: nationalNum.replace(/\s/g, ''),   // as typed, trunk prefix kept (Italian landlines need their 0)
                 country_iso: countryIso,
                 country_iso_lower: countryIso.toLowerCase(),
                 google_query: queryVariations.join(" OR "),
