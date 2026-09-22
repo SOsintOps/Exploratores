@@ -316,15 +316,40 @@ const ExploratoresValidators = {
     },
 
     getAndValidateTgUser: function(config, queryOverride) {
-        const value = queryOverride !== undefined ? queryOverride : document.getElementById('input-communities-tgUser')?.value.trim();
+        const value = queryOverride !== undefined ? queryOverride : document.getElementById('input-telegram-user')?.value.trim();
         if (!value) return { isValid: false, message: "Please enter a user or channel name." };
-        return { isValid: true, data: { username: value }, message: "Ready for search." };
+        const username = value.replace(/^@/, '');
+        if (!username) return { isValid: false, message: "Please enter a user or channel name." };
+        return { isValid: true, data: { username: username }, message: "Ready for search." };
     },
 
     getAndValidateTgKey: function(config, queryOverride) {
-        const value = queryOverride !== undefined ? queryOverride : document.getElementById('input-communities-tgKey')?.value.trim();
+        const value = queryOverride !== undefined ? queryOverride : document.getElementById('input-telegram-key')?.value.trim();
         if (!value) return { isValid: false, message: "Please enter a keyword." };
         return { isValid: true, data: { keyword: value }, message: "Ready for search." };
+    },
+
+    getAndValidateTgChannelQuery: function(config, queryOverride) {
+        const channel = document.getElementById('input-telegram-channel')?.value.trim();
+        const keyword = queryOverride !== undefined ? queryOverride : document.getElementById('input-telegram-query')?.value.trim();
+        if (!channel) return { isValid: false, message: "Please enter a channel name." };
+        const username = channel.replace(/^@/, '');
+        if (!username) return { isValid: false, message: "Please enter a channel name." };
+        if (!keyword) return { isValid: false, message: "Please enter a term to search for inside the channel." };
+        return { isValid: true, data: { username: username, keyword: keyword }, message: "Ready for search." };
+    },
+
+    getAndValidateTgChannelHistory: function(config, queryOverride) {
+        const channel = document.getElementById('input-telegram-channel')?.value.trim();
+        const value = queryOverride !== undefined ? queryOverride : document.getElementById('input-telegram-msgid')?.value.trim();
+        if (!channel) return { isValid: false, message: "Please enter a channel name." };
+        const username = channel.replace(/^@/, '');
+        if (!username) return { isValid: false, message: "Please enter a channel name." };
+        if (!value) return { isValid: false, message: "Please enter a message ID." };
+        if (!/^[0-9]+$/.test(value) || Number(value) < 1) {
+            return { isValid: false, message: "The message ID must be a positive whole number." };
+        }
+        return { isValid: true, data: { username: username, msgid: value }, message: "Ready for search." };
     },
 	
     getAndValidateVin: function(config, queryOverride) {
