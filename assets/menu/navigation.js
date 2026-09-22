@@ -36,6 +36,7 @@ function generateNavHTML() {
             <li><a href="${pagesPath}facebook.html">Facebook</a></li>
             <li><a href="${pagesPath}instagram.html">Instagram</a></li>
             <li><a href="${pagesPath}linkedin.html">LinkedIn</a></li>
+            <li><a href="${pagesPath}telegram.html">Telegram</a></li>
             <li><a href="${pagesPath}vk.html">VK</a></li>
             <li><a href="${pagesPath}keybase.html">Keybase</a></li>
           </ul>

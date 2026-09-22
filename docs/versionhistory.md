@@ -4,6 +4,15 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.5.0 — 2026
+
+- **New:** Telegram Tool: dedicated page (`pages/telegram.html`, *Social Media* menu) replacing the Telegram section of the Communities tool. Adds in-channel search — `t.me/s/<channel>?q=<term>` reads the public web preview of a single channel and matches file names and extensions as well as message text, with no Telegram account — plus a message-ID jump for reaching a channel's earliest posts, Wayback Machine history of channel previews, a link-mention search, the Telegago and OSINT.ME Google Custom Search Engines (both restricted to public Telegram domains, different indexes) and Telegraph and invite-link searches. The six previous buttons are unchanged; ids moved from `communities-tg-*` to `telegram-*`.
+- **New:** Dork Builder: Telegram template category — canonical `t.me`/`telegram.me`, Telegraph, a bundle of ten mirror and directory hosts, invite links and handles in bios. Wildcard TLDs are expanded explicitly (`site:tgstat.com OR site:tgstat.ru`) because Google's support for them is unreliable.
+- **Improved:** Telegram user and channel inputs now strip a leading `@`, so a pasted `@handle` no longer produces a broken URL.
+- **Improved:** Tests: coverage for the Telegram validators, which were previously untested — 13 new cases, 101 in total.
+
+---
+
 ## 3.4.4 — 2026
 
 - **Improved:** IBAN Tool: offline bank-name databases rebuilt from official registries (via the MIT-licensed schwifty bank registry) — Germany is now complete with ~3,500 Bundesbank BLZ entries (was ~80), Italy ~530 ABI entries (was ~340), Spain ~560 Banco de España entity codes (was ~35) and France ~230 CIB codes (was ~55). Superseded codes from the previous curated lists are retained so legacy IBANs still resolve; the coverage table on the page reflects the new figures.

@@ -24,10 +24,33 @@ This file collects ideas, source suggestions, and potential improvements to be e
 - **Japan — jpnumber.com:** reverse phone lookup for Japanese numbers. Example:
   `https://www.jpnumber.com/searchnumber.do?number=08021651552`
 
+### Telegram Tool
+
+The dedicated page shipped in 3.5.0. Still open:
+
+- **Technique notes for the Help pages:** forwarded-message headers identify the
+  originating channel, the forwarding graph maps affiliated channels, and any
+  selector recovered from a channel (e-mail, phone, domain, wallet) can be pivoted
+  into the other Exploratores pages.
+
+- **Lookup bots, documentation only:** `@userinfobot` (username → numeric ID),
+  `@creationdatebot` (approximate account creation date), `@SangMataInfo_bot`
+  (username history), `@tgscanrobot` (group membership). These need an
+  authenticated client and several ask for the investigator's own phone number, so
+  they belong in the FAQ with that OPSEC caveat — never as buttons.
+
+- **Host liveness:** the third-party hosts added in 3.5.0 have not yet been probed;
+  let `scripts/linkcheck` classify them. The two `t.me/s/<channel>` parameters are no longer in doubt:
+  both `?q=` and `?before=` were confirmed in a browser on 2026-08-24.
+
+- **Deliberately not added:** TelegramDB (bot with a credit system, no URL to
+  template), the ~60 long-tail directories of Awesome-Telegram-OSINT (covered
+  collectively by the Dork Builder bundle) and the Nearby-based geolocation tools
+  (Geogramint, telegram-nearby-map, CCTV), all non-functional upstream.
+
 ### General
 
 - **Additional sources from digitaldigging.org:** review the OSINT resource list at
   `https://digitaldigging.org/osint/` and identify entries not yet covered by the toolkit.
 
 - **Dead-link triage:** manually verify the hosts flagged by the weekly link checker (issue *Weekly link-check report*, label `dead-links`) and replace or remove the tools on confirmed-dead hosts. First run (2026-08-07) flagged 16 non-resolving hosts (20 tool buttons) and 3 hosts with broken TLS.
-
