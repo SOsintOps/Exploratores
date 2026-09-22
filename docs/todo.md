@@ -8,10 +8,6 @@ This file collects ideas, source suggestions, and potential improvements to be e
 
 ### Names Tool
 
-- **Company data (Italy):** add a section or dedicated page to surface company/VAT data. Candidate sources:
-  - [atoka.io](https://atoka.io/public/it/azienda/wannawin-srl/c81c1523132c)
-  - [informazione-aziende.it](https://www.informazione-aziende.it/Azienda_COLONNA-FRANCESCO-E-MONDELLI-LETIZIA-SNC)
-
 - **US people search — additional sources:** the following sites partially obscure results but may surface useful metadata:
   - [instantcheckmate.com](https://www.instantcheckmate.com)
   - [intelius.com](https://www.intelius.com)
@@ -59,6 +55,8 @@ Reference directories, in order of trust:
 - [wddadk/OSINT-for-countries](https://github.com/wddadk/OSINT-for-countries) — an index of indexes covering all UN member states; each country section links other directories (OSINT Guru, cyberint.uk, start.me pages, OCCRP, SAWEST, third-party GitHub repositories). Used to discover sources the two above miss.
 
 Rules: every URL is opened in a browser before entering the catalogue; search endpoints with a query parameter become buttons with a validator, portals that only offer a form or a login become `no_input` links; paid or registration-only services are noted in the button title; discarded candidates are listed here with the reason.
+
+**Italy — shipped in 3.8.0** (12 tools across Names, International Phones, Company Public Records, Maps, Domains). Candidates checked on 2026-09-22 and discarded: `dati.anticorruzione.it` (ANAC procurement data — F5 "URL rejected" 403 even from a normal browser), `atoka.io` (no public search any more, sales product only), `informazione-aziende.it` (cookie wall, JavaScript search with no URL), `reportaziende.it` and `ufficiocamerale.it` (POST-only search forms of commercial aggregators — the existing "P.IVA (Italy)" Google-site search covers them), OpenCorporates Italy filter (`/companies/it?q=`, CAPTCHA wall; the global OpenCorporates buttons stay), Il Portale dell'Automobilista plate checks (JavaScript portal, service pages not addressable). Still to look at: PRA/ACI vehicle extracts (paid), CONSOB issuers, UIBM trademarks, Portale delle Vendite Pubbliche.
 
 ### General
 

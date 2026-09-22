@@ -4,6 +4,13 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.8.0 — 2026
+
+- **New:** Italy sources — first country of the country-sources programme (see *Ideas & Roadmap*), 12 tools: Names → National Registers → Italy: Portale Antenati (civil records held by the State Archives, searched by surname and name), FNOMCeO Albo Unico (doctors and dentists), Italgiure (Court of Cassation rulings) and Gazzetta Ufficiale (issue search); International Phones → Country-Specific Services: Pagine Bianche reverse number lookup; Company Public Records → Companies → Italy: Registro Imprese free search, Agenzia delle Entrate VAT-number check, INI-PEC certified-e-mail index, IndicePA public-administration index and dati.gov.it open-data search; Maps → new "Cadastre & National Maps" → Italy: Agenzia delle Entrate cadastral geoportal; Domains → Whois & DNS Lookup: .it Registry web WHOIS. Every URL was opened and checked in a browser on 2026-09-22; services that only offer a form or a CAPTCHA are direct links with an explanatory tooltip.
+- **Docs:** *Ideas & Roadmap*: the Italian candidates that were discarded, with the reason, and what is still to be looked at.
+
+---
+
 ## 3.7.0 — 2026
 
 - **New:** Catalogue updates for offline copies: the new `assets/js/catalogue-updater.js` (loaded right after `search-library.js` on every tool page) can refresh the search catalogue from the project repository without a `git pull`. Off by default; when switched on in the Settings page the browser checks `catalogue-meta.json` on GitHub once a day, downloads `search-library.json` when a newer one is published, verifies its SHA-256 checksum and structure, and keeps it in local storage. The cached catalogue is applied at the start of every page load (effective from the next page opened); entries needing a validator missing from the local `validators.js` are ignored, and metadata pointing outside the repository is refused. Requests carry no cookies and no referrer. The site on GitHub Pages does not need it.

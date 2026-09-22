@@ -170,6 +170,13 @@ test('intlPhone: +39 and trunk zero normalised', () => {
   eq(d.e164, '393471234567', 'e164');
   eq(d.countrycode, '39', 'countrycode');
   eq(d.country_iso, 'IT', 'country_iso');
+  eq(d.national_raw, '03471234567', 'national_raw keeps the trunk zero, drops spaces');
+});
+test('intlPhone: national_raw of an Italian landline keeps its leading 0', () => {
+  setDom({ countryCodeInput: '+39', nationalNumberInput: '06 4400 0000', countryLettersInput: 'IT' });
+  const d = valid(V.getAndValidateIntlPhone({}));
+  eq(d.nat_num, '644000000', 'nat_num (trunk prefix stripped)');
+  eq(d.national_raw, '0644000000', 'national_raw');
 });
 test('intlPhone: 0039 prefix normalised', () => {
   setDom({ countryCodeInput: '0039', nationalNumberInput: '3471234567', countryLettersInput: '' });
