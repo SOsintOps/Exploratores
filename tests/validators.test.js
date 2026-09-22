@@ -271,6 +271,68 @@ test('janua: generic data fans out the indicator', () => {
   eq(d.fullnamedashlower, 'john-smith', 'fullnamedashlower');
 });
 
+// --- Telegram validators ---
+
+test('tgUser: value is returned as username', () => {
+  setDom({ 'input-telegram-user': 'durov' });
+  eq(valid(V.getAndValidateTgUser({})).username, 'durov', 'username');
+});
+test('tgUser: a leading @ is stripped', () => {
+  setDom({ 'input-telegram-user': '@durov' });
+  eq(valid(V.getAndValidateTgUser({})).username, 'durov', 'username');
+});
+test('tgUser: empty rejected', () => {
+  setDom({ 'input-telegram-user': '' });
+  invalid(V.getAndValidateTgUser({}));
+});
+test('tgUser: a bare @ is rejected', () => {
+  setDom({ 'input-telegram-user': '@' });
+  invalid(V.getAndValidateTgUser({}));
+});
+
+test('tgKey: value is returned as keyword', () => {
+  setDom({ 'input-telegram-key': 'data leak' });
+  eq(valid(V.getAndValidateTgKey({})).keyword, 'data leak', 'keyword');
+});
+test('tgKey: empty rejected', () => {
+  setDom({ 'input-telegram-key': '' });
+  invalid(V.getAndValidateTgKey({}));
+});
+
+test('tgChannelQuery: channel and term are both returned', () => {
+  setDom({ 'input-telegram-channel': '@durov', 'input-telegram-query': 'invoice.pdf' });
+  const d = valid(V.getAndValidateTgChannelQuery({}));
+  eq(d.username, 'durov', 'username');
+  eq(d.keyword, 'invoice.pdf', 'keyword');
+});
+test('tgChannelQuery: missing channel rejected', () => {
+  setDom({ 'input-telegram-channel': '', 'input-telegram-query': 'invoice.pdf' });
+  invalid(V.getAndValidateTgChannelQuery({}));
+});
+test('tgChannelQuery: missing term rejected', () => {
+  setDom({ 'input-telegram-channel': 'durov', 'input-telegram-query': '' });
+  invalid(V.getAndValidateTgChannelQuery({}));
+});
+
+test('tgChannelHistory: channel and message id are both returned', () => {
+  setDom({ 'input-telegram-channel': 'durov', 'input-telegram-msgid': '50' });
+  const d = valid(V.getAndValidateTgChannelHistory({}));
+  eq(d.username, 'durov', 'username');
+  eq(d.msgid, '50', 'msgid');
+});
+test('tgChannelHistory: non-numeric message id rejected', () => {
+  setDom({ 'input-telegram-channel': 'durov', 'input-telegram-msgid': 'first' });
+  invalid(V.getAndValidateTgChannelHistory({}));
+});
+test('tgChannelHistory: zero rejected', () => {
+  setDom({ 'input-telegram-channel': 'durov', 'input-telegram-msgid': '0' });
+  invalid(V.getAndValidateTgChannelHistory({}));
+});
+test('tgChannelHistory: missing channel rejected', () => {
+  setDom({ 'input-telegram-channel': '', 'input-telegram-msgid': '50' });
+  invalid(V.getAndValidateTgChannelHistory({}));
+});
+
 // --- results ---
 const total = passed + failures.length;
 if (failures.length) {

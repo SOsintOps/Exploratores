@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
+  <title>Telegram • Exploratores</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<main>
+  <h1 class="page-title">Telegram Tool</h1>
+  <div class="note">
+    <strong>NOTE:</strong> Every lookup on this page works on public content only and none of them require a Telegram account. Channels whose owner has disabled the web preview will not answer the preview, in-channel search and history buttons.
+  </div>
+
+  <div class="columns">
+    <div id="column-telegram-left" class="column">
+
+      <section id="section-telegram-user" class="search-instructions">
+        <h2>User &amp; Channel</h2>
+        <label for="input-telegram-user">User/Channel Name</label>
+        <div class="input-container">
+          <input type="text" id="input-telegram-user" class="input-field" placeholder="Enter user or channel name..." autocomplete="off">
+        </div>
+        <div id="feedback-telegram-user" class="feedback-message"></div>
+        <div class="button-grid">
+          <button id="btn-telegram-profile" type="button" class="button" data-search-id="telegram-profile">Profile/Channel</button>
+          <button id="btn-telegram-preview" type="button" class="button" data-search-id="telegram-preview">Channel Preview</button>
+          <button id="btn-telegram-telescope" type="button" class="button" data-search-id="telegram-telescope">Telesco.pe</button>
+          <button id="btn-telegram-telemetrio" type="button" class="button" data-search-id="telegram-telemetrio">Telemetr.io</button>
+          <button id="btn-telegram-wayback" type="button" class="button" data-search-id="telegram-wayback">Preview History</button>
+          <button id="btn-telegram-mentions" type="button" class="button" data-search-id="telegram-mentions">Link Mentions</button>
+        </div>
+      </section>
+
+      <section id="section-telegram-content" class="search-instructions">
+        <h2>Channel Content</h2>
+        <label for="input-telegram-channel">Channel Name</label>
+        <div class="input-container">
+          <input type="text" id="input-telegram-channel" class="input-field" placeholder="Enter channel name..." autocomplete="off">
+        </div>
+        <hr>
+        <label for="input-telegram-query">Term to Find Inside the Channel</label>
+        <div class="input-container">
+          <input type="text" id="input-telegram-query" class="input-field" placeholder="Enter term, file name or extension..." autocomplete="off">
+        </div>
+        <div id="feedback-telegram-query" class="feedback-message"></div>
+        <div class="button-grid">
+          <button id="btn-telegram-inchannel" type="button" class="button" data-search-id="telegram-inchannel">Search in Channel</button>
+        </div>
+        <hr>
+        <label for="input-telegram-msgid">Message ID</label>
+        <div class="input-container">
+          <input type="text" id="input-telegram-msgid" class="input-field" placeholder="Enter a message ID, e.g. 50..." autocomplete="off">
+        </div>
+        <div id="feedback-telegram-history" class="feedback-message"></div>
+        <div class="button-grid">
+          <button id="btn-telegram-history" type="button" class="button" data-search-id="telegram-history">Jump Back in History</button>
+        </div>
+      </section>
+
+    </div>
+
+    <div id="column-telegram-right" class="column">
+
+      <section id="section-telegram-keyword" class="search-instructions">
+        <h2>Keyword</h2>
+        <label for="input-telegram-key">Keyword</label>
+        <div class="input-container">
+          <input type="text" id="input-telegram-key" class="input-field" placeholder="Enter keyword..." autocomplete="off">
+        </div>
+        <div id="feedback-telegram-key" class="feedback-message"></div>
+        <div class="button-grid">
+          <button id="btn-telegram-tgstat" type="button" class="button" data-search-id="telegram-tgstat">TGStat</button>
+          <button id="btn-telegram-lyzem" type="button" class="button" data-search-id="telegram-lyzem">Lyzem</button>
+          <button id="btn-telegram-telegago" type="button" class="button" data-search-id="telegram-telegago">Telegago</button>
+          <button id="btn-telegram-osintme" type="button" class="button" data-search-id="telegram-osintme">OSINT.ME CSE</button>
+          <button id="btn-telegram-telegraph" type="button" class="button" data-search-id="telegram-telegraph">Telegraph</button>
+          <button id="btn-telegram-invites" type="button" class="button" data-search-id="telegram-invites">Invite Links</button>
+        </div>
+      </section>
+
+      <div class="note">
+        <strong>Channel Content:</strong> the in-channel search reads the public web preview of a single channel and matches file names and extensions as well as message text. The Message ID field opens the preview immediately <em>before</em> that message, so a low number such as 50 reaches a channel's earliest posts.
+      </div>
+
+      <div class="note">
+        <strong>Telegago</strong> and the <strong>OSINT.ME CSE</strong> are Google Custom Search Engines restricted to public Telegram domains. They use different indexes, so a query worth running on one is worth running on the other.
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>Exploratores 3.5.0 <a href="./license.html">License</a></p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/menu/navigation.js"></script>
+
+<script>
+    function setInitialPageState() {
+        const inputGroups = [
+            {
+                inputIds: ['input-telegram-user'],
+                buttonSelector: '#feedback-telegram-user + .button-grid .button',
+                validator: ExploratoresValidators.getAndValidateTgUser,
+                feedbackId: 'feedback-telegram-user'
+            },
+            {
+                inputIds: ['input-telegram-channel', 'input-telegram-query'],
+                buttonSelector: '#btn-telegram-inchannel',
+                validator: ExploratoresValidators.getAndValidateTgChannelQuery,
+                feedbackId: 'feedback-telegram-query'
+            },
+            {
+                inputIds: ['input-telegram-channel', 'input-telegram-msgid'],
+                buttonSelector: '#btn-telegram-history',
+                validator: ExploratoresValidators.getAndValidateTgChannelHistory,
+                feedbackId: 'feedback-telegram-history'
+            },
+            {
+                inputIds: ['input-telegram-key'],
+                buttonSelector: '#feedback-telegram-key + .button-grid .button',
+                validator: ExploratoresValidators.getAndValidateTgKey,
+                feedbackId: 'feedback-telegram-key'
+            }
+        ];
+
+        const updateUi = (group) => {
+            const validationResult = group.validator();
+            const feedbackEl = document.getElementById(group.feedbackId);
+
+            document.querySelectorAll(group.buttonSelector).forEach(button => {
+                button.disabled = !validationResult.isValid;
+                button.classList.toggle('text-active', validationResult.isValid);
+            });
+
+            if (feedbackEl) {
+                const untouched = group.inputIds.every(id => !document.getElementById(id)?.value.trim());
+                if (untouched) {
+                    feedbackEl.textContent = '';
+                    feedbackEl.className = 'feedback-message';
+                } else {
+                    feedbackEl.textContent = validationResult.message;
+                    feedbackEl.className = `feedback-message ${validationResult.isValid ? 'feedback-info' : 'feedback-error'}`;
+                }
+            }
+        };
+
+        inputGroups.forEach(group => {
+            group.inputIds.forEach(inputId => {
+                const inputElement = document.getElementById(inputId);
+                if (inputElement) {
+                    inputElement.addEventListener('input', () => updateUi(group));
+                }
+            });
+            updateUi(group); // Set initial state
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', setInitialPageState);
+</script>
+
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
