@@ -48,9 +48,21 @@ The dedicated page shipped in 3.5.0. Still open:
   collectively by the Dork Builder bundle) and the Nearby-based geolocation tools
   (Geogramint, telegram-nearby-map, CCTV), all non-functional upstream.
 
+### Country Sources
+
+Country-specific registries and lookups are being added one nation at a time, as sections inside the existing thematic pages (Names → National Registers, Company Public Records, Maps, Vehicles, Domains → ccTLD WHOIS, International Phones). Planned order: Italy, then Europe (France, Netherlands, Poland, Estonia, Latvia, Lithuania, Bulgaria, Switzerland, United Kingdom; Germany and Spain once a curated source exists), Russia, China (with Taiwan and Hong Kong), then the Middle East (Iran, Iraq, Israel, Saudi Arabia, Syria, United Arab Emirates).
+
+Reference directories, in order of trust:
+
+- [OSINT for countries V2.0 (Provereno Media)](https://github.com/Provereno-Media/OSINT-for-countries-V2.0) — GPL-3.0, hand-curated, 33 countries, one repository per country with seven standard categories (open data, legal entities, maps and cadastre, vehicles, people, procurement, WHOIS). Primary source. The original index at [paulpogoda/OSINT-for-countries-V2.0](https://github.com/paulpogoda/OSINT-for-countries-V2.0) points there.
+- [OSINT-for-countries organisation](https://github.com/OSINT-for-countries) — one `OSINT_in_<Country>` repository for nearly every country. Content is AI-generated (per its own profile), unlicensed and contains visible errors: candidate list only, every URL is verified before use.
+- [wddadk/OSINT-for-countries](https://github.com/wddadk/OSINT-for-countries) — an index of indexes covering all UN member states; each country section links other directories (OSINT Guru, cyberint.uk, start.me pages, OCCRP, SAWEST, third-party GitHub repositories). Used to discover sources the two above miss.
+
+Rules: every URL is opened in a browser before entering the catalogue; search endpoints with a query parameter become buttons with a validator, portals that only offer a form or a login become `no_input` links; paid or registration-only services are noted in the button title; discarded candidates are listed here with the reason.
+
 ### General
 
 - **Additional sources from digitaldigging.org:** review the OSINT resource list at
   `https://digitaldigging.org/osint/` and identify entries not yet covered by the toolkit.
 
-- **Dead-link triage:** manually verify the hosts flagged by the weekly link checker (issue *Weekly link-check report*, label `dead-links`) and replace or remove the tools on confirmed-dead hosts. First run (2026-08-07) flagged 16 non-resolving hosts (20 tool buttons) and 3 hosts with broken TLS.
+- **Dead-link triage:** since 3.6.0 the weekly run proposes the `disabled` flags itself through the `auto/disable-dead-links` pull request; what remains manual is reviewing that pull request and replacing or removing the tools on confirmed-dead hosts (issue *Weekly link-check report*, label `dead-links`). First run (2026-08-07) flagged 16 non-resolving hosts (20 tool buttons) and 3 hosts with broken TLS.
