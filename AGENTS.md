@@ -16,6 +16,7 @@ Static HTML/CSS/vanilla-JavaScript OSINT toolkit. No build step, no backend, no 
   - `search-library.js` — `SearchLibrary` catalog mapping each `data-search-id` to `{ urlTemplate, validator }`.
   - `config.js` — global flags (Light Version, `selectorsToHide`).
   - Auxiliary modules: `dispatcher.js`, `toolkit-search.js`, `indicator-classifier.js`, `janua-search-map.js`, `settings-page.js`, `redactor.js` (page logic of `pages/redactor.html`).
+  - `catalogue-updater.js` — optional in-browser refresh of the catalogue for offline copies (off by default, toggle in `pages/settings.html`): applies the localStorage cache on top of `SearchLibrary` synchronously at load and, when enabled, checks `assets/data/catalogue-meta.json` on GitHub once a day (SHA-256 verified download of `search-library.json`). **Every page that loads `search-library.js` must load `catalogue-updater.js` right after it.**
   - `assets/js/bankDatabases/` — per-country offline bank-name data for the IBAN tool.
 - `assets/menu/navigation.js` — single navigation definition shared by all pages (`#navbar-placeholder`).
 - `docs/` — Markdown sources of the Help pages (`guidelines.md`, `faq.md`, `customise.md`, `versionhistory.md`). Each has an HTML twin in `pages/` that must stay content-aligned.
@@ -35,8 +36,9 @@ Static HTML/CSS/vanilla-JavaScript OSINT toolkit. No build step, no backend, no 
 
 - `node tests/validators.test.js` — dependency-free suite covering every validator in `validators.js` (DOM is stubbed; `ibankit.js` is loaded for the IBAN checksum path). No npm install needed.
 - `node tests/linkcheck.test.mjs` — covers `apply-history.mjs` (disable/re-enable, CRLF preservation, idempotence) and the catalogue export hashing.
+- `node tests/catalogue-updater.test.mjs` — covers `catalogue-updater.js` with stubbed `fetch`/`localStorage` (cache application, validator guard, checksum and structure rejection, daily interval, discard).
 - `node scripts/catalogue/verify-meta.mjs` — fails when `assets/data/` no longer matches `search-library.js` or the README version.
-- CI runs all three on every push and pull request (`.github/workflows/tests.yml`).
+- CI runs all of them on every push and pull request (`.github/workflows/tests.yml`).
 
 ## Link health CI
 

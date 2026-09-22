@@ -33,6 +33,7 @@
           <li><a href="#q-usage-outside-gs">Can I use the Exploratores OSINT Toolkit outside of my team?</a></li>
           <li><a href="#q-customization">Can the Exploratores OSINT Toolkit pages be customised?</a></li>
           <li><a href="#q-light-version">What is the "Light Version" for?</a></li>
+          <li><a href="#q-catalogue-updates">Can an offline copy of the toolkit refresh its catalogue?</a></li>
         </ul>
       </li>
       <li><strong><a href="#s-ethics">Ethics, OPSEC &amp; Responsibility</a></strong>
@@ -124,6 +125,10 @@
         <li><strong>Specify which elements to hide</strong> by adding their CSS selectors (like <code>#column-searchengines-tor</code>) to the <code>selectorsToHide</code> array.</li>
       </ul>
       <p>When the Light Version is active, a script automatically adds the <code>.hidden-in-light</code> class to all elements listed in the configuration file, making them disappear from the page.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-catalogue-updates">Can an offline copy of the toolkit refresh its catalogue?</h3>
+      <p>Yes, optionally. The site published on GitHub Pages is redeployed on every push and never needs it, but a cloned or downloaded copy can keep its search catalogue current without pulling the repository: switch on <em>Catalogue updates</em> in the <a href="./settings.html">Settings</a> page (Help menu). Once a day the browser then fetches <code>catalogue-meta.json</code> from the project repository; when a newer catalogue is published it downloads <code>search-library.json</code>, verifies the SHA-256 checksum announced by the metadata, checks the structure and keeps the result in the browser's local storage. The cached catalogue is applied on top of the bundled one at the start of every page load, so a download takes effect from the next page you open; entries that need a validator missing from your copy of <code>validators.js</code> are ignored, which keeps older copies safe. Tools on hosts confirmed dead are greyed out in the offline copy as well. The feature is <strong>off by default</strong> because, when enabled, GitHub sees the requests (sent without cookies or referrer); "Check now" and "Discard cached catalogue" on the Settings page let you control it by hand.</p>
     </div>
 
     <h2 id="s-ethics">Ethics, OPSEC &amp; Responsibility</h2>
@@ -358,7 +363,7 @@
 </main>
 
 <footer>
-  <p>Exploratores 3.6.0 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.7.0 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>

@@ -19,6 +19,16 @@
   <section class="faq-section">
 
     <div class="faq-item">
+      <h2>3.7.0 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+      <ul>
+        <li><strong>New:</strong> Catalogue updates for offline copies: the new <code>assets/js/catalogue-updater.js</code> (loaded right after <code>search-library.js</code> on every tool page) can refresh the search catalogue from the project repository without a <code>git pull</code>. Off by default; when switched on in the Settings page the browser checks <code>catalogue-meta.json</code> on GitHub once a day, downloads <code>search-library.json</code> when a newer one is published, verifies its SHA-256 checksum and structure, and keeps it in local storage. The cached catalogue is applied at the start of every page load (effective from the next page opened); entries needing a validator missing from the local <code>validators.js</code> are ignored, and metadata pointing outside the repository is refused. Requests carry no cookies and no referrer. The site on GitHub Pages does not need it.</li>
+        <li><strong>New:</strong> Settings page (<code>pages/settings.html</code>) now linked from the Help menu, with the <em>Catalogue updates</em> toggle, a status line (cached version, entries, last check), "Check now" and "Discard cached catalogue" buttons; toggle-switch styling added to the stylesheet. The previous, unlinked draft of the page (a typewriter toggle with no effect) was removed.</li>
+        <li><strong>Improved:</strong> Tests: new <code>tests/catalogue-updater.test.mjs</code> (14 cases) with stubbed <code>fetch</code> and <code>localStorage</code>, run by the CI.</li>
+        <li><strong>New:</strong> FAQ: "Can an offline copy of the toolkit refresh its catalogue?" entry.</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
       <h2>3.6.0 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
       <ul>
         <li><strong>New:</strong> Link health: the weekly link checker now closes the loop. Tools on hosts confirmed dead or unreliable (two-strike policy) are marked <code>"disabled"</code> in <code>search-library.js</code> by the new <code>scripts/linkcheck/apply-history.mjs</code>, and the change is proposed as an automated pull request (branch <code>auto/disable-dead-links</code>, label <code>dead-links</code>) — merging stays a human decision. Disabled buttons appear greyed out and struck through, show the confirmation date in their tooltip, never open and are hidden from the Toolkit Search; hosts that recover lose the flag at the next run.</li>
@@ -259,7 +269,7 @@
 </main>
 
 <footer>
-  <p>Exploratores 3.6.0 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.7.0 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>
