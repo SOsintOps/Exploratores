@@ -1,8 +1,8 @@
 {
   "version": "3.8.0",
-  "updated_at": "2026-09-22T15:18:07Z",
+  "updated_at": "2026-10-11T18:04:12Z",
   "entries": 918,
-  "disabled": 0,
-  "sha256": "5601f0f98e010a7ccfa9343a691b0a922c93ee8b9ec12757ebcaaf83c1256f5a",
+  "disabled": 20,
+  "sha256": "c0a92825c6d5980f6fb567c11a472c9a5dd24f4dc2644766b87e49b51681c7c6",
   "data_url": "https://raw.githubusercontent.com/SOsintOps/Exploratores/v3/assets/data/search-library.json"
 }

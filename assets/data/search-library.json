@@ -201,6 +201,7 @@
  },
  "domains-profile-webscout": {
   "urlTemplate": "https://web-scout.io/results?q={domain}",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateDomain"
  },
  "domains-screenshot-dmnsapp": {
@@ -249,6 +250,7 @@
  },
  "domains-archive-archivescan": {
   "urlTemplate": "http://web-archive-scan.com/archive/search?q={domain}",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateDomain"
  },
  "domains-archive-wildcard": {
@@ -281,6 +283,7 @@
  },
  "domains-archive-mementoweb": {
   "urlTemplate": "http://timetravel.mementoweb.org/memento/*/{domain}",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateDomain"
  },
  "domains-archive-wayback-keyword": {
@@ -341,6 +344,7 @@
  },
  "domains-seo-sitemapper": {
   "urlTemplate": "https://www.sitemapper.com/#/{domain}",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateDomain"
  },
  "domains-seo-spyfu": {
@@ -405,6 +409,7 @@
  },
  "domains-sec-phishcheck": {
   "urlTemplate": "https://phishcheck.me/check_url/{domain}",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateDomain"
  },
  "domains-sec-pulsedive": {
@@ -445,6 +450,7 @@
  },
  "domains-sec-threatcrowd": {
   "urlTemplate": "https://ci-www.threatcrowd.org/domain.php?domain={domain}",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateDomain"
  },
  "domains-sec-threatintel": {
@@ -505,6 +511,7 @@
  },
  "domains-dns-domainapp": {
   "urlTemplate": "https://dns.domainapp.com/?q={domain}",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateDomain"
  },
  "domains-dns-domaintools": {
@@ -541,6 +548,7 @@
  },
  "domains-dns-subdomains-columbus": {
   "urlTemplate": "https://columbus.elmasy.com/search?q=domain%3D{domain}",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateDomain"
  },
  "domains-dns-whois": {
@@ -919,6 +927,7 @@
  },
  "names-us-nuwber": {
   "urlTemplate": "https://nuwber.com/search?name={fullname}",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateNames"
  },
  "names-us-peoplebyname": {
@@ -963,6 +972,7 @@
  },
  "names-us-usaofficial": {
   "urlTemplate": "https://usa-official.com/{firstname}-{lastname}",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateNames"
  },
  "names-us-whitepages": {
@@ -1051,6 +1061,7 @@
  },
  "phoneus-nuwber": {
   "urlTemplate": "https://nuwber.com/search/phone?phone={full}",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateUsPhone"
  },
  "phoneus-peoplesearchnow": {
@@ -1443,6 +1454,7 @@
  },
  "publiccompanyrecords-officer-foia": {
   "urlTemplate": "https://search.foia.gov/search?affiliate=foia.gov&query={officername}",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateOfficerName"
  },
  "publiccompanyrecords-officer-infobel": {
@@ -1463,6 +1475,7 @@
  },
  "publiccompanyrecords-officer-moneyline": {
   "urlTemplate": "http://politicalmoneyline.com/tr/tr_MG_IndivDonor.aspx?sMP=1&sText={officername}&sCycle=2020",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateOfficerName"
  },
  "publiccompanyrecords-officer-muckrock": {
@@ -1563,6 +1576,7 @@
  },
  "publiccompanyrecords-company-foia": {
   "urlTemplate": "https://search.foia.gov/search?affiliate=foia.gov&query={companyname}",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateCompanyName"
  },
  "publiccompanyrecords-company-infobel": {
@@ -1767,6 +1781,7 @@
  },
  "email-psbdmp": {
   "urlTemplate": "https://psbdmp.ws/api/search/{email}",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateEmail"
  },
  "email-flickr": {
@@ -1919,6 +1934,7 @@
  },
  "usernames-checkistan": {
   "urlTemplate": "https://usernamechecker.checkistan.com/#{username}",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateUsername"
  },
  "usernames-instantusername": {
@@ -1999,6 +2015,7 @@
  },
  "usernames-psbdmp": {
   "urlTemplate": "https://psbdmp.ws/api/search/{username}",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateUsername"
  },
  "usernames-riskiq": {
@@ -2087,6 +2104,7 @@
  },
  "communities-reddit-archive": {
   "urlTemplate": "https://camas.unddit.com/#{\"author\":\"{username}\"}",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateRedditUser"
  },
  "communities-reddit-api-asc": {
@@ -2451,6 +2469,7 @@
  },
  "currencies-btc-validation": {
   "urlTemplate": "https://bitcoin-e.org/validate/{btc_address}",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateBtcAddress"
  },
  "currencies-btc-chainabuse": {
@@ -3011,6 +3030,7 @@
  },
  "ip-security-threatcrowd": {
   "urlTemplate": "https://ci-www.threatcrowd.org/ip.php?ip={ip}",
+  "disabled": "2026-10-11",
   "validator": "getAndValidateIpAddress"
  },
  "ip-security-virustotal": {
