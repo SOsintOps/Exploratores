@@ -4,6 +4,14 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.8.3 — 2026
+
+- **Fixed:** Guidelines: ICD 203 wording corrected: tradecraft standard 5 is *customer relevance* and the *Timely* standard speaks of customers, not stakeholders; *judgements* in British spelling. The likelihood table keeps both ICD 203 rows, adds the *(improbably)* and *(probably)* variants, and now says to use the first row; ICD 203 and the UNODC *Criminal Intelligence: Manual for Analysts* are linked at their first mention.
+- **Docs:** FAQ: new entry *Can I use Exploratores from an AI assistant?* (Claudii Exploratores, Il Conclave); Codex Machinae cited in *LLMs and Toolkit Development*; the related projects add Claudii Exploratores, TGchat-analytics, the Maigret fork, Il Conclave and Codex Machinae; Argos named with its targets (Ubuntu Budgie 24.04 or 26.04 LTS). The HTML FAQ now follows the section order of the Markdown source.
+- **Docs:** README: the Guidelines description lists all its sections; the Heuer link labelled *free PDF* now points to the PDF; Related Projects extended. `docs/field-notes/` updated to the Intelligence Field Notes 0.1.2.
+
+---
+
 ## 3.8.2 — 2026
 
 - **Docs:** Guidelines aligned with the [Intelligence Field Notes](https://github.com/SOsintOps/intelligence-field-notes), the notes on analytic standards, OSINT method, source evaluation and report writing now shared by all the SOsintOps tools: new sections *Source Evaluation* (UNODC 4 x 4 grading), *Working with Exploratores* (what a search button sends, results as leads, official registers first, local tools, AI and the Redactor) and *Writing the Report*; the ICD 203 likelihood table now says to use one row only and never to put confidence and likelihood in one sentence; every book in *Further Reading* is linked, and the CIA *Tradecraft Primer* and ICD 203 are added.

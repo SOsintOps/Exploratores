@@ -10,7 +10,7 @@ Adherence to the five Core Analytic Standards is mandatory for all intelligence 
 
 **Independent of political consideration:** Analytic assessments must not be distorted by advocacy of a particular audience, agenda, or policy viewpoint.
 
-**Timely:** Analysis must be disseminated in time for it to be actionable by stakeholders.
+**Timely:** Analysis must be disseminated in time for it to be actionable by customers.
 
 **Based on all available sources of intelligence information:** Analysis should be informed by all relevant available information and address critical information gaps.
 
@@ -18,25 +18,25 @@ Adherence to the five Core Analytic Standards is mandatory for all intelligence 
 
 ### The Nine Analytic Tradecraft Standards
 1.  Properly describes quality and credibility of underlying sources, data, and methodologies.
-2.  Properly expresses and explains uncertainties associated with major analytic judgments. For expressions of likelihood, an analytic product must use standardised sets of terms:
+2.  Properly expresses and explains uncertainties associated with major analytic judgements. For expressions of likelihood, an analytic product must use standardised sets of terms:
 
 | Almost No Chance | Very Unlikely | Unlikely | Roughly Even Chance | Likely | Very Likely | Almost Certain(ly) |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Remote | Highly Improbable | Improbable | Roughly Even Odds | Probable | Highly Probable | Nearly Certain |
+| Remote | Highly Improbable | Improbable (improbably) | Roughly Even Odds | Probable (probably) | Highly Probable | Nearly Certain |
 | 01-05% | 05-20% | 20-45% | 45-55% | 55-80% | 80-95% | 95-99% |
 
-Choose **one row** and keep to it: ICD 203 discourages mixing terms from different rows (the SOsintOps templates use the first). Never put a confidence level (high, moderate, low) and a likelihood term in the same sentence. See [Estimative Language](field-notes/estimative-language.md).
+The two rows of words are equivalent: [ICD 203](https://www.dni.gov/files/documents/ICD/ICD-203.pdf) strongly discourages mixing terms from different rows. **Use the first row** (almost no chance ... almost certain), as the SOsintOps templates do; the second row is shown only so that you recognise it in other products. Never put a confidence level (high, moderate, low) and a likelihood term in the same sentence. See [Estimative Language](field-notes/estimative-language.md).
 
-3.  Properly distinguishes between underlying intelligence information and analysts’ assumptions and judgments.
+3.  Properly distinguishes between underlying intelligence information and analysts’ assumptions and judgements.
 4.  Incorporates analysis of alternatives by systematically evaluating differing hypotheses.
-5.  Demonstrates stakeholder relevance and addresses implications for action.
+5.  Demonstrates customer relevance and addresses implications for action.
 6.  Uses clear and logical argumentation with a clear main message supported by coherent reasoning.
-7.  Explicitly explains change to or consistency of analytic judgments compared to previous analysis.
-8.  Makes accurate judgments and assessments based on available information and known gaps.
+7.  Explicitly explains change to or consistency of analytic judgements compared to previous analysis.
+8.  Makes accurate judgements and assessments based on available information and known gaps.
 9.  Incorporates effective visual information where appropriate to clarify the analytic message.
 
 ## Source Evaluation
-Every item you find through Exploratores is graded before it is used, with the **UNODC 4 x 4 system** shared by all the SOsintOps tools. Grade the source and the information separately and write them together, for example `B2`.
+Every item you find through Exploratores is graded before it is used, with the **UNODC 4 x 4 system** of the [*Criminal Intelligence: Manual for Analysts*](https://www.unodc.org/documents/organized-crime/Law-Enforcement/Criminal_Intelligence_for_Analysts.pdf), shared by all the SOsintOps tools. Grade the source and the information separately and write them together, for example `B2`.
 
 | Source | Meaning |
 | :--- | :--- |

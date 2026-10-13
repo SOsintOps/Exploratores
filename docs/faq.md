@@ -31,6 +31,7 @@ Frequently asked questions about the toolkit — usage, architecture, and troubl
 * [What is the recommended workflow for contributing a new page?](#what-is-the-recommended-workflow-for-contributing-a-new-page)
 * [How can I create a new page or add features using a prompt for an LLM?](#how-can-i-create-a-new-page-or-add-features-using-a-prompt-for-an-llm)
 * [Can you provide an example prompt for an LLM to create a basic Exploratores page template from scratch?](#can-you-provide-an-example-prompt-for-an-llm-to-create-a-basic-exploratores-page-template-from-scratch)
+* [Can I use Exploratores from an AI assistant?](#can-i-use-exploratores-from-an-ai-assistant)
 * [Were any Large Language Models (LLMs) unduly stressed during the creation of this toolkit?](#were-any-large-language-models-llms-unduly-stressed-during-the-creation-of-this-toolkit)
 * [What is the logic behind the new centralised architecture?](#what-is-the-logic-behind-the-new-centralised-architecture)
 * [How does the page state management (`updatePageState`) work?](#how-does-the-page-state-management-updatepagestate-work)
@@ -106,14 +107,19 @@ Put the answer first, keep facts and judgements apart, cite and grade every sour
 
 Yes:
 
-*   **[Argos](https://github.com/SOsintOps/Argos)**: an OSINT workstation for Ubuntu Budgie: tools, launchers, case folders with hashes, and report templates; Exploratores is its Firefox home page.
+*   **[Argos](https://github.com/SOsintOps/Argos)**: an OSINT workstation for Ubuntu Budgie 24.04 or 26.04 LTS: tools, launchers, case folders with hashes, and report templates; Exploratores is its Firefox home page.
 *   **[Speculator](https://github.com/SOsintOps/Speculator-Project)**: the sister workstation for Debian 13, with the same templates; Exploratores is its start page too.
 *   **[Wukong](https://github.com/SOsintOps/Wukong)**: the China-focused spin-off of Speculator, for the Chinese-language internet and Chinese companies.
+*   **[Claudii Exploratores](https://github.com/SOsintOps/claudii-exploratores)**: a direct derivative of Exploratores, its catalogue as an agent skill and an MCP server for Claude (alpha); see [Can I use Exploratores from an AI assistant?](#can-i-use-exploratores-from-an-ai-assistant).
 *   **[Quaesitor](https://github.com/SOsintOps/quaesitor)**: a local case graph for people, phones, accounts, companies and documents, with the UNODC link-analysis method.
 *   **[Elementary CTI](https://github.com/SOsintOps/elementary-CTI)**: a ransomware threat-intelligence aggregator.
 *   **[Aethelburg](https://github.com/SOsintOps/Aethelburg-project)**: an analyser of UK Companies House data for shell companies.
-*   **[TelEgrapherX](https://github.com/SOsintOps/TelEgrapherX)**: a Telegram collection tool, to go with the Telegram page.
+*   **[TelEgrapherX](https://github.com/SOsintOps/TelEgrapherX)**: a Telegram collection tool (fork of Telegram Explorer), to go with the Telegram page.
+*   **[TGchat-analytics](https://github.com/SOsintOps/TGchat-analytics)**: a fork of chat-analytics for statistical reports on exported Telegram chats, also in Chinese, Japanese, Korean and Russian; useful once a channel found through the Telegram page has been exported.
+*   **[Maigret](https://github.com/SOsintOps/maigret)**: our fork of soxoj's username-search tool, with a web interface; it checks a username across thousands of sites at once, where the Usernames page opens one service at a time.
 *   **[Acta Diurna](https://github.com/SOsintOps/acta-diurna)**: a dashboard (in Italian) for news on Italian law-enforcement operations.
+*   **[Il Conclave](https://github.com/SOsintOps/il-conclave)**: a Claude Code skill (in Italian) that puts a question or a decision through forced analytic procedures, among them ACH and a premortem.
+*   **[Codex Machinae](https://github.com/SOsintOps/codex-machinae)**: a modular playbook for building software with LLM collaborators.
 *   **[Intelligence Field Notes](https://github.com/SOsintOps/intelligence-field-notes)**: our notes on analytic standards, OSINT method, source evaluation and report writing.
 
 ### What are some basic OPSEC best practices when using this toolkit?
@@ -194,6 +200,8 @@ To interact effectively with a Large Language Model (LLM) for developing pages o
 *   **No Inline Logic**: Specify that buttons must use `data-search-id` and not `onclick`.
 *   **Reference to Project Guidelines**: Remind the LLM to adhere to all established project standards, including file naming and CSS classes.
 
+For a general method of building software with LLM collaborators, see [Codex Machinae](https://github.com/SOsintOps/codex-machinae), our modular playbook.
+
 ### Can you provide an example prompt for an LLM to create a basic Exploratores page template from scratch?
 
 The following prompt reflects the current project architecture:
@@ -212,6 +220,12 @@ The following prompt reflects the current project architecture:
     - At the end of `<body>`, include the script tags for the entire architecture: `main.js`, `validators.js`, `search-library.js`, and `navigation.js`.
     - Add the standard page-specific initialization script (`updatePageState`, `setInitialPageState`) that links to a new validator function (e.g., `getAndValidateExample`) and manages the button state."
 ```
+
+### Can I use Exploratores from an AI assistant?
+
+Yes, through [Claudii Exploratores](https://github.com/SOsintOps/claudii-exploratores), a direct derivative of this toolkit: it packages the Exploratores catalogue as an agent skill and an MCP server for Claude. Given an indicator (a name, a phone number, an e-mail address, a domain, a username), it classifies it and builds the matching search links, with the analytic standards and OPSEC rules of the [Intelligence Field Notes](https://github.com/SOsintOps/intelligence-field-notes) as its method reference. It is in alpha. The rules of the toolkit still apply: every link you open sends the query to a third party, a result is a lead to capture and grade, and case text should go through the [Redactor](#what-is-the-redactor-tool-and-how-does-it-work) before it reaches an external AI model.
+
+To put a question or a hypothesis through structured analytic techniques with an AI (analysis of competing hypotheses, a premortem, a steelman), see [Il Conclave](https://github.com/SOsintOps/il-conclave), a Claude Code skill in Italian.
 
 ### Were any Large Language Models (LLMs) unduly stressed during the creation of this toolkit?
 
