@@ -4,6 +4,15 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.8.2 — 2026
+
+- **Docs:** Guidelines aligned with the [Intelligence Field Notes](https://github.com/SOsintOps/intelligence-field-notes), the notes on analytic standards, OSINT method, source evaluation and report writing now shared by all the SOsintOps tools: new sections *Source Evaluation* (UNODC 4 x 4 grading), *Working with Exploratores* (what a search button sends, results as leads, official registers first, local tools, AI and the Redactor) and *Writing the Report*; the ICD 203 likelihood table now says to use one row only and never to put confidence and likelihood in one sentence; every book in *Further Reading* is linked, and the CIA *Tradecraft Primer* and ICD 203 are added.
+- **Docs:** FAQ: new entries *How should I evaluate what I find with the toolkit?*, *How do I turn the results into a report?* and *Are there related SOsintOps projects?*; the reading list is linked and adds the UNODC *Criminal Intelligence: Manual for Analysts*.
+- **Docs:** README: new *Related Projects* section; References updated. `docs/field-notes/` carries an offline copy of the Intelligence Field Notes.
+- **Fixed:** Rae L. Baker's book is *Deep Dive: Exploring the Real-World Value of Open Source Intelligence* (it was given a wrong subtitle in the FAQ and README); Bazzell's book is now *OSINT Techniques* (11th edition, with Jason Edison); the ICD 203 link points to the current ODNI address; *Sterile Browsing Environment*.
+
+---
+
 ## 3.8.1 — 2026
 
 - **Removed:** Names → Italy: Italgiure (Court of Cassation rulings) — the service is being discontinued at the end of September 2026. The Italy set is now 11 tools.

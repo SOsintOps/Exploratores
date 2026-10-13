@@ -1,10 +1,10 @@
-# Exploratores OSINT Toolkit 3.8.1
+# Exploratores OSINT Toolkit 3.8.2
 
 ![Exploratores Toolkit Logo](assets/images/exploratores.jpg)
 
 [TEST ME](https://sosintops.github.io/Exploratores/)
 
-![version](https://img.shields.io/badge/version-3.8.1-blue)
+![version](https://img.shields.io/badge/version-3.8.2-blue)
 ![release](https://img.shields.io/github/v/release/SOsintOps/Exploratores)
 ![licence](https://img.shields.io/github/license/SOsintOps/Exploratores)
 ![last commit](https://img.shields.io/github/last-commit/SOsintOps/Exploratores)
@@ -13,7 +13,7 @@
 
 **Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows: curated search tools for people, domains, images, social platforms and more, plus built-in utilities such as the Redactor (browser-side PII removal), multi-country IBAN analysis and an embedded CyberChef.
 
-Version 3.8.1 (Italgiure removed ahead of its shutdown) follows 3.8.0, which opens the country-sources programme with Italy: eleven national registries and lookups (civil records, doctors' register, Official Gazette, reverse phone lookup, business register, VAT check, certified e-mail and public-administration indexes, open data, cadastral geoportal, .it WHOIS) added to the thematic pages, each verified in a browser. Next: European countries, Russia, China and the Middle East — see the [roadmap](docs/todo.md). See the full [version history](docs/versionhistory.md) for previous releases.
+Version 3.8.2 aligns the analysis guidelines and the FAQ with the [Intelligence Field Notes](https://github.com/SOsintOps/intelligence-field-notes) (source evaluation, report writing, linked reading list, related projects). Version 3.8.1 removed Italgiure ahead of its shutdown, after 3.8.0, which opens the country-sources programme with Italy: eleven national registries and lookups (civil records, doctors' register, Official Gazette, reverse phone lookup, business register, VAT check, certified e-mail and public-administration indexes, open data, cadastral geoportal, .it WHOIS) added to the thematic pages, each verified in a browser. Next: European countries, Russia, China and the Middle East — see the [roadmap](docs/todo.md). See the full [version history](docs/versionhistory.md) for previous releases.
 
 ---
 
@@ -107,10 +107,25 @@ The external tools in the catalogue are checked automatically once a week by a G
 ## References
 
 - Community feedback from OSINT & Cybercrime analysts
-- *Deep Dive: A Guide to Advanced Open Source Intelligence* by Rae L. Baker — [Wiley](https://www.wiley.com/en-us/Deep+Dive%3A+Exploring+the+Real+World+Value+of+Open+Source+Intelligence-p-9781119933243) | [Amazon](https://www.amazon.com/dp/1119933242)
-- *ICD 203: Analytic Standards* — [free PDF (ODNI)](https://www.dni.gov/files/documents/ICD/ICD%20203%20Analytic%20Standards.pdf)
-- *Open Source Intelligence Techniques* by Michael Bazzell — [IntelTechniques](https://inteltechniques.com/book1.html)
+- *Deep Dive: Exploring the Real-World Value of Open Source Intelligence* by Rae L. Baker — [Wiley](https://www.wiley.com/en-us/Deep+Dive%3A+Exploring+the+Real+world+Value+of+Open+Source+Intelligence-p-9781119933243) | [Amazon](https://www.amazon.com/dp/1119933242)
+- *ICD 203: Analytic Standards* — [free PDF (ODNI)](https://www.dni.gov/files/documents/ICD/ICD-203.pdf)
+- *OSINT Techniques* (11th edition, formerly *Open Source Intelligence Techniques*) by Michael Bazzell and Jason Edison — [IntelTechniques](https://inteltechniques.com/book1.html)
 - *Psychology of Intelligence Analysis* by Richards J. Heuer Jr. — [free PDF (CIA CSI)](https://www.cia.gov/resources/csi/books-monographs/psychology-of-intelligence-analysis-2/)
+- *Criminal Intelligence: Manual for Analysts* by Howard Atkin — [free PDF (UNODC)](https://www.unodc.org/documents/organized-crime/Law-Enforcement/Criminal_Intelligence_for_Analysts.pdf)
+- [Intelligence Field Notes](https://github.com/SOsintOps/intelligence-field-notes) — our notes on analytic standards, OSINT method, source evaluation and report writing (offline copy in [`docs/field-notes`](docs/field-notes/README.md)); the toolkit's [guidelines](docs/guidelines.md) apply them to Exploratores
+
+---
+
+## Related Projects
+
+- [Argos](https://github.com/SOsintOps/Argos) — an OSINT workstation for Ubuntu Budgie: tools, launchers, case folders with hashes, and report templates; Exploratores is its Firefox home page
+- [Speculator](https://github.com/SOsintOps/Speculator-Project) — the sister workstation for Debian 13, with the same templates; Exploratores is its start page too
+- [Wukong](https://github.com/SOsintOps/Wukong) — the China-focused spin-off of Speculator, for the Chinese-language internet and Chinese companies
+- [Quaesitor](https://github.com/SOsintOps/quaesitor) — a local case graph for people, phones, accounts, companies and documents, with the UNODC link-analysis method
+- [Elementary CTI](https://github.com/SOsintOps/elementary-CTI) — a ransomware threat-intelligence aggregator
+- [Aethelburg](https://github.com/SOsintOps/Aethelburg-project) — an analyser of UK Companies House data for shell companies
+- [TelEgrapherX](https://github.com/SOsintOps/TelEgrapherX) — a Telegram collection tool, to go with the Telegram page
+- [Acta Diurna](https://github.com/SOsintOps/acta-diurna) — a dashboard (in Italian) for news on Italian law-enforcement operations
 
 ---
 
