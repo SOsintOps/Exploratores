@@ -13,6 +13,9 @@ Frequently asked questions about the toolkit — usage, architecture, and troubl
 * [Are there any guarantees regarding the accuracy or reliability of the tools and results?](#are-there-any-guarantees-regarding-the-accuracy-or-reliability-of-the-tools-and-results)
 * [Am I responsible for validating information found using the toolkit?](#am-i-responsible-for-validating-information-found-using-the-toolkit)
 * [Where can I find resources to learn more about OSINT?](#where-can-i-find-resources-to-learn-more-about-osint)
+* [How should I evaluate what I find with the toolkit?](#how-should-i-evaluate-what-i-find-with-the-toolkit)
+* [How do I turn the results into a report?](#how-do-i-turn-the-results-into-a-report)
+* [Are there related SOsintOps projects?](#are-there-related-sosintops-projects)
 * [What are some basic OPSEC best practices when using this toolkit?](#what-are-some-basic-opsec-best-practices-when-using-this-toolkit)
 * [What are the ethical guidelines for using these tools?](#what-are-the-ethical-guidelines-for-using-these-tools)
 * [Do I need to install additional software to use the toolkit?](#do-i-need-to-install-additional-software-to-use-the-toolkit)
@@ -55,7 +58,7 @@ The Exploratores OSINT Toolkit aims to consolidate and organise a wide range of 
 
 ### What inspired the creation of the toolkit?
 
-The idea of collecting OSINT search tools into a set of local, browser-based pages was inspired by the approach described in Michael Bazzell's book *Open Source Intelligence Techniques* (see [Further Reading](#where-can-i-find-resources-to-learn-more-about-osint)). The Exploratores codebase — the centralised architecture, search library, validators, and every tool page — is an original implementation developed for this project.
+The idea of collecting OSINT search tools into a set of local, browser-based pages was inspired by the approach described in Michael Bazzell's book *Open Source Intelligence Techniques* (now *OSINT Techniques*, see [Further Reading](#where-can-i-find-resources-to-learn-more-about-osint)). The Exploratores codebase — the centralised architecture, search library, validators, and every tool page — is an original implementation developed for this project.
 
 ## Usage & Authorisation
 
@@ -81,12 +84,37 @@ Yes. The Exploratores OSINT Toolkit provides access to various tools and externa
 
 The following texts are recommended as foundational references for OSINT practitioners and intelligence analysts:
 
-*   ***Deep Dive: A Guide to Advanced Open Source Intelligence*** by Rae L. Baker: a practical guide to advanced OSINT methodologies and real-world applications.
-*   **ICD 203: Analytic Standards**: the US Intelligence Community Directive defining the analytic tradecraft standards that govern intelligence products.
-*   ***Open Source Intelligence Techniques*** by Michael Bazzell: the industry-standard reference for OSINT tools and collection techniques, updated regularly.
-*   ***Psychology of Intelligence Analysis*** by Richards J. Heuer Jr.: a foundational text on understanding and mitigating cognitive biases in analytical judgment.
+*   ***[Deep Dive: Exploring the Real-World Value of Open Source Intelligence](https://www.wiley.com/en-us/Deep+Dive%3A+Exploring+the+Real+world+Value+of+Open+Source+Intelligence-p-9781119933243)*** by Rae L. Baker (Wiley, 2023): practical OSINT methodologies with real-world case studies.
+*   **[ICD 203: Analytic Standards](https://www.dni.gov/files/documents/ICD/ICD-203.pdf)** (ODNI): the US Intelligence Community Directive defining the analytic tradecraft standards that govern intelligence products.
+*   ***[OSINT Techniques](https://inteltechniques.com/book1.html)*** (11th edition) by Michael Bazzell and Jason Edison, formerly *Open Source Intelligence Techniques*: the industry-standard reference for OSINT tools and collection techniques, updated regularly.
+*   ***[Psychology of Intelligence Analysis](https://www.cia.gov/resources/csi/books-monographs/psychology-of-intelligence-analysis-2/)*** by Richards J. Heuer Jr. (CIA, free): a foundational text on understanding and mitigating cognitive biases in analytical judgement.
+*   ***[Criminal Intelligence: Manual for Analysts](https://www.unodc.org/documents/organized-crime/Law-Enforcement/Criminal_Intelligence_for_Analysts.pdf)*** by Howard Atkin (UNODC, free): source evaluation, link analysis and the presentation of results.
+
+Our own notes on analytic standards, source evaluation, estimative language and report writing are the [Intelligence Field Notes](https://github.com/SOsintOps/intelligence-field-notes), with a linked reading list; a copy is in [`docs/field-notes`](field-notes/README.md) and the toolkit's [guidelines](guidelines.md) summarise them.
 
 Additionally, following specialised blogs, participating in webinars, and joining professional OSINT communities are valuable for staying updated on the latest techniques and tools.
+
+### How should I evaluate what I find with the toolkit?
+
+As a lead, not a finding. Open the page a button leads to, capture it with the date and time, and grade it with the UNODC 4 x 4 system: the source A, B, C or X, the information 1 to 4. The website is not the source; whoever produced the record is. See [Source Evaluation](guidelines.md#source-evaluation) in the guidelines.
+
+### How do I turn the results into a report?
+
+Put the answer first, keep facts and judgements apart, cite and grade every source, and state the gaps. The guide is [Report Writing](field-notes/report-writing.md); the report templates ship with [Argos](https://github.com/SOsintOps/Argos) and [Speculator](https://github.com/SOsintOps/Speculator-Project).
+
+### Are there related SOsintOps projects?
+
+Yes:
+
+*   **[Argos](https://github.com/SOsintOps/Argos)**: an OSINT workstation for Ubuntu Budgie: tools, launchers, case folders with hashes, and report templates; Exploratores is its Firefox home page.
+*   **[Speculator](https://github.com/SOsintOps/Speculator-Project)**: the sister workstation for Debian 13, with the same templates; Exploratores is its start page too.
+*   **[Wukong](https://github.com/SOsintOps/Wukong)**: the China-focused spin-off of Speculator, for the Chinese-language internet and Chinese companies.
+*   **[Quaesitor](https://github.com/SOsintOps/quaesitor)**: a local case graph for people, phones, accounts, companies and documents, with the UNODC link-analysis method.
+*   **[Elementary CTI](https://github.com/SOsintOps/elementary-CTI)**: a ransomware threat-intelligence aggregator.
+*   **[Aethelburg](https://github.com/SOsintOps/Aethelburg-project)**: an analyser of UK Companies House data for shell companies.
+*   **[TelEgrapherX](https://github.com/SOsintOps/TelEgrapherX)**: a Telegram collection tool, to go with the Telegram page.
+*   **[Acta Diurna](https://github.com/SOsintOps/acta-diurna)**: a dashboard (in Italian) for news on Italian law-enforcement operations.
+*   **[Intelligence Field Notes](https://github.com/SOsintOps/intelligence-field-notes)**: our notes on analytic standards, OSINT method, source evaluation and report writing.
 
 ### What are some basic OPSEC best practices when using this toolkit?
 

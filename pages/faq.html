@@ -51,6 +51,9 @@
       <li><strong><a href="#s-learning">Learning &amp; Resources</a></strong>
         <ul>
           <li><a href="#q-osint-resources">Where can I find resources to learn more about OSINT?</a></li>
+          <li><a href="#q-evaluate-results">How should I evaluate what I find with the toolkit?</a></li>
+          <li><a href="#q-report">How do I turn the results into a report?</a></li>
+          <li><a href="#q-related-projects">Are there related SOsintOps projects?</a></li>
         </ul>
       </li>
       <li><strong><a href="#s-maintenance">Maintenance &amp; Contribution</a></strong>
@@ -92,7 +95,7 @@
     </div>
     <div class="faq-item">
       <h3 id="q-inspiration">What inspired the creation of the toolkit?</h3>
-      <p>The idea of collecting OSINT search tools into a set of local, browser-based pages was inspired by the approach described in Michael Bazzell's book <em>Open Source Intelligence Techniques</em> (see <a href="#q-osint-resources">Learning &amp; Resources</a>). The Exploratores codebase — the centralised architecture, search library, validators, and every tool page — is an original implementation developed for this project.</p>
+      <p>The idea of collecting OSINT search tools into a set of local, browser-based pages was inspired by the approach described in Michael Bazzell's book <em>Open Source Intelligence Techniques</em> (now <em>OSINT Techniques</em>, see <a href="#q-osint-resources">Learning &amp; Resources</a>). The Exploratores codebase — the centralised architecture, search library, validators, and every tool page — is an original implementation developed for this project.</p>
     </div>
     <div class="faq-item">
       <h3 id="q-why-name">Why is the toolkit named "Exploratores"?</h3>
@@ -176,12 +179,38 @@
       <h3 id="q-osint-resources">Where can I find resources to learn more about OSINT?</h3>
       <p>The following texts are recommended as foundational references for OSINT practitioners and intelligence analysts:</p>
       <ul>
-        <li><strong><em>Deep Dive: A Guide to Advanced Open Source Intelligence</em></strong> by Rae L. Baker: a practical guide to advanced OSINT methodologies and real-world applications.</li>
-        <li><strong>ICD 203: Analytic Standards</strong>: the US Intelligence Community Directive defining the analytic tradecraft standards that govern intelligence products.</li>
-        <li><strong><em>Open Source Intelligence Techniques</em></strong> by Michael Bazzell: the industry-standard reference for OSINT tools and collection techniques, updated regularly.</li>
-        <li><strong><em>Psychology of Intelligence Analysis</em></strong> by Richards J. Heuer Jr.: a foundational text on understanding and mitigating cognitive biases in analytical judgment.</li>
+        <li><strong><em><a href="https://www.wiley.com/en-us/Deep+Dive%3A+Exploring+the+Real+world+Value+of+Open+Source+Intelligence-p-9781119933243" target="_blank" rel="noopener noreferrer">Deep Dive: Exploring the Real-World Value of Open Source Intelligence</a></em></strong> by Rae L. Baker (Wiley, 2023): practical OSINT methodologies with real-world case studies.</li>
+        <li><strong><a href="https://www.dni.gov/files/documents/ICD/ICD-203.pdf" target="_blank" rel="noopener noreferrer">ICD 203: Analytic Standards</a></strong> (ODNI): the US Intelligence Community Directive defining the analytic tradecraft standards that govern intelligence products.</li>
+        <li><strong><em><a href="https://inteltechniques.com/book1.html" target="_blank" rel="noopener noreferrer">OSINT Techniques</a></em></strong> (11th edition) by Michael Bazzell and Jason Edison, formerly <em>Open Source Intelligence Techniques</em>: the industry-standard reference for OSINT tools and collection techniques, updated regularly.</li>
+        <li><strong><em><a href="https://www.cia.gov/resources/csi/books-monographs/psychology-of-intelligence-analysis-2/" target="_blank" rel="noopener noreferrer">Psychology of Intelligence Analysis</a></em></strong> by Richards J. Heuer Jr. (CIA, free): a foundational text on understanding and mitigating cognitive biases in analytical judgement.</li>
+        <li><strong><em><a href="https://www.unodc.org/documents/organized-crime/Law-Enforcement/Criminal_Intelligence_for_Analysts.pdf" target="_blank" rel="noopener noreferrer">Criminal Intelligence: Manual for Analysts</a></em></strong> by Howard Atkin (UNODC, free): source evaluation, link analysis and the presentation of results.</li>
       </ul>
+      <p>Our own notes on analytic standards, source evaluation, estimative language and report writing are the <a href="https://github.com/SOsintOps/intelligence-field-notes" target="_blank" rel="noopener noreferrer">Intelligence Field Notes</a>, with a linked reading list; the toolkit's <a href="./guidelines.html">guidelines</a> summarise them.</p>
       <p>Additionally, following specialised blogs, participating in webinars, and joining professional OSINT communities are valuable for staying updated on the latest techniques and tools.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3 id="q-evaluate-results">How should I evaluate what I find with the toolkit?</h3>
+      <p>As a lead, not a finding. Open the page a button leads to, capture it with the date and time, and grade it with the UNODC 4 x 4 system: the source A, B, C or X, the information 1 to 4. The website is not the source; whoever produced the record is. See <a href="./guidelines.html">Source Evaluation</a> in the guidelines.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-report">How do I turn the results into a report?</h3>
+      <p>Put the answer first, keep facts and judgements apart, cite and grade every source, and state the gaps. The guide is <a href="https://github.com/SOsintOps/intelligence-field-notes/blob/main/docs/report-writing.md" target="_blank" rel="noopener noreferrer">Report Writing</a>; the report templates ship with <a href="https://github.com/SOsintOps/Argos" target="_blank" rel="noopener noreferrer">Argos</a> and <a href="https://github.com/SOsintOps/Speculator-Project" target="_blank" rel="noopener noreferrer">Speculator</a>.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-related-projects">Are there related SOsintOps projects?</h3>
+      <p>Yes:</p>
+      <ul>
+        <li><strong><a href="https://github.com/SOsintOps/Argos" target="_blank" rel="noopener noreferrer">Argos</a></strong>: an OSINT workstation for Ubuntu Budgie: tools, launchers, case folders with hashes, and report templates; Exploratores is its Firefox home page.</li>
+        <li><strong><a href="https://github.com/SOsintOps/Speculator-Project" target="_blank" rel="noopener noreferrer">Speculator</a></strong>: the sister workstation for Debian 13, with the same templates; Exploratores is its start page too.</li>
+        <li><strong><a href="https://github.com/SOsintOps/Wukong" target="_blank" rel="noopener noreferrer">Wukong</a></strong>: the China-focused spin-off of Speculator, for the Chinese-language internet and Chinese companies.</li>
+        <li><strong><a href="https://github.com/SOsintOps/quaesitor" target="_blank" rel="noopener noreferrer">Quaesitor</a></strong>: a local case graph for people, phones, accounts, companies and documents, with the UNODC link-analysis method.</li>
+        <li><strong><a href="https://github.com/SOsintOps/elementary-CTI" target="_blank" rel="noopener noreferrer">Elementary CTI</a></strong>: a ransomware threat-intelligence aggregator.</li>
+        <li><strong><a href="https://github.com/SOsintOps/Aethelburg-project" target="_blank" rel="noopener noreferrer">Aethelburg</a></strong>: an analyser of UK Companies House data for shell companies.</li>
+        <li><strong><a href="https://github.com/SOsintOps/TelEgrapherX" target="_blank" rel="noopener noreferrer">TelEgrapherX</a></strong>: a Telegram collection tool, to go with the Telegram page.</li>
+        <li><strong><a href="https://github.com/SOsintOps/acta-diurna" target="_blank" rel="noopener noreferrer">Acta Diurna</a></strong>: a dashboard (in Italian) for news on Italian law-enforcement operations.</li>
+        <li><strong><a href="https://github.com/SOsintOps/intelligence-field-notes" target="_blank" rel="noopener noreferrer">Intelligence Field Notes</a></strong>: our notes on analytic standards, OSINT method, source evaluation and report writing.</li>
+      </ul>
     </div>
 
     <h2 id="s-maintenance">Maintenance &amp; Contribution</h2>
@@ -363,7 +392,7 @@
 </main>
 
 <footer>
-  <p>Exploratores 3.8.1 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.8.2 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>

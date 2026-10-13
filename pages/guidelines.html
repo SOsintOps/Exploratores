@@ -14,7 +14,8 @@
 
 <main>
   <h1 class="page-title">Intelligence Analysis Guidelines</h1>
-  <p class="center-text">Analytic standards, the 5W1H method, and OPSEC best practices for intelligence analysis.</p>
+  <p class="center-text">Analytic standards, source evaluation, the 5W1H method, OPSEC and report writing, applied to investigations run with Exploratores.</p>
+  <p>The common method of all the SOsintOps tools is kept in the <a href="https://github.com/SOsintOps/intelligence-field-notes" target="_blank" rel="noopener noreferrer">Intelligence Field Notes</a>: personal notes, shared for convenience and with no claim to be exhaustive. This page summarises it and adds what is specific to a browser toolkit.</p>
 
   <section>
     <h2>Core Analytic Standards</h2>
@@ -65,6 +66,7 @@
         </tr>
       </tbody>
     </table>
+    <p>Choose <strong>one row</strong> and keep to it: ICD 203 discourages mixing terms from different rows (the SOsintOps templates use the first). Never put a confidence level (high, moderate, low) and a likelihood term in the same sentence. See <a href="https://github.com/SOsintOps/intelligence-field-notes/blob/main/docs/estimative-language.md" target="_blank" rel="noopener noreferrer">Estimative Language</a>.</p>
     <ol start="3">
       <li>Properly distinguishes between underlying intelligence information and analysts’ assumptions and judgments.</li>
       <li>Incorporates analysis of alternatives by systematically evaluating differing hypotheses.</li>
@@ -74,6 +76,21 @@
       <li>Makes accurate judgments and assessments based on available information and known gaps.</li>
       <li>Incorporates effective visual information where appropriate to clarify the analytic message.</li>
     </ol>
+  </section>
+
+    <section>
+    <h2>Source Evaluation</h2>
+    <p>Every item you find through Exploratores is graded before it is used, with the <strong>UNODC 4 x 4 system</strong> shared by all the SOsintOps tools. Grade the source and the information separately and write them together, for example <code>B2</code>.</p>
+    <table class="iban-coverage-table">
+      <thead><tr><th>Source</th><th>Meaning</th><th>Information</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td><strong>A</strong></td><td>No doubt about reliability; history of complete reliability</td><td><strong>1</strong></td><td>No doubt about accuracy</td></tr>
+        <tr><td><strong>B</strong></td><td>Mostly reliable in the past</td><td><strong>2</strong></td><td>Known personally to the source; logical; agrees with other information</td></tr>
+        <tr><td><strong>C</strong></td><td>Mostly unreliable in the past</td><td><strong>3</strong></td><td>Not known personally to the source, but corroborated</td></tr>
+        <tr><td><strong>X</strong></td><td>Reliability cannot be judged</td><td><strong>4</strong></td><td>Not known personally to the source and not corroborated</td></tr>
+      </tbody>
+    </table>
+    <p>The website a button opens is not the source: the source is whoever produced the record (the company registry, the account holder, the journalist). See <a href="https://github.com/SOsintOps/intelligence-field-notes/blob/main/docs/source-evaluation.md" target="_blank" rel="noopener noreferrer">Source Evaluation</a>.</p>
   </section>
 
   <section>
@@ -131,34 +148,53 @@
     </ul>
   </section>
 
+    <section>
+    <h2>Working with Exploratores</h2>
+    <ul>
+      <li><strong>Every search button sends your query to a third party.</strong> The name, number or address you type goes to the service the button opens, and into your browser history. Use a research browser profile, and think before searching a sensitive identifier on a service you do not know.</li>
+      <li><strong>Some services notify or log.</strong> Services that require a login see which account searched; some social platforms show the subject who viewed a profile. Prefer the passive tools first.</li>
+      <li><strong>A result is a lead, not a finding.</strong> A page that answers a search says nothing yet about who is behind it. Open it, capture it (page, screenshot, date and time in UTC, SHA-256), grade it, and only then use it. Exploratores does not save what you find: run the case on <a href="https://github.com/SOsintOps/Argos" target="_blank" rel="noopener noreferrer">Argos</a> or <a href="https://github.com/SOsintOps/Speculator-Project" target="_blank" rel="noopener noreferrer">Speculator</a>, which keep evidence folders and report templates.</li>
+      <li><strong>Official registers come first.</strong> In the country pages, a national register kept by law is normally an <code>A</code> source; a commercial aggregator copying it is weaker, and its copy may be out of date.</li>
+      <li><strong>Local tools stay local.</strong> The Redactor, the IBAN tool and CyberChef run in your browser and send nothing. Remove personal data with the Redactor before you paste case text into an external AI model, and treat what the model returns as a lead to verify.</li>
+      <li><strong>Search engines and dorks return pointers.</strong> Cite the page they lead to, never the search result.</li>
+    </ul>
+  </section>
+
   <section>
     <h2>Operational Security (OPSEC) Best Practices</h2>
     <p>Effective OPSEC is not optional. It is a core discipline required to protect yourself, your investigations, and the organisation from exposure and adversarial counter-intelligence. Conduct all activities with the highest ethical standards and in accordance with all applicable laws.</p>
     <ul>
         <li><strong>Identity Segregation:</strong> Never use personal accounts or equipment for investigative activities. Create and use dedicated, non-attributable online accounts and personas for your work. Do not link these personas to each other or to your real identity.</li>
         <li><strong>Secure Infrastructure:</strong> Always use a trusted, no-log Virtual Private Network (VPN) to mask your true IP address. For sensitive investigations, conduct your work from within a dedicated Virtual Machine (VM) to sandbox your activities from your host machine. Consider using the Tor Browser for enhanced anonymisation.</li>
-        <li><strong>Sterile Browse Environment:</strong> Use a dedicated web browser with separate profiles for each digital persona. Install privacy-enhancing extensions (e.g., ad blockers, script blockers, anti-tracking tools). Regularly clear cookies, cache, and history.</li>
+        <li><strong>Sterile Browsing Environment:</strong> Use a dedicated web browser with separate profiles for each digital persona. Install privacy-enhancing extensions (e.g., ad blockers, script blockers, anti-tracking tools). Regularly clear cookies, cache, and history.</li>
         <li><strong>Disciplined Online Conduct:</strong> Be aware of your digital footprint. Avoid providing unnecessary personal information when registering for services. Use unique, strong passwords and email addresses for each persona. Be cautious about the information you "like," share, or post, as it can be used to profile your persona.</li>
         <li><strong>Secure Data Handling:</strong> All information collected during an investigation must be stored securely. Use encrypted storage for your case files. Establish a clear data retention and destruction policy to securely delete information that is no longer needed.</li>
     </ul>
   </section>
 
   <section>
+    <h2>Writing the Report</h2>
+    <p>The report is the product: put the answer first (bottom line up front), keep facts and judgements apart, cite and grade every source, state the gaps. The full guide, with a structure and a checklist, is <a href="https://github.com/SOsintOps/intelligence-field-notes/blob/main/docs/report-writing.md" target="_blank" rel="noopener noreferrer">Report Writing</a>; report templates ship with <a href="https://github.com/SOsintOps/Argos" target="_blank" rel="noopener noreferrer">Argos</a> and <a href="https://github.com/SOsintOps/Speculator-Project" target="_blank" rel="noopener noreferrer">Speculator</a>.</p>
+  </section>
+
+  <section>
     <h2>Further Reading</h2>
-    <p>For a more in-depth analysis of the methodologies and practices discussed, the following foundational texts are recommended:</p>
+    <p>For a more in-depth analysis of the methodologies and practices discussed, the following foundational texts are recommended. The full list is the <a href="https://github.com/SOsintOps/intelligence-field-notes/blob/main/docs/reading-list.md" target="_blank" rel="noopener noreferrer">Reading List</a>.</p>
     <ul>
-      <li><strong>"Psychology of Intelligence Analysis"</strong> by Richards J. Heuer Jr. - A crucial text for understanding and mitigating the cognitive biases that affect analytical judgment.</li>
-      <li><strong>"Criminal Intelligence: Manual for Analysts"</strong> by Howard Atkin (UNODC, 2011) - A UNODC reference manual covering the full intelligence process: source evaluation, link analysis, event charting, flow analysis, and telephone analysis. Equips practitioners to develop inferences and present analytical results.</li>
-      <li><strong>"Structured Analytic Techniques for Intelligence Analysis"</strong> by Richards J. Heuer Jr. and Randolph H. Pherson - A reference manual that presents dozens of structured analytical techniques to improve the rigour and quality of analysis.</li>
-      <li><strong>"Extreme Privacy: What It Takes to Disappear"</strong> by Michael Bazzell - An extensive guide on digital security and maintaining anonymity, which directly supports the OPSEC principles discussed.</li>
-      <li><strong>"Open Source Intelligence Techniques"</strong> by Michael Bazzell - A comprehensive, practical guide to the tools and techniques for gathering information from open sources.</li>
-      <li><strong>"Deep Dive: Exploring the Real-World Value of Open Source Intelligence"</strong> by Rae L. Baker - Real-world case studies demonstrating the practical application and value of OSINT across various sectors.</li>
+      <li><strong>"Psychology of Intelligence Analysis"</strong> by Richards J. Heuer Jr. (CIA, 1999) - A crucial text for understanding and mitigating the cognitive biases that affect analytical judgement. <a href="https://www.cia.gov/resources/csi/static/Pyschology-of-Intelligence-Analysis.pdf" target="_blank" rel="noopener noreferrer">PDF</a></li>
+      <li><strong>"Criminal Intelligence: Manual for Analysts"</strong> by Howard Atkin (UNODC, 2011) - A UNODC reference manual covering the full intelligence process: source evaluation, link analysis, event charting, flow analysis, and telephone analysis. Equips practitioners to develop inferences and present analytical results. <a href="https://www.unodc.org/documents/organized-crime/Law-Enforcement/Criminal_Intelligence_for_Analysts.pdf" target="_blank" rel="noopener noreferrer">PDF</a></li>
+      <li><strong>"ICD 203: Analytic Standards"</strong> (ODNI) - The US Intelligence Community Directive behind the standards and the likelihood scale above. <a href="https://www.dni.gov/files/documents/ICD/ICD-203.pdf" target="_blank" rel="noopener noreferrer">PDF</a></li>
+      <li><strong>"Structured Analytic Techniques for Intelligence Analysis"</strong> by Randolph H. Pherson and Richards J. Heuer Jr. - A reference manual that presents dozens of structured analytical techniques to improve the rigour and quality of analysis. <a href="https://www.sagepub.com/en-us/cab/structured-analytic-techniques-for-intelligence-analysis/book255432" target="_blank" rel="noopener noreferrer">SAGE</a></li>
+      <li><strong>"A Tradecraft Primer: Structured Analytic Techniques for Improving Intelligence Analysis"</strong> (CIA, 2009) - A short, free introduction to the same techniques. <a href="https://www.cia.gov/resources/csi/static/955180a45afe3f5013772c313b16face/Tradecraft-Primer-apr09.pdf" target="_blank" rel="noopener noreferrer">PDF</a></li>
+      <li><strong>"Extreme Privacy: What It Takes to Disappear"</strong> by Michael Bazzell - An extensive guide on digital security and maintaining anonymity, which directly supports the OPSEC principles discussed. <a href="https://inteltechniques.com/book7.html" target="_blank" rel="noopener noreferrer">IntelTechniques</a></li>
+      <li><strong>"OSINT Techniques"</strong> (11th edition) by Michael Bazzell and Jason Edison - A comprehensive, practical guide to the tools and techniques for gathering information from open sources; earlier editions were titled <em>Open Source Intelligence Techniques</em>. <a href="https://inteltechniques.com/book1.html" target="_blank" rel="noopener noreferrer">IntelTechniques</a></li>
+      <li><strong>"Deep Dive: Exploring the Real-World Value of Open Source Intelligence"</strong> by Rae L. Baker - Real-world case studies demonstrating the practical application and value of OSINT across various sectors. <a href="https://www.wiley.com/en-us/Deep+Dive%3A+Exploring+the+Real+world+Value+of+Open+Source+Intelligence-p-9781119933243" target="_blank" rel="noopener noreferrer">Wiley</a></li>
     </ul>
   </section>
 </main>
 
 <footer>
-  <p>Exploratores 3.8.1 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.8.2 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>
