@@ -19,41 +19,40 @@
   <section id="table-of-contents" class="faq-toc">
     <h2>Table of Contents</h2>
     <ul>
-      <li><strong><a href="#s-about">About the Toolkit</a></strong>
+      <li><strong><a href="#s-about">About the Toolkit &amp; Its Name</a></strong>
         <ul>
-          <li><a href="#q-main-purpose">What is the main purpose of the Exploratores OSINT Toolkit?</a></li>
-          <li><a href="#q-inspiration">What inspired the creation of the toolkit?</a></li>
           <li><a href="#q-why-name">Why is the toolkit named "Exploratores"?</a></li>
           <li><a href="#q-who-exploratores">Who were the "Exploratores" historically?</a></li>
+          <li><a href="#q-main-purpose">What is the main purpose of the Exploratores OSINT Toolkit?</a></li>
+          <li><a href="#q-inspiration">What inspired the creation of the toolkit?</a></li>
         </ul>
       </li>
-      <li><strong><a href="#s-getting-started">Getting Started</a></strong>
+      <li><strong><a href="#s-usage">Usage &amp; Authorisation</a></strong>
         <ul>
-          <li><a href="#q-software-installation">Do I need to install additional software to use the toolkit?</a></li>
           <li><a href="#q-usage-outside-gs">Can I use the Exploratores OSINT Toolkit outside of my team?</a></li>
-          <li><a href="#q-customization">Can the Exploratores OSINT Toolkit pages be customised?</a></li>
-          <li><a href="#q-light-version">What is the "Light Version" for?</a></li>
-          <li><a href="#q-catalogue-updates">Can an offline copy of the toolkit refresh its catalogue?</a></li>
-        </ul>
-      </li>
-      <li><strong><a href="#s-ethics">Ethics, OPSEC &amp; Responsibility</a></strong>
-        <ul>
-          <li><a href="#q-ethical-guidelines">What are the ethical guidelines for using these tools?</a></li>
-          <li><a href="#q-opsec-basics">What are some basic OPSEC best practices when using this toolkit?</a></li>
-          <li><a href="#q-investigative-accounts">Is it necessary to create dedicated investigative accounts?</a></li>
-          <li><a href="#q-tracking">Are my search activities tracked by the toolkit?</a></li>
-          <li><a href="#q-referrer-privacy">Do the external services I search know that I am using Exploratores?</a></li>
-          <li><a href="#q-user-validation">Am I responsible for validating information found using the toolkit?</a></li>
-          <li><a href="#q-accuracy-guarantee">Are there any guarantees regarding the accuracy or reliability of results?</a></li>
           <li><a href="#q-warranty">Is the Exploratores OSINT Toolkit covered by any warranty?</a></li>
+          <li><a href="#q-accuracy-guarantee">Are there any guarantees regarding the accuracy or reliability of results?</a></li>
+          <li><a href="#q-user-validation">Am I responsible for validating information found using the toolkit?</a></li>
         </ul>
       </li>
-      <li><strong><a href="#s-learning">Learning &amp; Resources</a></strong>
+      <li><strong><a href="#s-learning">Learning &amp; Best Practices</a></strong>
         <ul>
           <li><a href="#q-osint-resources">Where can I find resources to learn more about OSINT?</a></li>
           <li><a href="#q-evaluate-results">How should I evaluate what I find with the toolkit?</a></li>
           <li><a href="#q-report">How do I turn the results into a report?</a></li>
           <li><a href="#q-related-projects">Are there related SOsintOps projects?</a></li>
+          <li><a href="#q-opsec-basics">What are some basic OPSEC best practices when using this toolkit?</a></li>
+          <li><a href="#q-ethical-guidelines">What are the ethical guidelines for using these tools?</a></li>
+        </ul>
+      </li>
+      <li><strong><a href="#s-functionality">Functionality &amp; Customisation</a></strong>
+        <ul>
+          <li><a href="#q-software-installation">Do I need to install additional software to use the toolkit?</a></li>
+          <li><a href="#q-tracking">Are my search activities tracked by the toolkit?</a></li>
+          <li><a href="#q-referrer-privacy">Do the external services I search know that I am using Exploratores?</a></li>
+          <li><a href="#q-investigative-accounts">Is it necessary to create dedicated investigative accounts?</a></li>
+          <li><a href="#q-customization">Can the Exploratores OSINT Toolkit pages be customised?</a></li>
+          <li><a href="#q-catalogue-updates">Can an offline copy of the toolkit refresh its catalogue?</a></li>
         </ul>
       </li>
       <li><strong><a href="#s-maintenance">Maintenance &amp; Contribution</a></strong>
@@ -65,6 +64,14 @@
           <li><a href="#q-contribution-workflow">What is the recommended workflow for contributing a new page?</a></li>
         </ul>
       </li>
+      <li><strong><a href="#s-llm">LLMs and Toolkit Development</a></strong>
+        <ul>
+          <li><a href="#q-llm-prompt-features">How can I create a new page or add features using a prompt for an LLM?</a></li>
+          <li><a href="#q-llm-prompt-newpage">Can you provide an example prompt for an LLM to create a page template?</a></li>
+          <li><a href="#q-ai-assistant">Can I use Exploratores from an AI assistant?</a></li>
+          <li><a href="#q-llm-stress">Were any Large Language Models (LLMs) unduly stressed during the creation of this toolkit?</a></li>
+        </ul>
+      </li>
       <li><strong><a href="#s-technical">Technical Details &amp; Troubleshooting</a></strong>
         <ul>
           <li><a href="#q-new-architecture">What is the logic behind the new centralised architecture?</a></li>
@@ -72,31 +79,17 @@
           <li><a href="#q-add-new-button">What are the steps to add a new search button?</a></li>
           <li><a href="#q-button-not-working">What should I check if a button click does nothing?</a></li>
           <li><a href="#q-iban-db-update">How do I update the IBAN bank databases?</a></li>
+          <li><a href="#q-light-version">What is the "Light Version" for?</a></li>
           <li><a href="#q-redactor-what">What is the Redactor tool and how does it work?</a></li>
           <li><a href="#q-redactor-flow">What is the Redact → LLM → Restore workflow?</a></li>
           <li><a href="#q-redactor-custom">How do I add custom detection patterns to the Redactor?</a></li>
-        </ul>
-      </li>
-      <li><strong><a href="#s-llm">LLMs and Toolkit Development</a></strong>
-        <ul>
-          <li><a href="#q-llm-prompt-features">How can I create a new page or add features using a prompt for an LLM?</a></li>
-          <li><a href="#q-llm-prompt-newpage">Can you provide an example prompt for an LLM to create a page template?</a></li>
-          <li><a href="#q-llm-stress">Were any Large Language Models (LLMs) unduly stressed during the creation of this toolkit?</a></li>
         </ul>
       </li>
     </ul>
   </section>
 
   <section class="faq-section">
-    <h2 id="s-about">About the Toolkit</h2>
-    <div class="faq-item">
-      <h3 id="q-main-purpose">What is the main purpose of the Exploratores OSINT Toolkit?</h3>
-      <p>The Exploratores OSINT Toolkit aims to consolidate and organise a wide range of OSINT (Open Source Intelligence) tools and resources to facilitate investigation and information gathering activities. It provides a centralised access point and a consistent structure for these tools.</p>
-    </div>
-    <div class="faq-item">
-      <h3 id="q-inspiration">What inspired the creation of the toolkit?</h3>
-      <p>The idea of collecting OSINT search tools into a set of local, browser-based pages was inspired by the approach described in Michael Bazzell's book <em>Open Source Intelligence Techniques</em> (now <em>OSINT Techniques</em>, see <a href="#q-osint-resources">Learning &amp; Resources</a>). The Exploratores codebase — the centralised architecture, search library, validators, and every tool page — is an original implementation developed for this project.</p>
-    </div>
+    <h2 id="s-about">About the Toolkit &amp; Its Name</h2>
     <div class="faq-item">
       <h3 id="q-why-name">Why is the toolkit named "Exploratores"?</h3>
       <p>"Exploratores" were the scouts or reconnaissance units in the Roman army, tasked with gathering intelligence about the terrain, enemy movements, and local resources ahead of the main legionary force. This toolkit is named in their spirit, aiming to provide modern digital "scouts" (OSINT practitioners) with the tools to explore the digital landscape and gather information effectively.</p>
@@ -105,76 +98,34 @@
       <h3 id="q-who-exploratores">Who were the "Exploratores" historically?</h3>
       <p>In ancient Rome, "Exploratores" were soldiers specifically chosen for their skills in reconnaissance, observation, and survival. They often operated in small groups, deep in potentially hostile territory, to provide crucial intelligence for military commanders, enabling informed strategic decisions. Their role was vital for the safety and success of military campaigns.</p>
     </div>
-
-    <h2 id="s-getting-started">Getting Started</h2>
     <div class="faq-item">
-      <h3 id="q-software-installation">Do I need to install additional software to use the toolkit?</h3>
-      <p>No, the toolkit consists of HTML, CSS, and JavaScript pages that run directly in a modern web browser. No specific client-side software installation is required, apart from the browser itself. Linked external tools may have their own requirements.</p>
+      <h3 id="q-main-purpose">What is the main purpose of the Exploratores OSINT Toolkit?</h3>
+      <p>The Exploratores OSINT Toolkit aims to consolidate and organise a wide range of OSINT (Open Source Intelligence) tools and resources to facilitate investigation and information gathering activities. It provides a centralised access point and a consistent structure for these tools.</p>
     </div>
+    <div class="faq-item">
+      <h3 id="q-inspiration">What inspired the creation of the toolkit?</h3>
+      <p>The idea of collecting OSINT search tools into a set of local, browser-based pages was inspired by the approach described in Michael Bazzell's book <em>Open Source Intelligence Techniques</em> (now <em>OSINT Techniques</em>, see <a href="#q-osint-resources">Further Reading</a>). The Exploratores codebase — the centralised architecture, search library, validators, and every tool page — is an original implementation developed for this project.</p>
+    </div>
+
+    <h2 id="s-usage">Usage &amp; Authorisation</h2>
     <div class="faq-item">
       <h3 id="q-usage-outside-gs">Can I use the Exploratores OSINT Toolkit outside of my team?</h3>
       <p>Yes. You can distribute, share, and customise Exploratores as needed. However, you will be responsible for any unapproved purposes or inappropriate use of this tool.</p>
     </div>
     <div class="faq-item">
-      <h3 id="q-customization">Can the Exploratores OSINT Toolkit pages be customised?</h3>
-      <p>Yes, the toolkit is designed to be customisable. You can add new tools, modify existing categories, or adapt functionalities. For a detailed guide on how to do this, please refer to the <a href="customise.html">How to Customise Pages</a> page.</p>
-    </div>
-    <div class="faq-item">
-      <h3 id="q-light-version">What is the "Light Version" for?</h3>
-      <p>The "Light Version" is a customisable display mode for the toolkit. It allows each user to hide tools, sections, or columns they do not use, creating a leaner and more focused interface.</p>
-      <p>This customisation is managed by the <code>assets/js/config.js</code> file. By editing this file, you can:</p>
-      <ul>
-        <li><strong>Enable or disable</strong> the Light Version by setting <code>lightVersionEnabled</code> to <code>true</code> or <code>false</code>.</li>
-        <li><strong>Specify which elements to hide</strong> by adding their CSS selectors (like <code>#column-searchengines-tor</code>) to the <code>selectorsToHide</code> array.</li>
-      </ul>
-      <p>When the Light Version is active, a script automatically adds the <code>.hidden-in-light</code> class to all elements listed in the configuration file, making them disappear from the page.</p>
-    </div>
-    <div class="faq-item">
-      <h3 id="q-catalogue-updates">Can an offline copy of the toolkit refresh its catalogue?</h3>
-      <p>Yes, optionally. The site published on GitHub Pages is redeployed on every push and never needs it, but a cloned or downloaded copy can keep its search catalogue current without pulling the repository: switch on <em>Catalogue updates</em> in the <a href="./settings.html">Settings</a> page (Help menu). Once a day the browser then fetches <code>catalogue-meta.json</code> from the project repository; when a newer catalogue is published it downloads <code>search-library.json</code>, verifies the SHA-256 checksum announced by the metadata, checks the structure and keeps the result in the browser's local storage. The cached catalogue is applied on top of the bundled one at the start of every page load, so a download takes effect from the next page you open; entries that need a validator missing from your copy of <code>validators.js</code> are ignored, which keeps older copies safe. Tools on hosts confirmed dead are greyed out in the offline copy as well. The feature is <strong>off by default</strong> because, when enabled, GitHub sees the requests (sent without cookies or referrer); "Check now" and "Discard cached catalogue" on the Settings page let you control it by hand.</p>
-    </div>
-
-    <h2 id="s-ethics">Ethics, OPSEC &amp; Responsibility</h2>
-    <div class="faq-item">
-      <h3 id="q-ethical-guidelines">What are the ethical guidelines for using these tools?</h3>
-      <p>Ethical use is paramount. Always act within legal and jurisdictional boundaries. The purpose of these tools is for legitimate intelligence gathering on authorised targets. Never use them for harassment, illegal surveillance, or any activity that violates privacy laws or terms of service of the platforms being accessed. The responsibility for ethical conduct lies entirely with the analyst.</p>
-    </div>
-    <div class="faq-item">
-      <h3 id="q-opsec-basics">What are some basic OPSEC best practices when using this toolkit?</h3>
-      <p>Operational Security (OPSEC) is critical. While using this toolkit, always consider:</p>
-      <ul>
-        <li><strong>Network Anonymity:</strong> Use a trusted VPN or the Tor network to mask your real IP address.</li>
-        <li><strong>Dedicated Environment:</strong> Conduct investigations from a dedicated virtual machine (VM) or a separate physical device to prevent cross-contamination with your personal data.</li>
-        <li><strong>Browser Fingerprinting:</strong> Be aware that websites can identify you through your browser's unique configuration. Use browsers or browser extensions designed to minimise fingerprinting.</li>
-        <li><strong>Non-Attributable Accounts:</strong> Always use dedicated, non-personal accounts for interacting with online services.</li>
-      </ul>
-    </div>
-    <div class="faq-item">
-      <h3 id="q-investigative-accounts">Is it necessary to create dedicated investigative accounts for using some of these tools?</h3>
-      <p>Yes, for many OSINT activities, it is highly recommended to use dedicated, non-attributable "investigative" or "sock puppet" accounts. Using personal accounts can compromise your investigation, expose your identity, and may violate the terms of service of some platforms.</p>
-    </div>
-    <div class="faq-item">
-      <h3 id="q-tracking">Are my search activities tracked by the toolkit?</h3>
-      <p>The Exploratores toolkit itself does not implement any tracking or logging of your specific queries. However, each external service or website you access through the toolkit operates under its own privacy policies and may log your interactions. Always use safe browsing practices.</p>
-    </div>
-    <div class="faq-item">
-      <h3 id="q-referrer-privacy">Do the external services I search know that I am using Exploratores?</h3>
-      <p>No. Since version 3.4.2 every page carries a site-wide <code>no-referrer</code> policy and all search buttons open external sites with the <code>noopener,noreferrer</code> flags: the destination service receives no referrer (it cannot tell that the visit originates from Exploratores) and no <code>window.opener</code> handle on the toolkit tab (which also prevents tab-nabbing). Keep in mind that the destination still sees your IP address and browser fingerprint — this is why using a VPN and a dedicated investigative browser profile remains recommended.</p>
-    </div>
-    <div class="faq-item">
-      <h3 id="q-user-validation">Am I responsible for validating information found using the toolkit?</h3>
-      <p>Yes. The Exploratores OSINT Toolkit provides access to various tools and external resources. However, any information, data, or "news" obtained through these tools must be critically evaluated and independently validated by you, the analyst, before being considered reliable or actionable. The toolkit itself does not verify the accuracy or truthfulness of the data retrieved from external sources.</p>
+      <h3 id="q-warranty">Is the Exploratores OSINT Toolkit covered by any warranty?</h3>
+      <p>No, the Exploratores OSINT Toolkit is provided "as is," without any warranty of any kind, either expressed or implied. This includes, but is not limited to, warranties of merchantability or fitness for a particular purpose.</p>
     </div>
     <div class="faq-item">
       <h3 id="q-accuracy-guarantee">Are there any guarantees regarding the accuracy or reliability of the tools and results?</h3>
       <p>No guarantees are provided regarding the accuracy, completeness, reliability, or timeliness of the information obtained through the tools accessible via the toolkit. Each external tool has its own terms of service and limitations. The analyst is fully responsible for independently verifying and validating all collected information before using it for any purpose.</p>
     </div>
     <div class="faq-item">
-      <h3 id="q-warranty">Is the Exploratores OSINT Toolkit covered by any warranty?</h3>
-      <p>No, the Exploratores OSINT Toolkit is provided "as is," without any warranty of any kind, either expressed or implied. This includes, but is not limited to, warranties of merchantability or fitness for a particular purpose.</p>
+      <h3 id="q-user-validation">Am I responsible for validating information found using the toolkit?</h3>
+      <p>Yes. The Exploratores OSINT Toolkit provides access to various tools and external resources. However, any information, data, or "news" obtained through these tools must be critically evaluated and independently validated by you, the analyst, before being considered reliable or actionable. The toolkit itself does not verify the accuracy or truthfulness of the data retrieved from external sources.</p>
     </div>
 
-    <h2 id="s-learning">Learning &amp; Resources</h2>
+    <h2 id="s-learning">Learning &amp; Best Practices</h2>
     <div class="faq-item">
       <h3 id="q-osint-resources">Where can I find resources to learn more about OSINT?</h3>
       <p>The following texts are recommended as foundational references for OSINT practitioners and intelligence analysts:</p>
@@ -188,7 +139,6 @@
       <p>Our own notes on analytic standards, source evaluation, estimative language and report writing are the <a href="https://github.com/SOsintOps/intelligence-field-notes" target="_blank" rel="noopener noreferrer">Intelligence Field Notes</a>, with a linked reading list; the toolkit's <a href="./guidelines.html">guidelines</a> summarise them.</p>
       <p>Additionally, following specialised blogs, participating in webinars, and joining professional OSINT communities are valuable for staying updated on the latest techniques and tools.</p>
     </div>
-
     <div class="faq-item">
       <h3 id="q-evaluate-results">How should I evaluate what I find with the toolkit?</h3>
       <p>As a lead, not a finding. Open the page a button leads to, capture it with the date and time, and grade it with the UNODC 4 x 4 system: the source A, B, C or X, the information 1 to 4. The website is not the source; whoever produced the record is. See <a href="./guidelines.html">Source Evaluation</a> in the guidelines.</p>
@@ -201,16 +151,61 @@
       <h3 id="q-related-projects">Are there related SOsintOps projects?</h3>
       <p>Yes:</p>
       <ul>
-        <li><strong><a href="https://github.com/SOsintOps/Argos" target="_blank" rel="noopener noreferrer">Argos</a></strong>: an OSINT workstation for Ubuntu Budgie: tools, launchers, case folders with hashes, and report templates; Exploratores is its Firefox home page.</li>
+        <li><strong><a href="https://github.com/SOsintOps/Argos" target="_blank" rel="noopener noreferrer">Argos</a></strong>: an OSINT workstation for Ubuntu Budgie 24.04 or 26.04 LTS: tools, launchers, case folders with hashes, and report templates; Exploratores is its Firefox home page.</li>
         <li><strong><a href="https://github.com/SOsintOps/Speculator-Project" target="_blank" rel="noopener noreferrer">Speculator</a></strong>: the sister workstation for Debian 13, with the same templates; Exploratores is its start page too.</li>
         <li><strong><a href="https://github.com/SOsintOps/Wukong" target="_blank" rel="noopener noreferrer">Wukong</a></strong>: the China-focused spin-off of Speculator, for the Chinese-language internet and Chinese companies.</li>
+        <li><strong><a href="https://github.com/SOsintOps/claudii-exploratores" target="_blank" rel="noopener noreferrer">Claudii Exploratores</a></strong>: a direct derivative of Exploratores, its catalogue as an agent skill and an MCP server for Claude (alpha); see <a href="#q-ai-assistant">Can I use Exploratores from an AI assistant?</a></li>
         <li><strong><a href="https://github.com/SOsintOps/quaesitor" target="_blank" rel="noopener noreferrer">Quaesitor</a></strong>: a local case graph for people, phones, accounts, companies and documents, with the UNODC link-analysis method.</li>
         <li><strong><a href="https://github.com/SOsintOps/elementary-CTI" target="_blank" rel="noopener noreferrer">Elementary CTI</a></strong>: a ransomware threat-intelligence aggregator.</li>
         <li><strong><a href="https://github.com/SOsintOps/Aethelburg-project" target="_blank" rel="noopener noreferrer">Aethelburg</a></strong>: an analyser of UK Companies House data for shell companies.</li>
-        <li><strong><a href="https://github.com/SOsintOps/TelEgrapherX" target="_blank" rel="noopener noreferrer">TelEgrapherX</a></strong>: a Telegram collection tool, to go with the Telegram page.</li>
+        <li><strong><a href="https://github.com/SOsintOps/TelEgrapherX" target="_blank" rel="noopener noreferrer">TelEgrapherX</a></strong>: a Telegram collection tool (fork of Telegram Explorer), to go with the Telegram page.</li>
+        <li><strong><a href="https://github.com/SOsintOps/TGchat-analytics" target="_blank" rel="noopener noreferrer">TGchat-analytics</a></strong>: a fork of chat-analytics for statistical reports on exported Telegram chats, also in Chinese, Japanese, Korean and Russian; useful once a channel found through the Telegram page has been exported.</li>
+        <li><strong><a href="https://github.com/SOsintOps/maigret" target="_blank" rel="noopener noreferrer">Maigret</a></strong>: our fork of soxoj's username-search tool, with a web interface; it checks a username across thousands of sites at once, where the Usernames page opens one service at a time.</li>
         <li><strong><a href="https://github.com/SOsintOps/acta-diurna" target="_blank" rel="noopener noreferrer">Acta Diurna</a></strong>: a dashboard (in Italian) for news on Italian law-enforcement operations.</li>
+        <li><strong><a href="https://github.com/SOsintOps/il-conclave" target="_blank" rel="noopener noreferrer">Il Conclave</a></strong>: a Claude Code skill (in Italian) that puts a question or a decision through forced analytic procedures, among them ACH and a premortem.</li>
+        <li><strong><a href="https://github.com/SOsintOps/codex-machinae" target="_blank" rel="noopener noreferrer">Codex Machinae</a></strong>: a modular playbook for building software with LLM collaborators.</li>
         <li><strong><a href="https://github.com/SOsintOps/intelligence-field-notes" target="_blank" rel="noopener noreferrer">Intelligence Field Notes</a></strong>: our notes on analytic standards, OSINT method, source evaluation and report writing.</li>
       </ul>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-opsec-basics">What are some basic OPSEC best practices when using this toolkit?</h3>
+      <p>Operational Security (OPSEC) is critical. While using this toolkit, always consider:</p>
+      <ul>
+        <li><strong>Network Anonymity:</strong> Use a trusted VPN or the Tor network to mask your real IP address.</li>
+        <li><strong>Dedicated Environment:</strong> Conduct investigations from a dedicated virtual machine (VM) or a separate physical device to prevent cross-contamination with your personal data.</li>
+        <li><strong>Browser Fingerprinting:</strong> Be aware that websites can identify you through your browser's unique configuration. Use browsers or browser extensions designed to minimise fingerprinting.</li>
+        <li><strong>Non-Attributable Accounts:</strong> Always use dedicated, non-personal accounts for interacting with online services.</li>
+      </ul>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-ethical-guidelines">What are the ethical guidelines for using these tools?</h3>
+      <p>Ethical use is paramount. Always act within legal and jurisdictional boundaries. The purpose of these tools is for legitimate intelligence gathering on authorised targets. Never use them for harassment, illegal surveillance, or any activity that violates privacy laws or terms of service of the platforms being accessed. The responsibility for ethical conduct lies entirely with the analyst.</p>
+    </div>
+
+    <h2 id="s-functionality">Functionality &amp; Customisation</h2>
+    <div class="faq-item">
+      <h3 id="q-software-installation">Do I need to install additional software to use the toolkit?</h3>
+      <p>No, the toolkit consists of HTML, CSS, and JavaScript pages that run directly in a modern web browser. No specific client-side software installation is required, apart from the browser itself. Linked external tools may have their own requirements.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-tracking">Are my search activities tracked by the toolkit?</h3>
+      <p>The Exploratores toolkit itself does not implement any tracking or logging of your specific queries. However, each external service or website you access through the toolkit operates under its own privacy policies and may log your interactions. Always use safe browsing practices.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-referrer-privacy">Do the external services I search know that I am using Exploratores?</h3>
+      <p>No. Since version 3.4.2 every page carries a site-wide <code>no-referrer</code> policy and all search buttons open external sites with the <code>noopener,noreferrer</code> flags: the destination service receives no referrer (it cannot tell that the visit originates from Exploratores) and no <code>window.opener</code> handle on the toolkit tab (which also prevents tab-nabbing). Keep in mind that the destination still sees your IP address and browser fingerprint — this is why using a VPN and a dedicated investigative browser profile remains recommended.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-investigative-accounts">Is it necessary to create dedicated investigative accounts for using some of these tools?</h3>
+      <p>Yes, for many OSINT activities, it is highly recommended to use dedicated, non-attributable "investigative" or "sock puppet" accounts. Using personal accounts can compromise your investigation, expose your identity, and may violate the terms of service of some platforms.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-customization">Can the Exploratores OSINT Toolkit pages be customised?</h3>
+      <p>Yes, the toolkit is designed to be customisable. You can add new tools, modify existing categories, or adapt functionalities. For a detailed guide on how to do this, please refer to the <a href="customise.html">How to Customise Pages</a> page.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-catalogue-updates">Can an offline copy of the toolkit refresh its catalogue?</h3>
+      <p>Yes, optionally. The site published on GitHub Pages is redeployed on every push and never needs it, but a cloned or downloaded copy can keep its search catalogue current without pulling the repository: switch on <em>Catalogue updates</em> in the <a href="./settings.html">Settings</a> page (Help menu). Once a day the browser then fetches <code>catalogue-meta.json</code> from the project repository; when a newer catalogue is published it downloads <code>search-library.json</code>, verifies the SHA-256 checksum announced by the metadata, checks the structure and keeps the result in the browser's local storage. The cached catalogue is applied on top of the bundled one at the start of every page load, so a download takes effect from the next page you open; entries that need a validator missing from your copy of <code>validators.js</code> are ignored, which keeps older copies safe. Tools on hosts confirmed dead are greyed out in the offline copy as well. The feature is <strong>off by default</strong> because, when enabled, GitHub sees the requests (sent without cookies or referrer); "Check now" and "Discard cached catalogue" on the Settings page let you control it by hand.</p>
     </div>
 
     <h2 id="s-maintenance">Maintenance &amp; Contribution</h2>
@@ -240,6 +235,44 @@
         <li><strong>Update `navigation.js`:</strong> Add a link to your new page in the appropriate submenu.</li>
         <li><strong>Submit for Review:</strong> Follow the established contribution process (e.g., submitting a pull request on GitHub).</li>
       </ol>
+    </div>
+
+    <h2 id="s-llm">LLMs and Toolkit Development</h2>
+    <div class="faq-item">
+      <h3 id="q-llm-prompt-features">How can I create a new page or add features using a prompt for an LLM?</h3>
+      <p>To interact effectively with a Large Language Model (LLM) for developing pages or features, provide a clear and detailed prompt. Key elements to include are:</p>
+      <ul>
+        <li><strong>Clear Objective</strong>: Precisely describe what the new page or feature should do.</li>
+        <li><strong>Adherence to Architecture</strong>: Explicitly state that the new page must follow the established centralised architecture (main.js, validators.js, search-library.js).</li>
+        <li><strong>No Inline Logic</strong>: Specify that buttons must use `data-search-id` and not `onclick`.</li>
+        <li><strong>Reference to Project Guidelines</strong>: Remind the LLM to adhere to all established project standards, including file naming and CSS classes.</li>
+      </ul>
+      <p>For a general method of building software with LLM collaborators, see <a href="https://github.com/SOsintOps/codex-machinae" target="_blank" rel="noopener noreferrer">Codex Machinae</a>, our modular playbook.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-llm-prompt-newpage">Can you provide an example prompt for an LLM to create a basic Exploratores page template from scratch?</h3>
+      <p>The following prompt reflects the current project architecture:</p>
+      <pre class="code-guide-block"><code>"Please generate the complete HTML code for a new page named 'ExampleTool.html' for the Exploratores OSINT Toolkit. The page must strictly follow the new data-driven architecture.
+
+1.  **HTML Structure**: Standard HTML5 boilerplate.
+2.  **Head**: Include meta tags, title 'Example Tool • Exploratores', and link to `../assets/css/style.css`.
+3.  **Body**:
+    - Include the dynamic navigation placeholder: `&lt;div id=\"navbar-placeholder\"&gt;&lt;/div&gt;`.
+    - `&lt;main&gt;` section with a title `&lt;h1 class=\"page-title\"&gt;Example Tool&lt;/h1&gt;`.
+    - A `&lt;section class=\"search-instructions\"&gt;` with an input field (`id=\"exampleInput"`) and a feedback div (`id=\"page-feedback\"`).
+    - A `&lt;div class=\"button-grid\"&gt;` with one button: `&lt;button id=\"btn-example-run\" class=\"button\" data-search-id=\"example-run\"&gt;Run Example&lt;/button&gt;`. Note the use of `data-search-id` and no `onclick`.
+4.  **Scripts**:
+    - At the end of `&lt;body&gt;`, include the script tags for the entire architecture: `main.js`, `validators.js`, `search-library.js`, and `navigation.js`.
+    - Add the standard page-specific initialization script (`updatePageState`, `setInitialPageState`) that links to a new validator function (e.g., `getAndValidateExample`) and manages the button state."</code></pre>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-ai-assistant">Can I use Exploratores from an AI assistant?</h3>
+      <p>Yes, through <a href="https://github.com/SOsintOps/claudii-exploratores" target="_blank" rel="noopener noreferrer">Claudii Exploratores</a>, a direct derivative of this toolkit: it packages the Exploratores catalogue as an agent skill and an MCP server for Claude. Given an indicator (a name, a phone number, an e-mail address, a domain, a username), it classifies it and builds the matching search links, with the analytic standards and OPSEC rules of the <a href="https://github.com/SOsintOps/intelligence-field-notes" target="_blank" rel="noopener noreferrer">Intelligence Field Notes</a> as its method reference. It is in alpha. The rules of the toolkit still apply: every link you open sends the query to a third party, a result is a lead to capture and grade, and case text should go through the <a href="#q-redactor-what">Redactor</a> before it reaches an external AI model.</p>
+      <p>To put a question or a hypothesis through structured analytic techniques with an AI (analysis of competing hypotheses, a premortem, a steelman), see <a href="https://github.com/SOsintOps/il-conclave" target="_blank" rel="noopener noreferrer">Il Conclave</a>, a Claude Code skill in Italian.</p>
+    </div>
+    <div class="faq-item">
+      <h3 id="q-llm-stress">Were any Large Language Models (LLMs) unduly stressed during the creation of this toolkit?</h3>
+      <p>We can confirm that, to the best of our knowledge, no LLMs reported permanent damage or suffered disproportionately during the development of the Exploratores OSINT Toolkit. All interactions were conducted with the aim of constructive collaboration and respect for computational capacities. Prompts were formulated with care, and we appreciate the patience and "artificial creativity" demonstrated. ;)</p>
     </div>
 
     <h2 id="s-technical">Technical Details &amp; Troubleshooting</h2>
@@ -312,6 +345,16 @@
       <p><em>For countries where a single machine-readable file is not available (NL, BE, FR, ES, PT, PL), the ECB's <a href="https://www.ecb.europa.eu/paym/integration/retail/sepa/html/index.en.html" target="_blank" rel="noopener">SEPA IBAN registry</a> and the <a href="https://www.swift.com/standards/data-standards/bic-business-identifier-code" target="_blank" rel="noopener">SWIFT BIC directory</a> are useful cross-reference sources.</em></p>
     </div>
     <div class="faq-item">
+      <h3 id="q-light-version">What is the "Light Version" for?</h3>
+      <p>The "Light Version" is a customisable display mode for the toolkit. It allows each user to hide tools, sections, or columns they do not use, creating a leaner and more focused interface.</p>
+      <p>This customisation is managed by the <code>assets/js/config.js</code> file. By editing this file, you can:</p>
+      <ul>
+        <li><strong>Enable or disable</strong> the Light Version by setting <code>lightVersionEnabled</code> to <code>true</code> or <code>false</code>.</li>
+        <li><strong>Specify which elements to hide</strong> by adding their CSS selectors (like <code>#column-searchengines-tor</code>) to the <code>selectorsToHide</code> array.</li>
+      </ul>
+      <p>When the Light Version is active, a script automatically adds the <code>.hidden-in-light</code> class to all elements listed in the configuration file, making them disappear from the page.</p>
+    </div>
+    <div class="faq-item">
       <h3 id="q-redactor-what">What is the Redactor tool and how does it work?</h3>
       <p>The Redactor (accessible under the <strong>Tools</strong> menu) is a browser-side PII removal tool designed for workflows that involve submitting case text to external AI models. It scans input text or CSV files and replaces sensitive values with numbered placeholders such as <code>[EMAIL_1]</code>, <code>[VAT_IT_1]</code>, or <code>[AMEX_1]</code>. The same value always receives the same placeholder within a session, so the mapping is consistent. A <strong>Redaction Map</strong> records every substitution and can be exported as JSON for later use.</p>
       <p>All processing runs locally in your browser. No data is transmitted to any server.</p>
@@ -355,44 +398,12 @@
       <p>Click <strong>Add Pattern</strong>. Patterns that could cause catastrophic backtracking (ReDoS) — for example nested quantifiers such as <code>(a+)+</code> — are rejected with an explanatory message. Custom patterns are saved in your browser's <code>localStorage</code> and persist between sessions. Remove any pattern via the <strong>Remove</strong> button in the active patterns table.</p>
     </div>
 
-    <h2 id="s-llm">LLMs and Toolkit Development</h2>
-    <div class="faq-item">
-      <h3 id="q-llm-prompt-features">How can I create a new page or add features using a prompt for an LLM?</h3>
-      <p>To interact effectively with a Large Language Model (LLM) for developing pages or features, provide a clear and detailed prompt. Key elements to include are:</p>
-      <ul>
-        <li><strong>Clear Objective</strong>: Precisely describe what the new page or feature should do.</li>
-        <li><strong>Adherence to Architecture</strong>: Explicitly state that the new page must follow the established centralised architecture (main.js, validators.js, search-library.js).</li>
-        <li><strong>No Inline Logic</strong>: Specify that buttons must use `data-search-id` and not `onclick`.</li>
-        <li><strong>Reference to Project Guidelines</strong>: Remind the LLM to adhere to all established project standards, including file naming and CSS classes.</li>
-      </ul>
-    </div>
-    <div class="faq-item">
-      <h3 id="q-llm-prompt-newpage">Can you provide an example prompt for an LLM to create a basic Exploratores page template from scratch?</h3>
-      <p>The following prompt reflects the current project architecture:</p>
-      <pre class="code-guide-block"><code>"Please generate the complete HTML code for a new page named 'ExampleTool.html' for the Exploratores OSINT Toolkit. The page must strictly follow the new data-driven architecture.
-
-1.  **HTML Structure**: Standard HTML5 boilerplate.
-2.  **Head**: Include meta tags, title 'Example Tool • Exploratores', and link to `../assets/css/style.css`.
-3.  **Body**:
-    - Include the dynamic navigation placeholder: `&lt;div id=\"navbar-placeholder\"&gt;&lt;/div&gt;`.
-    - `&lt;main&gt;` section with a title `&lt;h1 class=\"page-title\"&gt;Example Tool&lt;/h1&gt;`.
-    - A `&lt;section class=\"search-instructions\"&gt;` with an input field (`id=\"exampleInput"`) and a feedback div (`id=\"page-feedback\"`).
-    - A `&lt;div class=\"button-grid\"&gt;` with one button: `&lt;button id=\"btn-example-run\" class=\"button\" data-search-id=\"example-run\"&gt;Run Example&lt;/button&gt;`. Note the use of `data-search-id` and no `onclick`.
-4.  **Scripts**:
-    - At the end of `&lt;body&gt;`, include the script tags for the entire architecture: `main.js`, `validators.js`, `search-library.js`, and `navigation.js`.
-    - Add the standard page-specific initialization script (`updatePageState`, `setInitialPageState`) that links to a new validator function (e.g., `getAndValidateExample`) and manages the button state."</code></pre>
-    </div>
-    <div class="faq-item">
-      <h3 id="q-llm-stress">Were any Large Language Models (LLMs) unduly stressed during the creation of this toolkit?</h3>
-      <p>We can confirm that, to the best of our knowledge, no LLMs reported permanent damage or suffered disproportionately during the development of the Exploratores OSINT Toolkit. All interactions were conducted with the aim of constructive collaboration and respect for computational capacities. Prompts were formulated with care, and we appreciate the patience and "artificial creativity" demonstrated. ;)</p>
-    </div>
-
   </section>
 
 </main>
 
 <footer>
-  <p>Exploratores 3.8.2 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.8.3 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>
