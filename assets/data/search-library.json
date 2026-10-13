@@ -837,11 +837,6 @@
   "no_input": true,
   "validator": "getAndValidateNames"
  },
- "names-it-italgiure": {
-  "urlTemplate": "https://www.italgiure.giustizia.it/sncass/",
-  "no_input": true,
-  "validator": "getAndValidateNames"
- },
  "names-it-gazzetta": {
   "urlTemplate": "https://www.gazzettaufficiale.it/ricerca/pdf/foglio_ordinario2/1/0/0?reset=true",
   "no_input": true,
