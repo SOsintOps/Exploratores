@@ -57,7 +57,6 @@ const JanuaSearchMap = {
     "names-paginegialle": { "label": "Pagine Gialle (Italy)", "page": "Names"},
     "names-it-antenati": { "label": "Portale Antenati (Italy)", "page": "Names"},
     "names-it-fnomceo": { "label": "FNOMCeO Doctors (Italy)", "page": "Names"},
-    "names-it-italgiure": { "label": "Italgiure Cassazione (Italy)", "page": "Names"},
     "names-it-gazzetta": { "label": "Gazzetta Ufficiale (Italy)", "page": "Names"},
     "phoneint-it-paginebianche": { "label": "Pagine Bianche Reverse (Italy)", "page": "International Phones"},
     "publiccompanyrecords-it-registroimprese": { "label": "Registro Imprese (Italy)", "page": "Company Public Records"},

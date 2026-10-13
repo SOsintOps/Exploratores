@@ -216,7 +216,6 @@ const SearchLibrary = {
     "names-paginegialle": { "urlTemplate": "https://www.paginegialle.it/ricerca/{firstname}-{lastname}", "validator": "getAndValidateNames" },
     "names-it-antenati": { "urlTemplate": "https://antenati.cultura.gov.it/search-nominative/?cognome={lastname}&nome={firstname}", "validator": "getAndValidateNames" },
     "names-it-fnomceo": { "urlTemplate": "https://albounico.fnomceo.it/", "no_input": true, "validator": "getAndValidateNames" },
-    "names-it-italgiure": { "urlTemplate": "https://www.italgiure.giustizia.it/sncass/", "no_input": true, "validator": "getAndValidateNames" },
     "names-it-gazzetta": { "urlTemplate": "https://www.gazzettaufficiale.it/ricerca/pdf/foglio_ordinario2/1/0/0?reset=true", "no_input": true, "validator": "getAndValidateNames" },
     "names-checkoru": { "urlTemplate": "https://checko.ru/search?query={fullname}", "validator": "getAndValidateNames" },
     "names-rusfinder": { "urlTemplate": "https://rusfinder.pro/search/", "no_input": true, "validator": "getAndValidateNames" },

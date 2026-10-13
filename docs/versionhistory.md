@@ -4,6 +4,12 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.8.1 — 2026
+
+- **Removed:** Names → Italy: Italgiure (Court of Cassation rulings) — the service is being discontinued at the end of September 2026. The Italy set is now 11 tools.
+
+---
+
 ## 3.8.0 — 2026
 
 - **New:** Italy sources — first country of the country-sources programme (see *Ideas & Roadmap*), 12 tools: Names → National Registers → Italy: Portale Antenati (civil records held by the State Archives, searched by surname and name), FNOMCeO Albo Unico (doctors and dentists), Italgiure (Court of Cassation rulings) and Gazzetta Ufficiale (issue search); International Phones → Country-Specific Services: Pagine Bianche reverse number lookup; Company Public Records → Companies → Italy: Registro Imprese free search, Agenzia delle Entrate VAT-number check, INI-PEC certified-e-mail index, IndicePA public-administration index and dati.gov.it open-data search; Maps → new "Cadastre & National Maps" → Italy: Agenzia delle Entrate cadastral geoportal; Domains → Whois & DNS Lookup: .it Registry web WHOIS. Every URL was opened and checked in a browser on 2026-09-22; services that only offer a form or a CAPTCHA are direct links with an explanatory tooltip.
