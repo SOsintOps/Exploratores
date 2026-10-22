@@ -1,10 +1,10 @@
-# Exploratores OSINT Toolkit 3.8.3
+# Exploratores OSINT Toolkit 3.9.0
 
 ![Exploratores Toolkit Logo](assets/images/exploratores.jpg)
 
 [TEST ME](https://sosintops.github.io/Exploratores/)
 
-![version](https://img.shields.io/badge/version-3.8.3-blue)
+![version](https://img.shields.io/badge/version-3.9.0-blue)
 ![release](https://img.shields.io/github/v/release/SOsintOps/Exploratores)
 ![licence](https://img.shields.io/github/license/SOsintOps/Exploratores)
 ![last commit](https://img.shields.io/github/last-commit/SOsintOps/Exploratores)
@@ -13,7 +13,7 @@
 
 **Exploratores** is a modular and responsive OSINT toolkit designed to support investigative workflows: curated search tools for people, domains, images, social platforms and more, plus built-in utilities such as the Redactor (browser-side PII removal), multi-country IBAN analysis and an embedded CyberChef.
 
-Version 3.8.3 corrects the guidelines (ICD 203 wording, the likelihood table labelled, texts linked at first mention) and extends the FAQ and the related projects. Version 3.8.2 aligned the analysis guidelines and the FAQ with the [Intelligence Field Notes](https://github.com/SOsintOps/intelligence-field-notes) (source evaluation, report writing, linked reading list, related projects). Version 3.8.1 removed Italgiure ahead of its shutdown, after 3.8.0, which opens the country-sources programme with Italy: eleven national registries and lookups (civil records, doctors' register, Official Gazette, reverse phone lookup, business register, VAT check, certified e-mail and public-administration indexes, open data, cadastral geoportal, .it WHOIS) added to the thematic pages, each verified in a browser. Next: European countries, Russia, China and the Middle East — see the [roadmap](docs/todo.md). See the full [version history](docs/versionhistory.md) for previous releases.
+Version 3.9.0 adds SanctionsKit to Public Company Records, next to OpenSanctions, for officers and companies: each record shows its source dates and links to the publisher, with a dated version to cite. Version 3.8.3 corrects the guidelines (ICD 203 wording, the likelihood table labelled, texts linked at first mention) and extends the FAQ and the related projects. Version 3.8.2 aligned the analysis guidelines and the FAQ with the [Intelligence Field Notes](https://github.com/SOsintOps/intelligence-field-notes) (source evaluation, report writing, linked reading list, related projects). Version 3.8.1 removed Italgiure ahead of its shutdown, after 3.8.0, which opens the country-sources programme with Italy: eleven national registries and lookups (civil records, doctors' register, Official Gazette, reverse phone lookup, business register, VAT check, certified e-mail and public-administration indexes, open data, cadastral geoportal, .it WHOIS) added to the thematic pages, each verified in a browser. Next: European countries, Russia, China and the Middle East — see the [roadmap](docs/todo.md). See the full [version history](docs/versionhistory.md) for previous releases.
 
 ---
 

@@ -4,6 +4,12 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.9.0 — 2026
+
+- **Added:** Public Company Records: SanctionsKit for officers and companies, next to OpenSanctions. OpenSanctions covers more lists (it also has the EU consolidated financial sanctions list and the UN Security Council list); SanctionsKit shows the source dates of each record (notice, effective, observed), links to the publisher and can save a dated version to cite. A name match is not an identity conclusion. Suggested in issue #2.
+
+---
+
 ## 3.8.3 — 2026
 
 - **Fixed:** Guidelines: ICD 203 wording corrected: tradecraft standard 5 is *customer relevance* and the *Timely* standard speaks of customers, not stakeholders; *judgements* in British spelling. The likelihood table keeps both ICD 203 rows, adds the *(improbably)* and *(probably)* variants, and now says to use the first row; ICD 203 and the UNODC *Criminal Intelligence: Manual for Analysts* are linked at their first mention.

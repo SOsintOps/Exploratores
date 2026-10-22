@@ -1496,6 +1496,10 @@
   "urlTemplate": "https://www.courtlistener.com/?type=r&q={officername}",
   "validator": "getAndValidateOfficerName"
  },
+ "publiccompanyrecords-officer-sanctionskit": {
+  "urlTemplate": "https://www.sanctionskit.com/search?q={officername}",
+  "validator": "getAndValidateOfficerName"
+ },
  "publiccompanyrecords-officer-sra": {
   "urlTemplate": "https://www.sra.org.uk/search-results/?searchText={officername}",
   "validator": "getAndValidateOfficerName"
@@ -1614,6 +1618,10 @@
  },
  "publiccompanyrecords-company-recap": {
   "urlTemplate": "https://www.courtlistener.com/?type=r&q={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-sanctionskit": {
+  "urlTemplate": "https://www.sanctionskit.com/search?q={companyname}",
   "validator": "getAndValidateCompanyName"
  },
  "publiccompanyrecords-company-trellis": {
