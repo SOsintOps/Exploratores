@@ -66,7 +66,9 @@ const Exploratores = {
             
             for (const key in params) {
                 const placeholder = `{${key}}`;
-                const value = encodeURIComponent(params[key]);
+                // Normattiva N2Ls reads the raw URN from the query string, so {urn} keeps its
+                // colons and semicolons (encodeURI); getAndValidateUrn only lets [a-z0-9.:;-] through.
+                const value = key === 'urn' ? encodeURI(params[key]) : encodeURIComponent(params[key]);
                 url = url.replace(new RegExp(placeholder.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), value);
             }
             
