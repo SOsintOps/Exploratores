@@ -216,7 +216,6 @@ const SearchLibrary = {
     "names-paginegialle": { "urlTemplate": "https://www.paginegialle.it/ricerca/{firstname}-{lastname}", "validator": "getAndValidateNames" },
     "names-it-antenati": { "urlTemplate": "https://antenati.cultura.gov.it/search-nominative/?cognome={lastname}&nome={firstname}", "validator": "getAndValidateNames" },
     "names-it-fnomceo": { "urlTemplate": "https://albounico.fnomceo.it/", "no_input": true, "validator": "getAndValidateNames" },
-    "names-it-gazzetta": { "urlTemplate": "https://www.gazzettaufficiale.it/ricerca/pdf/foglio_ordinario2/1/0/0?reset=true", "no_input": true, "validator": "getAndValidateNames" },
     "names-checkoru": { "urlTemplate": "https://checko.ru/search?query={fullname}", "validator": "getAndValidateNames" },
     "names-rusfinder": { "urlTemplate": "https://rusfinder.pro/search/", "no_input": true, "validator": "getAndValidateNames" },
     "names-ukphonebook-name": { "urlTemplate": "https://www.ukphonebook.com/find-a-person/by-fullname/{fullname}", "validator": "getAndValidateNames" },
@@ -249,6 +248,23 @@ const SearchLibrary = {
     "names-us-whitepages": { "urlTemplate": "https://www.whitepages.com/name/{fullnamedash}", "validator": "getAndValidateNames" },
     "names-us-yasni": { "urlTemplate": "https://www.yasni.com/{fullname}/check+people?sh", "validator": "getAndValidateNames" },
     "names-us-zabasearch": { "urlTemplate": "https://www.zabasearch.com/people/{fullname}", "validator": "getAndValidateNames" },
+
+    // --- Entries for legal.html (URLs verified in a browser on 2026-10-30) ---
+    "legal-it-normattiva-urn": { "urlTemplate": "https://www.normattiva.it/uri-res/N2Ls?{urn}", "validator": "getAndValidateUrn" },
+    "legal-it-normattiva": { "urlTemplate": "https://www.normattiva.it/ricerca/semplice", "no_input": true },
+    "legal-it-gazzetta": { "urlTemplate": "https://www.gazzettaufficiale.it/ricerca/pdf/foglio_ordinario2/1/0/0?reset=true", "no_input": true },
+    "legal-it-brocardi": { "urlTemplate": "https://www.brocardi.it/search?q={q}", "validator": "getAndValidateSearchTerm" },
+    "legal-it-sentenzeweb": { "urlTemplate": "https://www.italgiure.giustizia.it/sncass/", "no_input": true },
+    "legal-it-cortecost": { "urlTemplate": "https://www.cortecostituzionale.it/actionPronuncia.do", "no_input": true },
+    "legal-it-giustamm": { "urlTemplate": "https://www.giustizia-amministrativa.it/web/guest/dcsnprr", "no_input": true },
+    "legal-it-consob-search": { "urlTemplate": "https://www.consob.it/web/consob/ricerca?q={q}", "validator": "getAndValidateSearchTerm" },
+    "legal-it-consob-listed": { "urlTemplate": "https://www.consob.it/web/area-pubblica/quotate/elenco?socname={q}", "validator": "getAndValidateSearchTerm" },
+    "legal-it-garante": { "urlTemplate": "https://www.garanteprivacy.it/web/guest/home/ricerca", "no_input": true },
+    "legal-it-pvp": { "urlTemplate": "https://pvp.giustizia.it/pvp/", "no_input": true },
+    "legal-eu-eurlex": { "urlTemplate": "https://eur-lex.europa.eu/search.html?scope=EURLEX&text={q}&lang=en&type=quick", "validator": "getAndValidateSearchTerm" },
+    "legal-eu-curia": { "urlTemplate": "https://curia.europa.eu/juris/liste.jsf?num={case}&language=en", "validator": "getAndValidateCuriaCase" },
+    "legal-eu-tmview": { "urlTemplate": "https://www.tmdn.org/tmview/#/tmview/results?page=1&pageSize=30&criteria=C&basicSearch={q}", "validator": "getAndValidateSearchTerm" },
+    "legal-eu-vies": { "urlTemplate": "https://ec.europa.eu/taxation_customs/vies/#/vat-validation", "no_input": true },
 
     // --- Voci per phoneus.html ---
     "phoneus-bing": { "urlTemplate": "https://www.bing.com/search?q={google_query}", "validator": "getAndValidateUsPhone" },

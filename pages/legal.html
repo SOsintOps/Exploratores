@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="referrer" content="no-referrer" />
+  <title>Legal • Exploratores</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="icon" type="image/x-icon" href="../assets/images/roman-helmet.ico">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<main>
+  <h1 class="page-title">Legal Tool</h1>
+
+  <section class="search-instructions" id="section-legal-main-search">
+    <label for="searchInput">Enter a search term, a Normattiva URN or a Court of Justice case number:</label>
+    <div class="input-container">
+      <input type="text" id="searchInput" class="input-field" placeholder="Search term, URN or case number (e.g. GDPR, urn:nir:stato:legge:1990-08-07;241, C-311/18)" autocomplete="off">
+    </div>
+    <div id="legal-feedback" class="feedback-message"></div>
+    <div class="note">
+      <strong>NOTE:</strong> Information obtained through these search tools always requires validation by an analyst. Buttons marked "form only" open the source's own search form, which has no stable query URL.
+    </div>
+  </section>
+
+  <div class="columns">
+    <div class="column" id="column-legal-italy">
+      <h2>ITALY</h2>
+      <section id="subsection-legal-it-legislation">
+        <h3>Legislation</h3>
+        <div class="button-grid">
+          <button id="btn-legal-it-normattiva-urn" data-search-id="legal-it-normattiva-urn" type="button" class="button" title="Normattiva — resolve a URN such as urn:nir:stato:legge:1990-08-07;241">Normattiva (URN)</button>
+          <button id="btn-legal-it-normattiva" data-search-id="legal-it-normattiva" type="button" class="button" title="Normattiva — simple search (form only)">Normattiva Search</button>
+          <button id="btn-legal-it-gazzetta" data-search-id="legal-it-gazzetta" type="button" class="button" title="Official Gazette — opens the issue search page">Gazzetta Ufficiale</button>
+          <button id="btn-legal-it-brocardi" data-search-id="legal-it-brocardi" type="button" class="button" title="Brocardi — annotated Italian codes and legal dictionary">Brocardi</button>
+        </div>
+      </section>
+      <section id="subsection-legal-it-case-law">
+        <h3>Case law</h3>
+        <div class="button-grid">
+          <button id="btn-legal-it-sentenzeweb" data-search-id="legal-it-sentenzeweb" type="button" class="button" title="SentenzeWeb — Court of Cassation case law (form only)">SentenzeWeb</button>
+          <button id="btn-legal-it-cortecost" data-search-id="legal-it-cortecost" type="button" class="button" title="Corte costituzionale — decisions search (form only)">Corte costituzionale</button>
+          <button id="btn-legal-it-giustamm" data-search-id="legal-it-giustamm" type="button" class="button" title="Giustizia amministrativa — TAR and Council of State decisions (form only)">Giustizia amministrativa</button>
+        </div>
+      </section>
+      <section id="subsection-legal-it-regulators">
+        <h3>Regulators &amp; registers</h3>
+        <div class="button-grid">
+          <button id="btn-legal-it-consob-search" data-search-id="legal-it-consob-search" type="button" class="button" title="CONSOB — site search (decisions, bulletins, issuers)">CONSOB Search</button>
+          <button id="btn-legal-it-consob-listed" data-search-id="legal-it-consob-listed" type="button" class="button" title="CONSOB — listed companies by name">CONSOB Listed Cos.</button>
+          <button id="btn-legal-it-garante" data-search-id="legal-it-garante" type="button" class="button" title="Garante privacy — decisions and documents search (form only)">Garante Privacy</button>
+          <button id="btn-legal-it-pvp" data-search-id="legal-it-pvp" type="button" class="button" title="Portale delle Vendite Pubbliche — judicial auctions (form only)">Vendite Pubbliche</button>
+        </div>
+      </section>
+    </div>
+    <div class="column" id="column-legal-eu">
+      <h2>EUROPEAN UNION</h2>
+      <section id="subsection-legal-eu-legislation">
+        <h3>Legislation</h3>
+        <div class="button-grid">
+          <button id="btn-legal-eu-eurlex" data-search-id="legal-eu-eurlex" type="button" class="button" title="EUR-Lex — quick search of EU law">EUR-Lex</button>
+        </div>
+      </section>
+      <section id="subsection-legal-eu-case-law">
+        <h3>Case law</h3>
+        <div class="button-grid">
+          <button id="btn-legal-eu-curia" data-search-id="legal-eu-curia" type="button" class="button" title="CURIA — Court of Justice case by number, e.g. C-311/18">CURIA (Case No.)</button>
+        </div>
+      </section>
+      <section id="subsection-legal-eu-trademarks-vat">
+        <h3>Trade marks &amp; VAT</h3>
+        <div class="button-grid">
+          <button id="btn-legal-eu-tmview" data-search-id="legal-eu-tmview" type="button" class="button" title="TMview — trade marks of the EU and beyond (results list; record pages gave 403 on 2026-10-29)">TMview</button>
+          <button id="btn-legal-eu-vies" data-search-id="legal-eu-vies" type="button" class="button" title="VIES — EU VAT number validation (form only)">VIES</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>Exploratores 3.9.0 <a href="./license.html">License</a></p>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/validators.js"></script>
+<script src="../assets/js/search-library.js"></script>
+<script src="../assets/js/catalogue-updater.js"></script>
+<script src="../assets/menu/navigation.js"></script>
+
+<script>
+  // One input, three validators: each button is enabled by its own catalogue validator
+  // (search term, Normattiva URN or Court of Justice case number); form-only links stay enabled.
+  function updatePageState() {
+    const results = {};
+    const resultFor = name => {
+      if (!(name in results)) {
+        const validator = ExploratoresValidators[name];
+        results[name] = typeof validator === 'function' ? validator.call(ExploratoresValidators, {}) : { isValid: false };
+      }
+      return results[name];
+    };
+
+    document.querySelectorAll('button[data-search-id]').forEach(button => {
+        const config = SearchLibrary[button.dataset.searchId] || {};
+        const isEnabled = !!config.no_input || (!!config.validator && resultFor(config.validator).isValid);
+
+        button.disabled = !isEnabled;
+        button.classList.toggle('text-active', isEnabled);
+    });
+
+    const feedbackEl = document.getElementById('legal-feedback');
+    if (feedbackEl) {
+      const inputElement = document.getElementById('searchInput');
+      const value = inputElement ? inputElement.value.trim() : '';
+      let message = '';
+      if (resultFor('getAndValidateUrn').isValid) {
+        message = resultFor('getAndValidateUrn').message;
+      } else if (resultFor('getAndValidateCuriaCase').isValid) {
+        message = resultFor('getAndValidateCuriaCase').message;
+      } else if (value) {
+        message = 'Search term ready. Normattiva (URN) needs a URN such as urn:nir:stato:legge:1990-08-07;241; CURIA needs a case number such as C-311/18.';
+      }
+      feedbackEl.textContent = message;
+      feedbackEl.className = message ? 'feedback-message feedback-info' : 'feedback-message';
+    }
+  }
+
+  function setInitialPageState() {
+    const inputElement = document.getElementById('searchInput');
+    if (inputElement) {
+        inputElement.addEventListener('input', updatePageState);
+    }
+    updatePageState();
+  }
+
+  document.addEventListener('DOMContentLoaded', setInitialPageState);
+</script>
+
+<script src="../assets/js/config.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
+      exploratoresConfig.selectorsToHide.forEach(selector => {
+        try {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(el => el.classList.add('hidden-in-light'));
+        } catch (e) {
+          console.error("Invalid selector in config.js:", selector);
+        }
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

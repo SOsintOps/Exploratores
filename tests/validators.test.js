@@ -47,6 +47,31 @@ function invalid(r) { eq(r.isValid, false, 'isValid'); }
 
 test('searchTerm: empty is rejected', () => invalid(V.getAndValidateSearchTerm({}, '')));
 test('searchTerm: value is returned as term', () => eq(valid(V.getAndValidateSearchTerm({}, 'foo bar')).term, 'foo bar'));
+test('searchTerm: value is also returned as q', () => eq(valid(V.getAndValidateSearchTerm({}, 'GDPR')).q, 'GDPR'));
+
+// --- Legal page validators ---
+
+test('getAndValidateUrn: valid URN returned as urn', () => eq(valid(V.getAndValidateUrn({}, 'urn:nir:stato:legge:1990-08-07;241')).urn, 'urn:nir:stato:legge:1990-08-07;241', 'urn'));
+test('getAndValidateUrn: suffixed URN accepted', () => valid(V.getAndValidateUrn({}, 'urn:nir:stato:decreto.legislativo:2003-06-30;196-bis')));
+test('getAndValidateUrn: trimmed and lower-cased', () => eq(valid(V.getAndValidateUrn({}, '  URN:NIR:STATO:LEGGE:1990-08-07;241 ')).urn, 'urn:nir:stato:legge:1990-08-07;241', 'urn'));
+test('getAndValidateUrn: plain term rejected', () => invalid(V.getAndValidateUrn({}, 'GDPR')));
+test('getAndValidateUrn: missing number rejected', () => invalid(V.getAndValidateUrn({}, 'urn:nir:stato:legge:1990-08-07')));
+test('getAndValidateUrn: empty rejected', () => invalid(V.getAndValidateUrn({}, '')));
+test('getAndValidateUrn: reads the page input', () => {
+  setDom({ searchInput: 'urn:nir:stato:legge:1990-08-07;241' });
+  eq(valid(V.getAndValidateUrn({})).urn, 'urn:nir:stato:legge:1990-08-07;241', 'urn');
+});
+
+test('getAndValidateCuriaCase: valid case returned as case', () => eq(valid(V.getAndValidateCuriaCase({}, 'C-311/18')).case, 'C-311/18', 'case'));
+test('getAndValidateCuriaCase: appeal suffix accepted', () => eq(valid(V.getAndValidateCuriaCase({}, 'C-1234/20 P')).case, 'C-1234/20 P', 'case'));
+test('getAndValidateCuriaCase: trimmed and upper-cased', () => eq(valid(V.getAndValidateCuriaCase({}, ' t-12/21 ')).case, 'T-12/21', 'case'));
+test('getAndValidateCuriaCase: wrong prefix rejected', () => invalid(V.getAndValidateCuriaCase({}, 'X-311/18')));
+test('getAndValidateCuriaCase: four-digit year rejected', () => invalid(V.getAndValidateCuriaCase({}, 'C-311/2018')));
+test('getAndValidateCuriaCase: empty rejected', () => invalid(V.getAndValidateCuriaCase({}, '')));
+test('getAndValidateCuriaCase: reads the page input', () => {
+  setDom({ searchInput: 'C-311/18' });
+  eq(valid(V.getAndValidateCuriaCase({})).case, 'C-311/18', 'case');
+});
 
 test('officerName: valid', () => eq(valid(V.getAndValidateOfficerName({}, 'Jane Roe')).officername, 'Jane Roe'));
 test('officerName: empty rejected', () => invalid(V.getAndValidateOfficerName({}, '')));

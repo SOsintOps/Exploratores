@@ -22,6 +22,7 @@ function generateNavHTML() {
         <li><span>People &<br>Identities</span>
           <ul class="submenu">
             <li><a href="${pagesPath}names.html">Names</a></li>
+            <li><a href="${pagesPath}legal.html">Legal</a></li>
             <li><a href="${pagesPath}phoneus.html">US Phones</a></li>
             <li><a href="${pagesPath}phoneint.html">International Phones</a></li>
             <li><a href="${pagesPath}vehicles.html">Vehicles</a></li>

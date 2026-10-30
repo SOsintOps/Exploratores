@@ -4,7 +4,28 @@ const ExploratoresValidators = {
         if (!value) {
             return { isValid: false, message: "Please enter a search term." };
         }
-        return { isValid: true, data: { term: value }, message: "Ready for search." };
+        // `q` mirrors `term` for catalogue entries whose verified templates use {q} (Legal page).
+        return { isValid: true, data: { term: value, q: value }, message: "Ready for search." };
+    },
+
+    // Normattiva URN (Legal page), read from the same input as getAndValidateSearchTerm.
+    getAndValidateUrn: function(config, queryOverride) {
+        const raw = queryOverride !== undefined ? queryOverride : document.getElementById('searchInput')?.value;
+        const value = (raw || '').trim().toLowerCase();
+        if (!/^urn:nir:[a-z.]+:[a-z.]+:\d{4}-\d{2}-\d{2};\d+(-[a-z]+)?$/.test(value)) {
+            return { isValid: false, message: "Enter a Normattiva URN such as urn:nir:stato:legge:1990-08-07;241" };
+        }
+        return { isValid: true, data: { urn: value }, message: "Normattiva URN recognised." };
+    },
+
+    // Court of Justice of the EU case number (Legal page), read from the same input as getAndValidateSearchTerm.
+    getAndValidateCuriaCase: function(config, queryOverride) {
+        const raw = queryOverride !== undefined ? queryOverride : document.getElementById('searchInput')?.value;
+        const value = (raw || '').trim().toUpperCase();
+        if (!/^[CTF]-\d{1,4}\/\d{2}( P| PPU| R)?$/.test(value)) {
+            return { isValid: false, message: "Enter a Court of Justice case number such as C-311/18" };
+        }
+        return { isValid: true, data: { case: value }, message: "Court of Justice case number recognised." };
     },
 
     getAndValidateNames: function(config, queryOverride) {
