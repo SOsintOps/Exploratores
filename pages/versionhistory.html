@@ -19,6 +19,17 @@
   <section class="faq-section">
 
     <div class="faq-item">
+      <h2>3.10.0 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+      <ul>
+        <li><strong>New:</strong> Legal page (Italy and European Union), 15 tools, in the menu after Names. Italy: Normattiva (URN resolver and simple search), Gazzetta Ufficiale, Brocardi, SentenzeWeb (Court of Cassation), Corte costituzionale, Giustizia amministrativa, CONSOB (search and listed companies), Garante privacy and Portale delle Vendite Pubbliche; European Union: EUR-Lex quick search, CURIA case lookup, TMview and VIES. Every URL was opened and checked in a browser on 2026-10-30; services that only offer a form are direct links with an explanatory tooltip.</li>
+        <li><strong>New:</strong> Validators for Normattiva URNs (e.g. <code>urn:nir:stato:legge:1990-08-07;241</code>) and Court of Justice case numbers (e.g. <code>C-311/18</code>): the Normattiva (URN) and CURIA buttons are enabled only for a valid value. Tests added to the validators suite.</li>
+        <li><strong>Improved:</strong> Gazzetta Ufficiale moved from Names → National Registers → Italy to the Legal page (same link).</li>
+        <li><strong>Fixed:</strong> The Normattiva URN is no longer percent-encoded: the <code>{urn}</code> placeholder keeps its colons and semicolons, because Normattiva rejects the encoded form. Every other placeholder is still percent-encoded.</li>
+        <li><strong>Fixed:</strong> <em>Ideas &amp; Roadmap</em>: the Italgiure note corrected — the service is active (SentenzeWeb) and is back as a form-only link on the Legal page; the candidates checked on 2026-10-30 and discarded are listed with the reason.</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
       <h2>3.9.0 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
       <ul>
         <li><strong>Added:</strong> Public Company Records: SanctionsKit for officers and companies, next to OpenSanctions. OpenSanctions covers more lists (it also has the EU consolidated financial sanctions list and the UN Security Council list); SanctionsKit shows the source dates of each record (notice, effective, observed), links to the publisher and can save a dated version to cite. A name match is not an identity conclusion. Suggested in issue #2.</li>
@@ -310,7 +321,7 @@
 </main>
 
 <footer>
-  <p>Exploratores 3.9.0 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.10.0 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>

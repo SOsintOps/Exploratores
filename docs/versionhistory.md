@@ -4,6 +4,16 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.10.0 — 2026
+
+- **New:** Legal page (Italy and European Union), 15 tools, in the menu after Names. Italy: Normattiva (URN resolver and simple search), Gazzetta Ufficiale, Brocardi, SentenzeWeb (Court of Cassation), Corte costituzionale, Giustizia amministrativa, CONSOB (search and listed companies), Garante privacy and Portale delle Vendite Pubbliche; European Union: EUR-Lex quick search, CURIA case lookup, TMview and VIES. Every URL was opened and checked in a browser on 2026-10-30; services that only offer a form are direct links with an explanatory tooltip.
+- **New:** Validators for Normattiva URNs (e.g. `urn:nir:stato:legge:1990-08-07;241`) and Court of Justice case numbers (e.g. `C-311/18`): the Normattiva (URN) and CURIA buttons are enabled only for a valid value. Tests added to the validators suite.
+- **Improved:** Gazzetta Ufficiale moved from Names → National Registers → Italy to the Legal page (same link).
+- **Fixed:** The Normattiva URN is no longer percent-encoded: the `{urn}` placeholder keeps its colons and semicolons, because Normattiva rejects the encoded form. Every other placeholder is still percent-encoded.
+- **Fixed:** *Ideas & Roadmap*: the Italgiure note corrected — the service is active (SentenzeWeb) and is back as a form-only link on the Legal page; the candidates checked on 2026-10-30 and discarded are listed with the reason.
+
+---
+
 ## 3.9.0 — 2026
 
 - **Added:** Public Company Records: SanctionsKit for officers and companies, next to OpenSanctions. OpenSanctions covers more lists (it also has the EU consolidated financial sanctions list and the UN Security Council list); SanctionsKit shows the source dates of each record (notice, effective, observed), links to the publisher and can save a dated version to cite. A name match is not an identity conclusion. Suggested in issue #2.
