@@ -7,7 +7,7 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 ## 3.10.2 — 2026
 
 - **Fixed:** Public Company Records: the two FOIA buttons (officers and companies) now search through `search.usa.gov` with `affiliate=foia.gov`, the engine behind the search page of FOIA.gov; the old `search.foia.gov` host no longer exists. Same parameters, same results.
-- **Removed:** Public Company Records: MoneyLine (`politicalmoneyline.com`, individual donor search): the domain no longer exists (checked on 2026-10-31 from a non-datacenter IP and through public DNS). Open Secrets, already in the officers section, covers the same campaign-donation data.
+- **Removed:** Public Company Records: MoneyLine (`politicalmoneyline.com`, individual donor search): the domain no longer exists (checked on 2026-10-31 from an IP other than the link checker's and through the Cloudflare and Google public DNS). Open Secrets, already in the officers section, covers the same campaign-donation data.
 
 ---
 
