@@ -60,6 +60,13 @@ Rules: every URL is opened in a browser before entering the catalogue; search en
 
 ### General
 
+- **Watch list — removed services that may return (check once a month):**
+  - **Nuwber** (`nuwber.com`), removed in 3.10.3: shut down in mid-September 2026, but the owner renewed the domain until 2031. Next check: 2026-12-01, then on the first of every month. Check with a public resolver (`https://dns.google/resolve?name=nuwber.com&type=A`): while the answer has no `A` record the site is still down. If it is back, open it in a browser, confirm that the two searches still work, and restore the two buttons:
+    - `names-us-nuwber` (Names → United States): `https://nuwber.com/search?name={fullname}`, validator `getAndValidateNames`
+    - `phoneus-nuwber` (US Phones): `https://nuwber.com/search/phone?phone={full}`, validator `getAndValidateUsPhone`
+  - **SpyOnWeb** (`spyonweb.com`), removed in 3.10.3: the server has refused connections since late August 2026, but the owner renewed the domain in October 2026. Same schedule as Nuwber. Check that `http://spyonweb.com/example.com` answers and shows the sites sharing a code or an IP; if so, restore the button:
+    - `domains-profile-spyonweb` (Domains → Profile): `http://spyonweb.com/{domain}`, validator `getAndValidateDomain`
+
 - **Additional sources from digitaldigging.org:** review the OSINT resource list at
   `https://digitaldigging.org/osint/` and identify entries not yet covered by the toolkit.
 

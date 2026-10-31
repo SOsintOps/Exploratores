@@ -191,16 +191,8 @@
   "urlTemplate": "https://{domain}/robots.txt",
   "validator": "getAndValidateDomain"
  },
- "domains-profile-spyonweb": {
-  "urlTemplate": "http://spyonweb.com/{domain}",
-  "validator": "getAndValidateDomain"
- },
  "domains-profile-wmtips": {
   "urlTemplate": "https://www.wmtips.com/tools/info/{domain}",
-  "validator": "getAndValidateDomain"
- },
- "domains-profile-webscout": {
-  "urlTemplate": "https://web-scout.io/results?q={domain}",
   "validator": "getAndValidateDomain"
  },
  "domains-screenshot-dmnsapp": {
@@ -247,10 +239,6 @@
   "urlTemplate": "http://archive.ph/{domain}",
   "validator": "getAndValidateDomain"
  },
- "domains-archive-archivescan": {
-  "urlTemplate": "http://web-archive-scan.com/archive/search?q={domain}",
-  "validator": "getAndValidateDomain"
- },
  "domains-archive-wildcard": {
   "urlTemplate": "https://web.archive.org/web/*/{domain}/*",
   "validator": "getAndValidateDomain"
@@ -277,10 +265,6 @@
  },
  "domains-archive-googlecache": {
   "urlTemplate": "http://www.google.com/search?q=cache:{domain}",
-  "validator": "getAndValidateDomain"
- },
- "domains-archive-mementoweb": {
-  "urlTemplate": "http://timetravel.mementoweb.org/memento/*/{domain}",
   "validator": "getAndValidateDomain"
  },
  "domains-archive-wayback-keyword": {
@@ -337,10 +321,6 @@
  },
  "domains-seo-similarweb": {
   "urlTemplate": "https://www.similarweb.com/website/{domain}",
-  "validator": "getAndValidateDomain"
- },
- "domains-seo-sitemapper": {
-  "urlTemplate": "https://www.sitemapper.com/#/{domain}",
   "validator": "getAndValidateDomain"
  },
  "domains-seo-spyfu": {
@@ -403,16 +383,8 @@
   "urlTemplate": "https://www.mywot.com/scorecard/{domain}",
   "validator": "getAndValidateDomain"
  },
- "domains-sec-phishcheck": {
-  "urlTemplate": "https://phishcheck.me/check_url/{domain}",
-  "validator": "getAndValidateDomain"
- },
  "domains-sec-pulsedive": {
   "urlTemplate": "https://pulsedive.com/indicator/?value={domain}",
-  "validator": "getAndValidateDomain"
- },
- "domains-sec-riskiq": {
-  "urlTemplate": "https://community.riskiq.com/search/{domain}",
   "validator": "getAndValidateDomain"
  },
  "domains-sec-securityheaders": {
@@ -441,10 +413,6 @@
  },
  "domains-sec-stopforumspam": {
   "urlTemplate": "https://www.stopforumspam.com/search?q={domain}",
-  "validator": "getAndValidateDomain"
- },
- "domains-sec-threatcrowd": {
-  "urlTemplate": "https://ci-www.threatcrowd.org/domain.php?domain={domain}",
   "validator": "getAndValidateDomain"
  },
  "domains-sec-threatintel": {
@@ -503,10 +471,6 @@
   "urlTemplate": "https://dnslytics.com/dns-records/{domain}",
   "validator": "getAndValidateDomain"
  },
- "domains-dns-domainapp": {
-  "urlTemplate": "https://dns.domainapp.com/?q={domain}",
-  "validator": "getAndValidateDomain"
- },
  "domains-dns-domaintools": {
   "urlTemplate": "https://whois.domaintools.com/{domain}",
   "validator": "getAndValidateDomain"
@@ -537,10 +501,6 @@
  },
  "domains-dns-robtex": {
   "urlTemplate": "https://www.robtex.com/dns-lookup/{domain}",
-  "validator": "getAndValidateDomain"
- },
- "domains-dns-subdomains-columbus": {
-  "urlTemplate": "https://columbus.elmasy.com/search?q=domain%3D{domain}",
   "validator": "getAndValidateDomain"
  },
  "domains-dns-whois": {
@@ -637,7 +597,11 @@
   "validator": "getAndValidateDomain"
  },
  "domains-records-udrp": {
-  "urlTemplate": "https://www.udrpsearch.com/search?query={domain}",
+  "urlTemplate": "https://www.wipo.int/amc/en/domains/search/fulltext_decisions.jsp?q={domain}",
+  "validator": "getAndValidateDomain"
+ },
+ "domains-records-cac": {
+  "urlTemplate": "https://udrp.adr.eu/decisions/list?grid-filter%5Bdomains%5D={domain}",
   "validator": "getAndValidateDomain"
  },
  "domains-records-wipo": {
@@ -668,10 +632,6 @@
   "urlTemplate": "https://hackertarget.com/google-adsense-decoder/?s={adsenseid}",
   "validator": "getAndValidateAdsenseId"
  },
- "domains-adsense-riskiq": {
-  "urlTemplate": "https://community.riskiq.com/search/trackers?query={adsenseid}",
-  "validator": "getAndValidateAdsenseId"
- },
  "domains-analytics-analyzeid": {
   "urlTemplate": "http://analyzeid.com/?ga={analyticsid}",
   "validator": "getAndValidateAnalyticsId"
@@ -686,10 +646,6 @@
  },
  "domains-analytics-publicwww": {
   "urlTemplate": "https://publicwww.com/websites/\"{analyticsid}\"/",
-  "validator": "getAndValidateAnalyticsId"
- },
- "domains-analytics-riskiq": {
-  "urlTemplate": "https://community.riskiq.com/search/trackers?query={analyticsid}",
   "validator": "getAndValidateAnalyticsId"
  },
  "domains-favicon-hash": {
@@ -791,7 +747,11 @@
   "validator": "getAndValidateNames"
  },
  "names-udrp": {
-  "urlTemplate": "https://www.udrpsearch.com/search?query={fullname}&search=parties",
+  "urlTemplate": "https://www.wipo.int/amc/en/domains/statistics/filing_party.jsp?party=R&search={fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-cac": {
+  "urlTemplate": "https://udrp.adr.eu/decisions/list?grid-filter%5Brespondents%5D={fullname}",
   "validator": "getAndValidateNames"
  },
  "names-censys-cert": {
@@ -808,10 +768,6 @@
  },
  "names-opencorporates": {
   "urlTemplate": "https://opencorporates.com/officers?q={fullname}",
-  "validator": "getAndValidateNames"
- },
- "names-riskiq": {
-  "urlTemplate": "https://community.riskiq.com/search/trackers?query={fullname}",
   "validator": "getAndValidateNames"
  },
  "names-canada411": {
@@ -909,10 +865,6 @@
   "urlTemplate": "https://www.intelius.com/people-search/{firstname}-{lastname}",
   "validator": "getAndValidateNames"
  },
- "names-us-nuwber": {
-  "urlTemplate": "https://nuwber.com/search?name={fullname}",
-  "validator": "getAndValidateNames"
- },
  "names-us-peoplebyname": {
   "urlTemplate": "https://www.peoplebyname.com/people/{lastname}/{firstname}",
   "validator": "getAndValidateNames"
@@ -952,10 +904,6 @@
  },
  "names-us-truthfinder": {
   "urlTemplate": "https://www.truthfinder.com/results/?firstName={firstname}&lastName={lastname}&state=ALL",
-  "validator": "getAndValidateNames"
- },
- "names-us-usaofficial": {
-  "urlTemplate": "https://usa-official.com/{firstname}-{lastname}",
   "validator": "getAndValidateNames"
  },
  "names-us-whitepages": {
@@ -1102,10 +1050,6 @@
   "urlTemplate": "https://numpi.com/phone-info/{full}",
   "validator": "getAndValidateUsPhone"
  },
- "phoneus-nuwber": {
-  "urlTemplate": "https://nuwber.com/search/phone?phone={full}",
-  "validator": "getAndValidateUsPhone"
- },
  "phoneus-peoplesearchnow": {
   "urlTemplate": "https://www.peoplesearchnow.com/phone/{full_dash}",
   "validator": "getAndValidateUsPhone"
@@ -1116,10 +1060,6 @@
  },
  "phoneus-searchpeoplefree": {
   "urlTemplate": "https://www.searchpeoplefree.com/phone-lookup/{full_dash}",
-  "validator": "getAndValidateUsPhone"
- },
- "phoneus-spytox": {
-  "urlTemplate": "https://www.spytox.com/people/search?phone={full_dash}",
   "validator": "getAndValidateUsPhone"
  },
  "phoneus-thatsthem": {
@@ -1229,14 +1169,6 @@
  },
  "phoneint-ofac": {
   "urlTemplate": "https://sanctionssearch.ofac.treas.gov/Details.aspx?id=+{e164}",
-  "validator": "getAndValidateIntlPhone",
-  "validation_rules": {
-   "requireCountryCode": true,
-   "requireNatNum": true
-  }
- },
- "phoneint-riskiq": {
-  "urlTemplate": "https://community.riskiq.com/search/whois/phone?query=+{e164}",
   "validator": "getAndValidateIntlPhone",
   "validation_rules": {
    "requireCountryCode": true,
@@ -1587,8 +1519,8 @@
   "validator": "getAndValidateCompanyName"
  },
  "publiccompanyrecords-company-cac": {
-  "urlTemplate": "https://search.cac.gov.ng/home",
-  "no_input": true
+  "urlTemplate": "https://udrp.adr.eu/decisions/list?grid-filter%5Bsearch_in_text%5D={companyname}",
+  "validator": "getAndValidateCompanyName"
  },
  "publiccompanyrecords-company-censys": {
   "urlTemplate": "https://search.censys.io/search?resource=certificates&sort=RELEVANCE&per_page=25&virtual_hosts=EXCLUDE&q={companyname}",
@@ -1683,7 +1615,7 @@
   "validator": "getAndValidateCompanyName"
  },
  "publiccompanyrecords-company-udrp": {
-  "urlTemplate": "https://www.udrpsearch.com/search?query={companyname}",
+  "urlTemplate": "https://www.wipo.int/amc/en/domains/search/fulltext_decisions.jsp?q={companyname}",
   "validator": "getAndValidateCompanyName"
  },
  "publiccompanyrecords-company-unicourt": {
@@ -1782,10 +1714,6 @@
   "urlTemplate": "https://portal.spycloud.com/endpoint/enriched-stats/{email}",
   "validator": "getAndValidateEmail"
  },
- "email-spytox": {
-  "urlTemplate": "https://spytox.com/people/search?email={email}",
-  "validator": "getAndValidateEmail"
- },
  "email-thatsthem": {
   "urlTemplate": "https://thatsthem.com/email/{email}",
   "validator": "getAndValidateEmail"
@@ -1820,10 +1748,6 @@
  },
  "email-leakix": {
   "urlTemplate": "https://leakix.net/search?scope=leak&q=%22{email}%22",
-  "validator": "getAndValidateEmail"
- },
- "email-psbdmp": {
-  "urlTemplate": "https://psbdmp.ws/api/search/{email}",
   "validator": "getAndValidateEmail"
  },
  "email-flickr": {
@@ -1974,10 +1898,6 @@
   "urlTemplate": "https://xboxgamertag.com/search/{username}",
   "validator": "getAndValidateUsername"
  },
- "usernames-checkistan": {
-  "urlTemplate": "https://usernamechecker.checkistan.com/#{username}",
-  "validator": "getAndValidateUsername"
- },
  "usernames-instantusername": {
   "urlTemplate": "https://instantusername.com/?q={username}",
   "validator": "getAndValidateUsername"
@@ -2052,14 +1972,6 @@
  },
  "usernames-pastebin": {
   "urlTemplate": "https://pastebin.com/u/{username}",
-  "validator": "getAndValidateUsername"
- },
- "usernames-psbdmp": {
-  "urlTemplate": "https://psbdmp.ws/api/search/{username}",
-  "validator": "getAndValidateUsername"
- },
- "usernames-riskiq": {
-  "urlTemplate": "https://community.riskiq.com/search/trackers?query={username}",
   "validator": "getAndValidateUsername"
  },
  "usernames-stopforumspam": {
@@ -2143,7 +2055,7 @@
   "validator": "getAndValidateRedditUser"
  },
  "communities-reddit-archive": {
-  "urlTemplate": "https://camas.unddit.com/#{\"author\":\"{username}\"}",
+  "urlTemplate": "https://arctic-shift.photon-reddit.com/search?fun=posts_search&author={username}",
   "validator": "getAndValidateRedditUser"
  },
  "communities-reddit-api-asc": {
@@ -2506,10 +2418,6 @@
   "urlTemplate": "https://www.blockchain.com/btc/address/{btc_address}",
   "validator": "getAndValidateBtcAddress"
  },
- "currencies-btc-validation": {
-  "urlTemplate": "https://bitcoin-e.org/validate/{btc_address}",
-  "validator": "getAndValidateBtcAddress"
- },
  "currencies-btc-chainabuse": {
   "urlTemplate": "https://www.chainabuse.com/address/{btc_address}",
   "validator": "getAndValidateBtcAddress"
@@ -2520,10 +2428,6 @@
  },
  "currencies-btc-firstseen": {
   "urlTemplate": "https://api.blockchair.com/bitcoin/dashboards/address/{btc_address}?limit=1&offset=0",
-  "validator": "getAndValidateBtcAddress"
- },
- "currencies-btc-oxtme": {
-  "urlTemplate": "https://oxt.me/address/{btc_address}",
   "validator": "getAndValidateBtcAddress"
  },
  "currencies-btc-balance": {
@@ -3022,6 +2926,10 @@
   "urlTemplate": "https://networksdb.io/ips-in-network/{start_ip}/{end_ip}",
   "validator": "getAndValidateNetworksDbRange"
  },
+ "ip-security-alienvault": {
+  "urlTemplate": "https://otx.alienvault.com/indicator/ip/{ip}",
+  "validator": "getAndValidateIpAddress"
+ },
  "ip-security-censys": {
   "urlTemplate": "https://search.censys.io/hosts/{ip}",
   "validator": "getAndValidateIpAddress"
@@ -3035,7 +2943,7 @@
   "validator": "getAndValidateIpAddress"
  },
  "ip-security-ikwyd": {
-  "urlTemplate": "http://iknowwhatyoudownload.com/en/peer/?ip={ip}",
+  "urlTemplate": "https://iknowwhatyoudownload.com/en/peer/?ip={ip}",
   "validator": "getAndValidateIpAddress"
  },
  "ip-security-leakix": {
@@ -3054,20 +2962,12 @@
   "urlTemplate": "https://mxtoolbox.com/SuperTool.aspx?action=blocklist%3a{ip}&run=networktools",
   "validator": "getAndValidateIpAddress"
  },
- "ip-security-riskiq": {
-  "urlTemplate": "https://community.riskiq.com/search/{ip}",
-  "validator": "getAndValidateIpAddress"
- },
  "ip-security-securitytrails": {
   "urlTemplate": "https://securitytrails.com/list/ip/{ip}",
   "validator": "getAndValidateIpAddress"
  },
  "ip-security-stopforumspam": {
   "urlTemplate": "https://www.stopforumspam.com/search/{ip}",
-  "validator": "getAndValidateIpAddress"
- },
- "ip-security-threatcrowd": {
-  "urlTemplate": "https://ci-www.threatcrowd.org/ip.php?ip={ip}",
   "validator": "getAndValidateIpAddress"
  },
  "ip-security-virustotal": {
