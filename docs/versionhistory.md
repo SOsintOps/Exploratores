@@ -4,6 +4,14 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.10.1 — 2026
+
+- **Fixed:** Legal page: all 15 buttons now use the page input (native GET search for Giustizia amministrativa and Portale delle Vendite Pubbliche, VIES REST API lookup for EU VAT numbers via `getAndValidateEuVat`, and site-scoped search for Normattiva, Gazzetta Ufficiale, SentenzeWeb, Corte costituzionale and Garante privacy); `getAndValidateUrn` also accepts year-only URNs, article suffixes and Italian act citations (e.g. `L. 241/1990`, `D.Lgs. 196/2003`).
+- **Fixed:** Button activation across the toolkit: blue active styling (`.text-active`) now activates only when the input is valid and suited to that specific button; form-only (`no_input`) shortcuts stay clickable without turning blue.
+- **Fixed:** Janua dispatcher now passes the query value to generic search engine buttons and skips disabled/no-input entries; `getAndValidateMd5Hash` normalises uppercase `queryOverride` values.
+
+---
+
 ## 3.10.0 — 2026
 
 - **New:** Legal page (Italy and European Union), 15 tools, in the menu after Names. Italy: Normattiva (URN resolver and simple search), Gazzetta Ufficiale, Brocardi, SentenzeWeb (Court of Cassation), Corte costituzionale, Giustizia amministrativa, CONSOB (search and listed companies), Garante privacy and Portale delle Vendite Pubbliche; European Union: EUR-Lex quick search, CURIA case lookup, TMview and VIES. Every URL was opened and checked in a browser on 2026-10-30; services that only offer a form are direct links with an explanatory tooltip.

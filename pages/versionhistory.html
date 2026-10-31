@@ -19,6 +19,15 @@
   <section class="faq-section">
 
     <div class="faq-item">
+      <h2>3.10.1 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+      <ul>
+        <li><strong>Fixed:</strong> Legal page: all 15 buttons now use the page input (native GET search for Giustizia amministrativa and Portale delle Vendite Pubbliche, VIES REST API lookup for EU VAT numbers via <code>getAndValidateEuVat</code>, and site-scoped search for Normattiva, Gazzetta Ufficiale, SentenzeWeb, Corte costituzionale and Garante privacy); <code>getAndValidateUrn</code> also accepts year-only URNs, article suffixes and Italian act citations (e.g. <code>L. 241/1990</code>, <code>D.Lgs. 196/2003</code>).</li>
+        <li><strong>Fixed:</strong> Button activation across the toolkit: blue active styling (<code>.text-active</code>) now activates only when the input is valid and suited to that specific button; form-only (<code>no_input</code>) shortcuts stay clickable without turning blue.</li>
+        <li><strong>Fixed:</strong> Janua dispatcher now passes the query value to generic search engine buttons and skips disabled/no-input entries; <code>getAndValidateMd5Hash</code> normalises uppercase <code>queryOverride</code> values.</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
       <h2>3.10.0 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
       <ul>
         <li><strong>New:</strong> Legal page (Italy and European Union), 15 tools, in the menu after Names. Italy: Normattiva (URN resolver and simple search), Gazzetta Ufficiale, Brocardi, SentenzeWeb (Court of Cassation), Corte costituzionale, Giustizia amministrativa, CONSOB (search and listed companies), Garante privacy and Portale delle Vendite Pubbliche; European Union: EUR-Lex quick search, CURIA case lookup, TMview and VIES. Every URL was opened and checked in a browser on 2026-10-30; services that only offer a form are direct links with an explanatory tooltip.</li>
@@ -321,7 +330,7 @@
 </main>
 
 <footer>
-  <p>Exploratores 3.10.0 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.10.1 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>

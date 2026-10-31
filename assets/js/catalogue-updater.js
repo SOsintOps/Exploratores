@@ -59,6 +59,8 @@
     for (const key of Object.keys(cache.entries)) {
       const entry = cache.entries[key];
       if (!/^[a-z0-9-]+$/.test(key) || !isEntry(entry) || !validatorKnown(entry)) continue;
+      const current = SearchLibrary[key];
+      if (entry.no_input && current && current.validator && !current.no_input) continue;
       SearchLibrary[key] = entry;
       applied++;
     }

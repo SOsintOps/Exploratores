@@ -81,7 +81,7 @@
     </main>
 
     <footer>
-        <p>Exploratores 3.10.0 <a href="./license.html">License</a></p>
+        <p>Exploratores 3.10.1 <a href="./license.html">License</a></p>
     </footer>
 
     <script src="../assets/js/config.js"></script>
@@ -136,7 +136,7 @@
                 verifyFeedback.textContent = '';
                 verifyFeedback.className = 'feedback-message';
                 searchFeedback.textContent = '';
-                searchButtons.forEach(b => { b.disabled = true; b.classList.remove('text-active'); });
+                searchButtons.forEach(b => { const cfg = SearchLibrary[b.dataset.searchId] || {}; b.disabled = !cfg.no_input || !!cfg.disabled; b.classList.remove('text-active'); });
                 return;
             }
 
@@ -144,7 +144,7 @@
                 verifyFeedback.textContent = 'IBAN structure and checksum are valid.';
                 verifyFeedback.className = 'feedback-message feedback-info';
 
-                searchButtons.forEach(b => { b.disabled = false; b.classList.add('text-active'); });
+                searchButtons.forEach(b => { const cfg = SearchLibrary[b.dataset.searchId] || {}; b.disabled = !!cfg.disabled; b.classList.toggle('text-active', !cfg.no_input && !cfg.disabled); });
                 searchFeedback.textContent = '';
 
                 const countryCode = iban.substring(0, 2);
@@ -394,15 +394,15 @@
             } else {
                 verifyFeedback.textContent = 'Invalid IBAN format or checksum.';
                 verifyFeedback.className = 'feedback-message feedback-error';
-                searchButtons.forEach(b => { b.disabled = true; b.classList.remove('text-active'); });
+                searchButtons.forEach(b => { const cfg = SearchLibrary[b.dataset.searchId] || {}; b.disabled = !cfg.no_input || !!cfg.disabled; b.classList.remove('text-active'); });
             }
         };
 
         // Auto-verify on input/paste
         verifyInput.addEventListener('input', handleVerification);
 
-        // Initialize search buttons as disabled
-        searchButtons.forEach(b => { b.disabled = true; });
+        // Initialize search buttons (no_input buttons stay enabled without text-active)
+        searchButtons.forEach(b => { const cfg = SearchLibrary[b.dataset.searchId] || {}; b.disabled = !cfg.no_input || !!cfg.disabled; b.classList.remove('text-active'); });
     });
     </script>
 

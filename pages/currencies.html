@@ -150,7 +150,7 @@
 </main>
 
 <footer>
-    <p>Exploratores 3.10.0 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.10.1 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/js/main.js"></script>
@@ -240,8 +240,15 @@
             const feedbackEl = document.getElementById(group.feedbackId);
 
             document.querySelectorAll(group.buttonSelector).forEach(button => {
-                button.disabled = !validationResult.isValid;
-                button.classList.toggle('text-active', validationResult.isValid);
+                const config = SearchLibrary[button.dataset.searchId] || {};
+                if (config.disabled || button.classList.contains('button-dead')) {
+                    button.disabled = true;
+                    button.classList.remove('text-active');
+                    return;
+                }
+                const isInputValid = !config.no_input && validationResult.isValid;
+                button.disabled = !(isInputValid || config.no_input);
+                button.classList.toggle('text-active', isInputValid);
             });
 
             if (feedbackEl) {

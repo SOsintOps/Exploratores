@@ -8,14 +8,38 @@ const ExploratoresValidators = {
         return { isValid: true, data: { term: value, q: value }, message: "Ready for search." };
     },
 
-    // Normattiva URN (Legal page), read from the same input as getAndValidateSearchTerm.
+    // Normattiva URN or Italian act citation (Legal page), read from the same input as getAndValidateSearchTerm.
     getAndValidateUrn: function(config, queryOverride) {
         const raw = queryOverride !== undefined ? queryOverride : document.getElementById('searchInput')?.value;
         const value = (raw || '').trim().toLowerCase();
-        if (!/^urn:nir:[a-z.]+:[a-z.]+:\d{4}-\d{2}-\d{2};\d+(-[a-z]+)?$/.test(value)) {
-            return { isValid: false, message: "Enter a Normattiva URN such as urn:nir:stato:legge:1990-08-07;241" };
+        const urnRegex = /^urn:nir:[a-z.]+:[a-z.]+(?::\d{4}(?:-\d{2}-\d{2})?;\d+(?:-[a-z]+)?)(?:~art[0-9a-z-]+)?$/;
+        const costRegex = /^urn:nir:stato:costituzione(?:~art[0-9a-z-]+)?$/;
+        if (urnRegex.test(value) || costRegex.test(value)) {
+            return { isValid: true, data: { urn: value }, message: "Normattiva URN recognised." };
         }
-        return { isValid: true, data: { urn: value }, message: "Normattiva URN recognised." };
+        const citationMatch = value.match(/^(?:(l\.?|legge|d\.?\s*lgs\.?|decreto\s+legislativo|d\.?\s*l\.?|decreto[\s-]+legge|d\.?\s*p\.?\s*r\.?|decreto\s+del\s+presidente\s+della\s+repubblica|r\.?\s*d\.?|regio\s+decreto)\s*(?:(?:\d{1,2}\s+[a-z]+\s+\d{4}\s*,?\s*)?(?:n\.?\s*)?(\d+(?:-[a-z]+)?)\s*(?:\/|\s+del\s+)\s*(\d{4})|(?:n\.?\s*)?(\d{4})\s*\/\s*(\d+(?:-[a-z]+)?)))$/);
+        if (citationMatch) {
+            const rawType = citationMatch[1].replace(/[\s.-]+/g, '');
+            const typeMap = {
+                'l': 'legge',
+                'legge': 'legge',
+                'dlgs': 'decreto.legislativo',
+                'decretolegislativo': 'decreto.legislativo',
+                'dl': 'decreto.legge',
+                'decretolegge': 'decreto.legge',
+                'dpr': 'decreto.del.presidente.della.repubblica',
+                'decretodelpresidentedellarepubblica': 'decreto.del.presidente.della.repubblica',
+                'rd': 'regio.decreto',
+                'regiodecreto': 'regio.decreto'
+            };
+            const actType = typeMap[rawType];
+            const num = citationMatch[2] || citationMatch[5];
+            const year = citationMatch[3] || citationMatch[4];
+            if (actType && num && year) {
+                return { isValid: true, data: { urn: `urn:nir:stato:${actType}:${year};${num}` }, message: "Normattiva act reference recognised." };
+            }
+        }
+        return { isValid: false, message: "Enter a Normattiva URN (e.g. urn:nir:stato:legge:1990-08-07;241) or act citation (e.g. L. 241/1990)" };
     },
 
     // Court of Justice of the EU case number (Legal page), read from the same input as getAndValidateSearchTerm.
@@ -26,6 +50,18 @@ const ExploratoresValidators = {
             return { isValid: false, message: "Enter a Court of Justice case number such as C-311/18" };
         }
         return { isValid: true, data: { case: value }, message: "Court of Justice case number recognised." };
+    },
+
+    // EU VAT number for VIES (Legal page), read from the same input as getAndValidateSearchTerm.
+    getAndValidateEuVat: function(config, queryOverride) {
+        const raw = queryOverride !== undefined ? queryOverride : document.getElementById('searchInput')?.value;
+        const value = (raw || '').trim().toUpperCase().replace(/[\s.-]+/g, '');
+        const match = value.match(/^(AT|BE|BG|CY|CZ|DE|DK|EE|EL|GR|ES|FI|FR|HR|HU|IE|IT|LT|LU|LV|MT|NL|PL|PT|RO|SE|SI|SK|XI)((?=[A-Z0-9]*\d)[A-Z0-9]{8,12})$/);
+        if (!match) {
+            return { isValid: false, message: "Enter an EU VAT number with country prefix such as IT00905811006" };
+        }
+        const country = match[1] === 'GR' ? 'EL' : match[1];
+        return { isValid: true, data: { vat_country: country, vat_number: match[2] }, message: "EU VAT number recognised." };
     },
 
     getAndValidateNames: function(config, queryOverride) {
@@ -833,7 +869,7 @@ const ExploratoresValidators = {
     },
 
     getAndValidateMd5Hash: function(config, queryOverride) {
-        const value = queryOverride !== undefined ? queryOverride : document.getElementById('input-domains-md5Hash')?.value.trim().toLowerCase();
+        const value = (queryOverride !== undefined ? queryOverride : document.getElementById('input-domains-md5Hash')?.value || '').trim().toLowerCase();
         const md5Regex = /^[a-f0-9]{32}$/;
         if (!value) {
             return { isValid: false, message: "Please enter an MD5 hash." };

@@ -16,13 +16,13 @@
   <h1 class="page-title">Legal Tool</h1>
 
   <section class="search-instructions" id="section-legal-main-search">
-    <label for="searchInput">Enter a search term, a Normattiva URN or a Court of Justice case number:</label>
+    <label for="searchInput">Enter a search term, a Normattiva URN / act citation, a Court of Justice case number, or an EU VAT number:</label>
     <div class="input-container">
-      <input type="text" id="searchInput" class="input-field" placeholder="Search term, URN or case number (e.g. GDPR, urn:nir:stato:legge:1990-08-07;241, C-311/18)" autocomplete="off">
+      <input type="text" id="searchInput" class="input-field" placeholder="e.g. GDPR, L. 241/1990, urn:nir:stato:legge:1990-08-07;241, C-311/18, IT00905811006" autocomplete="off">
     </div>
     <div id="legal-feedback" class="feedback-message"></div>
     <div class="note">
-      <strong>NOTE:</strong> Information obtained through these search tools always requires validation by an analyst. Buttons marked "form only" open the source's own search form, which has no stable query URL.
+      <strong>NOTE:</strong> Information obtained through these search tools always requires validation by an analyst. Only the buttons suited to the detected input format (act URN/citation, CURIA case number, EU VAT number, or search term) are activated.
     </div>
   </section>
 
@@ -32,18 +32,18 @@
       <section id="subsection-legal-it-legislation">
         <h3>Legislation</h3>
         <div class="button-grid">
-          <button id="btn-legal-it-normattiva-urn" data-search-id="legal-it-normattiva-urn" type="button" class="button" title="Normattiva — resolve a URN such as urn:nir:stato:legge:1990-08-07;241">Normattiva (URN)</button>
-          <button id="btn-legal-it-normattiva" data-search-id="legal-it-normattiva" type="button" class="button" title="Normattiva — simple search (form only)">Normattiva Search</button>
-          <button id="btn-legal-it-gazzetta" data-search-id="legal-it-gazzetta" type="button" class="button" title="Official Gazette — opens the issue search page">Gazzetta Ufficiale</button>
+          <button id="btn-legal-it-normattiva-urn" data-search-id="legal-it-normattiva-urn" type="button" class="button" title="Normattiva — resolve a URN (e.g. urn:nir:stato:legge:1990-08-07;241) or act citation (e.g. L. 241/1990)">Normattiva (URN)</button>
+          <button id="btn-legal-it-normattiva" data-search-id="legal-it-normattiva" type="button" class="button" title="Normattiva — search Italian legislation by keyword">Normattiva Search</button>
+          <button id="btn-legal-it-gazzetta" data-search-id="legal-it-gazzetta" type="button" class="button" title="Official Gazette — search Gazzetta Ufficiale by keyword">Gazzetta Ufficiale</button>
           <button id="btn-legal-it-brocardi" data-search-id="legal-it-brocardi" type="button" class="button" title="Brocardi — annotated Italian codes and legal dictionary">Brocardi</button>
         </div>
       </section>
       <section id="subsection-legal-it-case-law">
         <h3>Case law</h3>
         <div class="button-grid">
-          <button id="btn-legal-it-sentenzeweb" data-search-id="legal-it-sentenzeweb" type="button" class="button" title="SentenzeWeb — Court of Cassation case law (form only)">SentenzeWeb</button>
-          <button id="btn-legal-it-cortecost" data-search-id="legal-it-cortecost" type="button" class="button" title="Corte costituzionale — decisions search (form only)">Corte costituzionale</button>
-          <button id="btn-legal-it-giustamm" data-search-id="legal-it-giustamm" type="button" class="button" title="Giustizia amministrativa — TAR and Council of State decisions (form only)">Giustizia amministrativa</button>
+          <button id="btn-legal-it-sentenzeweb" data-search-id="legal-it-sentenzeweb" type="button" class="button" title="SentenzeWeb — search Court of Cassation decisions on Italgiure">SentenzeWeb</button>
+          <button id="btn-legal-it-cortecost" data-search-id="legal-it-cortecost" type="button" class="button" title="Corte costituzionale — search Constitutional Court decisions">Corte costituzionale</button>
+          <button id="btn-legal-it-giustamm" data-search-id="legal-it-giustamm" type="button" class="button" title="Giustizia amministrativa — TAR and Council of State decisions search">Giustizia amministrativa</button>
         </div>
       </section>
       <section id="subsection-legal-it-regulators">
@@ -51,8 +51,8 @@
         <div class="button-grid">
           <button id="btn-legal-it-consob-search" data-search-id="legal-it-consob-search" type="button" class="button" title="CONSOB — site search (decisions, bulletins, issuers)">CONSOB Search</button>
           <button id="btn-legal-it-consob-listed" data-search-id="legal-it-consob-listed" type="button" class="button" title="CONSOB — listed companies by name">CONSOB Listed Cos.</button>
-          <button id="btn-legal-it-garante" data-search-id="legal-it-garante" type="button" class="button" title="Garante privacy — decisions and documents search (form only)">Garante Privacy</button>
-          <button id="btn-legal-it-pvp" data-search-id="legal-it-pvp" type="button" class="button" title="Portale delle Vendite Pubbliche — judicial auctions (form only)">Vendite Pubbliche</button>
+          <button id="btn-legal-it-garante" data-search-id="legal-it-garante" type="button" class="button" title="Garante privacy — search decisions and documents">Garante Privacy</button>
+          <button id="btn-legal-it-pvp" data-search-id="legal-it-pvp" type="button" class="button" title="Portale delle Vendite Pubbliche — search judicial auctions">Vendite Pubbliche</button>
         </div>
       </section>
     </div>
@@ -74,7 +74,7 @@
         <h3>Trade marks &amp; VAT</h3>
         <div class="button-grid">
           <button id="btn-legal-eu-tmview" data-search-id="legal-eu-tmview" type="button" class="button" title="TMview — trade marks of the EU and beyond (results list; record pages gave 403 on 2026-10-29)">TMview</button>
-          <button id="btn-legal-eu-vies" data-search-id="legal-eu-vies" type="button" class="button" title="VIES — EU VAT number validation (form only)">VIES</button>
+          <button id="btn-legal-eu-vies" data-search-id="legal-eu-vies" type="button" class="button" title="VIES — EU VAT number validation (e.g. IT00905811006)">VIES</button>
         </div>
       </section>
     </div>
@@ -82,7 +82,7 @@
 </main>
 
 <footer>
-  <p>Exploratores 3.10.0 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.10.1 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/js/main.js"></script>
@@ -92,8 +92,8 @@
 <script src="../assets/menu/navigation.js"></script>
 
 <script>
-  // One input, three validators: each button is enabled by its own catalogue validator
-  // (search term, Normattiva URN or Court of Justice case number); form-only links stay enabled.
+  // One input, four mutually exclusive validators: each button activates and turns blue
+  // only when the input matches the specific validator suited to that function.
   function updatePageState() {
     const results = {};
     const resultFor = name => {
@@ -104,25 +104,45 @@
       return results[name];
     };
 
-    document.querySelectorAll('button[data-search-id]').forEach(button => {
-        const config = SearchLibrary[button.dataset.searchId] || {};
-        const isEnabled = !!config.no_input || (!!config.validator && resultFor(config.validator).isValid);
+    const isUrn = resultFor('getAndValidateUrn').isValid;
+    const isCuria = !isUrn && resultFor('getAndValidateCuriaCase').isValid;
+    const isEuVat = !isUrn && !isCuria && resultFor('getAndValidateEuVat').isValid;
+    const isTerm = !isUrn && !isCuria && !isEuVat && resultFor('getAndValidateSearchTerm').isValid;
 
-        button.disabled = !isEnabled;
-        button.classList.toggle('text-active', isEnabled);
+    let activeValidator = null;
+    if (isUrn) activeValidator = 'getAndValidateUrn';
+    else if (isCuria) activeValidator = 'getAndValidateCuriaCase';
+    else if (isEuVat) activeValidator = 'getAndValidateEuVat';
+    else if (isTerm) activeValidator = 'getAndValidateSearchTerm';
+
+    document.querySelectorAll('button[data-search-id]').forEach(button => {
+      const config = SearchLibrary[button.dataset.searchId] || {};
+      if (config.disabled || button.classList.contains('button-dead')) {
+        button.disabled = true;
+        button.classList.remove('text-active');
+        return;
+      }
+      if (config.no_input) {
+        button.disabled = false;
+        button.classList.remove('text-active');
+        return;
+      }
+      const isMatched = !!activeValidator && config.validator === activeValidator;
+      button.disabled = !isMatched;
+      button.classList.toggle('text-active', isMatched);
     });
 
     const feedbackEl = document.getElementById('legal-feedback');
     if (feedbackEl) {
-      const inputElement = document.getElementById('searchInput');
-      const value = inputElement ? inputElement.value.trim() : '';
       let message = '';
-      if (resultFor('getAndValidateUrn').isValid) {
+      if (isUrn) {
         message = resultFor('getAndValidateUrn').message;
-      } else if (resultFor('getAndValidateCuriaCase').isValid) {
+      } else if (isCuria) {
         message = resultFor('getAndValidateCuriaCase').message;
-      } else if (value) {
-        message = 'Search term ready. Normattiva (URN) needs a URN such as urn:nir:stato:legge:1990-08-07;241; CURIA needs a case number such as C-311/18.';
+      } else if (isEuVat) {
+        message = resultFor('getAndValidateEuVat').message;
+      } else if (isTerm) {
+        message = 'Search term ready. For specific tools use a Normattiva URN/citation (e.g. L. 241/1990), a CURIA case number (e.g. C-311/18) or an EU VAT number (e.g. IT00905811006).';
       }
       feedbackEl.textContent = message;
       feedbackEl.className = message ? 'feedback-message feedback-info' : 'feedback-message';

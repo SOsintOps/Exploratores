@@ -777,6 +777,5 @@ const JanuaSearchMap = {
     "vk-ext-mailru": { "label": "Mail.Ru Search", "page": "VK"},
     "vk-ext-webarchive": { "label": "WebArchive (RU)", "page": "VK"},
 "iban-search-google": { "label": "Google Search", "page": "IBAN" },
-"iban-search-swift": { "label": "SWIFT Search", "page": "IBAN" },
-"iban-search-ibancom": { "label": "IBAN.com", "page": "IBAN" }
+"iban-search-ibancalc": { "label": "IBAN Calculator", "page": "IBAN" }
 };

@@ -770,6 +770,7 @@
  },
  "names-interpol": {
   "urlTemplate": "https://www.interpol.int/en/How-we-work/Notices/View-Red-Notices",
+  "no_input": true,
   "validator": "getAndValidateNames"
  },
  "names-occrp": {
@@ -782,6 +783,7 @@
  },
  "names-ofac-search": {
   "urlTemplate": "https://sanctionssearch.ofac.treas.gov/",
+  "no_input": true,
   "validator": "getAndValidateNames"
  },
  "names-opensanctions": {
@@ -933,6 +935,7 @@
  },
  "names-us-searchsystems": {
   "urlTemplate": "https://publicrecords.searchsystems.net/",
+  "no_input": true,
   "validator": "getAndValidateNames"
  },
  "names-us-spokeo": {
@@ -972,28 +975,28 @@
   "validator": "getAndValidateUrn"
  },
  "legal-it-normattiva": {
-  "urlTemplate": "https://www.normattiva.it/ricerca/semplice",
-  "no_input": true
+  "urlTemplate": "https://www.google.com/search?q=site%3Anormattiva.it+{q}",
+  "validator": "getAndValidateSearchTerm"
  },
  "legal-it-gazzetta": {
-  "urlTemplate": "https://www.gazzettaufficiale.it/ricerca/pdf/foglio_ordinario2/1/0/0?reset=true",
-  "no_input": true
+  "urlTemplate": "https://www.google.com/search?q=site%3Agazzettaufficiale.it+{q}",
+  "validator": "getAndValidateSearchTerm"
  },
  "legal-it-brocardi": {
   "urlTemplate": "https://www.brocardi.it/search?q={q}",
   "validator": "getAndValidateSearchTerm"
  },
  "legal-it-sentenzeweb": {
-  "urlTemplate": "https://www.italgiure.giustizia.it/sncass/",
-  "no_input": true
+  "urlTemplate": "https://www.google.com/search?q=site%3Aitalgiure.giustizia.it+{q}",
+  "validator": "getAndValidateSearchTerm"
  },
  "legal-it-cortecost": {
-  "urlTemplate": "https://www.cortecostituzionale.it/actionPronuncia.do",
-  "no_input": true
+  "urlTemplate": "https://www.google.com/search?q=site%3Acortecostituzionale.it+{q}",
+  "validator": "getAndValidateSearchTerm"
  },
  "legal-it-giustamm": {
-  "urlTemplate": "https://www.giustizia-amministrativa.it/web/guest/dcsnprr",
-  "no_input": true
+  "urlTemplate": "https://www.giustizia-amministrativa.it/web/guest/ricerca?searchGenericaTheme={q}",
+  "validator": "getAndValidateSearchTerm"
  },
  "legal-it-consob-search": {
   "urlTemplate": "https://www.consob.it/web/consob/ricerca?q={q}",
@@ -1004,12 +1007,12 @@
   "validator": "getAndValidateSearchTerm"
  },
  "legal-it-garante": {
-  "urlTemplate": "https://www.garanteprivacy.it/web/guest/home/ricerca",
-  "no_input": true
+  "urlTemplate": "https://www.google.com/search?q=site%3Agaranteprivacy.it+{q}",
+  "validator": "getAndValidateSearchTerm"
  },
  "legal-it-pvp": {
-  "urlTemplate": "https://pvp.giustizia.it/pvp/",
-  "no_input": true
+  "urlTemplate": "https://pvp.giustizia.it/pvp/it/lista_annunci.page?searchType=searchForm&ricercaLibera={q}",
+  "validator": "getAndValidateSearchTerm"
  },
  "legal-eu-eurlex": {
   "urlTemplate": "https://eur-lex.europa.eu/search.html?scope=EURLEX&text={q}&lang=en&type=quick",
@@ -1024,8 +1027,8 @@
   "validator": "getAndValidateSearchTerm"
  },
  "legal-eu-vies": {
-  "urlTemplate": "https://ec.europa.eu/taxation_customs/vies/#/vat-validation",
-  "no_input": true
+  "urlTemplate": "https://ec.europa.eu/taxation_customs/vies/rest-api/ms/{vat_country}/vat/{vat_number}",
+  "validator": "getAndValidateEuVat"
  },
  "phoneus-bing": {
   "urlTemplate": "https://www.bing.com/search?q={google_query}",

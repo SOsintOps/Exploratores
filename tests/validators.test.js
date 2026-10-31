@@ -53,6 +53,13 @@ test('searchTerm: value is also returned as q', () => eq(valid(V.getAndValidateS
 
 test('getAndValidateUrn: valid URN returned as urn', () => eq(valid(V.getAndValidateUrn({}, 'urn:nir:stato:legge:1990-08-07;241')).urn, 'urn:nir:stato:legge:1990-08-07;241', 'urn'));
 test('getAndValidateUrn: suffixed URN accepted', () => valid(V.getAndValidateUrn({}, 'urn:nir:stato:decreto.legislativo:2003-06-30;196-bis')));
+test('getAndValidateUrn: year-only and article URN accepted', () => eq(valid(V.getAndValidateUrn({}, 'urn:nir:stato:regio.decreto:1942;262~art2043')).urn, 'urn:nir:stato:regio.decreto:1942;262~art2043', 'urn'));
+test('getAndValidateUrn: costituzione URN accepted', () => eq(valid(V.getAndValidateUrn({}, 'urn:nir:stato:costituzione')).urn, 'urn:nir:stato:costituzione', 'urn'));
+test('getAndValidateUrn: Italian act citations converted to URN', () => {
+  eq(valid(V.getAndValidateUrn({}, 'L. 241/1990')).urn, 'urn:nir:stato:legge:1990;241', 'L. 241/1990');
+  eq(valid(V.getAndValidateUrn({}, 'D.Lgs. 196/2003')).urn, 'urn:nir:stato:decreto.legislativo:2003;196', 'D.Lgs. 196/2003');
+  eq(valid(V.getAndValidateUrn({}, 'D.P.R. 445/2000')).urn, 'urn:nir:stato:decreto.del.presidente.della.repubblica:2000;445', 'D.P.R. 445/2000');
+});
 test('getAndValidateUrn: trimmed and lower-cased', () => eq(valid(V.getAndValidateUrn({}, '  URN:NIR:STATO:LEGGE:1990-08-07;241 ')).urn, 'urn:nir:stato:legge:1990-08-07;241', 'urn'));
 test('getAndValidateUrn: plain term rejected', () => invalid(V.getAndValidateUrn({}, 'GDPR')));
 test('getAndValidateUrn: missing number rejected', () => invalid(V.getAndValidateUrn({}, 'urn:nir:stato:legge:1990-08-07')));
@@ -68,6 +75,16 @@ test('getAndValidateCuriaCase: trimmed and upper-cased', () => eq(valid(V.getAnd
 test('getAndValidateCuriaCase: wrong prefix rejected', () => invalid(V.getAndValidateCuriaCase({}, 'X-311/18')));
 test('getAndValidateCuriaCase: four-digit year rejected', () => invalid(V.getAndValidateCuriaCase({}, 'C-311/2018')));
 test('getAndValidateCuriaCase: empty rejected', () => invalid(V.getAndValidateCuriaCase({}, '')));
+test('getAndValidateEuVat: valid Italian VAT parsed', () => {
+  const d = valid(V.getAndValidateEuVat({}, 'IT 00905811006'));
+  eq(d.vat_country, 'IT', 'vat_country');
+  eq(d.vat_number, '00905811006', 'vat_number');
+});
+test('getAndValidateEuVat: GR mapped to EL for VIES', () => eq(valid(V.getAndValidateEuVat({}, 'GR123456789')).vat_country, 'EL', 'vat_country'));
+test('getAndValidateEuVat: non-EU or plain text rejected', () => {
+  invalid(V.getAndValidateEuVat({}, 'GDPR'));
+  invalid(V.getAndValidateEuVat({}, 'US123456789'));
+});
 test('getAndValidateCuriaCase: reads the page input', () => {
   setDom({ searchInput: 'C-311/18' });
   eq(valid(V.getAndValidateCuriaCase({})).case, 'C-311/18', 'case');
@@ -143,6 +160,7 @@ test('analytics: garbage rejected', () => invalid(V.getAndValidateAnalyticsId({}
 test('shodanHash: negative number accepted', () => valid(V.getAndValidateShodanFaviconHash({}, '-1234567890')));
 test('shodanHash: non-numeric rejected', () => invalid(V.getAndValidateShodanFaviconHash({}, '0x1234')));
 test('md5: 32 lowercase hex accepted', () => valid(V.getAndValidateMd5Hash({}, 'd41d8cd98f00b204e9800998ecf8427e')));
+test('md5: uppercase hex via queryOverride normalised to lowercase', () => eq(valid(V.getAndValidateMd5Hash({}, 'D41D8CD98F00B204E9800998ECF8427E')).md5_hash, 'd41d8cd98f00b204e9800998ecf8427e'));
 test('md5: 31 chars rejected', () => invalid(V.getAndValidateMd5Hash({}, 'd41d8cd98f00b204e9800998ecf8427')));
 
 test('xListId: numeric accepted', () => valid(V.getAndValidateXListId({}, '123456')));

@@ -110,7 +110,7 @@
 </main>
 
 <footer>
-    <p>Exploratores 3.10.0 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.10.1 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/js/main.js"></script>
@@ -194,7 +194,16 @@
         document.querySelectorAll('button[data-search-id]').forEach(button => {
             const config = SearchLibrary[button.dataset.searchId];
             if (!config) return;
-            
+            if (config.disabled || button.classList.contains('button-dead')) {
+                button.disabled = true;
+                button.classList.remove('text-active');
+                return;
+            }
+            if (config.no_input) {
+                button.disabled = false;
+                button.classList.remove('text-active');
+                return;
+            }
             const validationResult = ExploratoresValidators.getAndValidateIntlPhone(config);
             button.disabled = !validationResult.isValid;
             button.classList.toggle('text-active', validationResult.isValid);

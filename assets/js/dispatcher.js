@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         for (const searchId in SearchLibrary) {
             const config = SearchLibrary[searchId];
+            if (!config || config.disabled || config.no_input) continue;
             if (validatorSet.has(config.validator)) {
                 const mapInfo = JanuaSearchMap[searchId];
                 if (mapInfo) {
@@ -85,8 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const finalGroupedButtons = {};
 
         // Aggiunge sempre i motori di ricerca generici
+        const rawQuery = input.value.trim();
         const searchEngineButtons = findButtonsForType('GENERIC_TEXT')
-            .filter(btn => JanuaSearchMap[btn.searchId]?.page === 'Search Engines');
+            .filter(btn => JanuaSearchMap[btn.searchId]?.page === 'Search Engines')
+            .map(btn => ({ ...btn, queryValue: rawQuery }));
 
         if (searchEngineButtons.length > 0) {
             finalGroupedButtons['Search Engines'] = searchEngineButtons;
