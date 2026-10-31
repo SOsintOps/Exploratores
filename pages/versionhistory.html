@@ -19,6 +19,14 @@
   <section class="faq-section">
 
     <div class="faq-item">
+      <h2>3.10.2 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+      <ul>
+        <li><strong>Fixed:</strong> Public Company Records: the two FOIA buttons (officers and companies) now search through <code>search.usa.gov</code> with <code>affiliate=foia.gov</code>, the engine behind the search page of FOIA.gov; the old <code>search.foia.gov</code> host no longer exists. Same parameters, same results.</li>
+        <li><strong>Removed:</strong> Public Company Records: MoneyLine (<code>politicalmoneyline.com</code>, individual donor search): the domain no longer exists (checked on 2026-10-31 from a non-datacenter IP and through public DNS). Open Secrets, already in the officers section, covers the same campaign-donation data.</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
       <h2>3.10.1 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
       <ul>
         <li><strong>Fixed:</strong> Legal page: all 15 buttons now use the page input (native GET search for Giustizia amministrativa and Portale delle Vendite Pubbliche, VIES REST API lookup for EU VAT numbers via <code>getAndValidateEuVat</code>, and site-scoped search for Normattiva, Gazzetta Ufficiale, SentenzeWeb, Corte costituzionale and Garante privacy); <code>getAndValidateUrn</code> also accepts year-only URNs, article suffixes and Italian act citations (e.g. <code>L. 241/1990</code>, <code>D.Lgs. 196/2003</code>).</li>
@@ -330,7 +338,7 @@
 </main>
 
 <footer>
-  <p>Exploratores 3.10.1 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.10.2 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>

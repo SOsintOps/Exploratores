@@ -4,6 +4,13 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.10.2 — 2026
+
+- **Fixed:** Public Company Records: the two FOIA buttons (officers and companies) now search through `search.usa.gov` with `affiliate=foia.gov`, the engine behind the search page of FOIA.gov; the old `search.foia.gov` host no longer exists. Same parameters, same results.
+- **Removed:** Public Company Records: MoneyLine (`politicalmoneyline.com`, individual donor search): the domain no longer exists (checked on 2026-10-31 from a non-datacenter IP and through public DNS). Open Secrets, already in the officers section, covers the same campaign-donation data.
+
+---
+
 ## 3.10.1 — 2026
 
 - **Fixed:** Legal page: all 15 buttons now use the page input (native GET search for Giustizia amministrativa and Portale delle Vendite Pubbliche, VIES REST API lookup for EU VAT numbers via `getAndValidateEuVat`, and site-scoped search for Normattiva, Gazzetta Ufficiale, SentenzeWeb, Corte costituzionale and Garante privacy); `getAndValidateUrn` also accepts year-only URNs, article suffixes and Italian act citations (e.g. `L. 241/1990`, `D.Lgs. 196/2003`).

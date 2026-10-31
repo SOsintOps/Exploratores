@@ -1495,7 +1495,7 @@
   "validator": "getAndValidateOfficerName"
  },
  "publiccompanyrecords-officer-foia": {
-  "urlTemplate": "https://search.foia.gov/search?affiliate=foia.gov&query={officername}",
+  "urlTemplate": "https://search.usa.gov/search?affiliate=foia.gov&query={officername}",
   "validator": "getAndValidateOfficerName"
  },
  "publiccompanyrecords-officer-infobel": {
@@ -1512,10 +1512,6 @@
  },
  "publiccompanyrecords-officer-littlesis": {
   "urlTemplate": "https://littlesis.org/search?q={officername}",
-  "validator": "getAndValidateOfficerName"
- },
- "publiccompanyrecords-officer-moneyline": {
-  "urlTemplate": "http://politicalmoneyline.com/tr/tr_MG_IndivDonor.aspx?sMP=1&sText={officername}&sCycle=2020",
   "validator": "getAndValidateOfficerName"
  },
  "publiccompanyrecords-officer-muckrock": {
@@ -1619,7 +1615,7 @@
   "validator": "getAndValidateCompanyName"
  },
  "publiccompanyrecords-company-foia": {
-  "urlTemplate": "https://search.foia.gov/search?affiliate=foia.gov&query={companyname}",
+  "urlTemplate": "https://search.usa.gov/search?affiliate=foia.gov&query={companyname}",
   "validator": "getAndValidateCompanyName"
  },
  "publiccompanyrecords-company-infobel": {

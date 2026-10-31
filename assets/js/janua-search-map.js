@@ -191,7 +191,6 @@ const JanuaSearchMap = {
     "publiccompanyrecords-officer-iosco": { "label": "IOSCO Alerts", "page": "Company Public Records"},
     "publiccompanyrecords-officer-judyrecords": { "label": "JudyRecords", "page": "Company Public Records"},
     "publiccompanyrecords-officer-littlesis": { "label": "LittleSis", "page": "Company Public Records"},
-    "publiccompanyrecords-officer-moneyline": { "label": "MoneyLine", "page": "Company Public Records"},
     "publiccompanyrecords-officer-muckrock": { "label": "MuckrockFOIA", "page": "Company Public Records"},
     "publiccompanyrecords-officer-nigeria24": { "label": "Nigeria24", "page": "Company Public Records"},
     "publiccompanyrecords-officer-occrp": { "label": "OCCRP Aleph", "page": "Company Public Records"},
