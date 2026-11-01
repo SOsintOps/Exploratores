@@ -4,6 +4,12 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.10.5 — 2026
+
+- **Improved:** Redactor: *Clear Redaction Map* is now the first button of the Redaction Map section and is repeated at the end of the *Text* / *CSV* row of the Redactor, so the session can be reset without scrolling. Both buttons turn blue only while a redaction map is active. Help page and on-page note updated.
+
+---
+
 ## 3.10.4 — 2026
 
 - **Fixed:** Company Public Records: the CAC (Nigeria) button opened the CAC UDRP search added in 3.10.3, because the two buttons shared the identifier `publiccompanyrecords-company-cac`. The three CAC UDRP buttons now have their own identifiers (`domains-records-udrp-cac`, `names-udrp-cac`, `publiccompanyrecords-company-udrp-cac`) and CAC (Nigeria) opens the Nigerian company register again.

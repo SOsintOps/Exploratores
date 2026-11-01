@@ -45,6 +45,9 @@
             width: auto;
             min-width: 80px;
         }
+        .mode-toggle #btn-clear-session-top {
+            margin-left: auto;
+        }
         .pii-badge {
             display: inline-block;
             padding: 0.2em 0.55em;
@@ -92,6 +95,7 @@
             margin-bottom: 0.75rem;
         }
         #btn-clear-session,
+        #btn-clear-session-top,
         #btn-copy-map {
             width: auto;
             min-width: 160px;
@@ -137,6 +141,7 @@
             <div class="mode-toggle">
                 <button id="btn-mode-text" class="button text-active">Text</button>
                 <button id="btn-mode-csv" class="button">CSV</button>
+                <button id="btn-clear-session-top" class="button">Clear Redaction Map</button>
             </div>
 
             <!-- Text panel -->
@@ -278,8 +283,8 @@
         <div class="search-instructions">
             <h2>Redaction Map</h2>
             <div class="redactor-row" style="margin-bottom:1rem;">
-                <button id="btn-copy-map" class="button text-active">Copy Map (JSON)</button>
                 <button id="btn-clear-session" class="button">Clear Redaction Map</button>
+                <button id="btn-copy-map" class="button text-active">Copy Map (JSON)</button>
             </div>
             <div id="map-empty" class="csv-info">No redactions in this session.</div>
             <table id="map-table" class="redaction-map-table" style="display:none;">
@@ -305,7 +310,7 @@
             </details>
 
             <div class="note" style="margin-top:1rem;">
-                <strong>NOTE:</strong> All processing is performed entirely within your browser. No data is transmitted to any server. The redaction map is stored only in memory and is cleared when you close or refresh the tab. The <em>Clear Redaction Map</em> button empties the map and every input/output field on this page; custom patterns are kept.<br>
+                <strong>NOTE:</strong> All processing is performed entirely within your browser. No data is transmitted to any server. The redaction map is stored only in memory and is cleared when you close or refresh the tab. The <em>Clear Redaction Map</em> button (here, and next to <em>Text</em> and <em>CSV</em> in the Redactor) empties the map and every input/output field on this page; custom patterns are kept. It turns blue only while a redaction map is active.<br>
                 <strong>Detects:</strong>
                 <div class="detect-grid">
                     <div class="detect-group">
@@ -355,7 +360,7 @@
 </main>
 
 <footer>
-    <p>Exploratores 3.10.4 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.10.5 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>

@@ -458,6 +458,12 @@
     const table = document.getElementById('map-table');
     const empty = document.getElementById('map-empty');
     tbody.innerHTML = '';
+    // The Clear buttons are blue (.text-active) only while a map is active.
+    const mapActive = session.reverse.size > 0;
+    ['btn-clear-session', 'btn-clear-session-top'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn) btn.classList.toggle('text-active', mapActive);
+    });
     if (session.reverse.size === 0) {
       table.style.display = 'none';
       empty.style.display = '';
@@ -917,7 +923,7 @@
 
   // ─── Clear Redaction Map ─────────────────────────────────────────────────────
 
-  document.getElementById('btn-clear-session').addEventListener('click', () => {
+  function clearRedactionMap() {
     session.forward.clear();
     session.reverse.clear();
     session.counters = {};
@@ -938,4 +944,11 @@
     document.getElementById('input-import-map').value = '';
     document.getElementById('import-feedback').textContent = '';
     updateMapTable();
+  }
+
+  // The same action is offered in the Redaction Map section and next to the
+  // Text/CSV toggle of the Redactor.
+  ['btn-clear-session', 'btn-clear-session-top'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.addEventListener('click', clearRedactionMap);
   });
