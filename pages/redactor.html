@@ -36,6 +36,9 @@
             min-width: 140px;
             flex-shrink: 0;
         }
+        .redactor-row .button.push-right {
+            margin-left: auto;
+        }
         .mode-toggle {
             display: flex;
             gap: 0.5rem;
@@ -283,8 +286,8 @@
         <div class="search-instructions">
             <h2>Redaction Map</h2>
             <div class="redactor-row" style="margin-bottom:1rem;">
-                <button id="btn-clear-session" class="button">Clear Redaction Map</button>
                 <button id="btn-copy-map" class="button text-active">Copy Map (JSON)</button>
+                <button id="btn-clear-session" class="button push-right">Clear Redaction Map</button>
             </div>
             <div id="map-empty" class="csv-info">No redactions in this session.</div>
             <table id="map-table" class="redaction-map-table" style="display:none;">
