@@ -28,5 +28,8 @@ jobs:
       - name: Run the catalogue-updater tests
         run: node tests/catalogue-updater.test.mjs
 
-      - name: Check that the catalogue export is up to date
+      - name: Run the identifier-guard tests
+        run: node tests/check-ids.test.mjs
+
+      - name: Check that the catalogue export is up to date and identifiers are unique
         run: node scripts/catalogue/verify-meta.mjs

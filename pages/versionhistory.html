@@ -19,6 +19,14 @@
   <section class="faq-section">
 
     <div class="faq-item">
+      <h2>3.10.4 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+      <ul>
+        <li><strong>Fixed:</strong> Company Public Records: the CAC (Nigeria) button opened the CAC UDRP search added in 3.10.3, because the two buttons shared the identifier <code>publiccompanyrecords-company-cac</code>. The three CAC UDRP buttons now have their own identifiers (<code>domains-records-udrp-cac</code>, <code>names-udrp-cac</code>, <code>publiccompanyrecords-company-udrp-cac</code>) and CAC (Nigeria) opens the Nigerian company register again.</li>
+        <li><strong>Fixed:</strong> CI: <code>verify-meta.mjs</code> now also fails on repeated or unknown identifiers (a key declared twice in <code>search-library.js</code> or <code>janua-search-map.js</code>, a button <code>id</code> or <code>data-search-id</code> used twice in a page, a <code>data-search-id</code> with no catalogue entry), through the new <code>scripts/catalogue/check-ids.mjs</code> and its test suite <code>tests/check-ids.test.mjs</code>. It would have stopped the CAC clash above before release.</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
       <h2>3.10.3 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
       <ul>
         <li><strong>Removed:</strong> Virtual Currencies: BTC Validation (<code>bitcoin-e.org</code>): the domain no longer exists (eight weekly link checks, confirmed on 2026-10-31 through the Cloudflare and Google public DNS). No replacement: <code>getAndValidateBtcAddress</code> already checks the address format before any Bitcoin button is enabled.</li>
@@ -366,7 +374,7 @@
 </main>
 
 <footer>
-  <p>Exploratores 3.10.3 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.10.4 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>

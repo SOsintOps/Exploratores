@@ -37,7 +37,8 @@ Static HTML/CSS/vanilla-JavaScript OSINT toolkit. No build step, no backend, no 
 - `node tests/validators.test.js` — dependency-free suite covering every validator in `validators.js` (DOM is stubbed; `ibankit.js` is loaded for the IBAN checksum path). No npm install needed.
 - `node tests/linkcheck.test.mjs` — covers `apply-history.mjs` (disable/re-enable, CRLF preservation, idempotence) and the catalogue export hashing.
 - `node tests/catalogue-updater.test.mjs` — covers `catalogue-updater.js` with stubbed `fetch`/`localStorage` (cache application, validator guard, checksum and structure rejection, daily interval, discard).
-- `node scripts/catalogue/verify-meta.mjs` — fails when `assets/data/` no longer matches `search-library.js` or the README version.
+- `node tests/check-ids.test.mjs` — covers `scripts/catalogue/check-ids.mjs`, the identifier guard.
+- `node scripts/catalogue/verify-meta.mjs` — fails when `assets/data/` no longer matches `search-library.js` or the README version, and when an identifier is repeated or unknown: a key declared twice in `search-library.js` or `janua-search-map.js` (JavaScript silently keeps the last one), a button `id` or `data-search-id` used twice in a page, or a `data-search-id` with no catalogue entry. Before adding a tool, check that its `data-search-id` is new.
 - CI runs all of them on every push and pull request (`.github/workflows/tests.yml`).
 
 ## Link health CI

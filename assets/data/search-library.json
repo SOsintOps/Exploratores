@@ -600,7 +600,7 @@
   "urlTemplate": "https://www.wipo.int/amc/en/domains/search/fulltext_decisions.jsp?q={domain}",
   "validator": "getAndValidateDomain"
  },
- "domains-records-cac": {
+ "domains-records-udrp-cac": {
   "urlTemplate": "https://udrp.adr.eu/decisions/list?grid-filter%5Bdomains%5D={domain}",
   "validator": "getAndValidateDomain"
  },
@@ -750,7 +750,7 @@
   "urlTemplate": "https://www.wipo.int/amc/en/domains/statistics/filing_party.jsp?party=R&search={fullname}",
   "validator": "getAndValidateNames"
  },
- "names-cac": {
+ "names-udrp-cac": {
   "urlTemplate": "https://udrp.adr.eu/decisions/list?grid-filter%5Brespondents%5D={fullname}",
   "validator": "getAndValidateNames"
  },
@@ -1519,8 +1519,8 @@
   "validator": "getAndValidateCompanyName"
  },
  "publiccompanyrecords-company-cac": {
-  "urlTemplate": "https://udrp.adr.eu/decisions/list?grid-filter%5Bsearch_in_text%5D={companyname}",
-  "validator": "getAndValidateCompanyName"
+  "urlTemplate": "https://search.cac.gov.ng/home",
+  "no_input": true
  },
  "publiccompanyrecords-company-censys": {
   "urlTemplate": "https://search.censys.io/search?resource=certificates&sort=RELEVANCE&per_page=25&virtual_hosts=EXCLUDE&q={companyname}",
@@ -1616,6 +1616,10 @@
  },
  "publiccompanyrecords-company-udrp": {
   "urlTemplate": "https://www.wipo.int/amc/en/domains/search/fulltext_decisions.jsp?q={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-company-udrp-cac": {
+  "urlTemplate": "https://udrp.adr.eu/decisions/list?grid-filter%5Bsearch_in_text%5D={companyname}",
   "validator": "getAndValidateCompanyName"
  },
  "publiccompanyrecords-company-unicourt": {

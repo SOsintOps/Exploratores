@@ -4,6 +4,13 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.10.4 — 2026
+
+- **Fixed:** Company Public Records: the CAC (Nigeria) button opened the CAC UDRP search added in 3.10.3, because the two buttons shared the identifier `publiccompanyrecords-company-cac`. The three CAC UDRP buttons now have their own identifiers (`domains-records-udrp-cac`, `names-udrp-cac`, `publiccompanyrecords-company-udrp-cac`) and CAC (Nigeria) opens the Nigerian company register again.
+- **Fixed:** CI: `verify-meta.mjs` now also fails on repeated or unknown identifiers (a key declared twice in `search-library.js` or `janua-search-map.js`, a button `id` or `data-search-id` used twice in a page, a `data-search-id` with no catalogue entry), through the new `scripts/catalogue/check-ids.mjs` and its test suite `tests/check-ids.test.mjs`. It would have stopped the CAC clash above before release.
+
+---
+
 ## 3.10.3 — 2026
 
 - **Removed:** Virtual Currencies: BTC Validation (`bitcoin-e.org`): the domain no longer exists (eight weekly link checks, confirmed on 2026-10-31 through the Cloudflare and Google public DNS). No replacement: `getAndValidateBtcAddress` already checks the address format before any Bitcoin button is enabled.
