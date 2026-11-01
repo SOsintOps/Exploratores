@@ -65,12 +65,12 @@ function generateNavHTML() {
           <ul class="submenu">
             <li><a href="${pagesPath}publiccompanyrecords.html">Company Public Records</a></li>
             <li><a href="${pagesPath}currencies.html">Virtual Currencies</a></li>
-            <li><a href="${pagesPath}iban.html">IBAN</a></li>
           </ul>
         </li>
         <li><span>Tools</span>
           <ul class="submenu">
             <li><a href="${pagesPath}cyberchef.html">CyberChef</a></li>
+            <li><a href="${pagesPath}iban.html">IBAN</a></li>
             <li><a href="${pagesPath}redactor.html">Redactor</a></li>
           </ul>
         </li>
