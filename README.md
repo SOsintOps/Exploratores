@@ -122,15 +122,6 @@ The external tools in the catalogue are checked automatically once a week by a G
 - [Speculator](https://github.com/SOsintOps/Speculator-Project) — the sister workstation for Debian 13, with the same templates; Exploratores is its start page too
 - [Wukong](https://github.com/SOsintOps/Wukong) — the China-focused spin-off of Speculator, for the Chinese-language internet and Chinese companies
 - [Claudii Exploratores](https://github.com/SOsintOps/claudii-exploratores) — a direct derivative of Exploratores: its catalogue of OSINT tools as an agent skill and an MCP server for Claude, which classifies an indicator and builds the matching search links (alpha)
-- [Quaesitor](https://github.com/SOsintOps/quaesitor) — a local case graph for people, phones, accounts, companies and documents, with the UNODC link-analysis method
-- [Elementary CTI](https://github.com/SOsintOps/elementary-CTI) — a ransomware threat-intelligence aggregator
-- [Aethelburg](https://github.com/SOsintOps/Aethelburg-project) — an analyser of UK Companies House data for shell companies
-- [TelEgrapherX](https://github.com/SOsintOps/TelEgrapherX) — a Telegram collection tool (fork of Telegram Explorer), to go with the Telegram page
-- [TGchat-analytics](https://github.com/SOsintOps/TGchat-analytics) — a fork of chat-analytics for statistical reports on exported Telegram chats
-- [Maigret](https://github.com/SOsintOps/maigret) — our fork of soxoj's username-search tool, with a web interface, to go with the Usernames page
-- [Acta Diurna](https://github.com/SOsintOps/acta-diurna) — a dashboard (in Italian) for news on Italian law-enforcement operations
-- [Il Conclave](https://github.com/SOsintOps/il-conclave) — a Claude Code skill (in Italian) that runs a question through forced analytic procedures such as ACH and a premortem
-- [Codex Machinae](https://github.com/SOsintOps/codex-machinae) — a modular playbook for building software with LLM collaborators, with a classification module for intelligence tooling
 
 ---
 

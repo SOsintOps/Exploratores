@@ -111,15 +111,6 @@ Yes:
 *   **[Speculator](https://github.com/SOsintOps/Speculator-Project)**: the sister workstation for Debian 13, with the same templates; Exploratores is its start page too.
 *   **[Wukong](https://github.com/SOsintOps/Wukong)**: the China-focused spin-off of Speculator, for the Chinese-language internet and Chinese companies.
 *   **[Claudii Exploratores](https://github.com/SOsintOps/claudii-exploratores)**: a direct derivative of Exploratores, its catalogue as an agent skill and an MCP server for Claude (alpha); see [Can I use Exploratores from an AI assistant?](#can-i-use-exploratores-from-an-ai-assistant).
-*   **[Quaesitor](https://github.com/SOsintOps/quaesitor)**: a local case graph for people, phones, accounts, companies and documents, with the UNODC link-analysis method.
-*   **[Elementary CTI](https://github.com/SOsintOps/elementary-CTI)**: a ransomware threat-intelligence aggregator.
-*   **[Aethelburg](https://github.com/SOsintOps/Aethelburg-project)**: an analyser of UK Companies House data for shell companies.
-*   **[TelEgrapherX](https://github.com/SOsintOps/TelEgrapherX)**: a Telegram collection tool (fork of Telegram Explorer), to go with the Telegram page.
-*   **[TGchat-analytics](https://github.com/SOsintOps/TGchat-analytics)**: a fork of chat-analytics for statistical reports on exported Telegram chats, also in Chinese, Japanese, Korean and Russian; useful once a channel found through the Telegram page has been exported.
-*   **[Maigret](https://github.com/SOsintOps/maigret)**: our fork of soxoj's username-search tool, with a web interface; it checks a username across thousands of sites at once, where the Usernames page opens one service at a time.
-*   **[Acta Diurna](https://github.com/SOsintOps/acta-diurna)**: a dashboard (in Italian) for news on Italian law-enforcement operations.
-*   **[Il Conclave](https://github.com/SOsintOps/il-conclave)**: a Claude Code skill (in Italian) that puts a question or a decision through forced analytic procedures, among them ACH and a premortem.
-*   **[Codex Machinae](https://github.com/SOsintOps/codex-machinae)**: a modular playbook for building software with LLM collaborators.
 *   **[Intelligence Field Notes](https://github.com/SOsintOps/intelligence-field-notes)**: our notes on analytic standards, OSINT method, source evaluation and report writing.
 
 ### What are some basic OPSEC best practices when using this toolkit?
