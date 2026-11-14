@@ -27,7 +27,7 @@ Static HTML/CSS/vanilla-JavaScript OSINT toolkit. No build step, no backend, no 
 
 ## Conventions
 
-- No inline styles or scripts in tool pages; buttons never use `onclick` — always `data-search-id`.
+- No inline styles or scripts in tool pages. Buttons use `data-search-id`, not `onclick`, because the single click handler in `main.js` dispatches them by that attribute.
 - Element ids follow `[type]-[page]-[name]` (e.g. `btn-names-personadb`); `data-search-id` follows `[page]-[name]`.
 - 2-space indentation in HTML/JS; British English in documentation.
 - Validate user input via `validators.js` before opening any search URL.
@@ -46,7 +46,7 @@ Static HTML/CSS/vanilla-JavaScript OSINT toolkit. No build step, no backend, no 
 - `.github/workflows/linkcheck.yml` runs weekly (Sunday 13:13 UTC, plus manual `workflow_dispatch`): `extract-urls.mjs` collects every URL template from `search-library.js` and the inline scripts of `dorks.html`/`vk.html`, then `check.mjs` probes one URL per host and classifies the outcome. `dns-only.txt` and `ignore.txt` hold per-host overrides.
 - Two-strike policy: a host is confirmed dead/unreliable only after failing two checks at least a week apart; single failures sit "in observation". Failure history (`history.json`) and cumulative statistics (`runs.csv`, `issues.csv`) persist across runs via the `linkcheck-results` artifact (90-day retention).
 - Findings are published in the single open issue labelled `dead-links`; removing or replacing confirmed-dead tools stays a manual decision.
-- Stage 3 (`apply-history.mjs`): entries on confirmed hosts (strikes ≥ 2, class DNS_FAIL/GONE/SERVER_ERR/TLS_ERR) get `"disabled": "YYYY-MM-DD"` in `search-library.js`, recovered hosts lose it, and the export is rebuilt; the run opens or updates the pull request `auto/disable-dead-links` (peter-evans/create-pull-request) — nothing lands on `v3` without a merge. `main.js` greys disabled buttons out and refuses to open them; `toolkit-search.js` skips them. Never set `disabled` by hand. Requires the repository setting "Allow GitHub Actions to create and approve pull requests".
+- Stage 3 (`apply-history.mjs`): entries on confirmed hosts (strikes ≥ 2, class DNS_FAIL/GONE/SERVER_ERR/TLS_ERR) get `"disabled": "YYYY-MM-DD"` in `search-library.js`, recovered hosts lose it, and the export is rebuilt; the run opens or updates the pull request `auto/disable-dead-links` (peter-evans/create-pull-request) — nothing lands on `v3` without a merge. `main.js` greys disabled buttons out and refuses to open them; `toolkit-search.js` skips them. Do not set `disabled` by hand: `apply-history.mjs` adds it and removes it from the failure history. Requires the repository setting "Allow GitHub Actions to create and approve pull requests".
 - Run locally with Node ≥ 18: `node scripts/linkcheck/extract-urls.mjs && node scripts/linkcheck/check.mjs` (outputs in `scripts/linkcheck/out/`, gitignored; `--recheck` re-probes only the suspicious hosts).
 
 ## Versioning
