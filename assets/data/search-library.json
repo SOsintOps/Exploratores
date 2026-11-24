@@ -527,6 +527,11 @@
   "urlTemplate": "https://www.whoxy.com/whois-history-{domain_nodots}.html",
   "validator": "getAndValidateDomain"
  },
+ "domains-fr-whois": {
+  "urlTemplate": "https://www.afnic.fr/en/domain-names-and-support/everything-there-is-to-know-about-domain-names/find-a-domain-name-or-a-holder-using-whois/",
+  "no_input": true,
+  "validator": "getAndValidateDomain"
+ },
  "domains-it-whois": {
   "urlTemplate": "https://www.nic.it/en/find-your-it/web-whois",
   "no_input": true,
@@ -786,6 +791,19 @@
   "urlTemplate": "https://www.paginegialle.it/ricerca/{firstname}-{lastname}",
   "validator": "getAndValidateNames"
  },
+ "names-fr-pagesblanches": {
+  "urlTemplate": "https://www.pagesjaunes.fr/pagesblanches/recherche?quoiqui={fullname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-fr-copainsdavant": {
+  "urlTemplate": "https://copainsdavant.linternaute.com/recherche-amis/?prenom={firstname}&nom={lastname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-fr-cnb": {
+  "urlTemplate": "https://cnb.avocat.fr/annuaire-des-avocats-de-france",
+  "no_input": true,
+  "validator": "getAndValidateNames"
+ },
  "names-it-antenati": {
   "urlTemplate": "https://antenati.cultura.gov.it/search-nominative/?cognome={lastname}&nome={firstname}",
   "validator": "getAndValidateNames"
@@ -968,6 +986,24 @@
  },
  "legal-it-pvp": {
   "urlTemplate": "https://pvp.giustizia.it/pvp/it/lista_annunci.page?searchType=searchForm&ricercaLibera={q}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "legal-fr-legifrance": {
+  "urlTemplate": "https://www.legifrance.gouv.fr/search/all?query={q}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "legal-fr-pappersjustice": {
+  "urlTemplate": "https://justice.pappers.fr/recherche?q={q}",
+  "validator": "getAndValidateSearchTerm"
+ },
+ "legal-fr-hatvp": {
+  "urlTemplate": "https://www.hatvp.fr/consulter-les-declarations/",
+  "no_input": true,
+  "validator": "getAndValidateSearchTerm"
+ },
+ "legal-fr-amf": {
+  "urlTemplate": "https://www.amf-france.org/fr/recherche",
+  "no_input": true,
   "validator": "getAndValidateSearchTerm"
  },
  "legal-eu-eurlex": {
@@ -1162,6 +1198,13 @@
  },
  "phoneint-it-paginebianche": {
   "urlTemplate": "https://www.paginebianche.it/cerca-da-numero?qs={national_raw}",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireNatNum": true
+  }
+ },
+ "phoneint-fr-annuaireinverse": {
+  "urlTemplate": "https://www.pagesjaunes.fr/annuaireinverse/recherche?quoiqui={dt_0num_only}",
   "validator": "getAndValidateIntlPhone",
   "validation_rules": {
    "requireNatNum": true
@@ -1663,6 +1706,36 @@
  },
  "publiccompanyrecords-company-piva": {
   "urlTemplate": "https://www.google.com/search?q=site:ufficiocamerale.it {companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-fr-annuaire": {
+  "urlTemplate": "https://annuaire-entreprises.data.gouv.fr/rechercher?terme={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-fr-pappers": {
+  "urlTemplate": "https://www.pappers.fr/recherche?q={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-fr-inpi": {
+  "urlTemplate": "https://data.inpi.fr/search?q={companyname}&type=companies",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-fr-bodacc": {
+  "urlTemplate": "https://www.bodacc.fr/pages/annonces-commerciales-recherche/?q={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-fr-societeninja": {
+  "urlTemplate": "https://www.societe.ninja/",
+  "no_input": true,
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-fr-datagouv": {
+  "urlTemplate": "https://www.data.gouv.fr/datasets/search?q={companyname}",
+  "validator": "getAndValidateCompanyName"
+ },
+ "publiccompanyrecords-fr-marchespublics": {
+  "urlTemplate": "https://www.marches-publics.gouv.fr/",
+  "no_input": true,
   "validator": "getAndValidateCompanyName"
  },
  "publiccompanyrecords-it-registroimprese": {
@@ -2324,6 +2397,10 @@
  "maps-zillow": {
   "urlTemplate": "https://www.zillow.com/homes/for_sale/?searchQueryState={searchQueryState}",
   "validator": "getAndValidateZillowCoords"
+ },
+ "maps-fr-cadastre": {
+  "urlTemplate": "https://cadastre.data.gouv.fr/map",
+  "no_input": true
  },
  "maps-it-catasto": {
   "urlTemplate": "https://geoportale.cartografia.agenziaentrate.gov.it/age-inspire/srv/ita/catalog.search#/map",
@@ -3624,6 +3701,10 @@
  "instagram-dumpor-tag": {
   "urlTemplate": "https://dumpor.com/t/{hashtag}",
   "validator": "getAndValidateInstagramHashtag"
+ },
+ "vehicles-fr-siv": {
+  "urlTemplate": "https://siv-auto.fr/",
+  "no_input": true
  },
  "vehicles-vindecoderz": {
   "urlTemplate": "https://www.vindecoderz.com/EN/check-lookup/{vin}",

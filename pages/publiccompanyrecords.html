@@ -131,6 +131,19 @@
             </div>
         </section>
 
+        <section id="subsection-pcr-companies-france" style="margin-top: 1rem;">
+            <h3>France</h3>
+            <div class="button-grid" id="grid-pcr-companies-france">
+                <button id="btn-pcr-fr-annuaire" type="button" class="button" data-search-id="publiccompanyrecords-fr-annuaire" title="Annuaire des Entreprises — official government directory of French companies and associations (may ask for a CAPTCHA)">Annuaire des Entreprises</button>
+                <button id="btn-pcr-fr-pappers" type="button" class="button" data-search-id="publiccompanyrecords-fr-pappers" title="Pappers — free company and officer information (Cloudflare check on the first visit)">Pappers</button>
+                <button id="btn-pcr-fr-inpi" type="button" class="button" data-search-id="publiccompanyrecords-fr-inpi" title="Data INPI — national register of companies and intellectual property; beneficial ownership on request">Data INPI</button>
+                <button id="btn-pcr-fr-bodacc" type="button" class="button" data-search-id="publiccompanyrecords-fr-bodacc" title="BODACC — official bulletin of civil and commercial notices (incorporations, changes, insolvencies)">BODACC</button>
+                <button id="btn-pcr-fr-societeninja" type="button" class="button" data-search-id="publiccompanyrecords-fr-societeninja" title="Société Ninja — free public company information, search by name, SIREN or officer (opens the search)">Société Ninja</button>
+                <button id="btn-pcr-fr-datagouv" type="button" class="button" data-search-id="publiccompanyrecords-fr-datagouv" title="data.gouv.fr — national open-data portal, searched by the term entered above">data.gouv.fr Open Data</button>
+                <button id="btn-pcr-fr-marchespublics" type="button" class="button" data-search-id="publiccompanyrecords-fr-marchespublics" title="PLACE — official public procurement portal (opens the search)">Marchés publics</button>
+            </div>
+        </section>
+
         <section id="subsection-pcr-companies-italy" style="margin-top: 1rem;">
             <h3>Italy</h3>
             <div class="button-grid" id="grid-pcr-companies-italy">
@@ -200,7 +213,7 @@
 </main>
     
 <footer>
-  <p>Exploratores 3.12.0 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.13.0 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/js/main.js"></script>
@@ -226,7 +239,7 @@
             },
             {
                 inputIds: ['companyNameInput'],
-                buttonSelector: '#grid-pcr-companies-intl .button, #grid-pcr-companies-usa .button, #grid-pcr-companies-uk .button, #grid-pcr-companies-nigeria .button, #grid-pcr-companies-europe .button, #grid-pcr-companies-italy .button, #grid-pcr-companies-india .button',
+                buttonSelector: '#grid-pcr-companies-intl .button, #grid-pcr-companies-usa .button, #grid-pcr-companies-uk .button, #grid-pcr-companies-nigeria .button, #grid-pcr-companies-europe .button, #grid-pcr-companies-france .button, #grid-pcr-companies-italy .button, #grid-pcr-companies-india .button',
                 validator: ExploratoresValidators.getAndValidateCompanyName,
                 feedbackId: 'company-feedback'
             },

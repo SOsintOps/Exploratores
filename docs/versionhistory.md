@@ -4,6 +4,13 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.13.0 — 2026
+
+- **New:** France sources — second country of the country-sources programme, 18 tools: Names → National Registers → France: Pages Blanches (white pages by name), Copains d’avant (search notices by first and last name) and the CNB directory of lawyers; International Phones → Country-Specific Services: PagesJaunes reverse directory; Company Public Records → Companies → France: Annuaire des Entreprises, Pappers, Data INPI, BODACC, Société Ninja, data.gouv.fr open data and the PLACE public-procurement portal; Legal → new France column: Légifrance, Pappers Justice, HATVP declarations and AMF; Maps → Cadastre &amp; National Maps → France: cadastre.data.gouv.fr; Vehicles → new License Plates (France): SIV-Auto; Domains → Whois &amp; DNS Lookup: .fr Registry (AFNIC) WHOIS. Every URL was opened and checked in a browser on 2026-11-24; services that only offer a form are direct links with an explanatory tooltip, and the tooltip says when a site shows a bot check on the first visit.
+- **Docs:** *Ideas &amp; Roadmap*: the French candidates that were discarded, with the reason, the two to check again (Judilibre and Géoportail, which rejected the browser on 2026-11-24) and what is still to be looked at.
+
+---
+
 ## 3.12.0 — 2026
 
 - **Added:** Names → United States: Instant Checkmate (`instantcheckmate.com/results/`): free list of matches with name, age, city and possible relatives; full reports are paid, and the site asks to accept its terms on the first visit. Checked in a browser on 2026-11-24.
