@@ -171,7 +171,7 @@ To remove a custom pattern, click **Remove** in the active patterns table. The p
 
 ### Technical Notes
 
-*   Custom patterns are appended to the end of the built-in pattern list. They are applied after all built-in patterns; the standard left-to-right overlap resolution applies.
+*   Custom patterns are appended to the end of the built-in pattern list. They are applied after all built-in patterns; the standard overlap resolution applies: the leftmost match wins, then the longer one, and a match that goes on past the end of the kept one extends it. On exactly the same text a built-in pattern wins, unless its checksum (CF, P.IVA, IBAN, payment cards) fails.
 *   Use `\b` word boundaries in your regex to avoid partial matches inside longer tokens.
 *   The `g` (global) flag is added automatically if not already present. The **Case-insensitive** checkbox is the only way to set the `i` flag; flags cannot be typed in the regex field.
 *   Patterns are screened against catastrophic backtracking (ReDoS): nested-quantifier structures such as `(a+)+` are rejected outright, and every new pattern must complete a timed canary run before being accepted.

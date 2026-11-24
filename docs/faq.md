@@ -310,25 +310,33 @@ All processing runs locally in your browser. No data is transmitted to any serve
 Detected categories out of the box:
 
 *   **EMAIL**: standard email addresses.
-*   **CF**: Italian Codice Fiscale (16-character alphanumeric).
+*   **CF**: Italian Codice Fiscale (16-character alphanumeric), including omocodic codes (letters in place of some digits), which are redacted only when their check letter is correct.
 *   **National identity / social security numbers**: US SSN (`SSN_US`, dashed form), UK National Insurance number (`NINO_UK`, compact and spaced), Spain DNI/NIE (`DNI_ES`, validated against the real check-letter alphabet), France NIR (`NIR_FR`, compact and INSEE-spaced, Corsica 2A/2B included), Switzerland AVS (`AVS_CH`, 756 prefix), Romania CNP (`CNP_RO`), Finland HETU (`HETU_FI`), Nordic personal numbers (`ID_NORDIC`, SE/DK/NO separated form), Czech/Slovak rodné číslo (`RC_CZSK`, slash form), Belgium national number (`NN_BE`, dotted form). Digit-only IDs with no distinctive structure (NL BSN, DE Steuer-ID, PL PESEL, HR OIB, UK NHS) cannot be told apart from generic numbers: define a custom pattern if you need them.
-*   **VAT_XX**: VAT / fiscal codes for 30 countries, each tagged with its ISO country code (e.g., `[VAT_DE_1]`, `[VAT_FR_1]`). Includes both the EU-prefix form (`IT04598600403`) and the plain 11-digit Italian P.IVA.
-*   **Payment cards**: American Express (`AMEX`, CM15/CM13/CM11, 4-6-N grouping), Visa (`VISA`, 16 and legacy 13 digits), Mastercard (`MASTERCARD`, 51–55 and 2221–2720), Discover (`DISCOVER`, 6011/644–649/65xx), JCB (`JCB`, 3528–3589), Diners Club (`DINERS`, 300–305/36/38, 4-6-4 grouping), UnionPay (`UNIONPAY`, 62, 16–19 digits). All in compact form and grouped with spaces or hyphens.
+*   **VAT_XX**: VAT / fiscal codes for 30 countries, each tagged with its ISO country code (e.g., `[VAT_DE_1]`, `[VAT_FR_1]`). Includes both the EU-prefix form (`IT04598600403`) and the plain 11-digit Italian P.IVA. The P.IVA check digit is used only to choose the type when another pattern matches exactly the same digits.
+*   **Payment cards**: American Express (`AMEX`, CM15/CM13/CM11, 4-6-N grouping), Visa (`VISA`, 16 and legacy 13 digits), Mastercard (`MASTERCARD`, 51–55 and 2221–2720), Discover (`DISCOVER`, 6011/644–649/65xx), JCB (`JCB`, 3528–3589), Diners Club (`DINERS`, 300–305/36/38, 4-6-4 grouping), UnionPay (`UNIONPAY`, 62, 16–19 digits). All in compact form and grouped with spaces or hyphens. The Luhn check is used only to choose the type when another pattern matches exactly the same digits.
 *   **Cryptocurrency addresses**: Bitcoin (`CRYPTO_BTC`: legacy, P2SH, bech32/segwit-taproot), Ethereum and every EVM chain (`CRYPTO_ETH`: `0x…`, also BSC/Polygon/Arbitrum wallets), Monero (`CRYPTO_XMR`), Litecoin (`CRYPTO_LTC`), Tron (`CRYPTO_TRX`), Ripple (`CRYPTO_XRP`). Matching is structural; checksums are not verified.
-*   **IBAN**: International Bank Account Numbers: 2-letter country code + 2 check digits + BBAN (11–30 chars) — compact, spaced or hyphen-separated, upper or lower case.
-*   **PHONE_IT_MOBILE**: Italian mobile phone numbers (prefixes 32x–39x, 10 digits). Matches compact (`3351234567`), grouped (`335 123 4567`), and country-code formats (`+39 335 123 4567`, `0039335123456`, `(+39) 335 123 4567`).
+*   **IBAN**: International Bank Account Numbers: 2-letter country code + 2 check digits + BBAN (11–30 chars) — compact, or printed in groups separated by spaces, dots, hyphens or one line break, upper or lower case. When the checksum is valid the match ends at the IBAN length of the country, so the next word is not swallowed; an IBAN with a wrong checksum is still redacted.
+*   **PHONE_IT_MOBILE**: Italian mobile phone numbers (prefixes 32x–39x, 10 digits). Matches compact (`3351234567`), grouped with spaces, dots or hyphens (`335 123 4567`, `333.123.4567`), and country-code formats (`+39 335 123 4567`, `0039335123456`, `(+39) 335 123 4567`).
 *   **PHONE_DE_MOBILE**: German mobile numbers — prefixes 015x/016x/017x plus 7–8 digits (`0151 12345678`), with or without `+49`/`0049` country code.
 *   **PHONE_FR_MOBILE**: French mobile numbers — 06/07 plus 8 digits in pairs, dots, hyphens or compact (`06 12 34 56 78`, `0612345678`), with or without `+33`/`0033` country code.
 *   **PHONE_UK_MOBILE**: UK mobile numbers — `07xxx xxxxxx`, compact or spaced, with or without `+44`/`0044` country code.
 *   **PHONE_INTL**: any other international number with an explicit country prefix — `+CC` followed by 6–12 digits, compact or separated (`+34 612 34 56 78`, `+31612345678`), or `00CC` followed by a separator (`0031 6 12345678`). The compact `00CC…` form without separators is deliberately not matched: it cannot be told apart from zero-padded numeric IDs common in CSV exports.
+*   **PHONE_IT_LANDLINE**: Italian landline numbers written with a separator after the area code (`06 1234567`, `010-2471234`, `02/12345678`). Compact 10-digit numbers remain SE10.
+*   **URL**: web addresses with a scheme (`https://…`), starting with `www.`, or bare domains with a TLD from a closed list (it, com, net, org, eu, info, io, dev, app, gov, edu, cloud, online, site, blog).
+*   **IPADDR**: IPv4 addresses, also with a CIDR suffix or as a range. A software version such as `1.2.3.4` is redacted too.
+*   **AMOUNT**: amounts with €, EUR or euro before or after the figure, in Italian (`€ 12.500,00`) or English (`EUR 1,000.00`) format.
+*   **DOCID**: Italian act references written after their abbreviation (`R.G. 1234/2024`, `Prot. n. 456/2024`, `Rep. 45`).
+*   **TARGA**: Italian vehicle plates (`AB 123 CD`, `AB-123-CD`), uppercase only.
 *   **PCN**: prescription control numbers and similar codes of 17 or more consecutive digits.
 *   **SE10**: SE10 merchant codes (exactly 10 digits).
+
+Dates are not redacted. When two patterns overlap, the leftmost match wins, then the longer one; if the other goes on past its end, the redacted span covers both, so no part of either is left in clear. When two patterns match exactly the same text, a value that passes its checksum (CF, P.IVA, IBAN, payment cards) wins and one that fails gives way.
 
 ### What is the Redact → LLM → Restore workflow?
 
 1.  Paste your text into the **Redactor** section (or upload a CSV) and click **Redact**.
 2.  Copy the redacted output and submit it to your AI model.
-3.  Once the AI returns its report (which will contain the placeholders), paste it into the **Restore** section and click **Restore**. All original values are reinserted automatically.
+3.  Once the AI returns its report (which will contain the placeholders), paste it into the **Restore** section and click **Restore**. All original values are reinserted automatically, also where the AI rewrote a placeholder without brackets (`CF_1`), with spaces inside them (`[ CF_1 ]`) or in bold (the bold is kept). A placeholder number that is not in the map, such as `[CF_12]`, is left as it is.
 4.  If you need to continue a session later (e.g., the report arrives the next day), click **Copy Map (JSON)** to export the redaction map, save it externally, then re-import it via the **Import Map** panel before using Restore.
 
 The session state is held only in memory. It is cleared when you close or refresh the tab, or when you click **Clear Redaction Map**.

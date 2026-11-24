@@ -171,7 +171,7 @@ getAndValidateIpAddress: function(config, queryOverride) {
 
     <h3>Technical Notes</h3>
     <ul>
-      <li>Custom patterns are appended to the end of the built-in pattern list. They are applied after all built-in patterns; the standard left-to-right overlap resolution applies.</li>
+      <li>Custom patterns are appended to the end of the built-in pattern list. They are applied after all built-in patterns; the standard overlap resolution applies: the leftmost match wins, then the longer one, and a match that goes on past the end of the kept one extends it. On exactly the same text a built-in pattern wins, unless its checksum (CF, P.IVA, IBAN, payment cards) fails.</li>
       <li>Use <code>\b</code> word boundaries in your regex to avoid partial matches inside longer tokens.</li>
       <li>The <code>g</code> (global) flag is added automatically if not already present. The <strong>Case-insensitive</strong> checkbox is the only way to set the <code>i</code> flag; flags cannot be typed in the regex field.</li>
       <li>Patterns are screened against catastrophic backtracking (ReDoS): nested-quantifier structures such as <code>(a+)+</code> are rejected outright, and every new pattern must complete a timed canary run before being accepted.</li>
