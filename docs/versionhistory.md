@@ -4,6 +4,12 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.11.1 — 2026
+
+- **Removed:** Redactor: the DATE type added in 3.11.0 is removed: dates are no longer redacted.
+
+---
+
 ## 3.11.0 — 2026
 
 - **New:** Redactor: new types URL (scheme, `www.` or a bare domain with a TLD from a closed list), IPADDR (with CIDR or range), DATE (numeric, day first), AMOUNT (euro, Italian and English formats), DOCID (Italian act references such as `R.G. 1234/2024` or `Prot. n. 456/2024`), TARGA (Italian vehicle plates) and PHONE_IT_LANDLINE (landlines with a separator after the area code).

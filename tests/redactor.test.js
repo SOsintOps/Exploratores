@@ -133,8 +133,6 @@ test('URL: an email stays EMAIL', () => eq(censor('m.rossi@studio.it'), '[EMAIL_
 test('IPADDR', () => eq(censor('host 192.168.1.10 up'), 'host [IPADDR_1] up'));
 test('IPADDR with CIDR', () => eq(censor('net 10.0.0.0/8'), 'net [IPADDR_1]'));
 test('IPADDR: version with an out-of-range part', () => eq(censor('v 2.3.55.987'), 'v 2.3.55.987'));
-test('DATE', () => eq(censor('nato il 12/06/1985 a Roma'), 'nato il [DATE_1] a Roma'));
-test('DATE with time', () => eq(censor('il 01.02.2024 15:30 fine'), 'il [DATE_1] fine'));
 test('AMOUNT Italian format', () => eq(censor('totale € 12.500,00.'), 'totale [AMOUNT_1].'));
 test('AMOUNT English format', () => eq(censor('total EUR 1,000.00'), 'total [AMOUNT_1]'));
 test('AMOUNT suffix', () => eq(censor('pagati 1.234 euro'), 'pagati [AMOUNT_1]'));
@@ -156,10 +154,7 @@ test('overlap: union keeps the tail of the later match', () => {
   const out = censor('Prot. 06 12345678');
   eq(/\d/.test(clear(out)), false, 'no digit left in clear in ' + out);
 });
-test('overlap: date glued to an email', () => {
-  const out = censor('12/06/1985-mario@rossi.it');
-  eq(/mario|rossi|1985/.test(clear(out)), false, 'nothing left in clear in ' + out);
-});
+test('dates are not redacted', () => eq(censor('nato il 12/06/1985, il 01.02.2024 15:30'), 'nato il 12/06/1985, il 01.02.2024 15:30'));
 test('overlap: www URL glued to an IBAN', () => {
   const out = censor('www.rossi.it.IT60X0542811101000000123456');
   eq(/\d/.test(clear(out)), false, 'no digit left in clear in ' + out);

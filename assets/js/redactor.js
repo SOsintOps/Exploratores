@@ -4,7 +4,7 @@
 //
 // The checksum validators (Codice Fiscale, Partita IVA, IBAN mod-97, Luhn), the
 // printed-IBAN scanner, the tolerant restore and the URL, IP, plate, amount,
-// act-reference, date and Italian phone patterns are adapted from rizzo-pii
+// act-reference and Italian phone patterns are adapted from rizzo-pii
 // (https://github.com/Rizzo-AI-Academy/rizzo-pii), released under this licence:
 //
 //   MIT License
@@ -528,13 +528,6 @@
       // whose parts are all 255 or lower ("1.2.3.4") cannot be told apart from an address.
       regex: /\b(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}(?:\/(?:3[0-2]|[12]?\d))?(?:\s*-\s*(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})?\b/g,
       color: '#566573'
-    },
-    {
-      type: 'DATE',
-      // Numeric calendar date D/M/YYYY with / . or - separators, years 1900-2099,
-      // optionally followed by a time (12/06/1985 15:30). Day-first order only.
-      regex: /(?<!\d)(?:0?[1-9]|[12]\d|3[01])[\/.\-](?:0?[1-9]|1[0-2])[\/.\-](?:19|20)\d{2}(?:\s+\d{1,2}[:.]\d{2})?(?!\d)/g,
-      color: '#a04000'
     },
     {
       type: 'AMOUNT',

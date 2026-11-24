@@ -174,7 +174,6 @@
             <li><strong>PHONE_UK_MOBILE:</strong> UK mobile numbers (07xxx xxxxxx), compact or spaced, with or without +44/0044 country code.</li>
             <li><strong>PHONE_INTL:</strong> any other international number with an explicit country prefix: <code>+CC</code> followed by 6–12 digits (compact or separated), or <code>00CC</code> followed by a separator. The compact <code>00CC…</code> form without separators is deliberately not matched — it cannot be told apart from zero-padded numeric IDs; use a custom pattern if you need it.</li>
             <li><strong>IPADDR:</strong> IPv4 addresses, also with a CIDR suffix (<code>10.0.0.0/8</code>) or as a range. A software version whose four parts are all 255 or lower (<code>1.2.3.4</code>) cannot be told apart from an address and is redacted too.</li>
-            <li><strong>DATE:</strong> numeric dates in day/month/year order, separated by <code>/</code>, <code>.</code> or <code>-</code>, years 1900–2099, with an optional time.</li>
             <li><strong>AMOUNT:</strong> amounts with €, EUR or euro before or after the figure, in Italian (<code>€ 12.500,00</code>) or English (<code>EUR 1,000.00</code>) format.</li>
             <li><strong>DOCID:</strong> Italian act references written after their abbreviation: <code>R.G. 1234/2024</code>, <code>Prot. n. 456/2024</code>, <code>Rep. 45</code>. The abbreviation is part of the redacted span; a bare number such as <code>1234/2024</code> is not matched.</li>
             <li><strong>TARGA:</strong> Italian vehicle plates (<code>AB 123 CD</code>, <code>AB-123-CD</code>, <code>AB123CD</code>), uppercase only and without the letters I, O, Q, U that plates never use.</li>
@@ -191,7 +190,7 @@
 </main>
 
 <footer>
-    <p>Exploratores 3.11.0 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.11.1 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>
