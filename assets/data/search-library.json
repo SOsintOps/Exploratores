@@ -829,6 +829,10 @@
   "urlTemplate": "https://www.ratsit.se/sok/person?vem={fullname}&m=0&k=0&r=0&er=0&b=0&eb=0&amin=16&amax=120&fon=1&page=1",
   "validator": "getAndValidateNames"
  },
+ "names-sweden-birthday": {
+  "urlTemplate": "https://www.birthday.se/sok?q={fullname}",
+  "validator": "getAndValidateNames"
+ },
  "names-sweden-merinfo": {
   "urlTemplate": "https://www.merinfo.se/search?q={firstname}+{lastname}",
   "validator": "getAndValidateNames"
@@ -859,6 +863,10 @@
  },
  "names-us-idcrawl-us": {
   "urlTemplate": "https://www.idcrawl.com/{firstname}-{lastname}",
+  "validator": "getAndValidateNames"
+ },
+ "names-us-instantcheckmate": {
+  "urlTemplate": "https://www.instantcheckmate.com/results/?firstName={firstname}&lastName={lastname}&state=ALL",
   "validator": "getAndValidateNames"
  },
  "names-us-intelius": {
@@ -1154,6 +1162,13 @@
  },
  "phoneint-it-paginebianche": {
   "urlTemplate": "https://www.paginebianche.it/cerca-da-numero?qs={national_raw}",
+  "validator": "getAndValidateIntlPhone",
+  "validation_rules": {
+   "requireNatNum": true
+  }
+ },
+ "phoneint-jp-jpnumber": {
+  "urlTemplate": "https://www.jpnumber.com/searchnumber.do?number={dt_0num_only}",
   "validator": "getAndValidateIntlPhone",
   "validation_rules": {
    "requireNatNum": true

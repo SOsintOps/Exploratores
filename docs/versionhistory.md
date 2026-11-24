@@ -4,6 +4,15 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.12.0 — 2026
+
+- **Added:** Names → United States: Instant Checkmate (`instantcheckmate.com/results/`): free list of matches with name, age, city and possible relatives; full reports are paid, and the site asks to accept its terms on the first visit. Checked in a browser on 2026-11-24.
+- **Added:** Names → Sweden: Birthday.se (`birthday.se/sok?q=`): people search with address, birthday and age. Checked in a browser on 2026-11-24, behind a Cloudflare check that a normal browser passes.
+- **Added:** International Phones → Country-Specific Services: jpnumber (Japan, `jpnumber.com/searchnumber.do`): reverse lookup of Japanese numbers; the national number is sent with its leading 0, whether or not it was typed. Checked in a browser on 2026-11-24.
+- **Changed:** `docs/todo.md`: the three sources above leave the pending list; Intelius, also listed there, was already in Names → United States and still works.
+
+---
+
 ## 3.11.2 — 2026
 
 - **Fixed:** International Phones: tellows opened the wrong number for Italian landlines, because the leading 0 was dropped (`06 67101` became `+39667101`). It now uses the number as typed; mobile numbers are unchanged. Checked in a browser on 2026-11-24.

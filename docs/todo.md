@@ -6,20 +6,6 @@ This file collects ideas, source suggestions, and potential improvements to be e
 
 ## Pending
 
-### Names Tool
-
-- **US people search — additional sources:** the following sites partially obscure results but may surface useful metadata:
-  - [instantcheckmate.com](https://www.instantcheckmate.com)
-  - [intelius.com](https://www.intelius.com)
-
-- **Sweden — birthday.se:** date-of-birth lookup by name and city. Example:
-  `https://www.birthday.se/Julia-Arnander/Stockholm/1985/f20cd250aa`
-
-### Phone Tools
-
-- **Japan — jpnumber.com:** reverse phone lookup for Japanese numbers. Example:
-  `https://www.jpnumber.com/searchnumber.do?number=08021651552`
-
 ### Telegram Tool
 
 The dedicated page shipped in 3.5.0. Still open:
