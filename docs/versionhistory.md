@@ -4,6 +4,12 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.11.2 — 2026
+
+- **Fixed:** International Phones: tellows opened the wrong number for Italian landlines, because the leading 0 was dropped (`06 67101` became `+39667101`). It now uses the number as typed; mobile numbers are unchanged. Checked in a browser on 2026-11-24.
+
+---
+
 ## 3.11.1 — 2026
 
 - **Removed:** Redactor: the DATE type added in 3.11.0 is removed: dates are no longer redacted.

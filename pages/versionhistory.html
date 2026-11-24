@@ -19,6 +19,13 @@
   <section class="faq-section">
 
     <div class="faq-item">
+      <h2>3.11.2 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
+      <ul>
+        <li><strong>Fixed:</strong> International Phones: tellows opened the wrong number for Italian landlines, because the leading 0 was dropped (<code>06 67101</code> became <code>+39667101</code>). It now uses the number as typed; mobile numbers are unchanged. Checked in a browser on 2026-11-24.</li>
+      </ul>
+    </div>
+
+    <div class="faq-item">
       <h2>3.11.1 <span style="font-size:0.7em; font-weight:normal;">— 2026</span></h2>
       <ul>
         <li><strong>Removed:</strong> Redactor: the DATE type added in 3.11.0 is removed: dates are no longer redacted.</li>
@@ -404,7 +411,7 @@
 </main>
 
 <footer>
-  <p>Exploratores 3.11.1 <a href="./license.html">License</a></p>
+  <p>Exploratores 3.11.2 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>

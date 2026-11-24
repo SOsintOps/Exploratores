@@ -1146,7 +1146,7 @@
   }
  },
  "phoneint-tellows": {
-  "urlTemplate": "https://www.tellows.it/num/{nat_num}",
+  "urlTemplate": "https://www.tellows.it/num/{national_raw}",
   "validator": "getAndValidateIntlPhone",
   "validation_rules": {
    "requireNatNum": true
