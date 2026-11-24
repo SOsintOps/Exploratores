@@ -1,6 +1,33 @@
 // Exploratores Redactor — browser-side PII redaction with reversible mapping.
 // All processing is local: the redaction map lives only in memory, custom
 // patterns persist in localStorage. Used exclusively by pages/redactor.html.
+//
+// The checksum validators (Codice Fiscale, Partita IVA, IBAN mod-97, Luhn), the
+// printed-IBAN scanner, the tolerant restore and the URL, IP, plate, amount,
+// act-reference, date and Italian phone patterns are adapted from rizzo-pii
+// (https://github.com/Rizzo-AI-Academy/rizzo-pii), released under this licence:
+//
+//   MIT License
+//
+//   Copyright (c) 2026 Simone Rizzo — Rizzo AI Academy
+//
+//   Permission is hereby granted, free of charge, to any person obtaining a copy
+//   of this software and associated documentation files (the "Software"), to deal
+//   in the Software without restriction, including without limitation the rights
+//   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//   copies of the Software, and to permit persons to whom the Software is
+//   furnished to do so, subject to the following conditions:
+//
+//   The above copyright notice and this permission notice shall be included in all
+//   copies or substantial portions of the Software.
+//
+//   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//   SOFTWARE.
   document.addEventListener('DOMContentLoaded', () => {
     if (typeof exploratoresConfig !== 'undefined' && exploratoresConfig.lightVersionEnabled) {
       exploratoresConfig.selectorsToHide.forEach(selector => {
@@ -14,9 +41,183 @@
     }
   });
 
+  // ─── Checksum Validators ────────────────────────────────────────────────────
+  // Used to rank candidates, never to discard a value (see findAllMatches): a
+  // mistyped identifier stays redacted. The only exception is CF_OMOCODE, whose
+  // shape alone is too generic and is accepted only when the check letter is right.
+
+  const CF_ODD = {
+    0: 1, 1: 0, 2: 5, 3: 7, 4: 9, 5: 13, 6: 15, 7: 17, 8: 19, 9: 21,
+    A: 1, B: 0, C: 5, D: 7, E: 9, F: 13, G: 15, H: 17, I: 19, J: 21, K: 2, L: 4, M: 18,
+    N: 20, O: 11, P: 3, Q: 6, R: 8, S: 12, T: 14, U: 16, V: 10, W: 22, X: 25, Y: 24, Z: 23
+  };
+
+  // Italian Codice Fiscale check letter. Works on omocodic codes too (letters in
+  // place of digits), because even positions map letters and digits alike.
+  function cfOk(value) {
+    const c = value.trim().toUpperCase();
+    if (!/^[A-Z0-9]{16}$/.test(c)) return false;
+    let total = 0;
+    for (let i = 0; i < 15; i++) {
+      const ch = c[i];
+      if (i % 2 === 0) total += CF_ODD[ch];
+      else total += /\d/.test(ch) ? Number(ch) : ch.charCodeAt(0) - 65;
+    }
+    return String.fromCharCode(65 + (total % 26)) === c[15];
+  }
+
+  // Italian Partita IVA (11 digits, Luhn-like check digit). An "IT" prefix is ignored.
+  function pivaOk(value) {
+    const p = value.replace(/\D/g, '');
+    if (p.length !== 11) return false;
+    let total = 0;
+    for (let i = 0; i < 10; i++) {
+      const d = Number(p[i]);
+      if (i % 2 === 0) total += d;
+      else total += d * 2 > 9 ? d * 2 - 9 : d * 2;
+    }
+    return (10 - (total % 10)) % 10 === Number(p[10]);
+  }
+
+  // IBAN mod-97 (ISO 13616). Separators allowed by the patterns are stripped first.
+  function ibanOk(value) {
+    const s = value.replace(/[\s.\-]/g, '').toUpperCase();
+    if (!/^[A-Z0-9]{15,34}$/.test(s)) return false;
+    const r = s.slice(4) + s.slice(0, 4);
+    let rem = 0;
+    for (const ch of r) {
+      const digits = /\d/.test(ch) ? ch : String(ch.charCodeAt(0) - 55);
+      for (const d of digits) rem = (rem * 10 + Number(d)) % 97;
+    }
+    return rem === 1;
+  }
+
+  // Luhn check for payment cards (13–19 digits).
+  function luhnOk(value) {
+    const d = value.replace(/\D/g, '');
+    if (d.length < 13 || d.length > 19) return false;
+    let total = 0;
+    let alt = false;
+    for (let i = d.length - 1; i >= 0; i--) {
+      let n = Number(d[i]);
+      if (alt) {
+        n *= 2;
+        if (n > 9) n -= 9;
+      }
+      total += n;
+      alt = !alt;
+    }
+    return total % 10 === 0;
+  }
+
+  // ─── Printed IBAN Scanner ───────────────────────────────────────────────────
+  // ISO 13616 length per country. It tells where a grouped IBAN ends: without it a
+  // regex either swallows the next word ("BE68 5390 0754 7034 Gent") or stops short
+  // and leaves the tail of the IBAN in clear.
+  const IBAN_LEN = {};
+  ('AD24 AE23 AL28 AT20 AZ28 BA20 BE16 BG22 BH22 BI27 BR29 BY28 CH21 CR22 CY28 CZ24 ' +
+   'DE22 DJ27 DK18 DO28 EE20 EG29 ES24 FI18 FK18 FO18 FR27 GB22 GE22 GI23 GL18 GR27 ' +
+   'GT28 HN28 HR21 HU28 IE22 IL23 IQ23 IS26 IT27 JO30 KW30 KZ20 LB28 LC32 LI21 LT20 ' +
+   'LU20 LV21 LY25 MC27 MD24 ME22 MK19 MN20 MR27 MT31 MU30 NI28 NL18 NO15 OM23 PK24 ' +
+   'PL28 PS29 PT25 QA29 RO24 RS22 RU33 SA24 SC31 SD18 SE24 SI19 SK24 SM27 SO23 ST25 ' +
+   'SV28 TL23 TN24 TR26 UA29 VA22 VG24 XK20 YE30').split(' ').forEach(c => {
+    IBAN_LEN[c.slice(0, 2)] = Number(c.slice(2));
+  });
+  const IBAN_MAX_SEP = 3;   // consecutive separators (justified PDF text, tables)
+  const IBAN_RUN = 5;       // characters per group: longer runs are words, not groups
+  const IBAN_REGEX = /\b[A-Za-z]{2}\d{2}(?:[ -][A-Za-z0-9]{4}){2,7}(?:[ -][A-Za-z0-9]{1,4})?\b|\b[A-Za-z]{2}\d{2}[A-Za-z0-9]{11,30}\b/g;
+
+  function isIbanChar(c) { return /^[A-Za-z0-9]$/.test(c); }
+
+  // Returns checksum-valid IBANs, compact or printed in groups separated by spaces,
+  // dots, hyphens or one line break. Consumes exactly the length expected for the country.
+  function detectIban(text) {
+    const found = [];
+    const head = /(?<![\p{L}\p{N}])[A-Za-z]{2}\d{2}/gu;
+    let m;
+    while ((m = head.exec(text)) !== null) {
+      const n = IBAN_LEN[m[0].slice(0, 2).toUpperCase()];
+      if (!n) continue;
+      const start = m.index;
+      let i = start, chars = 0, sep = 0, run = 0, breaks = 0, grouped = false;
+      while (i < text.length && chars < n) {
+        const c = text[i];
+        if (isIbanChar(c)) {
+          chars++;
+          run++;
+          sep = 0;
+        } else if (sep < IBAN_MAX_SEP && run <= IBAN_RUN && (c === '.' || c === '-' || /\s/.test(c))) {
+          sep++;
+          run = 0;
+          grouped = true;
+          if (/\s/.test(c) && c !== ' ' && c !== '\t' && c !== ' ') breaks++;
+          if (breaks > 1) break;   // an IBAN wraps once at most; a table column wraps at every cell
+        } else {
+          break;
+        }
+        i++;
+      }
+      if (chars < n || (i < text.length && isIbanChar(text[i]))) continue;   // truncated, or the code goes on
+      const span = text.slice(start, i);
+      if (grouped) {
+        const groups = span.split(/[\s.\-]+/).filter(Boolean);
+        const sizes = new Set(groups.slice(0, -1).map(g => g.length));
+        if (sizes.size > 1 || groups[groups.length - 1].length > groups[0].length) continue;   // prose, not a printed IBAN
+      }
+      if (ibanOk(span)) found.push({ start: start, end: i });
+    }
+    // Two overlapping candidates: one is an artefact of a scan started inside a nearby
+    // code. Mask the union, because dropping either one leaves part of the other in clear.
+    found.sort((a, b) => a.start - b.start);
+    for (let k = 1; k < found.length; k++) {
+      const a = found[k - 1], b = found[k];
+      if (b.start < a.end) {
+        b.end = Math.max(a.end, b.end);
+        b.start = a.start;
+        a.end = a.start;
+      }
+    }
+    return found.filter(f => f.end > f.start);
+  }
+
+  // IBAN candidates: checksum-valid IBANs from the scanner, plus the matches of the
+  // older regex that the scanner did not confirm at the same position (countries
+  // outside the ISO list, mistyped codes). Those are still redacted, ranked lower.
+  function scanIban(text) {
+    const valid = detectIban(text);
+    const starts = new Set(valid.map(v => v.start));
+    const out = valid.map(v => ({ start: v.start, end: v.end, rank: 0 }));
+    const re = new RegExp(IBAN_REGEX.source, IBAN_REGEX.flags);
+    let m;
+    while ((m = re.exec(text)) !== null) {
+      if (starts.has(m.index)) continue;
+      out.push({ start: m.index, end: m.index + m[0].length, rank: ibanOk(m[0]) ? 0 : 2 });
+    }
+    return out;
+  }
+
+  // URL candidates, without the punctuation that closes the sentence ("see https://x.it/page.").
+  const URL_REGEX = /(?:https?|ftp):\/\/[^\s<>"']+|www\.[A-Za-z0-9\-._~%]+\.[A-Za-z]{2,}(?:\/[^\s<>"']*)?|\b(?:[A-Za-z0-9](?:[A-Za-z0-9\-]*[A-Za-z0-9])?\.)+(?:it|com|net|org|eu|info|io|dev|app|gov|edu|cloud|online|site|blog)\b(?:\/[^\s<>"']*)?/gi;
+  const URL_TRAIL = '.,;:!?)]}»"\'';
+
+  function scanUrl(text) {
+    const out = [];
+    const re = new RegExp(URL_REGEX.source, URL_REGEX.flags);
+    let m;
+    while ((m = re.exec(text)) !== null) {
+      let end = m.index + m[0].length;
+      while (end > m.index && URL_TRAIL.includes(text[end - 1])) end--;
+      if (end > m.index) out.push({ start: m.index, end: end, rank: 1 });
+    }
+    return out;
+  }
+
   // ─── PII Pattern Definitions ────────────────────────────────────────────────
   // Priority order: longer / more specific patterns first.
   // Prevents shorter numeric patterns from consuming parts of longer matches.
+  // Optional fields: `validator` ranks a match on identical spans (a value that passes
+  // its checksum wins, one that fails yields); `strict` drops a match that fails it;
+  // `scan(text)` replaces `regex` when the end of a match cannot be told by a regex.
   const PII_PATTERNS = [
     {
       type: 'AMEX',
@@ -24,6 +225,7 @@
       // Spaced format: 4-6-N (N = 1, 3 or 5). Separator may be space or hyphen.
       // Unspaced: word-boundary anchors prevent partial matches inside longer digit strings.
       regex: /3[47]\d{2}[\s\-]\d{6}[\s\-]\d{1,5}|\b3[47](?:\d{13}|\d{11}|\d{9})\b/g,
+      validator: luhnOk,
       color: '#c0392b'
     },
     {
@@ -31,6 +233,7 @@
       // Visa: 16-digit (most common) or legacy 13-digit, starting with 4.
       // Grouped format: 4-4-4-4 with space or hyphen separator.
       regex: /\b4\d{3}(?:[ -]\d{4}){3}\b|\b4\d{15}\b|\b4\d{12}\b/g,
+      validator: luhnOk,
       color: '#1a5276'
     },
     {
@@ -38,6 +241,7 @@
       // Mastercard: 16 digits. Classic range 51–55xxxx; new range 2221–2720xxxx.
       // Grouped format: 4-4-4-4 with space or hyphen separator.
       regex: /\b5[1-5]\d{2}(?:[ -]\d{4}){3}\b|\b5[1-5]\d{14}\b|\b2[2-7]\d{2}(?:[ -]\d{4}){3}\b|\b2(?:2[2-9]\d|[3-6]\d{2}|7[01]\d|720)\d{12}\b/g,
+      validator: luhnOk,
       color: '#922b21'
     },
     {
@@ -45,24 +249,28 @@
       // Discover: 16 digits. Prefixes: 6011, 644–649, 65xx.
       // Grouped format: 4-4-4-4 with space or hyphen separator.
       regex: /\b6(?:011|4[4-9]\d|5\d{2})(?:[ -]\d{4}){3}\b|\b6(?:011|4[4-9]\d|5\d{2})\d{12}\b/g,
+      validator: luhnOk,
       color: '#b7950b'
     },
     {
       type: 'JCB',
       // JCB: 16 digits, prefixes 3528–3589. Compact and grouped 4-4-4-4.
       regex: /\b35(?:2[89]|[3-8]\d)(?:[ -]\d{4}){3}\b|\b35(?:2[89]|[3-8]\d)\d{12}\b/g,
+      validator: luhnOk,
       color: '#6c3483'
     },
     {
       type: 'DINERS',
       // Diners Club: 14 digits, prefixes 300–305, 36, 38. Compact and grouped 4-6-4.
       regex: /\b3(?:0[0-5]\d|[68]\d{2})[ -]\d{6}[ -]\d{4}\b|\b3(?:0[0-5]\d{11}|[68]\d{12})\b/g,
+      validator: luhnOk,
       color: '#1f618d'
     },
     {
       type: 'UNIONPAY',
       // UnionPay: 16–19 digits starting with 62. Compact and grouped 4-4-4-4 (16-digit form).
       regex: /\b62\d{2}(?:[ -]\d{4}){3}\b|\b62\d{14,17}\b/g,
+      validator: luhnOk,
       color: '#9c640c'
     },
     // ── Cryptocurrency addresses ───────────────────────────────────────────────
@@ -112,6 +320,19 @@
       type: 'CF',
       // Italian Codice Fiscale: 6 letters + 2 digits + 1 letter + 2 digits + 1 letter + 3 digits + 1 letter (16 chars total).
       regex: /\b[A-Za-z]{6}\d{2}[A-Za-z]\d{2}[A-Za-z]\d{3}[A-Za-z]\b/g,
+      validator: cfOk,
+      color: '#27ae60'
+    },
+    {
+      type: 'CF',
+      // Omocodic Codice Fiscale: when two people would share a code, the Agenzia delle
+      // Entrate replaces digits from the right with letters (0→L 1→M 2→N 3→P 4→Q 5→R
+      // 6→S 7→T 8→U 9→V), so the form above misses it. The shape alone is too generic
+      // here (seven positions accept letters), hence strict: the check letter must be right.
+      // On a canonical code both entries match the same span and the first one is kept.
+      regex: /\b[A-Za-z]{6}[\dLMNPQRSTUVlmnpqrstuv]{2}[A-Za-z][\dLMNPQRSTUVlmnpqrstuv]{2}[A-Za-z][\dLMNPQRSTUVlmnpqrstuv]{3}[A-Za-z]\b/g,
+      validator: cfOk,
+      strict: true,
       color: '#27ae60'
     },
     // ── National identity / social security numbers ────────────────────────────
@@ -194,7 +415,7 @@
     // Italian Partita IVA for backward compatibility.
     // Note: Montenegro (PIB) and Turkey (VKN) are pure 10/8-digit numbers indistinguishable
     // from SE10 / other codes without prefix — they are caught by SE10 and not listed here.
-    { type: 'VAT_IT', regex: /\b[Ii][Tt]\d{11}\b|\b\d{7}(?:0[0-9]{2}|1[01][0-9]|12[01])\d\b/g, color: '#16a085' }, // Italy: EU VAT (IT prefix) or plain 11-digit P.IVA (office code 001-121)
+    { type: 'VAT_IT', regex: /\b[Ii][Tt]\d{11}\b|\b\d{7}(?:0[0-9]{2}|1[01][0-9]|12[01])\d\b/g, validator: pivaOk, color: '#16a085' }, // Italy: EU VAT (IT prefix) or plain 11-digit P.IVA (office code 001-121); a failed check digit yields identical spans to other types (e.g. a UK mobile)
     { type: 'VAT_AL', regex: /\b[A-Za-z]\d{8}[A-Za-z]\b/g,                color: '#c0392b' }, // Albania NIPT: letter + 8 digits + letter. Ambiguous by design: any letter-8digits-letter token matches (false positives on serials / reference codes)
     { type: 'VAT_AT', regex: /\bATU\d{8}\b/g,                              color: '#2980b9' }, // Austria
     { type: 'VAT_BE', regex: /\bBE0?\d{9,10}\b/g,                          color: '#8e44ad' }, // Belgium
@@ -231,13 +452,25 @@
       color: '#2980b9'
     },
     {
+      type: 'URL',
+      // Three forms, from the safest to the riskiest: with a scheme (http/https/ftp),
+      // www.<domain>, and a bare domain ONLY with a TLD from a closed list. A generic
+      // bare domain would catch "p.iva", "n.ro", "S.r.l."; the price of the closed list
+      // is that a domain with an unlisted TLD stays in clear. Listed after EMAIL: the
+      // domain of an address is covered by the earlier EMAIL match.
+      scan: scanUrl,
+      color: '#2e86c1'
+    },
+    {
       type: 'IBAN',
       // International Bank Account Number: 2-letter country code + 2 check digits + BBAN (11–30 alphanumeric chars).
-      // Matches compact (IT60X0542811101000000123456), spaced (IT60 X054 2811 …) and
-      // hyphenated (IT60-X054-2811-…) forms, upper or lower case.
+      // The scanner (detectIban) finds checksum-valid IBANs, compact or printed in groups
+      // separated by spaces, dots, hyphens or one line break, and stops at the length
+      // expected for the country. The older regex (IBAN_REGEX) still runs for the rest:
+      // compact, spaced or hyphenated, upper or lower case, any country, no checksum.
       // Placed before PCN so alphanumeric IBANs are not partially consumed by digit-only patterns.
       // Lowercase compact matching can rarely hit hex-like tokens that start with two letters + two digits.
-      regex: /\b[A-Za-z]{2}\d{2}(?:[ -][A-Za-z0-9]{4}){2,7}(?:[ -][A-Za-z0-9]{1,4})?\b|\b[A-Za-z]{2}\d{2}[A-Za-z0-9]{11,30}\b/g,
+      scan: scanIban,
       color: '#1e8449'
     },
     // ── Phone numbers ──────────────────────────────────────────────────────────
@@ -251,9 +484,10 @@
     {
       type: 'PHONE_IT_MOBILE',
       // Italian mobile numbers: all active prefixes 32x–39x (10 digits total).
-      // Optional country code: +39 / 0039 / (+39) / (0039), with optional space or hyphen separator.
-      // Handles compact (3351234567), grouped (335 123 4567), and prefixed (+39 335 123 4567) formats.
-      regex: /(?<!\d)(?:(?:\((?:00|\+)39\)|(?:00|\+)39)[ -]?)?3[2-9]\d[ -]?\d{3}[ -]?\d{4}(?!\d)/g,
+      // Optional country code: +39 / 0039 / (+39) / (0039), with optional space, dot or hyphen separator.
+      // Handles compact (3351234567), grouped (335 123 4567, 335.123.4567, 335-123-4567)
+      // and prefixed (+39 335 123 4567) formats.
+      regex: /(?<!\d)(?:(?:\((?:00|\+)39\)|(?:00|\+)39)[ .\-]?)?3[2-9]\d[ .\-]?\d{3}[ .\-]?\d{4}(?!\d)/g,
       color: '#117a65'
     },
     {
@@ -288,6 +522,54 @@
       color: '#7e5109'
     },
     {
+      type: 'IPADDR',
+      // IPv4: four octets 0-255, optional CIDR suffix (/0-32) or range (a.b.c.d-e.f.g.h).
+      // The octet constraint keeps out most software versions ("2.3.55.987"); a version
+      // whose parts are all 255 or lower ("1.2.3.4") cannot be told apart from an address.
+      regex: /\b(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}(?:\/(?:3[0-2]|[12]?\d))?(?:\s*-\s*(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(?:\.(?:25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})?\b/g,
+      color: '#566573'
+    },
+    {
+      type: 'DATE',
+      // Numeric calendar date D/M/YYYY with / . or - separators, years 1900-2099,
+      // optionally followed by a time (12/06/1985 15:30). Day-first order only.
+      regex: /(?<!\d)(?:0?[1-9]|[12]\d|3[01])[\/.\-](?:0?[1-9]|1[0-2])[\/.\-](?:19|20)\d{2}(?:\s+\d{1,2}[:.]\d{2})?(?!\d)/g,
+      color: '#a04000'
+    },
+    {
+      type: 'AMOUNT',
+      // Money amount with a euro marker before or after: "€ 12.500,00", "EUR 1,000.00",
+      // "1.234 €", "100 euro". Italian and English grouping are both accepted, so the
+      // whole figure is covered whichever convention the document uses. A plain space
+      // is not a thousands separator (only the no-break and thin spaces are): with it the
+      // amount took the first digits of the number that follows ("€ 50 335 123 4567"),
+      // and a long run of "123 " made the suffix form quadratic. The lookbehind keeps the
+      // suffix form from starting inside a figure grouped with no-break or thin spaces.
+      regex: /(?:€|\bEUR\b|\beuro\b)[  ]?\d+(?:[.,  ]\d{3})*(?:[.,]\d{1,2})?(?!\d)|(?<![\d.,]|\d[  ])\d+(?:[.,  ]\d{3})*(?:[.,]\d{1,2})?[  ]?(?:€|EUR\b|euros?\b)/gi,
+      color: '#7d6608'
+    },
+    {
+      type: 'DOCID',
+      // Italian act reference, always written after its abbreviation: "R.G. 1234/2024",
+      // "Prot. n. 456/2024", "Rep. 45". The abbreviation is what makes the number
+      // recognisable (a bare "1234/2024" is a fraction or an article), so it is required
+      // and included in the span. The "n." between abbreviation and number is optional.
+      // Case-sensitive, with lowercase forms only when they end with a dot or are the full
+      // word ("prot.", "protocollo"): "rep" and "rg" are also ordinary words. Spaces only,
+      // never a line break, between the parts.
+      regex: /\b(?:R\.?G\.?[  ]*N\.?R\.?|R\.?G\.?|RG|Prot\.?|prot\.|[Pp]rotocollo|Rep\.?|rep\.|[Rr]epertorio)(?:[  ]*(?:[nN]\.?|num\.?|nro\.?))?[  ]*\d{1,8}(?:[\/\-]\d{2,4})?\b/g,
+      color: '#6e2f1a'
+    },
+    {
+      type: 'TARGA',
+      // Italian vehicle plate (since 1994): two letters, three digits, two letters,
+      // compact or separated by a space or hyphen (AB 123 CD, AB-123-CD). Uppercase only
+      // and without I, O, Q, U, the letters plates never use: in lowercase or with every
+      // letter allowed, English text like "to 100 km" would match.
+      regex: /\b[A-HJ-NPR-TV-Z]{2}[ -]?\d{3}[ -]?[A-HJ-NPR-TV-Z]{2}\b/g,
+      color: '#1f3a93'
+    },
+    {
       type: 'PCN',
       // PCN (Prescription Control Number / codice pratica): any numeric code of 17 or more digits.
       // Placed before SE10 so longer matches win overlap resolution.
@@ -301,6 +583,17 @@
       // Note: Montenegro PIB (8 digits) and Turkey VKN (10 digits) share this pattern.
       regex: /\b\d{10}\b/g,
       color: '#8e44ad'
+    },
+    {
+      type: 'PHONE_IT_LANDLINE',
+      // Italian landline: area code 0[1-9] plus up to two digits, a separator (space,
+      // dot, hyphen or slash), then 5-8 digits: "06 1234567", "010-2471234", "02/12345678".
+      // The separator is required: compact landlines of 10 digits are already SE10, and
+      // without it every number starting with 0 would match (zero-padded IDs in CSVs).
+      // Listed last so that existing types keep identical spans: "06 12345678" stays
+      // PHONE_FR_MOBILE, a number with +39 stays PHONE_INTL.
+      regex: /(?<![\w.,\/\-])0[1-9]\d{0,2}[ .\-\/]\d{5,8}(?!\d)/g,
+      color: '#0e6655'
     }
   ];
 
@@ -330,23 +623,49 @@
   function findAllMatches(text) {
     const matches = [];
     for (const pattern of PII_PATTERNS) {
+      if (pattern.scan) {
+        for (const s of pattern.scan(text)) {
+          matches.push({ start: s.start, end: s.end, value: text.slice(s.start, s.end), type: pattern.type, rank: s.rank });
+        }
+        continue;
+      }
       // Re-create the RegExp to reset lastIndex for each call
       const re = new RegExp(pattern.regex.source, pattern.regex.flags);
       let m;
       while ((m = re.exec(text)) !== null) {
-        matches.push({ start: m.index, end: m.index + m[0].length, value: m[0], type: pattern.type });
+        if (m[0].length === 0) { re.lastIndex++; continue; }   // a custom pattern that can match empty
+        // rank: 0 = checksum passed, 1 = no checksum for this type, 2 = checksum failed.
+        let rank = 1;
+        if (pattern.validator) {
+          rank = pattern.validator(m[0]) ? 0 : 2;
+          if (rank === 2 && pattern.strict) continue;
+        }
+        matches.push({ start: m.index, end: m.index + m[0].length, value: m[0], type: pattern.type, rank: rank });
       }
     }
     // Sort by start position ascending; ties resolved by preferring the longer (earlier-ending) match.
+    // On an identical span the rank decides: a value that passes its checksum beats one with no
+    // checksum, which beats one that fails it. The rank never beats position or length, so a
+    // failed checksum cannot leave part of a value in clear: it only gives the span to another type.
     // Array.prototype.sort is stable in modern engines, so insertion order is preserved for equal keys.
-    // Custom patterns are appended after built-ins, so on an identical span the built-in wins silently.
-    matches.sort((a, b) => a.start - b.start || b.end - a.end);
+    // Custom patterns are appended after built-ins, so on an identical span the built-in wins
+    // silently, unless the built-in fails its checksum.
+    matches.sort((a, b) => a.start - b.start || b.end - a.end || a.rank - b.rank);
     // Remove overlapping matches: leftmost wins; advance cursor past each kept match.
+    // A match that starts inside the kept one but ends after it extends the kept one to
+    // its end: dropping it would leave its tail in clear (e.g. "€ 50 335 123 4567", where
+    // AMOUNT takes "€ 50 335" and the mobile number goes on). The union keeps the type
+    // of the leftmost match and covers every character any pattern matched.
     const kept = [];
     let cursor = 0;
     for (const m of matches) {
       if (m.start >= cursor) {
         kept.push(m);
+        cursor = m.end;
+      } else if (m.end > cursor) {
+        const last = kept[kept.length - 1];
+        last.end = m.end;
+        last.value = text.slice(last.start, last.end);
         cursor = m.end;
       }
     }
@@ -370,12 +689,47 @@
     return result;
   }
 
+  // Tolerant restore. AI models often rewrite placeholders: they drop the brackets
+  // (CF_1), pad them ([ CF_1 ]) or wrap them in markdown (**[CF_1]**). Each placeholder
+  // is matched in two forms: bracketed, with optional spaces inside, or bare, with a
+  // word boundary on both sides. The boundary is Unicode-aware (JavaScript \b is ASCII
+  // only, so "CF_1è" would not see one) and keeps an index invented by the model
+  // unresolved: with only CF_1 in the map, [CF_12] and CF_12 stay as they are, because
+  // a placeholder left visible is noticed and a wrong value is not.
+  // A single pass over the original text: a restored value that happens to contain the
+  // name of another placeholder is never replaced again. Markdown around the
+  // placeholder is kept, so **[CF_1]** becomes **value**.
+  // The regex does not list the placeholders (one alternative per entry made a 10,000-entry
+  // map take seconds): it finds any bracketed text and any whole word, and looks the name
+  // up in the map. Only imported names with characters outside letters, digits and '_'
+  // (e.g. MY-TYPE_1) are listed, because a whole word cannot contain them.
+  const WORD_NAME = /^[\p{L}\p{N}_]+$/u;
+
   function restoreText(text) {
     if (session.reverse.size === 0) return text;
-    const escaped = Array.from(session.reverse.keys())
-      .map(k => k.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
-    const pattern = new RegExp(escaped.join('|'), 'g');
-    return text.replace(pattern, match => session.reverse.get(match) || match);
+    const byInner = new Map();
+    const odd = [];
+    for (const [placeholder, original] of session.reverse) {
+      const inner = placeholder.slice(1, -1);
+      byInner.set(inner, original);
+      if (!WORD_NAME.test(inner)) {
+        // No escape for '-' or '/': under the 'u' flag an unneeded escape is a syntax error.
+        const esc = inner.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        odd.push('(?<![\\p{L}\\p{N}_])' + esc + '(?![\\p{L}\\p{N}_])');
+      }
+    }
+    const pattern = new RegExp(
+      '\\[([^\\[\\]]*)\\]|' + (odd.length ? odd.join('|') + '|' : '') +
+      '(?<![\\p{L}\\p{N}_])[\\p{L}\\p{N}_]+(?![\\p{L}\\p{N}_])', 'gu');
+    return text.replace(pattern, (match, bracketed) => {
+      if (bracketed !== undefined) {
+        // The exact name first (an imported "[ CF_1]" keeps its space), then trimmed.
+        if (byInner.has(bracketed)) return byInner.get(bracketed);
+        const trimmed = bracketed.trim();
+        return byInner.has(trimmed) ? byInner.get(trimmed) : match;
+      }
+      return byInner.has(match) ? byInner.get(match) : match;
+    });
   }
 
   // ─── CSV Parser — RFC 4180 ──────────────────────────────────────────────────

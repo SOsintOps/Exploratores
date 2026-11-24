@@ -4,6 +4,21 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 ---
 
+## 3.11.0 — 2026
+
+- **New:** Redactor: new types URL (scheme, `www.` or a bare domain with a TLD from a closed list), IPADDR (with CIDR or range), DATE (numeric, day first), AMOUNT (euro, Italian and English formats), DOCID (Italian act references such as `R.G. 1234/2024` or `Prot. n. 456/2024`), TARGA (Italian vehicle plates) and PHONE_IT_LANDLINE (landlines with a separator after the area code).
+- **Improved:** Redactor: omocodic Codice Fiscale codes, where letters replace some digits, are now redacted when their check letter is correct.
+- **Improved:** Redactor: IBANs printed in groups separated by spaces, dots, hyphens or one line break are found by a scanner that stops at the IBAN length of the country, so the next word is no longer swallowed. IBANs with a wrong checksum are still redacted.
+- **Improved:** Redactor: when two patterns match exactly the same text, the checksum of the Codice Fiscale, Partita IVA, IBAN or payment card decides: a value that passes wins, one that fails gives way to the other type. A failed checksum never leaves a value in clear.
+- **Improved:** Redactor: when two matches overlap and the second goes on past the end of the first, the redacted span now covers both, so the tail of the second is no longer left in clear.
+- **Improved:** Redactor: Italian mobile numbers are also recognised with dots (`333.123.4567`).
+- **Improved:** Redactor: Restore also replaces placeholders rewritten by an AI model: without brackets, with spaces inside the brackets or in bold (the bold is kept). A placeholder number that is not in the map stays as it is, so no wrong value is written.
+- **Fixed:** Redactor: a custom pattern that can match an empty string no longer freezes the page.
+- **New:** Tests: `tests/redactor.test.js` covers the Redactor and runs in CI.
+- **New:** Credits: validators, IBAN scanner, tolerant restore and the new patterns are adapted from [rizzo-pii](https://github.com/Rizzo-AI-Academy/rizzo-pii) (MIT licence); the notice is in `assets/js/redactor.js`.
+
+---
+
 ## 3.10.5 — 2026
 
 - **Improved:** Redactor: *Clear Redaction Map* is now the first button of the Redaction Map section and is repeated at the end of the *Text* / *CSV* row of the Redactor, so the session can be reset without scrolling. Both buttons turn blue only while a redaction map is active. Help page and on-page note updated.

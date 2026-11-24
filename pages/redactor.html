@@ -323,7 +323,7 @@
                             <li>Czech/Slovak rodné číslo</li>
                             <li>Finland HETU</li>
                             <li>France NIR</li>
-                            <li>Italian Codice Fiscale</li>
+                            <li>Italian Codice Fiscale (including omocodic codes)</li>
                             <li>Nordic personal numbers (SE/DK/NO)</li>
                             <li>Romania CNP</li>
                             <li>Spain DNI/NIE</li>
@@ -335,8 +335,9 @@
                     <div class="detect-group">
                         <h4>Financial &amp; payment</h4>
                         <ul>
+                            <li>Amounts in euro (€, EUR, euro; Italian and English formats)</li>
                             <li>Cryptocurrency addresses: Bitcoin (legacy, P2SH, bech32), Ethereum/EVM (0x…), Monero, Litecoin, Tron, Ripple</li>
-                            <li>IBAN bank account numbers (compact, spaced or hyphenated, any case)</li>
+                            <li>IBAN bank account numbers (compact, or printed in groups with spaces, dots or hyphens; any case)</li>
                             <li>Payment cards: American Express, Visa, Mastercard, Discover, JCB, Diners Club, UnionPay — compact or grouped with spaces/hyphens</li>
                             <li>PCN codes (17+ digits starting with year)</li>
                             <li>SE10 merchant codes (10 digits)</li>
@@ -347,12 +348,18 @@
                         <h4>Contact &amp; other</h4>
                         <ul>
                             <li>Custom user-defined patterns</li>
+                            <li>Dates (day/month/year, numeric)</li>
                             <li>Email addresses</li>
                             <li>French mobile numbers (06/07, optional +33/0033 prefix)</li>
                             <li>German mobile numbers (015x–017x, optional +49/0049 prefix)</li>
                             <li>International phone numbers with explicit +CC or 00&nbsp;CC prefix</li>
+                            <li>IPv4 addresses (with CIDR or range)</li>
+                            <li>Italian act references (R.G., Prot., Rep.)</li>
+                            <li>Italian landline numbers (with a separator after the area code)</li>
                             <li>Italian mobile numbers (32x–39x, optional +39/0039 prefix)</li>
+                            <li>Italian vehicle plates</li>
                             <li>UK mobile numbers (07…, optional +44/0044 prefix)</li>
+                            <li>URLs and web domains</li>
                         </ul>
                     </div>
                 </div>
@@ -363,7 +370,7 @@
 </main>
 
 <footer>
-    <p>Exploratores 3.10.5 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.11.0 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>

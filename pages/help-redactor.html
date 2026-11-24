@@ -156,34 +156,42 @@
         </ul>
 
         <h2 id="redactor-detects">WHAT REDACTOR DETECTS</h2>
-        <h3>What Redactor detects (as of 2 July 2026)</h3>
+        <h3>What Redactor detects (as of 24 November 2026)</h3>
 
         <p>Redactor recognises the following data types automatically:</p>
         <ul>
             <li><strong>Payment cards:</strong> American Express (CM11, CM13, CM15), Visa (13 and 16 digit), Mastercard (Classic 51–55 and New 2221–2720), Discover (6011, 644–649, 65xx), JCB (3528–3589), Diners Club (300–305, 36, 38), UnionPay (62, 16–19 digits). Compact and grouped formats with spaces or hyphens.</li>
             <li><strong>Cryptocurrency addresses:</strong> Bitcoin (legacy, P2SH, bech32/segwit), Ethereum and every EVM chain (0x…), Monero, Litecoin, Tron, Ripple. Structural matching only — checksums are not verified.</li>
-            <li><strong>CF:</strong> Italian Codice Fiscale (16-character alphanumeric).</li>
+            <li><strong>CF:</strong> Italian Codice Fiscale (16-character alphanumeric), including omocodic codes, where letters replace some digits; an omocodic code is redacted only when its check letter is correct.</li>
             <li><strong>National identity / social security numbers:</strong> US SSN (dashed form), UK National Insurance number (compact and spaced), Spain DNI/NIE, France NIR (compact and INSEE-spaced), Switzerland AVS (756…), Romania CNP, Finland HETU, Nordic personal numbers (SE/DK/NO, 6-digit date + hyphen + 4 digits), Czech/Slovak rodné číslo (with slash), Belgium national number (dotted form). Digit-only IDs without a distinctive structure (NL BSN, DE Steuer-ID, PL PESEL, HR OIB, UK NHS) cannot be told apart from generic numbers: use a custom pattern if you need them.</li>
             <li><strong>EMAIL:</strong> standard RFC-compliant email addresses.</li>
-            <li><strong>IBAN:</strong> bank account numbers — compact, spaced or hyphen-separated, upper or lower case.</li>
-            <li><strong>PHONE_IT_MOBILE:</strong> Italian mobile numbers (32x–39x prefixes), with or without +39/0039 country code, compact and grouped formats.</li>
+            <li><strong>URL:</strong> web addresses with a scheme (<code>https://…</code>), starting with <code>www.</code>, or bare domains whose TLD is one of it, com, net, org, eu, info, io, dev, app, gov, edu, cloud, online, site, blog. A bare domain with another TLD stays in clear; the closed list keeps abbreviations such as <code>p.iva</code> or <code>S.r.l.</code> out.</li>
+            <li><strong>IBAN:</strong> bank account numbers — compact, or printed in groups separated by spaces, dots, hyphens or one line break, upper or lower case. When the checksum is valid, the match ends exactly at the length of the IBAN for its country, so the next word is not swallowed. An IBAN with a wrong checksum is still redacted.</li>
+            <li><strong>PHONE_IT_MOBILE:</strong> Italian mobile numbers (32x–39x prefixes), with or without +39/0039 country code, compact and grouped with spaces, dots or hyphens.</li>
+            <li><strong>PHONE_IT_LANDLINE:</strong> Italian landline numbers written with a separator after the area code (<code>06 1234567</code>, <code>010-2471234</code>, <code>02/12345678</code>). Compact 10-digit numbers remain SE10; numbers starting 06 or 07 followed by 8 digits keep the PHONE_FR_MOBILE type.</li>
             <li><strong>PHONE_DE_MOBILE:</strong> German mobile numbers (015x/016x/017x prefixes, 7–8 further digits), with or without +49/0049 country code.</li>
             <li><strong>PHONE_FR_MOBILE:</strong> French mobile numbers (06/07 + 8 digits in pairs, dots, hyphens or compact), with or without +33/0033 country code.</li>
             <li><strong>PHONE_UK_MOBILE:</strong> UK mobile numbers (07xxx xxxxxx), compact or spaced, with or without +44/0044 country code.</li>
             <li><strong>PHONE_INTL:</strong> any other international number with an explicit country prefix: <code>+CC</code> followed by 6–12 digits (compact or separated), or <code>00CC</code> followed by a separator. The compact <code>00CC…</code> form without separators is deliberately not matched — it cannot be told apart from zero-padded numeric IDs; use a custom pattern if you need it.</li>
+            <li><strong>IPADDR:</strong> IPv4 addresses, also with a CIDR suffix (<code>10.0.0.0/8</code>) or as a range. A software version whose four parts are all 255 or lower (<code>1.2.3.4</code>) cannot be told apart from an address and is redacted too.</li>
+            <li><strong>DATE:</strong> numeric dates in day/month/year order, separated by <code>/</code>, <code>.</code> or <code>-</code>, years 1900–2099, with an optional time.</li>
+            <li><strong>AMOUNT:</strong> amounts with €, EUR or euro before or after the figure, in Italian (<code>€ 12.500,00</code>) or English (<code>EUR 1,000.00</code>) format.</li>
+            <li><strong>DOCID:</strong> Italian act references written after their abbreviation: <code>R.G. 1234/2024</code>, <code>Prot. n. 456/2024</code>, <code>Rep. 45</code>. The abbreviation is part of the redacted span; a bare number such as <code>1234/2024</code> is not matched.</li>
+            <li><strong>TARGA:</strong> Italian vehicle plates (<code>AB 123 CD</code>, <code>AB-123-CD</code>, <code>AB123CD</code>), uppercase only and without the letters I, O, Q, U that plates never use.</li>
             <li><strong>PCN:</strong> prescription control numbers and similar codes of 17 or more consecutive digits.</li>
             <li><strong>SE10:</strong> 10-digit merchant codes. Also catches Montenegro PIB and Turkey VKN by overlap.</li>
             <li><strong>VAT and fiscal codes</strong> for 30+ countries: IT, DE, FR, ES, GB, NL, BE, AT, PT, PL, HR, SI, CY, GR, MT, AL, SE, DK, FI, LU, IE, CZ, HU, RO, BG, EE, LT, LV, SK, US-EIN.</li>
         </ul>
 
-        <p>Detection runs in priority order. When two patterns overlap, the longer match wins and the shorter one is discarded.</p>
+        <p>Detection runs in priority order. When two patterns overlap, the leftmost match wins, then the longer one. If the other match goes on past its end, the redacted span is extended to cover both, under the type of the first, so no part of either is left in clear. When two patterns match exactly the same text, a checksum decides where one exists: Codice Fiscale, Partita IVA (VAT_IT), IBAN and payment cards (Luhn). A value that passes its checksum wins, one that fails it gives way to the other pattern. A failed checksum never leaves a value in clear: it only changes its type.</p>
+        <p><strong>Restore</strong> also recognises placeholders rewritten by an AI model: without brackets (<code>CF_1</code>), with spaces inside the brackets (<code>[ CF_1 ]</code>) or in bold (<code>**[CF_1]**</code>, the bold is kept). A placeholder with a number that is not in the map, such as <code>[CF_12]</code> when only <code>[CF_1]</code> exists, is left as it is.</p>
 
     </section>
 
 </main>
 
 <footer>
-    <p>Exploratores 3.10.5 <a href="./license.html">License</a></p>
+    <p>Exploratores 3.11.0 <a href="./license.html">License</a></p>
 </footer>
 
 <script src="../assets/menu/navigation.js"></script>

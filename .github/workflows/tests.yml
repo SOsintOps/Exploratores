@@ -31,5 +31,8 @@ jobs:
       - name: Run the identifier-guard tests
         run: node tests/check-ids.test.mjs
 
+      - name: Run the Redactor tests
+        run: node tests/redactor.test.js
+
       - name: Check that the catalogue export is up to date and identifiers are unique
         run: node scripts/catalogue/verify-meta.mjs
