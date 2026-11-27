@@ -8,6 +8,7 @@ Changelog of all releases and improvements to the Exploratores OSINT Toolkit.
 
 - **New:** Redactor: the Redaction Map can be exported as CSV. *Copy CSV* copies it to the clipboard and *Export CSV* downloads `redaction-map.csv`; both use the columns Placeholder, Type and Original Value, a comma separator and the same order as the table. The CSV is for use in other tools: *Import Map* still takes the JSON only.
 - **New:** Redactor: each type group of the Redaction Map has a *Copy values* button that copies all the original values of that type, one per line, ready to paste into a column (for example every SE10 or every VISA card found in the session).
+- **Docs:** Redactor help: all screenshots retaken on the current interface with fictitious data; the custom-pattern example is now a case number (`CASE_ID`), because France NIR is now a built-in pattern. FAQ: the Redact → LLM → Restore workflow describes *Copy CSV*, *Export CSV* and *Copy values*.
 
 ---
 

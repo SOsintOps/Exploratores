@@ -90,7 +90,7 @@
             <li>Click the <strong>CSV</strong> button at the top of the Redactor section.
                 <img src="../assets/images/screenshots/Screenshot 61.png" alt="CSV mode button" class="screenshot">
             </li>
-            <li>Click <strong>Browse...</strong> and select your CSV file.
+            <li>Click <strong>Choose File</strong> (<strong>Browse...</strong> in some browsers) and select your CSV file.
                 <img src="../assets/images/screenshots/Screenshot 6.png" alt="File browser for CSV upload" class="screenshot">
             </li>
             <li>Click <strong>Redact CSV</strong>. A summary shows how many rows were processed and how many cells were redacted.
@@ -109,7 +109,7 @@
             <li>Click the <strong>CSV</strong> button at the top of the Restore section.
                 <img src="../assets/images/screenshots/Screenshot 81.png" alt="CSV mode selected in Restore section" class="screenshot">
             </li>
-            <li>Click <strong>Browse...</strong> and select the redacted CSV file (the one downloaded after using Redact CSV).</li>
+            <li>Click <strong>Choose File</strong> (<strong>Browse...</strong> in some browsers) and select the redacted CSV file (the one downloaded after using Redact CSV).</li>
             <li>Click <strong>Restore CSV</strong>. The tool applies the session map to every cell in the file. A summary shows how many rows were processed and how many cells were restored.
                 <img src="../assets/images/screenshots/Screenshot 8.png" alt="CSV restore summary" class="screenshot">
             </li>
@@ -125,14 +125,14 @@
 
         <img src="../assets/images/screenshots/Screenshot 9.png" alt="Custom patterns section" class="screenshot">
 
-        <p>In the following example the analyst added the regular expression to detect the NIR (Numéro d'Inscription au Répertoire).</p>
+        <p>In the following example the analyst added a regular expression to detect internal case numbers such as <code>CASE-123456</code>.</p>
 
-        <img src="../assets/images/screenshots/Screenshot 10.png" alt="Custom pattern for NIR entered" class="screenshot">
+        <img src="../assets/images/screenshots/Screenshot 10.png" alt="Custom pattern for case numbers entered" class="screenshot">
 
         <p>To do that, the analyst followed this procedure:</p>
         <ol>
-            <li><strong>Type name:</strong> enter a short label for your pattern, for example <code>NIR_FR</code>. Use only letters, digits, and underscores.</li>
-            <li><strong>Regex:</strong> enter your regular expression without surrounding slashes. Example: <code>[12]\d{2}[ ]?(?:0[1-9]|1[0-2]|20)[ ]?\d{2}[ ]?\d{3}[ ]?\d{3}[ ]?\d{2}</code> matches NIR (Numéro d'Inscription au Répertoire).</li>
+            <li><strong>Type name:</strong> enter a short label for your pattern, for example <code>CASE_ID</code>. Use only letters, digits, and underscores.</li>
+            <li><strong>Regex:</strong> enter your regular expression without surrounding slashes. Example: <code>\bCASE-\d{6}\b</code> matches <code>CASE-</code> followed by six digits.</li>
             <li><strong>Colour:</strong> choose a colour for the badge shown in the Redaction Map.</li>
             <li><strong>Case-insensitive:</strong> tick this box if the pattern should match regardless of capitalisation.</li>
             <li>Click <strong>Add Pattern</strong>. The pattern is saved in your browser's local storage and will be available the next time you open the page.
@@ -147,7 +147,7 @@
 
         <p>The Redaction Map shows every placeholder created in the current session, its data type, and the original value it replaced.</p>
 
-        <img src="../assets/images/screenshots/Screenshot 301.png" alt="Redaction Map showing session placeholders" class="screenshot">
+        <img src="../assets/images/screenshots/Screenshot 301.png" alt="Redaction Map grouped by type, with the Copy CSV, Export CSV and Copy values buttons" class="screenshot">
 
         <ul>
             <li><strong>Copy Map (JSON):</strong> copies the full map as a JSON object. Paste this somewhere safe if you want to restore data in a future session.</li>

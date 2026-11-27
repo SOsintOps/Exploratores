@@ -381,6 +381,7 @@
         <li>Copy the redacted output and submit it to your AI model.</li>
         <li>Once the AI returns its report (which will contain the placeholders), paste it into the <strong>Restore</strong> section and click <strong>Restore</strong>. All original values are reinserted automatically, also where the AI rewrote a placeholder without brackets (<code>CF_1</code>), with spaces inside them (<code>[ CF_1 ]</code>) or in bold (the bold is kept). A placeholder number that is not in the map, such as <code>[CF_12]</code>, is left as it is.</li>
         <li>If you need to continue a session later (e.g., the report arrives the next day), click <strong>Copy Map (JSON)</strong> to export the redaction map, save it externally, then re-import it via the <strong>Import Map</strong> panel before using Restore.</li>
+        <li>To work on the extracted data in a spreadsheet or another tool, use <strong>Copy CSV</strong> or <strong>Export CSV</strong> in the Redaction Map (columns Placeholder, Type, Original Value; <strong>Export CSV</strong> downloads <code>redaction-map.csv</code>). <strong>Copy values</strong>, on the right of each type group, copies all the original values of that type, one per line. The CSV cannot be re-imported: <strong>Import Map</strong> takes the JSON only.</li>
       </ol>
       <p>The session state is held only in memory. It is cleared when you close or refresh the tab, or when you click <strong>Clear Redaction Map</strong>.</p>
     </div>

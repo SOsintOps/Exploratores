@@ -338,6 +338,7 @@ Dates are not redacted. When two patterns overlap, the leftmost match wins, then
 2.  Copy the redacted output and submit it to your AI model.
 3.  Once the AI returns its report (which will contain the placeholders), paste it into the **Restore** section and click **Restore**. All original values are reinserted automatically, also where the AI rewrote a placeholder without brackets (`CF_1`), with spaces inside them (`[ CF_1 ]`) or in bold (the bold is kept). A placeholder number that is not in the map, such as `[CF_12]`, is left as it is.
 4.  If you need to continue a session later (e.g., the report arrives the next day), click **Copy Map (JSON)** to export the redaction map, save it externally, then re-import it via the **Import Map** panel before using Restore.
+5.  To work on the extracted data in a spreadsheet or another tool, use **Copy CSV** or **Export CSV** in the Redaction Map (columns Placeholder, Type, Original Value; **Export CSV** downloads `redaction-map.csv`). **Copy values**, on the right of each type group, copies all the original values of that type, one per line. The CSV cannot be re-imported: **Import Map** takes the JSON only.
 
 The session state is held only in memory. It is cleared when you close or refresh the tab, or when you click **Clear Redaction Map**.
 
