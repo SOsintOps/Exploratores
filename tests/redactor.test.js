@@ -258,6 +258,24 @@ test('restore: round trip', () => {
   eq(restore(censored), text);
 });
 
+// --- map export ---
+test('map csv: header, table order, quoting', () => {
+  setMap({ '[EMAIL_2]': 'b@x.it', '[FULLNAME_1]': 'Rossi, "Mario"', '[EMAIL_1]': 'a@x.it', '[VISA_1]': '4111111111111111' });
+  eq(run('exportMapAsCsv()'),
+    'Placeholder,Type,Original Value\r\n' +
+    '[VISA_1],VISA,4111111111111111\r\n' +
+    '[EMAIL_1],EMAIL,a@x.it\r\n' +
+    '[EMAIL_2],EMAIL,b@x.it\r\n' +
+    '[FULLNAME_1],FULLNAME,"Rossi, ""Mario"""');
+});
+test('map csv: empty map gives the header only', () => eq(run('exportMapAsCsv()'), 'Placeholder,Type,Original Value'));
+test('map values: one type, one per line, by index', () => {
+  setMap({ '[EMAIL_10]': 'c@x.it', '[EMAIL_2]': 'b@x.it', '[VISA_1]': '4111111111111111', '[EMAIL_1]': 'a@x.it' });
+  eq(run("originalValuesOfType('EMAIL')"), 'a@x.it\nb@x.it\nc@x.it');
+  eq(run("originalValuesOfType('VISA')"), '4111111111111111');
+  eq(run("originalValuesOfType('IBAN')"), '');
+});
+
 if (failures.length) {
   console.error(failures.join('\n'));
   console.error(`\n${passed} passed, ${failures.length} failed`);

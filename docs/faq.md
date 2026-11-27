@@ -303,7 +303,7 @@ When the Light Version is active, a script automatically adds the `.hidden-in-li
 
 ### What is the Redactor tool and how does it work?
 
-The Redactor (accessible under the **Tools** menu) is a browser-side PII removal tool designed for workflows that involve submitting case text to external AI models. It scans input text or CSV files and replaces sensitive values with numbered placeholders such as `[EMAIL_1]`, `[VAT_IT_1]`, or `[AMEX_1]`. The same value always receives the same placeholder within a session, so the mapping is consistent. A **Redaction Map** records every substitution and can be exported as JSON for later use.
+The Redactor (accessible under the **Tools** menu) is a browser-side PII removal tool designed for workflows that involve submitting case text to external AI models. It scans input text or CSV files and replaces sensitive values with numbered placeholders such as `[EMAIL_1]`, `[VAT_IT_1]`, or `[AMEX_1]`. The same value always receives the same placeholder within a session, so the mapping is consistent. A **Redaction Map** records every substitution and can be exported as JSON for later use, or as CSV for use in other tools.
 
 All processing runs locally in your browser. No data is transmitted to any server.
 

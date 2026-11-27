@@ -800,6 +800,34 @@
       .replace(/"/g, '&quot;');
   }
 
+  // Map entries in display order. Groups follow the PII_PATTERNS order (cards, CF, VAT,
+  // email, IBAN, phone, PCN, SE10, then custom patterns) so related types sit together;
+  // alphabetical fallback covers types that no longer have a pattern (e.g. imported from
+  // a removed custom). The table, the CSV export and the per-type copy all share it.
+  function sortedMapEntries() {
+    const entries = Array.from(session.reverse.entries()).map(([placeholder, original]) => {
+      const typeMatch = placeholder.match(/^\[(.+)_(\d+)\]$/);
+      const type = typeMatch ? typeMatch[1] : 'UNK';
+      const num = typeMatch ? parseInt(typeMatch[2], 10) : 0;
+      return { placeholder, original, type, num };
+    });
+    const typeOrder = new Map(PII_PATTERNS.map((p, i) => [p.type, i]));
+    entries.sort((a, b) => {
+      const oa = typeOrder.has(a.type) ? typeOrder.get(a.type) : PII_PATTERNS.length;
+      const ob = typeOrder.has(b.type) ? typeOrder.get(b.type) : PII_PATTERNS.length;
+      if (oa !== ob) return oa - ob;
+      if (a.type < b.type) return -1;
+      if (a.type > b.type) return 1;
+      return a.num - b.num;
+    });
+    return entries;
+  }
+
+  // Original values of one type, one per line, ready to paste into a column.
+  function originalValuesOfType(type) {
+    return sortedMapEntries().filter(e => e.type === type).map(e => e.original).join('\n');
+  }
+
   function updateMapTable() {
     const tbody = document.getElementById('map-tbody');
     const table = document.getElementById('map-table');
@@ -819,25 +847,7 @@
     empty.style.display = 'none';
     table.style.display = '';
 
-    const entries = Array.from(session.reverse.entries()).map(([placeholder, original]) => {
-      const typeMatch = placeholder.match(/^\[(.+)_(\d+)\]$/);
-      const type = typeMatch ? typeMatch[1] : 'UNK';
-      const num = typeMatch ? parseInt(typeMatch[2], 10) : 0;
-      return { placeholder, original, type, num };
-    });
-
-    // Groups follow the PII_PATTERNS order (cards, CF, VAT, email, IBAN, phone, PCN,
-    // SE10, then custom patterns) so related types sit together; alphabetical fallback
-    // covers types that no longer have a pattern (e.g. imported from a removed custom).
-    const typeOrder = new Map(PII_PATTERNS.map((p, i) => [p.type, i]));
-    entries.sort((a, b) => {
-      const oa = typeOrder.has(a.type) ? typeOrder.get(a.type) : PII_PATTERNS.length;
-      const ob = typeOrder.has(b.type) ? typeOrder.get(b.type) : PII_PATTERNS.length;
-      if (oa !== ob) return oa - ob;
-      if (a.type < b.type) return -1;
-      if (a.type > b.type) return 1;
-      return a.num - b.num;
-    });
+    const entries = sortedMapEntries();
 
     // Rows are built with createElement/textContent (never innerHTML) so PII values
     // and type names can never be interpreted as markup, regardless of their content.
@@ -858,6 +868,13 @@
         const countSpan = document.createElement('span');
         countSpan.style.cssText = 'color:#666;font-weight:400;';
         countSpan.textContent = ' (' + entries.filter(e => e.type === entry.type).length + ')';
+        // Copies every original value of this type; handled by the tbody click below.
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'button map-copy-values';
+        copyBtn.dataset.copyType = entry.type;
+        copyBtn.title = 'Copy all ' + entry.type + ' original values, one per line';
+        copyBtn.textContent = 'Copy values';
+        headerTd.appendChild(copyBtn);
         headerTd.appendChild(badge);
         headerTd.appendChild(countSpan);
         headerTr.appendChild(headerTd);
@@ -880,6 +897,11 @@
       tr.appendChild(tdOriginal);
       tbody.appendChild(tr);
     }
+    tbody.onclick = function (e) {
+      const btn = e.target.closest('[data-copy-type]');
+      if (!btn) return;
+      copyToClipboard(originalValuesOfType(btn.dataset.copyType), btn);
+    };
   }
 
   function showCopyFeedback(btn, msg) {
@@ -1047,6 +1069,33 @@
   document.getElementById('btn-copy-map').addEventListener('click', function () {
     if (session.reverse.size === 0) return;
     copyToClipboard(exportMapAsJson(), this);
+  });
+
+  // Same rows and order as the table. Values are written as they are: no formula
+  // guard is added, because a leading apostrophe would alter the exported data.
+  function exportMapAsCsv() {
+    const rows = [['Placeholder', 'Type', 'Original Value']];
+    for (const e of sortedMapEntries()) rows.push([e.placeholder, e.type, e.original]);
+    return serializeCSV(rows);
+  }
+
+  document.getElementById('btn-copy-map-csv').addEventListener('click', function () {
+    if (session.reverse.size === 0) return;
+    copyToClipboard(exportMapAsCsv(), this);
+  });
+
+  document.getElementById('btn-export-map-csv').addEventListener('click', () => {
+    if (session.reverse.size === 0) return;
+    // BOM prefix ensures correct UTF-8 rendering when opened in Excel
+    const blob = new Blob(['\uFEFF' + exportMapAsCsv()], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'redaction-map.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   });
 
   // ─── Import Map ───────────────────────────────────────────────────────────────
